@@ -67,7 +67,9 @@ Sıfatlardan biri kaynakta ölçülmüş veya metnin ikna amacı için gerekli b
 
 **Sonra**
 
-> Ekip raporu tamamlayıp yönetime gönderdi. Yönetim raporu yarın görüşecek.
+> Ekip raporu tamamladı. Rapor yönetime gönderildi; yönetim de raporu yarın görüşecek.
+
+İkinci sürüm, raporu kimin gönderdiği kaynakta belirtilmediği için bu eylemi ekibe yüklemez.
 
 ### Slogan gibi kısa cümleler
 
@@ -77,7 +79,7 @@ Sıfatlardan biri kaynakta ölçülmüş veya metnin ikna amacı için gerekli b
 
 **Sonra**
 
-> Teslim tarihi yaklaştığı için ekibin bugün karar vermesi gerekiyor.
+> Teslim tarihi yaklaşıyor ve zaman azalıyor; ekip bugün karar vermeli.
 
 Tek bir kısa vurgu cümlesini sırf kısa olduğu için bozma.
 
@@ -103,11 +105,11 @@ Geniş zaman daha uygunsa `saklar`, `oluşturur` biçimini kullan. Kipi tür ve 
 
 **Sonra**
 
-> Ekip kontrolleri düzenli yapmayı planlıyor.
-
-Aktör kaynakta yoksa:
-
 > Kontrollerin düzenli yapılması planlanıyor.
+
+Aktör kaynakta açıkça belirtiliyorsa cümle doğrudan kurulabilir:
+
+> Ekip kontrolleri düzenli yapmayı planlıyor.
 
 ### Edilgenlik ve aktör
 
@@ -199,9 +201,9 @@ Bu atfı yalnızca kaynakta kurumun görüşü belirtilmişse kullan.
 
 **Sonra**
 
-> Şirket, karşılaştırmanın kapsamını açıklamadan ürünün kendi kategorisindeki en hızlı model olduğunu belirtiyor.
+> Şirket, ürünün kendi kategorisindeki en hızlı model olduğunu belirtiyor; ancak karşılaştırmanın kapsamını açıklamıyor.
 
-İddia ve eksikliği korunur. İddianın doğru olduğu varsayılmaz.
+Cümle iddiayı şirkete atfettiği ve karşılaştırmanın sınırını belirttiği için değiştirilmeden kalabilir. İddianın doğru olduğu varsayılmaz.
 
 ### Soyut fayda yüklemleri
 
@@ -213,7 +215,7 @@ Bu atfı yalnızca kaynakta kurumun görüşü belirtilmişse kullan.
 
 **Sonra**
 
-> Yeni panelde arama ve filtreler aynı ekranda.
+> Yeni panelde arama ve filtreler aynı ekranda yer alıyor.
 
 Somut işlev kaynakta bulunduğu için öne çıkarılabilir.
 
@@ -320,7 +322,7 @@ Yüksek riskli formüller:
 
 **Sonra**
 
-> Değişiklikle birlikte küçük işletmeler de aylık bildirim verecek.
+> Küçük işletmeler de artık aylık bildirim verecek.
 
 Gerçekten cevabı açık olmayan soru, konuşma veya denemede kalabilir.
 
@@ -454,9 +456,9 @@ Aşağıdakileri tek başına yapaylık belirtisi sayma:
 
 **Sonra**
 
-> Çalışmada ödev teslim oranı dijital araç kullanan grupta yüzde 78, kontrol grubunda yüzde 64'tür.
+> Çalışmada ödev teslim oranı dijital araç kullanan grupta yüzde 78, kontrol grubunda yüzde 64'tür. Çalışma, bu iki oran arasındaki farkı dijitalleşme açısından önemli bir bulgu olarak değerlendiriyor.
 
-Araştırma tasarımı nedensellik göstermiyorsa "araçlar oranı artırdı" yazma.
+İkinci cümle ölçüm değil, çalışmanın değerlendirmesi olarak kalır. Araştırma tasarımı nedensellik göstermiyorsa "araçlar oranı artırdı" yazma.
 
 ### Teknik
 
@@ -486,7 +488,7 @@ Araştırma tasarımı nedensellik göstermiyorsa "araçlar oranı artırdı" ya
 
 **Sonra**
 
-> Bildiriminiz için teşekkür ederiz. İlgili birim talebinizi inceliyor ve cuma gününe kadar yanıt verecek.
+> Geri bildiriminiz için teşekkür ederiz. İlgili birim talebinizi inceliyor ve cuma gününe kadar yanıt verecek.
 
 ### Kişisel yazı
 

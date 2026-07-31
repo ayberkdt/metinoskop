@@ -64,9 +64,9 @@ Kullanıcı yalnızca belirli bir sorun söylediyse müdahaleyi o sorunla sını
 
 ## Değişiklik bütçesi
 
-Doğal, açık ve işlevini yerine getiren bir cümleyi sırf farklı görünsün diye değiştirme. Her değişikliğin belirli bir gerekçesi olsun:
-
 Metin zaten doğal, açık ve kullanıcının istediği tona uygunsa metni olduğu gibi bırak veya yalnızca zorunlu düzeltmeleri yap. Her görevde görünür değişiklik üretmek zorunda değilsin.
+
+Doğal, açık ve işlevini yerine getiren bir cümleyi sırf farklı görünsün diye değiştirme. Her değişikliğin belirli bir gerekçesi olsun:
 
 - anlam açıklığı,
 - cümle veya paragraf akışı,
@@ -172,7 +172,7 @@ Son metindeki her sayı, tarih, özellik, sonuç, nedensellik, karşılaştırma
 
 Metni bir kez anlam, bir kez doğal duraklar için oku. Şunları kontrol et:
 
-- Her cümle bir öncekinden doğuyor mu?
+- Her cümlenin öncekiyle ilişkisi açık mı?
 - Cümleler aynı kalıpla mı ilerliyor?
 - Yazarın tavrı veya iletişim amacı kaybolmuş mu?
 - Gereksiz bağlaçlar çıkarılmış mı?

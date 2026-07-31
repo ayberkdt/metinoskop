@@ -19,6 +19,8 @@ Bu depo, Türkçe metinleri doğal ve kaynak sadakatini koruyan bir dille düzen
 - Yeni ayrıntılı örüntüleri ana dosyaya yığmak yerine uygun `references/` dosyasına ekleyin.
 - Kaynakta bulunmayan olgu, tarih, sayı, alıntı, nedensellik veya kişisel ayrıntı üreten örnek eklemeyin.
 - Bir örneğin "sonra" sürümündeki her önermenin "önce" sürümünde karşılığı bulunmalıdır.
+- "Sonra" sürümü hedeflenen ilkeyi görünür biçimde uygulamalıdır; yalnızca noktalama veya tek bir bağlaç değişikliği yeterli değildir.
+- Belirsiz aktörü veya göndergeyi açıklığa kavuştururken kaynakta bulunmayan bir cevap seçmeyin.
 - `SKILL.md` dosyasını 500 satırın altında tutun.
 - Skill'i belirli bir agent ürününe gereksiz yere bağlamayın; ürün özelindeki metadata'yı `agents/` altında tutun.
 

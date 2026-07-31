@@ -6,7 +6,7 @@
 2. [Bilgi akışı](#bilgi-akışı)
 3. [Cümleler arası bağ](#cümleler-arası-bağ)
 4. [Paragraf hareketi](#paragraf-hareketi)
-5. [Ritim ve yüklem çeşitliliği](#ritim-ve-yüklem-çeşitliliği)
+5. [Ritim ve yapısal tekrar](#ritim-ve-yapısal-tekrar)
 6. [Gönderge açıklığı](#gönderge-açıklığı)
 7. [İddia ve kesinlik akışı](#iddia-ve-kesinlik-akışı)
 8. [Biçim ve kaynak işaretleri](#biçim-ve-kaynak-işaretleri)
@@ -24,6 +24,8 @@ Akıcılık, bütün cümlelerin kısa veya gündelik olması değildir. Okur ş
 
 Metin dil bilgisi bakımından doğru olduğu hâlde bu sorulara cevap vermiyorsa sorun çoğu zaman kelimelerde değil, bilgi düzenindedir.
 
+Bir "önce/sonra" örneğinde ikinci sürüm, anlatılan ilkeyi görünür biçimde uygulamalıdır. Yalnızca noktalamayı veya tek bir bağlacı değiştirmek akıcılık düzeltmesi sayılmaz. Yeni sürümde kurulan her gönderge, karşıtlık, zaman veya neden ilişkisi kaynakta bulunmalıdır.
+
 ## Bilgi akışı
 
 ### Bilinenden yeniye ilerle
@@ -32,13 +34,13 @@ Metin dil bilgisi bakımından doğru olduğu hâlde bu sorulara cevap vermiyors
 
 **Kopuk**
 
-> Müşteri kayıtlarındaki yazım farkları aramayı yavaşlatıyordu. Ekip yeni bir arama dizini kurdu. Yeni dizinle sonuçlar iki saniyede yüklenmeye başladı.
+> Rapor üç bölgedeki teslimatları karşılaştırıyor. Müşteri şikâyetlerinin yarısı kuzey bölgesinden geldi. Kuzey bölgesinde ortalama teslim süresi beş gündü.
 
 **Akıcı**
 
-> Müşteri kayıtlarındaki yazım farkları aramayı yavaşlatıyordu. Ekip yeni bir arama dizini kurdu; yeni dizinle sonuçlar iki saniyede yüklenmeye başladı.
+> Rapor üç bölgedeki teslimatları karşılaştırıyor. Kuzey bölgesinde ortalama teslim süresi beş gündü; müşteri şikâyetlerinin yarısı da bu bölgeden geldi.
 
-İkinci sürüm, kaynakta açıkça kurulmamış bir neden-sonuç bağı eklemeden mevcut bilgi sırasını korur.
+İkinci sürüm genel çerçeveden kuzey bölgesine geçer, ardından aynı bölgeye ait iki bilgiyi yan yana getirir. Yalnızca kaynakta bulunan bölge ilişkisini kullanır; yeni bir neden-sonuç bağı kurmaz.
 
 ### Nedeni sonuçtan ayır
 
@@ -85,9 +87,9 @@ Bağdaşıklığı yalnızca `ancak`, `ayrıca`, `öte yandan` gibi sözcüklere
 
 **Doğal**
 
-> Şirket üç yeni şube açtı; çalışan sayısı da 40 kişi arttı. Yeni çalışanlar için iki haftalık eğitim programı başladı.
+> Şirket üç yeni şube açtı. Çalışan sayısı 40 kişi arttı; yeni çalışanlar için iki haftalık eğitim programı başladı.
 
-İkinci sürüm bilgileri birbirine bağlar fakat şube açılışını çalışan sayısındaki artışın nedeni gibi sunmaz.
+İlk cümle ayrı bir gelişmeyi taşır. Sonraki cümle, ortak çalışan odağı bulunan iki bilgiyi bir araya getirir; şube açılışı ile çalışan artışı arasında neden-sonuç ilişkisi kurmaz.
 
 ### Bağlaç seçimi
 
@@ -114,7 +116,7 @@ Yaygın hareketler:
 
 Bu kalıpları şablon olarak dayatma. Paragrafın mevcut niyetini bul.
 
-### Listeye dönüşen paragraf
+### Art arda sıralanan özellikler
 
 **Önce**
 
@@ -122,9 +124,9 @@ Bu kalıpları şablon olarak dayatma. Paragrafın mevcut niyetini bul.
 
 **Sonra**
 
-> Uygulama sık kullanılan ekranları ortalama iki saniyede açıyor. Ekip bazında yetkilendirme yapılabiliyor ve aynı ekrandan rapor alınabiliyor.
+> Uygulama sık kullanılan ekranları ortalama iki saniyede açıyor. Kullanıcılar aynı ekrandan rapor alabiliyor; yetkilendirme ise ekip bazında yapılabiliyor.
 
-İkinci sürüm yeni özellik üretmez; yakın bilgileri birleştirir.
+İkinci sürüm hız bilgisini ayrı tutar, kullanım ve yetkilendirme özelliklerini aynı cümlede toplar. Yeni özellik veya ilişki üretmez.
 
 ### Gereksiz sonuç cümlesi
 
@@ -138,7 +140,7 @@ Bu kalıpları şablon olarak dayatma. Paragrafın mevcut niyetini bul.
 
 Son cümle yalnızca önceki bilgileri soyut biçimde yeniden açıklıyorsa çıkarılabilir. Yazarın açık değerlendirmesiyse iletişim amacına göre korunabilir.
 
-## Ritim ve yüklem çeşitliliği
+## Ritim ve yapısal tekrar
 
 Doğal ritim matematiksel dağılım değildir. Kısa ve uzun cümleleri sırayla dizme; düşüncenin ağırlığına göre uzunluğu değiştir.
 
@@ -150,7 +152,7 @@ Doğal ritim matematiksel dağılım değildir. Kısa ve uzun cümleleri sırayl
 - Virgülden sonra sürekli `-erek/-arak` veya `-en/-an` yapısı mı geliyor?
 - Bütün cümleler iki eş parçadan mı oluşuyor?
 
-Çeşitlilik için rastgele eş anlamlı kullanma. Bazen iki cümleyi birleştir, bazen bilgi sırasını değiştir, bazen aynı doğru terimi koru.
+Müdahaleyi tekrarın kaynağına göre seç. İki cümleyi yalnızca aynı düşünceyi birlikte taşıyorsa birleştir; bilgi sırasını ancak okurun mevcut ilişkileri daha kolay izlemesini sağlıyorsa değiştir. Rastgele eş anlamlı, noktalama veya cümle uzunluğu değişikliği üretme.
 
 ### Ortaç ve zarf-fiil yığılması
 
@@ -160,9 +162,9 @@ Doğal ritim matematiksel dağılım değildir. Kısa ve uzun cümleleri sırayl
 
 **Sonra**
 
-> Sistem verileri inceleyip sorunları belirliyor. Ardından sorun kayıtlarını ekiplerle paylaşarak çözüm sürecini başlatıyor.
+> Sistem verileri inceliyor, sorunları belirliyor ve kayıtları ekiplerle paylaşarak çözüm sürecini başlatıyor.
 
-Kaynakta bulunmayan ekip davranışı veya sonuç eklenmez.
+İkinci sürüm üç işlemi de korur; kaynakta bulunmayan bir sıra, ekip davranışı veya sonuç eklemez.
 
 ## Gönderge açıklığı
 
@@ -170,13 +172,13 @@ Kaynakta bulunmayan ekip davranışı veya sonuç eklenmez.
 
 **Belirsiz**
 
-> Yönetim raporu ekibe gönderdi. Denetim kurulu bütçeyi onaylamadı. Bu durum süreci geciktirdi.
+> Denetim kurulu bütçeyi onaylamadı. Bu durum süreci geciktirdi.
 
 **Açık**
 
-> Denetim kurulunun bütçeyi onaylamaması süreci geciktirdi. Yönetim raporu ekibe gönderdi.
+> Denetim kurulunun bütçeyi onaylamaması süreci geciktirdi.
 
-`Bu durum` ifadesinin hangi olaya gönderme yaptığı açıklaştırılır; yeni gerekçe eklenmez.
+`Bu durum` ifadesinin tek olası karşılığı açıkça adlandırılır. Kaynakta birden fazla olası gönderge varsa hangisinin kastedildiğini tahmin etme; bağlam açıklamıyorsa belirsizliği kullanıcıya bildir.
 
 Özel adların veya teknik terimlerin tekrarından sırf tekrar olmasın diye kaçma.
 
@@ -285,7 +287,7 @@ Bu durumda metnin niyetine ve gerçek sesine geri dön.
 
 **Sonra**
 
-> Araştırmada ortalama sınav puanı, uygulamayı düzenli kullanan katılımcılarda 74, diğer katılımcılarda 68'dir. Çalışma nedensellik göstermemektedir.
+> Araştırmada ortalama sınav puanı, uygulamayı düzenli kullanan katılımcılarda 74, diğer katılımcılarda 68'dir; ancak çalışma nedensellik göstermemektedir.
 
 ### Kurumsal
 
@@ -305,6 +307,6 @@ Bu durumda metnin niyetine ve gerçek sesine geri dön.
 
 **Sonra**
 
-> Şehir kalabalığı beni yoruyor; yine de sabah vapurunda geçirdiğim yirmi dakika sakinleşmemi sağlıyor.
+> Şehir kalabalığı beni yoruyor; sabah vapurunda geçirdiğim yirmi dakika ise beni sakinleştiriyor.
 
 Birinci kişi ve kişisel deneyim kaynakta bulunduğu için korunur.
