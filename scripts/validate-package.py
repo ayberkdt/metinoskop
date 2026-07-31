@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-CURRENT_VERSION = "0.3.0"
+CURRENT_VERSION = "0.4.0"
 REQUIRED_FILES = (
     ".gitattributes",
     ".github/workflows/validate.yml",
@@ -21,6 +21,7 @@ REQUIRED_FILES = (
     "agents/openai.yaml",
     "references/akicilik.md",
     "references/kavramsal-girisler.md",
+    "references/rapor-yazimi.md",
     "references/turkce-oruntuler.md",
     "evals/README.md",
     "evals/akademik.md",
@@ -33,8 +34,11 @@ REQUIRED_FILES = (
     "evals/kaynak-sadakati.md",
     "evals/kavramsal-giris.md",
     "evals/degisiklik-butcesi.md",
+    "evals/rapor-bulgu-yorum-oneri.md",
+    "evals/rapor-yapisal-butunluk.md",
     "evals/teknik.md",
     "evals/uslup-eslestirme.md",
+    "evals/yonetici-ozeti.md",
     "scripts/eval-runner.py",
     "scripts/validate-package.py",
 )
@@ -49,8 +53,11 @@ EVAL_FILES = (
     "evals/kaynak-sadakati.md",
     "evals/kavramsal-giris.md",
     "evals/degisiklik-butcesi.md",
+    "evals/rapor-bulgu-yorum-oneri.md",
+    "evals/rapor-yapisal-butunluk.md",
     "evals/teknik.md",
     "evals/uslup-eslestirme.md",
+    "evals/yonetici-ozeti.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -114,7 +121,11 @@ if "# Metinoskop" not in skill:
     fail("SKILL.md must use the Metinoskop heading")
 if len(skill.splitlines()) > 500:
     fail("SKILL.md exceeds the 500-line portability budget")
-for heading in ("## Belirsizlik ve yorum seçimi", "## Terim ve gösterim tutarlılığı"):
+for heading in (
+    "## Belirsizlik ve yorum seçimi",
+    "## Terim ve gösterim tutarlılığı",
+    "## Rapor bütünlüğünü koru",
+):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
 
@@ -185,6 +196,9 @@ eval_markers = {
     "evals/uslup-eslestirme.md": ("### Üslup örneği", "### Düzenlenecek metin"),
     "evals/bicim-koruma.md": ("| Model | Hata |", "[^1]", "`max_iter=500`"),
     "evals/teknik.md": ("GRGM1200", "DOP853", "bağıl tolerans", "Δv", "10⁻⁶", "±", "(3)"),
+    "evals/rapor-bulgu-yorum-oneri.md": ("%6,2", "%3,1", "üç aylık", "henüz"),
+    "evals/rapor-yapisal-butunluk.md": ("## 2. Bulgular", "## 3. Sınırlılıklar", "(Tablo 2)", "Ek A"),
+    "evals/yonetici-ozeti.md": ("1 Ocak–31 Mart 2026", "480", "%14", "altı haftalık", "henüz"),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]

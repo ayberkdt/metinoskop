@@ -12,6 +12,21 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Düzeltildi
 
+## [0.4.0] - 2026-07-31
+
+### Eklendi
+
+- Raporlarda bölüm işlevini, kanıt zincirini, bulgu–yorum–öneri ayrımını ve yönetici özeti sadakatini ele alan rapor yazımı rehberi.
+- Bulgu–yorum–öneri sınırı, rapor yapısal bütünlüğü ve yönetici özeti için üç davranışsal değerlendirme vakası.
+
+### Değiştirildi
+
+- Ana skill, raporları yalnızca cümle akışı açısından değil; dayanak, sınırlılık, öneri statüsü ve çapraz gönderme bütünlüğü açısından da denetleyecek biçimde güçlendirildi.
+- README ve bakım sözleşmesi rapor düzenleme davranışını, sınırlarını ve doğrulama ölçütlerini açıkça belgeleyecek biçimde güncellendi.
+- Çalışma yöntemindeki `Yeniden yaz` aşaması, değişiklik bütçesi ilkesiyle uyumlu olarak `Düzenle` biçiminde adlandırıldı.
+- Eval çalıştırıcısının öz sınaması, rapor kaynak sadakati vakasını da kapsayacak biçimde genişletildi.
+- Varsayılan çağrı istemi kesinlik düzeyi ve işlevsel yapı korumasını açıkça içerecek biçimde sıkılaştırıldı.
+
 ## [0.3.0] - 2026-07-31
 
 ### Eklendi
@@ -64,7 +79,8 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 - Kavramsal giriş, ana tetikleyici kapsamından ayrılarak yalnızca açık kullanıcı talebiyle çalışan ikincil bir kabiliyet olarak tanımlandı.
 - Doğal ve amacına uygun metni değiştirmemenin geçerli bir sonuç olduğu açıkça güvence altına alındı.
 
-[Unreleased]: https://github.com/ayberkdt/metinoskop/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/ayberkdt/metinoskop/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/ayberkdt/metinoskop/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/ayberkdt/metinoskop/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/ayberkdt/metinoskop/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/ayberkdt/metinoskop/tree/v0.1.0

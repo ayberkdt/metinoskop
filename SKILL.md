@@ -38,6 +38,7 @@ Yazmadan önce sessizce belirle:
 - **Muhatap:** uzman, genel okur, müşteri, çalışma arkadaşı, kurum veya kişisel çevre
 - **Ses:** resmiyet, doğrudanlık, kişi tercihi, terim yoğunluğu ve duygusal sıcaklık
 - **İstenen değişiklik:** yalnızca belirtilen sorun mu, yoksa genel editörlük mü?
+- **Rapor işlevi:** metin raporsa bölüm veya paragraf bağlam mı, yöntem mi, bulgu mu, yorum mu, sınırlılık mı, öneri mi taşıyor?
 
 Bir metin aynı anda birden fazla amaç taşıyabilir. Kurumsal bir duyuru hem bilgi verebilir hem ikna edebilir; ikna amacını otomatik olarak silme.
 
@@ -189,6 +190,23 @@ Uzun veya teknik metinde sessizce bir terim ve gösterim listesi oluştur:
 
 Aynı kavramı sırf tekrar olmasın diye farklı terimlerle adlandırma. Kaynakta ayrı anlam taşıyan iki terimi tek terimde birleştirme. Sembol, indis, birim ve işaretleri dil düzenlemesinin parçası olarak değiştirme.
 
+## Rapor bütünlüğünü koru
+
+Metin bir rapor, inceleme notu, değerlendirme belgesi veya yönetici özetiyse yalnızca cümleleri değil, kanıt zincirini de koru.
+
+- Her bölümün ve paragrafın işlevini sessizce belirle: bağlam, amaç, kapsam, yöntem, bulgu, yorum, sınırlılık, öneri veya karar.
+- Bulguyla yorumu, yorumla öneriyi, öneriyle verilmiş kararı tek statüde birleştirme. Kaynakta aralarındaki sınır bulanıksa düzenleme sırasında kesinleştirme.
+- İddia ile onu destekleyen sayı, alıntı, tablo, kaynak işareti ve sınırlılığı birbirinden uzaklaştırma.
+- Bir verinin neyi gösterdiğini açıklaştırabilirsin; kaynakta bulunmayan neden, önem, risk veya sonuç ekleme.
+- Öneriyi gerçekleşmiş uygulama, hedefi sonuç, beklentiyi taahhüt gibi yazma.
+- Yönetici özetinde yalnızca rapor gövdesinde bulunan ana bulgu, sınır ve önerileri kullan. Kullanıcı istemedikçe yeni yönetici özeti üretme.
+- Başlık hiyerarşisini, tablo ve şekil adlarını, bölüm numaralarını ve çapraz göndermeleri koru. Başlıkları yalnızca kullanıcı isterse veya başlık içerikle açıkça çelişiyorsa değiştir.
+- Paragrafları tek biçimli bir şablona zorlama. İddia, dayanak ve sınır mevcutsa ilişkilerini görünür kıl; eksik parçayı sen üretme.
+- Profesyonel tonu bürokratik dolguya dönüştürme. Aktör biliniyorsa açık özne ve somut fiil kullan; bilinmiyorsa aktör uydurma.
+- Daha akıcı olsun diye önemli tekrarları silme. Bir terim, kapsam veya sınırlılık okurun yanlış anlamasını önlüyorsa tekrar işlevseldir.
+
+Rapor düzenlemesinden sonra bulgu–yorum–öneri sınırlarını, bölüm içi dayanakları ve bölümler arası sayı, tarih, terim ve kesinlik tutarlılığını ayrıca denetle.
+
 ## Çalışma yöntemi
 
 ### 1. Envanter çıkar
@@ -199,13 +217,13 @@ Metnin türünü, amacını, müdahale düzeyini ve korunacak unsurları belirle
 
 En baskın sorunları belirle: ritim, söz dizimi, dolgu, reklam cilası, tiyatral vurgu, belirsiz atıf, çeviri kokusu, akış veya ses uyumsuzluğu. Tek bir işaretten "AI metni" sonucu çıkarma.
 
-### 3. Yeniden yaz
+### 3. Düzenle
 
-Seçilen müdahale düzeyinde düzenle. Komşu cümleleri birlikte değerlendir; bir cümledeki değişiklik sonraki cümlenin öznesini, zamanını veya mantıksal bağını bozmasın.
+Seçilen müdahale düzeyinde düzenle. Komşu cümleleri birlikte değerlendir; bir cümledeki değişiklik sonraki cümlenin öznesini, zamanını veya mantıksal bağını bozmasın. Raporlarda bölümün işlevini ve bulgu–yorum–öneri sınırını koru.
 
 ### 4. Kaynak karşılaştırması yap
 
-Son metindeki her sayı, tarih, özellik, sonuç, nedensellik, karşılaştırma, olumsuzluk, koşul, istisna, nicelik sınırı, terim, gösterim ve kişisel ayrıntının kaynakta karşılığını bul. Karşılığı yoksa çıkar veya kaynak metnin izin verdiği kesinlik düzeyine döndür.
+Son metindeki her sayı, tarih, özellik, sonuç, nedensellik, karşılaştırma, olumsuzluk, koşul, istisna, nicelik sınırı, terim, gösterim ve kişisel ayrıntının kaynakta karşılığını bul. Raporlarda yorumların dayanağını, önerilerin statüsünü ve çapraz göndermeleri de karşılaştır. Karşılığı yoksa çıkar veya kaynak metnin izin verdiği kesinlik düzeyine döndür.
 
 ### 5. Ses ve akış denetimi yap
 
@@ -217,11 +235,13 @@ Metni bir kez anlam, bir kez doğal duraklar için oku. Şunları kontrol et:
 - Gereksiz bağlaçlar çıkarılmış mı?
 - Özgün fakat doğal ifadeler yanlışlıkla düzleştirilmiş mi?
 - Kullanıcının istediğinden fazla değişiklik yapılmış mı?
+- Raporda bulgu, yorum, sınırlılık, öneri veya karar yanlışlıkla birbirine dönüşmüş mü?
 
 ## Referans yönlendirmesi
 
 - Klişe, yapay ritim, gereksiz resmiyet, reklam dili veya çeviri kokusu baskınsa [Türkçe örüntüler](references/turkce-oruntuler.md) dosyasını oku.
 - Cümleler doğru olduğu hâlde paragraf kopuksa, göndergeler belirsizse veya okuma akışı takılıyorsa [Akıcı Türkçe](references/akicilik.md) dosyasını oku.
+- Metin rapor, inceleme notu, değerlendirme belgesi veya yönetici özeti ise [Rapor yazımı](references/rapor-yazimi.md) dosyasını oku.
 - Kullanıcı açıkça temel bir kavram veya yönteme bütünlüklü giriş yazılmasını istiyorsa [Kavramsal girişler](references/kavramsal-girisler.md) dosyasını oku.
 - Uzun veya karmaşık metinde birden fazla sorun varsa ilgili referans dosyalarını birlikte oku.
 

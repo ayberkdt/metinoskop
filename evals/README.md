@@ -20,3 +20,5 @@ python scripts/eval-runner.py evals/teknik.md outputs/teknik.txt
 ```
 
 Çalıştırıcı sayı, tarih, URL, kod, dipnot, kapsam belirleyicisi, teknik ad, sembol, denklem numarası ve ölçüm kayıplarını yakalar. Birebir çıktı karşılaştırması yapmaz. Akıcılık, ton, gönderge yorumu ve genel anlam uyumu elle veya model hakemiyle değerlendirilmelidir.
+
+Rapor vakalarında ayrıca bulgu, yorum, sınırlılık, öneri ve karar statülerinin korunup korunmadığını; tablo, başlık ve çapraz göndermelerin doğru içeriğe bağlı kalıp kalmadığını inceleyin. Bu ilişkiler yalnızca sözcük varlığıyla güvenilir biçimde ölçülemediği için değerlendirme insan veya model hakemi gerektirir.

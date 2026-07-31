@@ -189,6 +189,14 @@ def self_test() -> None:
             section((root / "evals/bicim-koruma.md").read_text(encoding="utf-8"), "Kaynak"),
             "Sonuçlar raporda yer alıyor.",
         ),
+        (
+            root / "evals/rapor-bulgu-yorum-oneri.md",
+            "2025 yılında iade oranı kuzey depoda %6,2, diğer depolarda %3,1 olarak "
+            "ölçüldü. Görüşmeler, manuel veri girişlerinin hatalara katkıda "
+            "bulunabileceğine işaret ediyor. Yönetim üç aylık pilot öneriyor; pilot "
+            "henüz başlamadı.",
+            "Kuzey depodaki iade sorunu barkod sistemiyle çözülecek.",
+        ),
     )
 
     for case_path, passing_output, failing_output in scenarios:

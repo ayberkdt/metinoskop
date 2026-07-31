@@ -1,4 +1,4 @@
 interface:
   display_name: "Metinoskop"
   short_description: "Türkçe metindeki mekanik kalıpları ve yapay ritmi azaltır"
-  default_prompt: "$metinoskop kullanarak bu metni anlamını, olgularını ve yazarın sesini koruyarak doğal Türkçeyle düzenle."
+  default_prompt: "$metinoskop kullanarak bu metni anlamını, olgularını, kesinlik düzeyini, işlevsel yapısını ve yazarın sesini koruyarak doğal Türkçeyle düzenle."

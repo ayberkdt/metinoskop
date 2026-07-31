@@ -19,6 +19,7 @@ Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olgula
 - Kullanıcının sağladığı yazı örneğine göre ses ve ton eşleştirmesi yapar.
 - Olumsuzluk, nicelik, koşul, istisna ve kapsam belirleyicilerini korur.
 - Teknik terimleri, sembolleri, birimleri ve belge biçimini tutarlı tutar.
+- Raporlarda bulgu, yorum, sınırlılık, öneri ve karar sınırlarını; tablo, atıf ve çapraz göndermeleri korur.
 - Kaynakta bulunmayan olgu, tarih, sayı, alıntı veya kişisel ayrıntı eklemez.
 
 ## Temel ilkeler
@@ -60,7 +61,7 @@ Depoyu kullandığınız agent ortamının skill dizinine klonlayın:
 git clone https://github.com/ayberkdt/metinoskop.git /path/to/skills/metinoskop
 ```
 
-Çalışma zamanında gereken ana dosya `SKILL.md` dosyasıdır. `references/` klasörü ayrıntılı Türkçe örüntü, akıcılık ve kavramsal giriş rehberlerini; `agents/openai.yaml` ise destekleyen istemciler için arayüz metadata'sını içerir.
+Çalışma zamanında gereken ana dosya `SKILL.md` dosyasıdır. `references/` klasörü ayrıntılı Türkçe örüntü, akıcılık, rapor yazımı ve kavramsal giriş rehberlerini; `agents/openai.yaml` ise destekleyen istemciler için arayüz metadata'sını içerir.
 
 ## Kullanım
 
@@ -91,6 +92,20 @@ Bu e-postaya hafif bir Metinoskop düzenlemesi uygula. Cümle yapısını mümk�
 ```text
 Bu raporu derin düzeyde düzenle. Paragraf akışını yeniden kur fakat hiçbir sayı, tarih veya iddiayı değiştirme.
 ```
+
+### Rapor düzenleme
+
+Raporlarda yalnızca cümle akışını değil, önermelerin statüsünü de koruyabilirsiniz:
+
+```text
+$metinoskop
+
+Bu raporu doğal ve profesyonel Türkçeyle düzenle. Bulgu, yorum, sınırlılık ve önerileri birbirine dönüştürme; tablo, atıf ve çapraz göndermeleri koru.
+
+[rapor]
+```
+
+Metinoskop raporu daha “insani” göstermek için gündelikleştirmez veya süslemez. Bürokratik dolguyu azaltır, gerçek ilişkileri görünür kılar ve her iddiayı kaynakta taşıdığı kanıt düzeyinde tutar. Yönetici özeti ancak kullanıcı isterse üretilir ve rapor gövdesindeki bilgi ile sınırlı kalır.
 
 ### Yazarın sesini eşleştirme
 
@@ -145,19 +160,21 @@ Metinoskop bir dil ve paragraf akışı editörüdür.
 - Olumsuzlukları, koşulları, istisnaları ve nicelik sınırlarını silmez.
 - Kullanıcı istemedikçe olay sırasını, sahne yapısını, bakış açısını veya anlatı sonucunu değiştirmez.
 - Hukuki, akademik veya teknik metindeki gerekli terminolojiyi otomatik olarak gündelikleştirmez.
+- Raporlarda bulguyu nedensel yoruma, öneriyi karara veya planı sonuca dönüştürmez.
 - Her düzgün cümleyi değiştirmeye çalışmaz; metin zaten doğal ve uygunsa olduğu gibi bırakabilir.
 
 Kavramsal giriş yalnızca kullanıcı açıkça giriş yazılmasını istediğinde kullanılan ikincil bir kabiliyettir; olay örgüsünün, sahne yapısının veya bakış açısının yeniden kurulması değildir.
 
 ## Nasıl çalışır?
 
-Metinoskop düzenleme sırasında beş aşamalı bir denetim uygular:
+Metinoskop düzenleme sırasında altı aşamalı bir denetim uygular:
 
-1. Metnin türünü, amacını, muhatabını; korunacak kapsam belirleyicilerini, terimleri ve gösterimleri belirler.
+1. Metnin türünü, amacını, muhatabını; korunacak kapsam belirleyicilerini, terimleri ve gösterimleri belirler. Raporlarda bölüm ve paragraf işlevlerini de çıkarır.
 2. Ritim, dolgu, reklam cilası, belirsiz atıf, çeviri kokusu ve akış sorunlarını kümeler hâlinde inceler.
 3. Kullanıcının istediği müdahale düzeyinde düzenler.
 4. Son metindeki sayı, tarih, iddia, nedensellik, karşılaştırma, koşul, istisna, nicelik sınırı, terim ve gösterimleri kaynakla karşılaştırır.
-5. Ses, ton, gönderge açıklığı ve paragraf akışını son kez denetler.
+5. Raporlarda bulgu–yorum–öneri sınırlarını, dayanakları, bölüm yapısını ve çapraz göndermeleri ayrıca denetler.
+6. Ses, ton, gönderge açıklığı ve paragraf akışını son kez gözden geçirir.
 
 Kullanıcı açıkça kavramsal giriş istediğinde, düzenleme akışından önce kaynakta bulunan bağlam, problem, soru ve çözüm ilişkisi ayrıca çıkarılır.
 
@@ -173,6 +190,7 @@ metinoskop/
 ├── references/
 │   ├── akicilik.md
 │   ├── kavramsal-girisler.md
+│   ├── rapor-yazimi.md
 │   └── turkce-oruntuler.md
 ├── evals/
 │   ├── akademik.md
@@ -185,8 +203,11 @@ metinoskop/
 │   ├── kaynak-sadakati.md
 │   ├── kavramsal-giris.md
 │   ├── degisiklik-butcesi.md
+│   ├── rapor-bulgu-yorum-oneri.md
+│   ├── rapor-yapisal-butunluk.md
 │   ├── teknik.md
-│   └── uslup-eslestirme.md
+│   ├── uslup-eslestirme.md
+│   └── yonetici-ozeti.md
 ├── scripts/
 │   ├── eval-runner.py
 │   └── validate-package.py
@@ -231,11 +252,11 @@ npx --yes skills@1.5.20 add . --list
 
 GitHub Actions, `main` dalına gönderilen her değişiklikte ve pull request'lerde bu kontrolleri çalıştırır.
 
-`evals/` klasörü tek bir beklenen çıktı dayatmaz. Her vaka; korunması gereken olguları, kesinlik düzeyini ve biçimi, ayrıca kaçınılması gereken davranışları tanımlar. Böylece farklı ama geçerli düzenlemeler aynı editoryal ölçütlerle değerlendirilebilir.
+`evals/` klasörü tek bir beklenen çıktı dayatmaz. Her vaka; korunması gereken olguları, kesinlik düzeyini ve biçimi, ayrıca kaçınılması gereken davranışları tanımlar. Rapor vakaları bulgu–yorum–öneri sınırını, yapısal bütünlüğü ve yönetici özetinin gövdeye sadakatini de sınar. Böylece farklı ama geçerli düzenlemeler aynı editoryal ölçütlerle değerlendirilebilir.
 
 ## Sürümleme
 
-Proje anlamsal sürümleme yaklaşımını izler. Kullanıcıya dönük davranış ve paket değişiklikleri [CHANGELOG.md](CHANGELOG.md) dosyasında kaydedilir. En güncel sürüm etiketi `v0.3.0`'dır.
+Proje anlamsal sürümleme yaklaşımını izler. Kullanıcıya dönük davranış ve paket değişiklikleri [CHANGELOG.md](CHANGELOG.md) dosyasında kaydedilir. En güncel sürüm etiketi `v0.4.0`'dır.
 
 ## Katkı
 
