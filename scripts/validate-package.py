@@ -115,8 +115,10 @@ for requirement in metadata_requirements:
 
 readme_requirements = (
     "# Metinoskop",
+    "taşınabilir agent skill paketi ve editoryal rehber seti",
     "## Kurulum",
     "## Kullanım",
+    "Aşağıdaki metni anlamını ve olgularını koruyarak doğal Türkçeyle düzenle:",
     "### İsteğe bağlı kavramsal giriş",
     "## Kapsam ve sınırlar",
     "## Depo yapısı",
@@ -137,6 +139,8 @@ if "Copyright (c) 2026 Ayberk Demirkanat" not in license_text:
     fail("LICENSE copyright notice is missing")
 
 changelog = texts[ROOT / "CHANGELOG.md"]
+if "## [Unreleased]" not in changelog:
+    fail("CHANGELOG.md must include an Unreleased section")
 if "## [0.1.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.1.0")
 

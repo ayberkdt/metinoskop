@@ -4,6 +4,17 @@ Bu dosyada Metinoskop'un kullanıcıya dönük davranış ve paket değişiklikl
 
 Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, sürüm numaraları [Anlamsal Sürümleme](https://semver.org/lang/tr/) ilkelerine dayanır.
 
+## [Unreleased]
+
+### Eklendi
+
+### Değiştirildi
+
+- README'deki tanıtım cümlesi paket yapısını daha akıcı anlatacak biçimde düzenlendi.
+- Doğrudan kullanım örneği, projenin tercih ettiği `düzenle` fiiliyle uyumlu hâle getirildi.
+
+### Düzeltildi
+
 ## [0.1.0] - 2026-07-31
 
 ### Eklendi
