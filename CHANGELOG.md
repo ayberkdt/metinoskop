@@ -10,8 +10,9 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Değiştirildi
 
-- README'deki tanıtım cümlesi paket yapısını daha akıcı anlatacak biçimde düzenlendi.
+- README'deki tanıtım cümlesi paket yapısını daha akıcı ve Türkçe bir söyleyişle anlatacak biçimde düzenlendi.
 - Doğrudan kullanım örneği, projenin tercih ettiği `düzenle` fiiliyle uyumlu hâle getirildi.
+- MIT lisans rozeti `LICENSE` dosyasına bağlandı.
 
 ### Düzeltildi
 

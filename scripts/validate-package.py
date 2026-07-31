@@ -115,7 +115,8 @@ for requirement in metadata_requirements:
 
 readme_requirements = (
     "# Metinoskop",
-    "taşınabilir agent skill paketi ve editoryal rehber seti",
+    "taşınabilir agent skill paketi ve editoryal rehberler",
+    "[![License: MIT](https://img.shields.io/badge/license-MIT-2e7d32)](LICENSE)",
     "## Kurulum",
     "## Kullanım",
     "Aşağıdaki metni anlamını ve olgularını koruyarak doğal Türkçeyle düzenle:",

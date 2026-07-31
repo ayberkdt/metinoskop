@@ -1,11 +1,11 @@
 # Metinoskop
 
 [![Validate package](https://github.com/ayberkdt/metinoskop/actions/workflows/validate.yml/badge.svg)](https://github.com/ayberkdt/metinoskop/actions/workflows/validate.yml)
-![License: MIT](https://img.shields.io/badge/license-MIT-2e7d32)
+[![License: MIT](https://img.shields.io/badge/license-MIT-2e7d32)](LICENSE)
 ![Agent Skill](https://img.shields.io/badge/agent-skill-2563eb)
 ![Language: Türkçe](https://img.shields.io/badge/language-T%C3%BCrk%C3%A7e-c62828)
 
-Türkçe metinlerdeki mekanik yapay zekâ ritmini, basmakalıp ifadeleri ve kurumsal dolguyu ayıklayan taşınabilir agent skill paketi ve editoryal rehber seti.
+Türkçe metinlerdeki mekanik yapay zekâ ritmini, basmakalıp ifadeleri ve kurumsal dolguyu ayıklayan taşınabilir agent skill paketi ve editoryal rehberler.
 
 Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olguları, kesinlik düzeyini, yazarın tavrını ve uygun resmiyet düzeyini koruyarak yalnızca gerekli editoryal müdahaleyi yapar.
 
