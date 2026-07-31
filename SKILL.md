@@ -1,6 +1,6 @@
 ---
 name: metinoskop
-description: Türkçe metinlerde mekanik yapay zekâ ritmini, basmakalıp geçişleri, gereksiz resmiyeti, kurumsal ve pazarlamacı cilayı, tiyatral vurguyu, çeviri kokusunu ve sohbet botu kalıntılarını azaltır; anlamı, olguları, kesinlik düzeyini, iletişim amacını ve yazarın sesini koruyarak doğal Türkçeyle yeniden yazar. Kaynakta verilen bilgilerle bağlam-problem-soru-çözüm akışında kavramsal girişler kurar. Makale, deneme, haber, rapor, tanıtım metni, e-posta, sosyal medya metni, açıklama veya çeviri için "insanileştir", "doğal Türkçe yap", "AI gibi görünmesin", "robotik ifadeleri temizle", "pazarlama dilini azalt", "kavrama giriş yaz" ya da "kendi üslubuma uyarla" dendiğinde kullan.
+description: Türkçe metinlerde mekanik yapay zekâ ritmini, basmakalıp geçişleri, gereksiz resmiyeti, kurumsal ve pazarlamacı cilayı, tiyatral vurguyu ve çeviri kokusunu azaltır; anlamı, olguları, kesinlik düzeyini, iletişim amacını ve yazarın sesini koruyarak doğal Türkçeyle düzenler. Makale, deneme, haber, rapor, tanıtım metni, e-posta, sosyal medya metni, açıklama veya çeviri için "insanileştir", "doğal Türkçe yap", "AI gibi görünmesin", "robotik ifadeleri temizle", "pazarlama dilini azalt" ya da "kendi üslubuma uyarla" dendiğinde kullan.
 ---
 
 # Metinoskop
@@ -21,7 +21,8 @@ Bir alt sıradaki kural, üst sıradakini bozmasın.
 
 ## Görevin sınırı
 
-- Mevcut metnin dilini ve paragraf akışını düzenle.
+- Ana görev olarak mevcut metnin dilini ve paragraf akışını düzenle.
+- Kullanıcı açıkça kaynak bilgilerden bir giriş yazılmasını istemedikçe yeni bölüm üretme.
 - Yeni olgu, tarih, sayı, alıntı, kaynak, özellik, sonuç, deneyim veya kişisel görüş üretme.
 - Kullanıcı istemedikçe olay sırasını, sahne yapısını, bakış açısını veya anlatı sonucunu değiştirme. Anlatı yapısının yeniden kurulması bu skill'in kapsamı dışındadır.
 - Alıntıları, kodu, URL'leri, dipnotları, kaynak işaretlerini, tablo hücrelerini, başlık hiyerarşisini ve Markdown yapısını koru. Kullanıcı biçim değişikliği istemişse yalnızca gerekli kısmı değiştir.
@@ -39,9 +40,9 @@ Yazmadan önce sessizce belirle:
 
 Bir metin aynı anda birden fazla amaç taşıyabilir. Kurumsal bir duyuru hem bilgi verebilir hem ikna edebilir; ikna amacını otomatik olarak silme.
 
-## Kavramsal giriş kur
+## İkincil kabiliyet: kavramsal giriş
 
-Kullanıcı temel bir kavramı tanıtan giriş istiyorsa kaynakta bulunan bilgilerle şu hareketi kur:
+Yalnızca kullanıcı açıkça temel bir kavramı tanıtan giriş yazılmasını istiyorsa kaynakta bulunan bilgilerle şu hareketi kur:
 
 1. Okurun bildiği durumu veya somut bağlamı göster.
 2. Kavramı gerekli kılan gerçek problemi ya da bilgi boşluğunu belirginleştir.
@@ -194,7 +195,7 @@ Metni bir kez anlam, bir kez doğal duraklar için oku. Şunları kontrol et:
 
 - Klişe, yapay ritim, gereksiz resmiyet, reklam dili veya çeviri kokusu baskınsa [Türkçe örüntüler](references/turkce-oruntuler.md) dosyasını oku.
 - Cümleler doğru olduğu hâlde paragraf kopuksa, göndergeler belirsizse veya okuma akışı takılıyorsa [Akıcı Türkçe](references/akicilik.md) dosyasını oku.
-- Temel bir kavram veya yönteme bütünlüklü giriş isteniyorsa [Kavramsal girişler](references/kavramsal-girisler.md) dosyasını oku.
+- Kullanıcı açıkça temel bir kavram veya yönteme bütünlüklü giriş yazılmasını istiyorsa [Kavramsal girişler](references/kavramsal-girisler.md) dosyasını oku.
 - Uzun veya karmaşık metinde birden fazla sorun varsa ilgili referans dosyalarını birlikte oku.
 
 ## Çıktı biçimi

@@ -14,6 +14,7 @@ REQUIRED_FILES = (
     "SKILL.md",
     "README.md",
     "AGENTS.md",
+    "CHANGELOG.md",
     "LICENSE",
     "agents/openai.yaml",
     "references/akicilik.md",
@@ -26,6 +27,7 @@ REQUIRED_FILES = (
     "evals/kisisel.md",
     "evals/kaynak-sadakati.md",
     "evals/kavramsal-giris.md",
+    "evals/degisiklik-butcesi.md",
     "scripts/validate-package.py",
 )
 EVAL_FILES = (
@@ -35,6 +37,7 @@ EVAL_FILES = (
     "evals/kisisel.md",
     "evals/kaynak-sadakati.md",
     "evals/kavramsal-giris.md",
+    "evals/degisiklik-butcesi.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -114,13 +117,15 @@ readme_requirements = (
     "# Metinoskop",
     "## Kurulum",
     "## Kullanım",
-    "### Kavramsal giriş",
+    "### İsteğe bağlı kavramsal giriş",
     "## Kapsam ve sınırlar",
     "## Depo yapısı",
     "## Geliştirme ve doğrulama",
+    "## Sürümleme",
     "## Lisans",
     "npx skills add ayberkdt/metinoskop --global",
     "[LICENSE](LICENSE)",
+    "[CHANGELOG.md](CHANGELOG.md)",
 )
 for requirement in readme_requirements:
     if requirement not in readme:
@@ -128,8 +133,12 @@ for requirement in readme_requirements:
 
 if not license_text.startswith("MIT License\n"):
     fail("LICENSE must contain the MIT License")
-if "Copyright (c) 2026 Ayberk" not in license_text:
+if "Copyright (c) 2026 Ayberk Demirkanat" not in license_text:
     fail("LICENSE copyright notice is missing")
+
+changelog = texts[ROOT / "CHANGELOG.md"]
+if "## [0.1.0] - 2026-07-31" not in changelog:
+    fail("CHANGELOG.md must document version 0.1.0")
 
 eval_headings = (
     "## Kaynak",

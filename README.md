@@ -17,7 +17,6 @@ Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olgula
 - Belirsiz göndergeleri ve kopuk paragraf geçişlerini açıklaştırır.
 - İngilizceden taşınmış söz dizimini doğal Türkçeye yaklaştırır.
 - Kullanıcının sağladığı yazı örneğine göre ses ve ton eşleştirmesi yapar.
-- Temel kavramlara kaynakta bulunan bağlam, problem, soru ve çözüm ilişkisiyle bütünlüklü girişler kurar.
 - Kaynakta bulunmayan olgu, tarih, sayı, alıntı veya kişisel ayrıntı eklemez.
 
 ## Temel ilkeler
@@ -27,6 +26,10 @@ Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olgula
 3. Doğal ve işlevini yerine getiren cümleler sırf değişiklik üretmek için bozulmaz.
 4. Kronolojik yakınlık nedensellik gibi sunulmaz.
 5. Metnin bir AI dedektöründen geçeceği vaat edilmez.
+
+## İsteğe bağlı yardımcı kabiliyet
+
+Metinoskop'un ana görevi mevcut metni düzenlemektir. Kullanıcı açıkça isterse, verilen kaynak bilgilerden temel bir kavram için bağlam, problem, soru ve çözüm ilişkisini gözeten kısa bir giriş de kurabilir. Bu yetenek otomatik olarak devreye girmez ve Metinoskop'u genel amaçlı bir içerik üretim aracına dönüştürmez.
 
 ## Kurulum
 
@@ -100,7 +103,7 @@ $metinoskop
 
 Yazım yanlışları ve tesadüfi tekrarlar üslup özelliği olarak taklit edilmez.
 
-### Kavramsal giriş
+### İsteğe bağlı kavramsal giriş
 
 Temel bir kavramı kuru bir tanımla açmak yerine, kaynakta bulunan bilgiler arasında bütünlüklü bir giriş kurabilirsiniz:
 
@@ -136,18 +139,19 @@ Metinoskop bir dil ve paragraf akışı editörüdür.
 - Hukuki, akademik veya teknik metindeki gerekli terminolojiyi otomatik olarak gündelikleştirmez.
 - Her düzgün cümleyi değiştirmeye çalışmaz; metin zaten doğal ve uygunsa olduğu gibi bırakabilir.
 
-Kavramsal giriş kurmak bu kapsam içindedir; olay örgüsünün, sahne yapısının veya bakış açısının yeniden kurulması değildir.
+Kavramsal giriş yalnızca kullanıcı açıkça giriş yazılmasını istediğinde kullanılan ikincil bir kabiliyettir; olay örgüsünün, sahne yapısının veya bakış açısının yeniden kurulması değildir.
 
 ## Nasıl çalışır?
 
-Metinoskop düzenleme sırasında altı aşamalı bir denetim uygular:
+Metinoskop düzenleme sırasında beş aşamalı bir denetim uygular:
 
 1. Metnin türünü, amacını, muhatabını ve korunacak unsurları belirler.
 2. Ritim, dolgu, reklam cilası, belirsiz atıf, çeviri kokusu ve akış sorunlarını kümeler hâlinde inceler.
-3. Kavramsal giriş istenmişse kaynakta bulunan bağlam, problem, soru ve çözüm ilişkisini çıkarır.
-4. Kullanıcının istediği müdahale düzeyinde düzenler.
-5. Son metindeki sayı, tarih, iddia, nedensellik ve karşılaştırmaları kaynakla karşılaştırır.
-6. Ses, ton, gönderge açıklığı ve paragraf akışını son kez denetler.
+3. Kullanıcının istediği müdahale düzeyinde düzenler.
+4. Son metindeki sayı, tarih, iddia, nedensellik ve karşılaştırmaları kaynakla karşılaştırır.
+5. Ses, ton, gönderge açıklığı ve paragraf akışını son kez denetler.
+
+Kullanıcı açıkça kavramsal giriş istediğinde, düzenleme akışından önce kaynakta bulunan bağlam, problem, soru ve çözüm ilişkisi ayrıca çıkarılır.
 
 Ayrıntılı örüntüler yalnızca gerektiğinde `references/` altından yüklenir; böylece ana skill yönergesi kısa ve taşınabilir kalır.
 
@@ -168,13 +172,15 @@ metinoskop/
 │   ├── kurumsal.md
 │   ├── kisisel.md
 │   ├── kaynak-sadakati.md
-│   └── kavramsal-giris.md
+│   ├── kavramsal-giris.md
+│   └── degisiklik-butcesi.md
 ├── scripts/
 │   └── validate-package.py
 ├── .github/
 │   └── workflows/
 │       └── validate.yml
 ├── AGENTS.md
+├── CHANGELOG.md
 ├── LICENSE
 └── README.md
 ```
@@ -196,6 +202,10 @@ npx --yes skills@1.5.20 add . --list
 GitHub Actions, `main` dalına gönderilen her değişiklikte ve pull request'lerde bu kontrolleri çalıştırır.
 
 `evals/` klasörü tek bir beklenen çıktı dayatmaz. Her vaka; korunması gereken olguları, kesinlik düzeyini ve biçimi, ayrıca kaçınılması gereken davranışları tanımlar. Böylece farklı ama geçerli düzenlemeler aynı editoryal ölçütlerle değerlendirilebilir.
+
+## Sürümleme
+
+Proje anlamsal sürümleme yaklaşımını izler. Kullanıcıya dönük davranış ve paket değişiklikleri [CHANGELOG.md](CHANGELOG.md) dosyasında kaydedilir. İlk yayımlanan sürüm etiketi `v0.1.0`'dır.
 
 ## Katkı
 
