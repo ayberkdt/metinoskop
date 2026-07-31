@@ -188,6 +188,7 @@ metinoskop/
 │   ├── teknik.md
 │   └── uslup-eslestirme.md
 ├── scripts/
+│   ├── eval-runner.py
 │   └── validate-package.py
 ├── .github/
 │   └── workflows/
@@ -206,6 +207,22 @@ Bağımlılık gerektirmeyen yerel paket kontrolü:
 python scripts/validate-package.py
 ```
 
+### Deterministik eval ön denetimi
+
+Bir eval vakası için üretilen çıktıyı dosyaya kaydettikten sonra kaynak değişmezlerini denetleyebilirsiniz:
+
+```bash
+python scripts/eval-runner.py evals/teknik.md outputs/teknik.txt
+```
+
+JSON raporu almak için `--json` seçeneğini ekleyin. Çalıştırıcı; sayı ve tarihleri, URL'leri, satır içi kodu, kod bloklarını, dipnotları, kapsam belirleyicilerini, teknik adları, sembolleri ve ölçümleri kontrol eder. Birebir çıktı eşleşmesi aramaz; akıcılık, ton ve genel anlam uyumu insan veya model hakemine bırakılır.
+
+Çalıştırıcının yerleşik örneklerini sınamak için:
+
+```bash
+python scripts/eval-runner.py --self-test
+```
+
 Agent Skills keşfini denetlemek için:
 
 ```bash
@@ -218,7 +235,7 @@ GitHub Actions, `main` dalına gönderilen her değişiklikte ve pull request'le
 
 ## Sürümleme
 
-Proje anlamsal sürümleme yaklaşımını izler. Kullanıcıya dönük davranış ve paket değişiklikleri [CHANGELOG.md](CHANGELOG.md) dosyasında kaydedilir. En güncel sürüm etiketi `v0.2.0`'dır.
+Proje anlamsal sürümleme yaklaşımını izler. Kullanıcıya dönük davranış ve paket değişiklikleri [CHANGELOG.md](CHANGELOG.md) dosyasında kaydedilir. En güncel sürüm etiketi `v0.3.0`'dır.
 
 ## Katkı
 

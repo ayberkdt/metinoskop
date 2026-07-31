@@ -11,6 +11,7 @@ Bu depo, Türkçe metinleri doğal ve kaynak sadakatini koruyan bir dille düzen
 - `agents/openai.yaml`: Destekleyen istemciler için kullanıcı arayüzü metadata'sıdır.
 - `README.md`: İnsanlar için kurulum, kullanım, kapsam ve depo yapısı belgesidir.
 - `evals/`: Sabit çıktı dayatmayan davranışsal değerlendirme vakalarını içerir.
+- `scripts/eval-runner.py`: Model çıktısındaki kaynak değişmezlerini bağımlılık kullanmadan denetler.
 - `scripts/validate-package.py`: Paket yapısını ve adlandırma tutarlılığını bağımlılık kullanmadan doğrular.
 - `LICENSE`: Paketin MIT Lisansı altında kullanılma, değiştirilme ve dağıtılma koşullarını belirtir.
 - `CHANGELOG.md`: Sürümler arasındaki kullanıcıya dönük davranış ve paket değişikliklerini kaydeder.
@@ -43,6 +44,7 @@ Bu depo, Türkçe metinleri doğal ve kaynak sadakatini koruyan bir dille düzen
 
 ```bash
 python scripts/validate-package.py
+python scripts/eval-runner.py --self-test
 npx --yes skills@1.5.20 add . --list
 ```
 

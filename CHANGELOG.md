@@ -12,6 +12,22 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Düzeltildi
 
+## [0.3.0] - 2026-07-31
+
+### Eklendi
+
+- Model çıktılarında sayı, tarih, URL, kod, dipnot, kapsam belirleyicisi, teknik ad, sembol ve ölçüm korumasını denetleyen bağımlılıksız eval çalıştırıcısı.
+- Çalıştırıcı için metin ve JSON raporlama seçenekleri ile üç vakalı öz sınama.
+
+### Değiştirildi
+
+- Paket CI'ı deterministik eval çalıştırıcısının öz sınamasını da çalıştıracak biçimde genişletildi.
+- README doğrulaması, pazarlama cümlelerinin birebir kopyası yerine yapısal öğelere ve sürüm numarasına bağlandı.
+
+### Düzeltildi
+
+- Teknik eval'deki klasik RK4–tolerans örneği, DOP853 bağıl tolerans örneğiyle değiştirildi.
+
 ## [0.2.0] - 2026-07-31
 
 ### Eklendi
@@ -48,6 +64,7 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 - Kavramsal giriş, ana tetikleyici kapsamından ayrılarak yalnızca açık kullanıcı talebiyle çalışan ikincil bir kabiliyet olarak tanımlandı.
 - Doğal ve amacına uygun metni değiştirmemenin geçerli bir sonuç olduğu açıkça güvence altına alındı.
 
-[Unreleased]: https://github.com/ayberkdt/metinoskop/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/ayberkdt/metinoskop/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/ayberkdt/metinoskop/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/ayberkdt/metinoskop/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/ayberkdt/metinoskop/tree/v0.1.0

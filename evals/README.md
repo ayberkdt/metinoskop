@@ -10,3 +10,13 @@ Her vaka için:
 4. Tek bir cümle yapısını veya sözcük seçimini zorunlu tutmayın.
 
 Yeni bir davranış kuralı eklenirken en az bir mevcut vaka güncellenmeli veya yeni bir vaka eklenmelidir.
+
+## Deterministik ön denetim
+
+Bir model çıktısını kaynakta açıkça korunan değişmezler bakımından denetlemek için:
+
+```bash
+python scripts/eval-runner.py evals/teknik.md outputs/teknik.txt
+```
+
+Çalıştırıcı sayı, tarih, URL, kod, dipnot, kapsam belirleyicisi, teknik ad, sembol, denklem numarası ve ölçüm kayıplarını yakalar. Birebir çıktı karşılaştırması yapmaz. Akıcılık, ton, gönderge yorumu ve genel anlam uyumu elle veya model hakemiyle değerlendirilmelidir.

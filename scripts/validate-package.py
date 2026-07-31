@@ -3,11 +3,13 @@
 
 from __future__ import annotations
 
+import ast
 import re
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
+CURRENT_VERSION = "0.3.0"
 REQUIRED_FILES = (
     ".gitattributes",
     ".github/workflows/validate.yml",
@@ -33,6 +35,7 @@ REQUIRED_FILES = (
     "evals/degisiklik-butcesi.md",
     "evals/teknik.md",
     "evals/uslup-eslestirme.md",
+    "scripts/eval-runner.py",
     "scripts/validate-package.py",
 )
 EVAL_FILES = (
@@ -130,11 +133,8 @@ for requirement in metadata_requirements:
 
 readme_requirements = (
     "# Metinoskop",
-    "taşınabilir agent skill paketi ve editoryal rehberler",
-    "[![License: MIT](https://img.shields.io/badge/license-MIT-2e7d32)](LICENSE)",
     "## Kurulum",
     "## Kullanım",
-    "Aşağıdaki metni anlamını ve olgularını koruyarak doğal Türkçeyle düzenle:",
     "### İsteğe bağlı kavramsal giriş",
     "## Kapsam ve sınırlar",
     "## Depo yapısı",
@@ -144,11 +144,13 @@ readme_requirements = (
     "npx skills add ayberkdt/metinoskop --global",
     "[LICENSE](LICENSE)",
     "[CHANGELOG.md](CHANGELOG.md)",
-    "En güncel sürüm etiketi `v0.2.0`'dır.",
+    "scripts/eval-runner.py",
 )
 for requirement in readme_requirements:
     if requirement not in readme:
         fail(f"README.md is missing: {requirement}")
+if f"v{CURRENT_VERSION}" not in readme:
+    fail(f"README.md must mention the current version: v{CURRENT_VERSION}")
 
 if not license_text.startswith("MIT License\n"):
     fail("LICENSE must contain the MIT License")
@@ -158,6 +160,8 @@ if "Copyright (c) 2026 Ayberk Demirkanat" not in license_text:
 changelog = texts[ROOT / "CHANGELOG.md"]
 if "## [Unreleased]" not in changelog:
     fail("CHANGELOG.md must include an Unreleased section")
+if f"## [{CURRENT_VERSION}] - 2026-07-31" not in changelog:
+    fail(f"CHANGELOG.md must document version {CURRENT_VERSION}")
 if "## [0.2.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.2.0")
 if "## [0.1.0] - 2026-07-31" not in changelog:
@@ -180,13 +184,26 @@ eval_markers = {
     "evals/kapsam-ve-kosul.md": ("Yalnızca en az üç ay", "18 yaş altındaki"),
     "evals/uslup-eslestirme.md": ("### Üslup örneği", "### Düzenlenecek metin"),
     "evals/bicim-koruma.md": ("| Model | Hata |", "[^1]", "`max_iter=500`"),
-    "evals/teknik.md": ("GRGM1200", "RK4", "Δv", "10⁻⁶", "±", "(3)"),
+    "evals/teknik.md": ("GRGM1200", "DOP853", "bağıl tolerans", "Δv", "10⁻⁶", "±", "(3)"),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]
     for marker in markers:
         if marker not in content:
             fail(f"{relative_path} is missing coverage marker: {marker}")
+
+if "RK4 çözücüsünde tolerans" in texts[ROOT / "evals/teknik.md"]:
+    fail("evals/teknik.md contains the stale RK4 tolerance example")
+
+workflow = texts[ROOT / ".github/workflows/validate.yml"]
+if "python3 scripts/eval-runner.py --self-test" not in workflow:
+    fail("CI must run the deterministic eval runner self-test")
+
+for relative_path in ("scripts/eval-runner.py", "scripts/validate-package.py"):
+    try:
+        ast.parse((ROOT / relative_path).read_text(encoding="utf-8"))
+    except SyntaxError as error:
+        fail(f"Invalid Python syntax in {relative_path}: {error}")
 
 print(
     "Metinoskop package is valid "

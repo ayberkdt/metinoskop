@@ -21,5 +21,7 @@ jobs:
           python-version: "3.12"
       - name: Validate package structure
         run: python3 scripts/validate-package.py
+      - name: Test deterministic eval runner
+        run: python3 scripts/eval-runner.py --self-test
       - name: Verify Agent Skills discovery
         run: npx --yes skills@1.5.20 add . --list
