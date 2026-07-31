@@ -25,8 +25,13 @@ Bu depo, Türkçe metinleri doğal ve kaynak sadakatini koruyan bir dille düzen
 - Bir örneğin "sonra" sürümündeki her önermenin "önce" sürümünde karşılığı bulunmalıdır.
 - "Sonra" sürümü hedeflenen ilkeyi görünür biçimde uygulamalıdır; yalnızca noktalama veya tek bir bağlaç değişikliği yeterli değildir.
 - Belirsiz aktörü veya göndergeyi açıklığa kavuştururken kaynakta bulunmayan bir cevap seçmeyin.
+- Belirsizlik korunabiliyorsa koruyun; yorum seçimi zorunluysa kullanıcıdan açıklama isteyin.
+- Olumsuzluk, koşul, istisna, nicelik sınırı ve kapsam belirleyicilerini dilsel dolgu gibi çıkarmayın.
+- Teknik terim, kısaltma, sembol, birim, denklem numarası ve büyük-küçük harf tercihlerini tutarlı koruyun.
+- Skill'i kaynak dilden çeviri yapacak biçimde genişletmeyin; kapsam Türkçeye çevrilmiş mevcut metni düzenlemektir.
 - Kavramsal girişi yalnızca kullanıcı açıkça giriş yazılmasını istediğinde devreye alın; kaynakta bulunmayan problem, risk, aciliyet veya çözüm vaadi üretmeyin.
 - Doğal metni değiştirmeme ilkesini `evals/degisiklik-butcesi.md` vakasıyla koruyun.
+- Belirsizlik, kapsam, üslup, biçim ve teknik gösterim kurallarını karşılık gelen eval vakalarıyla koruyun.
 - Davranış kuralı değiştiğinde ilgili eval vakasını güncelleyin veya yeni bir vaka ekleyin.
 - Kullanıcıya dönük davranış veya paket yapısı değiştiğinde `CHANGELOG.md` dosyasını güncelleyin.
 - `SKILL.md` dosyasını 500 satırın altında tutun.

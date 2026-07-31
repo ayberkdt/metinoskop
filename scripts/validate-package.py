@@ -22,22 +22,32 @@ REQUIRED_FILES = (
     "references/turkce-oruntuler.md",
     "evals/README.md",
     "evals/akademik.md",
+    "evals/belirsizlik.md",
+    "evals/bicim-koruma.md",
     "evals/hukuki.md",
+    "evals/kapsam-ve-kosul.md",
     "evals/kurumsal.md",
     "evals/kisisel.md",
     "evals/kaynak-sadakati.md",
     "evals/kavramsal-giris.md",
     "evals/degisiklik-butcesi.md",
+    "evals/teknik.md",
+    "evals/uslup-eslestirme.md",
     "scripts/validate-package.py",
 )
 EVAL_FILES = (
     "evals/akademik.md",
+    "evals/belirsizlik.md",
+    "evals/bicim-koruma.md",
     "evals/hukuki.md",
+    "evals/kapsam-ve-kosul.md",
     "evals/kurumsal.md",
     "evals/kisisel.md",
     "evals/kaynak-sadakati.md",
     "evals/kavramsal-giris.md",
     "evals/degisiklik-butcesi.md",
+    "evals/teknik.md",
+    "evals/uslup-eslestirme.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -95,10 +105,15 @@ if not re.search(r"(?m)^name:\s*metinoskop\s*$", frontmatter):
     fail("SKILL.md frontmatter name must be metinoskop")
 if not re.search(r"(?m)^description:\s*\S", frontmatter):
     fail("SKILL.md frontmatter description is missing")
+if "Türkçeye çevrilmiş metin" not in frontmatter:
+    fail("SKILL.md must limit translation scope to existing Turkish translations")
 if "# Metinoskop" not in skill:
     fail("SKILL.md must use the Metinoskop heading")
 if len(skill.splitlines()) > 500:
     fail("SKILL.md exceeds the 500-line portability budget")
+for heading in ("## Belirsizlik ve yorum seçimi", "## Terim ve gösterim tutarlılığı"):
+    if heading not in skill:
+        fail(f"SKILL.md is missing: {heading}")
 
 for relative_path in re.findall(r"\]\((references/[^)]+)\)", skill):
     if not (ROOT / relative_path).is_file():
@@ -129,6 +144,7 @@ readme_requirements = (
     "npx skills add ayberkdt/metinoskop --global",
     "[LICENSE](LICENSE)",
     "[CHANGELOG.md](CHANGELOG.md)",
+    "En güncel sürüm etiketi `v0.2.0`'dır.",
 )
 for requirement in readme_requirements:
     if requirement not in readme:
@@ -142,6 +158,8 @@ if "Copyright (c) 2026 Ayberk Demirkanat" not in license_text:
 changelog = texts[ROOT / "CHANGELOG.md"]
 if "## [Unreleased]" not in changelog:
     fail("CHANGELOG.md must include an Unreleased section")
+if "## [0.2.0] - 2026-07-31" not in changelog:
+    fail("CHANGELOG.md must document version 0.2.0")
 if "## [0.1.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.1.0")
 
@@ -156,6 +174,19 @@ for relative_path in EVAL_FILES:
     for heading in eval_headings:
         if heading not in content:
             fail(f"{relative_path} is missing: {heading}")
+
+eval_markers = {
+    "evals/belirsizlik.md": ("Bu durum", "birden fazla makul yorum"),
+    "evals/kapsam-ve-kosul.md": ("Yalnızca en az üç ay", "18 yaş altındaki"),
+    "evals/uslup-eslestirme.md": ("### Üslup örneği", "### Düzenlenecek metin"),
+    "evals/bicim-koruma.md": ("| Model | Hata |", "[^1]", "`max_iter=500`"),
+    "evals/teknik.md": ("GRGM1200", "RK4", "Δv", "10⁻⁶", "±", "(3)"),
+}
+for relative_path, markers in eval_markers.items():
+    content = texts[ROOT / relative_path]
+    for marker in markers:
+        if marker not in content:
+            fail(f"{relative_path} is missing coverage marker: {marker}")
 
 print(
     "Metinoskop package is valid "

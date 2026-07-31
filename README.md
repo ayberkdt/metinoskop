@@ -14,9 +14,11 @@ Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olgula
 - Mekanik cümle ritmini ve tekrarlanan kalıpları düzeltir.
 - Gereksiz `-maktadır/-mektedir` zincirlerini ve isim-fiil yığılmalarını sadeleştirir.
 - Kurumsal dolgu, reklam dili ve tiyatral vurguyu azaltır.
-- Belirsiz göndergeleri ve kopuk paragraf geçişlerini açıklaştırır.
+- Belirsiz göndergeleri kaynakta bulunmayan bir yorum seçmeden ele alır ve kopuk paragraf geçişlerini açıklaştırır.
 - İngilizceden taşınmış söz dizimini doğal Türkçeye yaklaştırır.
 - Kullanıcının sağladığı yazı örneğine göre ses ve ton eşleştirmesi yapar.
+- Olumsuzluk, nicelik, koşul, istisna ve kapsam belirleyicilerini korur.
+- Teknik terimleri, sembolleri, birimleri ve belge biçimini tutarlı tutar.
 - Kaynakta bulunmayan olgu, tarih, sayı, alıntı veya kişisel ayrıntı eklemez.
 
 ## Temel ilkeler
@@ -25,7 +27,8 @@ Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olgula
 2. Kaynak metindeki olgular, belirsizlikler ve yazar tavrı korunur.
 3. Doğal ve işlevini yerine getiren cümleler sırf değişiklik üretmek için bozulmaz.
 4. Kronolojik yakınlık nedensellik gibi sunulmaz.
-5. Metnin bir AI dedektöründen geçeceği vaat edilmez.
+5. Birden fazla makul yorum varsa anlam editör tarafından seçilmez.
+6. Metnin bir AI dedektöründen geçeceği vaat edilmez.
 
 ## İsteğe bağlı yardımcı kabiliyet
 
@@ -76,6 +79,8 @@ Doğal dilde bir talep de yeterlidir:
 ```text
 Bu metni insanileştir; robotik ifadeleri ve pazarlama dilini temizle.
 ```
+
+Metinoskop kaynak dilden çeviri yapmaz; Türkçeye çevrilmiş mevcut bir metni doğallaştırır.
 
 Belirli bir müdahale düzeyi isteyebilirsiniz:
 
@@ -135,6 +140,9 @@ Metinoskop bir dil ve paragraf akışı editörüdür.
 
 - Olgu doğrulaması yapmaz.
 - Kaynakta olmayan bilgi üretmez.
+- Kaynak dilden Türkçeye çeviri yapmaz; mevcut Türkçe çeviriyi düzenler.
+- Belirsizliği gidermek için kaynakta bulunmayan bir yorum seçmez.
+- Olumsuzlukları, koşulları, istisnaları ve nicelik sınırlarını silmez.
 - Kullanıcı istemedikçe olay sırasını, sahne yapısını, bakış açısını veya anlatı sonucunu değiştirmez.
 - Hukuki, akademik veya teknik metindeki gerekli terminolojiyi otomatik olarak gündelikleştirmez.
 - Her düzgün cümleyi değiştirmeye çalışmaz; metin zaten doğal ve uygunsa olduğu gibi bırakabilir.
@@ -145,10 +153,10 @@ Kavramsal giriş yalnızca kullanıcı açıkça giriş yazılmasını istediği
 
 Metinoskop düzenleme sırasında beş aşamalı bir denetim uygular:
 
-1. Metnin türünü, amacını, muhatabını ve korunacak unsurları belirler.
+1. Metnin türünü, amacını, muhatabını; korunacak kapsam belirleyicilerini, terimleri ve gösterimleri belirler.
 2. Ritim, dolgu, reklam cilası, belirsiz atıf, çeviri kokusu ve akış sorunlarını kümeler hâlinde inceler.
 3. Kullanıcının istediği müdahale düzeyinde düzenler.
-4. Son metindeki sayı, tarih, iddia, nedensellik ve karşılaştırmaları kaynakla karşılaştırır.
+4. Son metindeki sayı, tarih, iddia, nedensellik, karşılaştırma, koşul, istisna, nicelik sınırı, terim ve gösterimleri kaynakla karşılaştırır.
 5. Ses, ton, gönderge açıklığı ve paragraf akışını son kez denetler.
 
 Kullanıcı açıkça kavramsal giriş istediğinde, düzenleme akışından önce kaynakta bulunan bağlam, problem, soru ve çözüm ilişkisi ayrıca çıkarılır.
@@ -168,12 +176,17 @@ metinoskop/
 │   └── turkce-oruntuler.md
 ├── evals/
 │   ├── akademik.md
+│   ├── belirsizlik.md
+│   ├── bicim-koruma.md
 │   ├── hukuki.md
+│   ├── kapsam-ve-kosul.md
 │   ├── kurumsal.md
 │   ├── kisisel.md
 │   ├── kaynak-sadakati.md
 │   ├── kavramsal-giris.md
-│   └── degisiklik-butcesi.md
+│   ├── degisiklik-butcesi.md
+│   ├── teknik.md
+│   └── uslup-eslestirme.md
 ├── scripts/
 │   └── validate-package.py
 ├── .github/
@@ -205,7 +218,7 @@ GitHub Actions, `main` dalına gönderilen her değişiklikte ve pull request'le
 
 ## Sürümleme
 
-Proje anlamsal sürümleme yaklaşımını izler. Kullanıcıya dönük davranış ve paket değişiklikleri [CHANGELOG.md](CHANGELOG.md) dosyasında kaydedilir. İlk yayımlanan sürüm etiketi `v0.1.0`'dır.
+Proje anlamsal sürümleme yaklaşımını izler. Kullanıcıya dönük davranış ve paket değişiklikleri [CHANGELOG.md](CHANGELOG.md) dosyasında kaydedilir. En güncel sürüm etiketi `v0.2.0`'dır.
 
 ## Katkı
 

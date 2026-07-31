@@ -456,9 +456,9 @@ Aşağıdakileri tek başına yapaylık belirtisi sayma:
 
 **Sonra**
 
-> Çalışmada ödev teslim oranı dijital araç kullanan grupta yüzde 78, kontrol grubunda yüzde 64'tür. Çalışma, bu iki oran arasındaki farkı dijitalleşme açısından önemli bir bulgu olarak değerlendiriyor.
+> Çalışmada ödev teslim oranı dijital araç kullanan grupta yüzde 78, kontrol grubunda yüzde 64'tür.
 
-İkinci cümle ölçüm değil, çalışmanın değerlendirmesi olarak kalır. Araştırma tasarımı nedensellik göstermiyorsa "araçlar oranı artırdı" yazma.
+Soyut değerlendirme yeni bir değerlendirme ifadesiyle yeniden kurulmaz; kaynakta açıkça verilen oranlar korunur. Araştırma tasarımı nedensellik göstermiyorsa "araçlar oranı artırdı" yazma.
 
 ### Teknik
 

@@ -1,6 +1,6 @@
 ---
 name: metinoskop
-description: Türkçe metinlerde mekanik yapay zekâ ritmini, basmakalıp geçişleri, gereksiz resmiyeti, kurumsal ve pazarlamacı cilayı, tiyatral vurguyu ve çeviri kokusunu azaltır; anlamı, olguları, kesinlik düzeyini, iletişim amacını ve yazarın sesini koruyarak doğal Türkçeyle düzenler. Makale, deneme, haber, rapor, tanıtım metni, e-posta, sosyal medya metni, açıklama veya çeviri için "insanileştir", "doğal Türkçe yap", "AI gibi görünmesin", "robotik ifadeleri temizle", "pazarlama dilini azalt" ya da "kendi üslubuma uyarla" dendiğinde kullan.
+description: Türkçe metinlerde mekanik yapay zekâ ritmini, basmakalıp geçişleri, gereksiz resmiyeti, kurumsal ve pazarlamacı cilayı, tiyatral vurguyu ve çeviri kokusunu azaltır; anlamı, olguları, kesinlik düzeyini, iletişim amacını ve yazarın sesini koruyarak doğal Türkçeyle düzenler. Makale, deneme, haber, rapor, tanıtım metni, e-posta, sosyal medya metni, açıklama veya Türkçeye çevrilmiş metin için "insanileştir", "doğal Türkçe yap", "AI gibi görünmesin", "robotik ifadeleri temizle", "pazarlama dilini azalt" ya da "kendi üslubuma uyarla" dendiğinde kullan.
 ---
 
 # Metinoskop
@@ -24,6 +24,7 @@ Bir alt sıradaki kural, üst sıradakini bozmasın.
 - Ana görev olarak mevcut metnin dilini ve paragraf akışını düzenle.
 - Kullanıcı açıkça kaynak bilgilerden bir giriş yazılmasını istemedikçe yeni bölüm üretme.
 - Yeni olgu, tarih, sayı, alıntı, kaynak, özellik, sonuç, deneyim veya kişisel görüş üretme.
+- Kaynak dilden Türkçeye çeviri yapma; Türkçeye çevrilmiş mevcut metni doğallaştır.
 - Kullanıcı istemedikçe olay sırasını, sahne yapısını, bakış açısını veya anlatı sonucunu değiştirme. Anlatı yapısının yeniden kurulması bu skill'in kapsamı dışındadır.
 - Alıntıları, kodu, URL'leri, dipnotları, kaynak işaretlerini, tablo hücrelerini, başlık hiyerarşisini ve Markdown yapısını koru. Kullanıcı biçim değişikliği istemişse yalnızca gerekli kısmı değiştir.
 - Bir metnin herhangi bir AI dedektöründen geçeceğini vaat etme. Dedektör için hata veya yapay çeşitlilik üretme.
@@ -108,7 +109,20 @@ Metindeki önermeleri sessizce ayır:
 - Kronolojik yakınlığı nedensellik gibi sunma.
 - Kaynak yalnızca ilişki bildiriyorsa etki veya neden iddiası ekleme.
 - Karşılaştırma zemini yoksa `daha`, üstünlük ölçütü yoksa `en` ekleme.
+- Olumsuzluğu, istisnaları, koşulları ve nicelik sınırlarını koru.
+- `Bazı` ifadesini `tüm`, `en az` ifadesini kesin sayı, `yalnızca` ifadesini genel kapsam hâline getirme.
+- Bir hükmün veya sonucun hangi kişi, dönem, grup, koşul ya da bağlamla sınırlı olduğunu silme.
+- `Henüz`, `artık`, `genellikle`, `kural olarak` ve benzeri kapsam belirleyicileri işlevsiz dolgu gibi çıkarma.
 - Soyut övgünün dayandığı somut bilgi kaynakta varsa onu öne çıkar. Yoksa yeni dayanak üretme.
+
+## Belirsizlik ve yorum seçimi
+
+Kaynak metindeki bir ifade birden fazla makul yoruma açıksa anlamı kendin seçme.
+
+- Belirsizlik korunarak doğal bir düzenleme yapılabiliyorsa ifadeyi koru.
+- Düzenleme mutlaka bir yorum seçmeyi gerektiriyorsa kullanıcıdan açıklama iste.
+- Kullanıcı inceleme veya karşılaştırma istediyse belirsizliği kısa bir notla belirt.
+- Kullanıcı yalnızca son metni istediyse açıklama eklemek yerine kaynak anlamını en az değiştiren yapıyı koru.
 
 ## Değerlendirme ile olguyu ayır
 
@@ -162,11 +176,24 @@ Kullanıcı bir yazı örneği verdiyse şu özellikleri çıkar:
 
 Örnekteki yazım yanlışlarını, dil bilgisi hatalarını ve tesadüfi tekrarları üslup özelliği olarak taklit etme.
 
+## Terim ve gösterim tutarlılığı
+
+Uzun veya teknik metinde sessizce bir terim ve gösterim listesi oluştur:
+
+- tanımlanmış teknik terimler,
+- kısaltmalar ve ilk açılımları,
+- değişken, sembol ve denklem adları,
+- başlık ve bölüm numaraları,
+- ürün, yöntem ve model adları,
+- büyük-küçük harf tercihleri.
+
+Aynı kavramı sırf tekrar olmasın diye farklı terimlerle adlandırma. Kaynakta ayrı anlam taşıyan iki terimi tek terimde birleştirme. Sembol, indis, birim ve işaretleri dil düzenlemesinin parçası olarak değiştirme.
+
 ## Çalışma yöntemi
 
 ### 1. Envanter çıkar
 
-Metnin türünü, amacını, müdahale düzeyini ve korunacak unsurları belirle. Sayı, tarih, özel ad, alıntı, kaynak işareti ve temel iddiaları zihinsel bir kontrol listesine al.
+Metnin türünü, amacını, müdahale düzeyini ve korunacak unsurları belirle. Sayı, tarih, özel ad, alıntı, kaynak işareti, kapsam belirleyicisi, terim, sembol ve temel iddiaları zihinsel bir kontrol listesine al.
 
 ### 2. Sorun kümelerini bul
 
@@ -178,7 +205,7 @@ Seçilen müdahale düzeyinde düzenle. Komşu cümleleri birlikte değerlendir;
 
 ### 4. Kaynak karşılaştırması yap
 
-Son metindeki her sayı, tarih, özellik, sonuç, nedensellik, karşılaştırma ve kişisel ayrıntının kaynakta karşılığını bul. Karşılığı yoksa çıkar veya kaynak metnin izin verdiği kesinlik düzeyine döndür.
+Son metindeki her sayı, tarih, özellik, sonuç, nedensellik, karşılaştırma, olumsuzluk, koşul, istisna, nicelik sınırı, terim, gösterim ve kişisel ayrıntının kaynakta karşılığını bul. Karşılığı yoksa çıkar veya kaynak metnin izin verdiği kesinlik düzeyine döndür.
 
 ### 5. Ses ve akış denetimi yap
 
@@ -199,6 +226,8 @@ Metni bir kez anlam, bir kez doğal duraklar için oku. Şunları kontrol et:
 - Uzun veya karmaşık metinde birden fazla sorun varsa ilgili referans dosyalarını birlikte oku.
 
 ## Çıktı biçimi
+
+Belirsizliği korumak mümkün değilse ve düzenleme bir yorum seçmeyi gerektiriyorsa önce kullanıcıdan açıklama iste.
 
 Kullanıcı başka bir biçim istemediyse yalnızca son metni ver. Sohbet botu girişi veya kapanış teklifi ekleme.
 

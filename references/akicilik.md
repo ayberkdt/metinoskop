@@ -9,10 +9,11 @@
 5. [Ritim ve yapısal tekrar](#ritim-ve-yapısal-tekrar)
 6. [Gönderge açıklığı](#gönderge-açıklığı)
 7. [İddia ve kesinlik akışı](#iddia-ve-kesinlik-akışı)
-8. [Biçim ve kaynak işaretleri](#biçim-ve-kaynak-işaretleri)
-9. [Sesli okuma denetimi](#sesli-okuma-denetimi)
-10. [Aşırı düzeltme belirtileri](#aşırı-düzeltme-belirtileri)
-11. [Türlere göre kısa örnekler](#türlere-göre-kısa-örnekler)
+8. [Kapsam, koşul ve istisna](#kapsam-koşul-ve-istisna)
+9. [Biçim ve kaynak işaretleri](#biçim-ve-kaynak-işaretleri)
+10. [Sesli okuma denetimi](#sesli-okuma-denetimi)
+11. [Aşırı düzeltme belirtileri](#aşırı-düzeltme-belirtileri)
+12. [Türlere göre kısa örnekler](#türlere-göre-kısa-örnekler)
 
 ## Akıcılık nedir
 
@@ -178,7 +179,12 @@ Müdahaleyi tekrarın kaynağına göre seç. İki cümleyi yalnızca aynı dü�
 
 > Denetim kurulunun bütçeyi onaylamaması süreci geciktirdi.
 
-`Bu durum` ifadesinin tek olası karşılığı açıkça adlandırılır. Kaynakta birden fazla olası gönderge varsa hangisinin kastedildiğini tahmin etme; bağlam açıklamıyorsa belirsizliği kullanıcıya bildir.
+`Bu durum` ifadesinin tek olası karşılığı açıkça adlandırılır. Kaynakta birden fazla olası gönderge varsa hangisinin kastedildiğini tahmin etme.
+
+- Belirsizlik korunarak doğal bir düzenleme yapılabiliyorsa ifadeyi koru.
+- Düzenleme mutlaka bir yorum seçmeyi gerektiriyorsa kullanıcıdan açıklama iste.
+- Kullanıcı inceleme veya karşılaştırma istediyse belirsizliği kısa bir notla belirt.
+- Kullanıcı yalnızca son metni istediyse açıklama eklemek yerine kaynak anlamını en az değiştiren yapıyı koru.
 
 Özel adların veya teknik terimlerin tekrarından sırf tekrar olmasın diye kaçma.
 
@@ -228,6 +234,23 @@ Akıcılık düzenlemesi kanıt düzeyini değiştirmemelidir.
 
 > Genel müdür, projeyi şirket için önemli bir dönüm noktası olarak değerlendirdi.
 
+## Kapsam, koşul ve istisna
+
+Akıcılık için küçük görünen kapsam belirleyicilerini çıkarma. `Yalnızca`, `en az`, `en fazla`, `bazı`, `çoğu`, `tümü`, `hariç`, `ancak ... hâlinde`, `-se/-sa`, `zorunlu değildir`, `henüz`, `artık`, `genellikle` ve `kural olarak` önermenin sınırını değiştirebilir.
+
+- Olumsuzluğu ve istisnayı olumlu ya da genel bir hükme dönüştürme.
+- Koşullu sonucu koşulsuz sonuç gibi yazma.
+- Alt veya üst sınırı kesin sayıya çevirmeden koru.
+- Kişi, dönem, grup ve bağlam sınırlamalarını cümle akışı uğruna silme.
+
+**Kaynak**
+
+> Yalnızca en az üç ay sistemi kullanan bazı katılımcılarda iyileşme gözlenmiştir. Sonuçlar 18 yaş altındaki katılımcıları kapsamamaktadır.
+
+**Doğru**
+
+> İyileşme, yalnızca sistemi en az üç ay kullanan bazı katılımcılarda gözlenmiştir; sonuçlar 18 yaş altındaki katılımcıları kapsamamaktadır.
+
 ## Biçim ve kaynak işaretleri
 
 Akışı düzeltirken şu unsurları koru:
@@ -239,7 +262,8 @@ Akışı düzeltirken şu unsurları koru:
 - kod blokları ve satır içi kod,
 - tablo satırları ve hücre eşleşmeleri,
 - başlık düzeyleri,
-- sayıların birimleri ve işaretleri.
+- sayıların birimleri ve işaretleri,
+- değişkenler, semboller, indisler ve denklem numaraları.
 
 Bir cümleyi taşıdığında ona bağlı kaynak işaretini de taşı. Atfın hangi iddiayı desteklediğini belirsizleştirme.
 
