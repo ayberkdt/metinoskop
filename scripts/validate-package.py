@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-CURRENT_VERSION = "0.4.0"
+CURRENT_VERSION = "0.4.1"
 REQUIRED_FILES = (
     ".gitattributes",
     ".github/workflows/validate.yml",
@@ -197,7 +197,13 @@ eval_markers = {
     "evals/bicim-koruma.md": ("| Model | Hata |", "[^1]", "`max_iter=500`"),
     "evals/teknik.md": ("GRGM1200", "DOP853", "bağıl tolerans", "Δv", "10⁻⁶", "±", "(3)"),
     "evals/rapor-bulgu-yorum-oneri.md": ("%6,2", "%3,1", "üç aylık", "henüz"),
-    "evals/rapor-yapisal-butunluk.md": ("## 2. Bulgular", "## 3. Sınırlılıklar", "(Tablo 2)", "Ek A"),
+    "evals/rapor-yapisal-butunluk.md": (
+        "## 2. Bulgular",
+        "## 3. Sınırlılıklar",
+        "(Tablo 2)",
+        "**Tablo 2. Çalışma biçimine göre eğitim süresi değerlendirmesi**",
+        "Ek A",
+    ),
     "evals/yonetici-ozeti.md": ("1 Ocak–31 Mart 2026", "480", "%14", "altı haftalık", "henüz"),
 }
 for relative_path, markers in eval_markers.items():

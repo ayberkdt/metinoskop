@@ -6,6 +6,8 @@
 
 2026'nın ilk çeyreğinde 214 çalışanla yapılan anketin yanıt oranı %61'dir. Eğitim süresini yetersiz bulanların oranı uzaktan çalışanlarda %48, ofiste çalışanlarda %35'tir (Tablo 2).
 
+**Tablo 2. Çalışma biçimine göre eğitim süresi değerlendirmesi**
+
 | Çalışma biçimi | Eğitim süresini yetersiz bulanlar |
 |---|---:|
 | Uzaktan | %48 |
@@ -25,6 +27,7 @@ Raporu standart düzeyde düzenle. Başlıkları, tabloyu, çapraz göndermeleri
 - 2026'nın ilk çeyreği, 214 çalışan ve %61 yanıt oranı korunmalı.
 - %48 uzaktan çalışanlarla, %35 ofiste çalışanlarla eşleşmeli.
 - `(Tablo 2)` ve `Ek A` çapraz göndermeleri korunmalı.
+- Tablo 2 başlığı, tabloyla ve metin içindeki `(Tablo 2)` göndermesiyle tutarlı kalmalı.
 - Tablo sütunları, satırları ve hücre eşleşmeleri değişmemeli.
 - Gönüllü katılım nedeniyle sonuçların bütün çalışanlara genellenemeyeceği açık kalmalı.
 

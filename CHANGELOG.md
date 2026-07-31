@@ -12,6 +12,12 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Düzeltildi
 
+## [0.4.1] - 2026-07-31
+
+### Düzeltildi
+
+- Yapısal bütünlük eval'indeki `(Tablo 2)` çapraz göndermesi, açık bir `Tablo 2` başlığına bağlandı ve başlık–tablo–gönderme tutarlılığı koruma ölçütlerine eklendi.
+
 ## [0.4.0] - 2026-07-31
 
 ### Eklendi
@@ -79,7 +85,8 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 - Kavramsal giriş, ana tetikleyici kapsamından ayrılarak yalnızca açık kullanıcı talebiyle çalışan ikincil bir kabiliyet olarak tanımlandı.
 - Doğal ve amacına uygun metni değiştirmemenin geçerli bir sonuç olduğu açıkça güvence altına alındı.
 
-[Unreleased]: https://github.com/ayberkdt/metinoskop/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/ayberkdt/metinoskop/compare/v0.4.1...HEAD
+[0.4.1]: https://github.com/ayberkdt/metinoskop/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/ayberkdt/metinoskop/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/ayberkdt/metinoskop/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/ayberkdt/metinoskop/compare/v0.1.0...v0.2.0
