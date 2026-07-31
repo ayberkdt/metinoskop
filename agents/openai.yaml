@@ -1,0 +1,4 @@
+interface:
+  display_name: "Metinoskop"
+  short_description: "Türkçe metindeki yapay zekâ izlerini temizler"
+  default_prompt: "Use $metinoskop to rewrite this text in fluent, cohesive Turkish without formulaic AI rhythms, clichés, marketing language, or theatrical emphasis."
