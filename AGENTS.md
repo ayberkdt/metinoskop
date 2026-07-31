@@ -4,12 +4,15 @@ Bu depo, Türkçe metinleri doğal ve kaynak sadakatini koruyan bir dille düzen
 
 ## Temel dosyalar
 
-- `SKILL.md`: Çalışma zamanında yüklenen ana skill yönergesi ve tek davranış kaynağıdır.
+- `SKILL.md`: Çalışma zamanında yüklenen ana skill yönergesi ve temel davranış sözleşmesidir.
 - `references/turkce-oruntuler.md`: Türkçedeki mekanik yapay zekâ örüntülerini ve bağlama duyarlı düzeltme örneklerini içerir.
 - `references/akicilik.md`: Bilgi sırası, cümleler arası bağ, gönderge açıklığı ve paragraf akışı rehberidir.
+- `references/kavramsal-girisler.md`: Temel kavramlar için bağlam, problem, soru ve çözüm akışı kurma rehberidir.
 - `agents/openai.yaml`: Destekleyen istemciler için kullanıcı arayüzü metadata'sıdır.
 - `README.md`: İnsanlar için kurulum, kullanım, kapsam ve depo yapısı belgesidir.
+- `evals/`: Sabit çıktı dayatmayan davranışsal değerlendirme vakalarını içerir.
 - `scripts/validate-package.py`: Paket yapısını ve adlandırma tutarlılığını bağımlılık kullanmadan doğrular.
+- `LICENSE`: Paketin MIT Lisansı altında kullanılma, değiştirilme ve dağıtılma koşullarını belirtir.
 
 ## Bakım sözleşmesi
 
@@ -21,6 +24,8 @@ Bu depo, Türkçe metinleri doğal ve kaynak sadakatini koruyan bir dille düzen
 - Bir örneğin "sonra" sürümündeki her önermenin "önce" sürümünde karşılığı bulunmalıdır.
 - "Sonra" sürümü hedeflenen ilkeyi görünür biçimde uygulamalıdır; yalnızca noktalama veya tek bir bağlaç değişikliği yeterli değildir.
 - Belirsiz aktörü veya göndergeyi açıklığa kavuştururken kaynakta bulunmayan bir cevap seçmeyin.
+- Kavramsal girişte kaynakta bulunmayan problem, risk, aciliyet veya çözüm vaadi üretmeyin.
+- Davranış kuralı değiştiğinde ilgili eval vakasını güncelleyin veya yeni bir vaka ekleyin.
 - `SKILL.md` dosyasını 500 satırın altında tutun.
 - Skill'i belirli bir agent ürününe gereksiz yere bağlamayın; ürün özelindeki metadata'yı `agents/` altında tutun.
 

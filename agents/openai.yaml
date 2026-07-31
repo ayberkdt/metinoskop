@@ -1,4 +1,4 @@
 interface:
   display_name: "Metinoskop"
-  short_description: "Türkçe metindeki yapay zekâ izlerini temizler"
-  default_prompt: "Use $metinoskop to rewrite this text in fluent, cohesive Turkish without formulaic AI rhythms, clichés, marketing language, or theatrical emphasis."
+  short_description: "Türkçe metindeki mekanik kalıpları ve yapay ritmi azaltır"
+  default_prompt: "$metinoskop kullanarak bu metni anlamını, olgularını ve yazarın sesini koruyarak doğal Türkçeyle düzenle."

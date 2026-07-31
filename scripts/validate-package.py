@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the portable Metinoskop skill package without dependencies."""
+"""Validate the portable Metinoskop package without external dependencies."""
 
 from __future__ import annotations
 
@@ -9,13 +9,34 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 REQUIRED_FILES = (
+    ".gitattributes",
+    ".github/workflows/validate.yml",
     "SKILL.md",
     "README.md",
     "AGENTS.md",
+    "LICENSE",
     "agents/openai.yaml",
     "references/akicilik.md",
+    "references/kavramsal-girisler.md",
     "references/turkce-oruntuler.md",
+    "evals/README.md",
+    "evals/akademik.md",
+    "evals/hukuki.md",
+    "evals/kurumsal.md",
+    "evals/kisisel.md",
+    "evals/kaynak-sadakati.md",
+    "evals/kavramsal-giris.md",
+    "scripts/validate-package.py",
 )
+EVAL_FILES = (
+    "evals/akademik.md",
+    "evals/hukuki.md",
+    "evals/kurumsal.md",
+    "evals/kisisel.md",
+    "evals/kaynak-sadakati.md",
+    "evals/kavramsal-giris.md",
+)
+TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
 
 def fail(message: str) -> None:
@@ -27,12 +48,33 @@ for relative_path in REQUIRED_FILES:
     if not path.is_file():
         fail(f"Missing required file: {relative_path}")
 
-try:
-    skill = (ROOT / "SKILL.md").read_text(encoding="utf-8")
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    openai_yaml = (ROOT / "agents/openai.yaml").read_text(encoding="utf-8")
-except UnicodeDecodeError as error:
-    fail(f"Package text files must be UTF-8: {error}")
+text_files = [
+    path
+    for path in ROOT.rglob("*")
+    if path.is_file()
+    and path.suffix.lower() in TEXT_SUFFIXES
+    and ".git" not in path.parts
+]
+texts: dict[Path, str] = {}
+for path in text_files:
+    try:
+        texts[path] = path.read_text(encoding="utf-8")
+    except UnicodeDecodeError as error:
+        fail(f"Package text files must be UTF-8 ({path.relative_to(ROOT)}): {error}")
+
+for path, content in texts.items():
+    for stale_name in ("name: insaniyet", "$insaniyet", "$hikayeci"):
+        if stale_name in content:
+            fail(
+                f"Stale or external skill name found in "
+                f"{path.relative_to(ROOT)}: {stale_name}"
+            )
+
+skill_path = ROOT / "SKILL.md"
+skill = texts[skill_path]
+readme = texts[ROOT / "README.md"]
+openai_yaml = texts[ROOT / "agents/openai.yaml"]
+license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
 
 frontmatter_match = re.match(r"\A---\r?\n(.*?)\r?\n---\r?\n", skill, re.DOTALL)
 if frontmatter_match is None:
@@ -55,18 +97,14 @@ if "# Metinoskop" not in skill:
 if len(skill.splitlines()) > 500:
     fail("SKILL.md exceeds the 500-line portability budget")
 
-for stale_name in ("name: insaniyet", "$insaniyet"):
-    if stale_name in skill or stale_name in openai_yaml:
-        fail(f"Stale skill name found: {stale_name}")
-
 for relative_path in re.findall(r"\]\((references/[^)]+)\)", skill):
     if not (ROOT / relative_path).is_file():
         fail(f"Broken SKILL.md reference: {relative_path}")
 
 metadata_requirements = (
     'display_name: "Metinoskop"',
-    'short_description: "',
-    "$metinoskop",
+    'short_description: "Türkçe metindeki mekanik kalıpları ve yapay ritmi azaltır"',
+    'default_prompt: "$metinoskop kullanarak',
 )
 for requirement in metadata_requirements:
     if requirement not in openai_yaml:
@@ -76,17 +114,38 @@ readme_requirements = (
     "# Metinoskop",
     "## Kurulum",
     "## Kullanım",
+    "### Kavramsal giriş",
     "## Kapsam ve sınırlar",
     "## Depo yapısı",
     "## Geliştirme ve doğrulama",
+    "## Lisans",
     "npx skills add ayberkdt/metinoskop --global",
+    "[LICENSE](LICENSE)",
 )
 for requirement in readme_requirements:
     if requirement not in readme:
         fail(f"README.md is missing: {requirement}")
 
+if not license_text.startswith("MIT License\n"):
+    fail("LICENSE must contain the MIT License")
+if "Copyright (c) 2026 Ayberk" not in license_text:
+    fail("LICENSE copyright notice is missing")
+
+eval_headings = (
+    "## Kaynak",
+    "## Talep",
+    "## Korunması gerekenler",
+    "## Kaçınılması gerekenler",
+)
+for relative_path in EVAL_FILES:
+    content = texts[ROOT / relative_path]
+    for heading in eval_headings:
+        if heading not in content:
+            fail(f"{relative_path} is missing: {heading}")
+
 print(
     "Metinoskop package is valid "
     f"({len(skill.splitlines())} SKILL.md lines, "
-    f"{len(REQUIRED_FILES)} required files)"
+    f"{len(REQUIRED_FILES)} required files, "
+    f"{len(EVAL_FILES)} behavioral evals)"
 )
