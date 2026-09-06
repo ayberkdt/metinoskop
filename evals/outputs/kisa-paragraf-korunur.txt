@@ -1,0 +1,5 @@
+Yedekleme betiği her gece 02.00'de çalışır ve tam yedeği `backup/` dizinine yazar. Yedekler 30 gün saklanır; daha eski dosyalar betik tarafından silinir. Betik, disk doluluğu %90'ı aşarsa yedek almayı atlar ve günlüğe uyarı yazar.
+
+`--purge` seçeneği bütün yedekleri geri alınamaz biçimde siler.
+
+Betiği elle çalıştırmak için `python backup.py --now` komutunu kullanın. Elle çalıştırma gecelik zamanlamayı değiştirmez.

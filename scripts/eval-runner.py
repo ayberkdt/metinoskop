@@ -12,7 +12,11 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 
 
-SECTION_PATTERN = r"(?ms)^## {heading}\s*\r?\n(.*?)(?=^## |\Z)"
+SECTION_PATTERN = (
+    r"(?ms)^## {heading}\s*\r?\n(.*?)"
+    r"(?=^## (?:Kaynak|Talep|Korunması gerekenler|Kaçınılması gerekenler|Yapısal beklenti)\s*$|\Z)"
+)
+HEADING_LINE_RE = re.compile(r"(?m)^#{1,6}[ \t].*$")
 URL_RE = re.compile(r"https?://[^\s)>\]]+")
 INLINE_CODE_RE = re.compile(r"(?<!`)`([^`\r\n]+)`(?!`)")
 CODE_BLOCK_RE = re.compile(r"(?ms)^```[^\r\n]*\r?\n.*?^```[ \t]*$")
@@ -109,7 +113,14 @@ def extract_invariants(source: str) -> list[Invariant]:
         items.append(invariant("denklem numarası", value))
     for value in DATE_RE.findall(source):
         items.append(invariant("tarih", value, case_sensitive=False))
+    # Dotted numbers that appear in heading lines (2.3, 3.1.1) are section
+    # numbers, not facts; a structural edit may legitimately drop them.
+    heading_numbers = {
+        value for line in HEADING_LINE_RE.findall(source) for value in NUMBER_RE.findall(line) if "." in value
+    }
     for value in NUMBER_RE.findall(source):
+        if value in heading_numbers:
+            continue
         items.append(invariant("sayı", value))
     for value in TECH_IDENTIFIER_RE.findall(source):
         items.append(invariant("teknik ad", value))

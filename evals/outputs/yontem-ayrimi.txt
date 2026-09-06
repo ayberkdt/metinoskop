@@ -1,0 +1,11 @@
+### Deney 1: Sabit sıcaklık
+
+Sensör 25 °C'de 6 saat boyunca dakikada bir örneklenmiştir. Kalibrasyon deneyden hemen önce yapılmıştır.
+
+### Deney 2: Sıcaklık taraması
+
+Sensör 10 °C'den 50 °C'ye 5 °C'lik adımlarla ısıtılmış, her adımda 30 dakika beklenmiştir. Kalibrasyon yalnızca deney başında yapılmıştır.
+
+### Deney 3: Nem taraması
+
+Sıcaklık 25 °C'de sabit tutulmuş, bağıl nem %30'dan %80'e %10'luk adımlarla artırılmıştır. Her adımda 30 dakika beklenmiştir.

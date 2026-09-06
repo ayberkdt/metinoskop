@@ -1,0 +1,3 @@
+### 2.1 Veri ve yöntem
+
+Analizde 2024 yılına ait 1.200 sipariş kaydı kullanılmıştır. Kayıtlar teslim süresine göre üç gruba ayrılmıştır: 2 günden kısa, 2–5 gün ve 5 günden uzun teslimatlar. Bu gruplar, şirketin mevcut hizmet düzeyi sınıflarıyla örtüştüğü için seçilmiştir.

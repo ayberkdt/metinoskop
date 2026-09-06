@@ -16,8 +16,11 @@ Usage:
 
 With ``--source`` the report separates patterns the edit *introduced* (present in
 the output more often than in the source, compared pattern by pattern) from
-patterns that *remain* from the source. Introduced patterns are the only
-deterministic failure signal, and only when ``--fail-on-introduced`` is given.
+patterns that *remain* from the source. Only introduced *hard-suppression*
+patterns are a deterministic failure signal (``--fail-on-introduced-hard``);
+context-sensitive families such as ``yani``, ``öte yandan`` or ``işaret etmek``
+only warn, because the skill itself forbids deleting them automatically.
+``--fail-on-introduced-any`` is the strict mode.
 """
 
 from __future__ import annotations
@@ -410,7 +413,9 @@ class Heading:
     index: int
     level: int
     text: str
-    paragraphs: int = 0
+    direct: int = 0      # paragraphs directly under this heading
+    subtree: int = 0     # paragraphs under this heading and all its sub-headings
+    parent: int | None = None
     first_sentence: str = ""
 
 
@@ -443,7 +448,7 @@ def parse(text: str) -> Document:
     doc = Document()
     in_code = False
     number = 0
-    current_heading: Heading | None = None
+    stack: list[Heading] = []
     for block in re.split(r"\n\s*\n", text):
         block = block.strip("\n")
         if not block.strip():
@@ -456,8 +461,13 @@ def parse(text: str) -> Document:
         first = block.lstrip()
         heading_match = HEADING_RE.match(first.split("\n", 1)[0])
         if heading_match:
-            current_heading = Heading(len(doc.headings), len(heading_match.group(1)), heading_match.group(2))
-            doc.headings.append(current_heading)
+            level = len(heading_match.group(1))
+            while stack and stack[-1].level >= level:
+                stack.pop()
+            heading = Heading(len(doc.headings), level, heading_match.group(2),
+                              parent=stack[-1].index if stack else None)
+            doc.headings.append(heading)
+            stack.append(heading)
             rest = first.split("\n", 1)[1] if "\n" in first else ""
             if not rest.strip():
                 continue
@@ -472,15 +482,17 @@ def parse(text: str) -> Document:
         prose = not first.startswith(STRUCTURE_SKIP_PREFIXES) and not LIST_ITEM_RE.match(first)
         number += 1
         paragraph = Paragraph(number=number, prose=prose,
-                              heading_index=current_heading.index if current_heading else None)
+                              heading_index=stack[-1].index if stack else None)
         for index, sentence in enumerate(split_sentences(strip_markup(block)), start=1):
             paragraph.sentences.append(Sentence(number, index, sentence))
         if paragraph.sentences:
             doc.paragraphs.append(paragraph)
-            if current_heading is not None and prose:
-                current_heading.paragraphs += 1
-                if not current_heading.first_sentence:
-                    current_heading.first_sentence = paragraph.sentences[0].lowered
+            if stack and prose:
+                stack[-1].direct += 1
+                for open_heading in stack:
+                    open_heading.subtree += 1
+                if not stack[-1].first_sentence:
+                    stack[-1].first_sentence = paragraph.sentences[0].lowered
     return doc
 
 
@@ -533,7 +545,7 @@ def structure_summary(doc: Document, hits: list[dict[str, object]]) -> dict[str,
         "headings": len(headings),
         "max_depth": max((h.level for h in headings), default=0),
         "paragraphs_per_heading": round(len(prose) / len(headings), 2) if headings else None,
-        "one_paragraph_sections": sum(1 for h in headings if h.paragraphs <= 1),
+        "one_paragraph_sections": sum(1 for h in headings if h.subtree <= 1),
         "short_paragraphs": short,
         "prose_paragraphs": len(prose),
         "list_items": doc.list_items,
@@ -610,7 +622,7 @@ def structural_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict
         if ratio < 1.5:
             findings.append({"check": "baslik_yogunlugu",
                              "text": f"{len(headings)} başlık, {len(prose)} paragraf: başlık başına {ratio:.1f} paragraf. Başlıklar içerikten sık."})
-        single = [h for h in headings if h.paragraphs <= 1]
+        single = [h for h in headings if h.subtree <= 1]
         if len(single) >= 3 and len(single) / len(headings) >= 0.5:
             findings.append({"check": "tek_paragraf_bolum",
                              "text": f"{len(headings)} başlığın {len(single)}'i altında en fazla bir paragraf var: bölme testini uygula."})
@@ -620,7 +632,7 @@ def structural_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict
         findings.append({"check": "derin_baslik",
                          "text": f"{len(deep)} dördüncü veya daha derin düzey başlık: derinlik testini uygula."})
     level3 = [h for h in headings if h.level == 3]
-    if len(level3) >= 3 and all(h.paragraphs <= 1 for h in level3):
+    if len(level3) >= 3 and all(h.subtree <= 1 for h in level3):
         findings.append({"check": "derin_baslik",
                          "text": f"{len(level3)} üçüncü düzey başlığın hepsi tek paragraflık: hiyerarşi içeriği aşıyor."})
 
@@ -648,9 +660,16 @@ def structural_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict
             continue
         stems = heading_stems(heading.text)
         shared = {s for s in stems if s in heading.first_sentence}
-        if stems and len(shared) >= 2:
+        first = heading.first_sentence
+        # A first sentence that reuses the heading's words but delivers a number,
+        # or is long enough to carry content, is using the concept, not restating it.
+        restates = (
+            stems and len(shared) >= 2 and not re.search(r"\d", first)
+            and (len(first.split()) <= 8 or lowered_matches_any(first, ("onem", "savunma")))
+        )
+        if restates:
             findings.append({"check": "baslik_tekrari",
-                             "text": f"\"{heading.text}\" başlığı ilk cümlede yineleniyor ({', '.join(sorted(shared))})."})
+                             "text": f"\"{heading.text}\" başlığı ilk cümlede yalnızca yineleniyor olabilir ({', '.join(sorted(shared))}); cümle yeni bilgi taşıyor mu?"})
 
     if len(prose) >= 4:
         connector = [p for p in prose if any(p.sentences[0].lowered.startswith(c) for c in CONNECTOR_OPENERS)]
@@ -712,7 +731,10 @@ def compare(source_report: dict[str, object], output_report: dict[str, object]) 
     for key, count in out.items():
         extra = count - src.get(key, 0)
         if extra > 0:
-            introduced.append({"category": key[0], "label": LABELS[key[0]], "count": extra, "example": examples[key]})
+            introduced.append({"category": key[0], "label": LABELS[key[0]], "level": LEVELS[key[0]],
+                               "count": extra, "example": examples[key]})
+    introduced_hard = [item for item in introduced if item["level"] == "sert"]
+    introduced_context = [item for item in introduced if item["level"] != "sert"]
 
     src_cat = source_report["per_category"]
     out_cat = output_report["per_category"]
@@ -730,7 +752,8 @@ def compare(source_report: dict[str, object], output_report: dict[str, object]) 
     source_checks = {s["check"] for s in source_report["structure"]}  # type: ignore[union-attr]
     new_structure = [f["text"] for f in output_report["structure"]  # type: ignore[union-attr]
                      if f["check"] not in source_checks]
-    return {"introduced": introduced, "remaining": remaining, "removed": removed,
+    return {"introduced": introduced, "introduced_hard": introduced_hard,
+            "introduced_context": introduced_context, "remaining": remaining, "removed": removed,
             "structure_delta": structure_delta, "introduced_structure": new_structure}
 
 
@@ -779,11 +802,15 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
         introduced = comparison["introduced"]
         remaining = comparison["remaining"]
         removed = comparison["removed"]
-        if introduced:
-            print("  Kaynakta olmayıp çıktıda beliren kalıplar (dolgu başka dolguya çevrilmiş olabilir):")
-            for item in introduced:  # type: ignore[union-attr]
+        if comparison["introduced_hard"]:
+            print("  Kaynakta olmayıp çıktıda beliren SERT kalıplar (deterministik hata adayı; dolgu başka dolguya çevrilmiş olabilir):")
+            for item in comparison["introduced_hard"]:  # type: ignore[union-attr]
                 print(f"    - {item['label']}: +{item['count']} «{item['example']}»")
-        else:
+        if comparison["introduced_context"]:
+            print("  Kaynakta olmayıp çıktıda beliren bağlamsal kalıplar (uyarı; işlevini incele):")
+            for item in comparison["introduced_context"]:  # type: ignore[union-attr]
+                print(f"    - {item['label']}: +{item['count']} «{item['example']}»")
+        if not introduced:
             print("  Çıktı kaynakta bulunmayan bir kalıp eklememiş.")
         if comparison["introduced_structure"]:
             print("  Kaynakta olmayıp çıktıda beliren yapı bulguları:")
@@ -874,8 +901,30 @@ Havuz sınırı 14.35'te 120'ye çıkarıldı ve zaman aşımları bu değişikl
 Bu arada havuz doluluğu dakikada bir izleniyor ve %80'i aştığında ekibe uyarı gidiyor. Uyarı eşiği geçici olarak düşük tutuldu; kalıcı değer toplantıda belirlenecek.
 """
 
+NESTED_TEXT = """## Yöntem
+
+### Veri
+
+Analizde 2024 yılına ait 1.200 kayıt kullanılmıştır. Kayıtların %12'si eksik değer içermektedir ve bunlar komşu ölçümlerin ortalamasıyla doldurulmuştur. Ön denemelerde bu yöntem medyanla doldurmaya göre doğrulama hatasını %2 azaltmıştır.
+
+Doldurma yalnızca 10 dakikadan kısa boşluklara uygulanmıştır; daha uzun boşluklu kayıtlar çıkarılmıştır. Çıkarılan kayıtların dağılımı Ek A'da verilmiştir.
+
+### Gruplar
+
+Kayıtlar teslim süresine göre üç gruba ayrılmıştır: 2 günden kısa, 2 ile 5 gün arası ve 5 günden uzun teslimatlar. Gruplar şirketin hizmet düzeyi sınıflarıyla örtüştüğü için seçilmiştir. Eşikler analiz boyunca sabit tutulmuştur. Eşik değişikliğinin sonuçlara etkisi ayrıca sınanmamıştır.
+
+Grup büyüklükleri sırasıyla 410, 520 ve 270 kayıttır. En küçük grup bile ayrı raporlama için yeterli sayılmıştır. Gruplar arasında kayıt geçişi yoktur.
+
+### Doğrulama sonuçları
+
+Doğrulama sonuçlarında ortalama hata %3'tür. En yüksek hata 5 günden uzun teslimat grubunda görülmüştür; bu grupta hata %5'e çıkmaktadır. Diğer iki grupta hata %3'ün altında kalmıştır.
+
+Hata dağılımı üç grupta da tek tepeli olduğundan medyan ve ortalama birbirine yakındır. Aykırı değer temizliği yapılmamıştır.
+"""
+
 FILLER_SOURCE = "Model 120. derecede en düşük hatayı verdi. Bu sonuç derece seçiminin kritik önemini ortaya koymaktadır."
-FILLER_TRANSLATED = "Model 120. derecede en düşük hatayı verdi. Sonuç olarak derece seçimi önemli bir etkendir; bu bulgu derece seçimine ışık tutmaktadır."
+FILLER_TRANSLATED = "Model 120. derecede en düşük hatayı verdi. Sonuç olarak derece seçimi önemli bir etkendir; bu bulgu derece seçiminin önemini bir kez daha ortaya koymaktadır."
+CONTEXT_ONLY = "Yani model 120. derecede en düşük hatayı verdi; öte yandan derece seçimi kritik önemini korumaktadır."
 FILLER_DELETED = "Model 120. derecede en düşük hatayı verdi."
 
 
@@ -913,8 +962,11 @@ def self_test() -> None:
 
     src = analyse(FILLER_SOURCE)
     translated = compare(src, analyse(FILLER_TRANSLATED))
-    if not translated["introduced"]:
-        raise SystemExit("Öz sınama: dolguyu dolguya çeviren çıktı 'yeni kalıp' olarak işaretlenmedi")
+    if not translated["introduced_hard"]:
+        raise SystemExit("Öz sınama: dolguyu dolguya çeviren çıktı 'yeni sert kalıp' olarak işaretlenmedi")
+    context_only = compare(src, analyse(CONTEXT_ONLY))
+    if context_only["introduced_hard"] or not context_only["introduced_context"]:
+        raise SystemExit("Öz sınama: yalnızca bağlamsal kalıp ekleyen çıktı sert/bağlam ayrımında yanlış sınıflandı")
     deleted = compare(src, analyse(FILLER_DELETED))
     if deleted["introduced"]:
         raise SystemExit("Öz sınama: dolguyu silen çıktı yanlışlıkla 'yeni kalıp' olarak işaretlendi")
@@ -927,10 +979,20 @@ def self_test() -> None:
     if repaired["structure_delta"].get("headings", {}).get("çıktı") != 2:  # type: ignore[union-attr]
         raise SystemExit("Öz sınama: yapı ölçüsü değişimi başlık sayısını yanlış raporladı")
 
+    nested = analyse(NESTED_TEXT)
+    summary = nested["structure_summary"]
+    if summary["one_paragraph_sections"] != 0:  # type: ignore[index]
+        raise SystemExit(f"Öz sınama: alt bölümleri dolu üst başlık tek paragraflık bölüm sayıldı: {summary}")
+    if nested["structure"]:
+        raise SystemExit(f"Öz sınama: iç içe başlıklı sağlıklı belgede yapı bulgusu üretildi: {nested['structure']}")
+    doc = parse(NESTED_TEXT)
+    if doc.headings[0].direct != 0 or doc.headings[0].subtree != 6 or doc.headings[1].parent != 0:
+        raise SystemExit("Öz sınama: başlık ağacı sayımı hatalı")
+
     if tr_lower("İSTANBUL IŞIK") != "istanbul ışık":
         raise SystemExit("Öz sınama: Türkçe küçük harf dönüşümü hatalı")
 
-    print("Stil denetimi öz sınaması geçti (yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, dolgu çevirisi, dolgu silme).")
+    print("Stil denetimi öz sınaması geçti (yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme).")
 
 
 # --------------------------------------------------------------------------- #
@@ -955,8 +1017,11 @@ def main() -> int:
     parser.add_argument("output", nargs="?", type=Path, help="Denetlenecek metin (model çıktısı)")
     parser.add_argument("--source", type=Path, help="Kaynak metin veya evals/*.md vakası; karşılaştırma için")
     parser.add_argument("--json", action="store_true", help="Raporu JSON olarak yazdır")
-    parser.add_argument("--fail-on-introduced", action="store_true",
-                        help="Çıktı kaynakta olmayan bir kalıp eklemişse 1 ile çık (yalnızca --source ile)")
+    parser.add_argument("--fail-on-introduced-hard", "--fail-on-introduced", dest="fail_on_introduced_hard",
+                        action="store_true",
+                        help="Çıktı kaynakta olmayan bir SERT bastırma kalıbı eklemişse 1 ile çık; bağlamsal aileler yalnızca uyarır (yalnızca --source ile)")
+    parser.add_argument("--fail-on-introduced-any", action="store_true",
+                        help="Bağlamsal aileler dahil, kaynakta olmayan herhangi bir kalıp eklenmişse 1 ile çık (katı mod)")
     parser.add_argument("--self-test", action="store_true", help="Yerleşik öz sınamayı çalıştır")
     args = parser.parse_args()
 
@@ -983,8 +1048,11 @@ def main() -> int:
     else:
         print_report(str(args.output), report, comparison, str(args.source) if args.source else None)
 
-    if args.fail_on_introduced and comparison is not None and comparison["introduced"]:
-        return 1
+    if comparison is not None:
+        if args.fail_on_introduced_any and comparison["introduced"]:
+            return 1
+        if args.fail_on_introduced_hard and comparison["introduced_hard"]:
+            return 1
     return 0
 
 

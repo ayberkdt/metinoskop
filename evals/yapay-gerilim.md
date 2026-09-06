@@ -22,3 +22,8 @@ Mühendislik raporu. Standart düzeyde düzenle; yapay gerilimi kaldır, gerçek
 - Ödünleşimi zayıflatmak veya iki ölçümü ayrı paragraflara dağıtmak
 - Artışa kaynakta bulunmayan bir neden atfetmek
 - "Yalnızca" ya da "henüz" sınırlarını silmek
+
+## Yapısal beklenti
+
+- sert işaret: 0
+- düzyazı paragrafı: 1

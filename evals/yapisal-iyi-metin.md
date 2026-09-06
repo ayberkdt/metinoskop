@@ -21,7 +21,7 @@ Metni doğal Türkçeyle düzenle; gerekiyorsa yapıyı sadeleştir.
 ## Korunması gerekenler
 
 - İki `##` başlığı korunmalı; sorun ile yapılan işlem gerçek bir kavramsal sınırdır.
-- Dört paragraf korunmalı; her biri tek hareket taşıyor (etki, mekanizma, müdahale ve açıklama, öneri ve karar).
+- Dört paragraf korunmalı; her biri baskın bir hareket taşıyor (etki, mekanizma, müdahale ve açıklama, öneri ve karar).
 - 3 Eylül, 14.10–14.35, 2.140, 310, 50, 30 saniye, 14.35, 120, 14.00 değerleri korunmalı.
 - "En olası açıklama" çekincesi ve `henüz` belirlenmediği korunmalı.
 - Öneri ile verilecek karar statüleri korunmalı.
@@ -35,3 +35,9 @@ Metni doğal Türkçeyle düzenle; gerekiyorsa yapıyı sadeleştir.
 - Sırf değişiklik üretmek için eş anlamlı değiştirmek
 - "En olası açıklama"yı kesin nedene çevirmek
 - Öneriyi karar gibi yazmak
+
+## Yapısal beklenti
+
+- başlık: 2
+- düzyazı paragrafı: 4
+- liste ögesi: 0

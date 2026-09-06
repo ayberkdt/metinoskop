@@ -35,3 +35,8 @@ Rapor bulgular bölümü. Standart düzeyde düzenle; erken bölünmüş paragra
 - Her cümleye "bununla birlikte", "ayrıca", "dolayısıyla" gibi geçiş eklemek
 - Öneriyi alınmış karar veya uygulanmış değişiklik gibi yazmak
 - Kaynakta bulunmayan neden, önem veya sonuç eklemek
+
+## Yapısal beklenti
+
+- düzyazı paragrafı: <= 2
+- düzyazı paragrafı: >= 1

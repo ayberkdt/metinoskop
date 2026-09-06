@@ -29,3 +29,8 @@ Teknik not. Standart düzeyde düzenle; nedensel akıl yürütmeyi listeden düz
 - Kaynakta bulunmayan isabet oranı yüzdesi, maliyet tutarı veya süre eklemek
 - "Yanıt süresi değişmedi" bilgisini silmek
 - "Sonuç olarak" kalıbını farklı bir kalıp sonuçla yeniden kurmak
+
+## Yapısal beklenti
+
+- liste ögesi: 0
+- düzyazı paragrafı: <= 2

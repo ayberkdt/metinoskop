@@ -1,0 +1,1 @@
+Polinom derecesi 20 ile 200 arasında değiştirildiğinde en düşük doğrulama hatası 120. derecede elde edilmiştir (%2,1). 200. derecede hata %6,8'e yükselmiştir.

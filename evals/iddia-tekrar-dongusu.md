@@ -23,3 +23,8 @@ Standart düzeyde düzenle; tekrarları ve dayanaksız önem cümlelerini kaldı
 - 120. dereceyi genel olarak en uygun derece ilan etmek
 - Aşırı uyum, genelleme veya nedensellik gibi kaynakta bulunmayan açıklama eklemek
 - %6,8 değerini veya 200. derece bilgisini silmek
+
+## Yapısal beklenti
+
+- sert işaret: 0
+- düzyazı paragrafı: <= 1

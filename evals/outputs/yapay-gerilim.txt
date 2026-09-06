@@ -1,0 +1,1 @@
+Yeni denetleyici kuvvet hatasını %12 azaltmış, yedi günlük konum hatasını ise %8 artırmıştır. Artış yalnızca yüksek eğimli yörüngelerde görülmektedir; ekip bu ödünleşimi henüz açıklayamamaktadır.

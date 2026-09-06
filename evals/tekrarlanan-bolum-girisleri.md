@@ -32,3 +32,9 @@ Makale bölümü. Standart düzeyde düzenle; tekrarlanan bölüm girişlerini v
 - Başlıkları birleştirmek (kullanıcı korunmasını istedi)
 - Ölçümlerden sonra önem veya sonuç cümlesi eklemek
 - Değerleri veya koşul eşleşmelerini değiştirmek
+
+## Yapısal beklenti
+
+- başlık: 3
+- duyuru/sarmalayıcı: 0
+- sert işaret: 0
