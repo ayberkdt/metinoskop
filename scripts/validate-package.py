@@ -22,7 +22,9 @@ REQUIRED_FILES = (
     "references/akicilik.md",
     "references/kavramsal-girisler.md",
     "references/rapor-yazimi.md",
+    "references/retorik-yapilar.md",
     "references/turkce-oruntuler.md",
+    "references/yapisal-butunluk.md",
     "evals/README.md",
     "evals/akademik.md",
     "evals/belirsizlik.md",
@@ -39,7 +41,35 @@ REQUIRED_FILES = (
     "evals/teknik.md",
     "evals/uslup-eslestirme.md",
     "evals/yonetici-ozeti.md",
+    "evals/savunmaci-akademik.md",
+    "evals/iddia-tekrar-dongusu.md",
+    "evals/yol-haritasi.md",
+    "evals/yapay-denge.md",
+    "evals/giris-hunisi.md",
+    "evals/sonuc-ve-gelecek-calisma.md",
+    "evals/soyut-yuklem.md",
+    "evals/paragraf-simetrisi.md",
+    "evals/gerekli-ifade.md",
+    "evals/iyi-metin.md",
+    "evals/egitsel-aciklama.md",
+    "evals/asiri-bolumleme.md",
+    "evals/derin-baslik.md",
+    "evals/tek-paragraf-bolumler.md",
+    "evals/kisa-paragraf-yigini.md",
+    "evals/yapay-gerilim.md",
+    "evals/tekrarlanan-bolum-girisleri.md",
+    "evals/tekrarlanan-bolum-sonuclari.md",
+    "evals/asiri-capraz-gonderme.md",
+    "evals/uzun-cerceve-ifadeleri.md",
+    "evals/ayrilmis-kanit.md",
+    "evals/gereksiz-listeleme.md",
+    "evals/korunacak-basliklar.md",
+    "evals/yontem-ayrimi.md",
+    "evals/uzun-paragraf-korunur.md",
+    "evals/kisa-paragraf-korunur.md",
+    "evals/yapisal-iyi-metin.md",
     "scripts/eval-runner.py",
+    "scripts/style-lint.py",
     "scripts/validate-package.py",
 )
 EVAL_FILES = (
@@ -58,6 +88,33 @@ EVAL_FILES = (
     "evals/teknik.md",
     "evals/uslup-eslestirme.md",
     "evals/yonetici-ozeti.md",
+    "evals/savunmaci-akademik.md",
+    "evals/iddia-tekrar-dongusu.md",
+    "evals/yol-haritasi.md",
+    "evals/yapay-denge.md",
+    "evals/giris-hunisi.md",
+    "evals/sonuc-ve-gelecek-calisma.md",
+    "evals/soyut-yuklem.md",
+    "evals/paragraf-simetrisi.md",
+    "evals/gerekli-ifade.md",
+    "evals/iyi-metin.md",
+    "evals/egitsel-aciklama.md",
+    "evals/asiri-bolumleme.md",
+    "evals/derin-baslik.md",
+    "evals/tek-paragraf-bolumler.md",
+    "evals/kisa-paragraf-yigini.md",
+    "evals/yapay-gerilim.md",
+    "evals/tekrarlanan-bolum-girisleri.md",
+    "evals/tekrarlanan-bolum-sonuclari.md",
+    "evals/asiri-capraz-gonderme.md",
+    "evals/uzun-cerceve-ifadeleri.md",
+    "evals/ayrilmis-kanit.md",
+    "evals/gereksiz-listeleme.md",
+    "evals/korunacak-basliklar.md",
+    "evals/yontem-ayrimi.md",
+    "evals/uzun-paragraf-korunur.md",
+    "evals/kisa-paragraf-korunur.md",
+    "evals/yapisal-iyi-metin.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -125,9 +182,59 @@ for heading in (
     "## Belirsizlik ve yorum seçimi",
     "## Terim ve gösterim tutarlılığı",
     "## Rapor bütünlüğünü koru",
+    "## Dört düzeyde yapay düzyazı",
+    "### Cümle düzeyi",
+    "### Paragraf düzeyi",
+    "### Belge düzeyi",
+    "**Sıfır bilgi cümlesi.**",
+    "**Dolguyu başka dolguya çevirme.**",
+    "**İşlev tekrarı.**",
+    "**Savunmacı düzyazı.**",
+    "**Üretilmiş önem.**",
+    "**Üretilmiş karşıtlık.**",
+    "**Soyut yüklem sisi.**",
+    "**Açık olanı açıklama.**",
+    "**Paragraf simetrisi.**",
+    "**Zorlama denge.**",
+    "**Yol haritası ve okur yönlendirmesi.**",
+    "**Kalıp giriş ve kalıp sonuç.**",
+    "## Yapı ve okur yorgunluğu",
+    "Yapı, kavramsal sınırları izler",
+    "### Bölme kararı",
+    "### Okuru yoran alışkanlıklar",
+    "### Cümle ekonomisi",
+    "### Yapısal koruma",
+    "**Önce süreklilik.**",
+    "**Başlık hakkını kazanmalıdır.**",
+    "**Derinlik testi.**",
+    "**Başlık sıkıştırma.**",
+    "**Paragraf görsel parça değil kavramsal birimdir.**",
+    "**Zihinsel model sürekliliği.**",
+    "**Yakınlık kuralı.**",
+    "**Açıklama, metin ilerlemeden bitmelidir.**",
+    "**Slayt değil belge.**",
+    "**Yapay gerilim.**",
+    "**Paragraf sonu askısı.**",
+    "**Bağlam yeniden başlatma ve çapraz gönderme.**",
+    "**Başlık tekrarı ve boş sarmalayıcılar.**",
+    "**Zorlama geçişler.**",
+    "**Yinelenme haritası.**",
+    "**Gereksiz uzun ifadeler.**",
+    "**Yığılmış çerçeve.**",
+    "**Okur emeği.**",
+    "Görsel parçalanmayı açıklık sanma",
+    "## Sertlik düzeyleri",
+    "## Akademik ve teknik metin",
+    "**5. Yapay düzyazı ve yapı denetimi yap.**",
+    "**E. Yapı:**",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
+
+if re.search(r"(?m)^####", skill):
+    fail("SKILL.md must not use fourth-level headings (its own structure rule)")
+if len(re.findall(r"(?m)^### ", skill)) > 12:
+    fail("SKILL.md has too many third-level headings for its own fragmentation rule")
 
 for relative_path in re.findall(r"\]\((references/[^)]+)\)", skill):
     if not (ROOT / relative_path).is_file():
@@ -156,6 +263,9 @@ readme_requirements = (
     "[LICENSE](LICENSE)",
     "[CHANGELOG.md](CHANGELOG.md)",
     "scripts/eval-runner.py",
+    "scripts/style-lint.py",
+    "retorik-yapilar.md",
+    "yapisal-butunluk.md",
 )
 for requirement in readme_requirements:
     if requirement not in readme:
@@ -177,6 +287,11 @@ if "## [0.2.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.2.0")
 if "## [0.1.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.1.0")
+
+evals_readme = texts[ROOT / "evals/README.md"]
+for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık"):
+    if requirement not in evals_readme.casefold():
+        fail(f"evals/README.md must mention review axis: {requirement}")
 
 eval_headings = (
     "## Kaynak",
@@ -205,6 +320,33 @@ eval_markers = {
         "Ek A",
     ),
     "evals/yonetici-ozeti.md": ("1 Ocak–31 Mart 2026", "480", "%14", "altı haftalık", "henüz"),
+    "evals/savunmaci-akademik.md": ("0,001", "0,01", "0,0001", "200 dönem", "tesadüfi değildir", "bilinçli bir seçimdir"),
+    "evals/iddia-tekrar-dongusu.md": ("120. derece", "%2,1", "%6,8", "Başka bir ifadeyle", "Dolayısıyla"),
+    "evals/yol-haritasi.md": ("## Yapılandırma", "`config/settings.yaml`", "`timeout`", "`retries`", "Bu bölümde", "Şimdi"),
+    "evals/yapay-denge.md": ("4,5", "3,1", "soğuk zincir", "her yeniliğin olduğu gibi", "öte yandan"),
+    "evals/giris-hunisi.md": ("Günümüzde", "Mart 2026", "14 saat", "haftada bir", "her gece"),
+    "evals/sonuc-ve-gelecek-calisma.md": ("## Sonuç", "20 °C", "40 °C", "60 °C", "Sonuç olarak", "Gelecekte yapılacak", "tek bir sensör"),
+    "evals/soyut-yuklem.md": ("0,8 dB", "4,1 dB", "100 MHz", "rol oynadığını", "ışık tutmaktadır", "30 metre"),
+    "evals/paragraf-simetrisi.md": ("Nisan 2025", "180 bin", "yüzde 62", "yüzde 70", "2026 planında", "henüz"),
+    "evals/gerekli-ifade.md": ("`retries`", "`timeout`", "4xx", "429", "Bu ayrım önemlidir", "Sonuç olarak"),
+    "evals/iyi-metin.md": ("Merhaba Selin", "yalnızca", "henüz", "geçen ay konuştuğumuz gibi", "bayi bazında değil"),
+    "evals/egitsel-aciklama.md": ("doğrulama kümesi", "cevap anahtarını", "1.000", "800", "200"),
+    "evals/asiri-bolumleme.md": ("### Veri kümesinin seçimi", "### Sınırlılık", "48.000", "%12", "%2", "10 dakika"),
+    "evals/derin-baslik.md": ("#### 3.1.1", "#### 3.2.1", "`timeout`", "`retries`", "`log_level`"),
+    "evals/tek-paragraf-bolumler.md": ("### Teslim süresi", "### Soğuk zincirin sonucu", "4,5", "3,1"),
+    "evals/kisa-paragraf-yigini.md": ("214", "%61", "%48", "%35", "gönüllü katılım"),
+    "evals/yapay-gerilim.md": ("İlk bakışta", "hikâye burada bitmez", "%12", "%8", "yalnızca", "henüz"),
+    "evals/tekrarlanan-bolum-girisleri.md": ("### 4.1", "### 4.3", "Bu bölümde", "tek sensörlü", "20 °C", "%19"),
+    "evals/tekrarlanan-bolum-sonuclari.md": ("%6,2", "%3,1", "%2,9", "gözden geçirilmesi", "Sonuç olarak"),
+    "evals/asiri-capraz-gonderme.md": ("### 2.1 Veri", "### 2.4 Gerekçe", "Önceki bölümde", "aşağıda görüleceği üzere", "ileride tekrar dönülecektir", "1.200"),
+    "evals/uzun-cerceve-ifadeleri.md": ("Bu bağlamda, söz konusu", "karşımıza çıkmasıdır", "en az 500", "%70"),
+    "evals/ayrilmis-kanit.md": ("### 3.1 Doğruluk", "### 3.3 Sınırlılıklar", "%91", "yalnızca 2024"),
+    "evals/gereksiz-listeleme.md": ("- Sorgular arasında", "%2", "4 GB", "yanıt süresi değişmedi"),
+    "evals/korunacak-basliklar.md": ("# Kurulum kılavuzu", "## 1. Gereksinimler", "## 4. Sorun giderme", "üçüncü bölüme", "en az 8 GB", "`config/settings.yaml`"),
+    "evals/yontem-ayrimi.md": ("### Deney 1", "### Deney 3", "25 °C", "5 °C", "yalnızca deney başında", "30 dakika"),
+    "evals/uzun-paragraf-korunur.md": ("yüzde 9", "yüzde 14", "gösteriyor olabilir", "ayrıştırılamıyor", "yalnızca"),
+    "evals/kisa-paragraf-korunur.md": ("`--purge`", "geri alınamaz", "02.00", "%90"),
+    "evals/yapisal-iyi-metin.md": ("## Sorun", "## Yapılan işlem ve sonraki adım", "2.140", "120", "henüz", "en olası açıklama"),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]
@@ -218,8 +360,10 @@ if "RK4 çözücüsünde tolerans" in texts[ROOT / "evals/teknik.md"]:
 workflow = texts[ROOT / ".github/workflows/validate.yml"]
 if "python3 scripts/eval-runner.py --self-test" not in workflow:
     fail("CI must run the deterministic eval runner self-test")
+if "python3 scripts/style-lint.py --self-test" not in workflow:
+    fail("CI must run the style-lint self-test")
 
-for relative_path in ("scripts/eval-runner.py", "scripts/validate-package.py"):
+for relative_path in ("scripts/eval-runner.py", "scripts/style-lint.py", "scripts/validate-package.py"):
     try:
         ast.parse((ROOT / relative_path).read_text(encoding="utf-8"))
     except SyntaxError as error:

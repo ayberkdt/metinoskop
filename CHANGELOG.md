@@ -8,7 +8,33 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Eklendi
 
+- Dört düzeyde (sözcük ve kalıp, cümle, paragraf, belge) yapay düzyazı denetimi: sıfır bilgi cümlesi kuralı ve silme testi, işlev tekrarı, savunmacı düzyazı, iddia → açımlama → önem → mini sonuç döngüsü, üretilmiş önem, üretilmiş karşıtlık, yol haritası ve okur yönlendirmesi, kalıp giriş ve sonuç, soyut yüklem sisi, boş soyut özne, açıklık testi, paragraf simetrisi ve zorlama denge kuralları.
+- "Dolguyu başka dolguya çevirme" kesin kuralı; sert bastırma ile bağlama duyarlı yüksek risk ayrımı.
+- Akademik ve teknik metin için ek bastırma kuralları ve geçerli bilimsel iddiayı koruma kuralı.
+- `references/retorik-yapilar.md`: işlev ailelerine göre katalog; akademik makale, mühendislik raporu, teknik belge, analitik düzyazı, e-posta ve açıklayıcı yazı türlerinde zorlu önce/sonra örnekleri; yanlış dönüşüm tablosu ve kalması gereken karşı örnekler.
+- On bir yeni davranışsal eval vakası: savunmacı akademik düzyazı, tekrar döngüsü, yol haritası, yapay denge, giriş hunisi, kalıp sonuç ve gelecek çalışma, soyut yüklem, paragraf simetrisi, gerekli ifade (yanlış pozitif), öğretici açıklama (muhatap duyarlılığı) ve zaten iyi metin.
+- `scripts/style-lint.py`: şüpheli retorik örüntüleri işlev ailesine göre işaretleyen, yapı bulgularını raporlayan ve `--source` ile yeni eklenen örüntüleri ayıran bağımlılıksız stil denetimi; öz sınaması CI'a eklendi.
+- Yapısal bütünlük ve okur yorgunluğu kuralları: yapı kavramsal sınırları izler ilkesi, süreklilik, başlık, derinlik ve başlık sıkıştırma testleri, paragrafın kavramsal birim olması, zihinsel model sürekliliği, yakınlık kuralı, açıklamanın bitmesi, slayt değil belge, listeleştirme, yapay gerilim ve paragraf askısı, bağlam yeniden başlatma ve çapraz gönderme, başlık tekrarı ve boş sarmalayıcılar, zorlama geçişler, yinelenme haritası, uzun ifadeler ve yığılmış çerçeve, cümle birleştirme ve şişkin cümle, okur emeği, yazarın yapısal ölçeği ve yapısal yanlış pozitif koruması.
+- `references/yapisal-butunluk.md`: bölme testleri, parçalanma yoğunluğu uyarı işaretleri, katalogların tamamı, dört-beş mikro bölümü tek bölüme indiren onarım örnekleri ve korunması gereken yapı karşı örnekleri.
+- On altı yeni yapısal eval vakası: aşırı bölümleme, başlık derinliği, tek paragraflık bölümler, kısa paragraf yığını, yapay gerilim, tekrarlanan bölüm girişleri ve sonuçları, çapraz gönderme, uzun çerçeve ifadeleri, ayrılmış kanıt, gereksiz listeleme; korunacak başlıklar, yöntem ayrımı, uzun ve kısa kalması gereken paragraflar ve yapısı iyi metin.
+- Stil denetimi başlıkları ve liste ögelerini ayrıştırır; yapay gerilim, paragraf askısı, boş sarmalayıcı, çapraz gönderme, bağlam yeniden başlatma ve uzun çerçeve ailelerini işaretler; parçalanma yoğunluğu özetini, başlık yoğunluğu, tek paragraflık bölüm, derin başlık, kısa paragraf, liste yoğunluğu, başlık tekrarı ve bağlaçla açılış bulgularını raporlar; `--source` ile yapı ölçülerindeki değişimi gösterir.
+- Doğrulayıcı `SKILL.md` için kendi yapı kuralını denetler: dördüncü düzey başlık yok, en fazla on iki üçüncü düzey başlık.
+
 ### Değiştirildi
+
+- Çalışma yöntemine dört geçişli yapay düzyazı denetimi eklendi; ses ve akış denetimi altıncı adım oldu ve gerekli sınırlılık ya da öğretici açıklamanın dolgu sanılıp silinmediğini kontrol eder.
+- Müdahale düzeyleri ve değişiklik bütçesi, sıfır bilgi cümlelerini, işlev tekrarını ve kısalığın amaç olmadığını açıkça belirtecek biçimde güncellendi.
+- Kaynak sadakati kuralına kaynaktaki sayılardan yeni sayı türetmeme maddesi eklendi.
+- Bağlam profili muhatabın bilgi düzeyini içerecek biçimde genişletildi.
+- Yüksek riskli kalıplar bölümü kalıp düzeyiyle sınırlandı; karşıtlık kalıpları üretilmiş karşıtlık bölümüne taşındı.
+- Referans dosyaları yeni katalogla çapraz bağlandı; rapor rehberine retorik dolgu bölümü ve son denetim sorusu, örüntü rehberine yeni yanlış pozitifler, akıcılık rehberine yeni aşırı düzeltme belirtileri eklendi.
+- `evals/README.md` vaka gruplarını ve sıfır bilgi, işlev tekrarı, savunmacı düzyazı, dolgu çevirisi, paragraf mimarisi ve muhatap duyarlılığı için hakem ölçütlerini tanımlar.
+- Eval çalıştırıcısının öz sınaması tekrar döngüsü ve giriş hunisi vakalarını da kapsar.
+- Skill açıklaması yeni kapsamı ve "dolguyu çıkar" tetikleyicisini içerir.
+- `SKILL.md` kendi parçalanma kuralına uyacak biçimde yeniden düzenlendi: on üç mikro alt bölüm cümle, paragraf ve belge düzeyi altında kalın başlangıçlı paragraflara indirildi; müdahale düzeyleri ve çalışma yöntemi adımları alt başlıksız paragraflar oldu; yapı denetimi beşinci geçiş olarak eklendi.
+- Müdahale düzeyleri yapısal kapsamı belirtir: hafif düzey başlıklara dokunmaz, standart düzey paragraf birleştirir ama hiyerarşiyi korur, derin düzey bölüm yapısını kavramsal sınırlara göre yeniden kurar.
+- Bağlam profiline yapısal ölçek ve dışarıdan dayatılan yapı eklendi; terim tutarlılığı bölüm birleştirmede numaralı göndermeleri kapsar.
+- Skill açıklaması "parçalanmayı gider" ve "başlıkları sadeleştir" tetikleyicilerini içerir.
 
 ### Düzeltildi
 

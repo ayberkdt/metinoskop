@@ -27,6 +27,8 @@ Bu örüntüler yasak değil, editörlük işaretidir. Tek bir `bu bağlamda`, e
 
 Örneklerdeki "sonra" metinleri, "önce" metninde bulunmayan olgu eklememelidir. Bu kural bütün düzenlemeler için geçerlidir.
 
+Bu dosya sözcük ve kalıp düzeyini ele alır. Cümleler temiz olduğu hâlde metin yapay okunuyorsa sorun cümle, paragraf veya belge mimarisindedir; önem cümleleri, savunmacı açıklama, tekrar döngüleri, yol haritası, kalıp giriş ve sonuç ile tek biçimli paragraf yapısı için [Retorik yapılar](retorik-yapilar.md) dosyasına bak.
+
 ## Mekanik ritim
 
 ### Eş uzunlukta cümleler
@@ -133,7 +135,7 @@ Bağlama göre şu sadeleştirmeleri düşün:
 - `gerçekleştirilmektedir` → aktör biliniyorsa `yapıyor`
 - `katkı sunmaktadır` → katkının ne olduğunu açıklayan eylem
 
-Her dönüşümde kip, aktör ve kesinlik düzeyini koru.
+Her dönüşümde kip, aktör ve kesinlik düzeyini koru. "Bir değerlendirme yapılması gerekmektedir", "söz konusu yöntemin kullanılması durumunda" gibi uzun çerçeve ifadeleri ve yığılmış nitelemeler için [Yapısal bütünlük › Uzun ifadeler](yapisal-butunluk.md#uzun-ifadeler-ve-yığılmış-çerçeve) bölümüne bak. `ortaya koymak`, `rol oynamak`, `ışık tutmak` gibi somut ilişkiyi gizleyen yüklemler için [Retorik yapılar › Soyut yüklem sisi](retorik-yapilar.md#soyut-yüklem-sisi) bölümüne bak.
 
 ## Klişe geçişler ve dolgu
 
@@ -173,6 +175,8 @@ Bu ifadeleri otomatik olarak silme. Ardından gelen cümle aynı anlamı tek ba�
 
 > Önbellek, sık kullanılan veriyi daha hızlı erişilebilen bir yerde tutar.
 
+Duyuru, ileri gönderme ve okur yönlendirmesi kataloğu için [Retorik yapılar › Yol haritası](retorik-yapilar.md#yol-haritası-ve-okur-yönlendirmesi) bölümüne bak.
+
 ### Genel sonuç paragrafları
 
 **Önce**
@@ -187,7 +191,7 @@ Bu ifadeleri otomatik olarak silme. Ardından gelen cümle aynı anlamı tek ba�
 
 > Kurum, düzenlemeyi sektör için önemli bir adım olarak değerlendiriyor.
 
-Bu atfı yalnızca kaynakta kurumun görüşü belirtilmişse kullan.
+Bu atfı yalnızca kaynakta kurumun görüşü belirtilmişse kullan. Silinen önem cümlesini "bu gelişme dikkat çekicidir" gibi daha sakin bir eş anlamlıyla geri koyma; kalıp sonuç, gelecek çalışma ve önem şişirmesi için [Retorik yapılar](retorik-yapilar.md#kalıp-sonuç-ve-gelecek-çalışma) dosyasına bak.
 
 ## Pazarlama dili ve değerlendirme
 
@@ -293,7 +297,7 @@ Yüksek riskli girişler:
 
 > Yazılım, stok ve sipariş kayıtlarını aynı veritabanında tutuyor.
 
-`Yalnızca ... değil` yapısı gerçek bir karşıtlık kuruyorsa korunabilir.
+`Yalnızca ... değil` yapısı gerçek bir karşıtlık kuruyorsa korunabilir. "X değil, Y", "X'ten ziyade Y", "bir yandan ... öte yandan" gibi diğer karşıtlık kalıpları ve reddedilen tarafın uydurulup uydurulmadığı testi için [Retorik yapılar › Üretilmiş karşıtlık](retorik-yapilar.md#üretilmiş-karşıtlık) bölümüne bak.
 
 ### Vecize üretimi
 
@@ -402,7 +406,7 @@ Doğru terimin tekrarı, zoraki çeşitlilikten daha doğaldır.
 
 ### Kalın yazı ve etiketli listeler
 
-Her maddeyi `**Hız:**`, `**Güvenlik:**`, `**Verimlilik:**` biçiminde kurmak sunum şablonu hissi verebilir. Taranabilirlik sağlıyorsa biçimi koru; yalnızca dekoratifse sadeleştir.
+Her maddeyi `**Hız:**`, `**Güvenlik:**`, `**Verimlilik:**` biçiminde kurmak sunum şablonu hissi verebilir. Taranabilirlik sağlıyorsa biçimi koru; yalnızca dekoratifse sadeleştir. Nedensel akıl yürütmeyi listeye, her kavramı başlığa çevirme alışkanlığı için [Yapısal bütünlük](yapisal-butunluk.md#listeleştirme) dosyasına bak.
 
 ### Emoji ve ünlem
 
@@ -442,7 +446,13 @@ Aşağıdakileri tek başına yapaylık belirtisi sayma:
 - yazarın bilinçli tekrarı,
 - alıntı içindeki klişe,
 - teknik belgede düzenli başlık yapısı,
-- belirli bir topluluğa veya döneme ait söyleyiş.
+- belirli bir topluluğa veya döneme ait söyleyiş,
+- adlandırılmış bir sınırlılık veya kapsam tekrarı,
+- ölçülmüş dayanağı olan yöntem gerekçesi,
+- yeni başlayanlara yönelik metindeki öğretici açıklama veya benzetme,
+- uzun bir belgenin başındaki tek yönlendirme cümlesi.
+
+Bu karşı örneklerin ayrıntısı [Retorik yapılar › Karşı örnekler](retorik-yapilar.md#karşı-örnekler-kalması-gerekenler) bölümündedir.
 
 Özgün fakat alışılmadık ifadeyi sıradanlaştırma. Kaynakta bulunmayan "insan izleri" ekleme.
 
