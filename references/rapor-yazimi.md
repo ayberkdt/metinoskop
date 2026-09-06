@@ -68,6 +68,7 @@ Son cümledeki ihtiyat kaynakta bulunduğu için korunur. Kaynak nedensellik idd
 - `Bu bağlamda`, `bu noktada`, `bununla birlikte` gibi geçişleri yalnızca gerçek ilişkiyi taşıyorsa kullan.
 - Bir sonraki paragrafın başlangıcını önceki paragrafın doğal çıkış noktasına bağla; yeni neden, karşıtlık veya önem ilişkisi üretme.
 - Soyut sonuç cümlesi önceki bulguyu yalnızca tekrar ediyorsa çıkarılabilir. Kurumun veya yazarın gerçek değerlendirmesiyse değerlendirme olarak koru.
+- Bulguyu, dayanağını ve sınırlılığını ayrı paragraflara veya alt bölümlere dağıtma; şablon dayatmıyorsa sınırlılık sınırladığı bulgunun yanında durur.
 
 ## Profesyonel ama insani ses
 
@@ -107,6 +108,20 @@ Yönetici özeti, gövdenin daha iddialı bir sürümü değildir. Yalnızca rap
 - `Tablo 2'de`, `Ek A'da`, `Bölüm 3.1'de` gibi göndermeleri bağlı oldukları unsurla birlikte denetle.
 - Bir cümleyi başka bölüme taşırken kaynak işaretini ve gerekli bağlamı da taşı.
 - Tekrarlanan kapsam veya yöntem bilgisi yanlış okumayı önlüyorsa bunu gereksiz tekrar sayma.
+- Rapor şablonu dayatmıyorsa ve kullanıcı derin düzenleme istediyse, "bulgu → bulgunun anlamı → sonucu" biçiminde bölünmüş tek paragraflık alt başlıkları kavramsal sınıra göre birleştir. Şablon dayatıyorsa bölümü koru; yalnızca bölünmenin ürettiği duyuru, askı ve gönderme cümlelerini sil. Bkz. [Yapısal bütünlük](yapisal-butunluk.md).
+
+## Rapor dilinde retorik dolgu
+
+Raporlar ve akademik metinler, her bulgudan sonra önem cümlesi kuran ve her bölümü savunan yapay mimariye özellikle açıktır. Şu alışkanlıkları ara; katalog ve örnekler [Retorik yapılar](retorik-yapilar.md) dosyasındadır.
+
+- Bulgudan sonra gelen "bu bulgu ... açısından önemlidir" cümlesi kaynakta dayanağı yoksa silinir; somut bulgu kalır.
+- Aynı bulgunun "başka bir ifadeyle" yeniden anlatımı ve "dolayısıyla" ile başlayan soyut mini sonuç silinir.
+- Adlandırılmamış "bazı sınırlılıklar" cümlesi bırakılmaz; adlandırılmış sınırlılık varsa yalnızca o yazılır. Kanıt düzeyini bildiren çekince (gözlemsel, nedensellik göstermez, henüz) sınırlılık bilgisidir; korunur.
+- "Gelecek çalışmalar ..." cümlesi yalnızca kaynakta varsa veya kullanıcı istediyse kalır.
+- Yöntem gerekçesi ölçülmüş dayanağıyla korunur; "bu tercih bilinçlidir" gibi dayanaksız savunma çerçevesi silinir.
+- Bölüm başındaki "bu bölümde ... ele alınacaktır" duyurusu, sonraki cümle konuyu zaten başlatıyorsa silinir. Uzun raporun girişindeki tek yapı yönlendirmesi kalabilir.
+- Ana metnin doğrudan söyleyebileceği olgu için ek veya sonraki bölüme tekrarlanan gönderme yerine olgu söylenir; tablo, ek ve kaynak göndermeleri korunur.
+- Silinen dolgu daha sakin eş anlamlılarla geri konmaz.
 
 ## Son denetim
 
@@ -120,5 +135,7 @@ Raporu teslim etmeden önce şu soruları yanıtla:
 6. Metin profesyonel kalırken gereksiz resmiyet ve dolgu azalmış mı?
 7. Paragraflar daha kolay izleniyor mu, yoksa yalnızca farklı mı görünüyor?
 8. Kullanıcının istemediği bir özetleme, yeniden yapılandırma veya ton değişikliği yapılmış mı?
+9. Dayanaksız önem cümlesi, adlandırılmamış sınırlılık, otomatik gelecek çalışma veya bölüm duyurusu kalmış mı; adlandırılmış sınırlılık ve dayanaklı gerekçe korunmuş mu?
+10. Başlıklar içerikten sık mı, sonuçla sınırlılığı ayrı başlıklara mı dağılmış, paragraflar erken mi bölünmüş; şablonun veya numaralı göndermelerin gerektirdiği bölümler korunmuş mu?
 
 Son sorulardan biri kaynak sadakati açısından kuşku doğuruyorsa daha iddialı sürümü değil, kaynağa en yakın doğal sürümü seç.

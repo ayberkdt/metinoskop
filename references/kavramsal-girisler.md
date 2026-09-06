@@ -35,7 +35,7 @@ Ton ve tür hangisini gerektiriyorsa onu seç.
 
 ## Bilgi sırası
 
-Girişi genel ve soyut bir çağ değerlendirmesiyle açma. İlk cümlede metnin kendi konusuna gir.
+Girişi genel ve soyut bir çağ değerlendirmesiyle açma. İlk cümlede metnin kendi konusuna gir. "Günümüzde", "son yıllarda giderek artan", "her zamankinden daha önemli" ile başlayan giriş hunisinin kataloğu için [Retorik yapılar › Kalıp giriş](retorik-yapilar.md#kalıp-giriş) bölümüne bak.
 
 **Dağınık**
 

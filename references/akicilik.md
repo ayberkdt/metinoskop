@@ -115,7 +115,7 @@ Yaygın hareketler:
 - soru → araştırma → cevap,
 - genel bilgi → somut örnek.
 
-Bu kalıpları şablon olarak dayatma. Paragrafın mevcut niyetini bul.
+Bu kalıpları şablon olarak dayatma. Paragrafın mevcut niyetini bul. Hareket bitmeden paragrafı kesme: kısa paragrafın kendiliğinden daha kolay okunduğunu varsayma; erken bölünmüş paragraflar, tek paragraflık bölümler ve göndermeyle yamalanmış parçalanma için [Yapısal bütünlük](yapisal-butunluk.md) dosyasına bak. Her paragrafı aynı hareketle kurma; bütün paragraflar konu cümlesiyle açılıp önem cümlesiyle kapanıyorsa sorun akışta değil mimaridedir, bkz. [Retorik yapılar › Paragraf simetrisi](retorik-yapilar.md#paragraf-simetrisi).
 
 ### Art arda sıralanan özellikler
 
@@ -139,7 +139,7 @@ Bu kalıpları şablon olarak dayatma. Paragrafın mevcut niyetini bul.
 
 > Teslim süresi iki günden beş güne çıktı. Aynı ay müşteri şikâyetleri iki katına yükseldi.
 
-Son cümle yalnızca önceki bilgileri soyut biçimde yeniden açıklıyorsa çıkarılabilir. Yazarın açık değerlendirmesiyse iletişim amacına göre korunabilir.
+Son cümle yalnızca önceki bilgileri soyut biçimde yeniden açıklıyorsa çıkarılır; daha sakin bir önem cümlesiyle değiştirilmez. Yazarın açık değerlendirmesiyse iletişim amacına göre korunabilir. Önem cümleleri, açımlama döngüleri ve işlev tekrarı için [Retorik yapılar](retorik-yapilar.md#silme-testi) dosyasına bak.
 
 ## Ritim ve yapısal tekrar
 
@@ -298,6 +298,10 @@ Takılan yerde rastgele nokta koyma. Sorunun kaynağını belirle:
 - Ayrıntılar silinmiş ve metin genel bir özete dönüşmüş.
 - Kaynakta olmayan örnek, duygu veya sonuç eklenmiş.
 - Kullanıcının istediğinden daha geniş bir yeniden yazım yapılmış.
+- Gerekli bir sınırlılık, kapsam tekrarı veya öğretici açıklama dolgu sanılıp silinmiş.
+- Çıkarılan dolgu daha sakin eş anlamlılarla geri konmuş.
+- Paragraflar sırf uzun diye bölünmüş ya da bölümler sırf sayıyı azaltmak için birleştirilmiş.
+- Birleştirme, tek cümleye birkaç iddia, niteleme ve sonuç yığmış.
 
 Bu durumda metnin niyetine ve gerçek sesine geri dön.
 

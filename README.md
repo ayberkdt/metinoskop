@@ -5,7 +5,7 @@
 ![Agent Skill](https://img.shields.io/badge/agent-skill-2563eb)
 ![Language: Türkçe](https://img.shields.io/badge/language-T%C3%BCrk%C3%A7e-c62828)
 
-Türkçe metinlerdeki mekanik yapay zekâ ritmini, basmakalıp ifadeleri ve kurumsal dolguyu ayıklayan taşınabilir agent skill paketi ve editoryal rehberler.
+Türkçe metinlerdeki mekanik yapay zekâ ritmini, basmakalıp ifadeleri, kurumsal dolguyu, cümle, paragraf ve belge düzeyindeki yapay retorik mimariyi ve okuru yoran yapısal parçalanmayı ayıklayan taşınabilir agent skill paketi ve editoryal rehberler.
 
 Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olguları, kesinlik düzeyini, yazarın tavrını ve uygun resmiyet düzeyini koruyarak yalnızca gerekli editoryal müdahaleyi yapar.
 
@@ -20,7 +20,17 @@ Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olgula
 - Olumsuzluk, nicelik, koşul, istisna ve kapsam belirleyicilerini korur.
 - Teknik terimleri, sembolleri, birimleri ve belge biçimini tutarlı tutar.
 - Raporlarda bulgu, yorum, sınırlılık, öneri ve karar sınırlarını; tablo, atıf ve çapraz göndermeleri korur.
-- Kaynakta bulunmayan olgu, tarih, sayı, alıntı veya kişisel ayrıntı eklemez.
+- Silindiğinde hiçbir önerme kaybolmayan cümleleri çıkarır: dayanaksız önem iddiaları, savunmacı açıklamalar, olgu → açımlama → önem → mini sonuç döngüleri, bölüm duyuruları, kalıp giriş ve sonuçlar.
+- Üretilmiş karşıtlık ve zorlama dengeyi çıkarır; adlandırılmış sınırlılığı ve ölçülmüş yöntem gerekçesini korur.
+- Soyut yüklemleri kaynaktaki somut ilişkiyle değiştirir; boş soyut özneleri göndergeye çözer.
+- Tek biçimli paragraf mimarisini bilgi yapısına göre yeniden kurar; uzunlukları insan gibi görünsün diye rastgeleleştirmez.
+- Silinen dolguyu daha sakin eş anlamlılarla geri koymaz.
+- Muhataba göre karar verir: uzman metninde açık olanın açıklamasını çıkarır, ders notunda öğretici açıklamayı korur.
+- Yapıyı kavramsal sınırlara göre kurar: hak edilmemiş başlıkları ve tek paragraflık bölümleri birleştirir, erken bölünmüş paragrafları tek harekete toplar, sonuçla sınırlılığını yakınlaştırır, gereksiz derinliği düzleştirir.
+- Yapay gerilimi, paragraf sonu askılarını, bağlam yeniden başlatmalarını, aşırı çapraz göndermeyi, boş bölüm sarmalayıcılarını ve zorlama geçişleri kaldırır.
+- Uzun çerçeve ifadelerini ve yığılmış nitelemeleri kısaltır; nedensel akıl yürütmeyi listeye çevirmez, parçalanmayı dev cümlelerle de çözmez.
+- Tekrarlanabilirlik, mevzuat, dergi kuralı, güvenlik adımları ve uzun belge gezinmesi gerektiren yapıyı korur; yazarın yapısal ölçeğini aşan makine parçalanmasını hedefler, evrensel asgariciliği değil.
+- Kaynakta bulunmayan olgu, tarih, sayı, alıntı veya kişisel ayrıntı eklemez; kaynaktaki sayılardan yeni sayı türetmez.
 
 ## Temel ilkeler
 
@@ -30,6 +40,9 @@ Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olgula
 4. Kronolojik yakınlık nedensellik gibi sunulmaz.
 5. Birden fazla makul yorum varsa anlam editör tarafından seçilmez.
 6. Metnin bir AI dedektöründen geçeceği vaat edilmez.
+7. Bir cümle silindiğinde hiçbir önerme, ilişki, kronoloji, yorum veya yazar tavrı kaybolmuyorsa çıkarılır; dolgu başka dolguya çevrilmez.
+8. Sözcükler tek başına yasaklanmaz; yargı birimi sözcüğün bağlamdaki işlevidir. Kısalık amaç değil, tekrar ve dolgunun çıkarılmasının sonucudur.
+9. Yapı kavramsal sınırları izler. Her yeni başlık, paragraf veya liste okura bilişsel maliyet yükler; bu maliyet yalnızca anlama veya gezinme kazancıyla karşılanır. Okur, kavram zihninde yerleşmeden onu terk etmeye zorlanmaz; görsel parçalanma açıklık sayılmaz.
 
 ## İsteğe bağlı yardımcı kabiliyet
 
@@ -61,7 +74,7 @@ Depoyu kullandığınız agent ortamının skill dizinine klonlayın:
 git clone https://github.com/ayberkdt/metinoskop.git /path/to/skills/metinoskop
 ```
 
-Çalışma zamanında gereken ana dosya `SKILL.md` dosyasıdır. `references/` klasörü ayrıntılı Türkçe örüntü, akıcılık, rapor yazımı ve kavramsal giriş rehberlerini; `agents/openai.yaml` ise destekleyen istemciler için arayüz metadata'sını içerir.
+Çalışma zamanında gereken ana dosya `SKILL.md` dosyasıdır. `references/` klasörü ayrıntılı Türkçe örüntü, retorik yapılar (`retorik-yapilar.md`), akıcılık, rapor yazımı ve kavramsal giriş rehberlerini; `agents/openai.yaml` ise destekleyen istemciler için arayüz metadata'sını içerir.
 
 ## Kullanım
 
@@ -106,6 +119,34 @@ Bu raporu doğal ve profesyonel Türkçeyle düzenle. Bulgu, yorum, sınırlıl�
 ```
 
 Metinoskop raporu daha “insani” göstermek için gündelikleştirmez veya süslemez. Bürokratik dolguyu azaltır, gerçek ilişkileri görünür kılar ve her iddiayı kaynakta taşıdığı kanıt düzeyinde tutar. Yönetici özeti ancak kullanıcı isterse üretilir ve rapor gövdesindeki bilgi ile sınırlı kalır.
+
+### Retorik dolguyu çıkarma
+
+Sözcük düzeyinde temiz görünen ama her olgudan sonra önem cümlesi kuran, her tercihi savunan ve her bölümü duyuruyla açan metinler için:
+
+```text
+$metinoskop
+
+Bu makale bölümünü düzenle. Bilgi taşımayan cümleleri, dayanaksız önem iddialarını, savunmacı açıklamaları ve bölüm duyurularını çıkar; yöntem gerekçelerini, adlandırılmış sınırlılıkları, sayıları ve atıfları koru.
+
+[metin]
+```
+
+Metinoskop dört düzeyde bakar: sözcük ve kalıp, cümle, paragraf, belge. Silinen dolgu daha sakin eş anlamlılarla geri konmaz; "çığır açan sonuç" ifadesi "oldukça önemli sonuç" olmaz, cümlenin bağımsız bilgisi yoksa cümle gider. Uzunluklar insan gibi görünsün diye rastgeleleştirilmez; paragraf boyutunu bilgi yapısı belirler.
+
+### Yapısal parçalanmayı giderme
+
+Her kavrama başlık açan, paragrafı her cümlede kesen, her bölümü duyuruyla açıp askıyla kapatan ve göndermeyle yamalanmış metinler için:
+
+```text
+$metinoskop
+
+Bu bölümü derin düzeyde düzenle. Hak edilmemiş başlıkları birleştir, erken bölünmüş paragrafları tek harekete topla, sonuçla sınırlılığını yan yana getir; bütün ölçümleri, yöntem ayrıntılarını ve numaralı göndermelerin gerektirdiği bölümleri koru.
+
+[metin]
+```
+
+Metinoskop yeni bir başlık, paragraf veya listeyi yalnızca kavramsal sınır gerektiriyorsa açık bırakır; bölümleri sayıyı azaltmak için birleştirmez, paragrafları uzun diye bölmez. Standart düzeyde mevcut başlık hiyerarşisi korunur; derin düzeyde başlıklar kavramsal sınırlara göre yeniden kurulur. Dergi kuralı, mevzuat, tekrarlanabilir deney bölümleri, güvenlik adımları ve uzun belgelerin gezinme başlıkları her düzeyde korunur.
 
 ### Yazarın sesini eşleştirme
 
@@ -162,6 +203,11 @@ Metinoskop bir dil ve paragraf akışı editörüdür.
 - Hukuki, akademik veya teknik metindeki gerekli terminolojiyi otomatik olarak gündelikleştirmez.
 - Raporlarda bulguyu nedensel yoruma, öneriyi karara veya planı sonuca dönüştürmez.
 - Her düzgün cümleyi değiştirmeye çalışmaz; metin zaten doğal ve uygunsa olduğu gibi bırakabilir.
+- Kısaltmayı amaç edinmez; bilgi taşıyan cümleyi kısalık için kesmez.
+- Yeni başlayanlara yönelik metinden öğretici açıklamayı, benzetmeyi veya örneği silmez.
+- İnsan yazmış gibi görünmesi için hata, argo, rastgelelik veya cümle uzunluğu gürültüsü üretmez.
+- Başlıkları sayıyı azaltmak için birleştirmez, paragrafları uzun diye bölmez, cümleleri mekanik olarak kısaltmaz veya birleştirmez.
+- Kullanıcı hafif düzenleme veya yapı koruma istediyse başlık hiyerarşisine dokunmaz.
 
 Kavramsal giriş yalnızca kullanıcı açıkça giriş yazılmasını istediğinde kullanılan ikincil bir kabiliyettir; olay örgüsünün, sahne yapısının veya bakış açısının yeniden kurulması değildir.
 
@@ -170,11 +216,11 @@ Kavramsal giriş yalnızca kullanıcı açıkça giriş yazılmasını istediği
 Metinoskop düzenleme sırasında altı aşamalı bir denetim uygular:
 
 1. Metnin türünü, amacını, muhatabını; korunacak kapsam belirleyicilerini, terimleri ve gösterimleri belirler. Raporlarda bölüm ve paragraf işlevlerini de çıkarır.
-2. Ritim, dolgu, reklam cilası, belirsiz atıf, çeviri kokusu ve akış sorunlarını kümeler hâlinde inceler.
+2. Ritim, dolgu, reklam cilası, belirsiz atıf, çeviri kokusu ve akış sorunlarını; önem şişirmesi, savunmacı açıklama, işlev tekrarı, yol haritası ve tek biçimli mimariyi kümeler hâlinde inceler.
 3. Kullanıcının istediği müdahale düzeyinde düzenler.
-4. Son metindeki sayı, tarih, iddia, nedensellik, karşılaştırma, koşul, istisna, nicelik sınırı, terim ve gösterimleri kaynakla karşılaştırır.
-5. Raporlarda bulgu–yorum–öneri sınırlarını, dayanakları, bölüm yapısını ve çapraz göndermeleri ayrıca denetler.
-6. Ses, ton, gönderge açıklığı ve paragraf akışını son kez gözden geçirir.
+4. Son metindeki sayı, tarih, iddia, nedensellik, karşılaştırma, koşul, istisna, nicelik sınırı, terim ve gösterimleri kaynakla karşılaştırır. Raporlarda bulgu–yorum–öneri sınırlarını, dayanakları ve çapraz göndermeleri de karşılaştırır.
+5. Beş geçişli yapay düzyazı ve yapı denetimi yapar: kalıp, cümle ("bunu silersem hangi bilgi kaybolur?"), paragraf (farklı önerme sayısı, mini sonuç, zorlama denge, erken bölünme), belge (tekrarlanan giriş ve sonuç, tek biçimli mimari, aynı gerekçenin tekrarı) ve yapı (başlık sayısı ve derinliği, tek paragraflık bölümler, kopmuş yakınlık, çapraz gönderme sıklığı, yapay gerilim, gereksiz liste, uzun ifade).
+6. Ses, ton, gönderge açıklığı ve paragraf akışını son kez gözden geçirir; gerekli sınırlılık veya öğretici açıklamanın dolgu sanılıp silinmediğini kontrol eder.
 
 Kullanıcı açıkça kavramsal giriş istediğinde, düzenleme akışından önce kaynakta bulunan bağlam, problem, soru ve çözüm ilişkisi ayrıca çıkarılır.
 
@@ -191,7 +237,9 @@ metinoskop/
 │   ├── akicilik.md
 │   ├── kavramsal-girisler.md
 │   ├── rapor-yazimi.md
-│   └── turkce-oruntuler.md
+│   ├── retorik-yapilar.md
+│   ├── turkce-oruntuler.md
+│   └── yapisal-butunluk.md
 ├── evals/
 │   ├── akademik.md
 │   ├── belirsizlik.md
@@ -207,9 +255,37 @@ metinoskop/
 │   ├── rapor-yapisal-butunluk.md
 │   ├── teknik.md
 │   ├── uslup-eslestirme.md
-│   └── yonetici-ozeti.md
+│   ├── yonetici-ozeti.md
+│   ├── savunmaci-akademik.md
+│   ├── iddia-tekrar-dongusu.md
+│   ├── yol-haritasi.md
+│   ├── yapay-denge.md
+│   ├── giris-hunisi.md
+│   ├── sonuc-ve-gelecek-calisma.md
+│   ├── soyut-yuklem.md
+│   ├── paragraf-simetrisi.md
+│   ├── gerekli-ifade.md
+│   ├── egitsel-aciklama.md
+│   ├── iyi-metin.md
+│   ├── asiri-bolumleme.md
+│   ├── derin-baslik.md
+│   ├── tek-paragraf-bolumler.md
+│   ├── kisa-paragraf-yigini.md
+│   ├── yapay-gerilim.md
+│   ├── tekrarlanan-bolum-girisleri.md
+│   ├── tekrarlanan-bolum-sonuclari.md
+│   ├── asiri-capraz-gonderme.md
+│   ├── uzun-cerceve-ifadeleri.md
+│   ├── ayrilmis-kanit.md
+│   ├── gereksiz-listeleme.md
+│   ├── korunacak-basliklar.md
+│   ├── yontem-ayrimi.md
+│   ├── uzun-paragraf-korunur.md
+│   ├── kisa-paragraf-korunur.md
+│   └── yapisal-iyi-metin.md
 ├── scripts/
 │   ├── eval-runner.py
+│   ├── style-lint.py
 │   └── validate-package.py
 ├── .github/
 │   └── workflows/
@@ -244,6 +320,20 @@ JSON raporu almak için `--json` seçeneğini ekleyin. Çalıştırıcı; sayı 
 python scripts/eval-runner.py --self-test
 ```
 
+### Stil denetimi
+
+Bir çıktıdaki şüpheli retorik örüntüleri işlev ailesine göre işaretlemek için:
+
+```bash
+python scripts/style-lint.py outputs/iddia-tekrar-dongusu.txt --source evals/iddia-tekrar-dongusu.md
+```
+
+`scripts/style-lint.py` üretilmiş önem, savunmacı açıklama, yol haritası, boş bölüm sarmalayıcısı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, bağlam yeniden başlatma, uzun çerçeve ifadesi, kalıp giriş ve sonuç, üretilmiş karşıtlık, zorlama denge, soyut yüklem, boş özne ve sohbet botu kalıntısı ailelerini işaretler; parçalanma yoğunluğunu (başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, çapraz gönderme) özetler ve paragraf uzunluğu tek biçimliliği, önem cümlesiyle kapanış, başlık tekrarı, bağlaçla açılış ve işlev tekrarı gibi yapı bulgularını raporlar. `--source` ile yapı ölçülerindeki değişimi de gösterir. Tek bir sözcüğe bakarak metni reddetmez; `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıpları kalıp düzeyinde ayrıca listeler (aynı aileden farklı bir kalıp da yeni sayılır) ve yalnızca `--fail-on-introduced` ile başarısız çıkış kodu verir. Öz sınama için:
+
+```bash
+python scripts/style-lint.py --self-test
+```
+
 Agent Skills keşfini denetlemek için:
 
 ```bash
@@ -252,7 +342,7 @@ npx --yes skills@1.5.20 add . --list
 
 GitHub Actions, `main` dalına gönderilen her değişiklikte ve pull request'lerde bu kontrolleri çalıştırır.
 
-`evals/` klasörü tek bir beklenen çıktı dayatmaz. Her vaka; korunması gereken olguları, kesinlik düzeyini ve biçimi, ayrıca kaçınılması gereken davranışları tanımlar. Rapor vakaları bulgu–yorum–öneri sınırını, yapısal bütünlüğü ve yönetici özetinin gövdeye sadakatini de sınar. Böylece farklı ama geçerli düzenlemeler aynı editoryal ölçütlerle değerlendirilebilir.
+`evals/` klasörü tek bir beklenen çıktı dayatmaz. Her vaka; korunması gereken olguları, kesinlik düzeyini ve biçimi, ayrıca kaçınılması gereken davranışları tanımlar. Rapor vakaları bulgu–yorum–öneri sınırını, yapısal bütünlüğü ve yönetici özetinin gövdeye sadakatini de sınar. Retorik mimari vakaları savunmacı düzyazıyı, tekrar döngülerini, yol haritasını, yapay dengeyi, kalıp giriş ve sonuçları, soyut yüklemleri, paragraf simetrisini; ayrıca yanlış pozitif ve zaten iyi metin durumlarını sınar. Yapısal bütünlük vakaları aşırı bölümlemeyi, başlık derinliğini, tek paragraflık bölümleri, kısa paragraf yığınını, yapay gerilimi, tekrarlanan bölüm giriş ve sonuçlarını, çapraz göndermeyi, uzun çerçeve ifadelerini, ayrılmış kanıtı ve listeleştirmeyi; karşı tarafta korunması gereken başlıkları, tekrarlanabilir yöntem ayrımını, uzun ve kısa kalması gereken paragrafları ve yapısı iyi metni sınar. Böylece farklı ama geçerli düzenlemeler aynı editoryal ölçütlerle değerlendirilebilir.
 
 ## Sürümleme
 

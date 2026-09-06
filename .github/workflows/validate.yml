@@ -23,5 +23,7 @@ jobs:
         run: python3 scripts/validate-package.py
       - name: Test deterministic eval runner
         run: python3 scripts/eval-runner.py --self-test
+      - name: Test style-lint
+        run: python3 scripts/style-lint.py --self-test
       - name: Verify Agent Skills discovery
         run: npx --yes skills@1.5.20 add . --list

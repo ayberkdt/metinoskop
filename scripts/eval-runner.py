@@ -197,6 +197,36 @@ def self_test() -> None:
             "henüz başlamadı.",
             "Kuzey depodaki iade sorunu barkod sistemiyle çözülecek.",
         ),
+        (
+            root / "evals/iddia-tekrar-dongusu.md",
+            "Polinom derecesi 20 ile 200 arasında değiştirildiğinde en düşük doğrulama "
+            "hatası 120. derecede elde edildi (%2,1). 200. derecede hata %6,8'e yükseldi.",
+            "En düşük hata 120. derecede elde edildi. Derece seçimi başarımı belirliyor.",
+        ),
+        (
+            root / "evals/giris-hunisi.md",
+            "Şirket, Mart 2026'da yaşanan 14 saatlik veri erişim kesintisinin ardından "
+            "yedekleme politikasını yeniledi. Bu belge yeni politikayı açıklar. Tam yedek "
+            "haftada bir, artımlı yedek her gece alınır.",
+            "Veri güvenliği önemlidir. Bu belge yedekleme politikasını açıklar.",
+        ),
+        (
+            root / "evals/yapay-gerilim.md",
+            "Yeni denetleyici kuvvet hatasını %12 azaltmış, yedi günlük konum hatasını ise %8 "
+            "artırmıştır; artış yalnızca yüksek eğimli yörüngelerde görülmüştür ve ekip bu "
+            "ödünleşimi henüz açıklayamamaktadır.",
+            "Yeni denetleyici kuvvet hatasını %12 azalttı.",
+        ),
+        (
+            root / "evals/asiri-bolumleme.md",
+            "Deneylerde 2022 yılına ait 48.000 kayıtlık trafik veri kümesi kullanılmıştır; "
+            "kayıtların %12'si eksik hız değeri içermektedir. Eksik değerler aynı sensörün "
+            "önceki ve sonraki ölçümlerinin ortalamasıyla doldurulmuştur; ön denemelerde bu "
+            "yöntem medyanla doldurmaya göre doğrulama hatasını %2 azaltmıştır. Doldurma "
+            "yalnızca 10 dakikadan kısa boşluklar için uygulanmış, daha uzun boşluklu kayıtlar "
+            "çıkarılmıştır.",
+            "48.000 kayıtlık veri kümesinde eksik değerler ortalamayla dolduruldu.",
+        ),
     )
 
     for case_path, passing_output, failing_output in scenarios:
