@@ -682,7 +682,7 @@ SHOULD_REMAIN_CASES = (
 )
 for relative_path in SHOULD_REMAIN_CASES:
     # "Should remain" translationese cases record the source itself as the reference output.
-    case_source = re.search(r"(?ms)^## Kaynak\s*\n(.*?)(?=^## )", texts[ROOT / relative_path])
+    case_source = re.search(r"(?ms)^## Kaynak\s*\n(.*?)(?=^## (?:Talep|Korunması gerekenler|Kaçınılması gerekenler|Yapısal beklenti)\s*$)", texts[ROOT / relative_path])
     recorded = (ROOT / "evals/outputs" / (Path(relative_path).stem + ".txt")).read_text(encoding="utf-8")
     if case_source is None or case_source.group(1).strip() != recorded.strip():
         fail(f"{relative_path}: recorded output must equal the source for a should-remain case")
