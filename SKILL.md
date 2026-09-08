@@ -242,6 +242,8 @@ Olguları değişmeyen bir cümle düzenlemeden sonra epistemik olarak yanlışl
 
 **Kip ve statü zincirini ilerletme.** Kip değişimi gerçek bir zamansal ya da epistemik bakış açısı değişimine (tamamlanmış işlem, gözlenen sonuç, genel özellik, şekil betimlemesi, plan) karşılık gelmelidir; `-dı`, `-miştir`, `-mektedir`, `-yor`, `-r` biçimlerini çeşitlilik için nöbetleştirme, `-miştir` resmî durum bildiriminde işlevseldir. Öneri, plan, karar, uygulanacak, uygulanmış ve değerlendirilmekte ayrı statülerdir; öneri karar, karar uygulama, beklenti taahhüt olmaz. Bir iddia yeni kanıt olmadan sonraki bölümde güçlenemez; sonuçlar "ilişki zayıftır" diyorsa sonuç bölümü "mekanizma ortaya konmuştur" diyemez. Kanıt yokluğu yokluğun kanıtı değildir: "gözlenmedi" "yoktur", "sınanmadı" "geçersizdir" olmaz.
 
+**Zamansal ankrajı koru.** Tamamlanmış bir çalışma, deney, test ya da süreç anlatılıyorsa `inceler / kullanır / uygular` gibi zamansız-genel kipleri sırf akademik göründükleri için kullanma; yapılan işi doğal olarak `incelendi / kullanıldı / uygulandı` ekseninde anlat. Her pasajda baskın zamansal ankrajı belirle: tamamlanmış çalışma olayı, genel davranış, mevcut durum, belge içi gönderme, plan. Açık geçmiş tarih, tamamlanmış örneklem ya da `bu çalışmada` çerçevesiyle geniş zamanlı yüklem yan yana geldiğinde zamansal sürtünme vardır. Ancak algoritmanın genel davranışı, bilimsel genel gerçek, ürün belirtimi, yeniden kullanılabilir prosedür veya belgenin güncel işlevi gerçekten zamansızsa geniş zamanı koru; tek gözlemi geniş zamana çevirip genelleştirme, genel ilişkiyi geçmişe çevirip tek olaya indirme. Düzeltmeyi `yapıldı / edildi` zincirine ya da `-miştir` doygunluğuna dönüştürme; tekdüzeliği kiple değil sözdizimiyle çöz. Ayrıntı için [Zamansal ankraj ve rapor kipi](references/zamansal-ankraj-ve-rapor-kipi.md).
+
 ## Sözcük uyumu: eşdizim ve istem
 
 Bir sözcük tek başına doğru, birleşimde yanlış olabilir; dil bilgisi doğru ve yapısı Türkçe cümle, sözcükleri güçlü Türkçe düzyazının birleştirdiği gibi birleştirmiyorsa olası Türkçedir, doğal Türkçe değil. Katalog ve karşı örnekler [Eşdizim ve istem](references/esdizim-ve-istem.md) dosyasındadır.
@@ -305,6 +307,7 @@ Rapor düzenlemesinden sonra bulgu–yorum–öneri sınırlarını, bölüm iç
 - **G. Epistemik mimari:** her iddianın kaynağı ve statüsü; gözlem–çıkarım–olgu–nedensellik düzeyi; edilgen–etken dönüşümü ve aktör; atıf mesafesi; çekince–pekiştirici dengesi; kip bakış açısı; bölümler arası kesinlik; öneri–karar–uygulama; "gözlenmedi" ile "yoktur".
 - **H. Sözcük uyumu:** eşdizim; hâl ve tümleç; ilgeç gölgesi; hafif ve genel fiil; eş anlamlı kayması; varlık adlandırma; seyrek ama geçerli birleşim.
 - **I. Metinsel tutarlılık:** cümleler arası devir; olgu yığını; bağlaç geçerliliği; gönderge mesafesi; kapsam ve olumsuzluk bağlanması; kayıt; noktalama; iddia–dayanak yakınlığı.
+- **J. Zamansal ankraj:** pasajın baskın ankrajı; her yüklemin olay statüsü; zamansal sürtünme ve genel kip doygunluğu; kip değişiminin önermeyi genelleştirip daraltmadığı; geçmişe ya da `-miştir` biçimine zorlama.
 
 Çıkardığın hiçbir şeyi daha sakin eş anlamlılarla geri koyma. Sonucu insanileştirmek için hata, argo, rastgelelik veya cümle uzunluğu gürültüsü üretme.
 
@@ -318,6 +321,7 @@ Rapor düzenlemesinden sonra bulgu–yorum–öneri sınırlarını, bölüm iç
 - Paragraf kopuksa, göndergeler belirsizse veya okuma akışı takılıyorsa [Akıcı Türkçe](references/akicilik.md).
 - Metin çeviri gibi okunuyorsa; açık özne, `bu sonuç`, `ve` zinciri, `sahip olmak`, `olan` zinciri, çerçeve yığını, fazla `bir` ya da uzak yüklem ritmi varsa [Türkçe ritim ve kaynak dil gölgesi](references/turkce-ritim-ve-ceviri-golgesi.md).
 - Aktarım, çıkarım, çekince, pekiştirici, edilgen çatı, kip değişimi, öneri–karar–uygulama statüsü ya da bölümler arası kesinlik söz konusuysa [Epistemik mimari](references/epistemik-mimari.md).
+- Tamamlanmış iş zamansız-genel kiple anlatılıyorsa; `bu çalışma inceler` ritmi, tarihli olayda geniş zaman, yöntem tanımı ile uygulama karışması ya da geçmişe zorlama varsa [Zamansal ankraj ve rapor kipi](references/zamansal-ankraj-ve-rapor-kipi.md).
 - Sözcükler tuhaf birleşiyorsa; hafif fiil, yanlış hâl, edat gölgesi, eş anlamlı kayması ya da terim kararsızlığı varsa [Eşdizim ve istem](references/esdizim-ve-istem.md).
 - Paragraflar iyi olduğu hâlde metin bir düşünceyi geliştirmiyorsa; olgu yığını, desteksiz bağlaç, uzak gönderge, kapsam ya da olumsuzluk kayması, kayıt kayması ya da noktalama yükü varsa [Metinsel tutarlılık](references/metinsel-tutarlilik.md).
 - Metin rapor, inceleme notu veya yönetici özeti ise [Rapor yazımı](references/rapor-yazimi.md).

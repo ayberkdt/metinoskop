@@ -1,0 +1,1 @@
+Bakımdan önce şalter kapatılır ve hattaki basınç boşaltılır. Ardından filtre kartuşu sökülür. Kartuş yalnızca kuru bezle temizlenir; çözücü kullanılmaz. Montajdan sonra sistem 5 dakika boyunca kaçak açısından izlenir.

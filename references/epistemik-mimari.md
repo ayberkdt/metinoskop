@@ -232,6 +232,8 @@ Tamamlanmış işlem → genel özellik → şekil betimlemesi; üç kip üç i�
 
 `-miştir` ve `-mektedir` işlevseldir, süs değil. "Test tamamlanmıştır" resmî bir durum bildirimi olabilir; "Bu durum yöntemin önemini ortaya koymaktadır" boş retorik dolgudur. Ek sorun değildir; cümlenin işlevi sorundur. Bkz. [Türkçe örüntüler › -maktadır zinciri](turkce-oruntuler.md#-maktadır-mektedir-zinciri): zincir yalnızca aynı kipin her cümlede yinelenmesi ve türe uymamasıyla sorundur.
 
+Bu bölüm ankraj içindeki tutarlılığı korur; ankrajın kendisini seçmez. Tamamlanmış bir çalışma zamansız-genel kiple (`inceler`, `kullanır`, `uygular`) anlatıldığında sorun nöbetleşme değil, baskın bakış açısının yanlış seçilmesidir. Baskın ankrajın belirlenmesi, zamansal sürtünme, prosedür ile uygulama ayrımı ve geçmişe zorlama belirtileri için [Zamansal ankraj ve rapor kipi](zamansal-ankraj-ve-rapor-kipi.md) dosyasına bak.
+
 ## Belirsizliğin kapsamı
 
 Belirsizlik işareti doğru önermeyi yönetmelidir.

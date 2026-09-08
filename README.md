@@ -33,6 +33,7 @@ Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olgula
 - Kaynakta bulunmayan olgu, tarih, sayı, alıntı veya kişisel ayrıntı eklemez; kaynaktaki sayılardan yeni sayı türetmez.
 - Kanıt mimarisini korur: her iddianın kaynağını (gözlem, ölçüm, aktarım, çıkarım, tahmin, öngörü, plan, yorum) ve kesinlik düzeyini düzenleme boyunca aynı tutar; aktarımı olguya, çıkarımı ölçüme, ilişkiyi nedenselliğe, öneriyi karara, kararı uygulamaya, "gözlenmedi"yi "yoktur"a çevirmez; kaynağın adlandırmadığı aktörü uydurmaz, edilgeni yalnızca aktör bilinip ilgiliyse etkene çevirir; çekinceyi kanıt, pekiştiriciyi retorik sayar; kip değişimini gerçek bakış açısı değişimine bağlar; sonuç bölümünün sonuçlar bölümünden güçlü konuşmasına izin vermez.
 - Sözcükleri doğal Türkçedeki gibi birleştirir: tuhaf eşdizimi alışılmış eşleşmeyle, yanlış hâl çerçevesini fiilin doğal istemiyle, İngilizce edat izini gerçek ilişkiye uyan ilgeçle, hafif fiili gerçek yüklemle kurar; genel fiilin gizlediği kesin ilişkiyi kaynak destekliyorsa yazar; aynı varlığı tek adla anar, teknik terimi, ödünç sözcüğü, hukuki formülü ve süreç adını korur.
+- Zamansal ankrajı korur: tamamlanmış bir çalışmayı, deneyi veya süreci `inceler / kullanır / uygular` gibi zamansız-genel kiplerle kılavuz diline çevirmez, yapılan işi tamamlanmış olay olarak anlatır; buna karşılık algoritmanın genel davranışını, bilimsel genel ilişkiyi, ürün belirtimini, yeniden kullanılabilir prosedürü ve belgenin güncel işlevini geniş zamanda bırakır; tek gözlemi geniş zamanla genel yasaya, genel ilişkiyi geçmişle tek seferlik olaya çevirmez; düzeltmeyi `yapıldı / edildi` zincirine ya da `-mıştır` yığınına dönüştürmez.
 - Metnin bir düşünceyi geliştirmesini gözetir: her cümlenin öncekinden büyümesini, bağlacın önermelerin desteklediği ilişkiyi taşımasını, göndergenin mesafesinde geri kazanılabilmesini, kapsam işaretinin ve olumsuzluğun bağlandığı ögede kalmasını, kaydın ve noktalamanın Türkçe gruplamaya uymasını, sınırlılığın sınırladığı iddianın yanında durmasını sağlar; olgu yığınını işlevlere göre gruplar, kronolojiyi nedenselliğe çevirmez, eksik öncül uydurmaz.
 
 ## Temel ilkeler
@@ -77,7 +78,7 @@ Depoyu kullandığınız agent ortamının skill dizinine klonlayın:
 git clone https://github.com/ayberkdt/metinoskop.git /path/to/skills/metinoskop
 ```
 
-Çalışma zamanında gereken ana dosya `SKILL.md` dosyasıdır. `references/` klasörü ayrıntılı Türkçe örüntü, retorik yapılar (`retorik-yapilar.md`), yapısal bütünlük, Türkçe ritim ve kaynak dil gölgesi (`turkce-ritim-ve-ceviri-golgesi.md`), epistemik mimari (`epistemik-mimari.md`), eşdizim ve istem (`esdizim-ve-istem.md`), metinsel tutarlılık (`metinsel-tutarlilik.md`), akıcılık, rapor yazımı ve kavramsal giriş rehberlerini; `agents/openai.yaml` ise destekleyen istemciler için arayüz metadata'sını içerir.
+Çalışma zamanında gereken ana dosya `SKILL.md` dosyasıdır. `references/` klasörü ayrıntılı Türkçe örüntü, retorik yapılar (`retorik-yapilar.md`), yapısal bütünlük, Türkçe ritim ve kaynak dil gölgesi (`turkce-ritim-ve-ceviri-golgesi.md`), epistemik mimari (`epistemik-mimari.md`), eşdizim ve istem (`esdizim-ve-istem.md`), metinsel tutarlılık (`metinsel-tutarlilik.md`), zamansal ankraj ve rapor kipi (`zamansal-ankraj-ve-rapor-kipi.md`), akıcılık, rapor yazımı ve kavramsal giriş rehberlerini; `agents/openai.yaml` ise destekleyen istemciler için arayüz metadata'sını içerir.
 
 ## Kullanım
 
@@ -247,6 +248,7 @@ Metinoskop bir dil ve paragraf akışı editörüdür.
 - Kullanıcı istemedikçe olay sırasını, sahne yapısını, bakış açısını veya anlatı sonucunu değiştirmez.
 - Hukuki, akademik veya teknik metindeki gerekli terminolojiyi otomatik olarak gündelikleştirmez.
 - Raporlarda bulguyu nedensel yoruma, öneriyi karara veya planı sonuca dönüştürmez.
+- Kipi üslup için değiştirmez: geniş zamanı otomatik olarak geçmişe, geçmişi otomatik olarak geniş zamana çevirmez; kip değişimini önermenin zamansal statüsüne bağlar ve önermenin kapsamını kip uğruna genişletmez ya da daraltmaz.
 - Her düzgün cümleyi değiştirmeye çalışmaz; metin zaten doğal ve uygunsa olduğu gibi bırakabilir.
 - Kısaltmayı amaç edinmez; bilgi taşıyan cümleyi kısalık için kesmez.
 - Yeni başlayanlara yönelik metinden öğretici açıklamayı, benzetmeyi veya örneği silmez.
@@ -267,7 +269,7 @@ Metinoskop düzenleme sırasında altı aşamalı bir denetim uygular:
 2. Ritim, dolgu, reklam cilası, belirsiz atıf, çeviri kokusu ve akış sorunlarını; önem şişirmesi, savunmacı açıklama, işlev tekrarı, yol haritası ve tek biçimli mimariyi; yinelenen açık özne, `bu sonuç` ritmi, çekimli cümle zinciri, hafif yüklem ve çerçeve yığını gibi kaynak dil gölgesini kümeler hâlinde inceler.
 3. Kullanıcının istediği müdahale düzeyinde düzenler.
 4. Son metindeki sayı, tarih, iddia, nedensellik, karşılaştırma, koşul, istisna, nicelik sınırı, terim ve gösterimleri kaynakla karşılaştırır. Raporlarda bulgu–yorum–öneri sınırlarını, dayanakları ve çapraz göndermeleri de karşılaştırır.
-5. Dokuz geçişli denetim yapar: kalıp, cümle ("bunu silersem hangi bilgi kaybolur?"), paragraf (farklı önerme sayısı, mini sonuç, zorlama denge, erken bölünme), belge (tekrarlanan giriş ve sonuç, tek biçimli mimari, aynı gerekçenin tekrarı), yapı (başlık sayısı ve derinliği, tek paragraflık bölümler, kopmuş yakınlık, çapraz gönderme sıklığı, yapay gerilim, gereksiz liste, uzun ifade), çeviri gölgesi (özne, yan cümle, niteleme, çerçeve, iyelik ve varlık, bilgi yapısı, yerli kaynak, aşırı düzeltme), epistemik mimari (kaynak ve statü, aktörlük, atıf, çekince–pekiştirici, kip, bölümler arası kesinlik), sözcük uyumu (eşdizim, istem, ilgeç, hafif fiil, terim kimliği) ve metinsel tutarlılık (konu ilerleyişi, bağlaç geçerliliği, gönderge mesafesi, kapsam ve olumsuzluk, kayıt, noktalama, iddia–dayanak yakınlığı).
+5. Dokuz geçişli denetim yapar: kalıp, cümle ("bunu silersem hangi bilgi kaybolur?"), paragraf (farklı önerme sayısı, mini sonuç, zorlama denge, erken bölünme), belge (tekrarlanan giriş ve sonuç, tek biçimli mimari, aynı gerekçenin tekrarı), yapı (başlık sayısı ve derinliği, tek paragraflık bölümler, kopmuş yakınlık, çapraz gönderme sıklığı, yapay gerilim, gereksiz liste, uzun ifade), çeviri gölgesi (özne, yan cümle, niteleme, çerçeve, iyelik ve varlık, bilgi yapısı, yerli kaynak, aşırı düzeltme), epistemik mimari (kaynak ve statü, aktörlük, atıf, çekince–pekiştirici, kip, bölümler arası kesinlik), zamansal ankraj (pasajın baskın ankrajı, zamansal sürtünme, prosedür ile uygulama ayrımı, geçmişe zorlama), sözcük uyumu (eşdizim, istem, ilgeç, hafif fiil, terim kimliği) ve metinsel tutarlılık (konu ilerleyişi, bağlaç geçerliliği, gönderge mesafesi, kapsam ve olumsuzluk, kayıt, noktalama, iddia–dayanak yakınlığı).
 6. Ses, ton, gönderge açıklığı ve paragraf akışını son kez gözden geçirir; gerekli sınırlılık veya öğretici açıklamanın dolgu sanılıp silinmediğini, metnin Türkçe düşünülmüş gibi okunup okunmadığını, her iddianın kaynaktaki kişiye ve kesinlik düzeyine bağlı kalıp kalmadığını ve her cümlenin öncekinden yararlı bir şey alıp sonrakine bırakıp bırakmadığını kontrol eder.
 
 Kullanıcı açıkça kavramsal giriş istediğinde, düzenleme akışından önce kaynakta bulunan bağlam, problem, soru ve çözüm ilişkisi ayrıca çıkarılır.
@@ -291,6 +293,7 @@ metinoskop/
 │   ├── epistemik-mimari.md
 │   ├── esdizim-ve-istem.md
 │   ├── metinsel-tutarlilik.md
+│   ├── zamansal-ankraj-ve-rapor-kipi.md
 │   └── yapisal-butunluk.md
 ├── evals/
 │   ├── akademik.md
@@ -362,6 +365,7 @@ metinoskop/
 │   ├── (on sekiz epistemik mimari vakası: edilgen-korunur ... iyi-akademik-paragraf)
 │   ├── (on beş eşdizim ve istem vakası: tuhaf-esdizim ... odunc-terim-korunur)
 │   ├── (yirmi üç metinsel tutarlılık vakası: olgu-yigini ... tutarli-metin-korunur)
+│   ├── (on yedi zamansal ankraj vakası: raporda-genis-zaman-yigini ... gecmis-genel-yasa-bozmasin)
 │   └── outputs/
 ├── scripts/
 │   ├── behavioral-regression.py

@@ -1,0 +1,1 @@
+12 Ağustos'ta toplanan 1.200 kayıt incelendi. Üç veri kümesi kullanıldı; her kümeye aynı filtre uygulandı ve sonuçlar karşılaştırıldı. Ortalama hata %4 olarak hesaplandı. Yalnızca düşük yoğunluklu bölgelerde hata %6'ya çıktı.

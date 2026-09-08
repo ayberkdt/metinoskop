@@ -487,8 +487,31 @@ TENSE_CLASSES = (
     ("miştir", re.compile(r"m[ıiuü]ş(?:t[ıi]r|lerdir|lardır)?$")),
     ("yor", re.compile(r"yor(?:lar|du|um|uz|sunuz)?$")),
     ("dı", re.compile(r"[dt][ıiuü](?:m|k|n|lar|ler|nız|niz)?$")),
-    ("r", re.compile(r"(?<![dt])[ıiuüae]r$")),
+    # "-dır/-dir/-tır/-tir" is the copula, so an ambiguous high vowel after d/t is
+    # excluded; "-ar/-er" cannot be a copula ("artar", "kaydeder" stay aorist).
+    ("r", re.compile(r"(?:(?<![dt])[ıiuü]r|[ae]r)$")),
 )
+MONTHS = ("ocak", "şubat", "mart", "nisan", "mayıs", "haziran", "temmuz", "ağustos",
+          "eylül", "ekim", "kasım", "aralık")
+# "aralık" (interval) and "ekim" (sowing) are common nouns, so their bare inflected
+# forms are left out; a day number or an apostrophe still marks them as dates.
+UNAMBIGUOUS_MONTHS = tuple(m for m in MONTHS if m not in ("aralık", "ekim"))
+DATE_ANCHOR_RE = re.compile(
+    r"\b\d{1,2}\s+(?:" + "|".join(MONTHS) + r")\b"
+    r"|\b(?:" + "|".join(MONTHS) + r")['’][dt][ae]\w*"
+    r"|\b(?:" + "|".join(UNAMBIGUOUS_MONTHS) + r")(?:t[ae]|d[ae])\w*"
+    r"|\b(?:19|20)\d{2}['’][dt][ae]\w*"
+    r"|\b(?:19|20)\d{2}\s+yıl\w*"
+    r"|\bgeçen\s+(?:ay|yıl|hafta|çeyrek|dönem)\w*"
+    r"|\bönceki\s+(?:ay|yıl|hafta|çeyrek|dönem)\w*"
+    r"|\bdün\b"
+)
+COMPLETED_WORK_RE = re.compile(
+    r"\bbu (?:çalışma|araştırma|analiz|rapor|inceleme|deneme|deney|test|kampanya)\w*"
+    r"|\b(?:deneyde|testte|analizde|ölçümlerde|kampanyada|pilotta|denetimde|saha çalışmasında)\b"
+)
+AORIST_MIN = 3
+AORIST_RATIO_MIN = 0.6
 FRAME_STACK_MIN = 2
 OLAN_CHAIN_MIN = 2
 BIR_SENTENCE_MIN = 3
@@ -886,6 +909,10 @@ def discourse_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict[
         if parenthetical_load(s):
             findings.append({"check": "parantez_yuku",
                              "text": f"P{s.paragraph}C{s.index}: ara söz yükü (parantez, uzun çizgi veya noktalı virgül yığını): ara söz ana cümleye mi ait, ayrı cümle mi olmalı?"})
+        date_marks = DATE_ANCHOR_RE.findall(s.lowered)
+        if date_marks and tense_class(s) == "r":
+            findings.append({"check": "zamansal_surtunme",
+                             "text": f"P{s.paragraph}C{s.index}: açık tarih belirteci ({date_marks[0].strip()}) ile geniş zamanlı yüklem aynı cümlede: olay sınırlı ve tekil mi, genel davranış mı? «{excerpt(s)}»"})
 
     for paragraph in prose:
         for index, s in enumerate(paragraph.sentences):
@@ -900,6 +927,14 @@ def discourse_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict[
         if distinct >= 3 and switches >= 3:
             findings.append({"check": "kip_nobetlesmesi",
                              "text": f"Paragraf {paragraph.number}: {distinct} farklı kip, {switches} geçiş: her kip değişimi gerçek bir bakış açısı değişimine mi karşılık geliyor?"})
+        classes = [c for c in (tense_class(s) for s in paragraph.sentences) if c]
+        aorist = classes.count("r")
+        if len(classes) >= 4 and aorist >= AORIST_MIN and aorist / len(classes) >= AORIST_RATIO_MIN:
+            joined_p = " ".join(s.lowered for s in paragraph.sentences)
+            anchors = DATE_ANCHOR_RE.findall(joined_p) + COMPLETED_WORK_RE.findall(joined_p)
+            if anchors:
+                findings.append({"check": "genis_zaman_doygunlugu",
+                                 "text": f"Paragraf {paragraph.number}: {len(classes)} yüklemin {aorist} tanesi geniş zaman, ancak paragraf tamamlanmış iş çıpası taşıyor ({anchors[0].strip()}): anlatılan yapılmış bir iş mi, genel davranış mı?"})
         joined = " ".join(s.lowered for s in paragraph.sentences)
         for label, patterns in GENERIC_NOUN_COMPILED:
             present = [p.pattern for p in patterns if p.search(joined)]
@@ -1189,6 +1224,7 @@ DISCOURSE_LABELS = {
     "aktarim_sonrasi_sonuc": "aktarım sonrası sonuç", "ilgec_yogunlugu": "ilgeç yoğunluğu",
     "esanlam_kaymasi": "eş anlamlı kayması", "konu_sifirlama": "konu sıfırlama",
     "parantez_yuku": "parantez yükü", "kayit_kaymasi": "kayıt kayması",
+    "zamansal_surtunme": "zamansal sürtünme", "genis_zaman_doygunlugu": "geniş zaman doygunluğu",
 }
 
 
@@ -1402,6 +1438,9 @@ Bu çalışmada önerilen yöntem üç sensörü birleştirir. Bu yaklaşım kal
 Bu çalışmada model — üç katmanlı olan — ilk koşulda (ki en zor olanıdır) kararlı davranır. İşin ilginç yanı sonuçların beklenen eğilimden ayrılmasıdır. Bu kapsamda söz konusu parametrenin kritik önem arz ettiği görülmektedir.
 """
 
+REPORT_TENSE_TEXT = """Bu çalışmada 12 Ağustos'ta toplanan kayıtlar incelenir. Çalışma üç veri kümesini kullanır. Her kümeye aynı filtre uygulanır. Ardından model çıktıları karşılaştırılır. Son olarak hata dağılımları değerlendirilir.
+"""
+
 FILLER_SOURCE = "Model 120. derecede en düşük hatayı verdi. Bu sonuç derece seçiminin kritik önemini ortaya koymaktadır."
 FILLER_TRANSLATED = "Model 120. derecede en düşük hatayı verdi. Sonuç olarak derece seçimi önemli bir etkendir; bu bulgu derece seçiminin önemini bir kez daha ortaya koymaktadır."
 CONTEXT_ONLY = "Yani model 120. derecede en düşük hatayı verdi; öte yandan derece seçimi kritik önemini korumaktadır."
@@ -1533,11 +1572,24 @@ def self_test() -> None:
         raise SystemExit("Öz sınama: koşaç ya da çoğul ad kip sınıfı sayıldı")
     if tense_class(Sentence(1, 1, "Model kararsız davranır.")) != "r":
         raise SystemExit("Öz sınama: geniş zaman tanınmadı")
+    if tense_class(Sentence(1, 1, "Düşük irtifada hata artar.")) != "r":
+        raise SystemExit("Öz sınama: -ar geniş zamanı koşaç sanıldı")
+    if tense_class(Sentence(1, 1, "Grup büyüklüğü 410 kayıttır.")) is not None:
+        raise SystemExit("Öz sınama: -tır koşacı geniş zaman sayıldı")
+    report_tense = analyse(REPORT_TENSE_TEXT)
+    checks = {f["check"] for f in report_tense["soylem"]}  # type: ignore[union-attr]
+    for check in ("zamansal_surtunme", "genis_zaman_doygunlugu"):
+        if check not in checks:
+            raise SystemExit(f"Öz sınama: tamamlanmış iş geniş zamanla anlatılan metinde beklenen bulgu yok: {check}")
+    if DATE_ANCHOR_RE.search("güven aralığında") or DATE_ANCHOR_RE.search("tohum ekiminde"):
+        raise SystemExit("Öz sınama: ortak ad ile ay adı karıştırıldı")
+    if not DATE_ANCHOR_RE.search("14 mayıs'taki testte"):
+        raise SystemExit("Öz sınama: açık geçmiş tarih tanınmadı")
     repaired_ds = compare(discourse, analyse(WELL_STRUCTURED_TEXT))
     if repaired_ds["introduced_discourse"]:
         raise SystemExit("Öz sınama: iyi yapılı çıktı yeni söylem bulgusu üretti")
 
-    print("Stil denetimi öz sınaması geçti (yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri gölgesi, yerli metin, söylem sinyalleri).")
+    print("Stil denetimi öz sınaması geçti (yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri gölgesi, yerli metin, söylem sinyalleri, zamansal ankraj).")
 
 
 # --------------------------------------------------------------------------- #

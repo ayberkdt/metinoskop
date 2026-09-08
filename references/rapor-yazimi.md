@@ -78,6 +78,7 @@ Son cümledeki ihtiyat kaynakta bulunduğu için korunur. Kaynak nedensellik idd
 - Aktör bilinmiyor veya bilinçli olarak geri plandaysa edilgenliği koru; kişi uydurma.
 - `önem arz etmektedir`, `katkı sağlamaktadır`, `değer yaratmaktadır` gibi şişkin yüklemleri somut eylemle değiştir.
 - Teknik veya hukuki kesinliği gündelikleştirme. `Yükümlüdür`, `gözlenmiştir`, `öngörülmektedir` gibi sözcükler kanıt ya da yükümlülük düzeyi taşıyorsa kalabilir.
+- Tamamlanmış işi zamansız-genel kiple anlatma. `Çalışma kayıtları inceler, üç veri kümesini kullanır` dizisi kılavuz gibi okunur; yapılan iş `kayıtlar incelendi, üç veri kümesi kullanıldı` ekseninde anlatılır. Genel yöntem tanımı, bilimsel ilişki, ürün belirtimi ve prosedür geniş zamanda kalır. Bkz. [Zamansal ankraj ve rapor kipi](zamansal-ankraj-ve-rapor-kipi.md).
 - Raporu daha canlı göstermek için retorik soru, benzetme, kişisel anı, yapay sıcaklık veya dramatik kapanış ekleme.
 - Bütün cümleleri kısaltma. Koşul, kapsam ve istisnayı taşıyan uzun bir cümle bölündüğünde anlam bağı zayıflıyorsa cümleyi koru.
 
@@ -129,13 +130,14 @@ Raporu teslim etmeden önce şu soruları yanıtla:
 
 1. Her sayı, tarih, oran, özel ad ve teknik terim kaynakla aynı mı?
 2. Her iddianın olgu, yorum, beklenti, öneri veya karar statüsü korunmuş mu?
-3. Kaynakta olmayan neden, önem, risk, fayda veya sonuç eklenmiş mi?
-4. Koşul, istisna, kapsam ve sınırlılıklar görünür mü?
-5. Atıflar, dipnotlar, tablolar ve çapraz göndermeler doğru iddiaya bağlı mı?
-6. Metin profesyonel kalırken gereksiz resmiyet ve dolgu azalmış mı?
-7. Paragraflar daha kolay izleniyor mu, yoksa yalnızca farklı mı görünüyor?
-8. Kullanıcının istemediği bir özetleme, yeniden yapılandırma veya ton değişikliği yapılmış mı?
-9. Dayanaksız önem cümlesi, adlandırılmamış sınırlılık, otomatik gelecek çalışma veya bölüm duyurusu kalmış mı; adlandırılmış sınırlılık ve dayanaklı gerekçe korunmuş mu?
-10. Başlıklar içerikten sık mı, sonuçla sınırlılığı ayrı başlıklara mı dağılmış, paragraflar erken mi bölünmüş; şablonun veya numaralı göndermelerin gerektirdiği bölümler korunmuş mu?
+3. Tamamlanmış iş tamamlanmış gibi mi okunuyor; genel yöntem, ilişki ve prosedür genel kalmış mı?
+4. Kaynakta olmayan neden, önem, risk, fayda veya sonuç eklenmiş mi?
+5. Koşul, istisna, kapsam ve sınırlılıklar görünür mü?
+6. Atıflar, dipnotlar, tablolar ve çapraz göndermeler doğru iddiaya bağlı mı?
+7. Metin profesyonel kalırken gereksiz resmiyet ve dolgu azalmış mı?
+8. Paragraflar daha kolay izleniyor mu, yoksa yalnızca farklı mı görünüyor?
+9. Kullanıcının istemediği bir özetleme, yeniden yapılandırma veya ton değişikliği yapılmış mı?
+10. Dayanaksız önem cümlesi, adlandırılmamış sınırlılık, otomatik gelecek çalışma veya bölüm duyurusu kalmış mı; adlandırılmış sınırlılık ve dayanaklı gerekçe korunmuş mu?
+11. Başlıklar içerikten sık mı, sonuçla sınırlılığı ayrı başlıklara mı dağılmış, paragraflar erken mi bölünmüş; şablonun veya numaralı göndermelerin gerektirdiği bölümler korunmuş mu?
 
 Son sorulardan biri kaynak sadakati açısından kuşku doğuruyorsa daha iddialı sürümü değil, kaynağa en yakın doğal sürümü seç.

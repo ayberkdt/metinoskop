@@ -1,0 +1,1 @@
+Çalışmada üç farklı model karşılaştırıldı. Önce 2025'te toplanan kayıtlar ele alındı. Ardından her model 800 örneklik doğrulama kümesinde sınandı; son olarak hata dağılımları değerlendirildi.

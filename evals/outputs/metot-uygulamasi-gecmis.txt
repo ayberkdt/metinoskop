@@ -1,0 +1,1 @@
+Deneyde örnekler 4 °C'de saklandı. Her örnek iki kez tartıldı. Model 40 dönem boyunca eğitildi ve doğrulama aynı kümede yapıldı. Eğitim 18 dakika sürdü.

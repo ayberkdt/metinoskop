@@ -14,7 +14,8 @@ For every ``evals/<case>.md`` that has a recorded output in
    and discourse metrics such as ``- kiplik yığını: 0``, ``- pekiştirici: 0``,
    ``- aktarım sonrası sonuç: 0``, ``- kip nöbetleşmesi: 0``, ``- hafif fiil: 0``,
    ``- ilgeç yoğunluğu: 0``, ``- eş anlamlı kayması: 0``, ``- konu sıfırlama: 0``,
-   ``- parantez yükü: 0`` or ``- kayıt kayması: 0``.
+   ``- parantez yükü: 0``, ``- kayıt kayması: 0``,
+   ``- zamansal sürtünme: 0`` or ``- geniş zaman doygunluğu: 0``.
 
 Recorded outputs are reference edits, not the only acceptable ones; they keep
 the skill's documented behaviour from regressing silently. Human or model
@@ -78,6 +79,8 @@ EXPECTATION_KEYS = {
     "konu sıfırlama": ("soylem_olculeri", "konu_sifirlama"),
     "parantez yükü": ("soylem_olculeri", "parantez_yuku"),
     "kayıt kayması": ("soylem_olculeri", "kayit_kaymasi"),
+    "zamansal sürtünme": ("soylem_olculeri", "zamansal_surtunme"),
+    "geniş zaman doygunluğu": ("soylem_olculeri", "genis_zaman_doygunlugu"),
 }
 
 

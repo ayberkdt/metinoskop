@@ -1,0 +1,1 @@
+Deneyde model en düşük hatayı 120. derecede verdi. Düşük irtifada hata arttı ve ikinci politika konum hatasını artırdı. Aynı sıralama üç koşuda da görüldü.

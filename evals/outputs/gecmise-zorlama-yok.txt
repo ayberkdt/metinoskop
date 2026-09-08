@@ -1,0 +1,1 @@
+Deney 100 örnek üzerinde yürütüldü. Model düşük irtifada kararsız davranır; bu davranış Şekil 3'te görülüyor. İkinci kampanya gelecek ay yürütülecektir. Ölçüm belirsizliği 0,2 mm olarak bildirildi.
