@@ -1,0 +1,1 @@
+Deneylerde doğrulama kümesi eğitim kümesinden ayrı tutulmuş, model bu küme üzerinde değerlendirilmiştir. Öğrenme oranı 0,001 olarak seçilmiştir; ön denemelerde 0,01 değeri kaybın ıraksamasına yol açmış, 0,0001 değeri ise 200 dönem sonunda yakınsamamıştır. Yığın boyutu 64'tür.

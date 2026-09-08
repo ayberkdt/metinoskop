@@ -364,12 +364,14 @@ metinoskop/
 │   ├── (yirmi üç metinsel tutarlılık vakası: olgu-yigini ... tutarli-metin-korunur)
 │   └── outputs/
 ├── scripts/
+│   ├── behavioral-regression.py
 │   ├── eval-runner.py
 │   ├── eval-suite.py
 │   ├── style-lint.py
 │   └── validate-package.py
 ├── .github/
 │   └── workflows/
+│       ├── behavioral.yml
 │       └── validate.yml
 ├── AGENTS.md
 ├── CHANGELOG.md
@@ -409,7 +411,7 @@ Bir çıktıdaki şüpheli retorik örüntüleri işlev ailesine göre işaretle
 python scripts/style-lint.py outputs/iddia-tekrar-dongusu.txt --source evals/iddia-tekrar-dongusu.md
 ```
 
-`scripts/style-lint.py` üretilmiş önem, savunmacı açıklama, yol haritası, boş bölüm sarmalayıcısı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, bağlam yeniden başlatma, uzun çerçeve ifadesi, kalıp giriş ve sonuç, üretilmiş karşıtlık, zorlama denge, soyut yüklem, boş özne ve sohbet botu kalıntısı ailelerini işaretler; parçalanma yoğunluğunu (başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, çapraz gönderme) özetler ve paragraf uzunluğu tek biçimliliği, önem cümlesiyle kapanış, başlık tekrarı, bağlaçla açılış ve işlev tekrarı gibi yapı bulgularını raporlar. `--source` ile yapı ölçülerindeki değişimi de gösterir. Tek bir sözcüğe bakarak metni reddetmez; `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıpları kalıp düzeyinde ayrıca listeler (aynı aileden farklı bir kalıp da yeni sayılır). `--fail-on-introduced-hard` yalnızca sert bastırma ailesinden yeni kalıp eklendiğinde başarısız çıkış kodu verir; bağlamsal aileler (`yani`, `öte yandan`, `işaret etmek`) uyarı olarak kalır. `--fail-on-introduced-any` katı moddur. Rapor ayrıca çeviri gölgesi ölçülerini verir: `sahip olmak` ve varlık kalıbı işaretleri, tek cümlede çerçeve yığını ve `olan` zinciri, aynı özneyle başlayan ardışık cümleler, `ve` zinciri, fiilimsi yığını, iyelik zinciri, söylem belirteciyle başlayan cümle oranı ve 100 sözcük başına `bir`. Bunlar yalnızca inceleme bulgusudur; tek `bir`, `olan`, `ve` ya da `açısından` işaretlenmez ve `--source` ile çıktıda yeni beliren gölge bulguları uyarı olarak listelenir. Söylem ölçüleri de aynı statüdedir: çekince, pekiştirici, aktarım ve hafif fiil aileleri; tek cümlede kiplik yığını ve pekiştirici çatışması, atıflı cümleden sonra gelen "bu nedenle", bir paragrafta gerekçesiz kip nöbetleşmesi, edilgen ile adlaştırma yığını, ilgeç yoğunluğu, aynı nesneye giden genel adlar, "bu çalışmada" ile açılan bölümler, ara söz yükü ve sohbet gerilimi ile bürokratik kayıt çatışması. Hiçbir regex epistemik doğruluğa karar vermez. Öz sınama için:
+`scripts/style-lint.py` üretilmiş önem, savunmacı açıklama, yol haritası, boş bölüm sarmalayıcısı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, bağlam yeniden başlatma, uzun çerçeve ifadesi, kalıp giriş ve sonuç, üretilmiş karşıtlık, zorlama denge, soyut yüklem, boş özne ve sohbet botu kalıntısı ailelerini işaretler; parçalanma yoğunluğunu (başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, çapraz gönderme) özetler ve paragraf uzunluğu tek biçimliliği, önem cümlesiyle kapanış, başlık tekrarı, bağlaçla açılış ve işlev tekrarı gibi yapı bulgularını raporlar. `--source` ile yapı ölçülerindeki değişimi de gösterir. Tek bir sözcüğe bakarak metni reddetmez; `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıpları kalıp düzeyinde ayrıca listeler (aynı aileden farklı bir kalıp da yeni sayılır). `--fail-on-introduced-hard` yalnızca sert bastırma ailesinden yeni kalıp eklendiğinde başarısız çıkış kodu verir; bağlamsal aileler (`yani`, `öte yandan`, `işaret etmek`) uyarı olarak kalır. `--fail-on-introduced-any` katı moddur. Rapor ayrıca çeviri gölgesi ölçülerini verir: `sahip olmak` ve varlık kalıbı işaretleri, tek cümlede çerçeve yığını ve `olan` zinciri, aynı sözcüklerle başlayan ardışık cümleler (özne tespiti değil, başlangıç tekrarı), `ve` zinciri, fiilimsi yığını, iyelik zinciri, söylem belirteciyle başlayan cümle oranı ve 100 sözcük başına `bir`. Bunlar yalnızca inceleme bulgusudur; tek `bir`, `olan`, `ve` ya da `açısından` işaretlenmez ve `--source` ile çıktıda yeni beliren gölge bulguları uyarı olarak listelenir. Söylem ölçüleri de aynı statüdedir: çekince, pekiştirici, aktarım ve hafif fiil aileleri; tek cümlede kiplik yığını ve pekiştirici çatışması, atıflı cümleden sonra gelen "bu nedenle", bir paragrafta gerekçesiz kip nöbetleşmesi, edilgen ile adlaştırma yığını, ilgeç yoğunluğu, aynı nesneye giden genel adlar, "bu çalışmada" ile açılan bölümler, ara söz yükü ve sohbet gerilimi ile bürokratik kayıt çatışması. Hiçbir regex epistemik doğruluğa karar vermez. Öz sınama için:
 
 ```bash
 python scripts/style-lint.py --self-test
@@ -420,10 +422,21 @@ python scripts/style-lint.py --self-test
 `evals/outputs/` altındaki referans düzenlemeler üzerinde değişmez, sert kalıp ve yapısal beklenti denetimini çalıştırmak için:
 
 ```bash
-python scripts/eval-suite.py
+python scripts/eval-suite.py --require-all
 ```
 
-`scripts/eval-suite.py` CI'da çalışır; her vaka için model hakem istemi üretmek üzere `--export-judge-prompts DIR` seçeneğini kullanabilirsiniz. Taze model çıktısı üretip otomatik puanlayan tam davranışsal regresyon henüz depoda yoktur.
+`scripts/eval-suite.py` CI'da `--require-all` ile çalışır: her vakanın kayıtlı çıktısı vardır ve çıktısız vaka eklenemez. Kayıtlı çıktılar epistemik denetimden geçmiş sözleşmelerdir; her vaka için model hakem istemi üretmek üzere `--export-judge-prompts DIR` seçeneğini kullanabilirsiniz.
+
+### Gerçek model regresyonu
+
+Kayıtlı çıktı denetimi fixture'ları sınar; skill'i sınamak için `scripts/behavioral-regression.py` `SKILL.md` ve referansları gerçek bir modele verir, `evals/critical-cases.txt` içindeki yirmi kritik vakayı taze üretir ve her çıktıyı deterministik denetim ile model hakeminden geçirir:
+
+```bash
+python scripts/behavioral-regression.py --dry-run
+python scripts/behavioral-regression.py
+```
+
+`.github/workflows/behavioral.yml` bunu haftalık ve elle tetiklemeyle çalıştırır; `ANTHROPIC_API_KEY` sırrı gerekir ve her çalıştırma gerçek para harcar. Raporlar `build/behavioral/` altına yazılır.
 
 Agent Skills keşfini denetlemek için:
 

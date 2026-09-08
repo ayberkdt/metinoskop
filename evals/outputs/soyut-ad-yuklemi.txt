@@ -1,1 +1,1 @@
-Ekip, önerilen yöntemi 240 örnek üzerinde analiz ederek değerlendirmiştir. Yöntem hatayı %7'den %4'e düşürmüştür. Bellek kullanımını da etkilemektedir; ancak bu değişim ölçülmemiştir. Ekip, yöntemin yaygınlaştırılması konusunda karar aşamasındadır.
+Ekip, önerilen yöntemi 240 örnek üzerinde analiz ederek değerlendirmiştir. Yöntem uygulandığında hata %7'den %4'e inmiştir. Yöntemin bellek kullanımını ne kadar değiştirdiği ölçülmemiştir. Ekip, yöntemin yaygınlaştırılması konusunda karar aşamasındadır.

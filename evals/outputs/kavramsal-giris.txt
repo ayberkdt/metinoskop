@@ -1,0 +1,1 @@
+Sistem aynı veritabanı sorgularını tekrar tekrar çalıştırıyor ve bu tekrarlar ortalama yanıt süresini 800 milisaniyeye çıkarıyor. Aynı sorguyu her seferinde yeniden çalıştırmak gerekiyor mu? Önbellek, sık kullanılan sorguların sonuçlarını saklar; önbellek etkinleştirildiğinde bu sistemde ortalama yanıt süresi 240 milisaniyeye indi.

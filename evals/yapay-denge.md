@@ -21,3 +21,7 @@ Değerlendirme notu. Standart düzeyde düzenle; yalnızca ölçülü görünmek
 - Soğuk zincir sınırlılığını adlandırılmamış genel bir "sınırlılık" ifadesine indirgemek veya silmek
 - Kaynakta bulunmayan yeni sınırlılık, risk, maliyet veya izleme planı eklemek
 - Teslim süresindeki düşüşü hattın kesin ve kalıcı etkisi olarak sunmak
+
+## Serbest değişmezler
+
+- bazı — "bazı sınırlılıkları bulunmaktadır" adlandırılmamış denge dolgusudur; silinmesi kapsam kaybı değildir.

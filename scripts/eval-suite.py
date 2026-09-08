@@ -10,7 +10,7 @@ For every ``evals/<case>.md`` that has a recorded output in
 3. the structural expectations declared in the case's optional
    ``## Yapısal beklenti`` section (``- başlık: <= 1``, ``- liste ögesi: 0`` ...),
    including source-language-shadow metrics such as ``- sahip olmak: 0``,
-   ``- çerçeve yığını: 0``, ``- ardışık özne: 0`` or ``- bir / 100 sözcük: <= 6``,
+   ``- çerçeve yığını: 0``, ``- tekrarlanan cümle başlangıcı: 0`` or ``- bir / 100 sözcük: <= 6``,
    and discourse metrics such as ``- kiplik yığını: 0``, ``- pekiştirici: 0``,
    ``- aktarım sonrası sonuç: 0``, ``- kip nöbetleşmesi: 0``, ``- hafif fiil: 0``,
    ``- ilgeç yoğunluğu: 0``, ``- eş anlamlı kayması: 0``, ``- konu sıfırlama: 0``,
@@ -40,7 +40,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 EVALS = ROOT / "evals"
 OUTPUTS = EVALS / "outputs"
-SECTION_HEADINGS = ("Kaynak", "Talep", "Korunması gerekenler", "Kaçınılması gerekenler", "Yapısal beklenti")
+SECTION_HEADINGS = ("Kaynak", "Talep", "Korunması gerekenler", "Kaçınılması gerekenler", "Yapısal beklenti", "Serbest değişmezler")
 EXPECTATION_RE = re.compile(r"^-\s*(?P<key>[^:]+?)\s*:\s*(?P<op><=|>=|==|=|<|>)?\s*(?P<value>-?\d+(?:[.,]\d+)?)\s*$")
 EXPECTATION_KEYS = {
     "başlık": ("structure_summary", "headings"),
@@ -59,7 +59,7 @@ EXPECTATION_KEYS = {
     "varlık kalıbı": ("ceviri_golgesi", "varlik_kalibi"),
     "çerçeve yığını": ("ceviri_golgesi", "cerceve_yigini"),
     "olan zinciri": ("ceviri_golgesi", "olan_zinciri"),
-    "ardışık özne": ("ceviri_golgesi", "ardisik_ozne"),
+    "tekrarlanan cümle başlangıcı": ("ceviri_golgesi", "tekrarlanan_cumle_baslangici"),
     "ve zinciri": ("ceviri_golgesi", "ve_zinciri"),
     "fiilimsi yığını": ("ceviri_golgesi", "fiilimsi_yigini"),
     "iyelik zinciri": ("ceviri_golgesi", "iyelik_zinciri"),

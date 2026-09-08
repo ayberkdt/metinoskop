@@ -157,6 +157,9 @@ REQUIRED_FILES = (
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
     "scripts/validate-package.py",
+    "scripts/behavioral-regression.py",
+    ".github/workflows/behavioral.yml",
+    "evals/critical-cases.txt",
 )
 EVAL_FILES = (
     "evals/akademik.md",
@@ -344,8 +347,12 @@ if "Türkçeye çevrilmiş metin" not in frontmatter:
     fail("SKILL.md must limit translation scope to existing Turkish translations")
 if "# Metinoskop" not in skill:
     fail("SKILL.md must use the Metinoskop heading")
-if len(skill.splitlines()) > 500:
-    fail("SKILL.md exceeds the 500-line portability budget")
+if len(skill.splitlines()) > 400:
+    fail("SKILL.md exceeds the 400-line portability budget")
+if len(skill.encode("utf-8")) > 60_000:
+    fail("SKILL.md exceeds the 60 KB attention budget; move detail to references/")
+if len(frontmatter_match.group(1)) > 1_200:
+    fail("SKILL.md description must stay a trigger description, not a catalog (max 1200 bytes)")
 for heading in (
     "## Belirsizlik ve yorum seçimi",
     "## Terim ve gösterim tutarlılığı",
@@ -397,29 +404,22 @@ for heading in (
     "**E. Yapı:**",
     "**F. Çeviri gölgesi:**",
     "## Kaynak dil gölgesi ve Türkçe ritim",
-    "**Kaynak dil gölgesi.**",
-    "**İlişkiyi yeniden kur, sözcükleri değil.**",
-    "**Bilgi yapısı sözcük sırasını belirler.**",
-    "**Açık özne denetimi.**",
-    "**Yan cümle mimarisi denetimi.**",
-    "**Türkçe kaynak geri kazanımı.**",
-    "**Daha güçlü fiil uydurma.**",
-    "**Aşırı düzeltme koruması.**",
+    "**Gölgeyi sözcükte değil ilişkide ara.**",
+    "**Bilgi yapısı ve Türkçenin kendi kaynaklarıyla yeniden kur.**",
+    "**Kesinliği bozma, aşırı Türkçeleştirme.**",
     "## Epistemik mimari",
     "**Bilginin kaynağını düzenleyip yok etme.**",
     "**Aktörlüğü koru; edilgeni epistemik seçim olarak değerlendir.**",
     "**Çekince kanıttır, pekiştirici değildir.**",
-    "**Kip değişimi bakış açısı değişimidir.**",
-    "**Statü zincirini ilerletme.**",
+    "**Kip ve statü zincirini ilerletme.**",
     "## Sözcük uyumu: eşdizim ve istem",
     "**Eşdizim ve istem denetimi.**",
-    "**Hafif fiil ve genel fiil.**",
     "**Sözcük kimliğini koru.**",
     "## Metinsel tutarlılık ve konu ilerleyişi",
     "**Her cümle öncekinden büyür.**",
+    "Edilgenliği yalnızca aktör belli diye etkene çevirme",
     "**Bağlaç ilişki kuramaz.**",
     "**Gönderge, kapsam ve olumsuzluk yerinde kalır.**",
-    "**Kayıt, noktalama ve bellek yükü.**",
     "**G. Epistemik mimari:**",
     "**H. Sözcük uyumu:**",
     "**I. Metinsel tutarlılık:**",
@@ -490,7 +490,7 @@ if "## [0.1.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.1.0")
 
 evals_readme = texts[ROOT / "evals/README.md"]
-for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri gölgesi", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk"):
+for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri gölgesi", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk", "serbest değişmezler", "behavioral-regression.py", "gold"):
     if requirement not in evals_readme.casefold():
         fail(f"evals/README.md must mention review axis: {requirement}")
 
@@ -548,7 +548,7 @@ eval_markers = {
     "evals/uzun-paragraf-korunur.md": ("yüzde 9", "yüzde 14", "gösteriyor olabilir", "ayrıştırılamıyor", "yalnızca"),
     "evals/kisa-paragraf-korunur.md": ("`--purge`", "geri alınamaz", "02.00", "%90"),
     "evals/yapisal-iyi-metin.md": ("## Sorun", "## Yapılan işlem ve sonraki adım", "2.140", "120", "henüz", "en olası açıklama"),
-    "evals/tekrarlanan-acik-ozne.md": ("Model ilk koşulda", "%4", "1.500", "henüz", "ardışık özne: 0"),
+    "evals/tekrarlanan-acik-ozne.md": ("Model ilk koşulda", "%4", "1.500", "henüz", "tekrarlanan cümle başlangıcı: 0"),
     "evals/bu-sonuc-ritmi.md": ("Bu sonuç", "Bu bulgu", "Bu durum", "0,2", "0,5", "40 saniyeden 18 saniyeye", "iki katına"),
     "evals/asiri-bir.md": ("bir sensörden gelen bir veri", "tek bir sensörle", "birden fazla", "henüz", "bir / 100 sözcük"),
     "evals/sahip-olmak-kalkisi.md": ("hesaplama maliyetine sahiptir", "üç katmana sahiptir", "IP67", "64", "iki fabrikaya sahiptir", "yönetici yetkisine sahip olmalıdır", "sahip olmak: <= 2"),
@@ -564,7 +564,7 @@ eval_markers = {
     "evals/gerekli-acisindan.md": ("maliyet açısından ucuz, süre açısından pahalıdır", "4.000", "12.000", "altı hafta", "iki hafta", "henüz"),
     "evals/soyut-ad-yuklemi.md": ("bir değerlendirme yapmıştır", "bir analiz gerçekleştirilmiştir", "olumlu bir etkiye sahiptir", "belirleyici bir rol oynamaktadır", "karar alma sürecine", "240", "%7", "%4", "ölçülmemiştir"),
     "evals/teknik-adlastirma-korunur.md": ("Kalman kazancının hesaplanması", "yenilik kovaryansının tersinin alınmasını", "Tablo 3", "50", "0,12", "yalnızca"),
-    "evals/ozne-dusurme-akisi.md": ("Yeni sürüm", "3 Eylül", "4,2", "1,9", "henüz", "kademeli", "ardışık özne: 0"),
+    "evals/ozne-dusurme-akisi.md": ("Yeni sürüm", "3 Eylül", "4,2", "1,9", "henüz", "kademeli", "tekrarlanan cümle başlangıcı: 0"),
     "evals/belirsizlik-icin-acik-ozne.md": ("Filtre", "Gözlemci", "50 Hz", "hiçbir veri iletmez"),
     "evals/dogal-uzun-cumle-korunur.md": ("ıraksamadığını fakat", "60 °C", "40 saniyeden 210 saniyeye", "yalnızca", "henüz", "cümle: 2"),
     "evals/asiri-yuklu-cumle.md": ("Bu kapsamda, söz konusu", "değerlendirilmesinin gerçekleştirilmesi", "20 °C", "40 °C", "60 °C", "%3", "%11", "bakımından", "çerçeve yığını: 0"),
@@ -643,8 +643,23 @@ if "python3 scripts/eval-runner.py --self-test" not in workflow:
     fail("CI must run the deterministic eval runner self-test")
 if "python3 scripts/style-lint.py --self-test" not in workflow:
     fail("CI must run the style-lint self-test")
-if "python3 scripts/eval-suite.py" not in workflow:
-    fail("CI must run the recorded-output eval suite")
+if "python3 scripts/eval-suite.py --require-all" not in workflow:
+    fail("CI must run the recorded-output eval suite with --require-all")
+behavioral = ROOT / ".github/workflows/behavioral.yml"
+if not behavioral.is_file():
+    fail("Missing .github/workflows/behavioral.yml (real-model behavioral regression)")
+if "scripts/behavioral-regression.py" not in behavioral.read_text(encoding="utf-8"):
+    fail("behavioral.yml must run scripts/behavioral-regression.py")
+critical = (ROOT / "evals/critical-cases.txt").read_text(encoding="utf-8").split()
+for name in critical:
+    if not (ROOT / "evals" / f"{name}.md").is_file():
+        fail(f"evals/critical-cases.txt names a missing case: {name}")
+if not 15 <= len(critical) <= 30:
+    fail("evals/critical-cases.txt must list 15-30 cases")
+missing_outputs = [p.stem for p in (ROOT / "evals").glob("*.md")
+                   if p.name != "README.md" and not (ROOT / "evals/outputs" / f"{p.stem}.txt").is_file()]
+if missing_outputs:
+    fail(f"Every eval case needs a recorded output: {', '.join(missing_outputs)}")
 
 for output_path in sorted((ROOT / "evals/outputs").glob("*.txt")):
     if not (ROOT / "evals" / f"{output_path.stem}.md").is_file():
@@ -690,7 +705,7 @@ for relative_path in SHOULD_REMAIN_CASES:
     if case_source is None or case_source.group(1).strip() != recorded.strip():
         fail(f"{relative_path}: recorded output must equal the source for a should-remain case")
 
-for relative_path in ("scripts/eval-runner.py", "scripts/eval-suite.py", "scripts/style-lint.py", "scripts/validate-package.py"):
+for relative_path in ("scripts/eval-runner.py", "scripts/eval-suite.py", "scripts/style-lint.py", "scripts/validate-package.py", "scripts/behavioral-regression.py"):
     try:
         ast.parse((ROOT / relative_path).read_text(encoding="utf-8"))
     except SyntaxError as error:

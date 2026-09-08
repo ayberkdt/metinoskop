@@ -26,5 +26,5 @@ Makale yöntem paragrafı. Standart düzeyde düzenle; adın ardına eklenen nit
 ## Yapısal beklenti
 
 - olan zinciri: 0
-- ardışık özne: 0
+- tekrarlanan cümle başlangıcı: 0
 - sert işaret: 0

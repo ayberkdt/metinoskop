@@ -25,6 +25,6 @@ Sürüm notu. Standart düzeyde düzenle.
 
 ## Yapısal beklenti
 
-- ardışık özne: 0
+- tekrarlanan cümle başlangıcı: 0
 - fiilimsi yığını: 0
 - sert işaret: 0

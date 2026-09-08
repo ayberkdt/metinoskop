@@ -26,6 +26,6 @@ jobs:
       - name: Test style-lint
         run: python3 scripts/style-lint.py --self-test
       - name: Run recorded-output eval suite
-        run: python3 scripts/eval-suite.py
+        run: python3 scripts/eval-suite.py --require-all
       - name: Verify Agent Skills discovery
         run: npx --yes skills@1.5.20 add . --list

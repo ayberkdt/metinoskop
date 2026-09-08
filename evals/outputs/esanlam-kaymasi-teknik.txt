@@ -1,1 +1,1 @@
-Ölçümlerde 0,4 mm sapma görüldü; bu değer kabul sınırının altındadır. Sonuç kalibrasyonun yeterli olduğunu düşündürüyor ve üç cihazda tekrarlandı; rapora eklendi.
+Ölçümlerde 0,4 mm sapma görüldü; bu değer kabul sınırının altındadır. Sonuç kalibrasyonun yeterli olduğunu düşündürüyor ve üç cihazda tekrarlandı; çıktı raporuna eklendi.
