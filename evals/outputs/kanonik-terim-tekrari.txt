@@ -1,0 +1,1 @@
+Ayırıcı her istekte serbest listeyi tarar. Ayırıcı uygun blok bulamazsa yeni sayfa ister. Ayırıcı sayfayı 64 baytlık bloklara böler. Serbest liste her sayfa için ayrı tutulur.

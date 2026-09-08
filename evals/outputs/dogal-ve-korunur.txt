@@ -1,0 +1,1 @@
+Yeni yöntem konum hatasını %12 düşürdü ve hesaplama süresini %30 artırdı. İki ölçüm de aynı 200 yörüngelik test kümesinde yapıldı. Ekip, süre artışının gerçek zamanlı kullanımı engelleyip engellemediğini henüz değerlendirmedi.

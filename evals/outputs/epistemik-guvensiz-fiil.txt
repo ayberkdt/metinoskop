@@ -1,0 +1,1 @@
+Yöntem hatayı olumlu yönde etkilemektedir: yöntemi kullanan 30 koşuda ortalama hata %4, kullanmayan 30 koşuda %7 idi. Koşular rastgele atanmamıştır.

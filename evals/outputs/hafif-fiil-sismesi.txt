@@ -1,0 +1,1 @@
+Ekip veri kümesini değerlendirmiş, ardından 3 modeli analiz edip sonuçları karşılaştırmıştır. En iyi modelde hata %9'dan %6'ya düşürülmüştür. Yük testi 4 saat sürmüştür.

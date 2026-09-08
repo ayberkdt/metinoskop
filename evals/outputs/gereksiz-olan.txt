@@ -1,0 +1,1 @@
+Yüksek doğruluklu, düşük gecikmeli filtre gerçek zamanlı sistemlere uygun bir seçenektir: gecikmesi 5 ms, doğruluğu %98'dir. Daha yavaş olan ikinci filtrenin gecikmesi ise 20 ms'dir.

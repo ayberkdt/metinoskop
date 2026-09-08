@@ -1,0 +1,11 @@
+## Sonuçlar
+
+Hata 40 °C'de %11'e çıktı.
+
+## Tartışma
+
+40 °C'deki %11 hata, yöntemin yüksek sıcaklıkta ek düzeltme gerektirdiğini düşündürüyor.
+
+## Sonuç
+
+Yöntem 40 °C'nin altında önerilmektedir; üstünde ek düzeltme gerekir.

@@ -1,0 +1,1 @@
+Model sıcaklık değişimlerine duyarlıdır ve gürültüye odaklanan bir filtrelemeyle birleştirilmiştir. Ekip sonuçları tartışmış ve kalibrasyon konusunda karar almıştır.

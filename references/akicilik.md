@@ -43,6 +43,8 @@ Bir "önce/sonra" örneğinde ikinci sürüm, anlatılan ilkeyi görünür biçi
 
 İkinci sürüm genel çerçeveden kuzey bölgesine geçer, ardından aynı bölgeye ait iki bilgiyi yan yana getirir. Yalnızca kaynakta bulunan bölge ilişkisini kullanır; yeni bir neden-sonuç bağı kurmaz.
 
+Bilinenden yeniye akışın Türkçeye özgü yüzü, cümlenin her seferinde açık özneyle veya `bu sonuç`, `bu durum` paketiyle yeniden başlamamasıdır; özne düşürme, eksilti ve konu–odak sırası için [Türkçe ritim ve kaynak dil gölgesi](turkce-ritim-ve-ceviri-golgesi.md#bilinenden-yeniye-akış) dosyasına bak.
+
 ### Nedeni sonuçtan ayır
 
 **Önce**
@@ -100,7 +102,7 @@ Bağdaşıklığı yalnızca `ancak`, `ayrıca`, `öte yandan` gibi sözcüklere
 - `üstelik`: ikinci bilgi ilkini güçlendiriyorsa ve ton uygunsa
 - bağlaçsız geçiş: ortak özne veya kavram ilişkiyi zaten taşıyorsa
 
-Bağlaç ilişkiyi karşılamıyorsa yalnızca bağlacı değiştirme; bilgi sırasını kontrol et.
+Bağlaç ilişkiyi karşılamıyorsa yalnızca bağlacı değiştirme; bilgi sırasını kontrol et. Bağlacın önermelerin desteklemediği bir ilişki kurup kurmadığı, konu ilerleyişi, gönderge mesafesi ve kapsam bağlanması için [Metinsel tutarlılık](metinsel-tutarlilik.md) dosyasına bak.
 
 ## Paragraf hareketi
 
@@ -190,7 +192,7 @@ Müdahaleyi tekrarın kaynağına göre seç. İki cümleyi yalnızca aynı dü�
 
 ## İddia ve kesinlik akışı
 
-Akıcılık düzenlemesi kanıt düzeyini değiştirmemelidir.
+Akıcılık düzenlemesi kanıt düzeyini değiştirmemelidir. Kanıt mimarisinin bütünü (epistemik kaynak, aktarım ve atıf mesafesi, çekince ve pekiştirici, kip bakış açısı, öneri–karar–uygulama, olumsuz kanıt) için [Epistemik mimari](epistemik-mimari.md) dosyasına bak.
 
 ### Amaç ve sonuç
 

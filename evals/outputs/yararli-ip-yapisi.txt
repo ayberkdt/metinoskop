@@ -1,0 +1,1 @@
+Veri 12 istasyondan toplanıp aykırı değerlerden temizlendikten sonra 0 ile 1 arasına ölçeklenmiş ve model bu veriyle eğitilmiştir. Eğitim 3 saat sürmüştür.

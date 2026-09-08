@@ -1,0 +1,1 @@
+Deneylerde 2024 verisiyle 0,01 öğrenme oranında eğitilmiş üç katmanlı bir model kullanılmıştır. Sonuçlar, 2023 verisiyle eğitilmiş önceki modelle karşılaştırılmıştır.

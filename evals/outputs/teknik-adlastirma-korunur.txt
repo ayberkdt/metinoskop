@@ -1,0 +1,1 @@
+Kalman kazancının hesaplanması, yenilik kovaryansının tersinin alınmasını gerektirir. Filtrenin yakınsama hızının başlangıç kovaryansına duyarlılığı Tablo 3'te verilmiştir. Duyarlılık yalnızca ilk 50 adımda görülmüş, sonrasında kazanç 0,12 değerinde sabitlenmiştir.

@@ -1,0 +1,1 @@
+Sızıntının kaynağı ikinci vana olarak belirlendi; vana değiştirildikten sonra basınç 72 saat boyunca sabit kaldı. Değişimden önce basınç her 6 saatte 0,3 bar düşüyordu.

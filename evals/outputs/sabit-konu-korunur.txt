@@ -1,0 +1,1 @@
+Filtre ölçümü 50 Hz'de alır. Ölçümü tahminle karşılaştırır. Farkı kazançla çarpar. Sonucu duruma ekler.

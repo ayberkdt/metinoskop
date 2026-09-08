@@ -238,6 +238,14 @@ def self_test() -> None:
             "çıkarılmıştır.",
             "48.000 kayıtlık veri kümesinde eksik değerler ortalamayla dolduruldu.",
         ),
+        (
+            root / "evals/sahip-olmak-kalkisi.md",
+            "Önerilen yöntemin hesaplama maliyeti yüksektir. Model üç katmanlıdır; her katmanda "
+            "64 birim bulunur. Cihazın koruma sınıfı IP67'dir. Sistem ayrıca hata günlüğü tutar. "
+            "Cihaz, şirketin sahip olduğu iki fabrikada üretilmektedir. Kullanıcı bu ayarı "
+            "değiştirmek için yönetici yetkisine sahip olmalıdır.",
+            "Yöntem pahalıdır. Model üç katmanlıdır ve cihaz su geçirmez. Kullanıcı ayarı değiştirebilir.",
+        ),
     )
 
     for case_path, passing_output, failing_output in scenarios:

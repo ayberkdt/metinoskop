@@ -1,0 +1,1 @@
+Filtre ölçümü 50 Hz'de alır. Gözlemci durumu günceller. Filtre kazancı yeniden hesaplar. Gözlemci güncellenmiş durumu denetleyiciye iletir. Filtre bu aşamada hiçbir veri iletmez.

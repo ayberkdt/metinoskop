@@ -385,6 +385,8 @@ Altı cümleden ikisi kaldı. "Ölçülen üç sıcaklıkta hata arttı" biçimi
 
 ## Soyut yüklem sisi
 
+Bu bölüm yüklemin boşluğunu sorar; yüklemin sözcük uyumunu (hafif fiil, eşdizim, fiil istemi, genel fiilin gizlediği kesin ilişki) [Eşdizim ve istem](esdizim-ve-istem.md) dosyası ele alır. Somut ilişkiyi yazarken kanıt düzeyini aşmamak için [Epistemik mimari › Gözlem, çıkarım, yorum](epistemik-mimari.md#gözlem-çıkarım-yorum) bölümüne bak.
+
 Aşağıdaki yüklemler tek tek yasak değildir. Sorun, somut ilişkinin yerine geçmeleridir. Her birinde "bu yüklem hangi ilişkiyi gizliyor?" diye sor.
 
 | Yüklem | Sorulacak soru | Somut karşılık örneği |
@@ -428,6 +430,8 @@ Tekrarlanan `bu durum`, `bu yaklaşım`, `bu yapı`, `bu süreç`, `bu çerçeve
 > Yeni sürümde açılış süresi 4,2 saniyeden 1,9 saniyeye indi.
 
 İkinci cümle ölçümü soyut adla yeniden anlatır; üçüncü cümlenin öznesi kaynakta hiçbir yaklaşıma karşılık gelmez.
+
+Boş özne dolgu taşımıyor, yalnızca önceki önermeyi İngilizce "this result / this finding" alışkanlığıyla yeniden paketliyorsa sorun retorik değil çeviri gölgesidir; paketi çözmek için [Türkçe ritim ve kaynak dil gölgesi › Gösterme sıfatı ve söylem adı paketi](turkce-ritim-ve-ceviri-golgesi.md#gösterme-sıfatı-ve-söylem-adı-paketi) bölümüne bak.
 
 ## Açık olanı açıklama
 

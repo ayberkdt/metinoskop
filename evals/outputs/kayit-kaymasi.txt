@@ -1,0 +1,1 @@
+Modelin performansı değerlendirilmiştir. Sonuçlar beklenen eğilimden ayrılmaktadır; ayrılma, öğrenme oranı 0,01'in üzerine çıkınca başlamaktadır.

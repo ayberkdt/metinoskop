@@ -1,0 +1,1 @@
+Önerilen yöntem üç sensörü birleştirir; kalibrasyon gerektirmez, 20 ms gecikmeyle çalışır, düşük güç tüketir ve gömülü platformlara uygundur.

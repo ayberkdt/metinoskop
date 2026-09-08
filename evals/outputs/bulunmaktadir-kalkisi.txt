@@ -1,0 +1,1 @@
+Tabloda üç hata türü vardır ve her biri için ayrı bir eşik değeri verilmiştir. Sistemin iki çalışma kipi vardır. Yapılandırma dosyasında dört zorunlu alan bulunur; bunlardan birinin varsayılan değeri yoktur, kullanıcı bu alanı doldurmak zorundadır.

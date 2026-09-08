@@ -1,0 +1,1 @@
+Filtre, ölçüm güncellemesinde kazanç matrisini yeniden hesaplar ve durum kovaryansını günceller. Yenilik kovaryansı her adımda tersi alınarak kullanılır; matris 6×6 boyutundadır.

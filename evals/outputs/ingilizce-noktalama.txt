@@ -1,0 +1,1 @@
+2024 verisiyle eğitilmiş üç katmanlı model ilk koşulda kararlı davranır, ikinci koşulda hata üretir ve en zor koşul olan üçüncüsünde yeniden kararlı hâle gelir.

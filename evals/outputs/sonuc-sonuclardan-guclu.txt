@@ -1,0 +1,11 @@
+## Sonuçlar
+
+Kullanım süresi ile hata oranı arasında zayıf bir ilişki bulundu (r = 0,18).
+
+## Tartışma
+
+Bu zayıf ilişki, yöntemin davranışına ilişkin olası bir açıklama önermektedir.
+
+## Sonuç
+
+Kullanım süresi ile hata oranı arasında zayıf bir ilişki bulunmuştur; davranış mekanizması bu çalışmada ortaya konmamıştır.

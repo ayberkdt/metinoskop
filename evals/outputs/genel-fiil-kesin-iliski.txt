@@ -1,0 +1,1 @@
+Tablo 2 üç modelin hatasını listeler; Şekil 4 hata dağılımını çizer. Sonuçlara göre ikinci modelin hatası daha düşüktür. Veri kaynakları Ek B'de verilmiştir.

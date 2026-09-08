@@ -1,0 +1,1 @@
+Model üç katmanlıdır; üç kaynaktan toplanan veriyle 18 dakikada eğitilmiştir. 4.000 örneklik doğrulama kümesinde doğruluk oranı %91'dir.

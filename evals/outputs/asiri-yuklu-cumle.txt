@@ -1,0 +1,1 @@
+Yöntemin farklı koşullardaki davranışını değerlendirmek amacıyla 20 °C, 40 °C ve 60 °C'de deneyler yürütülmüştür. Hata 20 °C'de %3, 40 °C'de %11 düzeyinde kalmış; 60 °C'de ise ölçüm güvenilirliğini yitirmiştir. Bu bulguların yöntemin uygulanabilirliği bakımından ele alınması gerekmektedir.

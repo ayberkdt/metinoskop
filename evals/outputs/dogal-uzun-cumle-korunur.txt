@@ -1,0 +1,1 @@
+Deneyler, üç sıcaklığın hiçbirinde filtrenin ıraksamadığını fakat 60 °C'de yakınsama süresinin 40 saniyeden 210 saniyeye çıktığını gösterdiğinden, yöntem yüksek sıcaklıkta yalnızca gerçek zamanlı olmayan işlemler için önerilmektedir. Bu öneri henüz saha koşullarında sınanmamıştır.

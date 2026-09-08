@@ -123,7 +123,7 @@ Aktör kaynakta açıkça belirtiliyorsa cümle doğrudan kurulabilir:
 
 > Yönetim kurulu bütçeyi yeniden değerlendirmiş ve iki projeyi ertelemiştir.
 
-Edilgenlik aktörü bilinçli olarak geri plana atıyorsa veya hukuk dilinin parçasıysa korunabilir.
+Edilgenlik aktörü bilinçli olarak geri plana atıyorsa veya hukuk dilinin parçasıysa korunabilir. Edilgeni etkene çevirmeden önce sorulacak altı soru, aktör türleri ve kaynağın adlandırmadığı aktörü uydurmama kuralı için [Epistemik mimari › Aktör ve edilgen çatı](epistemik-mimari.md#aktör-ve-edilgen-çatı) bölümüne bak.
 
 ### Şişkin yüklemler
 
@@ -401,6 +401,8 @@ Belirsizliği tamamen kaldırma.
 > Araştırma, dört şehirdeki üç sorunu karşılaştırıyor. Sonuçlar gelecek ay yayımlanacak.
 
 Doğru terimin tekrarı, zoraki çeşitlilikten daha doğaldır.
+
+Bu bölüm kalıp düzeyindeki kalkıları ele alır. Sözcükler doğru olduğu hâlde cümle İngilizce iskelet taşıyorsa (yinelenen açık özne, `bu sonuç` ritmi, `ve` ile dizilmiş çekimli cümleler, `sahip olmak` ve `bulunmaktadır` kalkıları, `olan` zinciri, çerçeve yığını, fazla `bir`, uzak yüklem) ilişkinin Türkçe kaynaklarla yeniden kurulması için [Türkçe ritim ve kaynak dil gölgesi](turkce-ritim-ve-ceviri-golgesi.md) dosyasına bak.
 
 ## Biçimsel işaretler
 

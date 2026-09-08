@@ -1,0 +1,1 @@
+Hata 40 °C'de %11'e çıktı; ölçüm üç kez tekrarlandı.

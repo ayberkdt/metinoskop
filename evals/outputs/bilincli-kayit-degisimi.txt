@@ -1,0 +1,5 @@
+Yapılandırma dosyasını düzenledikten sonra sunucuyu yeniden başlatın.
+
+**Uyarı:** `--purge` seçeneği bütün önbelleği siler ve geri alınamaz.
+
+Yeniden başlatma yaklaşık 40 saniye sürer.

@@ -1,0 +1,1 @@
+Model, baseline ile aynı pipeline üzerinde üç benchmark'ta değerlendirildi. Üç benchmark'ta da baseline'ı geçti; fark en fazla 2 puandı.

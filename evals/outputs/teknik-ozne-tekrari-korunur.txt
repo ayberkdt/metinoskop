@@ -1,0 +1,1 @@
+Denetleyici komutu doğrular. Denetleyici komutu uygular. Denetleyici uygulama sonucunu günlüğe yazar. Bu üç adım ayrı ayrı kaydedilir; herhangi biri başarısız olursa denetleyici kalan adımları çalıştırmaz ve `E-41` hata kodunu döndürür.

@@ -1,0 +1,1 @@
+Önerilen yöntemin performansında değerlendirilmesi gereken asıl konu bellek kullanımındaki %35'lik artıştır. Güvenlik açısından yöntem, mevcut erişim denetiminde değişiklik gerektirmemektedir. Yöntem 8 GB bellekli cihazlarda sınanmıştır; daha düşük bellekli cihazlar için henüz veri bulunmamaktadır.
