@@ -1,0 +1,11 @@
+## 3.1 Kısa dönem
+
+Önerilen denetleyici 2024 verisiyle sınanmıştır. Kısa dönemde kuvvet hatası %12 düştü.
+
+## 3.2 Uzun dönem
+
+Uzun dönemde yedi günlük konum hatası %8 arttı.
+
+## 3.3 Yörünge eğimi
+
+Artış yalnızca yüksek eğimli yörüngelerde görüldü.

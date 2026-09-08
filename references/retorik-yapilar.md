@@ -385,6 +385,8 @@ Altı cümleden ikisi kaldı. "Ölçülen üç sıcaklıkta hata arttı" biçimi
 
 ## Soyut yüklem sisi
 
+Bu bölüm yüklemin boşluğunu sorar; yüklemin sözcük uyumunu (hafif fiil, eşdizim, fiil istemi, genel fiilin gizlediği kesin ilişki) [Eşdizim ve istem](esdizim-ve-istem.md) dosyası ele alır. Somut ilişkiyi yazarken kanıt düzeyini aşmamak için [Epistemik mimari › Gözlem, çıkarım, yorum](epistemik-mimari.md#gözlem-çıkarım-yorum) bölümüne bak.
+
 Aşağıdaki yüklemler tek tek yasak değildir. Sorun, somut ilişkinin yerine geçmeleridir. Her birinde "bu yüklem hangi ilişkiyi gizliyor?" diye sor.
 
 | Yüklem | Sorulacak soru | Somut karşılık örneği |

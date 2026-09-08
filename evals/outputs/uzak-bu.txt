@@ -1,0 +1,1 @@
+Filtre kazancı 0,5'e çıkarıldı. Gözlemci 50 Hz'de çalıştırıldı. Sensör 40 °C'de sürüklendi. Denetleyici komutu 10 ms içinde üretti. Bu, yakınsama süresini 18 saniyeye düşürdü.

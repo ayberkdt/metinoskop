@@ -37,7 +37,7 @@ Rapor dilindeki en tehlikeli bozulma, farklı kanıt düzeylerinin tek kesin cü
 
 > Manuel veri girişleri kuzey depodaki iade oranını iki katına çıkardı. Yönetim sorunu barkod sistemiyle çözecek.
 
-Bozuk sürüm ilişkiyi nedenselliğe, öneriyi kesin karara ve denenmemiş çözümü sonuca dönüştürür.
+Bozuk sürüm ilişkiyi nedenselliğe, öneriyi kesin karara ve denenmemiş çözümü sonuca dönüştürür. Öneri, plan, karar, uygulanacak, uygulanmış ve değerlendirilmekte statülerinin zinciri, aktarım kapsamı ve bölümler arası kesinlik kayması için [Epistemik mimari](epistemik-mimari.md) dosyasına bak.
 
 ## Kanıt zincirini görünür tut
 

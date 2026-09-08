@@ -1,0 +1,1 @@
+Havuz 50 bağlantı sınırına ulaştı; bu nedenle yeni istekler 30 saniye bekleyip zaman aşımına düştü. Etkilenen istek sayısı 2.140'tı.

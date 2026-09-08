@@ -1,0 +1,1 @@
+Ekip gecikmeyi tedarikçi onayına bağladı; tedarikçi ise onay sürecinin 10 iş günü sürdüğünü belirtti. Gecikmenin toplam süresi 18 gün olarak ölçüldü.

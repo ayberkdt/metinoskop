@@ -1,0 +1,1 @@
+Örnekler üç kaynaktan toplanıp aykırı değerlerden temizlendi; model bu veriyle eğitildi ve eğitim 18 dakika sürdü. Sonuçlar Tablo 1'de verilmiştir.

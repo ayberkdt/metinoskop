@@ -31,6 +31,9 @@ Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olgula
 - Uzun çerçeve ifadelerini ve yığılmış nitelemeleri kısaltır; nedensel akıl yürütmeyi listeye çevirmez, parçalanmayı dev cümlelerle de çözmez.
 - Tekrarlanabilirlik, mevzuat, dergi kuralı, güvenlik adımları ve uzun belge gezinmesi gerektiren yapıyı korur; yazarın yapısal ölçeğini aşan makine parçalanmasını hedefler, evrensel asgariciliği değil.
 - Kaynakta bulunmayan olgu, tarih, sayı, alıntı veya kişisel ayrıntı eklemez; kaynaktaki sayılardan yeni sayı türetmez.
+- Kanıt mimarisini korur: her iddianın kaynağını (gözlem, ölçüm, aktarım, çıkarım, tahmin, öngörü, plan, yorum) ve kesinlik düzeyini düzenleme boyunca aynı tutar; aktarımı olguya, çıkarımı ölçüme, ilişkiyi nedenselliğe, öneriyi karara, kararı uygulamaya, "gözlenmedi"yi "yoktur"a çevirmez; kaynağın adlandırmadığı aktörü uydurmaz, edilgeni yalnızca aktör bilinip ilgiliyse etkene çevirir; çekinceyi kanıt, pekiştiriciyi retorik sayar; kip değişimini gerçek bakış açısı değişimine bağlar; sonuç bölümünün sonuçlar bölümünden güçlü konuşmasına izin vermez.
+- Sözcükleri doğal Türkçedeki gibi birleştirir: tuhaf eşdizimi alışılmış eşleşmeyle, yanlış hâl çerçevesini fiilin doğal istemiyle, İngilizce edat izini gerçek ilişkiye uyan ilgeçle, hafif fiili gerçek yüklemle kurar; genel fiilin gizlediği kesin ilişkiyi kaynak destekliyorsa yazar; aynı varlığı tek adla anar, teknik terimi, ödünç sözcüğü, hukuki formülü ve süreç adını korur.
+- Metnin bir düşünceyi geliştirmesini gözetir: her cümlenin öncekinden büyümesini, bağlacın önermelerin desteklediği ilişkiyi taşımasını, göndergenin mesafesinde geri kazanılabilmesini, kapsam işaretinin ve olumsuzluğun bağlandığı ögede kalmasını, kaydın ve noktalamanın Türkçe gruplamaya uymasını, sınırlılığın sınırladığı iddianın yanında durmasını sağlar; olgu yığınını işlevlere göre gruplar, kronolojiyi nedenselliğe çevirmez, eksik öncül uydurmaz.
 
 ## Temel ilkeler
 
@@ -74,7 +77,7 @@ Depoyu kullandığınız agent ortamının skill dizinine klonlayın:
 git clone https://github.com/ayberkdt/metinoskop.git /path/to/skills/metinoskop
 ```
 
-Çalışma zamanında gereken ana dosya `SKILL.md` dosyasıdır. `references/` klasörü ayrıntılı Türkçe örüntü, retorik yapılar (`retorik-yapilar.md`), yapısal bütünlük, Türkçe ritim ve kaynak dil gölgesi (`turkce-ritim-ve-ceviri-golgesi.md`), akıcılık, rapor yazımı ve kavramsal giriş rehberlerini; `agents/openai.yaml` ise destekleyen istemciler için arayüz metadata'sını içerir.
+Çalışma zamanında gereken ana dosya `SKILL.md` dosyasıdır. `references/` klasörü ayrıntılı Türkçe örüntü, retorik yapılar (`retorik-yapilar.md`), yapısal bütünlük, Türkçe ritim ve kaynak dil gölgesi (`turkce-ritim-ve-ceviri-golgesi.md`), epistemik mimari (`epistemik-mimari.md`), eşdizim ve istem (`esdizim-ve-istem.md`), metinsel tutarlılık (`metinsel-tutarlilik.md`), akıcılık, rapor yazımı ve kavramsal giriş rehberlerini; `agents/openai.yaml` ise destekleyen istemciler için arayüz metadata'sını içerir.
 
 ## Kullanım
 
@@ -162,6 +165,34 @@ Bu bölümü düzenle; metin Türkçeye çevrilmiş gibi değil, Türkçe düş�
 
 Metinoskop sözcükleri bir kez daha çevirmez; cümlenin taşıdığı ilişkiyi bulup Türkçenin tercih ettiği araçla kurar. "Yöntem yüksek bir hesaplama maliyetine sahiptir" cümlesi "Yöntemin hesaplama maliyeti yüksektir" olur; "Model ... Model ... Model ..." dizisi tek aktörlü paragrafta özne düşürülerek birleşir, iki aktörlü paragrafta olduğu gibi kalır. Kaynak "ilişkili" diyorsa "neden olur" yazılmaz; alan terimleri öz Türkçe hevesiyle değiştirilmez; hukuki kalıp, teknik adlaştırma ve zaten Türkçe düşünülmüş metin dokunulmadan bırakılır.
 
+### Kanıt mimarisini koruma
+
+Akademik makale, teknik rapor ya da olay incelemesinde kimin ne bildiğinin ve ne kadar kesin söylediğinin değişmemesi için:
+
+```text
+$metinoskop
+
+Bu tartışma bölümünü düzenle. Her iddiayı kaynaktaki kanıt düzeyinde tut: aktarımı olguya, ilişkiyi nedenselliğe, öneriyi karara çevirme; kaynağın adlandırmadığı aktörü uydurma; çekinceleri koru, dayanaksız pekiştiricileri kaldır.
+
+[metin]
+```
+
+Metinoskop "Ekip, gecikmenin tedarikçi onayından kaynaklandığını bildirdi" cümlesini "Gecikme tedarikçi onayından kaynaklandı" yapmaz; "Kararın ertelenmesine karar verildi" cümlesine kaynakta adı geçmeyen bir yönetim eklemez; "bu veri kümesinde etki gözlenmedi" cümlesini "etki yoktur" yapmaz. Ölçümle desteklenen kesin iddiaya da çekince eklemez.
+
+### Sözcük uyumu ve konu ilerleyişi
+
+Yapısı Türkçe olduğu hâlde sözcükleri tuhaf birleşen ya da cümleleri iyi olduğu hâlde bir düşünceyi geliştirmeyen metin için:
+
+```text
+$metinoskop
+
+Bu bölümü düzenle. Sözcükler doğal birleşsin: tuhaf eşdizimleri, yanlış hâl çerçevelerini ve hafif fiilleri gerçek yüklemle kur; teknik terimleri ve aynı nesnenin adını koru. Paragraflar birbirini izlesin: desteksiz "bu nedenle" ilişkilerini kaldır, kapsam işaretlerini ve olumsuzluğu yerinde tut, sınırlılığı sınırladığı iddianın yanına getir.
+
+[metin]
+```
+
+"Karar gerçekleştirmek" "karar almak", "X hakkında odaklanmak" "X'e odaklanmak" olur; "gürültüden etkilenmez" ise "gürültüyü etkilemez" olmaz, çünkü hâl değişimi ilişkiyi değiştirir. "Sonuçlar hata oranının düştüğünü göstermiştir. Bu nedenle modelin genellenebilirliği yüksektir" cümlesindeki bağlaç, önermelerin desteklemediği bir ilişki kurduğu için kalmaz; eksik öncül de uydurulmaz.
+
 ### Yazarın sesini eşleştirme
 
 Kendi yazınızdan kısa bir örnek vererek metnin o sese yaklaşmasını sağlayabilirsiniz:
@@ -222,6 +253,9 @@ Metinoskop bir dil ve paragraf akışı editörüdür.
 - İnsan yazmış gibi görünmesi için hata, argo, rastgelelik veya cümle uzunluğu gürültüsü üretmez.
 - Başlıkları sayıyı azaltmak için birleştirmez, paragrafları uzun diye bölmez, cümleleri mekanik olarak kısaltmaz veya birleştirmez.
 - Kullanıcı hafif düzenleme veya yapı koruma istediyse başlık hiyerarşisine dokunmaz.
+- Kaynağın adlandırmadığı aktörü uydurmaz; atıfı, çekinceyi, kapsam işaretini ve olumsuzluğu yönettikleri önermeden ayırmaz; bir iddiayı yeni kanıt olmadan sonraki bölümde güçlendirmez.
+- Alanın terimini, ödünç sözcüğü, hukuki formülü ve süreç adını "daha Türkçe" olsun diye değiştirmez; hâl değişimiyle ilişkiyi değiştirmez; daha doğrudan fiil uğruna nedensellik eklemez.
+- Kronolojiyi nedenselliğe çevirmez, eksik öncül uydurmaz, bilinçli kayıt değişimini (uyarı, alıntı, örnek) düzleştirmez, teknik noktalamayı bozmaz.
 
 Kavramsal giriş yalnızca kullanıcı açıkça giriş yazılmasını istediğinde kullanılan ikincil bir kabiliyettir; olay örgüsünün, sahne yapısının veya bakış açısının yeniden kurulması değildir.
 
@@ -233,8 +267,8 @@ Metinoskop düzenleme sırasında altı aşamalı bir denetim uygular:
 2. Ritim, dolgu, reklam cilası, belirsiz atıf, çeviri kokusu ve akış sorunlarını; önem şişirmesi, savunmacı açıklama, işlev tekrarı, yol haritası ve tek biçimli mimariyi; yinelenen açık özne, `bu sonuç` ritmi, çekimli cümle zinciri, hafif yüklem ve çerçeve yığını gibi kaynak dil gölgesini kümeler hâlinde inceler.
 3. Kullanıcının istediği müdahale düzeyinde düzenler.
 4. Son metindeki sayı, tarih, iddia, nedensellik, karşılaştırma, koşul, istisna, nicelik sınırı, terim ve gösterimleri kaynakla karşılaştırır. Raporlarda bulgu–yorum–öneri sınırlarını, dayanakları ve çapraz göndermeleri de karşılaştırır.
-5. Altı geçişli yapay düzyazı, yapı ve çeviri gölgesi denetimi yapar: kalıp, cümle ("bunu silersem hangi bilgi kaybolur?"), paragraf (farklı önerme sayısı, mini sonuç, zorlama denge, erken bölünme), belge (tekrarlanan giriş ve sonuç, tek biçimli mimari, aynı gerekçenin tekrarı), yapı (başlık sayısı ve derinliği, tek paragraflık bölümler, kopmuş yakınlık, çapraz gönderme sıklığı, yapay gerilim, gereksiz liste, uzun ifade) ve çeviri gölgesi (özne, yan cümle, niteleme, çerçeve, iyelik ve varlık, bilgi yapısı, yerli kaynak, aşırı düzeltme).
-6. Ses, ton, gönderge açıklığı ve paragraf akışını son kez gözden geçirir; gerekli sınırlılık veya öğretici açıklamanın dolgu sanılıp silinmediğini ve metnin Türkçe düşünülmüş gibi okunup okunmadığını kontrol eder.
+5. Dokuz geçişli denetim yapar: kalıp, cümle ("bunu silersem hangi bilgi kaybolur?"), paragraf (farklı önerme sayısı, mini sonuç, zorlama denge, erken bölünme), belge (tekrarlanan giriş ve sonuç, tek biçimli mimari, aynı gerekçenin tekrarı), yapı (başlık sayısı ve derinliği, tek paragraflık bölümler, kopmuş yakınlık, çapraz gönderme sıklığı, yapay gerilim, gereksiz liste, uzun ifade), çeviri gölgesi (özne, yan cümle, niteleme, çerçeve, iyelik ve varlık, bilgi yapısı, yerli kaynak, aşırı düzeltme), epistemik mimari (kaynak ve statü, aktörlük, atıf, çekince–pekiştirici, kip, bölümler arası kesinlik), sözcük uyumu (eşdizim, istem, ilgeç, hafif fiil, terim kimliği) ve metinsel tutarlılık (konu ilerleyişi, bağlaç geçerliliği, gönderge mesafesi, kapsam ve olumsuzluk, kayıt, noktalama, iddia–dayanak yakınlığı).
+6. Ses, ton, gönderge açıklığı ve paragraf akışını son kez gözden geçirir; gerekli sınırlılık veya öğretici açıklamanın dolgu sanılıp silinmediğini, metnin Türkçe düşünülmüş gibi okunup okunmadığını, her iddianın kaynaktaki kişiye ve kesinlik düzeyine bağlı kalıp kalmadığını ve her cümlenin öncekinden yararlı bir şey alıp sonrakine bırakıp bırakmadığını kontrol eder.
 
 Kullanıcı açıkça kavramsal giriş istediğinde, düzenleme akışından önce kaynakta bulunan bağlam, problem, soru ve çözüm ilişkisi ayrıca çıkarılır.
 
@@ -254,6 +288,9 @@ metinoskop/
 │   ├── retorik-yapilar.md
 │   ├── turkce-oruntuler.md
 │   ├── turkce-ritim-ve-ceviri-golgesi.md
+│   ├── epistemik-mimari.md
+│   ├── esdizim-ve-istem.md
+│   ├── metinsel-tutarlilik.md
 │   └── yapisal-butunluk.md
 ├── evals/
 │   ├── akademik.md
@@ -322,6 +359,9 @@ metinoskop/
 │   ├── hukuki-kalip-korunur.md
 │   ├── teknik-ozne-tekrari-korunur.md
 │   ├── yerli-turkce-metin.md
+│   ├── (on sekiz epistemik mimari vakası: edilgen-korunur ... iyi-akademik-paragraf)
+│   ├── (on beş eşdizim ve istem vakası: tuhaf-esdizim ... odunc-terim-korunur)
+│   ├── (yirmi üç metinsel tutarlılık vakası: olgu-yigini ... tutarli-metin-korunur)
 │   └── outputs/
 ├── scripts/
 │   ├── eval-runner.py
@@ -369,7 +409,7 @@ Bir çıktıdaki şüpheli retorik örüntüleri işlev ailesine göre işaretle
 python scripts/style-lint.py outputs/iddia-tekrar-dongusu.txt --source evals/iddia-tekrar-dongusu.md
 ```
 
-`scripts/style-lint.py` üretilmiş önem, savunmacı açıklama, yol haritası, boş bölüm sarmalayıcısı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, bağlam yeniden başlatma, uzun çerçeve ifadesi, kalıp giriş ve sonuç, üretilmiş karşıtlık, zorlama denge, soyut yüklem, boş özne ve sohbet botu kalıntısı ailelerini işaretler; parçalanma yoğunluğunu (başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, çapraz gönderme) özetler ve paragraf uzunluğu tek biçimliliği, önem cümlesiyle kapanış, başlık tekrarı, bağlaçla açılış ve işlev tekrarı gibi yapı bulgularını raporlar. `--source` ile yapı ölçülerindeki değişimi de gösterir. Tek bir sözcüğe bakarak metni reddetmez; `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıpları kalıp düzeyinde ayrıca listeler (aynı aileden farklı bir kalıp da yeni sayılır). `--fail-on-introduced-hard` yalnızca sert bastırma ailesinden yeni kalıp eklendiğinde başarısız çıkış kodu verir; bağlamsal aileler (`yani`, `öte yandan`, `işaret etmek`) uyarı olarak kalır. `--fail-on-introduced-any` katı moddur. Rapor ayrıca çeviri gölgesi ölçülerini verir: `sahip olmak` ve varlık kalıbı işaretleri, tek cümlede çerçeve yığını ve `olan` zinciri, aynı özneyle başlayan ardışık cümleler, `ve` zinciri, fiilimsi yığını, iyelik zinciri, söylem belirteciyle başlayan cümle oranı ve 100 sözcük başına `bir`. Bunlar yalnızca inceleme bulgusudur; tek `bir`, `olan`, `ve` ya da `açısından` işaretlenmez ve `--source` ile çıktıda yeni beliren gölge bulguları uyarı olarak listelenir. Öz sınama için:
+`scripts/style-lint.py` üretilmiş önem, savunmacı açıklama, yol haritası, boş bölüm sarmalayıcısı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, bağlam yeniden başlatma, uzun çerçeve ifadesi, kalıp giriş ve sonuç, üretilmiş karşıtlık, zorlama denge, soyut yüklem, boş özne ve sohbet botu kalıntısı ailelerini işaretler; parçalanma yoğunluğunu (başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, çapraz gönderme) özetler ve paragraf uzunluğu tek biçimliliği, önem cümlesiyle kapanış, başlık tekrarı, bağlaçla açılış ve işlev tekrarı gibi yapı bulgularını raporlar. `--source` ile yapı ölçülerindeki değişimi de gösterir. Tek bir sözcüğe bakarak metni reddetmez; `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıpları kalıp düzeyinde ayrıca listeler (aynı aileden farklı bir kalıp da yeni sayılır). `--fail-on-introduced-hard` yalnızca sert bastırma ailesinden yeni kalıp eklendiğinde başarısız çıkış kodu verir; bağlamsal aileler (`yani`, `öte yandan`, `işaret etmek`) uyarı olarak kalır. `--fail-on-introduced-any` katı moddur. Rapor ayrıca çeviri gölgesi ölçülerini verir: `sahip olmak` ve varlık kalıbı işaretleri, tek cümlede çerçeve yığını ve `olan` zinciri, aynı özneyle başlayan ardışık cümleler, `ve` zinciri, fiilimsi yığını, iyelik zinciri, söylem belirteciyle başlayan cümle oranı ve 100 sözcük başına `bir`. Bunlar yalnızca inceleme bulgusudur; tek `bir`, `olan`, `ve` ya da `açısından` işaretlenmez ve `--source` ile çıktıda yeni beliren gölge bulguları uyarı olarak listelenir. Söylem ölçüleri de aynı statüdedir: çekince, pekiştirici, aktarım ve hafif fiil aileleri; tek cümlede kiplik yığını ve pekiştirici çatışması, atıflı cümleden sonra gelen "bu nedenle", bir paragrafta gerekçesiz kip nöbetleşmesi, edilgen ile adlaştırma yığını, ilgeç yoğunluğu, aynı nesneye giden genel adlar, "bu çalışmada" ile açılan bölümler, ara söz yükü ve sohbet gerilimi ile bürokratik kayıt çatışması. Hiçbir regex epistemik doğruluğa karar vermez. Öz sınama için:
 
 ```bash
 python scripts/style-lint.py --self-test
@@ -393,7 +433,7 @@ npx --yes skills@1.5.20 add . --list
 
 GitHub Actions, `main` dalına gönderilen her değişiklikte ve pull request'lerde bu kontrolleri çalıştırır.
 
-`evals/` klasörü tek bir beklenen çıktı dayatmaz. Her vaka; korunması gereken olguları, kesinlik düzeyini ve biçimi, ayrıca kaçınılması gereken davranışları tanımlar. Rapor vakaları bulgu–yorum–öneri sınırını, yapısal bütünlüğü ve yönetici özetinin gövdeye sadakatini de sınar. Retorik mimari vakaları savunmacı düzyazıyı, tekrar döngülerini, yol haritasını, yapay dengeyi, kalıp giriş ve sonuçları, soyut yüklemleri, paragraf simetrisini; ayrıca yanlış pozitif ve zaten iyi metin durumlarını sınar. Yapısal bütünlük vakaları aşırı bölümlemeyi, başlık derinliğini, tek paragraflık bölümleri, kısa paragraf yığınını, yapay gerilimi, tekrarlanan bölüm giriş ve sonuçlarını, çapraz göndermeyi, uzun çerçeve ifadelerini, ayrılmış kanıtı ve listeleştirmeyi; karşı tarafta korunması gereken başlıkları, tekrarlanabilir yöntem ayrımını, uzun ve kısa kalması gereken paragrafları ve yapısı iyi metni sınar. Çeviri gölgesi vakaları yinelenen açık özneyi, `bu sonuç` ritmini, fazla `bir` sözcüklerini, `sahip olmak` ve `bulunmaktadır` kalkılarını, `ve` zincirini, yararlı ve aşırı `-ip` yapısını, art nitelemeyi, `olan` zincirini, çerçeve yığınını, soyut ad yüklemini, özne düşürme akışını, aşırı yüklü cümleyi ve İngilizce söylem belirteçlerini; karşı tarafta korunması gereken doğal `ve`, gerekli `olan` ve `açısından`, teknik adlaştırma, belirsizliği önleyen açık özne, yerli uzun cümle, hukuki kalıp, teknik özne tekrarı ve zaten Türkçe düşünülmüş metni sınar. Böylece farklı ama geçerli düzenlemeler aynı editoryal ölçütlerle değerlendirilebilir.
+`evals/` klasörü tek bir beklenen çıktı dayatmaz. Her vaka; korunması gereken olguları, kesinlik düzeyini ve biçimi, ayrıca kaçınılması gereken davranışları tanımlar. Rapor vakaları bulgu–yorum–öneri sınırını, yapısal bütünlüğü ve yönetici özetinin gövdeye sadakatini de sınar. Retorik mimari vakaları savunmacı düzyazıyı, tekrar döngülerini, yol haritasını, yapay dengeyi, kalıp giriş ve sonuçları, soyut yüklemleri, paragraf simetrisini; ayrıca yanlış pozitif ve zaten iyi metin durumlarını sınar. Yapısal bütünlük vakaları aşırı bölümlemeyi, başlık derinliğini, tek paragraflık bölümleri, kısa paragraf yığınını, yapay gerilimi, tekrarlanan bölüm giriş ve sonuçlarını, çapraz göndermeyi, uzun çerçeve ifadelerini, ayrılmış kanıtı ve listeleştirmeyi; karşı tarafta korunması gereken başlıkları, tekrarlanabilir yöntem ayrımını, uzun ve kısa kalması gereken paragrafları ve yapısı iyi metni sınar. Çeviri gölgesi vakaları yinelenen açık özneyi, `bu sonuç` ritmini, fazla `bir` sözcüklerini, `sahip olmak` ve `bulunmaktadır` kalkılarını, `ve` zincirini, yararlı ve aşırı `-ip` yapısını, art nitelemeyi, `olan` zincirini, çerçeve yığınını, soyut ad yüklemini, özne düşürme akışını, aşırı yüklü cümleyi ve İngilizce söylem belirteçlerini; karşı tarafta korunması gereken doğal `ve`, gerekli `olan` ve `açısından`, teknik adlaştırma, belirsizliği önleyen açık özne, yerli uzun cümle, hukuki kalıp, teknik özne tekrarı ve zaten Türkçe düşünülmüş metni sınar. Epistemik vakalar edilgen çatının korunmasını ve etkene çevrilmesini, bilinmeyen aktörü, aktarımı, ölçüm ile çıkarımı, çekince ve pekiştiriciyi, kip değişimini, öneri–karar–uygulama statülerini, olumsuz kanıtı, atıf kapsamını ve bölümler arası kesinliği; eşdizim vakaları tuhaf ve teknik eşdizimi, hâl çerçevesini, edat aktarımını, hafif fiili, süreç adını, genel fiili, eş anlamlı kaymasını, kanonik terimi, hukuki formülü ve ödünç terimi; tutarlılık vakaları olgu yığınını, ilerleyiş örüntülerini, desteksiz ve geçerli bağlacı, gönderge mesafesini, bölüm başı sıfırlamayı, paragraf devrini, işlev kaymasını, kronolojiyi, kapsam ve olumsuzluk bağlanmasını, kayıt kararlılığını, noktalamayı, uzak sınırlılığı ve meşru ya da hacim yinelemesini sınar. Böylece farklı ama geçerli düzenlemeler aynı editoryal ölçütlerle değerlendirilebilir.
 
 ## Sürümleme
 

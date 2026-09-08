@@ -1,0 +1,3 @@
+Yöntem kısa dönemde kuvvet hatasını %12 düşürdü; yedi günlük konum hatası ise %8 arttı.
+
+Bu artış yalnızca yüksek eğimli yörüngelerde görüldü ve ekip nedenini henüz açıklayamıyor.

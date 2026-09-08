@@ -123,7 +123,7 @@ Aktör kaynakta açıkça belirtiliyorsa cümle doğrudan kurulabilir:
 
 > Yönetim kurulu bütçeyi yeniden değerlendirmiş ve iki projeyi ertelemiştir.
 
-Edilgenlik aktörü bilinçli olarak geri plana atıyorsa veya hukuk dilinin parçasıysa korunabilir.
+Edilgenlik aktörü bilinçli olarak geri plana atıyorsa veya hukuk dilinin parçasıysa korunabilir. Edilgeni etkene çevirmeden önce sorulacak altı soru, aktör türleri ve kaynağın adlandırmadığı aktörü uydurmama kuralı için [Epistemik mimari › Aktör ve edilgen çatı](epistemik-mimari.md#aktör-ve-edilgen-çatı) bölümüne bak.
 
 ### Şişkin yüklemler
 

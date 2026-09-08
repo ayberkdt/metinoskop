@@ -1,0 +1,1 @@
+Hata 20 °C'de %3 iken 40 °C'de %11'e çıktı. Artışın sensörün sıcaklık sürüklenmesinden kaynaklandığı düşünülüyor; ancak sürüklenme ayrıca ölçülmedi.

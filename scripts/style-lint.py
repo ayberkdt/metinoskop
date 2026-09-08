@@ -28,6 +28,13 @@ findings only: frame-noun stacks (``açısından / kapsamında / noktasında``),
 subject, ``ve`` clause chains, converb pile-ups, genitive stacks and
 connector-initial sentence density. None of them is a deterministic failure;
 a single ``bir``, ``olan``, ``ve`` or ``açısından`` is never flagged.
+
+Discourse signals (epistemic architecture, lexical fit, textual coherence) are
+likewise review-only: hedge stacks, booster/hedge conflicts, attribution
+followed by an unattributed "bu nedenle", unmotivated tense alternation,
+passive + nominalization clusters, light-verb density, postposition clusters,
+synonym drift among generic nouns, per-section topic resets, parenthetical
+load and register clashes. No regex decides epistemic correctness.
 """
 
 from __future__ import annotations
@@ -380,6 +387,44 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"(?:etki|rol)y?e sahip|özelli(?:ğ|g)ine sahip",
         ),
     },
+    {
+        "key": "kiplik",
+        "label": "Çekince işareti",
+        "level": "bağlam",
+        "patterns": (
+            r"\bolabilir\b|\bolabileceğ|\bolmayabilir|\bdüşünülebilir|\bdüşünülmektedir|\bdüşünülüyor|\bdüşündür",
+            r"\bgörünmektedir|\bgörünüyor|\bgörünüşe göre|\bmuhtemel|\bolası\b|\bolasıdır|\bbelki\b|\bsanılmaktadır|\btahmin edil",
+        ),
+    },
+    {
+        "key": "pekistirici",
+        "label": "Pekiştirici",
+        "level": "bağlam",
+        "patterns": (
+            r"\baçıkça\b|\bkesin olarak|\bkesinlikle\b|\bgüçlü biçimde|\btartışmasız|\bkuşkusuz|\bşüphesiz|\bnet biçimde",
+            r"\bkanıtla(?:maktadır|mıştır|r\b|ıyor)|\bdoğrudan göster",
+        ),
+    },
+    {
+        "key": "aktarim",
+        "label": "Aktarım işareti",
+        "level": "bağlam",
+        "patterns": (
+            r"(?:rapor|çalışma|araştırma|yazar|üretici|ekip|kurum|görüşme|katılımcı|kaynak|belge|tutanak|yönetim|müşteri)\w* göre",
+            r"\bbildir(?:di|miştir|mektedir|ilmiştir|ildi|iyor|mişlerdir)|\bbelirt(?:ti|miştir|mektedir|ilmiştir|ildi|iyor|mişlerdir)",
+            r"\böne sür|\bifade et(?:ti|miştir|mektedir|ilmiştir)|\baktar(?:dı|mıştır|maktadır|ıldı|ıyor)|\bsavun(?:du|maktadır|muştur|uyor)|\biddia et",
+        ),
+    },
+    {
+        "key": "hafif_fiil",
+        "label": "Hafif fiil",
+        "level": "bağlam",
+        "patterns": (
+            r"\bgerçekleştir|\bmeydana getir",
+            r"(?:iyileştirme|artış|azalma|gelişme|katkı|fayda|yarar|cevap|yanıt|çözüm|sonuç) (?:sağla|üret)",
+            r"işlemi (?:yap|gerçekleştir)|(?:değerlendirme|analiz|inceleme|ölçüm|kontrol|karşılaştırma|uygulama) (?:yap|gerçekleştir|yürüt)",
+        ),
+    },
 )
 
 COMPILED: dict[str, tuple[re.Pattern[str], ...]] = {
@@ -417,6 +462,33 @@ CONVERB_RE = re.compile(r"\w+(?:[ıiuü]p|[ae]r[ae]k)$")
 CONVERB_STOP = {"ekip", "prensip", "kulüp", "grup", "tip", "yaprak", "toprak", "bayrak", "mübarek", "merak", "gerek", "direk", "börek", "kürek"}
 GENITIVE_RE = re.compile(r"\w{3,}(?:[ıiuü]n|n[ıiuü]n)$")
 GENITIVE_STOP = {"için", "bütün", "zaten", "metin", "zemin", "yetkin", "uzun", "derin", "yakın", "bugün", "yarın", "dün", "kalın", "bin", "on", "gün", "esin"}
+# Discourse (epistemic / lexical / coherence) signals. All review-only.
+HEDGE_RE = re.compile(
+    r"\b(?:olabilir|olabileceğ\w*|olmayabilir|düşünülebilir|düşünülmektedir|düşünülüyor|düşündür\w*|"
+    r"görünmektedir|görünüyor|görünüşe göre|muhtemel\w*|olası\w*|belki|sanılmaktadır|tahmin edil\w*)"
+)
+BOOSTER_RE = re.compile(
+    r"\b(?:açıkça|kesin olarak|kesinlikle|güçlü biçimde|tartışmasız|kuşkusuz|şüphesiz|net biçimde|"
+    r"kanıtla(?:maktadır|mıştır|r|ıyor)|doğrudan göster\w*)\b"
+)
+CONCLUSION_OPENERS = ("bu nedenle", "dolayısıyla", "bu yüzden", "sonuç olarak", "demek ki", "öyleyse")
+NOMINALIZATION_RE = re.compile(r"\w+(?:l|n)m[ae]s[ıi]\w*$")
+PASSIVE_FINITE_RE = re.compile(r"\w+(?:[ıiuü]l|n)(?:m[ıiuü]şt[ıi]r|m[ıiuü]ş|m[ae]kt[ae]d[ıi]r|d[ıi]|[ae]c[ae]kt[ıi]r)$")
+POSTPOSITION_RE = re.compile(r"\b(?:hakkında|ilişkin|yönelik|dair|üzerine)\b")
+GENERIC_NOUN_SETS = (
+    ("yöntem/yaklaşım/yapı/çözüm", (r"\byöntem\w*", r"\byaklaşım\w*", r"\byapı(?:s[ıi]n?|y[ıi]|ya|da|dan|n[ıi]n|lar\w*|d[ıi]r)?\b", r"\bçözüm\w*", r"\bstrateji\w*", r"\bmekanizma\w*")),
+    ("sonuç/bulgu/çıktı/gözlem", (r"\bsonuç\w*", r"\bbulgu\w*", r"\bçıktılar\w*|\bçıktı(?:s[ıi]|y[ıi]|ya|n[ıi]n|da|dan)\b", r"\bgözlem(?!ci|le)\w*")),
+)
+GENERIC_NOUN_COMPILED = tuple((label, tuple(re.compile(p) for p in patterns)) for label, patterns in GENERIC_NOUN_SETS)
+TOPIC_RESET_RE = re.compile(r"^bu (?:çalışmada|çalışma\b|raporda|belgede|bölümde|araştırmada|makalede)")
+DASH_RE = re.compile(r"[—–]")
+TENSE_CLASSES = (
+    ("mektedir", re.compile(r"m[ae]kt[ae](?:d[ıi]r)?$")),
+    ("miştir", re.compile(r"m[ıiuü]ş(?:t[ıi]r|lerdir|lardır)?$")),
+    ("yor", re.compile(r"yor(?:lar|du|um|uz|sunuz)?$")),
+    ("dı", re.compile(r"[dt][ıiuü](?:m|k|n|lar|ler|nız|niz)?$")),
+    ("r", re.compile(r"(?<![dt])[ıiuüae]r$")),
+)
 FRAME_STACK_MIN = 2
 OLAN_CHAIN_MIN = 2
 BIR_SENTENCE_MIN = 3
@@ -741,6 +813,110 @@ def translationese_checks(doc: Document, hits: list[dict[str, object]]) -> list[
     return findings
 
 
+def tense_class(sentence: Sentence) -> str | None:
+    words = sentence_words(sentence)
+    if not words:
+        return None
+    last = words[-1]
+    if last.endswith(("lar", "ler")) and not last.endswith("yorlar"):
+        # "kalırlar", "gelirler" are aorist plurals; "sensörler", "örnekler" are nouns.
+        return "r" if re.search(r"[ıiuüae]rl[ae]r$", last) else None
+    for label, pattern in TENSE_CLASSES:
+        if pattern.search(last):
+            return label
+    return None
+
+
+def tense_alternation(paragraph: Paragraph) -> tuple[int, int]:
+    classes = [c for c in (tense_class(s) for s in paragraph.sentences) if c]
+    if len(classes) < 4:
+        return 0, 0
+    switches = sum(1 for a, b in zip(classes, classes[1:]) if a != b)
+    return len(set(classes)), switches
+
+
+def parenthetical_load(sentence: Sentence) -> bool:
+    text = sentence.text
+    parens = text.count("(")
+    dashes = len(DASH_RE.findall(text))
+    return parens >= 2 or dashes >= 2 or (parens >= 1 and dashes >= 1) or text.count(";") >= 3
+
+
+def discourse_summary(doc: Document, hits: list[dict[str, object]]) -> dict[str, object]:
+    findings = discourse_checks(doc, hits)
+    counts = {key: 0 for key in DISCOURSE_LABELS}
+    for finding in findings:
+        counts[str(finding["check"])] = counts.get(str(finding["check"]), 0) + 1
+    counts["kiplik"] = sum(1 for h in hits if h["category"] == "kiplik")
+    counts["pekistirici"] = sum(1 for h in hits if h["category"] == "pekistirici")
+    counts["hafif_fiil"] = sum(1 for h in hits if h["category"] == "hafif_fiil")
+    return counts
+
+
+def discourse_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict[str, object]]:
+    findings: list[dict[str, object]] = []
+    prose = [p for p in doc.paragraphs if p.prose]
+    sentences = [s for p in prose for s in p.sentences]
+
+    def excerpt(sentence: Sentence) -> str:
+        text = sentence.text
+        return text if len(text) <= 90 else text[:87] + "..."
+
+    for s in sentences:
+        hedges = HEDGE_RE.findall(s.lowered)
+        boosters = BOOSTER_RE.findall(s.lowered)
+        if len(hedges) >= 2:
+            findings.append({"check": "kiplik_yigini",
+                             "text": f"P{s.paragraph}C{s.index}: {len(hedges)} çekince işareti ({', '.join(hedges)}) tek cümlede: hangisi olasılık, hangisi atıf, hangisi gereksiz?"})
+        if hedges and boosters:
+            findings.append({"check": "pekistirici_catismasi",
+                             "text": f"P{s.paragraph}C{s.index}: pekiştirici ({', '.join(boosters)}) ile çekince ({', '.join(hedges)}) aynı önermede çekişiyor: kaynağın gerçek kanıt düzeyi hangisi?"})
+        words = sentence_words(s)
+        nominal = [w for w in words if NOMINALIZATION_RE.match(w)]
+        passive = [w for w in words if PASSIVE_FINITE_RE.match(w)]
+        if len(nominal) >= 2 and passive:
+            findings.append({"check": "edilgen_adlastirma",
+                             "text": f"P{s.paragraph}C{s.index}: {len(nominal)} adlaştırma ve edilgen yüklem bir arada: aktör biliniyor mu, doğrudan yüklem mümkün mü? «{excerpt(s)}»"})
+        posts = POSTPOSITION_RE.findall(s.lowered)
+        if len(posts) >= 2:
+            findings.append({"check": "ilgec_yogunlugu",
+                             "text": f"P{s.paragraph}C{s.index}: {len(posts)} ilgeç ({', '.join(posts)}) tek cümlede: ilişki konu mu, hedef mi, referans mı; hâl eki yeterli mi?"})
+        if parenthetical_load(s):
+            findings.append({"check": "parantez_yuku",
+                             "text": f"P{s.paragraph}C{s.index}: ara söz yükü (parantez, uzun çizgi veya noktalı virgül yığını): ara söz ana cümleye mi ait, ayrı cümle mi olmalı?"})
+
+    for paragraph in prose:
+        for index, s in enumerate(paragraph.sentences):
+            if sentence_matches_any(s, ("aktarim",)):
+                for later in paragraph.sentences[index + 1:]:
+                    if later.lowered.startswith(CONCLUSION_OPENERS):
+                        findings.append({"check": "aktarim_sonrasi_sonuc",
+                                         "text": f"Paragraf {paragraph.number}: atıflı cümleden (C{s.index}) sonra C{later.index} sonuç bağlacıyla başlıyor: atıflı yorum yazar olgusuna dönüşüyor olabilir."})
+                        break
+                break
+        distinct, switches = tense_alternation(paragraph)
+        if distinct >= 3 and switches >= 3:
+            findings.append({"check": "kip_nobetlesmesi",
+                             "text": f"Paragraf {paragraph.number}: {distinct} farklı kip, {switches} geçiş: her kip değişimi gerçek bir bakış açısı değişimine mi karşılık geliyor?"})
+        joined = " ".join(s.lowered for s in paragraph.sentences)
+        for label, patterns in GENERIC_NOUN_COMPILED:
+            present = [p.pattern for p in patterns if p.search(joined)]
+            if len(present) >= 3:
+                findings.append({"check": "esanlam_kaymasi",
+                                 "text": f"Paragraf {paragraph.number}: {label} ailesinden {len(present)} farklı ad: aynı nesneye mi gönderiyorlar?"})
+        if any(sentence_matches_any(s, ("gerilim", "sohbet")) for s in paragraph.sentences) and any(
+                MAKTADIR_RE.search(s.lowered) or sentence_matches_any(s, ("uzun_ifade", "klise_gecis"))
+                for s in paragraph.sentences):
+            findings.append({"check": "kayit_kaymasi",
+                             "text": f"Paragraf {paragraph.number}: sohbet gerilimi ile bürokratik ya da akademik kayıt aynı paragrafta: kayıt profili tek mi?"})
+
+    resets = [p for p in prose if p.sentences and TOPIC_RESET_RE.search(p.sentences[0].lowered)]
+    if len(resets) >= 2:
+        findings.append({"check": "konu_sifirlama",
+                         "text": f"{len(resets)} paragraf \"bu çalışmada / bu bölümde\" ile açılıyor: amaç, yöntem veya veri kümesi her bölümde yeniden mi tanıtılıyor?"})
+    return findings
+
+
 def structure_summary(doc: Document, hits: list[dict[str, object]]) -> dict[str, object]:
     prose = [p for p in doc.paragraphs if p.prose]
     headings = doc.headings
@@ -913,6 +1089,8 @@ def analyse(text: str) -> dict[str, object]:
         "structure": structural_checks(doc, hits),
         "ceviri_golgesi": translationese_summary(doc, hits),
         "ceviri": translationese_checks(doc, hits),
+        "soylem_olculeri": discourse_summary(doc, hits),
+        "soylem": discourse_checks(doc, hits),
     }
 
 
@@ -968,10 +1146,21 @@ def compare(source_report: dict[str, object], output_report: dict[str, object]) 
     source_tr_checks = {s["check"] for s in source_report["ceviri"]}  # type: ignore[union-attr]
     new_translationese = [f["text"] for f in output_report["ceviri"]  # type: ignore[union-attr]
                           if f["check"] not in source_tr_checks]
+    source_ds_checks = {s["check"] for s in source_report["soylem"]}  # type: ignore[union-attr]
+    new_discourse = [f["text"] for f in output_report["soylem"]  # type: ignore[union-attr]
+                     if f["check"] not in source_ds_checks]
+    src_ds = source_report["soylem_olculeri"]
+    out_ds = output_report["soylem_olculeri"]
+    discourse_delta = {
+        key: {"kaynak": src_ds[key], "çıktı": out_ds[key]}  # type: ignore[index]
+        for key in DISCOURSE_LABELS
+        if src_ds[key] != out_ds[key]  # type: ignore[index]
+    }
     return {"introduced": introduced, "introduced_hard": introduced_hard,
             "introduced_context": introduced_context, "remaining": remaining, "removed": removed,
             "structure_delta": structure_delta, "introduced_structure": new_structure,
-            "translationese_delta": translationese_delta, "introduced_translationese": new_translationese}
+            "translationese_delta": translationese_delta, "introduced_translationese": new_translationese,
+            "discourse_delta": discourse_delta, "introduced_discourse": new_discourse}
 
 
 # --------------------------------------------------------------------------- #
@@ -990,6 +1179,14 @@ TRANSLATIONESE_LABELS = {
     "olan_zinciri": "olan zinciri", "ardisik_ozne": "ardışık özne", "ve_zinciri": "ve zinciri",
     "fiilimsi_yigini": "fiilimsi yığını", "iyelik_zinciri": "iyelik zinciri",
     "baglac_baslangici": "bağlaçla başlayan cümle", "bir_per_100": "bir / 100 sözcük",
+}
+DISCOURSE_LABELS = {
+    "kiplik": "çekince işareti", "pekistirici": "pekiştirici", "hafif_fiil": "hafif fiil",
+    "kiplik_yigini": "kiplik yığını", "pekistirici_catismasi": "pekiştirici çatışması",
+    "kip_nobetlesmesi": "kip nöbetleşmesi", "edilgen_adlastirma": "edilgen adlaştırma",
+    "aktarim_sonrasi_sonuc": "aktarım sonrası sonuç", "ilgec_yogunlugu": "ilgeç yoğunluğu",
+    "esanlam_kaymasi": "eş anlamlı kayması", "konu_sifirlama": "konu sıfırlama",
+    "parantez_yuku": "parantez yükü", "kayit_kaymasi": "kayıt kayması",
 }
 
 
@@ -1029,6 +1226,15 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
         for finding in ceviri:
             print(f"  - {finding['text']}")
 
+    discourse: dict[str, object] = report["soylem_olculeri"]  # type: ignore[assignment]
+    print("\nSöylem ölçüleri (kanıt, sözcük uyumu, tutarlılık): " + " | ".join(
+        f"{DISCOURSE_LABELS[k]}: {v}" for k, v in discourse.items() if v))
+    soylem: list[dict[str, object]] = report["soylem"]  # type: ignore[assignment]
+    if soylem:
+        print("[Söylem · inceleme]")
+        for finding in soylem:
+            print(f"  - {finding['text']}")
+
     if comparison is not None:
         print(f"\nKaynakla karşılaştırma ({source_path}):")
         introduced = comparison["introduced"]
@@ -1060,6 +1266,14 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
             print("  Çeviri gölgesi ölçülerindeki değişim:")
             for key, pair in comparison["translationese_delta"].items():  # type: ignore[union-attr]
                 print(f"    - {TRANSLATIONESE_LABELS[key]}: {pair['kaynak']} → {pair['çıktı']}")
+        if comparison["introduced_discourse"]:
+            print("  Kaynakta olmayıp çıktıda beliren söylem bulguları (uyarı; kanıt düzeyi, sözcük uyumu veya tutarlılık değişmiş olabilir):")
+            for text in comparison["introduced_discourse"]:  # type: ignore[union-attr]
+                print(f"    - {text}")
+        if comparison["discourse_delta"]:
+            print("  Söylem ölçülerindeki değişim:")
+            for key, pair in comparison["discourse_delta"].items():  # type: ignore[union-attr]
+                print(f"    - {DISCOURSE_LABELS[key]}: {pair['kaynak']} → {pair['çıktı']}")
         if remaining:
             print("  Kaynakta olup çıktıda kalan aileler (işlevini incele; sert aileler için silme testini uygula):")
             for key, count in remaining.items():  # type: ignore[union-attr]
@@ -1072,7 +1286,9 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
     print("\nNot: İşaretler inceleme içindir; tek bir işaret metni yapay yapmaz. "
           "Sert bastırma ailesindeki cümleler için \"bunu silersem hangi bilgi kaybolur?\", "
           "yapı bulguları için \"bu sınır kavramsal mı?\", çeviri gölgesi bulguları için "
-          "\"bu yapı Türkçede bağımsız olarak doğal mı, yoksa gizli İngilizce cümle mi dayatıyor?\" sorusunu sor.")
+          "\"bu yapı Türkçede bağımsız olarak doğal mı, yoksa gizli İngilizce cümle mi dayatıyor?\", "
+          "söylem bulguları için \"kim biliyor, nasıl biliyor, ne kadar kesin; sözcükler doğal mı birleşiyor; "
+          "cümle öncekinden mi büyüyor?\" sorusunu sor.")
 
 
 # --------------------------------------------------------------------------- #
@@ -1173,6 +1389,15 @@ Sensör veriyi okur ve veriyi filtreler ve filtrelenmiş veriyi denetleyiciye g�
 NATIVE_TEXT = """Yöntem maliyet açısından ucuz, süre açısından pahalıdır: lisans yıllık 4.000 lira, kurulum altı haftadır. Sıcaklığı 40 °C'nin üzerinde olan sensörler devre dışı bırakıldı; kalan 18 sensörün verisi analize alındı. Yeni yöntem konum hatasını %12 düşürdü ve hesaplama süresini %30 artırdı. Şirket üç fabrikaya sahiptir ve bu fabrikaların ikisi Bursa'dadır.
 
 Filtre ölçümü alır. Gözlemci durumu günceller. Filtre kazancı yeniden hesaplar. Ekip veriyi toplayıp temizledikten sonra modeli eğitti; eğitim 3 saat sürdü. Bir sonraki sürüm için tarih verilmedi.
+"""
+
+DISCOURSE_TEXT = """Bu farkın muhtemelen örneklem büyüklüğünden kaynaklanıyor olabileceği düşünülebilir. Sonuçlar, etkinin açıkça var olabileceğini güçlü biçimde düşündürmektedir. Çalışan görüşmelerinde manuel girişin hataları artırdığı belirtildi. İade oranı %6,2 idi. Bu nedenle manuel giriş hataları artırmaktadır.
+
+Örnekler üç kaynaktan toplandı. Ardından aykırı değerlerden temizlenmiştir. Model bu veriyle eğitilmektedir. Eğitim 18 dakika sürüyor. Sonuçlar tabloda verilir. Kontrollerin düzenli biçimde gerçekleştirilmesinin sağlanması planlanmaktadır.
+
+Bu çalışmada önerilen yöntem üç sensörü birleştirir. Bu yaklaşım kalibrasyon gerektirmez; yapı 20 ms gecikmeyle çalışır ve çözüm gömülü platformlara uygundur. Rapor, gecikmeler hakkında ilişkin bulguları tedarikçilere yönelik olarak sunmaktadır. Ekip bir değerlendirme gerçekleştirmiş ve analiz gerçekleştirilmiştir.
+
+Bu çalışmada model — üç katmanlı olan — ilk koşulda (ki en zor olanıdır) kararlı davranır. İşin ilginç yanı sonuçların beklenen eğilimden ayrılmasıdır. Bu kapsamda söz konusu parametrenin kritik önem arz ettiği görülmektedir.
 """
 
 FILLER_SOURCE = "Model 120. derecede en düşük hatayı verdi. Bu sonuç derece seçiminin kritik önemini ortaya koymaktadır."
@@ -1285,7 +1510,32 @@ def self_test() -> None:
     if longest_genitive_run(["bunun", "için", "metin", "uzun"]) != 1:
         raise SystemExit("Öz sınama: iyelik zinciri durak listesi hatalı")
 
-    print("Stil denetimi öz sınaması geçti (yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri gölgesi, yerli metin).")
+    discourse = analyse(DISCOURSE_TEXT)
+    expected_ds = {"kiplik", "pekistirici", "aktarim", "hafif_fiil"}
+    missing = expected_ds - set(discourse["per_category"])  # type: ignore[arg-type]
+    if missing:
+        raise SystemExit(f"Öz sınama: söylem metninde beklenen aileler bulunamadı: {sorted(missing)}")
+    checks = {f["check"] for f in discourse["soylem"]}  # type: ignore[union-attr]
+    for check in ("kiplik_yigini", "pekistirici_catismasi", "aktarim_sonrasi_sonuc", "kip_nobetlesmesi",
+                  "edilgen_adlastirma", "esanlam_kaymasi", "ilgec_yogunlugu", "konu_sifirlama",
+                  "parantez_yuku", "kayit_kaymasi"):
+        if check not in checks:
+            raise SystemExit(f"Öz sınama: söylem metninde beklenen bulgu yok: {check}")
+    for label, text in (("yerli", NATIVE_TEXT), ("temiz", CLEAN_TEXT), ("iyi yapılı", WELL_STRUCTURED_TEXT), ("iç içe", NESTED_TEXT)):
+        report = analyse(text)
+        if report["soylem"]:
+            raise SystemExit(f"Öz sınama: {label} metinde söylem bulgusu üretildi (yanlış pozitif): {report['soylem']}")
+    if tense_class(Sentence(1, 1, "Deney 100 örnek üzerinde yürütüldü.")) != "dı":
+        raise SystemExit("Öz sınama: kip sınıfı -dı tanınmadı")
+    if tense_class(Sentence(1, 1, "Sonuç önemlidir.")) is not None or tense_class(Sentence(1, 1, "Üç sensörler.")) is not None:
+        raise SystemExit("Öz sınama: koşaç ya da çoğul ad kip sınıfı sayıldı")
+    if tense_class(Sentence(1, 1, "Model kararsız davranır.")) != "r":
+        raise SystemExit("Öz sınama: geniş zaman tanınmadı")
+    repaired_ds = compare(discourse, analyse(WELL_STRUCTURED_TEXT))
+    if repaired_ds["introduced_discourse"]:
+        raise SystemExit("Öz sınama: iyi yapılı çıktı yeni söylem bulgusu üretti")
+
+    print("Stil denetimi öz sınaması geçti (yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri gölgesi, yerli metin, söylem sinyalleri).")
 
 
 # --------------------------------------------------------------------------- #

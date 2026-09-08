@@ -1,0 +1,1 @@
+Model hatayı azaltmadı; yalnızca varyansı düşürdü, varyans 0,9'dan 0,4'e indi.

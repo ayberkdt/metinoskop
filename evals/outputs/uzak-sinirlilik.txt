@@ -1,0 +1,1 @@
+Yöntem hatayı %12 düşürdü; bu düşüş yalnızca 30 °C altında ölçüldü. Veri 12 istasyondan toplanıp aykırı değerlerden temizlendi; model 3 saatte eğitildi.

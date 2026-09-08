@@ -1,0 +1,1 @@
+Yalnızca iki gürültü düzeyi sınanmıştır; her ikisinde de hata %5'in altında kalmış ve yöntem sağlam kalmıştır. Daha yüksek gürültü düzeyleri henüz sınanmamıştır.
