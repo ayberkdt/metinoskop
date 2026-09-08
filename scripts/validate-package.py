@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CURRENT_VERSION = "0.4.1"
 REQUIRED_FILES = (
     ".gitattributes",
+    ".gitignore",
     ".github/workflows/validate.yml",
     "SKILL.md",
     "README.md",
@@ -307,6 +308,8 @@ for path in text_files:
     except UnicodeDecodeError as error:
         fail(f"Package text files must be UTF-8 ({path.relative_to(ROOT)}): {error}")
 
+if "__pycache__" not in (ROOT / ".gitignore").read_text(encoding="utf-8"):
+    fail(".gitignore must exclude __pycache__")
 for path, content in texts.items():
     for stale_name in ("name: insaniyet", "$insaniyet", "$hikayeci"):
         if stale_name in content:

@@ -153,6 +153,7 @@ Her önemli yüklem için sor:
 | değerlendirme gerçekleştirmek | değerlendirmek |
 | analiz gerçekleştirmek | analiz etmek |
 | karar verme sürecini gerçekleştirmek | karar vermek |
+| bir karar alma sürecine girmek | karar aşamasına gelmek ("karar vermek" değil: süreç başlamıştır, karar verilmemiştir) |
 | iyileştirme sağlamak | iyileştirmek |
 | ölçüm işlemi yapmak | ölçmek |
 | bir açıklama sunmak | açıklamak |
