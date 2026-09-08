@@ -1,0 +1,1 @@
+Yöntemin bu çalışmada uygulanabilirliği için veri kümesinin yetersiz kalabileceği koşullar dikkate alınmalıdır. Analiz sonuçlarına göre 500 kayıttan az veri kümelerinde doğruluk %70'in altında kalmaktadır; yöntem için en az 500 kayıt gerekmektedir.

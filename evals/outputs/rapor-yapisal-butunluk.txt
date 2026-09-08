@@ -1,0 +1,14 @@
+## 2. Bulgular
+
+2026'nın ilk çeyreğinde 214 çalışanla yapılan anketin yanıt oranı %61'dir. Eğitim süresini yetersiz bulanların oranı uzaktan çalışanlarda %48, ofiste çalışanlarda %35'tir (Tablo 2).
+
+**Tablo 2. Çalışma biçimine göre eğitim süresi değerlendirmesi**
+
+| Çalışma biçimi | Eğitim süresini yetersiz bulanlar |
+|---|---:|
+| Uzaktan | %48 |
+| Ofiste | %35 |
+
+## 3. Sınırlılıklar
+
+Anket gönüllü katılıma dayandığından sonuçlar bütün çalışanlara genellenemez. Bölgesel dağılım Ek A'da verilmiştir.

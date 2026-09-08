@@ -1,0 +1,3 @@
+## Sonuç
+
+Üç sıcaklıkta ölçülen hata oranları karşılaştırılmıştır: hata 20 °C'de %3, 40 °C'de %11, 60 °C'de %24 olarak ölçülmüştür. Ölçümler tek bir sensör modeliyle yapılmıştır; başka modellerle tekrar edilmemiştir.

@@ -1,0 +1,7 @@
+## Yapılandırma
+
+Yapılandırma dosyası `config/settings.yaml` yolunda bulunur.
+
+`timeout` alanı saniye cinsinden bekleme süresini belirler; varsayılan değer 30'dur. `retries` alanı başarısız istek için deneme sayısını belirler; varsayılan değer 3'tür.
+
+`timeout` değeri 0 olarak ayarlanırsa istek süresiz bekler; bu davranış üretim ortamında önerilmez.

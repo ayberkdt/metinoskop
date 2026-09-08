@@ -14,7 +14,7 @@ from pathlib import Path
 
 SECTION_PATTERN = (
     r"(?ms)^## {heading}\s*\r?\n(.*?)"
-    r"(?=^## (?:Kaynak|Talep|Korunması gerekenler|Kaçınılması gerekenler|Yapısal beklenti)\s*$|\Z)"
+    r"(?=^## (?:Kaynak|Talep|Korunması gerekenler|Kaçınılması gerekenler|Yapısal beklenti|Serbest değişmezler)\s*$|\Z)"
 )
 HEADING_LINE_RE = re.compile(r"(?m)^#{1,6}[ \t].*$")
 URL_RE = re.compile(r"https?://[^\s)>\]]+")
@@ -145,11 +145,34 @@ def extract_invariants(source: str) -> list[Invariant]:
     return list(unique.values())
 
 
+def free_invariants(case_text: str) -> set[str]:
+    """Marker triggers the case declares as filler, listed under
+    ``## Serbest değişmezler`` as ``- <trigger> — <reason>`` lines. A case must
+    justify each exemption; the runner only reads the trigger before the dash."""
+    try:
+        block = section(case_text, "Serbest değişmezler")
+    except ValueError:
+        return set()
+    freed: set[str] = set()
+    for line in block.splitlines():
+        line = line.strip()
+        if not line.startswith("-"):
+            continue
+        trigger = re.split(r"\s+[—–-]\s+", line[1:].strip(), maxsplit=1)[0].strip().strip("`")
+        if trigger:
+            freed.add(trigger.casefold())
+    return freed
+
+
 def evaluate(case_text: str, output_text: str) -> dict[str, object]:
     source = section(case_text, "Kaynak")
     output = normalize(output_text)
     folded_output = output.casefold()
-    invariants = extract_invariants(source)
+    freed = free_invariants(case_text)
+    invariants = [
+        item for item in extract_invariants(source)
+        if not (item.category in ("kapsam", "kesinlik") and item.value.casefold() in freed)
+    ]
     missing: list[dict[str, object]] = []
 
     for item in invariants:

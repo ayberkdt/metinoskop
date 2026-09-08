@@ -1,0 +1,1 @@
+Sinyal kaybı 10 metrede 0,8 dB, 50 metrede 4,1 dB olarak ölçülmüştür. Ekip, 30 metreyi aşan hatlarda tekrarlayıcı kullanılmasını önermektedir. Ölçümler 100 MHz'de yapılmıştır.

@@ -26,6 +26,6 @@ Teknik rapor paragrafı. Standart düzeyde düzenle; metin Türkçe düşünülm
 
 ## Yapısal beklenti
 
-- ardışık özne: 0
+- tekrarlanan cümle başlangıcı: 0
 - sert işaret: 0
 - düzyazı paragrafı: 1

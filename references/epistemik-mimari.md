@@ -266,9 +266,10 @@ Zayıf ilişki, tartışmada açıklamaya, sonuçta ortaya konmuş mekanizmaya d
 
 **Sonra**
 
-> Sonuç: Sonuçlar bölümünde bildirilen zayıf ilişki, yöntemin davranışına ilişkin bir açıklama önermektedir; mekanizma bu çalışmada ortaya konmamıştır.
+> Tartışma: Bu bulgu, kullanım süresi ile yöntemin davranışı arasında zayıf bir ilişkiye işaret etmektedir.
+> Sonuç: Kullanım süresi ile hata oranı arasında zayıf bir ilişki bulunmuştur.
 
-Kaynak yalnızca zayıf ilişkiyi kuruyorsa sonuç bölümü de o düzeyde kalır. Bu yeniden yazım, sonuç bölümünün kendi metnindeki "ortaya konmuştur" iddiasını kaynaktaki sonuçlar bölümüne göre düzeltir; kullanıcı yalnızca son metni istediyse çelişkiyi sessizce kaynağın kanıt düzeyine indir, inceleme istediyse kısa notla belirt.
+Kaynak yalnızca zayıf ilişkiyi kuruyorsa tartışma ve sonuç bölümleri de o düzeyde kalır: şişmiş iddia kaynağın kanıt düzeyine iner, yerine kaynakta bulunmayan bir şey konmaz. "Mekanizma bu çalışmada ortaya konmamıştır" gibi olumsuz bir iddia ya da "olası bir açıklama önermektedir" gibi yeni bir çekince eklemek de kaynağa önerme eklemektir; kesinliği aşağı çekerken de bilginin kaynağını uydurma. Kullanıcı yalnızca son metni istediyse çelişkiyi sessizce kaynağın kanıt düzeyine indir, inceleme istediyse kısa notla belirt.
 
 ## Öneri, karar, uygulama
 

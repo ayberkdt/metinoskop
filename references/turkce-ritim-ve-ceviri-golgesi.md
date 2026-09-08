@@ -397,7 +397,8 @@ Dört çerçeve adından ikisi hâl ekine, biri iyeliğe dönüştü; `bu bağla
 |---|---|
 | bir değerlendirme yapmak | değerlendirmek |
 | analiz gerçekleştirmek | analiz etmek, çözümlemek |
-| bir karar alma sürecine girmek | karar vermek |
+| karar verme sürecini gerçekleştirmek | karar vermek |
+| bir karar alma sürecine girmek | karar aşamasına gelmek (süreç başlamıştır, karar verilmemiştir; "karar vermek" statüyü ilerletir) |
 | iyileştirme gerçekleştirmek | iyileştirmek |
 | ölçüm işlemi yapmak | ölçmek |
 

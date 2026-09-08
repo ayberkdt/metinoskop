@@ -1,0 +1,1 @@
+Platform, siparişleri tek ekranda topluyor ve tekrar eden onayları otomatikleştiriyor. Şirket, bu değişikliğin sipariş başına gereken adım sayısını beşten üçe indirmesini bekliyor; pilot uygulama henüz başlamadı.

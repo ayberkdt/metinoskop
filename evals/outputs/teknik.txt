@@ -1,0 +1,1 @@
+GRGM1200 yerçekimi modeli, 1200 derece ve 1190 mertebeye kadar kullanıldı. Denklem (3), Δv değerini km/s cinsinden verir. DOP853 çözücüsünde bağıl tolerans 10⁻⁶ olarak ayarlandı; sonuç 2,40 ± 0,03 km/s bulundu.

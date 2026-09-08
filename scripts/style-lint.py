@@ -699,7 +699,9 @@ def longest_genitive_run(words: list[str]) -> int:
 
 
 def subject_runs(paragraph: Paragraph) -> list[tuple[str, int]]:
-    """Runs of consecutive sentences that open with the same one or two tokens."""
+    """Runs of consecutive sentences that open with the same one or two tokens.
+    This is a *sentence-opening* heuristic, not subject detection: "İlk deney ...
+    İlk sonuç ..." also matches. The judge decides whether it is subject repetition."""
     runs: list[tuple[str, int]] = []
     keys: list[tuple[str, str]] = []
     for sentence in paragraph.sentences:
@@ -734,7 +736,7 @@ def translationese_summary(doc: Document, hits: list[dict[str, object]]) -> dict
         "varlik_kalibi": sum(1 for h in hits if h["category"] == "varlik"),
         "cerceve_yigini": sum(1 for s in sentences if frame_stacked(FRAME_RE.findall(s.lowered))),
         "olan_zinciri": sum(1 for s in sentences if len(OLAN_RE.findall(s.lowered)) >= OLAN_CHAIN_MIN),
-        "ardisik_ozne": sum(len(subject_runs(p)) for p in prose),
+        "tekrarlanan_cumle_baslangici": sum(len(subject_runs(p)) for p in prose),
         "ve_zinciri": sum(1 for s in sentences if len(VE_RE.findall(s.lowered)) >= VE_CHAIN_MIN),
         "fiilimsi_yigini": sum(1 for s in sentences if converb_count(sentence_words(s)) >= CONVERB_MIN),
         "iyelik_zinciri": sum(1 for s in sentences if longest_genitive_run(sentence_words(s)) >= GENITIVE_RUN_MIN),
@@ -787,8 +789,8 @@ def translationese_checks(doc: Document, hits: list[dict[str, object]]) -> list[
 
     for paragraph in prose:
         for label, length in subject_runs(paragraph):
-            findings.append({"check": "ardisik_ozne",
-                             "text": f"Paragraf {paragraph.number}: {length} ardışık cümle \"{label}\" ile başlıyor: özne düşürme, birleştirme veya yeni bilgi etrafında yeniden sıralama mümkün mü?"})
+            findings.append({"check": "tekrarlanan_cumle_baslangici",
+                             "text": f"Paragraf {paragraph.number}: {length} ardışık cümle \"{label}\" ile başlıyor. Bu gerçekten özne tekrarı mı (hakem karar verir)? Öyleyse özne düşürme, birleştirme veya yeni bilgi etrafında yeniden sıralama mümkün mü?"})
 
     # Connector and demonstrative density are judged per paragraph (a run of
     # labelled transitions inside one paragraph) and across the document.
@@ -1176,7 +1178,7 @@ SUMMARY_LABELS = {
 }
 TRANSLATIONESE_LABELS = {
     "sahip_olmak": "sahip olmak", "varlik_kalibi": "varlık kalıbı", "cerceve_yigini": "çerçeve yığını",
-    "olan_zinciri": "olan zinciri", "ardisik_ozne": "ardışık özne", "ve_zinciri": "ve zinciri",
+    "olan_zinciri": "olan zinciri", "tekrarlanan_cumle_baslangici": "tekrarlanan cümle başlangıcı", "ve_zinciri": "ve zinciri",
     "fiilimsi_yigini": "fiilimsi yığını", "iyelik_zinciri": "iyelik zinciri",
     "baglac_baslangici": "bağlaçla başlayan cümle", "bir_per_100": "bir / 100 sözcük",
 }
@@ -1479,7 +1481,7 @@ def self_test() -> None:
         raise SystemExit(f"Öz sınama: çeviri gölgesi aileleri sert bastırma sayıldı: {translated['hits']}")
     checks = {f["check"] for f in translated["ceviri"]}  # type: ignore[union-attr]
     for check in ("cerceve_yigini", "olan_zinciri", "bir_yogunlugu", "ve_zinciri", "fiilimsi_yigini",
-                  "iyelik_zinciri", "ardisik_ozne", "baglac_yogunlugu", "gosterme_ritmi"):
+                  "iyelik_zinciri", "tekrarlanan_cumle_baslangici", "baglac_yogunlugu", "gosterme_ritmi"):
         if check not in checks:
             raise SystemExit(f"Öz sınama: çeviri metninde beklenen çeviri gölgesi bulgusu yok: {check}")
     summary = translated["ceviri_golgesi"]
@@ -1493,8 +1495,8 @@ def self_test() -> None:
     native = analyse(NATIVE_TEXT)
     if native["ceviri_golgesi"]["sahip_olmak"] != 1:  # type: ignore[index]
         raise SystemExit("Öz sınama: gerçek mülkiyet bildiren tek 'sahip' bir kez işaretlenmeli, reddedilmemeli")
-    if native["ceviri_golgesi"]["ardisik_ozne"] != 0:  # type: ignore[index]
-        raise SystemExit("Öz sınama: dönüşümlü özneler ardışık özne sayıldı")
+    if native["ceviri_golgesi"]["tekrarlanan_cumle_baslangici"] != 0:  # type: ignore[index]
+        raise SystemExit("Öz sınama: dönüşümlü özneler tekrarlanan cümle başlangıcı sayıldı")
     if native["structure"]:
         raise SystemExit(f"Öz sınama: yerli metinde yapı bulgusu üretildi: {native['structure']}")
 

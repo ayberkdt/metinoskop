@@ -21,15 +21,17 @@ Makale bölümleri. Standart düzeyde düzenle; her bölümdeki iddiayı sonuçl
 ## Korunması gerekenler
 
 - Zayıf ilişki ve r = 0,18 korunmalı.
-- Tartışma ve sonuç bölümleri ilişkiyi açıklamaya ya da mekanizmaya yükseltmemeli.
+- Tartışma ve sonuç bölümleri ilişkiyi açıklamaya ya da mekanizmaya yükseltmemeli; şişmiş iddia sonuçlar bölümünün düzeyine inmeli.
 - Üç başlık korunmalı.
 - İlişki nedenselliğe çevrilmemeli.
+- Kesinliği aşağı çekerken de kaynağa önerme eklenmemeli: mekanizma iddiası kaldırılır, olumsuzu yazılmaz.
 
 ## Kaçınılması gerekenler
 
 - "Açıklamaktadır" ve "ortaya konmuştur" iddialarını bırakmak
 - Bunları "göstermektedir", "kanıtlamaktadır" gibi eş güçte yüklemlerle değiştirmek
 - Kaynakta bulunmayan mekanizma, neden ya da ek bulgu eklemek
+- Kaynakta bulunmayan olumsuz iddia ("mekanizma ortaya konmamıştır", "nedensellik gösterilmemiştir") ya da yeni çekince ("olası bir açıklama önermektedir") eklemek
 - Sonuç bölümünü silmek
 
 ## Yapısal beklenti

@@ -1,0 +1,1 @@
+Yeni izleme modülü işlem kayıtlarını 30 gün saklar. Hata oranını her saat hesaplar ve raporu ekip liderine iletir. Sistem yalnızca üretim ortamında kullanılacak.

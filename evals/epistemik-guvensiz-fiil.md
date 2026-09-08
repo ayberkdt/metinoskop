@@ -10,13 +10,13 @@ Makale bulgular paragrafı. Standart düzeyde düzenle; hafif yüklemi gerçek y
 
 ## Korunması gerekenler
 
-- Etkinin yönü (olumlu) korunmalı; koşular rastgele atanmadığı için ilişki nedensel azaltma iddiasına yükseltilmemeli.
-- 30 koşu, %4 ve %7 korunmalı.
+- 30 koşu, %4 ve %7 doğru gruplarla korunmalı.
 - "Rastgele atanmamıştır" sınırlılığı korunmalı.
+- Koşular rastgele atanmadığı için kaynağın "olumlu etki" iddiası ölçümle desteklenmez; iddia nedensel semantik taşıyan bir fiile ("etkiler", "azaltır", "düşürür") çevrilemez. Güvenli çıktı yalnızca ölçümü ve sınırlılığı taşır; iddia korunacaksa kaynağın kendi hafif biçimiyle ve ölçümden ayrı durmalıdır.
 
 ## Kaçınılması gerekenler
 
-- "Yöntem hatayı azaltır" ya da "düşürür" gibi nedensel fiil kurmak
+- "Yöntem hatayı azaltır", "düşürür", "etkiler", "olumlu yönde etkilemektedir" gibi nedensel semantik taşıyan fiil kurmak; "daha doğrudan" fiil epistemik düzeyi yükseltemez
 - "Etkiye sahiptir" kalkısını olduğu gibi bırakmak
 - Rastgele atanmama sınırlılığını silmek
 - Kaynakta bulunmayan istatistiksel anlamlılık ya da neden eklemek

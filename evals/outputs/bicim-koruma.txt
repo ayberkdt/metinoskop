@@ -1,0 +1,10 @@
+### Sonuçlar
+
+| Model | Hata |
+|---|---:|
+| A | %4,2 |
+| B | %3,8 |
+
+Ayrıntılar için [rapora](https://example.com/report) bakın. `max_iter=500` kullanılmıştır.[^1]
+
+[^1]: Deney 12 Temmuz 2026'da yürütüldü.

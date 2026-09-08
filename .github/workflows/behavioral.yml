@@ -1,0 +1,54 @@
+name: Behavioral regression
+
+# Runs the real skill on the curated critical cases with a real model and a
+# model judge. Costs money, so it is not on every push: weekly, and on demand.
+
+on:
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: "critical (default) or all"
+        required: false
+        default: "critical"
+      editor_model:
+        description: "Editor model id"
+        required: false
+        default: "claude-opus-5"
+      judge_model:
+        description: "Judge model id"
+        required: false
+        default: "claude-opus-5"
+  schedule:
+    - cron: "0 6 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  behavioral:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install SDK
+        run: pip install anthropic
+      - name: Plan
+        run: python3 scripts/behavioral-regression.py --dry-run
+      - name: Run behavioral regression
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          EXTRA=""
+          if [ "${{ github.event.inputs.scope }}" = "all" ]; then EXTRA="--all"; fi
+          python3 scripts/behavioral-regression.py $EXTRA \
+            --editor-model "${{ github.event.inputs.editor_model || 'claude-opus-5' }}" \
+            --judge-model "${{ github.event.inputs.judge_model || 'claude-opus-5' }}"
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: behavioral-reports
+          path: build/behavioral/
