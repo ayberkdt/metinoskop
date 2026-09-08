@@ -104,7 +104,7 @@ Türkçe sözcük sırasını mekanik bir özne–nesne–yüklem şablonuna ind
 
 İkinci sürüm, modelin bir paragraf boyunca zaten konu olduğu ve yeni bilginin irtifa–hata ilişkisi olduğu durumda doğaldır. Modelin eylemi (bir denetleyicinin hatayı aktif olarak azaltması) kaynakta ayrı bir iddiaysa özne kalır; "model hatayı azaltır" ile "hata düşer" aynı önerme değildir. Amaç özneyi silmek değil, bilgiyi Türkçe söylem mantığına göre yerleştirmektir.
 
-**Odak yanlış yerde**
+**Odak yerinde, dokunma**
 
 > Hata en çok, sıcaklık 40 °C'yi aştığında artmaktadır.
 
