@@ -15,7 +15,8 @@ Bu depo, Türkçe metinleri doğal ve kaynak sadakatini koruyan bir dille düzen
 - `README.md`: İnsanlar için kurulum, kullanım, kapsam ve depo yapısı belgesidir.
 - `evals/`: Sabit çıktı dayatmayan davranışsal değerlendirme vakalarını içerir.
 - `scripts/eval-runner.py`: Model çıktısındaki kaynak değişmezlerini bağımlılık kullanmadan denetler.
-- `scripts/style-lint.py`: Model çıktısındaki şüpheli retorik örüntüleri işlev ailesine göre işaretler; tek başına reddetmez, `--source` ile yeni eklenen örüntüleri ayırır.
+- `scripts/style-lint.py`: Model çıktısındaki şüpheli retorik ve yapısal örüntüleri işlev ailesine göre işaretler; tek başına reddetmez, `--source` ile yeni eklenen kalıpları sert/bağlamsal ayrımıyla listeler.
+- `scripts/eval-suite.py`: `evals/outputs/` altındaki kayıtlı referans çıktılar üzerinde değişmez, sert kalıp ve yapısal beklenti denetimi yapar; CI'da çalışır ve model hakem istemi üretebilir.
 - `scripts/validate-package.py`: Paket yapısını ve adlandırma tutarlılığını bağımlılık kullanmadan doğrular.
 - `LICENSE`: Paketin MIT Lisansı altında kullanılma, değiştirilme ve dağıtılma koşullarını belirtir.
 - `CHANGELOG.md`: Sürümler arasındaki kullanıcıya dönük davranış ve paket değişikliklerini kaydeder.
@@ -48,7 +49,8 @@ Bu depo, Türkçe metinleri doğal ve kaynak sadakatini koruyan bir dille düzen
 - Rapor davranışını bulgu–yorum–öneri, yapısal bütünlük ve yönetici özeti eval'leriyle koruyun.
 - Sıfır bilgi cümlesi, savunmacı düzyazı, tekrar döngüsü, yol haritası, yapay denge, kalıp giriş ve sonuç, soyut yüklem, paragraf simetrisi, yanlış pozitif (`gerekli-ifade`), muhatap duyarlılığı (`egitsel-aciklama`) ve iyi metin (`iyi-metin`) davranışlarını karşılık gelen eval vakalarıyla koruyun.
 - Yapısal davranışı aşırı bölümleme, başlık derinliği, tek paragraflık bölüm, kısa paragraf yığını, yapay gerilim, tekrarlanan bölüm giriş ve sonuçları, çapraz gönderme, uzun çerçeve, ayrılmış kanıt ve listeleştirme vakalarıyla; koruma davranışını `korunacak-basliklar`, `yontem-ayrimi`, `uzun-paragraf-korunur`, `kisa-paragraf-korunur` ve `yapisal-iyi-metin` vakalarıyla koruyun.
-- `scripts/style-lint.py` kataloğuna aile eklerken öz sınamadaki yapay ve temiz metinleri güncelleyin; temiz metin sert bastırma ailesinde işaret üretmemelidir.
+- `scripts/style-lint.py` kataloğuna aile eklerken öz sınamadaki yapay ve temiz metinleri güncelleyin; temiz metin sert bastırma ailesinde işaret üretmemelidir. Bağlama duyarlı bir aileyi `sert` düzeyine taşımayın; `--fail-on-introduced-hard` yalnızca sert aileler için deterministik hata verir.
+- Yeni eval eklerken mümkünse `evals/outputs/<vaka>.txt` referans çıktısı ve `## Yapısal beklenti` bölümü ekleyin; yapısı korunacak vakalarda kaynağı olduğu gibi kaydedin. `python scripts/eval-suite.py` geçmeden commit oluşturmayın.
 - Davranış kuralı değiştiğinde ilgili eval vakasını güncelleyin veya yeni bir vaka ekleyin.
 - Kullanıcıya dönük davranış veya paket yapısı değiştiğinde `CHANGELOG.md` dosyasını güncelleyin.
 - `SKILL.md` dosyasını 500 satırın altında tutun.
@@ -62,6 +64,7 @@ Bu depo, Türkçe metinleri doğal ve kaynak sadakatini koruyan bir dille düzen
 python scripts/validate-package.py
 python scripts/eval-runner.py --self-test
 python scripts/style-lint.py --self-test
+python scripts/eval-suite.py
 npx --yes skills@1.5.20 add . --list
 ```
 

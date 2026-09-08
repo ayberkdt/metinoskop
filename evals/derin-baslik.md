@@ -39,3 +39,9 @@ Teknik belge. Derin düzeyde düzenle; hiyerarşiyi içeriğin gerektirdiği der
 - Varsayılan değerleri değiştirmek veya alanları birbirine karıştırmak
 - Kod biçimini kaldırmak
 - Her cümleyi ayrı paragraf yapmak
+
+## Yapısal beklenti
+
+- en derin düzey: <= 3
+- başlık: <= 3
+- başlık: >= 1

@@ -19,6 +19,11 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 - On altı yeni yapısal eval vakası: aşırı bölümleme, başlık derinliği, tek paragraflık bölümler, kısa paragraf yığını, yapay gerilim, tekrarlanan bölüm girişleri ve sonuçları, çapraz gönderme, uzun çerçeve ifadeleri, ayrılmış kanıt, gereksiz listeleme; korunacak başlıklar, yöntem ayrımı, uzun ve kısa kalması gereken paragraflar ve yapısı iyi metin.
 - Stil denetimi başlıkları ve liste ögelerini ayrıştırır; yapay gerilim, paragraf askısı, boş sarmalayıcı, çapraz gönderme, bağlam yeniden başlatma ve uzun çerçeve ailelerini işaretler; parçalanma yoğunluğu özetini, başlık yoğunluğu, tek paragraflık bölüm, derin başlık, kısa paragraf, liste yoğunluğu, başlık tekrarı ve bağlaçla açılış bulgularını raporlar; `--source` ile yapı ölçülerindeki değişimi gösterir.
 - Doğrulayıcı `SKILL.md` için kendi yapı kuralını denetler: dördüncü düzey başlık yok, en fazla on iki üçüncü düzey başlık.
+- Sıfır bilgi cümlesi kuralına sentez ve bilişsel sıkıştırma istisnası: silme testi iki sorudur; yeni önerme eklemeyen ama birden çok bulguyu tek karar cümlesinde toplayan ya da okurun çıkarım yükünü azaltan cümle korunur.
+- Paragraf kuralı "baskın ve tutarlı düşünce hareketi" olarak esnetildi; aynı konu tek paragraf için yeterli sayılmaz, bulgu → öneri gibi sert söylem işlevi değişimlerinde paragraf sınırı meşrudur ve bulgu, yorum, öneri tek yoğun blokta paketlenmez.
+- `scripts/eval-suite.py`: `evals/outputs/` altındaki on beş kayıtlı referans çıktı üzerinde kaynak değişmezi, sert kalıp eklenmesi ve `## Yapısal beklenti` denetimi; CI'a eklendi; `--export-judge-prompts` ile model hakem istemleri.
+- Stil denetimi çıkış kodu sert ve bağlamsal aileleri ayırır (`--fail-on-introduced-hard`, `--fail-on-introduced-any`); başlıklar yığın tabanlı ağaçla sayılır, alt bölümleri dolu üst başlık tek paragraflık bölüm sayılmaz; başlık tekrarı sezgiseli sayı taşıyan veya uzun ilk cümleyi tekrar saymaz.
+- Eval çalıştırıcısı başlık satırlarındaki noktalı bölüm numaralarını değişmez saymaz ve Kaynak bölümünü yalnızca vaka başlıklarında keser.
 
 ### Değiştirildi
 

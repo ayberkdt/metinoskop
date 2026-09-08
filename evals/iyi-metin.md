@@ -31,3 +31,8 @@ Metni doğal Türkçeyle düzenle.
 - Yeni nezaket cümlesi, teşekkür, kapanış veya çağrı eklemek
 - Cümleleri birleştirip kısaltmak veya metni daha resmî hâle getirmek
 - Kaynakta bulunmayan tarih, bölge, rakam veya kişi eklemek
+
+## Yapısal beklenti
+
+- sert işaret: 0
+- başlık: 0

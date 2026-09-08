@@ -20,7 +20,7 @@ Metinoskop, metni sırf farklı görünsün diye yeniden yazmaz. Anlamı, olgula
 - Olumsuzluk, nicelik, koşul, istisna ve kapsam belirleyicilerini korur.
 - Teknik terimleri, sembolleri, birimleri ve belge biçimini tutarlı tutar.
 - Raporlarda bulgu, yorum, sınırlılık, öneri ve karar sınırlarını; tablo, atıf ve çapraz göndermeleri korur.
-- Silindiğinde hiçbir önerme kaybolmayan cümleleri çıkarır: dayanaksız önem iddiaları, savunmacı açıklamalar, olgu → açımlama → önem → mini sonuç döngüleri, bölüm duyuruları, kalıp giriş ve sonuçlar.
+- Silindiğinde hiçbir önerme kaybolmayan ve önceki bilgiyi sentezlemeyen cümleleri çıkarır: dayanaksız önem iddiaları, savunmacı açıklamalar, olgu → açımlama → önem → mini sonuç döngüleri, bölüm duyuruları, kalıp giriş ve sonuçlar. Birden çok bulguyu tek karar cümlesinde toplayan ya da okurun çıkarım yükünü azaltan sentez cümlesini korur.
 - Üretilmiş karşıtlık ve zorlama dengeyi çıkarır; adlandırılmış sınırlılığı ve ölçülmüş yöntem gerekçesini korur.
 - Soyut yüklemleri kaynaktaki somut ilişkiyle değiştirir; boş soyut özneleri göndergeye çözer.
 - Tek biçimli paragraf mimarisini bilgi yapısına göre yeniden kurar; uzunlukları insan gibi görünsün diye rastgeleleştirmez.
@@ -141,7 +141,7 @@ Her kavrama başlık açan, paragrafı her cümlede kesen, her bölümü duyuruy
 ```text
 $metinoskop
 
-Bu bölümü derin düzeyde düzenle. Hak edilmemiş başlıkları birleştir, erken bölünmüş paragrafları tek harekete topla, sonuçla sınırlılığını yan yana getir; bütün ölçümleri, yöntem ayrıntılarını ve numaralı göndermelerin gerektirdiği bölümleri koru.
+Bu bölümü derin düzeyde düzenle. Hak edilmemiş başlıkları birleştir, erken bölünmüş paragrafları baskın hareketlerine göre topla, sonuçla sınırlılığını yan yana getir; bütün ölçümleri, yöntem ayrıntılarını ve numaralı göndermelerin gerektirdiği bölümleri koru.
 
 [metin]
 ```
@@ -282,9 +282,11 @@ metinoskop/
 │   ├── yontem-ayrimi.md
 │   ├── uzun-paragraf-korunur.md
 │   ├── kisa-paragraf-korunur.md
-│   └── yapisal-iyi-metin.md
+│   ├── yapisal-iyi-metin.md
+│   └── outputs/
 ├── scripts/
 │   ├── eval-runner.py
+│   ├── eval-suite.py
 │   ├── style-lint.py
 │   └── validate-package.py
 ├── .github/
@@ -328,11 +330,21 @@ Bir çıktıdaki şüpheli retorik örüntüleri işlev ailesine göre işaretle
 python scripts/style-lint.py outputs/iddia-tekrar-dongusu.txt --source evals/iddia-tekrar-dongusu.md
 ```
 
-`scripts/style-lint.py` üretilmiş önem, savunmacı açıklama, yol haritası, boş bölüm sarmalayıcısı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, bağlam yeniden başlatma, uzun çerçeve ifadesi, kalıp giriş ve sonuç, üretilmiş karşıtlık, zorlama denge, soyut yüklem, boş özne ve sohbet botu kalıntısı ailelerini işaretler; parçalanma yoğunluğunu (başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, çapraz gönderme) özetler ve paragraf uzunluğu tek biçimliliği, önem cümlesiyle kapanış, başlık tekrarı, bağlaçla açılış ve işlev tekrarı gibi yapı bulgularını raporlar. `--source` ile yapı ölçülerindeki değişimi de gösterir. Tek bir sözcüğe bakarak metni reddetmez; `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıpları kalıp düzeyinde ayrıca listeler (aynı aileden farklı bir kalıp da yeni sayılır) ve yalnızca `--fail-on-introduced` ile başarısız çıkış kodu verir. Öz sınama için:
+`scripts/style-lint.py` üretilmiş önem, savunmacı açıklama, yol haritası, boş bölüm sarmalayıcısı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, bağlam yeniden başlatma, uzun çerçeve ifadesi, kalıp giriş ve sonuç, üretilmiş karşıtlık, zorlama denge, soyut yüklem, boş özne ve sohbet botu kalıntısı ailelerini işaretler; parçalanma yoğunluğunu (başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, çapraz gönderme) özetler ve paragraf uzunluğu tek biçimliliği, önem cümlesiyle kapanış, başlık tekrarı, bağlaçla açılış ve işlev tekrarı gibi yapı bulgularını raporlar. `--source` ile yapı ölçülerindeki değişimi de gösterir. Tek bir sözcüğe bakarak metni reddetmez; `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıpları kalıp düzeyinde ayrıca listeler (aynı aileden farklı bir kalıp da yeni sayılır). `--fail-on-introduced-hard` yalnızca sert bastırma ailesinden yeni kalıp eklendiğinde başarısız çıkış kodu verir; bağlamsal aileler (`yani`, `öte yandan`, `işaret etmek`) uyarı olarak kalır. `--fail-on-introduced-any` katı moddur. Öz sınama için:
 
 ```bash
 python scripts/style-lint.py --self-test
 ```
+
+### Kayıtlı çıktı regresyonu
+
+`evals/outputs/` altındaki referans düzenlemeler üzerinde değişmez, sert kalıp ve yapısal beklenti denetimini çalıştırmak için:
+
+```bash
+python scripts/eval-suite.py
+```
+
+`scripts/eval-suite.py` CI'da çalışır; her vaka için model hakem istemi üretmek üzere `--export-judge-prompts DIR` seçeneğini kullanabilirsiniz. Taze model çıktısı üretip otomatik puanlayan tam davranışsal regresyon henüz depoda yoktur.
 
 Agent Skills keşfini denetlemek için:
 

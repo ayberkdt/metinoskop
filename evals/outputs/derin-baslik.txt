@@ -1,0 +1,9 @@
+## 3. Yapılandırma
+
+### 3.1 Bağlantı ayarları
+
+`timeout` alanı saniye cinsinden bekleme süresidir; varsayılan değer 30'dur. `retries` alanı başarısız istek için deneme sayısıdır; varsayılan değer 3'tür.
+
+### 3.2 Günlük ayarları
+
+`log_level` alanı `info` veya `debug` değerini alır; varsayılan `info`dur.

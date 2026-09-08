@@ -32,3 +32,8 @@ Model haziran ayında üretim ortamına alınmıştır.
 - Doğrulama doğruluğunu üretim doğruluğu gibi yazmak ("üretimde %91")
 - Kaynakta bulunmayan izleme planı, tarih veya 2025 sonucu eklemek
 - Dağıtım bilgisini silmek
+
+## Yapısal beklenti
+
+- başlık: <= 2
+- düzyazı paragrafı: <= 2

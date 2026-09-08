@@ -32,3 +32,8 @@ Makale yöntem bölümü. Derin düzeyde düzenle; gereksiz parçalanmayı gider
 - Deney 3 için kaynakta bulunmayan kalibrasyon bilgisi eklemek
 - Değerleri, adım büyüklüklerini veya bekleme sürelerini değiştirmek
 - Deneylerin ortak koşullarını çıkarıp "yukarıdaki gibi" göndermesiyle anlatmak
+
+## Yapısal beklenti
+
+- başlık: 3
+- sert işaret: 0

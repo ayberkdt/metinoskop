@@ -37,3 +37,8 @@ Derin düzeyde düzenle; çapraz göndermeleri yapısal onarımla gereksiz kıl,
 - Gerekçeyi silmek
 - Eşikleri değiştirmek veya grup sayısını değiştirmek
 - Kaynakta bulunmayan grup büyüklüğü, dağılım veya sonuç eklemek
+
+## Yapısal beklenti
+
+- başlık: <= 2
+- çapraz gönderme: 0

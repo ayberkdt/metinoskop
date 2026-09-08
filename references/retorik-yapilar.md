@@ -50,8 +50,11 @@ Bir cümle şu işlevlerden birini taşıyorsa kalır:
 | Kaynaktaki yazar değerlendirmesi | "Genel müdür projeyi bir dönüm noktası olarak değerlendirdi." |
 | Gerekli yöntem gerekçesi | "0,01 değeri ön denemelerde ıraksadığı için 0,001 seçildi." |
 | Yorumu değiştiren sınırlılık | "Ölçümler tek bir sensör modeliyle yapıldı." |
+| Sentez veya bilişsel sıkıştırma | "Üç ölçüm birlikte, hatanın yalnızca 40 °C üzerinde ve yalnızca yüksek nemde sınırı aştığını gösterir." |
 
-Şu cümle türleri testi genellikle geçemez:
+Silme testi iki sorudur. Birincisi: cümle çıkınca hangi önerme, ilişki, kronoloji, yorum veya tavır kaybolur? İkincisi: hiçbiri kaybolmuyorsa, cümle yeni bilgi eklemese bile önceki bilgiyi anlamlı biçimde birleştiriyor veya okurun çıkarım yükünü azaltıyor mu? Üç ayrı ölçümü tek koşul cümlesinde toplayan, uzun bir teknik zinciri okurun yerine sıkıştıran ya da paragrafın kararını netleştiren cümle ikinci soruyu "evet" ile geçer ve kalır. Sentez ile açımlamayı ayır: sentez birden çok önceki olguyu tek ilişkide toplar; açımlama tek olguyu başka sözcüklerle yineler ve okura hiçbir çıkarım tasarrufu sağlamaz.
+
+Şu cümle türleri iki soruyu da geçemez:
 
 - **Soyut yineleme:** "Başka bir ifadeyle, sonuçlar bu yaklaşımın etkili olduğunu göstermektedir."
 - **Önem bildirimi:** "Bu bulgu son derece önemlidir."
@@ -122,7 +125,7 @@ Bir paragrafta aynı aileden iki cümle varsa ikisi de tekrar adayıdır. Bir be
 
 > Kuzey depoda iade oranı %6,2, diğer depolarda %3,1 olarak ölçüldü.
 
-Dört cümlede tek önerme vardır. "Yaklaşık iki katı" kaynaktaki sayıların yeniden ifadesidir ve bağımsız bilgi eklemez; okur oranı kendisi görebilir. Kaynak "iki kat" farkı ayrıca vurguluyorsa ve bu vurgu yorumun parçasıysa korunabilir.
+Dört cümlede tek önerme vardır. "Yaklaşık iki katı" iki sayının yeniden ifadesidir; okur oranı tek bakışta görebildiği için sentez sayılmaz. Aynı cümle, farklı bölümlere dağılmış beş depo oranını tek karşılaştırmada toplasaydı okurun çıkarım yükünü azaltır ve kalırdı.
 
 ## Savunmacı düzyazı
 

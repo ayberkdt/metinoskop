@@ -1,0 +1,3 @@
+### Veri kümesi
+
+Deneylerde 2022 yılına ait 48.000 kayıtlık trafik veri kümesi kullanılmıştır; kayıtların %12'si eksik hız değeri içermektedir. Eksik hız değerleri, aynı sensörün önceki ve sonraki ölçümlerinin ortalamasıyla doldurulmuştur; ön denemelerde bu yöntem medyanla doldurmaya göre doğrulama hatasını %2 azaltmıştır. Doldurma yalnızca 10 dakikadan kısa boşluklar için uygulanmış, daha uzun boşluklar içeren kayıtlar çıkarılmıştır.

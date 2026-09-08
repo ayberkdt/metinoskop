@@ -69,6 +69,7 @@ REQUIRED_FILES = (
     "evals/kisa-paragraf-korunur.md",
     "evals/yapisal-iyi-metin.md",
     "scripts/eval-runner.py",
+    "scripts/eval-suite.py",
     "scripts/style-lint.py",
     "scripts/validate-package.py",
 )
@@ -264,6 +265,7 @@ readme_requirements = (
     "[CHANGELOG.md](CHANGELOG.md)",
     "scripts/eval-runner.py",
     "scripts/style-lint.py",
+    "scripts/eval-suite.py",
     "retorik-yapilar.md",
     "yapisal-butunluk.md",
 )
@@ -289,7 +291,7 @@ if "## [0.1.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.1.0")
 
 evals_readme = texts[ROOT / "evals/README.md"]
-for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık"):
+for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez"):
     if requirement not in evals_readme.casefold():
         fail(f"evals/README.md must mention review axis: {requirement}")
 
@@ -362,8 +364,16 @@ if "python3 scripts/eval-runner.py --self-test" not in workflow:
     fail("CI must run the deterministic eval runner self-test")
 if "python3 scripts/style-lint.py --self-test" not in workflow:
     fail("CI must run the style-lint self-test")
+if "python3 scripts/eval-suite.py" not in workflow:
+    fail("CI must run the recorded-output eval suite")
 
-for relative_path in ("scripts/eval-runner.py", "scripts/style-lint.py", "scripts/validate-package.py"):
+for output_path in sorted((ROOT / "evals/outputs").glob("*.txt")):
+    if not (ROOT / "evals" / f"{output_path.stem}.md").is_file():
+        fail(f"Recorded output without an eval case: evals/outputs/{output_path.name}")
+if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 10:
+    fail("evals/outputs must keep at least ten recorded reference outputs")
+
+for relative_path in ("scripts/eval-runner.py", "scripts/eval-suite.py", "scripts/style-lint.py", "scripts/validate-package.py"):
     try:
         ast.parse((ROOT / relative_path).read_text(encoding="utf-8"))
     except SyntaxError as error:

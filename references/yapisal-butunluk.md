@@ -117,7 +117,7 @@ Sayısal eşik dayatma; uyarı işaretini gördüğünde bölme testlerini uygul
 
 ## Paragraf hareketi ve zihinsel model
 
-Kısa paragrafın otomatik olarak daha kolay okunduğu varsayımını reddet. Paragraf, cümleleri tek bir tutarlı düşünce hareketini yürüttüğü sürece bütün kalır:
+Kısa paragrafın otomatik olarak daha kolay okunduğu varsayımını reddet. Paragraf, cümleleri baskın ve tutarlı bir düşünce hareketini yürüttüğü sürece bütün kalır; hareket, gözlem → yorum → çekince gibi birbirine bağlı birkaç alt işlev taşıyabilir:
 
 - iddia → kanıt → yorum,
 - gözlem → açıklama,
@@ -138,11 +138,13 @@ Kısa paragrafın otomatik olarak daha kolay okunduğu varsayımını reddet. Pa
 >
 > Bu durum sonuçların yorumlanması açısından önemlidir.
 
-**Tek hareket**
+**Tek paragraf**
 
-> Yöntem hata oranını düşürdü; bunun temel nedeni örnekleme stratejisiydi ve örnekleme özellikle düşük yoğunluklu bölgelerde etkiliydi.
+> Yöntem hata oranını düşürdü. Bunun temel nedeni örnekleme stratejisiydi; örnekleme özellikle düşük yoğunluklu bölgelerde etkiliydi.
 
-İlk üç cümle gözlem → açıklama → niteleme hareketidir. Dördüncü cümle hiçbir önerme taşımadığı için silinir; paragrafa dönüştürülmez.
+İlk üç cümle gözlem → açıklama → niteleme hareketidir ve tek paragrafta kalır; birleştirme paragraf düzeyindedir, üç cümleyi tek noktalı virgüllü cümleye sıkıştırmak zorunlu değildir. Dördüncü cümle hiçbir önerme taşımadığı ve önceki bilgiyi sentezlemediği için silinir.
+
+Aynı konu üzerinde olmak tek paragraf için yeterli değildir. Söylem işlevi sert biçimde değişiyorsa, özellikle bulgu → öneri, betimleme → karar ve yöntem → sonuç geçişlerinde, paragraf sınırı meşrudur. Parçalanmayı önlemek, bulgu, yorum ve öneriyi tek yoğun blokta paketlemek değildir.
 
 Her paragraf veya bölüm sınırında sor: okur, etkin kalabilecek bağlamı yeniden mi kuracak? Sonraki birim aynı özneyi, yöntemi, deneyi, değişkeni, nedensel zinciri, çerçeveyi, sınırlılığı veya karşılaştırmayı yeniden tanıtmak zorunda kalıyorsa bölme zararlıdır. Bölümü kapatmadan önce okurun iddiayı, gerekli kanıtı, gerekiyorsa yorumu ve temel sınırlılığı ya da koşulu edinip edinmediğini sor; açıklama bitmemişse sürdür.
 
@@ -419,7 +421,7 @@ Dört başlık ve altı cümle, bir başlık ve iki cümle oldu. Sürüm, veri k
 
 Beş başlık bir başlık oldu; üç alan, üç varsayılan ve iki ayar grubu korundu. Belge başka yerden `3.1` veya `3.2` numarasına gönderme yapıyorsa ya da kullanıcı numaralı yapıyı koruyorsa `### 3.1` ve `### 3.2` kalır, yalnızca `####` düzeyi düzleşir.
 
-### Rapor: iki cümlelik paragraflar tek harekete dönüşüyor
+### Rapor: tek cümlelik paragraflar hareketlere göre toplanıyor
 
 **Önce**
 
@@ -435,9 +437,11 @@ Beş başlık bir başlık oldu; üç alan, üç varsayılan ve iki ayar grubu k
 
 **Sonra**
 
-> Kuzey depoda iade oranı %6,2, diğer depolarda %3,1 olarak ölçülmüştür. Çalışan görüşmeleri farkı manuel veri girişine bağlamaktadır; görüşmeler bu bağı kanıtlamaz. Yönetim üç aylık bir barkod pilotu önermektedir.
+> Kuzey depoda iade oranı %6,2, diğer depolarda %3,1 olarak ölçülmüştür. Çalışan görüşmeleri farkı manuel veri girişine bağlamaktadır; görüşmeler bu bağı kanıtlamaz.
+>
+> Yönetim üç aylık bir barkod pilotu önermektedir.
 
-Beş paragraf tek paragraf oldu: bulgu → yorum ve sınırı → öneri. Kanıt düzeyleri korundu; yorum olguya, öneri karara çevrilmedi.
+Beş paragraf iki paragraf oldu: bulgu → yorum ve sınırı bir hareket, öneri ayrı bir söylem işlevi. Öneriyi aynı paragrafa almak yanlış olmazdı; ama bulgu → öneri geçişi sert bir işlev değişimi olduğu için sınır meşrudur ve okur öneriyi bulgudan ayrı görür. Kanıt düzeyleri korundu; yorum olguya, öneri karara çevrilmedi.
 
 ### Yönetim notu: tekrarlanan bölüm giriş ve sonuçları
 
@@ -548,7 +552,7 @@ Kırk sayfalık kılavuzdaki on iki `##` başlığı, her biri birkaç paragraf 
 
 ### Uzun kalması gereken paragraf
 
-Ölçüm → dağılım → yorum → karşı veri → belirsizlik hareketini yedi cümlede tamamlayan analitik bir paragraf tek hareketi taşır. Okur bu paragrafın içinde kalarak sayıların, yorumun ve çekincenin ilişkisini görür; üç kısa paragrafa bölmek her çekinceyi dayandığı sayıdan uzaklaştırır. Uzunluk gerekçesiyle bölünmez.
+Ölçüm → dağılım → yorum → karşı veri → belirsizlik hareketini yedi cümlede tamamlayan analitik bir paragraf tek baskın hareketi taşır. Okur bu paragrafın içinde kalarak sayıların, yorumun ve çekincenin ilişkisini görür; üç kısa paragrafa bölmek her çekinceyi dayandığı sayıdan uzaklaştırır. Uzunluk gerekçesiyle bölünmez.
 
 ### Kısa kalması gereken paragraf
 

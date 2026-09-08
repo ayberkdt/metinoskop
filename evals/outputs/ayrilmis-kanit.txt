@@ -1,0 +1,7 @@
+### 3.1 Doğruluk
+
+Model, doğrulama kümesinde %91 doğruluk elde etmiştir. Bu ölçüm yalnızca 2024 verisiyle yapılmıştır; 2025 verisinde ölçüm yapılmamıştır.
+
+### 3.2 Dağıtım
+
+Model haziran ayında üretim ortamına alınmıştır. Üretim ortamındaki doğruluk izlenmemektedir.

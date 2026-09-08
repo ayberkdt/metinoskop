@@ -25,3 +25,9 @@ Analitik yazı. Standart düzeyde düzenle.
 - Her cümleye "bununla birlikte", "öte yandan" gibi geçiş eklemek
 - Paragrafı özete indirgeyip sayıları veya karşı veriyi silmek
 - Kaynakta bulunmayan ölçüm, dönem veya neden eklemek
+
+## Yapısal beklenti
+
+- düzyazı paragrafı: 1
+- başlık: 0
+- liste ögesi: 0

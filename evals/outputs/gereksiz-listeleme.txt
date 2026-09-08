@@ -1,0 +1,1 @@
+Sorgular arasında tekrar oranı %2'nin altında kaldığı için önbellek isabet oranı düşük kaldı ve 4 GB'lık bellek maliyetini haklı çıkarmadı; önbellek bu nedenle devre dışı bırakıldı. Kapatma sonrasında ortalama yanıt süresi değişmedi.

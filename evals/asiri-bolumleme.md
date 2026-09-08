@@ -43,3 +43,9 @@ Makalenin veri bölümü. Derin düzeyde düzenle; hak edilmemiş başlıkları 
 - Kaynakta bulunmayan ön işleme adımı, sensör sayısı veya kaynak eklemek
 - 10 dakika sınırını değiştirmek veya kesin kural gibi genelleştirmek
 - Bölümleri birleştirirken "bununla birlikte", "bu doğrultuda" gibi zorlama geçişler eklemek
+
+## Yapısal beklenti
+
+- başlık: <= 1
+- liste ögesi: 0
+- sert işaret: 0

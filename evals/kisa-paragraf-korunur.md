@@ -27,3 +27,7 @@ Teknik belge. Standart düzeyde düzenle.
 - Paragraf sırasını değiştirmek
 - İlk paragrafı üç ayrı paragrafa bölmek
 - Kaynakta bulunmayan seçenek, süre veya davranış eklemek
+
+## Yapısal beklenti
+
+- düzyazı paragrafı: 3
