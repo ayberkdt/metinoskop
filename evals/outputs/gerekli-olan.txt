@@ -1,0 +1,1 @@
+Sıcaklığı 40 °C'nin üzerinde olan sensörler devre dışı bırakıldı. Kalan 18 sensörün verisi analize alındı. Devre dışı bırakılan sensörlerin sayısı raporda belirtilmedi.

@@ -1,0 +1,1 @@
+Model ilk koşulda kararlı davranır, ikinci koşulda %4 hata üretir ve üçüncü koşulda yeniden kararlı hâle gelir. Üç koşulda toplam 1.500 ölçümle sınanmıştır; dördüncü koşulda henüz sınanmamıştır.

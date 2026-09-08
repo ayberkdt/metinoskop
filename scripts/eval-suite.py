@@ -8,7 +8,9 @@ For every ``evals/<case>.md`` that has a recorded output in
 2. no *hard-suppression* pattern introduced relative to the source via
    ``style-lint.py`` (context-sensitive families only warn);
 3. the structural expectations declared in the case's optional
-   ``## Yapısal beklenti`` section (``- başlık: <= 1``, ``- liste ögesi: 0`` ...).
+   ``## Yapısal beklenti`` section (``- başlık: <= 1``, ``- liste ögesi: 0`` ...),
+   including source-language-shadow metrics such as ``- sahip olmak: 0``,
+   ``- çerçeve yığını: 0``, ``- ardışık özne: 0`` or ``- bir / 100 sözcük: <= 6``.
 
 Recorded outputs are reference edits, not the only acceptable ones; they keep
 the skill's documented behaviour from regressing silently. Human or model
@@ -49,6 +51,16 @@ EXPECTATION_KEYS = {
     "önem/sonuç cümlesi": ("structure_summary", "mini_conclusions"),
     "sert işaret": ("", "hard_hits"),
     "cümle": ("", "sentences"),
+    "sahip olmak": ("ceviri_golgesi", "sahip_olmak"),
+    "varlık kalıbı": ("ceviri_golgesi", "varlik_kalibi"),
+    "çerçeve yığını": ("ceviri_golgesi", "cerceve_yigini"),
+    "olan zinciri": ("ceviri_golgesi", "olan_zinciri"),
+    "ardışık özne": ("ceviri_golgesi", "ardisik_ozne"),
+    "ve zinciri": ("ceviri_golgesi", "ve_zinciri"),
+    "fiilimsi yığını": ("ceviri_golgesi", "fiilimsi_yigini"),
+    "iyelik zinciri": ("ceviri_golgesi", "iyelik_zinciri"),
+    "bağlaçla başlayan cümle": ("ceviri_golgesi", "baglac_baslangici"),
+    "bir / 100 sözcük": ("ceviri_golgesi", "bir_per_100"),
 }
 
 
@@ -141,6 +153,7 @@ def evaluate_case(case_path: Path, output_path: Path) -> dict[str, object]:
     problems.extend(failed_expectations)
     warnings = [f"yeni bağlamsal kalıp: {item['label']} «{item['example']}»" for item in comparison["introduced_context"]]
     warnings.extend(comparison["introduced_structure"])
+    warnings.extend(f"yeni çeviri gölgesi bulgusu: {text}" for text in comparison["introduced_translationese"])
 
     return {
         "case": case_path.stem,

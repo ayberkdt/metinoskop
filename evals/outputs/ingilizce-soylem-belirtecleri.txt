@@ -1,0 +1,1 @@
+Model kısa dönemde kararlıdır; uzun dönemde ise hata birikmekte, hesaplama süresi de 7 günlük ufukta %40 artmaktadır. Bu artış yalnızca yüksek eğimli yörüngelerde gözlenmiştir. Hata biriktiğinden uzun dönem için ek bir düzeltme adımı gerekmektedir; model kısa dönem uygulamalarda doğrudan, uzun dönem uygulamalarda düzeltmeyle kullanılabilir.

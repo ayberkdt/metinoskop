@@ -1,0 +1,1 @@
+Yöntem, sensörden gelen veri akışını filtreden geçirerek tahmin üretir. Başlangıç değeri, gürültü modeli ve güncelleme adımı gerektirir; her güncelleme adımında ölçüm alınır ve düzeltme uygulanır. Yöntem tek bir sensörle sınanmıştır; birden fazla sensörle henüz sınanmamıştır.

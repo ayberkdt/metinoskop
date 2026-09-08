@@ -1,0 +1,1 @@
+Sensör veriyi 100 Hz'de okuyup alçak geçiren filtreden geçirir ve denetleyiciye gönderir; denetleyici bu veriyle 10 ms içinde komut üretir, komut sürücüye iletilir. Sürücü komutu uygular ve sonucu günlüğe yazar.

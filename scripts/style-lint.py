@@ -21,6 +21,13 @@ patterns are a deterministic failure signal (``--fail-on-introduced-hard``);
 context-sensitive families such as ``yani``, ``öte yandan`` or ``işaret etmek``
 only warn, because the skill itself forbids deleting them automatically.
 ``--fail-on-introduced-any`` is the strict mode.
+
+Source-language-shadow (translationese) signals are reported as review
+findings only: frame-noun stacks (``açısından / kapsamında / noktasında``),
+``bir`` density, ``olan`` chains, runs of sentences opening with the same
+subject, ``ve`` clause chains, converb pile-ups, genitive stacks and
+connector-initial sentence density. None of them is a deterministic failure;
+a single ``bir``, ``olan``, ``ve`` or ``açısından`` is never flagged.
 """
 
 from __future__ import annotations
@@ -344,6 +351,35 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"hiç şüphesiz|yadsınamaz|bilindiği üzere|önem arz",
         ),
     },
+    {
+        "key": "sahip",
+        "label": "Sahip olmak kalkısı",
+        "level": "bağlam",
+        "patterns": (
+            r"\bsahip(?!lik|len|siz)",
+        ),
+    },
+    {
+        "key": "varlik",
+        "label": "Varlık kalıbı",
+        "level": "bağlam",
+        "patterns": (
+            r"\bbulunma(?:kta|makta)dır|\byer almaktadır|\bmevcuttur|\bmevcut (?:bulun|değildir)|\biçermektedir",
+        ),
+    },
+    {
+        "key": "kalki",
+        "label": "Çeviri kalkısı",
+        "level": "bağlam",
+        "patterns": (
+            r"olarak hizmet (?:et|ver|gör)",
+            r"hakkında konuş",
+            r"günün sonunda",
+            r"\bbir (?:değerlendirme|analiz|inceleme|ölçüm|kontrol|uygulama|iyileştirme) (?:yap|gerçekleştir|yürüt)",
+            r"karar alma süreci",
+            r"(?:etki|rol)y?e sahip|özelli(?:ğ|g)ine sahip",
+        ),
+    },
 )
 
 COMPILED: dict[str, tuple[re.Pattern[str], ...]] = {
@@ -366,6 +402,29 @@ CONNECTOR_OPENERS = (
     "bununla birlikte", "öte yandan", "bu doğrultuda", "bu bağlamda", "bu noktada",
     "buna ek olarak", "ayrıca", "dolayısıyla", "ancak", "bu nedenle", "diğer yandan",
 )
+SENTENCE_CONNECTORS = CONNECTOR_OPENERS + ("sonuç olarak", "buna karşılık", "bu yüzden", "üstelik")
+
+# Source-language-shadow (translationese) signals. All review-only.
+FRAME_RE = re.compile(
+    r"\b(?:açısından|bakımından|kapsamında|bağlamında|çerçevesinde|doğrultusunda|"
+    r"noktasında|üzerinden|temelinde|perspektifinden|ekseninde)\b"
+)
+OLAN_RE = re.compile(r"\bolan\b")
+BIR_RE = re.compile(r"\bbir\b")
+VE_RE = re.compile(r"\bve\b")
+WORD_RE = re.compile(r"\w+")
+CONVERB_RE = re.compile(r"\w+(?:[ıiuü]p|[ae]r[ae]k)$")
+CONVERB_STOP = {"ekip", "prensip", "kulüp", "grup", "tip", "yaprak", "toprak", "bayrak", "mübarek", "merak", "gerek", "direk", "börek", "kürek"}
+GENITIVE_RE = re.compile(r"\w{3,}(?:[ıiuü]n|n[ıiuü]n)$")
+GENITIVE_STOP = {"için", "bütün", "zaten", "metin", "zemin", "yetkin", "uzun", "derin", "yakın", "bugün", "yarın", "dün", "kalın", "bin", "on", "gün", "esin"}
+FRAME_STACK_MIN = 2
+OLAN_CHAIN_MIN = 2
+BIR_SENTENCE_MIN = 3
+BIR_PER_100_MAX = 6.0
+VE_CHAIN_MIN = 3
+CONVERB_MIN = 4
+GENITIVE_RUN_MIN = 3
+SUBJECT_RUN_MIN = 3
 
 
 # --------------------------------------------------------------------------- #
@@ -535,6 +594,151 @@ def lowered_matches_any(lowered: str, keys: tuple[str, ...]) -> bool:
 
 def heading_stems(text: str) -> set[str]:
     return {w[:5] for w in re.findall(r"\w+", tr_lower(text)) if len(w) >= 5}
+
+
+def sentence_words(sentence: Sentence) -> list[str]:
+    return WORD_RE.findall(sentence.lowered)
+
+
+def converb_count(words: list[str]) -> int:
+    return sum(
+        1 for w in words
+        if len(w) >= 5 and w not in CONVERB_STOP and CONVERB_RE.match(w)
+        and not (w.endswith(("rak", "rek")) and len(w) < 6)
+    )
+
+
+def frame_stacked(frames: list[str]) -> bool:
+    """Two *different* frame nouns, or three of any kind, in one sentence.
+    A parallel pair such as "maliyet açısından ucuz, süre açısından pahalı" is
+    a comparison axis, not a stack."""
+    return len(set(frames)) >= FRAME_STACK_MIN or len(frames) >= FRAME_STACK_MIN + 1
+
+
+def longest_genitive_run(words: list[str]) -> int:
+    best = run = 0
+    for w in words:
+        if len(w) >= 5 and w not in GENITIVE_STOP and GENITIVE_RE.match(w):
+            run += 1
+            best = max(best, run)
+        else:
+            run = 0
+    return best
+
+
+def subject_runs(paragraph: Paragraph) -> list[tuple[str, int]]:
+    """Runs of consecutive sentences that open with the same one or two tokens."""
+    runs: list[tuple[str, int]] = []
+    keys: list[tuple[str, str]] = []
+    for sentence in paragraph.sentences:
+        words = sentence_words(sentence)
+        if not words:
+            keys.append(("", ""))
+            continue
+        first = words[0]
+        two = " ".join(words[:2]) if len(words) >= 2 else first
+        keys.append((first if len(first) > 1 else "", two))
+    index = 0
+    while index < len(keys):
+        first, two = keys[index]
+        end = index + 1
+        while end < len(keys) and keys[end][0] and (keys[end][0] == first or keys[end][1] == two):
+            end += 1
+        length = end - index
+        if first and length >= SUBJECT_RUN_MIN:
+            label = two if all(keys[j][1] == two for j in range(index, end)) else first
+            runs.append((label, length))
+        index = end if length > 1 else index + 1
+    return runs
+
+
+def translationese_summary(doc: Document, hits: list[dict[str, object]]) -> dict[str, object]:
+    prose = [p for p in doc.paragraphs if p.prose]
+    sentences = [s for p in prose for s in p.sentences]
+    words_total = sum(len(sentence_words(s)) for s in sentences)
+    bir_total = sum(len(BIR_RE.findall(s.lowered)) for s in sentences)
+    return {
+        "sahip_olmak": sum(1 for h in hits if h["category"] == "sahip"),
+        "varlik_kalibi": sum(1 for h in hits if h["category"] == "varlik"),
+        "cerceve_yigini": sum(1 for s in sentences if frame_stacked(FRAME_RE.findall(s.lowered))),
+        "olan_zinciri": sum(1 for s in sentences if len(OLAN_RE.findall(s.lowered)) >= OLAN_CHAIN_MIN),
+        "ardisik_ozne": sum(len(subject_runs(p)) for p in prose),
+        "ve_zinciri": sum(1 for s in sentences if len(VE_RE.findall(s.lowered)) >= VE_CHAIN_MIN),
+        "fiilimsi_yigini": sum(1 for s in sentences if converb_count(sentence_words(s)) >= CONVERB_MIN),
+        "iyelik_zinciri": sum(1 for s in sentences if longest_genitive_run(sentence_words(s)) >= GENITIVE_RUN_MIN),
+        "baglac_baslangici": sum(1 for s in sentences if s.lowered.startswith(SENTENCE_CONNECTORS)),
+        "bir_per_100": round(100 * bir_total / words_total, 1) if words_total else 0.0,
+    }
+
+
+def translationese_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict[str, object]]:
+    findings: list[dict[str, object]] = []
+    prose = [p for p in doc.paragraphs if p.prose]
+    sentences = [s for p in prose for s in p.sentences]
+
+    def excerpt(sentence: Sentence) -> str:
+        text = sentence.text
+        return text if len(text) <= 90 else text[:87] + "..."
+
+    for s in sentences:
+        frames = FRAME_RE.findall(s.lowered)
+        if frame_stacked(frames):
+            findings.append({"check": "cerceve_yigini",
+                             "text": f"P{s.paragraph}C{s.index}: {len(frames)} çerçeve adı ({', '.join(frames)}) tek cümlede: ilişkiyi hâl eki, iyelik veya fiil kodlayabilir mi?"})
+        olan = len(OLAN_RE.findall(s.lowered))
+        if olan >= OLAN_CHAIN_MIN:
+            findings.append({"check": "olan_zinciri",
+                             "text": f"P{s.paragraph}C{s.index}: {olan} \"olan\" tek cümlede: niteleme adın önüne alınabilir mi? «{excerpt(s)}»"})
+        bir = len(BIR_RE.findall(s.lowered))
+        if bir >= BIR_SENTENCE_MIN:
+            findings.append({"check": "bir_yogunlugu",
+                             "text": f"P{s.paragraph}C{s.index}: {bir} \"bir\" tek cümlede: tanımlık kalkısı mı, sayı mı? «{excerpt(s)}»"})
+        ve = len(VE_RE.findall(s.lowered))
+        if ve >= VE_CHAIN_MIN:
+            findings.append({"check": "ve_zinciri",
+                             "text": f"P{s.paragraph}C{s.index}: {ve} \"ve\" tek cümlede: çekimli cümle zinciri mi; -ip, -erek, -ince ilişkiyi daha açık kurar mı?"})
+        words = sentence_words(s)
+        converbs = converb_count(words)
+        if converbs >= CONVERB_MIN:
+            findings.append({"check": "fiilimsi_yigini",
+                             "text": f"P{s.paragraph}C{s.index}: {converbs} -ip/-erek fiilimsisi tek yükleme asılı: kavramsal sınırda bölünebilir mi?"})
+        genitive = longest_genitive_run(words)
+        if genitive >= GENITIVE_RUN_MIN:
+            findings.append({"check": "iyelik_zinciri",
+                             "text": f"P{s.paragraph}C{s.index}: {genitive} ardışık iyelik eki: ilişki zinciri fiil veya yan cümleyle açılabilir mi?"})
+
+    words_total = sum(len(sentence_words(s)) for s in sentences)
+    bir_total = sum(len(BIR_RE.findall(s.lowered)) for s in sentences)
+    if words_total >= 40 and bir_total >= 4 and 100 * bir_total / words_total > BIR_PER_100_MAX:
+        findings.append({"check": "bir_yogunlugu",
+                         "text": f"{words_total} sözcükte {bir_total} \"bir\" ({100 * bir_total / words_total:.1f} / 100 sözcük): tanımlık kalkısı yoğun olabilir."})
+
+    for paragraph in prose:
+        for label, length in subject_runs(paragraph):
+            findings.append({"check": "ardisik_ozne",
+                             "text": f"Paragraf {paragraph.number}: {length} ardışık cümle \"{label}\" ile başlıyor: özne düşürme, birleştirme veya yeni bilgi etrafında yeniden sıralama mümkün mü?"})
+
+    # Connector and demonstrative density are judged per paragraph (a run of
+    # labelled transitions inside one paragraph) and across the document.
+    scopes: list[tuple[str, list[Sentence]]] = [
+        (f"Paragraf {p.number}", p.sentences) for p in prose if len(p.sentences) >= 4
+    ]
+    if len(sentences) >= 4 and len(prose) > 1:
+        scopes.append(("Belge", sentences))
+    seen: set[str] = set()
+    for scope, group in scopes:
+        threshold = 0.5 if scope != "Belge" else 0.4
+        connector = [s for s in group if s.lowered.startswith(SENTENCE_CONNECTORS)]
+        if len(connector) / len(group) >= threshold and "baglac" not in seen:
+            seen.add("baglac")
+            findings.append({"check": "baglac_yogunlugu",
+                             "text": f"{scope}: {len(group)} cümlenin {len(connector)}'i söylem belirteciyle başlıyor: ilişki yapıdan çıkıyorsa etiket gereksiz olabilir."})
+        demonstrative = [s for s in group if sentence_matches_any(s, ("bos_ozne",))]
+        if len(demonstrative) / len(group) >= threshold and "gosterme" not in seen:
+            seen.add("gosterme")
+            findings.append({"check": "gosterme_ritmi",
+                             "text": f"{scope}: {len(group)} cümlenin {len(demonstrative)}'i \"bu + söylem adı\" ile başlıyor: önceki önerme her seferinde yeniden paketleniyor."})
+    return findings
 
 
 def structure_summary(doc: Document, hits: list[dict[str, object]]) -> dict[str, object]:
@@ -707,6 +911,8 @@ def analyse(text: str) -> dict[str, object]:
         "density_per_100": density,
         "structure_summary": structure_summary(doc, hits),
         "structure": structural_checks(doc, hits),
+        "ceviri_golgesi": translationese_summary(doc, hits),
+        "ceviri": translationese_checks(doc, hits),
     }
 
 
@@ -752,9 +958,20 @@ def compare(source_report: dict[str, object], output_report: dict[str, object]) 
     source_checks = {s["check"] for s in source_report["structure"]}  # type: ignore[union-attr]
     new_structure = [f["text"] for f in output_report["structure"]  # type: ignore[union-attr]
                      if f["check"] not in source_checks]
+    src_tr = source_report["ceviri_golgesi"]
+    out_tr = output_report["ceviri_golgesi"]
+    translationese_delta = {
+        key: {"kaynak": src_tr[key], "çıktı": out_tr[key]}  # type: ignore[index]
+        for key in TRANSLATIONESE_LABELS
+        if src_tr[key] != out_tr[key]  # type: ignore[index]
+    }
+    source_tr_checks = {s["check"] for s in source_report["ceviri"]}  # type: ignore[union-attr]
+    new_translationese = [f["text"] for f in output_report["ceviri"]  # type: ignore[union-attr]
+                          if f["check"] not in source_tr_checks]
     return {"introduced": introduced, "introduced_hard": introduced_hard,
             "introduced_context": introduced_context, "remaining": remaining, "removed": removed,
-            "structure_delta": structure_delta, "introduced_structure": new_structure}
+            "structure_delta": structure_delta, "introduced_structure": new_structure,
+            "translationese_delta": translationese_delta, "introduced_translationese": new_translationese}
 
 
 # --------------------------------------------------------------------------- #
@@ -767,6 +984,12 @@ SUMMARY_LABELS = {
     "prose_paragraphs": "düzyazı paragrafı", "list_items": "liste ögesi",
     "cross_references": "çapraz gönderme", "announcements": "duyuru/sarmalayıcı",
     "mini_conclusions": "önem/sonuç cümlesi",
+}
+TRANSLATIONESE_LABELS = {
+    "sahip_olmak": "sahip olmak", "varlik_kalibi": "varlık kalıbı", "cerceve_yigini": "çerçeve yığını",
+    "olan_zinciri": "olan zinciri", "ardisik_ozne": "ardışık özne", "ve_zinciri": "ve zinciri",
+    "fiilimsi_yigini": "fiilimsi yığını", "iyelik_zinciri": "iyelik zinciri",
+    "baglac_baslangici": "bağlaçla başlayan cümle", "bir_per_100": "bir / 100 sözcük",
 }
 
 
@@ -797,6 +1020,15 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
         for finding in structure:
             print(f"  - {finding['text']}")
 
+    translationese: dict[str, object] = report["ceviri_golgesi"]  # type: ignore[assignment]
+    print("\nÇeviri gölgesi ölçüleri: " + " | ".join(
+        f"{TRANSLATIONESE_LABELS[k]}: {v}" for k, v in translationese.items()))
+    ceviri: list[dict[str, object]] = report["ceviri"]  # type: ignore[assignment]
+    if ceviri:
+        print("[Çeviri gölgesi · inceleme]")
+        for finding in ceviri:
+            print(f"  - {finding['text']}")
+
     if comparison is not None:
         print(f"\nKaynakla karşılaştırma ({source_path}):")
         introduced = comparison["introduced"]
@@ -820,6 +1052,14 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
             print("  Yapı ölçülerindeki değişim:")
             for key, pair in comparison["structure_delta"].items():  # type: ignore[union-attr]
                 print(f"    - {SUMMARY_LABELS[key]}: {pair['kaynak']} → {pair['çıktı']}")
+        if comparison["introduced_translationese"]:
+            print("  Kaynakta olmayıp çıktıda beliren çeviri gölgesi bulguları (uyarı; aşırı düzeltme veya yeni kalkı olabilir):")
+            for text in comparison["introduced_translationese"]:  # type: ignore[union-attr]
+                print(f"    - {text}")
+        if comparison["translationese_delta"]:
+            print("  Çeviri gölgesi ölçülerindeki değişim:")
+            for key, pair in comparison["translationese_delta"].items():  # type: ignore[union-attr]
+                print(f"    - {TRANSLATIONESE_LABELS[key]}: {pair['kaynak']} → {pair['çıktı']}")
         if remaining:
             print("  Kaynakta olup çıktıda kalan aileler (işlevini incele; sert aileler için silme testini uygula):")
             for key, count in remaining.items():  # type: ignore[union-attr]
@@ -831,7 +1071,8 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
 
     print("\nNot: İşaretler inceleme içindir; tek bir işaret metni yapay yapmaz. "
           "Sert bastırma ailesindeki cümleler için \"bunu silersem hangi bilgi kaybolur?\", "
-          "yapı bulguları için \"bu sınır kavramsal mı?\" sorusunu sor.")
+          "yapı bulguları için \"bu sınır kavramsal mı?\", çeviri gölgesi bulguları için "
+          "\"bu yapı Türkçede bağımsız olarak doğal mı, yoksa gizli İngilizce cümle mi dayatıyor?\" sorusunu sor.")
 
 
 # --------------------------------------------------------------------------- #
@@ -922,6 +1163,18 @@ Doğrulama sonuçlarında ortalama hata %3'tür. En yüksek hata 5 günden uzun 
 Hata dağılımı üç grupta da tek tepeli olduğundan medyan ve ortalama birbirine yakındır. Aykırı değer temizliği yapılmamıştır.
 """
 
+TRANSLATED_TEXT = """Bu, bir sensörden gelen bir veri akışını bir filtreden geçiren bir yöntemdir. Bu yöntem yüksek bir hesaplama maliyetine sahiptir. Bu yöntem üç katmana sahip olan bir model kullanmaktadır. Bu yöntem ayrıca bir hata günlüğüne sahiptir. Tabloda üç farklı hata türü bulunmaktadır.
+
+Bu bağlamda, performans açısından, yöntem kapsamında değerlendirilmesi gereken temel husus bellek kullanımı noktasında ortaya çıkan artıştır. Yüksek doğruluğa sahip olan ve düşük gecikmeye sahip olan filtre, gerçek zamanlı sistemler için uygun olan bir seçenektir. Yöntemin performansının değerlendirilmesinin yapılmasının gerekliliği ortaya çıkmaktadır.
+
+Sensör veriyi okur ve veriyi filtreler ve filtrelenmiş veriyi denetleyiciye gönderir ve denetleyici komut üretir. Ekip veriyi toplayıp temizleyip ölçekleyip bölüp modeli eğitip doğrulayıp raporlamıştır. Bununla birlikte, hata birikmektedir. Buna ek olarak, süre artmaktadır. Bu nedenle, düzeltme gerekmektedir. Bu yöntem, bir temel olarak hizmet etmektedir.
+"""
+
+NATIVE_TEXT = """Yöntem maliyet açısından ucuz, süre açısından pahalıdır: lisans yıllık 4.000 lira, kurulum altı haftadır. Sıcaklığı 40 °C'nin üzerinde olan sensörler devre dışı bırakıldı; kalan 18 sensörün verisi analize alındı. Yeni yöntem konum hatasını %12 düşürdü ve hesaplama süresini %30 artırdı. Şirket üç fabrikaya sahiptir ve bu fabrikaların ikisi Bursa'dadır.
+
+Filtre ölçümü alır. Gözlemci durumu günceller. Filtre kazancı yeniden hesaplar. Ekip veriyi toplayıp temizledikten sonra modeli eğitti; eğitim 3 saat sürdü. Bir sonraki sürüm için tarih verilmedi.
+"""
+
 FILLER_SOURCE = "Model 120. derecede en düşük hatayı verdi. Bu sonuç derece seçiminin kritik önemini ortaya koymaktadır."
 FILLER_TRANSLATED = "Model 120. derecede en düşük hatayı verdi. Sonuç olarak derece seçimi önemli bir etkendir; bu bulgu derece seçiminin önemini bir kez daha ortaya koymaktadır."
 CONTEXT_ONLY = "Yani model 120. derecede en düşük hatayı verdi; öte yandan derece seçimi kritik önemini korumaktadır."
@@ -992,7 +1245,47 @@ def self_test() -> None:
     if tr_lower("İSTANBUL IŞIK") != "istanbul ışık":
         raise SystemExit("Öz sınama: Türkçe küçük harf dönüşümü hatalı")
 
-    print("Stil denetimi öz sınaması geçti (yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme).")
+    translated = analyse(TRANSLATED_TEXT)
+    expected_tr = {"sahip", "varlik", "kalki", "bos_ozne"}
+    missing = expected_tr - set(translated["per_category"])  # type: ignore[arg-type]
+    if missing:
+        raise SystemExit(f"Öz sınama: çeviri metninde beklenen aileler bulunamadı: {sorted(missing)}")
+    if translated["hard_hits"] != 0:
+        raise SystemExit(f"Öz sınama: çeviri gölgesi aileleri sert bastırma sayıldı: {translated['hits']}")
+    checks = {f["check"] for f in translated["ceviri"]}  # type: ignore[union-attr]
+    for check in ("cerceve_yigini", "olan_zinciri", "bir_yogunlugu", "ve_zinciri", "fiilimsi_yigini",
+                  "iyelik_zinciri", "ardisik_ozne", "baglac_yogunlugu", "gosterme_ritmi"):
+        if check not in checks:
+            raise SystemExit(f"Öz sınama: çeviri metninde beklenen çeviri gölgesi bulgusu yok: {check}")
+    summary = translated["ceviri_golgesi"]
+    if summary["bir_per_100"] <= BIR_PER_100_MAX or summary["fiilimsi_yigini"] != 1 or summary["ve_zinciri"] != 1:  # type: ignore[index]
+        raise SystemExit(f"Öz sınama: çeviri gölgesi ölçüleri hatalı: {summary}")
+
+    for label, text in (("yerli", NATIVE_TEXT), ("temiz", CLEAN_TEXT), ("iyi yapılı", WELL_STRUCTURED_TEXT), ("iç içe", NESTED_TEXT)):
+        report = analyse(text)
+        if report["ceviri"]:
+            raise SystemExit(f"Öz sınama: {label} metinde çeviri gölgesi bulgusu üretildi (yanlış pozitif): {report['ceviri']}")
+    native = analyse(NATIVE_TEXT)
+    if native["ceviri_golgesi"]["sahip_olmak"] != 1:  # type: ignore[index]
+        raise SystemExit("Öz sınama: gerçek mülkiyet bildiren tek 'sahip' bir kez işaretlenmeli, reddedilmemeli")
+    if native["ceviri_golgesi"]["ardisik_ozne"] != 0:  # type: ignore[index]
+        raise SystemExit("Öz sınama: dönüşümlü özneler ardışık özne sayıldı")
+    if native["structure"]:
+        raise SystemExit(f"Öz sınama: yerli metinde yapı bulgusu üretildi: {native['structure']}")
+
+    repaired_tr = compare(translated, native)
+    if repaired_tr["introduced_translationese"]:
+        raise SystemExit("Öz sınama: yerli çıktı yeni çeviri gölgesi bulgusu üretti")
+    if repaired_tr["translationese_delta"].get("cerceve_yigini", {}).get("çıktı") != 0:  # type: ignore[union-attr]
+        raise SystemExit("Öz sınama: çeviri gölgesi ölçü değişimi çerçeve yığınını yanlış raporladı")
+    if converb_count(["ekip", "toplayıp", "yaprak", "okuyarak", "gerek"]) != 2:
+        raise SystemExit("Öz sınama: fiilimsi sayımı durak listesini yanlış uyguladı")
+    if longest_genitive_run(["yöntemin", "performansının", "değerlendirilmesinin", "yapılmasının"]) != 4:
+        raise SystemExit("Öz sınama: iyelik zinciri sayımı hatalı")
+    if longest_genitive_run(["bunun", "için", "metin", "uzun"]) != 1:
+        raise SystemExit("Öz sınama: iyelik zinciri durak listesi hatalı")
+
+    print("Stil denetimi öz sınaması geçti (yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri gölgesi, yerli metin).")
 
 
 # --------------------------------------------------------------------------- #

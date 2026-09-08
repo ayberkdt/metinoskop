@@ -54,6 +54,35 @@ Yeni bir davranış kuralı eklenirken en az bir mevcut vaka güncellenmeli veya
 | `kisa-paragraf-korunur` | İşlevsel olarak yalıtılmış tek cümlelik uyarıyı birleştirmemek |
 | `yapisal-iyi-metin` | Yapısı iyi metne dokunmamak |
 
+**Çeviri gölgesi ve Türkçe ritim:** dil bilgisi doğru olduğu hâlde İngilizce cümle iskeleti taşıyan metinde ilişkinin Türkçe kaynaklarla yeniden kurulup kurulmadığını ve yerli yapıya dokunulmadığını sınar. Her "korunur" vakasının kayıtlı çıktısı kaynağın kendisidir.
+
+| Vaka | Sınanan davranış |
+|---|---|
+| `tekrarlanan-acik-ozne` | Ardışık cümlelerde yinelenen açık özneyi tek aktörlü paragrafta düşürmek veya birleştirmek |
+| `bu-sonuc-ritmi` | `Bu sonuç / bu bulgu / bu durum` paketini çözüp önermeyi doğrudan söylemek |
+| `asiri-bir` | Tanımlık kalkısı `bir` sözcüklerini azaltırken sayı ve gerçek tekillik bildirenleri korumak |
+| `sahip-olmak-kalkisi` | `X, Y'ye sahiptir` kalkısını ilişki türüne göre iyelik, sıfat veya fiille kurmak; mülkiyet ve yetki dilini korumak |
+| `bulunmaktadir-kalkisi` | `Bulunmaktadır / yer almaktadır / mevcuttur / içermektedir` kalıplarını doğrudan varlık veya iyelik ilişkisiyle kurmak |
+| `ve-zinciri` | Bağımsız çekimli cümle zincirini `-ip`, noktalı virgül ve aktör değişimine göre yeniden kurmak |
+| `dogal-ve-korunur` | Eş düzeyli iki olguyu bağlayan `ve` bağlacını sıraya veya karşıtlığa çevirmemek |
+| `yararli-ip-yapisi` | Belirteçle dizilmiş sıralı adımları `-ip` ve `-dikten sonra` ile kurmak |
+| `asiri-ip-zinciri` | Tek yükleme asılı yedi fiilimsiyi kavramsal sınırda bölmek |
+| `art-niteleme` | Adın ardına eklenen İngilizce nitelemeyi ad önü ortaçla kurmak |
+| `gerekli-olan` | Koşulu sınırlayan tek `olan` yapısını korumak |
+| `gereksiz-olan` | `Olan` zincirini ve `sahip olan` kalkılarını sıfat ve iyelikle çözmek |
+| `cerceve-yigini` | `Açısından / kapsamında / bağlamında / noktasında` yığınını hâl eki, iyelik veya fiille kurmak |
+| `gerekli-acisindan` | Gerçek karşılaştırma eksenini kuran `açısından` çiftini korumak |
+| `soyut-ad-yuklemi` | Soyut ad yüklemlerini ve hafif yüklemleri kaynağın desteklediği fiille kurmak; ölçülmemiş etkiyi ölçülmüş gibi yazmamak |
+| `teknik-adlastirma-korunur` | Teknik işlemi ve tablo büyüklüğünü adlandıran isim-fiil ve iyelik zincirini korumak |
+| `ozne-dusurme-akisi` | Tek aktörlü sürüm notunda özne düşürerek akışı kurmak |
+| `belirsizlik-icin-acik-ozne` | Dönüşümlü iki aktörde açık özne tekrarını korumak |
+| `dogal-uzun-cumle-korunur` | Tek ana önerme ve denetimli tümleç taşıyan uzun cümleyi bölmemek |
+| `asiri-yuklu-cumle` | İç içe çerçeve ve uzak yüklemli cümleyi kavramsal sınırda bölmek, sonucu uydurmamak |
+| `ingilizce-soylem-belirtecleri` | Belirteçle etiketlenmiş ilişkileri `ise`, `de/da` ve `-dığından` ile kurmak; kapsam sınırını korumak |
+| `hukuki-kalip-korunur` | Sözleşme dilinde yinelenen tarafı, `işbu`, `söz konusu`, `takdirde` kalıplarını korumak |
+| `teknik-ozne-tekrari-korunur` | Ayrı kaydedilen adımlarda açık özne tekrarını korumak |
+| `yerli-turkce-metin` | Zaten Türkçe düşünülmüş metne dokunmamak |
+
 ## Hakem ölçütleri
 
 İnsan veya model hakemi her çıktıda şu soruları ayrıca sorar:
@@ -68,6 +97,9 @@ Yeni bir davranış kuralı eklenirken en az bir mevcut vaka güncellenmeli veya
 8. **Başlık ve bölüm sınırları:** Her başlık hakkını kazanıyor mu; tek paragraflık bölümler, gereksiz derinlik veya "başlık → kısa açıklama" slayt deseni kaldı mı? Kullanıcının istediği düzey aşılarak başlıklar değiştirilmiş mi? Tekrarlanabilirlik, mevzuat, dergi kuralı, güvenlik adımları veya gezinme gerektiren bölümler korunmuş mu?
 9. **Paragraf ve yakınlık:** Paragraflar erken bölünmüş mü, tek baskın hareket taşıyan uzun paragraf bölünmüş mü, işlevsel kısa paragraf birleştirilmiş mi? Bulgu, yorum ve öneri sırf aynı konu diye tek yoğun blokta paketlenmiş mi? Sonuç ile sınırlılığı, iddia ile kanıtı, yöntem ile gerekçesi yakın mı? Bağlam her birimde yeniden başlatılıyor mu; çapraz gönderme, askı, yapay gerilim, boş sarmalayıcı veya zorlama geçiş kaldı mı?
 10. **Parçalanma ve şişkinlik dengesi:** Uzun çerçeve ifadeleri kısaltılmış mı; birleştirme tek cümleye birkaç iddia, niteleme ve sonuç yığmış mı; nedensel akıl yürütme listeye çevrilmiş mi? Değişiklik yalnızca kısaltma mı, yoksa süreklilik, anlama, gezinme veya yakınlık kazancı mı sağlıyor?
+11. **Kaynak dil gölgesi:** Çıktı hâlâ belirgin bir İngilizce iskelet taşıyor mu? Açık özne gereksiz yere yineleniyor mu; `bu sonuç`, `bu durum` söylem adları paragrafı her seferinde yeniden başlatıyor mu; tanımlık gibi `bir` yinelemesi kalmış mı; `have` daha doğal bir iyelik ilişkisi varken `sahip olmak` olarak kalmış mı; cümleler hâlâ İngilizce tarzı bağımsız birimler olarak `ve`, `ancak`, `sonra` ile dizili mi; çerçeve adları yığılı mı? Cümle İngilizceye geri çevrildiğinde özgün iskelet neredeyse değişmeden çıkıyor mu?
+12. **Türkçe kaynak kullanımı:** Düzenleme Türkçe biçim bilgisini (özne düşürme, eksilti, `-ip`, `-ince`, `-dığından`, ortaç, iyelik, hâl eki, `de/da`, sözcük sırası) doğal biçimde kullanmış mı? Konu → odak → yüklem akışı doğal mı? Metin Türkçeye çevrilmiş gibi değil, Türkçe düşünülmüş gibi okunuyor mu?
+13. **Gölge avında aşırı düzeltme:** Fiilimsi fazlası var mı; iki aktörlü paragrafta özne düşürülüp belirsiz eksilti yaratılmış mı; gerekli `olan`, `açısından`, `ve` ya da açık özne silinmiş mi; hukuki kalıp, teknik adlaştırma veya terim değiştirilmiş mi; bilimsel kesinlik ("ilişkili" → "neden olur") zayıflatılmış mı; yapay yerlilik (arkaik sözcük, zorlama deyim, konuşma edatı, gereksiz devriklik) eklenmiş mi; zaten yerli metne dokunulmuş mu?
 
 Bu ölçütler `Kaçınılması gerekenler` maddelerinin üstünde, bütün vakalara uygulanan genel denetimdir.
 
@@ -95,13 +127,15 @@ python scripts/style-lint.py outputs/iddia-tekrar-dongusu.txt --source evals/idd
 
 Denetim tek bir sözcüğe bakarak metni reddetmez. `gerekli-ifade` ve `iyi-metin` vakalarında işaretlenen ifadelerin çoğu kalmalıdır; işaret, hakemin işlevi incelemesi içindir.
 
+Rapor ayrıca çeviri gölgesi ölçülerini verir: `sahip olmak` ve varlık kalıbı işaretleri, tek cümlede iki farklı (ya da üç) çerçeve adı, tek cümlede iki `olan`, aynı bir iki sözcükle başlayan üç ardışık cümle, tek cümlede üç `ve`, tek yükleme asılı dört fiilimsi, üç ardışık iyelik eki, söylem belirteciyle başlayan cümle oranı ve 100 sözcük başına `bir`. Bunların hiçbiri sert aile değildir; hepsi "bu yapı Türkçede bağımsız olarak doğal mı?" sorusu için inceleme işaretidir. Tek `bir`, `olan`, `ve` ya da `açısından` hiçbir zaman işaretlenmez; `gerekli-acisindan` vakasındaki "maliyet açısından ucuz, süre açısından pahalı" çifti paralel eksen sayılır, yığın sayılmaz. `--source` ile kaynakta olmayıp çıktıda beliren çeviri gölgesi bulguları uyarı olarak listelenir; bunlar yeni bir kalkı ya da aşırı düzeltme (fiilimsi yığını) işareti olabilir.
+
 ### Kayıtlı çıktılar üzerinde regresyon
 
 `evals/outputs/<vaka>.txt` dosyaları referans düzenlemelerdir: tek doğru çıktı değil, skill'in belgelenen davranışını sessizce kaybetmemek için sabitlenmiş örneklerdir. Yapısı korunması gereken vakalarda kayıtlı çıktı kaynağın kendisidir. `python scripts/eval-suite.py` her kayıtlı çıktı için üç deterministik denetim yapar ve CI'da çalışır:
 
 1. `eval-runner.py` ile kaynak değişmezleri (sayı, tarih, kod, kapsam belirleyicisi); başlık satırlarındaki noktalı bölüm numaraları (`2.3`, `3.1.1`) olgu sayılmaz.
 2. `style-lint.py` ile kaynakta olmayan sert kalıp eklenip eklenmediği; bağlamsal aileler uyarı olarak listelenir.
-3. Vakanın isteğe bağlı `## Yapısal beklenti` bölümündeki ölçüler: `- başlık: <= 1`, `- en derin düzey: <= 3`, `- düzyazı paragrafı: 4`, `- liste ögesi: 0`, `- çapraz gönderme: 0`, `- duyuru/sarmalayıcı: 0`, `- sert işaret: 0` gibi satırlar (`=`, `<=`, `>=`, `<`, `>`).
+3. Vakanın isteğe bağlı `## Yapısal beklenti` bölümündeki ölçüler: `- başlık: <= 1`, `- en derin düzey: <= 3`, `- düzyazı paragrafı: 4`, `- liste ögesi: 0`, `- çapraz gönderme: 0`, `- duyuru/sarmalayıcı: 0`, `- sert işaret: 0`, `- cümle: 4` gibi satırlar (`=`, `<=`, `>=`, `<`, `>`). Çeviri gölgesi ölçüleri de kullanılabilir: `- sahip olmak: 0`, `- varlık kalıbı: <= 1`, `- çerçeve yığını: 0`, `- olan zinciri: 0`, `- ardışık özne: 0`, `- ve zinciri: 0`, `- fiilimsi yığını: 0`, `- iyelik zinciri: 0`, `- bağlaçla başlayan cümle: <= 1`, `- bir / 100 sözcük: <= 6`.
 
 Yeni bir vaka eklerken mümkünse kayıtlı bir referans çıktı ve yapısal beklenti de ekleyin; yapı korunacaksa kaynağı olduğu gibi kaydedin. `python scripts/eval-suite.py --export-judge-prompts build/judge` her vaka için kaynak, talep, kayıtlı çıktı ve ölçütleri içeren bir model hakem istemi üretir; sabit bir model üzerinde tam davranışsal regresyon (taze çıktı üretip hakemle puanlama) bu depoda henüz otomatik değildir ve sonraki olgunluk adımıdır.
 

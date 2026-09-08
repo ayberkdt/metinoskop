@@ -402,6 +402,8 @@ Belirsizliği tamamen kaldırma.
 
 Doğru terimin tekrarı, zoraki çeşitlilikten daha doğaldır.
 
+Bu bölüm kalıp düzeyindeki kalkıları ele alır. Sözcükler doğru olduğu hâlde cümle İngilizce iskelet taşıyorsa (yinelenen açık özne, `bu sonuç` ritmi, `ve` ile dizilmiş çekimli cümleler, `sahip olmak` ve `bulunmaktadır` kalkıları, `olan` zinciri, çerçeve yığını, fazla `bir`, uzak yüklem) ilişkinin Türkçe kaynaklarla yeniden kurulması için [Türkçe ritim ve kaynak dil gölgesi](turkce-ritim-ve-ceviri-golgesi.md) dosyasına bak.
+
 ## Biçimsel işaretler
 
 ### Kalın yazı ve etiketli listeler

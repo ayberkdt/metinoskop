@@ -1,0 +1,1 @@
+Deneyde filtre kazancı 0,2'den 0,5'e çıkarıldığında yakınsama süresi 40 saniyeden 18 saniyeye düşmüştür; kazanç yakınsama süresini etkilemektedir. Aynı deneyde gürültü duyarlılığı 0,5 kazançta iki katına çıktığından kazanç seçimi bir ödünleşimdir ve uygulamanın gereksinimine göre değerlendirilip çözülmelidir.

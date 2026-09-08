@@ -1,0 +1,1 @@
+Yeni sürüm 3 Eylül'de yayımlandı. Açılış süresini 4,2 saniyeden 1,9 saniyeye düşürdü ve iki bilinen hatayı giderdi. Henüz tüm kullanıcılara dağıtılmadı; dağıtım kademeli yapılıyor. Bellek kullanımı ölçülmedi.

@@ -322,7 +322,7 @@ Daha kısa biçim aynı anlam ve tonu taşıyorsa uzun biçimi bırak. Tam biçi
 
 > Yöntemin bu çalışmada uygulanabilirliği için veri kümesinin yetersiz kalabileceği koşullar dikkate alınmalıdır.
 
-Özne: uygulanabilirlik koşulu. Yüklem: dikkate alınmalı. Gerekli niteleme: veri kümesinin yetersiz kalabileceği koşullar. Geri kalan yirmi sözcük çerçeveydi. Akademik ses veriyor diye karmaşıklığı ödüllendirme.
+Özne: uygulanabilirlik koşulu. Yüklem: dikkate alınmalı. Gerekli niteleme: veri kümesinin yetersiz kalabileceği koşullar. Geri kalan yirmi sözcük çerçeveydi. Akademik ses veriyor diye karmaşıklığı ödüllendirme. Çerçeve adlarının (`açısından`, `kapsamında`, `bağlamında`, `noktasında`, `üzerinden`) hâl eki, iyelik veya fiille değiştirilmesi ve silme testi için [Türkçe ritim ve kaynak dil gölgesi › Çerçeve yığını](turkce-ritim-ve-ceviri-golgesi.md#çerçeve-yığını) bölümüne bak.
 
 ## Cümle birleştirme ve şişkin cümle
 

@@ -1,0 +1,1 @@
+İki yöntem karşılaştırıldığında birinci yöntem maliyet açısından ucuz, süre açısından pahalıdır: lisans ücreti yıllık 4.000 lira, kurulum süresi altı haftadır. İkinci yöntemde lisans 12.000 lira, kurulum iki haftadır. Ekip henüz karar vermedi.

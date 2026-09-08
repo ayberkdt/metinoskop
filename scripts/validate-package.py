@@ -24,6 +24,7 @@ REQUIRED_FILES = (
     "references/rapor-yazimi.md",
     "references/retorik-yapilar.md",
     "references/turkce-oruntuler.md",
+    "references/turkce-ritim-ve-ceviri-golgesi.md",
     "references/yapisal-butunluk.md",
     "evals/README.md",
     "evals/akademik.md",
@@ -68,6 +69,30 @@ REQUIRED_FILES = (
     "evals/uzun-paragraf-korunur.md",
     "evals/kisa-paragraf-korunur.md",
     "evals/yapisal-iyi-metin.md",
+    "evals/tekrarlanan-acik-ozne.md",
+    "evals/bu-sonuc-ritmi.md",
+    "evals/asiri-bir.md",
+    "evals/sahip-olmak-kalkisi.md",
+    "evals/bulunmaktadir-kalkisi.md",
+    "evals/ve-zinciri.md",
+    "evals/dogal-ve-korunur.md",
+    "evals/yararli-ip-yapisi.md",
+    "evals/asiri-ip-zinciri.md",
+    "evals/art-niteleme.md",
+    "evals/gerekli-olan.md",
+    "evals/gereksiz-olan.md",
+    "evals/cerceve-yigini.md",
+    "evals/gerekli-acisindan.md",
+    "evals/soyut-ad-yuklemi.md",
+    "evals/teknik-adlastirma-korunur.md",
+    "evals/ozne-dusurme-akisi.md",
+    "evals/belirsizlik-icin-acik-ozne.md",
+    "evals/dogal-uzun-cumle-korunur.md",
+    "evals/asiri-yuklu-cumle.md",
+    "evals/ingilizce-soylem-belirtecleri.md",
+    "evals/hukuki-kalip-korunur.md",
+    "evals/teknik-ozne-tekrari-korunur.md",
+    "evals/yerli-turkce-metin.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -116,6 +141,30 @@ EVAL_FILES = (
     "evals/uzun-paragraf-korunur.md",
     "evals/kisa-paragraf-korunur.md",
     "evals/yapisal-iyi-metin.md",
+    "evals/tekrarlanan-acik-ozne.md",
+    "evals/bu-sonuc-ritmi.md",
+    "evals/asiri-bir.md",
+    "evals/sahip-olmak-kalkisi.md",
+    "evals/bulunmaktadir-kalkisi.md",
+    "evals/ve-zinciri.md",
+    "evals/dogal-ve-korunur.md",
+    "evals/yararli-ip-yapisi.md",
+    "evals/asiri-ip-zinciri.md",
+    "evals/art-niteleme.md",
+    "evals/gerekli-olan.md",
+    "evals/gereksiz-olan.md",
+    "evals/cerceve-yigini.md",
+    "evals/gerekli-acisindan.md",
+    "evals/soyut-ad-yuklemi.md",
+    "evals/teknik-adlastirma-korunur.md",
+    "evals/ozne-dusurme-akisi.md",
+    "evals/belirsizlik-icin-acik-ozne.md",
+    "evals/dogal-uzun-cumle-korunur.md",
+    "evals/asiri-yuklu-cumle.md",
+    "evals/ingilizce-soylem-belirtecleri.md",
+    "evals/hukuki-kalip-korunur.md",
+    "evals/teknik-ozne-tekrari-korunur.md",
+    "evals/yerli-turkce-metin.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -226,8 +275,18 @@ for heading in (
     "Görsel parçalanmayı açıklık sanma",
     "## Sertlik düzeyleri",
     "## Akademik ve teknik metin",
-    "**5. Yapay düzyazı ve yapı denetimi yap.**",
+    "**5. Yapay düzyazı, yapı ve çeviri gölgesi denetimi yap.**",
     "**E. Yapı:**",
+    "**F. Çeviri gölgesi:**",
+    "## Kaynak dil gölgesi ve Türkçe ritim",
+    "**Kaynak dil gölgesi.**",
+    "**İlişkiyi yeniden kur, sözcükleri değil.**",
+    "**Bilgi yapısı sözcük sırasını belirler.**",
+    "**Açık özne denetimi.**",
+    "**Yan cümle mimarisi denetimi.**",
+    "**Türkçe kaynak geri kazanımı.**",
+    "**Daha güçlü fiil uydurma.**",
+    "**Aşırı düzeltme koruması.**",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
@@ -268,6 +327,7 @@ readme_requirements = (
     "scripts/eval-suite.py",
     "retorik-yapilar.md",
     "yapisal-butunluk.md",
+    "turkce-ritim-ve-ceviri-golgesi.md",
 )
 for requirement in readme_requirements:
     if requirement not in readme:
@@ -291,7 +351,7 @@ if "## [0.1.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.1.0")
 
 evals_readme = texts[ROOT / "evals/README.md"]
-for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez"):
+for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri gölgesi", "açık özne", "sahip olmak"):
     if requirement not in evals_readme.casefold():
         fail(f"evals/README.md must mention review axis: {requirement}")
 
@@ -349,6 +409,30 @@ eval_markers = {
     "evals/uzun-paragraf-korunur.md": ("yüzde 9", "yüzde 14", "gösteriyor olabilir", "ayrıştırılamıyor", "yalnızca"),
     "evals/kisa-paragraf-korunur.md": ("`--purge`", "geri alınamaz", "02.00", "%90"),
     "evals/yapisal-iyi-metin.md": ("## Sorun", "## Yapılan işlem ve sonraki adım", "2.140", "120", "henüz", "en olası açıklama"),
+    "evals/tekrarlanan-acik-ozne.md": ("Model ilk koşulda", "%4", "1.500", "henüz", "ardışık özne: 0"),
+    "evals/bu-sonuc-ritmi.md": ("Bu sonuç", "Bu bulgu", "Bu durum", "0,2", "0,5", "40 saniyeden 18 saniyeye", "iki katına"),
+    "evals/asiri-bir.md": ("bir sensörden gelen bir veri", "tek bir sensörle", "birden fazla", "henüz", "bir / 100 sözcük"),
+    "evals/sahip-olmak-kalkisi.md": ("hesaplama maliyetine sahiptir", "üç katmana sahiptir", "IP67", "64", "iki fabrikaya sahiptir", "yönetici yetkisine sahip olmalıdır", "sahip olmak: <= 2"),
+    "evals/bulunmaktadir-kalkisi.md": ("bulunmaktadır", "yer almaktadır", "mevcuttur", "içermektedir", "doldurmak zorundadır", "varlık kalıbı"),
+    "evals/ve-zinciri.md": ("okur ve veriyi", "100 Hz", "10 ms", "uygular ve uygulama sonucunu", "ve zinciri: 0"),
+    "evals/dogal-ve-korunur.md": ("%12 düşürdü ve hesaplama süresini %30", "200", "henüz", "düşürüp artırdı"),
+    "evals/yararli-ip-yapisi.md": ("Daha sonra", "Ardından", "Bunun ardından", "12 istasyondan", "0 ile 1", "3 saat", "fiilimsi yığını: 0"),
+    "evals/asiri-ip-zinciri.md": ("toplayıp", "temizleyip", "ölçekleyip", "bölüp", "eğitip", "doğrulayıp", "%91", "Tablo 2"),
+    "evals/art-niteleme.md": ("eğitilmiş olan bir modeldir", "2024", "2023", "0,01", "olan zinciri: 0"),
+    "evals/gerekli-olan.md": ("40 °C'nin üzerinde olan", "18", "belirtilmedi"),
+    "evals/gereksiz-olan.md": ("sahip olan ve", "uygun olan bir seçenektir", "5 ms", "%98", "20 ms", "olan zinciri: 0", "sahip olmak: 0"),
+    "evals/cerceve-yigini.md": ("Bu bağlamda, performans açısından", "kapsamında", "noktasında", "perspektifinden", "çerçevesinde", "%35", "8 GB", "henüz", "çerçeve yığını: 0"),
+    "evals/gerekli-acisindan.md": ("maliyet açısından ucuz, süre açısından pahalıdır", "4.000", "12.000", "altı hafta", "iki hafta", "henüz"),
+    "evals/soyut-ad-yuklemi.md": ("bir değerlendirme yapmıştır", "bir analiz gerçekleştirilmiştir", "olumlu bir etkiye sahiptir", "belirleyici bir rol oynamaktadır", "karar alma sürecine", "240", "%7", "%4", "ölçülmemiştir"),
+    "evals/teknik-adlastirma-korunur.md": ("Kalman kazancının hesaplanması", "yenilik kovaryansının tersinin alınmasını", "Tablo 3", "50", "0,12", "yalnızca"),
+    "evals/ozne-dusurme-akisi.md": ("Yeni sürüm", "3 Eylül", "4,2", "1,9", "henüz", "kademeli", "ardışık özne: 0"),
+    "evals/belirsizlik-icin-acik-ozne.md": ("Filtre", "Gözlemci", "50 Hz", "hiçbir veri iletmez"),
+    "evals/dogal-uzun-cumle-korunur.md": ("ıraksamadığını fakat", "60 °C", "40 saniyeden 210 saniyeye", "yalnızca", "henüz", "cümle: 2"),
+    "evals/asiri-yuklu-cumle.md": ("Bu kapsamda, söz konusu", "değerlendirilmesinin gerçekleştirilmesi", "20 °C", "40 °C", "60 °C", "%3", "%11", "bakımından", "çerçeve yığını: 0"),
+    "evals/ingilizce-soylem-belirtecleri.md": ("Bununla birlikte", "Buna ek olarak", "Öte yandan", "Bu nedenle", "Sonuç olarak", "7 günlük", "%40", "yalnızca", "bağlaçla başlayan cümle"),
+    "evals/hukuki-kalip-korunur.md": ("İşbu", "aksi kararlaştırılmadıkça", "söz konusu", "takdirde", "7.2", "on iş günü", "yalnızca", "cümle: 4"),
+    "evals/teknik-ozne-tekrari-korunur.md": ("Denetleyici komutu doğrular", "Denetleyici komutu uygular", "`E-41`", "ayrı ayrı kaydedilir", "cümle: 4"),
+    "evals/yerli-turkce-metin.md": ("yedi buçukta", "Kışın bu bekleme çekilmez, yazın umursamıyorum", "üç gün", "henüz", "cümle: 4"),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]
@@ -370,8 +454,20 @@ if "python3 scripts/eval-suite.py" not in workflow:
 for output_path in sorted((ROOT / "evals/outputs").glob("*.txt")):
     if not (ROOT / "evals" / f"{output_path.stem}.md").is_file():
         fail(f"Recorded output without an eval case: evals/outputs/{output_path.name}")
-if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 10:
-    fail("evals/outputs must keep at least ten recorded reference outputs")
+if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 30:
+    fail("evals/outputs must keep at least thirty recorded reference outputs")
+
+SHOULD_REMAIN_CASES = (
+    "evals/dogal-ve-korunur.md", "evals/gerekli-olan.md", "evals/gerekli-acisindan.md",
+    "evals/teknik-adlastirma-korunur.md", "evals/belirsizlik-icin-acik-ozne.md", "evals/dogal-uzun-cumle-korunur.md",
+    "evals/hukuki-kalip-korunur.md", "evals/teknik-ozne-tekrari-korunur.md", "evals/yerli-turkce-metin.md",
+)
+for relative_path in SHOULD_REMAIN_CASES:
+    # "Should remain" translationese cases record the source itself as the reference output.
+    case_source = re.search(r"(?ms)^## Kaynak\s*\n(.*?)(?=^## )", texts[ROOT / relative_path])
+    recorded = (ROOT / "evals/outputs" / (Path(relative_path).stem + ".txt")).read_text(encoding="utf-8")
+    if case_source is None or case_source.group(1).strip() != recorded.strip():
+        fail(f"{relative_path}: recorded output must equal the source for a should-remain case")
 
 for relative_path in ("scripts/eval-runner.py", "scripts/eval-suite.py", "scripts/style-lint.py", "scripts/validate-package.py"):
     try:

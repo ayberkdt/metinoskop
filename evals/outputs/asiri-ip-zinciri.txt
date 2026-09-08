@@ -1,0 +1,1 @@
+Ekip veriyi 12 istasyondan toplayıp aykırı değerlerden temizledikten sonra 0 ile 1 arasına ölçeklemiş ve üç parçaya bölmüştür. Modeli ilk parçayla eğitip ikinci parçayla doğrulamış, üçüncü parçada %91 doğruluk ölçmüş ve sonuçları Tablo 2'de raporlamıştır.

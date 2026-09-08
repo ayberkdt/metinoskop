@@ -429,6 +429,8 @@ Tekrarlanan `bu durum`, `bu yaklaşım`, `bu yapı`, `bu süreç`, `bu çerçeve
 
 İkinci cümle ölçümü soyut adla yeniden anlatır; üçüncü cümlenin öznesi kaynakta hiçbir yaklaşıma karşılık gelmez.
 
+Boş özne dolgu taşımıyor, yalnızca önceki önermeyi İngilizce "this result / this finding" alışkanlığıyla yeniden paketliyorsa sorun retorik değil çeviri gölgesidir; paketi çözmek için [Türkçe ritim ve kaynak dil gölgesi › Gösterme sıfatı ve söylem adı paketi](turkce-ritim-ve-ceviri-golgesi.md#gösterme-sıfatı-ve-söylem-adı-paketi) bölümüne bak.
+
 ## Açık olanı açıklama
 
 Açıklık testi: cümle, hedef okurun zaten bildiği olağan bir olguyu gerekçelendiriyor mu?
