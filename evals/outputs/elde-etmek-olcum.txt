@@ -1,1 +1,1 @@
-Yeni ayarla hata oranı %20 iyileşti. Bellek kullanımı 512 MB'tan 410 MB'a indi.
+Yeni ayarla hata oranı %20 azaldı. Bellek kullanımı 512 MB'tan 410 MB'a indi.
