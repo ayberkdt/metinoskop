@@ -192,7 +192,7 @@ Müdahaleyi tekrarın kaynağına göre seç. İki cümleyi yalnızca aynı dü�
 
 ## İddia ve kesinlik akışı
 
-Akıcılık düzenlemesi kanıt düzeyini değiştirmemelidir. Kanıt mimarisinin bütünü (epistemik kaynak, aktarım ve atıf mesafesi, çekince ve pekiştirici, kip bakış açısı, öneri–karar–uygulama, olumsuz kanıt) için [Epistemik mimari](epistemik-mimari.md) dosyasına bak.
+Akıcılık düzenlemesi kanıt düzeyini değiştirmemelidir. Kanıt mimarisinin bütünü (epistemik kaynak, aktarım ve atıf mesafesi, çekince ve pekiştirici, kip bakış açısı, öneri–karar–uygulama, olumsuz kanıt) için [Kanıt ve kesinlik](kanit-ve-kesinlik.md) dosyasına bak.
 
 ### Amaç ve sonuç
 

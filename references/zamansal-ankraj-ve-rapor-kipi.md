@@ -28,7 +28,7 @@ Bu dosya bir Türkçe çekim kılavuzu değil, editoryal bir karar sistemidir. S
 
 Dosyayı tamamlanmış bir çalışmayı, deneyi, testi, incelemeyi, kampanyayı ya da süreci anlatan metinlerde kullan: makale, mühendislik raporu, deney raporu, proje raporu, olay raporu, durum raporu, teknik çözümleme. Kural "her geniş zamanı geçmişe çevir" değildir; kural, kipin olayın statüsünü yanlış bildirmemesidir.
 
-[Epistemik mimari › Zaman, görünüş ve kip bakış açısı](epistemik-mimari.md#zaman-görünüş-ve-kip-bakış-açısı) gerekçesiz kip nöbetleşmesini yasaklar: aynı bakış açısındaki cümleler keyfî biçimde farklı kiplere dağıtılmaz. Bu dosya ondan önce gelen kararı verir: baskın bakış açısı ne olmalı? İkisi çelişmez; biri ankrajı seçer, öteki ankraj içinde tutarlılığı korur.
+[Kanıt ve kesinlik › Zaman, görünüş ve kip bakış açısı](kanit-ve-kesinlik.md#zaman-görünüş-ve-kip-bakış-açısı) gerekçesiz kip nöbetleşmesini yasaklar: aynı bakış açısındaki cümleler keyfî biçimde farklı kiplere dağıtılmaz. Bu dosya ondan önce gelen kararı verir: baskın bakış açısı ne olmalı? İkisi çelişmez; biri ankrajı seçer, öteki ankraj içinde tutarlılığı korur.
 
 ## Zamansal ankraj
 
@@ -42,7 +42,7 @@ Her bağlantılı pasaj için baskın zamansal ankrajı sessizce belirle. Başl�
 
 **D. Belge içi gönderme.** Tablo, şekil, bölüm veya denklem okura bilgi sunar: `Şekil 3'te ... görülüyor`, `Şekil 3 ... gösteriyor`, `Şekil 3'te ... verildi`, `Tablo 2'de sonuçlar listelendi`, `Denklem 4 ... tanımlar`. Söylem işlevine göre seç.
 
-**E. Plan, öneri, beklenen eylem.** `Uygulanacak`, `planlandı`, `öneriliyor`, `değerlendirilecek`, `bekleniyor`. Bunları hiçbir koşulda tamamlanmış olaya indirme; statü zinciri için [Epistemik mimari › Öneri, karar, uygulama](epistemik-mimari.md#öneri-karar-uygulama) dosyasına bak.
+**E. Plan, öneri, beklenen eylem.** `Uygulanacak`, `planlandı`, `öneriliyor`, `değerlendirilecek`, `bekleniyor`. Bunları hiçbir koşulda tamamlanmış olaya indirme; statü zinciri için [Kanıt ve kesinlik › Öneri, karar, uygulama](kanit-ve-kesinlik.md#öneri-karar-uygulama) dosyasına bak.
 
 Bir metin tek ankrajdan ibaret değildir. Bir rapor genellikle A ile başlar, bulgularda A veya C'ye, tartışmada B veya C'ye, sonda E'ye geçer. Sorun ankraj çokluğu değil, ankrajsızlıktır.
 
@@ -299,7 +299,7 @@ Veriyi kim kullandı? "Çalışma" soyut bir aktördür. Olası biçimler:
 > Çalışmada bu veri kullanıldı.
 > Ekip bu veriyi kullandı.
 
-İkincisini yalnızca aktör kaynakta varsa kullan. `Bu çalışma inceler`, `Bu rapor değerlendirir`, `Analiz karşılaştırır`, `Araştırma kullanır`, `Deney test eder` kalıplarının bir kısmı meşru üstsöylemdir; tamamlanmış iş anlatımında ise çoğu kez gerçek olayları gizler. Aktör kuralları için [Epistemik mimari › Aktör ve edilgen çatı](epistemik-mimari.md#aktör-ve-edilgen-çatı) dosyasına bak.
+İkincisini yalnızca aktör kaynakta varsa kullan. `Bu çalışma inceler`, `Bu rapor değerlendirir`, `Analiz karşılaştırır`, `Araştırma kullanır`, `Deney test eder` kalıplarının bir kısmı meşru üstsöylemdir; tamamlanmış iş anlatımında ise çoğu kez gerçek olayları gizler. Aktör kuralları için [Kanıt ve kesinlik › Aktör ve edilgen çatı](kanit-ve-kesinlik.md#aktör-ve-edilgen-çatı) dosyasına bak.
 
 ## Rapor geneli kip doygunluğu
 

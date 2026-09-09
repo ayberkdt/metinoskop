@@ -1,4 +1,4 @@
-# Epistemik mimari
+# Kanıt ve kesinlik
 
 ## İçindekiler
 

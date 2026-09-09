@@ -189,7 +189,7 @@ Türkçede sözcük sırası odağı da değiştirir:
 > Yüksek irtifadaki örnekler yalnızca çıkarıldı.
 > Yüksek irtifadaki yalnızca örnekler çıkarıldı.
 
-Üç cümle üç farklı sınırlama kurar. Olumsuzluk, `yalnızca`, `bile`, `de/da`, `özellikle`, `çoğunlukla` varken agresif yeniden sıralama yapma; doğallık odağı değiştirmemelidir. Aynı ilke [Epistemik mimari › Belirsizliğin kapsamı](epistemik-mimari.md#belirsizliğin-kapsamı) için geçerlidir.
+Üç cümle üç farklı sınırlama kurar. Olumsuzluk, `yalnızca`, `bile`, `de/da`, `özellikle`, `çoğunlukla` varken agresif yeniden sıralama yapma; doğallık odağı değiştirmemelidir. Aynı ilke [Kanıt ve kesinlik › Belirsizliğin kapsamı](kanit-ve-kesinlik.md#belirsizliğin-kapsamı) için geçerlidir.
 
 ## Olumsuzluk kapsamı
 

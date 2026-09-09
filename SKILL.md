@@ -230,9 +230,9 @@ Dil bilgisi bakımından doğru bir Türkçe cümle yapı olarak hâlâ İngiliz
 
 **Kesinliği bozma, aşırı Türkçeleştirme.** Kaynak "ilişkili" diyorsa "neden olur", "olumsuz etki" diyorsa "bozuldu" yazma; güvenli tek Türkçe biçim daha soyutsa soyutluğu koru. Alanın terimini (`parametre`, `pipeline`, `baseline`) öz Türkçe hevesiyle değiştirme. Tek yükleme asılmış dört beş fiilimsi, belirsiz düşürülmüş özne, telgraf dili, arkaik sözcük, zorlama deyim, gereksiz devriklik, gündelikleşmiş resmî kayıt dili ve her cümlenin aynı "yerli" kalıba dökülmesi aşırı düzeltmedir. Akademik metin adlaştırma ve edilgenliğe, teknik belge güvenlik için açık özne yinelemesine, hukuki metin kalıp yapıya, kişisel düzyazı serbest sıra ve eksiltiye hak sahibidir. Doğal özne akışı ve iyi konu–odak hareketi olan metni daha fazla "Türkçeleştirme".
 
-## Epistemik mimari
+## Kanıt ve kesinlik
 
-Olguları değişmeyen bir cümle düzenlemeden sonra epistemik olarak yanlışlaşabilir: kimin bildiği, nasıl bildiği, ne kadar kesin iddia ettiği, gözlemle çıkarımın sınırı ve aktörün konumu değişmişse cümle aynı cümle değildir. Katalog ve karşı örnekler [Epistemik mimari](references/epistemik-mimari.md) dosyasındadır.
+Olguları değişmeyen bir cümle düzenlemeden sonra epistemik olarak yanlışlaşabilir: kimin bildiği, nasıl bildiği, ne kadar kesin iddia ettiği, gözlemle çıkarımın sınırı ve aktörün konumu değişmişse cümle aynı cümle değildir. Katalog ve karşı örnekler [Kanıt ve kesinlik](references/kanit-ve-kesinlik.md) dosyasındadır.
 
 **Bilginin kaynağını düzenleyip yok etme.** Her önemli önerme için statüyü belirle: gözlem, ölçüm, aktarım, alıntı, çıkarım, tahmin, öngörü, plan, varsayım, yaygın kabul, yazar ya da kurum yorumu, çözümsüz. "Gözlendi", "bildirildi", "düşündürüyor", "ölçüldü", "bekleniyor" aynı önermeye gönderse bile farklı statü kodlar; düzenlenmiş cümle kaynakla aynı epistemik düzeyde olmalıdır. Ölçüm, ilişki, çıkarım ve nedensel iddia dört ayrı düzeydir; "daha doğrudan" fiil bir düzeyi yükseltemez: rastgele atanmamış iki grup arasındaki fark "etkiler" ya da "azaltır" olmaz. Atıflı iddia ("ekip bildirdi", "rapora göre", "yazarlar öne sürmektedir") kaynak iddiayı ayrıca kurmuyorsa atıflı kalır ve yönettiği önermenin yanında durur; atıftan sonra gelen "bu nedenle" cümlesi neredeyse her zaman incelenir. Kesinliği aşağı çekerken de kaynağa önerme ekleme: şişmiş iddia kaynağın düzeyine iner, yerine olumsuzu ("mekanizma ortaya konmamıştır") ya da yeni bir çekince yazılmaz.
 
@@ -304,7 +304,7 @@ Rapor düzenlemesinden sonra bulgu–yorum–öneri sınırlarını, bölüm iç
 - **D. Belge:** tekrarlanan giriş ve sonuçlar, tek biçimli paragraf mimarisi, aynı gerekçenin tekrarı, yazarın sesini silen türdeş cila.
 - **E. Yapı:** başlık sayısı ve derinliği, tek paragraflık bölümler, kopmuş yakınlık, çapraz gönderme sıklığı, yapay gerilim, gereksiz liste, mini giriş-sonuç; yapısal sınırlar kavramsal sınırlardan sık mı?
 - **F. Çeviri gölgesi:** yinelenen açık özne ve `bu + ad`; çekimli cümle zinciri ve fiilimsi dengesi; art niteleme ve `olan` zinciri; çerçeve yığını; `sahip olmak` ve `bulunmaktadır`; konu–odak sırası; yerli kaynak kullanımı; aşırı düzeltme.
-- **G. Epistemik mimari:** her iddianın kaynağı ve statüsü; gözlem–çıkarım–olgu–nedensellik düzeyi; edilgen–etken dönüşümü ve aktör; atıf mesafesi; çekince–pekiştirici dengesi; kip bakış açısı; bölümler arası kesinlik; öneri–karar–uygulama; "gözlenmedi" ile "yoktur".
+- **G. Kanıt ve kesinlik:** her iddianın kaynağı ve statüsü; gözlem–çıkarım–olgu–nedensellik düzeyi; edilgen–etken dönüşümü ve aktör; atıf mesafesi; çekince–pekiştirici dengesi; kip bakış açısı; bölümler arası kesinlik; öneri–karar–uygulama; "gözlenmedi" ile "yoktur".
 - **H. Sözcük uyumu:** eşdizim; hâl ve tümleç; ilgeç gölgesi; hafif ve genel fiil; eş anlamlı kayması; varlık adlandırma; seyrek ama geçerli birleşim.
 - **I. Metinsel tutarlılık:** cümleler arası devir; olgu yığını; bağlaç geçerliliği; gönderge mesafesi; kapsam ve olumsuzluk bağlanması; kayıt; noktalama; iddia–dayanak yakınlığı.
 - **J. Zamansal ankraj:** pasajın baskın ankrajı; her yüklemin olay statüsü; zamansal sürtünme ve genel kip doygunluğu; kip değişiminin önermeyi genelleştirip daraltmadığı; geçmişe ya da `-miştir` biçimine zorlama.
@@ -320,7 +320,7 @@ Rapor düzenlemesinden sonra bulgu–yorum–öneri sınırlarını, bölüm iç
 - Metin çok başlıklı, kısa paragraflı, sık çapraz göndermeli veya yapay gerilimliyse; bölümler birleştirilecek ya da korunacaksa [Yapısal bütünlük](references/yapisal-butunluk.md).
 - Paragraf kopuksa, göndergeler belirsizse veya okuma akışı takılıyorsa [Akıcı Türkçe](references/akicilik.md).
 - Metin çeviri gibi okunuyorsa; açık özne, `bu sonuç`, `ve` zinciri, `sahip olmak`, `olan` zinciri, çerçeve yığını, fazla `bir` ya da uzak yüklem ritmi varsa [Türkçe ritim ve kaynak dil gölgesi](references/turkce-ritim-ve-ceviri-golgesi.md).
-- Aktarım, çıkarım, çekince, pekiştirici, edilgen çatı, kip değişimi, öneri–karar–uygulama statüsü ya da bölümler arası kesinlik söz konusuysa [Epistemik mimari](references/epistemik-mimari.md).
+- Aktarım, çıkarım, çekince, pekiştirici, edilgen çatı, kip değişimi, öneri–karar–uygulama statüsü ya da bölümler arası kesinlik söz konusuysa [Kanıt ve kesinlik](references/kanit-ve-kesinlik.md).
 - Tamamlanmış iş zamansız-genel kiple anlatılıyorsa; `bu çalışma inceler` ritmi, tarihli olayda geniş zaman, yöntem tanımı ile uygulama karışması ya da geçmişe zorlama varsa [Zamansal ankraj ve rapor kipi](references/zamansal-ankraj-ve-rapor-kipi.md).
 - Sözcükler tuhaf birleşiyorsa; hafif fiil, yanlış hâl, edat gölgesi, eş anlamlı kayması ya da terim kararsızlığı varsa [Eşdizim ve istem](references/esdizim-ve-istem.md).
 - Paragraflar iyi olduğu hâlde metin bir düşünceyi geliştirmiyorsa; olgu yığını, desteksiz bağlaç, uzak gönderge, kapsam ya da olumsuzluk kayması, kayıt kayması ya da noktalama yükü varsa [Metinsel tutarlılık](references/metinsel-tutarlilik.md).

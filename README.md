@@ -209,7 +209,7 @@ git clone https://github.com/ayberkdt/metinoskop.git /path/to/skills/metinoskop
 | `retorik-yapilar.md` | Cümleler doğru ama metin yapay: önem cümleleri, tekrar döngüleri, kalıp giriş ve sonuç |
 | `yapisal-butunluk.md` | Çok başlık, kısa paragraf yığını, sık çapraz gönderme |
 | `turkce-ritim-ve-ceviri-golgesi.md` | Metin çeviri gibi okunuyor |
-| `epistemik-mimari.md` | Kimin ne bildiği, aktarım, çekince, kesinlik düzeyi |
+| `kanit-ve-kesinlik.md` | Kimin ne bildiği, aktarım, çekince, kesinlik düzeyi |
 | `esdizim-ve-istem.md` | Sözcükler tuhaf birleşiyor |
 | `metinsel-tutarlilik.md` | Paragraflar iyi ama metin bir düşünceyi geliştirmiyor |
 | `zamansal-ankraj-ve-rapor-kipi.md` | Yapılmış iş kılavuz gibi anlatılmış ya da kip zorlanmış |
@@ -415,7 +415,7 @@ Beşinci aşamadaki geçişler:
 | D. Belge | Tekrarlanan giriş ve sonuçlar, tek biçimli mimari, aynı gerekçenin tekrarı |
 | E. Yapı | Başlık sayısı ve derinliği, tek paragraflık bölümler, kopmuş yakınlık, gereksiz liste |
 | F. Çeviri gölgesi | Özne, yan cümle, niteleme, çerçeve, iyelik, bilgi yapısı, aşırı düzeltme |
-| G. Epistemik mimari | Kaynak ve statü, aktörlük, atıf, çekince–pekiştirici, bölümler arası kesinlik |
+| G. Kanıt ve kesinlik | Bilginin kaynağı, aktörlük, atıf, çekince–pekiştirici, bölümler arası kesinlik |
 | H. Sözcük uyumu | Sözcük eşleşmeleri, hâl ekleri, edatlar, hafif fiil, terim tutarlılığı |
 | I. Metinsel tutarlılık | Konu ilerleyişi, bağlaç geçerliliği, gönderge mesafesi, kapsam ve olumsuzluk |
 | J. Zamansal ankraj | Baskın ankraj, zamansal sürtünme, prosedür ile uygulama ayrımı, geçmişe zorlama |
@@ -429,8 +429,8 @@ metinoskop/
 │   └── openai.yaml
 ├── references/
 │   ├── akicilik.md
-│   ├── epistemik-mimari.md
 │   ├── esdizim-ve-istem.md
+│   ├── kanit-ve-kesinlik.md
 │   ├── kavramsal-girisler.md
 │   ├── metinsel-tutarlilik.md
 │   ├── rapor-yazimi.md
