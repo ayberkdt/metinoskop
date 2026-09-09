@@ -99,6 +99,16 @@ Aşağıdaki dönüşüm derin düzenleme ister; standart düzeyde başlıklar k
 
 Üç başlık tek kavramsal birimdi. Yöntem bilgisi ve iki ölçüm duruyor; giden şey bölünmenin kendi ürettiği dolgu: `belirleyici rol` nitelemesi, `bir sonraki bölümde görülecektir` askısı ve `yukarıda belirtilen` göndermesi. Bölünme olmasa bu üç ifadeye gerek olmazdı.
 
+### Geçmişin kendi içindeki üç ilişki
+
+`references/zamansal-ankraj-ve-rapor-kipi.md`
+
+Bir olay raporunda baskın çizgi yalın geçmiştir, ama her cümle o çizgide durmaz:
+
+> 14 Mayıs testinde basınç düşerken pompa hâlâ **çalışıyordu**. Operatör alarmı 03.12'de **fark etti** ve ana vanayı **kapattı**. Vana kapandığında yedek hat çoktan devreden **çıkmıştı**.
+
+Üç kip üç ayrı ilişki taşır: artalan, ana olay dizisi, daha önce tamamlanmış olay. Hepsini `-dı` yapmak bilgi kaybettirir — pompanın çalışması sınırlı bir olaya döner, yedek hattın önceden çıkmış olması ise vananın kapanmasıyla eş zamanlı görünür. Metinoskop bu ilişkileri korur; kaynak kurmuyorsa da uydurmaz.
+
 ### Hiç dokunulmayan metin
 
 `evals/iyi-metin.md`
@@ -109,7 +119,7 @@ Bu vakanın kayıtlı çıktısı kaynağın kendisidir. Doğru davranış hiçb
 
 ## Neyi değiştirmemekte ısrar eder
 
-Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz kırk eval vakasının kırk ikisinde beklenen çıktı kaynağın kendisidir:
+Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz kırk beş eval vakasının kırk altısında beklenen çıktı kaynağın kendisidir:
 
 | Metinde geçen | Neden dokunulmaz |
 |---|---|
@@ -123,6 +133,8 @@ Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. 
 | `Bu veri kümesinde etki gözlenmedi.` | Kanıt yokluğu, yokluğun kanıtı değildir; `etki yoktur` olmaz. |
 | `Güneşsiz bir günde panel çıkışı 40 W'a düştü.` | İçinde `eşsiz` dizisi geçiyor diye pazarlama dili sayılmaz. |
 | `... çalışma gözlemsel olduğundan nedensellik göstermemektedir.` | Kanıt düzeyi bildiren çekince, "AI gibi" diye silinmez. |
+| `Başvurular her yıl 15 Ekim'de kapanır.` | Açık tarih + geniş zaman her zaman hata değildir; bu yinelenen bir takvim kuralı. |
+| `Basınç düşerken pompa hâlâ çalışıyordu.` | Artalandaki süren eylem; `çalıştı` bunu sınırlı bir olaya çevirir. |
 
 Her satır bir eval vakasına dayanır ve kayıtlı çıktısı kaynağın kendisidir.
 
@@ -138,7 +150,7 @@ Her satır bir eval vakasına dayanır ve kayıtlı çıktısı kaynağın kendi
 
 **Kim, neyi, ne kadar kesin biliyor.** Bir cümlenin olguları değişmeden de yanlışlaşabilir: kimin bildiği, nasıl bildiği ve ne kadar kesin iddia ettiği değişmişse cümle aynı cümle değildir. Metinoskop bunu düzenleme boyunca sabit tutar. Başkasının söylediğini yazarın olgusuna, ilişkiyi nedenselliğe, öneriyi karara, kararı uygulamaya çevirmez; `gözlenmedi` `yoktur` olmaz. Kaynağın adını vermediği bir aktörü uydurmaz. `Olabilir`, `görünmektedir` gibi çekinceleri kanıt sayıp korur, `açıkça`, `tartışmasız` gibi pekiştiricileri dayanağı yoksa kaldırır.
 
-**Zaman ve kip.** Tamamlanmış bir çalışmayı `inceler / kullanır / uygular` gibi zamansız kiplerle anlatan metin, yapılmış bir işi kullanım kılavuzuna çevirir; depo bu belirtiye *kılavuz gölgesi* der. Metinoskop yapılan işi olmuş bitmiş olay olarak anlatır. Buna karşılık algoritmanın genel davranışını, bilimsel bir ilişkiyi, ürün belirtimini ve prosedürü geniş zamanda bırakır; bunlar gerçekten zamansızdır. Tek bir gözlemi geniş zamana çevirip genel yasaya yükseltmez, genel bir ilişkiyi geçmişe çevirip tek seferlik olaya indirmez.
+**Zaman ve kip.** Tamamlanmış bir çalışmayı `inceler / kullanır / uygular` gibi zamansız kiplerle anlatan metin, yapılmış bir işi kullanım kılavuzuna çevirir; depo bu belirtiye *kılavuz gölgesi* der. Metinoskop yapılan işi olmuş bitmiş olay olarak anlatır. Buna karşılık algoritmanın genel davranışını, bilimsel bir ilişkiyi, ürün belirtimini ve prosedürü geniş zamanda bırakır; bunlar gerçekten zamansızdır. Tek bir gözlemi geniş zamana çevirip genel yasaya yükseltmez, genel bir ilişkiyi geçmişe çevirip tek seferlik olaya indirmez. Geçmişin kendi içindeki ilişkileri de düzleştirmez: `çalışıyordu` artalanı, `kalibre edilmişti` daha önce tamamlanmış olmayı, `yapardı` düzenli davranışı bildirir.
 
 **Sözcüklerin birbirine tutunması.** Bir sözcük tek başına doğru olup birleşimde yanlış olabilir: `karar gerçekleştirmek`, `X hakkında odaklanmak`, `cevap sağlamak`. Metinoskop bu birleşimleri Türkçenin alışılmış eşleşmeleriyle kurar; `bir değerlendirme gerçekleştirmek` gibi yapıların arkasına saklanan gerçek fiili öne çıkarır. Aynı nesneyi `yöntem`, `yaklaşım`, `yapı`, `çözüm` arasında gezdirmez; teknik terimi, ödünç sözcüğü ve hukuki kalıbı korur.
 
@@ -161,6 +173,7 @@ Depo birkaç kavramı kendi adıyla anar. Bunlar `references/` altındaki dosya 
 | **Üretilmiş önem** | Ortada bir bulgu var diye eklenen, kaynağın gerekçelendirmediği "bu önemlidir" cümlesi. |
 | **Hafif fiil** | Gerçek fiili bir adın arkasına saklayan yapı: `değerlendirme gerçekleştirmek` yerine `değerlendirmek`. |
 | **Eşdizim** | Sözcüklerin birlikte kullanılma alışkanlığı. `karar almak` doğaldır, `karar gerçekleştirmek` değildir. |
+| **Geçmiş içi ilişki** | Geçmişin kendi içindeki üç ayrı bağ: `-yordu` artalan, `-mıştı` daha önce biten, `-ardı` düzenli davranış. |
 | **Korunur vakası** | Doğru davranışın hiçbir şeyi değiştirmemek olduğu eval vakası; kayıtlı çıktısı kaynağın kendisidir. |
 
 ## Temel ilkeler
@@ -418,7 +431,7 @@ Beşinci aşamadaki geçişler:
 | G. Kanıt ve kesinlik | Bilginin kaynağı, aktörlük, atıf, çekince–pekiştirici, bölümler arası kesinlik |
 | H. Sözcük uyumu | Sözcük eşleşmeleri, hâl ekleri, edatlar, hafif fiil, terim tutarlılığı |
 | I. Metinsel tutarlılık | Konu ilerleyişi, bağlaç geçerliliği, gönderge mesafesi, kapsam ve olumsuzluk |
-| J. Zamansal ankraj | Baskın ankraj, zamansal sürtünme, prosedür ile uygulama ayrımı, geçmişe zorlama |
+| J. Zamansal ankraj | Baskın ankraj, zamansal sürtünme, prosedür ile uygulama ayrımı, geçmiş içi ilişkiler, geçmişe zorlama |
 
 ## Depo yapısı
 
@@ -440,7 +453,7 @@ metinoskop/
 │   ├── yapisal-butunluk.md
 │   └── zamansal-ankraj-ve-rapor-kipi.md
 ├── evals/
-│   ├── (140 davranışsal vaka: kaynak sadakati, retorik mimari, yapısal
+│   ├── (145 davranışsal vaka: kaynak sadakati, retorik mimari, yapısal
 │   │    bütünlük, çeviri gölgesi, epistemik mimari, eşdizim ve istem,
 │   │    metinsel tutarlılık, zamansal ankraj)
 │   ├── critical-cases.txt
@@ -529,7 +542,9 @@ GitHub Actions, `main` dalına gönderilen her değişiklikte ve pull request'le
 
 `evals/` klasörü tek bir beklenen çıktı dayatmaz. Her vaka korunması gereken olguları, kesinlik düzeyini ve biçimi, ayrıca kaçınılması gereken davranışları tanımlar; böylece farklı ama geçerli düzenlemeler aynı ölçütlerle değerlendirilebilir.
 
-Yüz kırk vakanın kırk ikisi **korunur** vakasıdır: doğru davranış hiçbir şeyi değiştirmemektir ve kayıtlı çıktı kaynağın kendisidir. Doğrulayıcı bu eşitliği denetler. Korunması gerekenler arasında zaten iyi yazılmış e-posta, gerekli açık özne, teknik adlaştırma, hukuki kalıp, ödünç terim, uzun ama tek hareketli paragraf, tekrarlanabilirlik için ayrılmış deney bölümleri, algoritma tanımı, genel bilimsel ilişki, ürün belirtimi ve gerekçeli kip çeşitliliği vardır.
+Bu ilke yapısal beklentileri de bağlar. Dönüşüm vakaları cümle sayısını üst sınırla verir (`cümle: <= 4`), kesin sayıyla değil: önermeleri işlevlerine göre gruplayan bir düzenleme de geçerlidir. Kesin sayı yalnızca korunur vakalarında meşrudur, çünkü orada beklenen çıktı kaynağın kendisidir. Doğrulayıcı bu ayrımı denetler.
+
+Yüz kırk beş vakanın kırk altısı **korunur** vakasıdır: doğru davranış hiçbir şeyi değiştirmemektir ve kayıtlı çıktı kaynağın kendisidir. Doğrulayıcı bu eşitliği denetler. Korunması gerekenler arasında zaten iyi yazılmış e-posta, gerekli açık özne, teknik adlaştırma, hukuki kalıp, ödünç terim, uzun ama tek hareketli paragraf, tekrarlanabilirlik için ayrılmış deney bölümleri, algoritma tanımı, genel bilimsel ilişki, ürün belirtimi ve gerekçeli kip çeşitliliği vardır.
 
 ## Sürümleme
 

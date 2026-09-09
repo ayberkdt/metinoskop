@@ -27,5 +27,5 @@ Tamamlanmış bir karşılaştırma çalışmasının giriş paragrafı. Standar
 
 - geniş zaman doygunluğu: 0
 - zamansal sürtünme: 0
-- cümle: 3
+- cümle: <= 3
 - sert işaret: 0

@@ -24,6 +24,6 @@ Tamamlanmış bir çalışmanın yöntem özeti. Standart düzeyde düzenle.
 
 ## Yapısal beklenti
 
-- cümle: 3
+- cümle: <= 3
 - geniş zaman doygunluğu: 0
 - fiilimsi yığını: 0

@@ -24,5 +24,5 @@ Tamamlanmış bir deneyin bulgular paragrafı. Standart düzeyde düzenle.
 
 ## Yapısal beklenti
 
-- cümle: 3
+- cümle: <= 3
 - zamansal sürtünme: 0

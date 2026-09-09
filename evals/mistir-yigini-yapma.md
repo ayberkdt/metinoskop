@@ -23,5 +23,5 @@ Tamamlanmış bir maliyet analizinin bulgular paragrafı. Standart düzeyde düz
 
 ## Yapısal beklenti
 
-- cümle: 3
+- cümle: <= 3
 - geniş zaman doygunluğu: 0

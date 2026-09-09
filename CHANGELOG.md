@@ -8,11 +8,16 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Değişti
 
+- Dönüşüm eval vakalarındaki kesin cümle sayısı beklentileri üst sınıra çevrildi (`- cümle: 4` → `- cümle: <= 4`). Repo tek bir doğru düzenleme dayatmaz; kesin sayı, önermeleri işlevlerine göre gruplayan geçerli bir düzenlemeyi haksız yere reddediyordu. Korunur vakalarında kesin sayı korundu, çünkü orada çıktı kaynağın kendisidir. Doğrulayıcı artık dönüşüm vakalarında kesin sayı yazılmasını engelliyor.
+- `metot-ve-uygulama-ayrimi` vakasının kayıtlı çıktısı işlevlerine göre gruplandı: genel tanımlar bir cümlede, bu çalışmada yapılanlar bir cümlede. Önceki çıktı semantik olarak doğruydu ama genel → geçmiş → genel → geçmiş sırasıyla salınıyordu.
 - `references/epistemik-mimari.md` dosyası `references/kanit-ve-kesinlik.md` adını aldı; `SKILL.md`'deki bölüm başlığı `## Kanıt ve kesinlik`, denetim geçişi `G. Kanıt ve kesinlik` oldu. Dosyanın bölüm başlıkları değişmediği için diğer referanslardaki çapraz gönderme çıpaları korundu. Gerekçe: README ve SKILL.md, projeyi bilmeyen okura tanıtılmamış terim dayatıyordu; dosya adları da bu terimleri taşıyordu. İçerik ve kurallar aynı.
 
 - Lisans MIT'ten Creative Commons Atıf 4.0 Uluslararası'na (CC BY 4.0) geçirildi. Kullanım, değiştirme, dağıtım ve ticari kullanım serbest kalır; atıf artık lisansın merkezî şartıdır. `LICENSE` kanonik CC BY 4.0 yasal metnini taşır, yeni `NOTICE` dosyası telif sahibini ve beklenen atıf biçimini verir, README'de `## Lisans ve atıf` bölümü kopyalanabilir bir atıf satırı sunar. Doğrulayıcı lisans metnini, CC BY maddelerini ve NOTICE atıf ayrıntılarını denetler; ShareAlike, NonCommercial ya da NoDerivatives maddesi taşıyan bir varyant reddedilir.
 
 ### Eklendi
+
+- Geçmiş içinde zaman ilişkileri: `-yordu` (geçmişte süren artalan), `-mıştı` (başka bir geçmiş olaydan önce tamamlanmış) ve `-ardı` (geçmişte düzenli davranış) ayrımı. Bu ekler yalın geçmişe düzleştirilmez; kaynak ilişkiyi kurmuyorsa da uydurulmaz. `references/zamansal-ankraj-ve-rapor-kipi.md` yeni bölümü, `SKILL.md`'de tek cümlelik kural, dört yeni eval vakası (`gecmiste-surme-korunur`, `once-tamamlanmis-olay-korunur`, `gecmis-aliskanlik-korunur`, `sirali-olayda-misti-yigini`). Stil denetimi `-yordu` ve `-mıştı` biçimlerini ayrı kip sınıfı sayar; `-ardı` biçim bilgisiyle yalın geçmişten ayrılamadığı için sınıflandırılmaz.
+- `periyodik-takvim-genis-zaman-korunur` vakası: yinelenen takvim kuralı (`Başvurular her yıl 15 Ekim'de kapanır`) hem `zamansal_surtunme` hem `genis_zaman_doygunlugu` sinyalini yakar ve yine de doğrudur. Vaka bu meşru kullanımın sezgisel sıkılaştırmalarında bastırılmasını önler.
 
 - Dört düzeyde (sözcük ve kalıp, cümle, paragraf, belge) yapay düzyazı denetimi: sıfır bilgi cümlesi kuralı ve silme testi, işlev tekrarı, savunmacı düzyazı, iddia → açımlama → önem → mini sonuç döngüsü, üretilmiş önem, üretilmiş karşıtlık, yol haritası ve okur yönlendirmesi, kalıp giriş ve sonuç, soyut yüklem sisi, boş soyut özne, açıklık testi, paragraf simetrisi ve zorlama denge kuralları.
 - "Dolguyu başka dolguya çevirme" kesin kuralı; sert bastırma ile bağlama duyarlı yüksek risk ayrımı.

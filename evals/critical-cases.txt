@@ -22,3 +22,5 @@ raporda-genis-zaman-yigini
 algoritma-genel-davranis-korunur
 sonuclarda-genis-zaman
 durum-raporu-uc-zaman
+periyodik-takvim-genis-zaman-korunur
+once-tamamlanmis-olay-korunur

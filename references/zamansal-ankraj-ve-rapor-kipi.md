@@ -8,19 +8,20 @@
 4. [Prosedür ile uygulama](#prosedür-ile-uygulama)
 5. [Raporda geniş zaman](#raporda-geniş-zaman)
 6. [Yalın geçmiş](#yalın-geçmiş)
-7. [`-mıştır` biçimi](#-mıştır-biçimi)
-8. [`-yor` biçimi](#-yor-biçimi)
-9. [Yöntem bölümleri](#yöntem-bölümleri)
-10. [Bulgu bölümleri](#bulgu-bölümleri)
-11. [Şekil, tablo ve belge göndermeleri](#şekil-tablo-ve-belge-göndermeleri)
-12. [Genel bilimsel önermeler](#genel-bilimsel-önermeler)
-13. [Olayın sınırlılığı](#olayın-sınırlılığı)
-14. [Aktörlük ve kip](#aktörlük-ve-kip)
-15. [Rapor geneli kip doygunluğu](#rapor-geneli-kip-doygunluğu)
-16. [Paragraf düzeyinde zamansal tutarlılık](#paragraf-düzeyinde-zamansal-tutarlılık)
-17. [Türe göre kip davranışı](#türe-göre-kip-davranışı)
-18. [Karşı örnekler](#karşı-örnekler)
-19. [Aşırı düzeltme belirtileri](#aşırı-düzeltme-belirtileri)
+7. [Geçmiş içinde zaman ilişkileri](#geçmiş-içinde-zaman-ilişkileri)
+8. [`-mıştır` biçimi](#-mıştır-biçimi)
+9. [`-yor` biçimi](#-yor-biçimi)
+10. [Yöntem bölümleri](#yöntem-bölümleri)
+11. [Bulgu bölümleri](#bulgu-bölümleri)
+12. [Şekil, tablo ve belge göndermeleri](#şekil-tablo-ve-belge-göndermeleri)
+13. [Genel bilimsel önermeler](#genel-bilimsel-önermeler)
+14. [Olayın sınırlılığı](#olayın-sınırlılığı)
+15. [Aktörlük ve kip](#aktörlük-ve-kip)
+16. [Rapor geneli kip doygunluğu](#rapor-geneli-kip-doygunluğu)
+17. [Paragraf düzeyinde zamansal tutarlılık](#paragraf-düzeyinde-zamansal-tutarlılık)
+18. [Türe göre kip davranışı](#türe-göre-kip-davranışı)
+19. [Karşı örnekler](#karşı-örnekler)
+20. [Aşırı düzeltme belirtileri](#aşırı-düzeltme-belirtileri)
 
 ## Kullanım ilkesi
 
@@ -175,6 +176,46 @@ Geçmiş zaman da tek biçimli bir yığına dönüşebilir. `Yapıldı`, `edild
 
 Tekdüzeliği kipi değiştirerek değil, sözdizimiyle çöz: tümce yapısı, bilgi sırası, özne seçimi, cümle birleştirme, sözcük kesinliği. Zamansal statüyü üslup için oynatma.
 
+## Geçmiş içinde zaman ilişkileri
+
+Tamamlanmış anlatım tek bir geçmiş değildir. Olay raporu, arıza çözümlemesi, saha incelemesi ve kronolojik teknik raporda geçmişin kendi içinde üç ayrı ilişki kurulur. Bunları yalın geçmişe düzleştirmek bilgi kaybettirir.
+
+**`-yordu`: geçmişte süren, artalandaki eylem.**
+
+> Basınç düşerken pompa hâlâ çalışıyordu.
+
+Pompanın çalışması basınç düşüşüyle eş zamanlıdır ve sınırlanmamıştır. `Pompa çalıştı` bunu sınırlı bir olaya çevirir, eş zamanlılığı siler; `pompa çalışıyor` ise olayı bugüne taşır.
+
+**`-mıştı`: başka bir geçmiş olaydan önce tamamlanmış eylem.**
+
+> İkinci test başlamadan önce sensör zaten kalibre edilmişti.
+
+Burada iki geçmiş nokta vardır: ikinci testin başlangıcı ve ondan önce biten kalibrasyon. `Sensör kalibre edildi` bu önceliği düzleştirir ve kalibrasyonun test sırasında yapıldığı okumasını açar. `Zaten` gibi sözcükler bu önceliği ayrıca işaretler; dolgu sayılıp silinmez.
+
+**`-ardı/-erdi`: geçmişte düzenli ya da alışkanlık gereği yapılan eylem.**
+
+> Önceki sürüm her çevrimde bu kontrolü yapardı.
+
+`Yaptı` alışkanlığı tek bir olaya indirir; `yapar` geçmişte kalmış bir davranışı bugüne taşır. İkisi de kaynağın söylemediğini söyler.
+
+**Ekleri uydurma.** Kural iki yönlüdür. Kaynak bir öncelik ilişkisi kurmuyorsa `-mıştı` eklenmez; art arda gerçekleşen olaylar yalın geçmişle anlatılır.
+
+> Ekip sistemi incelemişti. Ardından bulguları raporlamıştı. Sonra toplantı yapmıştı.
+
+Üç olay birbirini izliyor; hiçbiri başka bir geçmiş noktaya gönderme yapmıyor. Burada `-mıştı` öncelik değil süs taşır:
+
+> Ekip sistemi inceledi ve bulguları raporladı. Ardından toplantı yaptı.
+
+Aynı biçimde, kaynakta süreklilik yoksa `-yordu`, düzenlilik yoksa `-ardı` eklenmez.
+
+**Kip zincirini kronolojiyle karıştırma.** Bir olay raporunda baskın çizgi yalın geçmiştir; `-yordu` artalanı, `-mıştı` daha önceyi işaretler. Bu üç biçim bir paragrafta yan yana durabilir ve bu, gerekçesiz kip nöbetleşmesi değildir:
+
+> 14 Mayıs testinde basınç düşerken pompa hâlâ çalışıyordu. Operatör alarmı 03.12'de fark etti ve ana vanayı kapattı. Vana kapandığında yedek hat çoktan devreden çıkmıştı.
+
+Üç kip üç ilişki taşır: artalan, ana olay dizisi, önceki olay.
+
+`scripts/style-lint.py` `-yordu` ve `-mıştı` biçimlerini ayrı kip sınıfı sayar. `-ardı` biçimini saymaz: `yapardı` ile `sardı` biçim bilgisiyle ayrılamaz, kararı hakem verir.
+
 ## `-mıştır` biçimi
 
 `-dı` ile `-mıştır` üslup eşanlamlısı değildir. `-mıştır` biçiminin gerçekten şunlardan birini taşıyıp taşımadığına bak: resmî tamamlanma bildirimi, şimdiye uzanan sonuç, aktarım ve evidansiyel mesafe, türün yerleşik akademik kaydı. Bunlardan hiçbiri yoksa ve biçim yalnızca süs resmiyetiyse doğal rapor yalın geçmişi tercih edebilir.
@@ -307,7 +348,7 @@ Tek bir geniş zamanı işaretleme. Şu bağlamlarda yüklemlerin büyük bölü
 
 Bu örüntünün adı **tamamlanmış raporlamada genel kip doygunluğu** olsun. Bağlamsal bir uyarıdır, deterministik hata değil.
 
-`scripts/style-lint.py` iki inceleme sinyali üretir: `zamansal_surtunme` (açık geçmiş zaman belirteci taşıyan cümlede geniş zamanlı yüklem) ve `genis_zaman_doygunlugu` (tamamlanmış iş çıpası taşıyan paragrafta geniş zaman yığılması). İkisi de yalnızca aday listeler; bir regex zamansal anlamı belirleyemez.
+`scripts/style-lint.py` iki inceleme sinyali üretir: `zamansal_surtunme` (açık geçmiş zaman belirteci taşıyan cümlede geniş zamanlı yüklem) ve `genis_zaman_doygunlugu` (tamamlanmış iş çıpası taşıyan paragrafta geniş zaman yığılması). İkisi de yalnızca aday listeler; bir regex zamansal anlamı belirleyemez. Yinelenen takvim kuralları her iki sinyali de yakar ve yine de doğrudur; sinyal bir soru sorar, karar vermez.
 
 ## Paragraf düzeyinde zamansal tutarlılık
 
@@ -341,7 +382,7 @@ Tek bir kipi belge geneline dayatma.
 - **Tartışma:** bulguların bugün ne anlama geldiği konuşulurken şimdiki ve genel biçimler meşrudur.
 - **Sonuç:** tamamlanmış bulgu, güncel yorum ve sınırlı genel ifade bir arada bulunabilir.
 - **Prosedür ve kılavuz:** genel prosedür biçimleri baskın olabilir.
-- **Olay raporu:** kronolojik geçmiş genellikle baskındır.
+- **Olay raporu:** kronolojik yalın geçmiş baskındır; artalan `-yordu`, daha önce tamamlanan `-mıştı` ile işaretlenir.
 - **İlerleme ve durum raporu:** tamamlanan iş geçmiş, süren iş şimdiki, planlanan iş gelecek; üçü karışır.
 
 ## Karşı örnekler
@@ -391,6 +432,19 @@ Belgenin güncel işlevidir.
 
 Bunlar tamamlanmış olaya çevrilmez.
 
+**Periyodik takvim kuralı**
+
+> Başvurular her yıl 15 Ekim'de kapanır.
+
+Açık tarih ile geniş zamanın yan yana gelmesi tek başına sürtünme değildir. Tarih burada tekil bir olayı değil, yinelenen bir eşiği gösterir. Aynı şey `Bakım penceresi her ayın ilk pazartesi açılır` ve `Sözleşme 1 Ocak'ta kendiliğinden yenilenir` için de geçerlidir.
+
+**Geçmiş içinde kurulmuş ilişki**
+
+> Vana kapandığında yedek hat çoktan devreden çıkmıştı.
+> Basınç düşerken pompa hâlâ çalışıyordu.
+
+Bunlar yalın geçmişe düzleştirilmez; ekler öncelik ve eş zamanlılık taşır.
+
 ## Aşırı düzeltme belirtileri
 
 Düzeltme sonrasında şunlar varsa geri al.
@@ -405,5 +459,8 @@ Düzeltme sonrasında şunlar varsa geri al.
 - Gözlem (`gözlendi`) genel eğilime (`gözlenir`) çevrilerek epistemik statü kaymış.
 - Kipler yalnızca tekrar olmasın diye nöbetleştirilmiş.
 - Bulgu ile yorum, biçim bilgisel tek biçimlilik uğruna aynı kipe zorlanmış.
+- `-yordu`, `-mıştı` ya da `-ardı` yalın geçmişe düzleştirilmiş; artalan, öncelik veya düzenlilik ilişkisi kaybolmuş.
+- Kaynağın kurmadığı bir öncelik ilişkisi `-mıştı` ile uydurulmuş; art arda gelen olaylar birbirinden önceye alınmış.
+- Yinelenen takvim kuralı (`her yıl 15 Ekim'de kapanır`) tekil olaya çevrilmiş.
 
 Son zamansal denetim: pasaj öncelikle ne yapıyor (bildirme, tanımlama, açıklama, buyurma, yorumlama, planlama)? Her ana yüklem hangi statüde (tamamlanmış, süren, genel, alışkanlık, güncel, gelecek, varsayımsal)? Kip seçimi önermeyi genelleştirdi ya da daralttı mı? Paragraftaki kip geçişlerinin gerekçesi var mı? Tamamlanmış rapor yanlışlıkla kılavuz gibi mi okunuyor? Düzeltme her şeyi geçmişe, edilgene ya da `-mıştır` biçimine mi sıkıştırdı?

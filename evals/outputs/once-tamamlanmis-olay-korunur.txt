@@ -1,0 +1,1 @@
+İkinci test başlamadan önce sensör zaten kalibre edilmişti. Kalibrasyon 12 Ağustos'ta yapılmış ve sonuçları kayıt altına alınmıştı. Test sırasında sapma 0,3 dereceyi aşmadı.

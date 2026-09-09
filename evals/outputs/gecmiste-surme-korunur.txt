@@ -1,0 +1,1 @@
+14 Mayıs testinde basınç düşerken pompa hâlâ çalışıyordu. Operatör alarmı 03.12'de fark etti ve ana vanayı kapattı. Kapatma anında yedek hat devrede değildi. Yedek hattın neden devrede olmadığı henüz belirlenmedi.
