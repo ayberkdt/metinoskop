@@ -10,7 +10,7 @@
 6. [Yalın geçmiş](#yalın-geçmiş)
 7. [Geçmiş içinde zaman ilişkileri](#geçmiş-içinde-zaman-ilişkileri)
 8. [`-mıştır` biçimi](#-mıştır-biçimi)
-9. [`-yor` biçimi](#-yor-biçimi)
+9. [Şimdiki zaman ve söylemsel yakınlık](#şimdiki-zaman-ve-söylemsel-yakınlık)
 10. [Yöntem bölümleri](#yöntem-bölümleri)
 11. [Bulgu bölümleri](#bulgu-bölümleri)
 12. [Şekil, tablo ve belge göndermeleri](#şekil-tablo-ve-belge-göndermeleri)
@@ -93,7 +93,7 @@ Bu, "çalışma"nın alışkanlık gereği yaptığı işlerin betimlemesi gibi 
 
 İki tanı sorusu yardımcı olur.
 
-**Kılavuz testi.** Bu cümle rapordan çıkarılıp bir kullanım kılavuzuna ya da algoritma belgesine konsa yine tam yerinde durur mu? `Sistem veriyi okur, filtreyi uygular ve çıktıyı kaydeder` doğal olarak sistem belgesi gibi okunur. Kastedilen "bu deneyde bu işlemler yapıldı" ise rapor `Veri okundu, filtre uygulandı ve çıktı kaydedildi` biçimini ister. Buna **kılavuz gölgesi** adını ver. Kanıt değil, editoryal sezgiseldir.
+**Kılavuz testi.** Bu cümle rapordan çıkarılıp bir kullanım kılavuzuna ya da algoritma belgesine konsa yine tam yerinde durur mu? `Sistem veriyi okur, filtreyi uygular ve çıktıyı kaydeder` doğal olarak sistem belgesi gibi okunur. Kastedilen "bu deneyde bu işlemler yapıldı" ise rapor `Veri okundu, filtre uygulandı ve çıktı kaydedildi` biçimini ister. Buna **kılavuz kokusu** adını ver. Kanıt değil, editoryal sezgiseldir.
 
 **Tamamlanmış iş testi.** Bir raporda geniş zamanlı yüklemi korumadan önce sor: (1) bu olay gerçekten oldu mu; (2) metin o oluşu mu anlatıyor; (3) cümle bu çalışmaya, deneye, döneme, örnekleme veya kampanyaya bağlı mı; (4) önerme bu işin dışında genel bir betimleme olarak da doğru kalır mıydı? İlk üçü "evet" ise tamamlanmış görünüş genellikle daha uygundur.
 
@@ -184,13 +184,15 @@ Tamamlanmış anlatım tek bir geçmiş değildir. Olay raporu, arıza çözüml
 
 > Basınç düşerken pompa hâlâ çalışıyordu.
 
-Pompanın çalışması basınç düşüşüyle eş zamanlıdır ve sınırlanmamıştır. `Pompa çalıştı` bunu sınırlı bir olaya çevirir, eş zamanlılığı siler; `pompa çalışıyor` ise olayı bugüne taşır.
+Ek olayı tamamlanmış bir bütün olarak değil, geçmişteki bir referans noktasına göre sürerken gösterir. Bu, olayın sınırsız olduğu anlamına gelmez: `Pompa iki dakika boyunca çalışıyordu` cümlesinde süre açıkça sınırlıdır, yine de olay bütünlenmiş bir blok olarak değil, akış hâlinde sunulur. `Pompa çalıştı` bakış açısını bütünlenmiş olaya çevirir ve eş zamanlılığı siler; `pompa çalışıyor` ise olayı bugüne taşır.
 
-**`-mıştı`: başka bir geçmiş olaydan önce tamamlanmış eylem.**
+**`-mıştı`: geçmişteki bir referans noktasından önce tamamlanmış eylem.**
 
 > İkinci test başlamadan önce sensör zaten kalibre edilmişti.
 
 Burada iki geçmiş nokta vardır: ikinci testin başlangıcı ve ondan önce biten kalibrasyon. `Sensör kalibre edildi` bu önceliği düzleştirir ve kalibrasyonun test sırasında yapıldığı okumasını açar. `Zaten` gibi sözcükler bu önceliği ayrıca işaretler; dolgu sayılıp silinmez.
+
+Referans noktası aynı cümlede bulunmak zorunda değildir; önceki cümlelerden, hatta paragrafın kurduğu genel zaman çizgisinden gelebilir. `Ekip 14 Mayıs'ta sahaya indi. Sensör bir hafta önce değiştirilmişti.` cümlelerinde ikinci olayın çıpası birinci cümledir. İkinci geçmiş olay yerel olarak görünmüyor diye `-mıştı` biçimini kaldırma.
 
 **`-ardı/-erdi`: geçmişte düzenli ya da alışkanlık gereği yapılan eylem.**
 
@@ -228,18 +230,84 @@ Aynı biçimde, kaynakta süreklilik yoksa `-yordu`, düzenlilik yoksa `-ardı` 
 
 Ancak `-mıştır` yasaklanmaz. Resmî durum dili, mevzuat, kurumsal kayıt ve dergi kuralı gerektiriyorsa korunur.
 
-## `-yor` biçimi
+## Şimdiki zaman ve söylemsel yakınlık
 
-Her geniş zamanı şimdiki zamanla değiştirme.
+Önceki bölümler tamamlanmış işi geçmişe, gerçek genellemeyi geniş zamana yerleştirmeyi anlatıyor. Bu bölüm eksik kalan yönü tamamlıyor: **güncel geçerlilik**. Bir önerme ne tamamlanmış bir olay ne de zamansız bir yasa olabilir; okurun şimdisiyle canlı bir ilişkisi olabilir. Türkçede bunun doğal karşılığı çoğu zaman `-yor` biçimidir.
 
-> Şekil 3 hata dağılımını gösterir.
+**`-yor` yalnızca "şu anda süren eylem" demek değildir.** Çağdaş Türkçede en az şu işlevleri taşır: süren eylem, mevcut durum, şu an geçerli olan davranış, süregelen eğilim, şu anda tartışılan kanıtın yorumu, okurun önündeki belgenin işlevi, sistemin şu an uygulanan davranışı, uygun kayıtlarda alışkanlık. `Metinoskop kaynakta olmayan aktörü uydurmuyor` cümlesi, programın tam o saniyede bir metin düzenlediğini söylemez; şu an geçerli olan davranışını bildirir. `Bu bölüm kip seçimini açıklıyor` cümlesi de bölümün zaman içinde bir eylem yürüttüğünü değil, okur için taşıdığı güncel işlevi anlatır.
 
-Olası karşılıklar:
+**Geniş zaman aşımı.** Söylem aslında güncel belgeyi, güncel depoyu, o an tartışılan sonucu, mevcut uygulamayı ya da projenin bugünkü durumunu konu ederken cümlenin zamansız bir tanım gibi kurulmasına *geniş zaman aşımı* de. Sonuç metni ders kitabı, yönetmelik ya da sözlük tanımı gibi gösterir.
 
-> Şekil 3 hata dağılımını gösteriyor.
-> Şekil 3'te hata dağılımı gösterildi.
+> Repo bunu yasaklar.
 
-Hangisinin daha iyi olduğu söylem işlevine bağlıdır. `-yor` için yeni bir evrensel tercih üretme; `-yor` sürmekte olan durumu, güncel işleyişi ve daha yakın kaydı bildirir.
+Kastedilen "deponun bugünkü hâlinde buna izin verilmiyor" ise doğal karşılık şudur:
+
+> Repo bunu yasaklıyor.
+
+Geniş zaman burada dil bilgisi bakımından yanlış değildir; sorun söylem uyumudur.
+
+**Söylemsel mesafe.** Aynı önerme iki farklı biçimde paketlenebilir.
+
+> Bu sonuç ek inceleme gerektirir.
+> Bu sonuç ek inceleme gerektiriyor.
+
+Birincisi ilişkiyi kural gibi sunar, ikincisi bu sonuçtan şu anda doğan bir gereklilik gibi. İkisi de iyi Türkçedir; seçim kapsamı belirler. `-yor` önermeyi güncel söylem düzlemine taşır, geniş zaman onu genel kural düzleminde bırakır.
+
+**Birim ile tür.** Bu ayrım kararın çoğunu verir.
+
+| Gönderge | Doğal eğilim | Örnek |
+|---|---|---|
+| Belirli bir sonuç, tablo, depo, uygulama, durum | `-yor` | Bu sonuç başka bir açıklamaya işaret ediyor. |
+| Bir olay ya da kural sınıfı | geniş zaman | Bu tür sonuçlar ek doğrulama gerektirir. |
+
+`Bu sonuç` ile `bu tür sonuçlar` aynı şey değildir. Kararı fiile bakarak verme; göndergeye bak.
+
+**Güncel yazılım ve depo davranışı.** README ve teknik belge düzyazısı bu aşımın en sık görüldüğü yerdir.
+
+> Doğrulayıcı eksik çıktıyı reddeder. → Doğrulayıcı eksik çıktıyı reddediyor.
+> Bu seçenek yalnızca kritik vakaları çalıştırır. → Bu seçenek yalnızca kritik vakaları çalıştırıyor.
+
+Ama seçeneğin tanımını veren bir başvuru satırı geniş zamanda kalabilir: `--all` seçeneği bütün vakaları çalıştırır. Yetenek kataloğu ile projenin bugün ne yaptığını anlatan düzyazı farklı işlevlerdir.
+
+**Belge işlevi.** Okurun önündeki bölüm, örnek, şekil ve tablo için `-yor` çoğu zaman daha yakın ve doğaldır.
+
+> Bu bölüm üç hata türünü açıklıyor.
+> Şekil 4 iki politikanın farkını gösteriyor.
+> Tablo 3 iki yöntemin sürelerini karşılaştırıyor.
+> Aşağıdaki örnek farkı daha görünür kılıyor.
+
+Bu kural yol haritası düzyazısını geri getirmez: `Bu bölümde şunları ele alacağız` hâlâ gereksizdir. Kural gerçek belge işlevi içindir, boş gezinme cümlesi için değil. Resmî kaydın gerektirdiği yerde geniş zaman ya da edilgen geçmiş korunur.
+
+**Güncel yorum.** Önceki bölümler gözlenen sonucu geçmişe taşıyor; yorumun geniş zamanda donup kalmaması gerekir.
+
+> Hata 120. derecede minimuma indi. Bu davranış düşük dereceli modelin yetersiz kaldığını düşündürüyor.
+
+`Düşündürür` biçimi burada genel bir yasa gibi okunabilir. Ama kip doğallaştırması kanıt düzeyini ezmez: kaynak `düşündürebilir` diyorsa `düşündürüyor` yazılmaz. `Gösteriyor olabilir`, `ilişkili görünüyor`, `açıklıyor gibi görünmüyor` gibi birleşimler gerektiğinde kullanılabilir. Güncel düzlem ile epistemik kesinlik ayrı boyutlardır.
+
+**Güncel yasak ile normatif kural.** Sor: şu an işleyen sistemin ne yaptığını mı anlatıyoruz, yoksa bir kuralın normatif içeriğini mi tanımlıyoruz?
+
+> Repo bunu yasaklıyor. (mevcut uygulama)
+> Yönetmelik kişisel verilerin izinsiz aktarılmasını yasaklar. (normatif içerik)
+
+Her `yasaklar` biçimini `yasaklıyor` yapma.
+
+**`-maktadır` ile `-yor`.** Tür izin veriyorsa bürokratik şimdiki zaman doğal biçime çevrilebilir: `kullanılmaktadır → kullanılıyor`, `görülmektedir → görülüyor`, `devam etmektedir → devam ediyor`. Resmî kurum, mevzuat ya da dergi kuralının gerektirdiği kayıt korunur. Üç biçim üç ayrı iş yapar: `Sistem veriyi işler` genel davranış, `işlemektedir` resmî ya da bürokratik çerçeve, `işliyor` güncel etkin davranıştır.
+
+**`-yor` doygunluğu.** Bu bölüm kolayca aşırı düzeltmeye açıktır. Sorunu geniş zaman tekdüzeliğinden `-yor` tekdüzeliğine taşıma:
+
+> Metinoskop metni inceliyor. Kalıpları buluyor. Cümleleri düzenliyor. Başlıkları kontrol ediyor.
+
+Çözüm ek çeşitliliği değil, cümle mimarisidir:
+
+> Metinoskop metni kalıp, cümle ve belge düzeyinde inceliyor; gerektiğinde yapıyı düzenlerken kaynak sadakatini koruyor.
+
+Aynı söylem statüsündeki yüklemleri rastgele `-r` ve `-yor` arasında dönüştürme. Ama işlev değişiyorsa karışık biçim meşrudur: `Metinoskop mevcut dosyalarda bu denetimi uyguluyor; kural genel olarak yalnızca dönüştürülen metni kapsar.`
+
+**`-yor` kötü cümleyi kurtarmaz.** Bu bölüm önerme geçerliliğinden *sonra* çalışır. `Bu durum yöntemin ne kadar önemli olduğunu gösterir` cümlesi `gösteriyor` olunca düzelmez; dayanaksız önem cümlesi zaten silinir. Sıfır bilgi cümlesi hangi kipte olursa olsun sıfır bilgi cümlesidir.
+
+**İki seçenek testi.** Şüpheli bir geniş zaman cümlesinde iki sürümü sessizce kur ve sor: hangisi önermenin kapsamına uyuyor; hangisi çevredeki kayda uyuyor; `-yor` gerçek bir genel kuralı geçici hâle getiriyor mu; geniş zaman yerel bir sonucu zamansızlaştırıyor mu; biri yalnızca "resmî durduğu" için mi seçiliyor?
+
+`Şu anda`, `hâlihazırda`, `mevcut durumda` gibi sözcükleri yalnızca `-yor` biçimini haklı çıkarmak için ekleme. `Repo 145 eval içeriyor` cümlesinin `şu anda` sözcüğüne ihtiyacı yoktur; zamansal karşıtlık gerçekten gerekmedikçe bu yeni bir dolgudur.
 
 ## Yöntem bölümleri
 
@@ -432,6 +500,18 @@ Belgenin güncel işlevidir.
 
 Bunlar tamamlanmış olaya çevrilmez.
 
+**Normatif kural**
+
+> Yönetmelik kişisel verilerin üçüncü taraflara izinsiz aktarılmasını yasaklar.
+
+Cümle kuralın normatif içeriğini bildirir, işleyen bir sistemin bugünkü davranışını değil. `Yasaklıyor` biçimine çevrilmez.
+
+**Genel yöntem gerekliliği**
+
+> Bu tür sonuçlar ek doğrulama gerektirir.
+
+Bir sonuç sınıfı hakkındadır; `bu sonuç ... gerektiriyor` ile karıştırılmaz.
+
 **Periyodik takvim kuralı**
 
 > Başvurular her yıl 15 Ekim'de kapanır.
@@ -462,5 +542,10 @@ Düzeltme sonrasında şunlar varsa geri al.
 - `-yordu`, `-mıştı` ya da `-ardı` yalın geçmişe düzleştirilmiş; artalan, öncelik veya düzenlilik ilişkisi kaybolmuş.
 - Kaynağın kurmadığı bir öncelik ilişkisi `-mıştı` ile uydurulmuş; art arda gelen olaylar birbirinden önceye alınmış.
 - Yinelenen takvim kuralı (`her yıl 15 Ekim'de kapanır`) tekil olaya çevrilmiş.
+- Gerçek genel yasa, algoritma tanımı, prosedür ya da normatif kural güncel görünsün diye `-yor` biçimine çevrilmiş.
+- Yerel bir çıkarım geniş zamana çevrilerek sessizce genel kurala yükseltilmiş.
+- Bütün yüklemler `-yor` almış; geniş zaman tekdüzeliği yerine `-yor` tekdüzeliği kurulmuş.
+- `-yor` biçimini haklı çıkarmak için `şu anda`, `hâlihazırda` gibi sözcükler eklenmiş.
+- Dayanaksız önem cümlesi silinecek yerde `-yor` ile doğallaştırılıp bırakılmış.
 
-Son zamansal denetim: pasaj öncelikle ne yapıyor (bildirme, tanımlama, açıklama, buyurma, yorumlama, planlama)? Her ana yüklem hangi statüde (tamamlanmış, süren, genel, alışkanlık, güncel, gelecek, varsayımsal)? Kip seçimi önermeyi genelleştirdi ya da daralttı mı? Paragraftaki kip geçişlerinin gerekçesi var mı? Tamamlanmış rapor yanlışlıkla kılavuz gibi mi okunuyor? Düzeltme her şeyi geçmişe, edilgene ya da `-mıştır` biçimine mi sıkıştırdı?
+Son zamansal denetim: pasaj öncelikle ne yapıyor (bildirme, tanımlama, açıklama, buyurma, yorumlama, planlama)? Her ana yüklem hangi statüde (tamamlanmış, süren, genel, alışkanlık, güncel, gelecek, varsayımsal)? Kip seçimi önermeyi genelleştirdi ya da daralttı mı? Paragraftaki kip geçişlerinin gerekçesi var mı? Tamamlanmış rapor yanlışlıkla kılavuz gibi mi okunuyor? Güncel durum, güncel yorum ve belgenin güncel işlevi gereksiz yere zamansız geniş zamanda mı donmuş? Geniş zaman yalnızca "resmî görünsün" diye mi seçilmiş? Düzeltme her şeyi geçmişe, edilgene, `-mıştır` ya da `-yor` biçimine mi sıkıştırdı?

@@ -1,4 +1,4 @@
-# Eşdizim ve istem
+# Sözcük birleşimleri
 
 ## İçindekiler
 
@@ -8,7 +8,7 @@
 4. [Eşdizim ile klişeyi ayır](#eşdizim-ile-klişeyi-ayır)
 5. [Fiil istemi](#fiil-istemi)
 6. [Hâl seçimi ve fiil–hâl çerçevesi](#hâl-seçimi-ve-fiil-hâl-çerçevesi)
-7. [İlgeç seçimi ve edat gölgesi](#ilgeç-seçimi-ve-edat-gölgesi)
+7. [İlgeç seçimi ve edat izi](#ilgeç-seçimi-ve-edat-kokusu)
 8. [Hafif fiiller](#hafif-fiiller)
 9. [Yüklem kesinliği](#yüklem-kesinliği)
 10. [Genel fiil aşırı kullanımı](#genel-fiil-aşırı-kullanımı)
@@ -27,7 +27,7 @@ Bu dosya, dil bilgisi doğru, anlamı çözülebilir, biçimi profesyonel ve yap
 
 Hedef "olası Türkçe" ile "doğal Türkçe" arasındaki farkı görmektir. Bu dosya bir "tuhaf ifade değiştir" listesi değildir; yargı, sözcüğün bağlamındaki ilişkiye, kayda ve alana göre verilir. Doğallık, kesinliğin önüne asla geçmez; daha doğal fiil kaynağın kurmadığı bir ilişki kuruyorsa yanlıştır.
 
-[Türkçe ritim ve kaynak dil gölgesi](turkce-ritim-ve-ceviri-golgesi.md) cümle mimarisini, bu dosya sözcük birleşimlerini ele alır. [Retorik yapılar › Soyut yüklem sisi](retorik-yapilar.md#soyut-yüklem-sisi) yüklemin boşluğunu sorar; bu dosya yüklemin uyumunu sorar. Örneklerdeki "sonra" sürümleri "önce" sürümünde bulunmayan olgu eklemez.
+[Türkçe ritim ve çeviri kokusu](turkce-ritim-ve-ceviri-kokusu.md) cümle mimarisini, bu dosya sözcük birleşimlerini ele alır. [Retorik yapılar › Soyut yüklem sisi](retorik-yapilar.md#soyut-yüklem-sisi) yüklemin boşluğunu sorar; bu dosya yüklemin uyumunu sorar. Örneklerdeki "sonra" sürümleri "önce" sürümünde bulunmayan olgu eklemez.
 
 ## Sözcük uyumu
 
@@ -121,11 +121,11 @@ Her önemli yüklem için sor:
 
 Çıkma hâli ile belirtme hâli iki farklı ilişki kurar; "daha doğal" diye biri diğerine çevrilmez.
 
-## İlgeç seçimi ve edat gölgesi
+## İlgeç seçimi ve edat izi
 
 `Hakkında`, `üzerine`, `üzerinde`, `üzerinden`, `için`, `ile`, `göre`, `karşı`, `yönelik`, `ilişkin`, `dair`, `bağlamında`, `çerçevesinde` ilgeçlerinin fazlalığı ya da yanlış seçimi tek başına sıklık sorunu değildir. Anlamsal ilişkiyi adlandır: konu, hedef, neden, araç, referans, karşılaştırma, kaynak, vasıta. Sonra o ilişkiye uyan Türkçe biçimi seç.
 
-| İlişki | Doğal biçim | Edat gölgesi |
+| İlişki | Doğal biçim | Edat izi |
 |---|---|---|
 | konu | X'i inceler, X üzerine çalışma | X hakkında inceler |
 | hedef | X'e yönelik önlem, X için | X'e karşı önlem (yalnızca karşıtlık varsa) |
@@ -142,7 +142,7 @@ Her önemli yüklem için sor:
 
 > Rapor, gecikmelere ilişkin bulguları tedarikçilere sunuyor ve maliyet tahmini içeriyor.
 
-Çift ilgeçler ("hakkında ilişkin", "üzerinde dair") gitti; "yönelik olarak" yönelme hâline döndü; "tahmin içermektedir" doğal eşdizimdir ve kaldı. Yığın ölçüsü için [Türkçe ritim › Çerçeve yığını](turkce-ritim-ve-ceviri-golgesi.md#çerçeve-yığını) bölümüne bak.
+Çift ilgeçler ("hakkında ilişkin", "üzerinde dair") gitti; "yönelik olarak" yönelme hâline döndü; "tahmin içermektedir" doğal eşdizimdir ve kaldı. Yığın ölçüsü için [Türkçe ritim › Çerçeve yığını](turkce-ritim-ve-ceviri-kokusu.md#çerçeve-yığını) bölümüne bak.
 
 ## Hafif fiiller
 
@@ -246,7 +246,7 @@ Beş cümle beş ad: okur beş nesne mi, bir nesne mi bilemez.
 
 > Önerilen yöntem üç sensörü birleştirir; kalibrasyon gerektirmez, 20 ms gecikmeyle çalışır, düşük güç tüketir ve gömülü platformlara uygundur.
 
-Tek gönderge, tek ad, dört özellik. Kaynak "sistem" ile yöntemin gömüldüğü daha büyük bir bütünü kastediyorsa o ayrım korunur; kastetmiyorsa çeşitlilik gölgedir.
+Tek gönderge, tek ad, dört özellik. Kaynak "sistem" ile yöntemin gömüldüğü daha büyük bir bütünü kastediyorsa o ayrım korunur; kastetmiyorsa çeşitlilik kokudur.
 
 ## Eş anlamlı kayması
 

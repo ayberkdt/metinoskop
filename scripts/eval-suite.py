@@ -15,7 +15,8 @@ For every ``evals/<case>.md`` that has a recorded output in
    ``- aktarım sonrası sonuç: 0``, ``- kip nöbetleşmesi: 0``, ``- hafif fiil: 0``,
    ``- ilgeç yoğunluğu: 0``, ``- eş anlamlı kayması: 0``, ``- konu sıfırlama: 0``,
    ``- parantez yükü: 0``, ``- kayıt kayması: 0``,
-   ``- zamansal sürtünme: 0`` or ``- geniş zaman doygunluğu: 0``.
+   ``- zamansal sürtünme: 0``, ``- geniş zaman doygunluğu: 0`` or
+   ``- geniş zaman katılığı: 0``.
 
 Recorded outputs are reference edits, not the only acceptable ones; they keep
 the skill's documented behaviour from regressing silently. Human or model
@@ -56,16 +57,16 @@ EXPECTATION_KEYS = {
     "önem/sonuç cümlesi": ("structure_summary", "mini_conclusions"),
     "sert işaret": ("", "hard_hits"),
     "cümle": ("", "sentences"),
-    "sahip olmak": ("ceviri_golgesi", "sahip_olmak"),
-    "varlık kalıbı": ("ceviri_golgesi", "varlik_kalibi"),
-    "çerçeve yığını": ("ceviri_golgesi", "cerceve_yigini"),
-    "olan zinciri": ("ceviri_golgesi", "olan_zinciri"),
-    "tekrarlanan cümle başlangıcı": ("ceviri_golgesi", "tekrarlanan_cumle_baslangici"),
-    "ve zinciri": ("ceviri_golgesi", "ve_zinciri"),
-    "fiilimsi yığını": ("ceviri_golgesi", "fiilimsi_yigini"),
-    "iyelik zinciri": ("ceviri_golgesi", "iyelik_zinciri"),
-    "bağlaçla başlayan cümle": ("ceviri_golgesi", "baglac_baslangici"),
-    "bir / 100 sözcük": ("ceviri_golgesi", "bir_per_100"),
+    "sahip olmak": ("ceviri_kokusu", "sahip_olmak"),
+    "varlık kalıbı": ("ceviri_kokusu", "varlik_kalibi"),
+    "çerçeve yığını": ("ceviri_kokusu", "cerceve_yigini"),
+    "olan zinciri": ("ceviri_kokusu", "olan_zinciri"),
+    "tekrarlanan cümle başlangıcı": ("ceviri_kokusu", "tekrarlanan_cumle_baslangici"),
+    "ve zinciri": ("ceviri_kokusu", "ve_zinciri"),
+    "fiilimsi yığını": ("ceviri_kokusu", "fiilimsi_yigini"),
+    "iyelik zinciri": ("ceviri_kokusu", "iyelik_zinciri"),
+    "bağlaçla başlayan cümle": ("ceviri_kokusu", "baglac_baslangici"),
+    "bir / 100 sözcük": ("ceviri_kokusu", "bir_per_100"),
     "çekince işareti": ("soylem_olculeri", "kiplik"),
     "pekiştirici": ("soylem_olculeri", "pekistirici"),
     "hafif fiil": ("soylem_olculeri", "hafif_fiil"),
@@ -81,6 +82,7 @@ EXPECTATION_KEYS = {
     "kayıt kayması": ("soylem_olculeri", "kayit_kaymasi"),
     "zamansal sürtünme": ("soylem_olculeri", "zamansal_surtunme"),
     "geniş zaman doygunluğu": ("soylem_olculeri", "genis_zaman_doygunlugu"),
+    "geniş zaman katılığı": ("soylem_olculeri", "genis_zaman_katiligi"),
 }
 
 
@@ -173,7 +175,7 @@ def evaluate_case(case_path: Path, output_path: Path) -> dict[str, object]:
     problems.extend(failed_expectations)
     warnings = [f"yeni bağlamsal kalıp: {item['label']} «{item['example']}»" for item in comparison["introduced_context"]]
     warnings.extend(comparison["introduced_structure"])
-    warnings.extend(f"yeni çeviri gölgesi bulgusu: {text}" for text in comparison["introduced_translationese"])
+    warnings.extend(f"yeni çeviri kokusu bulgusu: {text}" for text in comparison["introduced_translationese"])
     warnings.extend(f"yeni söylem bulgusu: {text}" for text in comparison["introduced_discourse"])
 
     return {

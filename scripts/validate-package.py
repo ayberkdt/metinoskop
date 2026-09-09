@@ -26,9 +26,9 @@ REQUIRED_FILES = (
     "references/rapor-yazimi.md",
     "references/retorik-yapilar.md",
     "references/turkce-oruntuler.md",
-    "references/turkce-ritim-ve-ceviri-golgesi.md",
+    "references/turkce-ritim-ve-ceviri-kokusu.md",
     "references/kanit-ve-kesinlik.md",
-    "references/esdizim-ve-istem.md",
+    "references/sozcuk-birlesimleri.md",
     "references/metinsel-tutarlilik.md",
     "references/zamansal-ankraj-ve-rapor-kipi.md",
     "references/yapisal-butunluk.md",
@@ -178,6 +178,16 @@ REQUIRED_FILES = (
     "evals/once-tamamlanmis-olay-korunur.md",
     "evals/gecmis-aliskanlik-korunur.md",
     "evals/sirali-olayda-misti-yigini.md",
+    "evals/repo-guncel-davranis-yor.md",
+    "evals/sonuc-guncel-yorum-yor.md",
+    "evals/genel-gereklilik-genis-zaman-korunur.md",
+    "evals/tablo-sekil-guncel-islev-yor.md",
+    "evals/bulgu-guncel-yorum-yor.md",
+    "evals/mevcut-durum-yor.md",
+    "evals/burokratik-simdiki-zaman.md",
+    "evals/normatif-yasak-genis-zaman-korunur.md",
+    "evals/karisik-zaman-readme.md",
+    "evals/yerel-hata-genel-kural-ayrimi.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -332,6 +342,16 @@ EVAL_FILES = (
     "evals/once-tamamlanmis-olay-korunur.md",
     "evals/gecmis-aliskanlik-korunur.md",
     "evals/sirali-olayda-misti-yigini.md",
+    "evals/repo-guncel-davranis-yor.md",
+    "evals/sonuc-guncel-yorum-yor.md",
+    "evals/genel-gereklilik-genis-zaman-korunur.md",
+    "evals/tablo-sekil-guncel-islev-yor.md",
+    "evals/bulgu-guncel-yorum-yor.md",
+    "evals/mevcut-durum-yor.md",
+    "evals/burokratik-simdiki-zaman.md",
+    "evals/normatif-yasak-genis-zaman-korunur.md",
+    "evals/karisik-zaman-readme.md",
+    "evals/yerel-hata-genel-kural-ayrimi.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -448,11 +468,11 @@ for heading in (
     "Görsel parçalanmayı açıklık sanma",
     "## Sertlik düzeyleri",
     "## Akademik ve teknik metin",
-    "**5. Yapay düzyazı, yapı, çeviri gölgesi, kanıt, sözcük ve tutarlılık denetimi yap.**",
+    "**5. Yapay düzyazı, yapı, çeviri kokusu, kanıt, sözcük ve tutarlılık denetimi yap.**",
     "**E. Yapı:**",
-    "**F. Çeviri gölgesi:**",
-    "## Kaynak dil gölgesi ve Türkçe ritim",
-    "**Gölgeyi sözcükte değil ilişkide ara.**",
+    "**F. Çeviri kokusu:**",
+    "## Çeviri kokusu ve Türkçe ritim",
+    "**Kokuyu sözcükte değil ilişkide ara.**",
     "**Bilgi yapısı ve Türkçenin kendi kaynaklarıyla yeniden kur.**",
     "**Kesinliği bozma, aşırı Türkçeleştirme.**",
     "## Kanıt ve kesinlik",
@@ -460,7 +480,7 @@ for heading in (
     "**Aktörlüğü koru; edilgeni epistemik seçim olarak değerlendir.**",
     "**Çekince kanıttır, pekiştirici değildir.**",
     "**Kip ve statü zincirini ilerletme.**",
-    "## Sözcük uyumu: eşdizim ve istem",
+    "## Sözcük birleşimleri",
     "**Eşdizim ve istem denetimi.**",
     "**Sözcük kimliğini koru.**",
     "## Metinsel tutarlılık ve konu ilerleyişi",
@@ -473,6 +493,7 @@ for heading in (
     "**I. Metinsel tutarlılık:**",
     "**J. Zamansal ankraj:**",
     "**Zamansal ankrajı koru.**",
+    "**Şimdiki zamanı eksik bırakma.**",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
@@ -516,9 +537,9 @@ readme_requirements = (
     "scripts/eval-suite.py",
     "retorik-yapilar.md",
     "yapisal-butunluk.md",
-    "turkce-ritim-ve-ceviri-golgesi.md",
+    "turkce-ritim-ve-ceviri-kokusu.md",
     "kanit-ve-kesinlik.md",
-    "esdizim-ve-istem.md",
+    "sozcuk-birlesimleri.md",
     "metinsel-tutarlilik.md",
     "zamansal-ankraj-ve-rapor-kipi.md",
 )
@@ -554,7 +575,7 @@ if "## [0.1.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.1.0")
 
 evals_readme = texts[ROOT / "evals/README.md"]
-for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri gölgesi", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk", "serbest değişmezler", "behavioral-regression.py", "gold", "zamansal ankraj"):
+for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri kokusu", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk", "serbest değişmezler", "behavioral-regression.py", "gold", "zamansal ankraj"):
     if requirement not in evals_readme.casefold():
         fail(f"evals/README.md must mention review axis: {requirement}")
 
@@ -715,6 +736,16 @@ eval_markers = {
     "evals/once-tamamlanmis-olay-korunur.md": ("kalibre edilmişti", "12 Ağustos", "0,3", "zaten",),
     "evals/gecmis-aliskanlik-korunur.md": ("yapardı", "yalnızca başlangıçta", "belirtilmedi",),
     "evals/sirali-olayda-misti-yigini.md": ("8 Ekim", "incelemişti", "raporlamıştı", "iki öneri", "cümle: <= 2",),
+    "evals/repo-guncel-davranis-yor.md": ("Repo bunu yasaklar", "eksik kayıtlı çıktıyı reddeder", "mevcut sürümde", "geniş zaman katılığı: 0",),
+    "evals/sonuc-guncel-yorum-yor.md": ("Üçüncü koşunun sonucu", "dikkatli incelenmesini gerektirir", "ikinci açıklamaya işaret eder",),
+    "evals/genel-gereklilik-genis-zaman-korunur.md": ("Bu tür sonuçlar", "ikinci bir doğrulama ister", "cümle: 2",),
+    "evals/tablo-sekil-guncel-islev-yor.md": ("Şekil 4", "Tablo 3", "maliyet dağılımını özetler",),
+    "evals/bulgu-guncel-yorum-yor.md": ("120. derecede minimuma indi", "düşündürür", "yetersiz kaldığını",),
+    "evals/mevcut-durum-yor.md": ("iki bölgede kullanılır", "devam eder", "Üç ekip",),
+    "evals/burokratik-simdiki-zaman.md": ("hâlen", "kullanılmaktadır", "devam etmektedir", "izlenmektedir",),
+    "evals/normatif-yasak-genis-zaman-korunur.md": ("Yönetmelik", "yalnızca ilgilinin açık rızasıyla", "idari para cezası", "cümle: 3",),
+    "evals/karisik-zaman-readme.md": ("145 eval içerir", "en az dört bölüm gerektirir", "v0.4.1'de eklendi",),
+    "evals/yerel-hata-genel-kural-ayrimi.md": ("Günlükteki bu hata", "Bu tür hatalar", "her zaman", "zaman aşımı",),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]
@@ -751,8 +782,8 @@ if missing_outputs:
 for output_path in sorted((ROOT / "evals/outputs").glob("*.txt")):
     if not (ROOT / "evals" / f"{output_path.stem}.md").is_file():
         fail(f"Recorded output without an eval case: evals/outputs/{output_path.name}")
-if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 140:
-    fail("evals/outputs must keep at least one hundred and forty recorded reference outputs")
+if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 150:
+    fail("evals/outputs must keep at least one hundred and fifty recorded reference outputs")
 
 SHOULD_REMAIN_CASES = (
     "evals/dogal-ve-korunur.md", "evals/gerekli-olan.md", "evals/gerekli-acisindan.md",
@@ -795,15 +826,20 @@ SHOULD_REMAIN_CASES = (
     "evals/gecmiste-surme-korunur.md",
     "evals/once-tamamlanmis-olay-korunur.md",
     "evals/gecmis-aliskanlik-korunur.md",
+    "evals/genel-gereklilik-genis-zaman-korunur.md",
+    "evals/normatif-yasak-genis-zaman-korunur.md",
 )
 locked = []
 for relative_path in EVAL_FILES:
     if relative_path in SHOULD_REMAIN_CASES:
         continue  # korunur vakasında çıktı kaynağa eşittir; cümle sayısı sözleşmenin parçasıdır
+    # "- cümle: N" bir varsayılan gibi yazılmıştır; "- cümle: = N" vakanın
+    # kendi talebinin dayattığı bilinçli bir yapısal kısıttır ve serbesttir.
     if re.search(r"(?m)^- cümle: \d+\s*$", texts[ROOT / relative_path]):
         locked.append(relative_path)
 if locked:
-    fail("Transform eval cases must not pin an exact sentence count (use '<='): "
+    fail("Transform eval cases must not pin a bare sentence count; use '<= N', "
+         "or '= N' when the case's own request requires an exact structure: "
          + ", ".join(locked))
 
 for relative_path in SHOULD_REMAIN_CASES:

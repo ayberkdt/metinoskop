@@ -103,7 +103,7 @@ Yalnızca kaynak sınanmadığını söylüyorsa; söylemiyorsa ilk cümle tek b
 
 ## Sözcüksel bağdaşıklık
 
-Metin, yinelenen ya da ilişkili sözcüklerle bağdaşır. Kanonik terimleri, üst ve alt kavram ilişkilerini, yerleşik kısaltmaları, gerekli yinelemeyi ve meşru sözcük zincirlerini izle. Rastgele eş anlamlı döndürmeden, gereksiz yeniden adlandırmadan, kaybolan anahtar terimden ve teknik yinelemenin genel adla değiştirilmesinden kaçın. Bu, [Eşdizim ve istem › Sözcük zincirleri](esdizim-ve-istem.md#sözcük-zincirleri) ile aynı olguya farklı amaçla bakar: orada sözcük kimliği, burada söylem sürekliliği sorulur.
+Metin, yinelenen ya da ilişkili sözcüklerle bağdaşır. Kanonik terimleri, üst ve alt kavram ilişkilerini, yerleşik kısaltmaları, gerekli yinelemeyi ve meşru sözcük zincirlerini izle. Rastgele eş anlamlı döndürmeden, gereksiz yeniden adlandırmadan, kaybolan anahtar terimden ve teknik yinelemenin genel adla değiştirilmesinden kaçın. Bu, [Eşdizim ve istem › Sözcük zincirleri](sozcuk-birlesimleri.md#sözcük-zincirleri) ile aynı olguya farklı amaçla bakar: orada sözcük kimliği, burada söylem sürekliliği sorulur.
 
 **Kayan zincir**
 

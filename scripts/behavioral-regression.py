@@ -48,7 +48,7 @@ DEFAULT_EDITOR = "claude-opus-5"
 DEFAULT_JUDGE = "claude-opus-5"
 REFERENCE_ORDER = (
     "turkce-oruntuler.md", "retorik-yapilar.md", "yapisal-butunluk.md", "akicilik.md",
-    "turkce-ritim-ve-ceviri-golgesi.md", "kanit-ve-kesinlik.md", "esdizim-ve-istem.md",
+    "turkce-ritim-ve-ceviri-kokusu.md", "kanit-ve-kesinlik.md", "sozcuk-birlesimleri.md",
     "metinsel-tutarlilik.md", "rapor-yazimi.md", "kavramsal-girisler.md",
 )
 VERDICT_RE = re.compile(r"SONUÇ:\s*(GEÇTİ|BAŞARISIZ)", re.IGNORECASE)

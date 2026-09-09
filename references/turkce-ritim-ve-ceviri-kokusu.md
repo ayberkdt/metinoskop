@@ -1,9 +1,9 @@
-# Türkçe ritim ve kaynak dil gölgesi
+# Türkçe ritim ve çeviri kokusu
 
 ## İçindekiler
 
 1. [Kullanım ilkesi](#kullanım-ilkesi)
-2. [Kaynak dil gölgesi](#kaynak-dil-gölgesi)
+2. [Çeviri kokusu](#kaynak-dil-kokusu)
 3. [İlişkiyi yeniden kur, sözcükleri değil](#ilişkiyi-yeniden-kur-sözcükleri-değil)
 4. [Bilgi yapısı ve sözcük sırası](#bilgi-yapısı-ve-sözcük-sırası)
 5. [Bilinenden yeniye akış](#bilinenden-yeniye-akış)
@@ -26,7 +26,7 @@
 22. [Yerli alternatif üretimi ve geri çeviri testi](#yerli-alternatif-üretimi-ve-geri-çeviri-testi)
 23. [Türkçe kaynak geri kazanımı](#türkçe-kaynak-geri-kazanımı)
 24. [İyi Türkçenin eğilimleri](#iyi-türkçenin-eğilimleri)
-25. [Paragraf ve belge düzeyinde gölge](#paragraf-ve-belge-düzeyinde-gölge)
+25. [Paragraf ve belge düzeyinde koku](#paragraf-ve-belge-düzeyinde-koku)
 26. [Türlere göre davranış](#türlere-göre-davranış)
 27. [Karşı örnekler: dokunulmayacaklar](#karşı-örnekler-dokunulmayacaklar)
 28. [Aşırı düzeltme belirtileri](#aşırı-düzeltme-belirtileri)
@@ -41,9 +41,9 @@ Dosyadaki her aile bir inceleme tetikleyicisidir, yasak listesi değildir. `Bir`
 
 Örneklerdeki "sonra" sürümleri "önce" sürümünde bulunmayan olgu eklemez ve kesinlik düzeyini değiştirmez. Birden çok yerli seçenek verildiğinde seçim kaynağın anlamına bağlıdır; kaynak belirsizse daha soyut ama sadık olanı koru. Doğallık, kesinliğin önüne asla geçmez.
 
-## Kaynak dil gölgesi
+## Çeviri kokusu
 
-Bir cümlenin Türkçe biçimi en iyi altındaki bir İngilizce cümle yeniden kurularak açıklanabiliyorsa o cümlede **kaynak dil gölgesi** vardır. Cümle dil bilgisi bakımından kusursuz olabilir. Gölge şu kararlarda görünür:
+Bir cümlenin Türkçe biçimi en iyi altındaki bir İngilizce cümle yeniden kurularak açıklanabiliyorsa o cümlede **çeviri kokusu** vardır. Cümle dil bilgisi bakımından kusursuz olabilir. Koku şu kararlarda görünür:
 
 - Özne her cümlede açıkça yeniden kurulur; Türkçenin kişi eki ve bağlamı zaten taşıdığı bilgi bir kez daha söylenir.
 - Yüklem zayıf bir fiile (`sahip olmak`, `rol oynamak`, `bulunmak`), asıl anlam ise soyut bir ada yüklenir.
@@ -54,9 +54,9 @@ Bir cümlenin Türkçe biçimi en iyi altındaki bir İngilizce cümle yeniden k
 - Bir önceki önerme `bu sonuç`, `bu durum`, `bu bulgu` diye adlaştırılıp yeniden öznelenir.
 - İngilizce belirsiz tanımlık `bir` olarak her ada yapışır.
 
-Gölgeyi bir işlev testi olarak kullan: "Bu cümleyi İngilizceye geri çevirsem özgün İngilizce iskelet neredeyse değişmeden çıkar mı?" Çıkıyorsa daha derine bak. Her pasaj için gizli İngilizce cümleyi gerçekten kurmaya çalışma; bu bir ölçüt değil, akıl yürütme aracıdır.
+Kokuyu bir işlev testi olarak kullan: "Bu cümleyi İngilizceye geri çevirsem özgün İngilizce iskelet neredeyse değişmeden çıkar mı?" Çıkıyorsa daha derine bak. Her pasaj için gizli İngilizce cümleyi gerçekten kurmaya çalışma; bu bir ölçüt değil, akıl yürütme aracıdır.
 
-Gölgenin karşıtı "İngilizcede de olan her yapıyı silmek" değildir. Karşıtı, Türkçe yapıyı bağımsız olarak doğal, kesin ve yararlı olduğu için seçmektir.
+Kokunun karşıtı "İngilizcede de olan her yapıyı silmek" değildir. Karşıtı, Türkçe yapıyı bağımsız olarak doğal, kesin ve yararlı olduğu için seçmektir.
 
 ## İlişkiyi yeniden kur, sözcükleri değil
 
@@ -279,7 +279,7 @@ Sor: önceki önerme adlaştırılmadan etkin kalabilir mi? Sonraki cümle yeni 
 
 > Modelin hatası %8 arttı ve uzun dönem kararlılığını olumsuz etkiledi.
 
-"Bozuldu" yalnızca kaynak destekliyorsa yazılır. Kaynak "olumsuz etki" düzeyinde kalıyorsa ikinci sürüm hem paketi çözer hem belirsizliği korur. Gösterme sıfatı bir paragrafta ilk kez ve tek göndergeyle kullanılıyorsa meşrudur; ritim hâline geldiğinde gölgedir.
+"Bozuldu" yalnızca kaynak destekliyorsa yazılır. Kaynak "olumsuz etki" düzeyinde kalıyorsa ikinci sürüm hem paketi çözer hem belirsizliği korur. Gösterme sıfatı bir paragrafta ilk kez ve tek göndergeyle kullanılıyorsa meşrudur; ritim hâline geldiğinde kokudur.
 
 ## `Bir` fazlası
 
@@ -427,7 +427,7 @@ Bu, fiil öncelikli ilişki ilkesidir: sözcük sırası değil, anlamın fiille
 
 > Filtrenin yakınsama hızının başlangıç kovaryansına duyarlılığı Tablo 3'te verilmiştir.
 
-Bu cümle üç iyelik ekli teknik kavramı tek ad öbeğinde taşır; "filtre ne kadar hızlı yakınsıyor, bu başlangıç kovaryansına bağlı mı" diye açmak tabloyu adlandırmayı imkânsız kılar. Teknik sıkıştırma gölge değildir.
+Bu cümle üç iyelik ekli teknik kavramı tek ad öbeğinde taşır; "filtre ne kadar hızlı yakınsıyor, bu başlangıç kovaryansına bağlı mı" diye açmak tabloyu adlandırmayı imkânsız kılar. Teknik sıkıştırma koku değildir.
 
 ## Eksilti ve geri kazanılabilirlik
 
@@ -502,11 +502,11 @@ Bu aileler [Türkçe örüntüler › Çeviri kokusu](turkce-oruntuler.md#çevir
 
 **`Günün sonunda`.** "At the end of the day" kalkısı olarak `sonuçta` anlamında kullanılıyorsa kaldır; sonuç cümlesi zaten kalıp sonuç kuralına tabidir.
 
-**`... için` amaç kalıbı.** Her amaç cümlesinde "ele almak için", "sağlamak için" yerine `-mek amacıyla`, `-sin diye`, hâl eki ya da doğrudan yüklemi değerlendir; tek `için` doğaldır, her cümlede aynı kalıp gölgedir.
+**`... için` amaç kalıbı.** Her amaç cümlesinde "ele almak için", "sağlamak için" yerine `-mek amacıyla`, `-sin diye`, hâl eki ya da doğrudan yüklemi değerlendir; tek `için` doğaldır, her cümlede aynı kalıp kokudur.
 
 ## Yerli alternatif üretimi ve geri çeviri testi
 
-Çeviri gölgesi saptandığında sessizce en az iki **yapısal olarak farklı** Türkçe alternatif üret. Eş anlamlı değişimi alternatif sayılmaz.
+Çeviri kokusu saptandığında sessizce en az iki **yapısal olarak farklı** Türkçe alternatif üret. Eş anlamlı değişimi alternatif sayılmaz.
 
 **Kaynak biçimli**
 
@@ -522,7 +522,7 @@ Bu aileler [Türkçe örüntüler › Çeviri kokusu](turkce-oruntuler.md#çevir
 
 Sonra kaynak anlamını, vurguyu, türü ve söylem sürekliliğini en iyi koruyan seçeneği seç. A, aktör olarak "bu durum"u korur; B, performansı konu yapar. Kaynak "önemli" sözcüğünü dayanaksız kullanıyorsa ikisi de onu taşımaz; kaynak etkiyi ölçmüşse ölçümü yaz. Bu adım yapısal düşünmeyi zorlar; sözcük değişimine düşmeyi önler.
 
-Geri çeviri gölgesi testi, şüpheli cümleler için: "Bu Türkçe cümleyi İngilizceye geri çevirsem özgün İngilizce iskelet neredeyse değişmeden çıkar mı?"
+Geri çeviri kokusu testi, şüpheli cümleler için: "Bu Türkçe cümleyi İngilizceye geri çevirsem özgün İngilizce iskelet neredeyse değişmeden çıkar mı?"
 
 > Yöntem yüksek bir hesaplama maliyetine sahiptir.
 > → The method has a high computational cost.
@@ -531,11 +531,11 @@ Neredeyse bire bir. Alternatif:
 
 > Yöntemin hesaplama maliyeti yüksektir.
 
-Testi mekanik uygulama. Bazı cümlelerin iskeleti iki dilde de aynıdır ve Türkçede tamamen doğaldır ("Rapor perşembe gönderildi"). Test, gölgeyi bulmaya yarayan bir sezgidir; ölçüt değildir.
+Testi mekanik uygulama. Bazı cümlelerin iskeleti iki dilde de aynıdır ve Türkçede tamamen doğaldır ("Rapor perşembe gönderildi"). Test, kokuyu bulmaya yarayan bir sezgidir; ölçüt değildir.
 
 ## Türkçe kaynak geri kazanımı
 
-Çeviri gölgesi yalnızca yabancı yapının Türkçeye girmesi değildir; yerli Türkçe kaynaklarının kaybolmasıdır da. Şüpheli pasajda şu listeyi yürüt:
+Çeviri kokusu yalnızca yabancı yapının Türkçeye girmesi değildir; yerli Türkçe kaynaklarının kaybolmasıdır da. Şüpheli pasajda şu listeyi yürüt:
 
 - Özne düşürülebilir mi?
 - Eksilti yinelemeyi kaldırabilir mi?
@@ -568,7 +568,7 @@ Metinoskop yalnızca neyi sileceğini değil, iyi Türkçenin ne yaptığını d
 - Cümle uzunluğunu düşüncenin yapısı belirler; kısa-uzun nöbetleşmesi hedef değildir.
 - Paragraf ritmini kavramsal hareket belirler; her paragraf aynı kalıpla açılıp kapanmaz.
 
-## Paragraf ve belge düzeyinde gölge
+## Paragraf ve belge düzeyinde koku
 
 Her cümlesi tek tek kabul edilebilir bir paragraf, bütün olarak İngilizce biçimli olabilir: her cümle açık özneyle başlıyor, her cümle `Bu` ile açılıyor, her geçiş etiketli, her cümle çekimli ve bağımsız, her ad yeniden tanıtılıyor, konu sürekliliği zayıf.
 
@@ -594,11 +594,11 @@ Yerli Türkçe ritmi türe göre değişir; tek bir evrensel Türkçe üslup day
 
 **Teknik belge.** Doğrudan yönerge, sıkı niteleme, öngörülebilir terim, denetimli liste. Burada açık özne yinelemesi güvenlik ve tekrarlanabilirlik için yararlı olabilir: "Denetleyici komutu doğrular. Denetleyici komutu uygular" iki ayrı adım ve iki ayrı kayıt gerektiriyorsa birleştirilmez.
 
-**Rapor.** Açık sonuç → yorum → sınırlılık ilişkisi, somut fiil, ölçülü çerçeve. `Bu bulgu` paketleri raporlarda en yoğun gölgedir; bulguyu doğrudan söyle, yorumu bulgunun yanına koy.
+**Rapor.** Açık sonuç → yorum → sınırlılık ilişkisi, somut fiil, ölçülü çerçeve. `Bu bulgu` paketleri raporlarda en yoğun kokudur; bulguyu doğrudan söyle, yorumu bulgunun yanına koy.
 
 **Kişisel düzyazı.** Serbest sıra, eksilti, ritim ve bilinçli cümle kırıkları yazarın sesidir. Burada özne düşürme ve devrik yapı kural değil olanaktır; yazarın kurmadığı devrikliği ekleme.
 
-**Hukuki.** Kalıp yapı ve gönderge kesinliği ağır görünse de korunur. "Sağlayıcı ... yükümlüdür. Sağlayıcı ... bildirir" özne yinelemesi tarafı kesinleştirir; `söz konusu`, `mezkûr`, `işbu` gönderge dilidir. Burada gölge avı yapılmaz; yalnızca gerçek dolgu (mevzuat dışı önem cümlesi, açıklama duyurusu) çıkar.
+**Hukuki.** Kalıp yapı ve gönderge kesinliği ağır görünse de korunur. "Sağlayıcı ... yükümlüdür. Sağlayıcı ... bildirir" özne yinelemesi tarafı kesinleştirir; `söz konusu`, `mezkûr`, `işbu` gönderge dilidir. Burada koku avı yapılmaz; yalnızca gerçek dolgu (mevzuat dışı önem cümlesi, açıklama duyurusu) çıkar.
 
 ## Karşı örnekler: dokunulmayacaklar
 
@@ -646,7 +646,7 @@ Tek ana önerme, denetimli tümleçler, açık neden. Bölünürse neden ilişki
 
 ## Aşırı düzeltme belirtileri
 
-Şunlar varsa gölge avı metni bozmuştur:
+Şunlar varsa koku avı metni bozmuştur:
 
 - Fiilimsi zinciri: tek yükleme dört beş `-ip/-erek` asılmış.
 - Belirsiz sıfır özne: iki aktörlü paragrafta özne düşürülmüş.

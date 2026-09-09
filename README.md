@@ -47,7 +47,7 @@ Beş cümlenin üçü hiçbir yeni önerme taşımıyordu: ikincisi ilkini başk
 | Ortalama hata %4 olarak hesapla**nır**. | Ortalama hata %4 olarak hesapla**ndı**. |
 | Yalnızca düşük yoğunluklu bölgelerde hata %6'ya **çıkar**. | Yalnızca düşük yoğunluklu bölgelerde hata %6'ya **çıktı**. |
 
-Tarih ve ölçümler bir kez olup bitmiş bir iş bildiriyor, yüklemler ise genel bir prosedür anlatıyordu. Depo bu çelişkiye *zamansal sürtünme* der; Metinoskop metnin baskın zaman çizgisini bulup ona göre çözer. `Yalnızca` kapsam işareti yerinde kalır.
+Tarih ve ölçümler bir kez olup bitmiş işi bildiriyor, yüklemler ise genel prosedür anlatıyordu. Bu çelişkinin adı *zamansal sürtünme*. Metinoskop metnin baskın zaman çizgisini bulup ona göre çözüyor. `Yalnızca` kapsam işareti yerinde kalır.
 
 ### İngilizce iskeletini Türkçe sözcüklerle taşımak
 
@@ -115,11 +115,11 @@ Bir olay raporunda baskın çizgi yalın geçmiştir, ama her cümle o çizgide 
 
 > Merhaba Selin, Mart raporunun taslağını ekte gönderiyorum. Üç bölgenin satış rakamları tamam; yalnızca Ege bölgesinin iade verisi henüz gelmedi, o sütunu boş bıraktım. Muhasebe verinin çarşamba öğleden önce geleceğini söyledi. Rapor, geçen ay konuştuğumuz gibi bayi bazında değil bölge bazında hazırlandı; bayi kırılımı istersen ayrı bir sayfa ekleyebilirim. Perşembe sabahına kadar yorumlarını bekliyorum. Ayşe
 
-Bu vakanın kayıtlı çıktısı kaynağın kendisidir. Doğru davranış hiçbir şeyi değiştirmemektir ve doğrulayıcı bu eşitliği denetler.
+Bu vakanın kayıtlı çıktısı kaynağın kendisidir. Doğru davranış hiçbir şeyi değiştirmemektir; doğrulayıcı bu eşitliği denetliyor.
 
 ## Neyi değiştirmemekte ısrar eder
 
-Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz kırk beş eval vakasının kırk altısında beklenen çıktı kaynağın kendisidir:
+Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz elli beş eval vakasının kırk sekizinde beklenen çıktı kaynağın kendisidir:
 
 | Metinde geçen | Neden dokunulmaz |
 |---|---|
@@ -135,6 +135,8 @@ Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. 
 | `... çalışma gözlemsel olduğundan nedensellik göstermemektedir.` | Kanıt düzeyi bildiren çekince, "AI gibi" diye silinmez. |
 | `Başvurular her yıl 15 Ekim'de kapanır.` | Açık tarih + geniş zaman her zaman hata değildir; bu yinelenen bir takvim kuralı. |
 | `Basınç düşerken pompa hâlâ çalışıyordu.` | Artalandaki süren eylem; `çalıştı` bunu sınırlı bir olaya çevirir. |
+| `Yönetmelik kişisel verilerin izinsiz aktarılmasını yasaklar.` | Kuralın normatif içeriği; işleyen bir sistemin bugünkü davranışı değil. |
+| `Bu tür sonuçlar dikkatli inceleme gerektirir.` | Bir sonuç sınıfı hakkında; `bu sonuç ... gerektiriyor` ile karıştırılmaz. |
 
 Her satır bir eval vakasına dayanır ve kayıtlı çıktısı kaynağın kendisidir.
 
@@ -142,15 +144,15 @@ Her satır bir eval vakasına dayanır ve kayıtlı çıktısı kaynağın kendi
 
 **Kalıp ve ritim.** Mekanik cümle ritmini, tekrarlanan kalıpları, gereksiz `-maktadır/-mektedir` zincirlerini ve `gerçekleştirilmesi`, `sağlanması` gibi ad zincirlerini sadeleştirir. Kurumsal dolguyu, reklam dilini ve tiyatral vurguyu azaltır.
 
-**Bilgi taşımayan cümleler.** Bir cümleyi silince hiçbir olgu, ilişki ya da yazar görüşü kaybolmuyorsa o cümle çıkar; depo buna *sıfır bilgi cümlesi* der. Dayanaksız önem iddiaları, savunmacı açıklamalar, aynı olgunun başka sözcüklerle tekrarı, bölüm duyuruları, kalıp giriş ve sonuçlar, sırf ölçülü görünmek için kurulan karşıtlıklar bu sınıfa girer. Buna karşılık birkaç bulguyu tek karar cümlesinde toplayan cümleyi, adı konmuş sınırlılığı ve ölçülmüş yöntem gerekçesini korur. Çıkardığı dolguyu daha sakin eş anlamlılarla geri koymaz.
+**Bilgi taşımayan cümleler.** Bir cümleyi silince hiçbir olgu, ilişki ya da yazar görüşü kaybolmuyorsa o cümle *sıfır bilgi cümlesi*dir ve çıkar. Dayanaksız önem iddiaları, savunmacı açıklamalar, aynı olgunun başka sözcüklerle tekrarı, bölüm duyuruları, kalıp giriş ve sonuçlar, sırf ölçülü görünmek için kurulan karşıtlıklar bu sınıfa girer. Buna karşılık birkaç bulguyu tek karar cümlesinde toplayan cümleyi, adı konmuş sınırlılığı ve ölçülmüş yöntem gerekçesini korur. Çıkardığı dolguyu daha sakin eş anlamlılarla geri koymaz.
 
 **Yapı.** Hak edilmemiş başlıkları ve tek paragraflık bölümleri birleştirir, erken bölünmüş paragrafları toplar, sonucu sınırlılığıyla yan yana getirir, gereksiz derinliği düzleştirir. Bölüm sonuna asılan "asıl cevap sonraki bölümde" tipi kapanışları, her bölümde yinelenen bağlam hatırlatmalarını ve boş bölüm duyurularını kaldırır. Tekrarlanabilirlik, mevzuat, dergi kuralı, güvenlik adımları ve uzun belgelerde gezinme gerektiren yapıyı korur; hedef yazarın kendi ölçeğini aşan makine parçalanmasıdır, evrensel asgaricilik değil.
 
-**Çeviri gibi okunan Türkçe.** Bir cümle dil bilgisi bakımından kusursuz olup yine de altında bir İngilizce cümle taşıyabilir: bilgi sırası, özne kullanımı ve yan cümle mimarisi oradan miras kalmıştır. Depo buna *çeviri gölgesi* der. Metinoskop sözcükleri bir kez daha çevirmez; cümlenin taşıdığı ilişkiyi bulup Türkçenin kendi araçlarıyla (özneyi düşürme, ekler, sözcük sırası) yeniden kurar. Her cümlede yinelenen özneyi, `bu sonuç / bu durum` paketlerini, `ve` ile dizilmiş cümle zincirlerini, `sahip olmak` ve `bulunmaktadır` kalıplarını gölge sayar. Gerekli açık özneyi, teknik terimi, hukuki kalıbı ve zaten Türkçe düşünülmüş metni olduğu gibi bırakır.
+**Çeviri gibi okunan Türkçe.** Bir cümle dil bilgisi bakımından kusursuz olup yine de altında bir İngilizce cümle taşıyabilir: bilgi sırası, özne kullanımı ve yan cümle mimarisi oradan miras kalmıştır. Böyle bir metinde *çeviri kokusu* vardır. Metinoskop sözcükleri bir kez daha çevirmez; cümlenin taşıdığı ilişkiyi bulup Türkçenin kendi araçlarıyla (özneyi düşürme, ekler, sözcük sırası) yeniden kurar. Her cümlede yinelenen özneyi, `bu sonuç / bu durum` paketlerini, `ve` ile dizilmiş cümle zincirlerini, `sahip olmak` ve `bulunmaktadır` kalıplarını koku sayar. Gerekli açık özneyi, teknik terimi, hukuki kalıbı ve zaten Türkçe düşünülmüş metni olduğu gibi bırakır.
 
 **Kim, neyi, ne kadar kesin biliyor.** Bir cümlenin olguları değişmeden de yanlışlaşabilir: kimin bildiği, nasıl bildiği ve ne kadar kesin iddia ettiği değişmişse cümle aynı cümle değildir. Metinoskop bunu düzenleme boyunca sabit tutar. Başkasının söylediğini yazarın olgusuna, ilişkiyi nedenselliğe, öneriyi karara, kararı uygulamaya çevirmez; `gözlenmedi` `yoktur` olmaz. Kaynağın adını vermediği bir aktörü uydurmaz. `Olabilir`, `görünmektedir` gibi çekinceleri kanıt sayıp korur, `açıkça`, `tartışmasız` gibi pekiştiricileri dayanağı yoksa kaldırır.
 
-**Zaman ve kip.** Tamamlanmış bir çalışmayı `inceler / kullanır / uygular` gibi zamansız kiplerle anlatan metin, yapılmış bir işi kullanım kılavuzuna çevirir; depo bu belirtiye *kılavuz gölgesi* der. Metinoskop yapılan işi olmuş bitmiş olay olarak anlatır. Buna karşılık algoritmanın genel davranışını, bilimsel bir ilişkiyi, ürün belirtimini ve prosedürü geniş zamanda bırakır; bunlar gerçekten zamansızdır. Tek bir gözlemi geniş zamana çevirip genel yasaya yükseltmez, genel bir ilişkiyi geçmişe çevirip tek seferlik olaya indirmez. Geçmişin kendi içindeki ilişkileri de düzleştirmez: `çalışıyordu` artalanı, `kalibre edilmişti` daha önce tamamlanmış olmayı, `yapardı` düzenli davranışı bildirir.
+**Zaman ve kip.** Tamamlanmış bir çalışmayı `inceler / kullanır / uygular` gibi zamansız kiplerle anlatan metin, yapılmış bir işi kullanım kılavuzuna çevirir: *kılavuz kokusu*. Metinoskop yapılan işi olmuş bitmiş olay olarak anlatır. Buna karşılık algoritmanın genel davranışını, bilimsel bir ilişkiyi, ürün belirtimini ve prosedürü geniş zamanda bırakır; bunlar gerçekten zamansızdır. Tek bir gözlemi geniş zamana çevirip genel yasaya yükseltmez, genel bir ilişkiyi geçmişe çevirip tek seferlik olaya indirmez. Geçmişin kendi içindeki ilişkileri de düzleştirmez: `çalışıyordu` artalanı, `kalibre edilmişti` daha önce tamamlanmış olmayı, `yapardı` düzenli davranışı bildirir. Şimdiki zamanı da eksik bırakmaz: mevcut sistem davranışı, güncel durum, okurun önündeki belgenin işlevi ve o an tartışılan bulgunun yorumu doğal olarak `-yor` alabilir; `bu sonuç ... gerektiriyor` ile `bu tür sonuçlar ... gerektirir` aynı kapsamda değildir.
 
 **Sözcüklerin birbirine tutunması.** Bir sözcük tek başına doğru olup birleşimde yanlış olabilir: `karar gerçekleştirmek`, `X hakkında odaklanmak`, `cevap sağlamak`. Metinoskop bu birleşimleri Türkçenin alışılmış eşleşmeleriyle kurar; `bir değerlendirme gerçekleştirmek` gibi yapıların arkasına saklanan gerçek fiili öne çıkarır. Aynı nesneyi `yöntem`, `yaklaşım`, `yapı`, `çözüm` arasında gezdirmez; teknik terimi, ödünç sözcüğü ve hukuki kalıbı korur.
 
@@ -164,10 +166,11 @@ Depo birkaç kavramı kendi adıyla anar. Bunlar `references/` altındaki dosya 
 
 | Terim | Anlamı |
 |---|---|
-| **Çeviri gölgesi** | Dil bilgisi doğru olduğu hâlde altında bir İngilizce cümle taşıyan Türkçe. Sorun sözcüklerde değil, cümlenin kurulma biçimindedir. |
+| **Çeviri kokusu** | Dil bilgisi doğru olduğu hâlde altında bir İngilizce cümle taşıyan Türkçe. Sorun sözcüklerde değil, cümlenin kurulma biçimindedir. |
 | **Zamansal ankraj** | Bir pasajın baskın zaman düzlemi: yapılmış iş mi, genel davranış mı, mevcut durum mu, plan mı? |
+| **Geniş zaman aşımı** | Söylem güncel belgeyi, depoyu ya da o an tartışılan sonucu konu ederken cümlenin zamansız bir tanım gibi kurulması. `Repo bunu yasaklar` yerine `yasaklıyor`. |
 | **Zamansal sürtünme** | Dil bilgisinin "bu genel bir davranış", çevresindeki metnin "bu bir kez oldu ve bitti" dediği durum. `12 Ağustos'ta ekip sistemi inceler` cümlesindeki gibi. |
-| **Kılavuz gölgesi** | Bir rapor cümlesinin, kullanım kılavuzundan alınmış gibi durması. Yapılmış işin geniş zamanla anlatılmasının belirtisi. |
+| **Kılavuz kokusu** | Bir rapor cümlesinin, kullanım kılavuzundan alınmış gibi durması. Yapılmış işin geniş zamanla anlatılmasının belirtisi. |
 | **Epistemik statü** | Bir önermenin ne olduğu: gözlem mü, ölçüm mü, başkasından aktarım mı, çıkarım mı, tahmin mi, plan mı, yorum mu? |
 | **Sıfır bilgi cümlesi** | Silindiğinde hiçbir önerme, ilişki ya da yazar görüşü kaybolmayan cümle. |
 | **Üretilmiş önem** | Ortada bir bulgu var diye eklenen, kaynağın gerekçelendirmediği "bu önemlidir" cümlesi. |
@@ -221,9 +224,9 @@ git clone https://github.com/ayberkdt/metinoskop.git /path/to/skills/metinoskop
 | `turkce-oruntuler.md` | Sözcük ve kalıp düzeyinde klişe, reklam dili, çeviri kokusu |
 | `retorik-yapilar.md` | Cümleler doğru ama metin yapay: önem cümleleri, tekrar döngüleri, kalıp giriş ve sonuç |
 | `yapisal-butunluk.md` | Çok başlık, kısa paragraf yığını, sık çapraz gönderme |
-| `turkce-ritim-ve-ceviri-golgesi.md` | Metin çeviri gibi okunuyor |
+| `turkce-ritim-ve-ceviri-kokusu.md` | Metin çeviri gibi okunuyor |
 | `kanit-ve-kesinlik.md` | Kimin ne bildiği, aktarım, çekince, kesinlik düzeyi |
-| `esdizim-ve-istem.md` | Sözcükler tuhaf birleşiyor |
+| `sozcuk-birlesimleri.md` | Sözcükler tuhaf birleşiyor |
 | `metinsel-tutarlilik.md` | Paragraflar iyi ama metin bir düşünceyi geliştirmiyor |
 | `zamansal-ankraj-ve-rapor-kipi.md` | Yapılmış iş kılavuz gibi anlatılmış ya da kip zorlanmış |
 | `akicilik.md` | Paragraf kopuk, göndergeler belirsiz |
@@ -325,7 +328,7 @@ Sözcükleri, ekleri ve noktalaması doğru olduğu hâlde çeviri gibi okunan m
 ```text
 $metinoskop
 
-Bu bölümü düzenle; metin Türkçeye çevrilmiş gibi değil, Türkçe düşünülmüş gibi okunsun. Her cümlede yinelenen özneyi, "bu sonuç / bu durum" paketlerini, "sahip olmak" ve "bulunmaktadır" kalıplarını, "ve" ile dizilmiş cümle zincirlerini ve çerçeve yığınlarını Türkçe yapıyla yeniden kur; sayıları, terimleri ve kesinlik düzeyini koru.
+Bu bölümü düzenle; metin Türkçeye çevrilmiş gibi değil, Türkçe düşünülmüş gibi okunsun. Şu yapıları Türkçe kaynaklarla yeniden kur: her cümlede yinelenen özne, "bu sonuç / bu durum" paketleri, "sahip olmak" ile "bulunmaktadır" kalıpları, "ve" ile dizilmiş cümle zincirleri, çerçeve yığınları. Sayıları, terimleri ve kesinlik düzeyini koru.
 
 [metin]
 ```
@@ -409,10 +412,10 @@ Kavramsal giriş yalnızca açıkça istendiğinde kullanılan ikincil bir kabil
 
 ## Nasıl çalışır?
 
-Metinoskop düzenleme sırasında altı aşamalı bir denetim uygular:
+Metinoskop düzenleme sırasında altı aşamalı bir denetim uyguluyor:
 
 1. **Envanter.** Metnin türünü, amacını, muhatabını; korunacak kapsam belirleyicilerini, terimleri ve gösterimleri belirler. Raporlarda bölüm ve paragraf işlevlerini de çıkarır.
-2. **Sorun kümeleri.** Ritim, dolgu, reklam cilası, belirsiz atıf, yapısal parçalanma, çeviri gölgesi, kesinlik düzeyi kayması ve kopukluğu kümeler hâlinde inceler. Tek bir işaretten "AI metni" sonucu çıkarmaz.
+2. **Sorun kümeleri.** Ritim, dolgu, reklam cilası, belirsiz atıf, yapısal parçalanma, çeviri kokusu, kesinlik düzeyi kayması ve kopukluğu kümeler hâlinde inceler. Tek bir işaretten "AI metni" sonucu çıkarmaz.
 3. **Düzenleme.** İstenen müdahale düzeyinde düzenler; komşu cümleleri ve bölümleri birlikte değerlendirir.
 4. **Kaynak karşılaştırması.** Son metindeki her sayı, tarih, iddia, nedensellik, karşılaştırma, koşul, istisna, nicelik sınırı, terim ve gösterimin kaynakta karşılığını arar.
 5. **On geçişli denetim.** Aşağıdaki tabloya göre metni bir kez daha okur.
@@ -427,11 +430,11 @@ Beşinci aşamadaki geçişler:
 | C. Paragraf | Farklı önerme sayısı, mini sonuç, zorlama denge, erken bölünme |
 | D. Belge | Tekrarlanan giriş ve sonuçlar, tek biçimli mimari, aynı gerekçenin tekrarı |
 | E. Yapı | Başlık sayısı ve derinliği, tek paragraflık bölümler, kopmuş yakınlık, gereksiz liste |
-| F. Çeviri gölgesi | Özne, yan cümle, niteleme, çerçeve, iyelik, bilgi yapısı, aşırı düzeltme |
+| F. Çeviri kokusu | Özne, yan cümle, niteleme, çerçeve, iyelik, bilgi yapısı, aşırı düzeltme |
 | G. Kanıt ve kesinlik | Bilginin kaynağı, aktörlük, atıf, çekince–pekiştirici, bölümler arası kesinlik |
 | H. Sözcük uyumu | Sözcük eşleşmeleri, hâl ekleri, edatlar, hafif fiil, terim tutarlılığı |
 | I. Metinsel tutarlılık | Konu ilerleyişi, bağlaç geçerliliği, gönderge mesafesi, kapsam ve olumsuzluk |
-| J. Zamansal ankraj | Baskın ankraj, zamansal sürtünme, prosedür ile uygulama ayrımı, geçmiş içi ilişkiler, geçmişe zorlama |
+| J. Zamansal ankraj | Baskın ankraj, zamansal sürtünme, prosedür ile uygulama ayrımı, geçmiş içi ilişkiler, güncel geçerlilik, geçmişe ya da `-yor` biçimine zorlama |
 
 ## Depo yapısı
 
@@ -442,19 +445,19 @@ metinoskop/
 │   └── openai.yaml
 ├── references/
 │   ├── akicilik.md
-│   ├── esdizim-ve-istem.md
 │   ├── kanit-ve-kesinlik.md
 │   ├── kavramsal-girisler.md
 │   ├── metinsel-tutarlilik.md
 │   ├── rapor-yazimi.md
 │   ├── retorik-yapilar.md
+│   ├── sozcuk-birlesimleri.md
 │   ├── turkce-oruntuler.md
-│   ├── turkce-ritim-ve-ceviri-golgesi.md
+│   ├── turkce-ritim-ve-ceviri-kokusu.md
 │   ├── yapisal-butunluk.md
 │   └── zamansal-ankraj-ve-rapor-kipi.md
 ├── evals/
-│   ├── (145 davranışsal vaka: kaynak sadakati, retorik mimari, yapısal
-│   │    bütünlük, çeviri gölgesi, epistemik mimari, eşdizim ve istem,
+│   ├── (155 davranışsal vaka: kaynak sadakati, retorik mimari, yapısal
+│   │    bütünlük, çeviri kokusu, epistemik mimari, eşdizim ve istem,
 │   │    metinsel tutarlılık, zamansal ankraj)
 │   ├── critical-cases.txt
 │   └── outputs/
@@ -501,7 +504,12 @@ Bir çıktıdaki şüpheli örüntüleri işlev ailesine göre işaretlemek içi
 python scripts/style-lint.py outputs/iddia-tekrar-dongusu.txt --source evals/iddia-tekrar-dongusu.md
 ```
 
-`scripts/style-lint.py` üç grup bulgu üretir. **Kalıp aileleri:** üretilmiş önem, savunmacı açıklama, yol haritası, boş sarmalayıcı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, uzun çerçeve, kalıp giriş ve sonuç, üretilmiş karşıtlık, soyut yüklem, boş özne, sohbet botu kalıntısı. **Yapı ölçüleri:** başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, çapraz gönderme sıklığı. **Çeviri gölgesi ve söylem ölçüleri:** `sahip olmak` ve varlık kalıbı, çerçeve yığını, `olan` zinciri, tekrarlanan cümle başlangıcı, `ve` zinciri, fiilimsi ve iyelik yığını, 100 sözcük başına `bir`; çekince, pekiştirici, aktarım ve hafif fiil aileleri; kiplik yığını, pekiştirici çatışması, kip nöbetleşmesi, zamansal sürtünme, geniş zaman doygunluğu, ilgeç yoğunluğu, eş anlamlı kayması, konu sıfırlama, kayıt kayması.
+`scripts/style-lint.py` üç grup bulgu üretiyor:
+
+- **Kalıp aileleri:** üretilmiş önem, savunmacı açıklama, yol haritası, boş sarmalayıcı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, uzun çerçeve, kalıp giriş ve sonuç, üretilmiş karşıtlık, soyut yüklem, boş özne, sohbet botu kalıntısı.
+- **Yapı ölçüleri:** başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, çapraz gönderme sıklığı.
+- **Çeviri kokusu ölçüleri:** `sahip olmak`, varlık kalıbı, çerçeve yığını, `olan` zinciri, tekrarlanan cümle başlangıcı, `ve` zinciri, fiilimsi yığını, iyelik zinciri, 100 sözcük başına `bir`.
+- **Söylem ölçüleri:** çekince, pekiştirici, aktarım, hafif fiil; kiplik yığını, pekiştirici çatışması, kip nöbetleşmesi, zamansal sürtünme, geniş zaman doygunluğu, ilgeç yoğunluğu, eş anlamlı kayması, konu sıfırlama, kayıt kayması.
 
 Bunlar inceleme bulgusudur; tek bir `bir`, `olan`, `ve` ya da `açısından` işaretlenmez ve hiçbir regex epistemik doğruluğa karar vermez. Kalıplar sözcük sınırına saygı gösterir: `eşsiz` kalıbı `güneşsiz` içinde eşleşmez. `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıplar ayrıca listelenir; `--fail-on-introduced-hard` yalnızca sert bastırma ailesinde başarısız çıkış kodu verir, `--fail-on-introduced-any` katı moddur. Öz sınama için:
 
@@ -521,7 +529,7 @@ python scripts/eval-suite.py --require-all
 
 ### Gerçek model regresyonu
 
-Kayıtlı çıktı denetimi sabit örnekleri sınar; skill'in canlı davranışını değil. Skill'in kendisini sınamak için `scripts/behavioral-regression.py`, `SKILL.md` ve referansları gerçek bir modele verir, `evals/critical-cases.txt` içindeki kritik vakaları taze üretir ve her çıktıyı deterministik denetimden ve model hakeminden geçirir:
+Kayıtlı çıktı denetimi sabit örnekleri sınar; skill'in canlı davranışını değil. Skill'in kendisini sınamak için `scripts/behavioral-regression.py` kullanılır. Betik `SKILL.md` ile referansları gerçek bir modele verir, `evals/critical-cases.txt` içindeki kritik vakaları taze üretir, ardından her çıktıyı deterministik denetimden ve model hakeminden geçirir:
 
 ```bash
 python scripts/behavioral-regression.py --dry-run
@@ -542,9 +550,9 @@ GitHub Actions, `main` dalına gönderilen her değişiklikte ve pull request'le
 
 `evals/` klasörü tek bir beklenen çıktı dayatmaz. Her vaka korunması gereken olguları, kesinlik düzeyini ve biçimi, ayrıca kaçınılması gereken davranışları tanımlar; böylece farklı ama geçerli düzenlemeler aynı ölçütlerle değerlendirilebilir.
 
-Bu ilke yapısal beklentileri de bağlar. Dönüşüm vakaları cümle sayısını üst sınırla verir (`cümle: <= 4`), kesin sayıyla değil: önermeleri işlevlerine göre gruplayan bir düzenleme de geçerlidir. Kesin sayı yalnızca korunur vakalarında meşrudur, çünkü orada beklenen çıktı kaynağın kendisidir. Doğrulayıcı bu ayrımı denetler.
+Bu ilke yapısal beklentileri de bağlar. Dönüşüm vakaları cümle sayısını üst sınırla verir (`cümle: <= 4`), kesin sayıyla değil: önermeleri işlevlerine göre gruplayan bir düzenleme de geçerlidir. Kesin sayı yalnızca korunur vakalarında meşrudur, çünkü orada beklenen çıktı kaynağın kendisidir. Doğrulayıcı bu ayrımı denetliyor.
 
-Yüz kırk beş vakanın kırk altısı **korunur** vakasıdır: doğru davranış hiçbir şeyi değiştirmemektir ve kayıtlı çıktı kaynağın kendisidir. Doğrulayıcı bu eşitliği denetler. Korunması gerekenler arasında zaten iyi yazılmış e-posta, gerekli açık özne, teknik adlaştırma, hukuki kalıp, ödünç terim, uzun ama tek hareketli paragraf, tekrarlanabilirlik için ayrılmış deney bölümleri, algoritma tanımı, genel bilimsel ilişki, ürün belirtimi ve gerekçeli kip çeşitliliği vardır.
+Yüz elli beş vakanın kırk sekizi **korunur** vakasıdır: doğru davranış hiçbir şeyi değiştirmemektir ve kayıtlı çıktı kaynağın kendisidir. Doğrulayıcı bu eşitliği denetliyor. Korunması gerekenler arasında zaten iyi yazılmış e-posta, gerekli açık özne, teknik adlaştırma, hukuki kalıp, ödünç terim, uzun ama tek hareketli paragraf, tekrarlanabilirlik için ayrılmış deney bölümleri, algoritma tanımı, genel bilimsel ilişki, ürün belirtimi ve gerekçeli kip çeşitliliği vardır.
 
 ## Sürümleme
 

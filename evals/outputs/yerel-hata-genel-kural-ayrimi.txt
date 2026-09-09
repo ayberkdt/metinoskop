@@ -1,0 +1,1 @@
+Günlükteki bu hata bağlantının koptuğunu gösteriyor. Bu tür hatalar her zaman bağlantı kaybını göstermez; zaman aşımı da aynı kaydı üretir.
