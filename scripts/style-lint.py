@@ -529,6 +529,17 @@ CURRENT_PREDICATE_RE = re.compile(
     r"düzenle|kullan|dönüştür|uygula|atla|açıkla|yasakla|ekle|çöz|ver|ed|koy|gir|tanımla|özetle|"
     r"karşılaştır)(?:ir|ır|ur|ür|er|ar|r|m[ae]z)$"
 )
+# Sözcüksel kalkı: yalnızca BİRLEŞİM düzeyinde aday gösterir. Tek başına
+# "sağlamak", "çerçeve", "kampanya" ya da "adreslemek" işaretlenmez; kararı
+# alan jargonu ve bağlam verir.
+LEXICAL_CALQUE_RE = re.compile(
+    r"(?:karar|başarı|etki|iyileştirme|iyileşme|değişiklik)\w*\s+gerçekleştir\w*"
+    r"|(?:cevap|yanıt|içgörü|görünürlük|anlayış|performans)\w*\s+sağla\w*"
+    r"|(?:risk|hassasiyet|performans|eğilim)\w*\s+sergile\w*"
+    r"|(?:artış|düşüş|azalış|kayıp|kayb[ıi]|hata)\w*\s+deneyimle\w*"
+    r"|(?:problem|sorun|risk|soru|eksiklik)\w*\s+adresle\w*"
+    r"|mümkün kıl\w*|olanak sağla\w*|kaldıraçla\w*|leverage et\w*"
+)
 AORIST_MIN = 3
 AORIST_RATIO_MIN = 0.6
 FRAME_STACK_MIN = 2
@@ -928,6 +939,10 @@ def discourse_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict[
         if parenthetical_load(s):
             findings.append({"check": "parantez_yuku",
                              "text": f"P{s.paragraph}C{s.index}: ara söz yükü (parantez, uzun çizgi veya noktalı virgül yığını): ara söz ana cümleye mi ait, ayrı cümle mi olmalı?"})
+        calques = LEXICAL_CALQUE_RE.findall(s.lowered)
+        if calques:
+            findings.append({"check": "sozcuksel_kalki",
+                             "text": f"P{s.paragraph}C{s.index}: şüpheli İngilizce çekirdek («{calques[0].strip()}»): bu birleşim alanın yerleşik terimi mi, yoksa sözcüksel kalkı mı? Türkçe aynı ilişkiyi doğrudan bir fiille kurabiliyor mu?"})
         if CURRENT_REFERENT_RE.match(s.lowered):
             words = sentence_words(s)
             if words and CURRENT_PREDICATE_RE.match(words[-1]):
@@ -1249,7 +1264,7 @@ DISCOURSE_LABELS = {
     "esanlam_kaymasi": "eş anlamlı kayması", "konu_sifirlama": "konu sıfırlama",
     "parantez_yuku": "parantez yükü", "kayit_kaymasi": "kayıt kayması",
     "zamansal_surtunme": "zamansal sürtünme", "genis_zaman_doygunlugu": "geniş zaman doygunluğu",
-    "genis_zaman_katiligi": "geniş zaman katılığı",
+    "genis_zaman_katiligi": "geniş zaman katılığı", "sozcuksel_kalki": "sözcüksel kalkı",
 }
 
 
@@ -1633,6 +1648,21 @@ def self_test() -> None:
                            ("Deney 100 örnek üzerinde yürütüldü.", "dı")):
         if tense_class(Sentence(1, 1, text)) != expected:
             raise SystemExit(f"Öz sınama: geçmiş içi kip sınıfı hatalı ({expected}): {text!r}")
+    for text in ("Ekip üç önemli karar gerçekleştirmiştir.", "Protokol daha hızlı cevap sağlamaktadır.",
+                 "Yöntem yüksek risk sergilemektedir.", "Sistem performans kaybı deneyimlemiştir.",
+                 "Rapor veri kaybı problemini adreslemektedir.", "Tasarım iki sensörün kullanılmasını mümkün kılmaktadır."):
+        if not any(f["check"] == "sozcuksel_kalki" for f in analyse(text)["soylem"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: sözcüksel kalkı adayı işaretlenmedi: {text!r}")
+    for text in ("Hesaplamalar eylemsiz referans çerçevesinde yapıldı.",
+                 "Uçuş test kampanyası 14 sortiden oluştu.",
+                 "Denetleyici belleği 16 bitlik sayfalar hâlinde adresler.",
+                 "Bulgular ikinci hipotezi destekliyor.",
+                 "Kurum her yıl risk değerlendirmesi yapar.",
+                 "Marka yaz kampanyasını mayısta başlattı.",
+                 "Ekip saha denetimi yürüttü.",
+                 "Yeni hat erişim sağlamaktadır."):
+        if any(f["check"] == "sozcuksel_kalki" for f in analyse(text)["soylem"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: alan terimi ya da doğal eşdizim sözcüksel kalkı sayıldı: {text!r}")
     for text in ("Repo bunu yasaklar.", "Bu sonuç ek inceleme gerektirir.",
                  "Şekil 4 iki yöntem arasındaki farkı gösterir."):
         if not any(f["check"] == "genis_zaman_katiligi" for f in analyse(text)["soylem"]):  # type: ignore[union-attr]

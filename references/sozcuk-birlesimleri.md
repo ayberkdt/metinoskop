@@ -2,24 +2,26 @@
 
 ## İçindekiler
 
-1. [Kullanım ilkesi](#kullanım-ilkesi)
-2. [Sözcük uyumu](#sözcük-uyumu)
-3. [Eşdizim denetimi](#eşdizim-denetimi)
-4. [Eşdizim ile klişeyi ayır](#eşdizim-ile-klişeyi-ayır)
-5. [Fiil istemi](#fiil-istemi)
-6. [Hâl seçimi ve fiil–hâl çerçevesi](#hâl-seçimi-ve-fiil-hâl-çerçevesi)
-7. [İlgeç seçimi ve edat izi](#ilgeç-seçimi-ve-edat-kokusu)
-8. [Hafif fiiller](#hafif-fiiller)
-9. [Yüklem kesinliği](#yüklem-kesinliği)
-10. [Genel fiil aşırı kullanımı](#genel-fiil-aşırı-kullanımı)
-11. [Sıfat–ad uyumu](#sıfat-ad-uyumu)
-12. [Zarf–fiil uyumu](#zarf-fiil-uyumu)
-13. [Sözcük zincirleri](#sözcük-zincirleri)
-14. [Eş anlamlı kayması](#eş-anlamlı-kayması)
-15. [Teknik terim](#teknik-terim)
-16. [Türe göre eşdizim](#türe-göre-eşdizim)
-17. [Karşı örnekler](#karşı-örnekler)
-18. [Aşırı düzeltme belirtileri](#aşırı-düzeltme-belirtileri)
+1. [Sözcük uyumu](#sözcük-uyumu)
+2. [Eşdizim denetimi](#eşdizim-denetimi)
+3. [Eşdizim ile klişeyi ayır](#eşdizim-ile-klişeyi-ayır)
+4. [Fiil istemi](#fiil-istemi)
+5. [Hâl seçimi ve fiil–hâl çerçevesi](#hâl-seçimi-ve-fiilhâl-çerçevesi)
+6. [İlgeç seçimi ve edat izi](#ilgeç-seçimi-ve-edat-izi)
+7. [Hafif fiiller](#hafif-fiiller)
+8. [Yüklem kesinliği](#yüklem-kesinliği)
+9. [Genel fiil aşırı kullanımı](#genel-fiil-aşırı-kullanımı)
+10. [Sıfat–ad uyumu](#sıfatad-uyumu)
+11. [Zarf–fiil uyumu](#zarffiil-uyumu)
+12. [Sözcük zincirleri](#sözcük-zincirleri)
+13. [Eş anlamlı kayması](#eş-anlamlı-kayması)
+14. [Teknik terim](#teknik-terim)
+15. [Sözcüksel kalkı](#sözcüksel-kalkı)
+16. [İngilizce kaynaklı sözcüksel çekirdekler](#ingilizce-kaynaklı-sözcüksel-çekirdekler)
+17. [Alan jargonu ve terminoloji kapısı](#alan-jargonu-ve-terminoloji-kapısı)
+18. [Türe göre eşdizim](#türe-göre-eşdizim)
+19. [Karşı örnekler](#karşı-örnekler)
+20. [Aşırı düzeltme belirtileri](#aşırı-düzeltme-belirtileri)
 
 ## Kullanım ilkesi
 
@@ -270,6 +272,83 @@ Kabul görmüş ödünç sözcükler (`pipeline`, `baseline`, `benchmark`, `fram
 
 Eşdizim yanlış pozitif ilkesi: bir öbeği yalnızca seyrek diye reddetme. Seyrek birleşimler teknik olarak kesin, yeni ama meşru, terminoloji, alıntılanmış kaynak dili ya da alana özgü olabilir. Yalnızca ilişki genelse, alışılmış bir seçenek varsa ve mevcut birleşim yapısal olarak ithal ya da anlamca uyumsuz görünüyorsa işaretle.
 
+## Sözcüksel kalkı
+
+Bir sözcüğün Türkçe karşılığı doğru olsa bile kaynak dildeki **birleşme tercihi** Türkçeye taşınabilir. Buna *sözcüksel kalkı* de. Cümledeki bütün sözcükler Türkçedir, dil bilgisi kusursuzdur, anlam da çıkarılabilir; yine de altta İngilizce sözcük seçimi durur.
+
+> an improvement was achieved → iyileşme elde edildi
+
+Sözcük sözcük doğru. Ama Türkçe aynı ilişkiyi çoğu bağlamda doğrudan kurar: `hata azaldı`, `performans arttı`, `yöntem iyileşti`. Sorun çeviri doğruluğu değil, ilişkinin hangi sözcüksel yolla kurulduğudur.
+
+**Ana tanılama sorusu.** Anadili Türkçe olan uzman bir yazar, İngilizce özgün cümleyi hiç görmemiş olsaydı bu ilişkiyi gerçekten bu sözcüklerle mi kurardı? Soru kanıt değil, tanılama aracıdır. Ardından beş denetim: birleşim genel Türkçede yerleşik mi; alan jargonunda yerleşik mi; fiil adla doğal birleşiyor mu; Türkçe aynı ilişkiyi daha doğrudan bir fiille mi kuruyor; İngilizce sözcük seçimi hâlâ görünüyor mu?
+
+**Dört ayrı şey.** Bir ifade *dil bilgisel* (kurallara uygun), *anlaşılır* (okur çözer), *yerleşik* (birleşim kullanımda gerçekten var) ve *deyimsel* (uzmanların olağan tercihi) olabilir. Metinoskop ilk ikisiyle yetinmez.
+
+**Kanıt sırası.** Kararı tek ölçüt vermez: (1) alanın kendi Türkçe kullanımı — ders kitapları, standartlar, yönetmelikler, alan dergileri; (2) dengeli Türkçe derlemleri; (3) anadili sezgisi, özellikle iki yakın aday arasında; (4) olası İngilizce kaynağın geri kurulabilirliği. Sonuncusu yalnızca ihtimali yükseltir. Bir birleşimin derlemde seyrek olması onu yanlış yapmaz: yeni terminoloji seyrek olur.
+
+**Üç sınıf.** Her şüpheli birleşim bir sınıfa girer.
+
+*Sınıf A — birleşim düzeyinde sert aday.* Türkçede doğal birleşim değeri çok düşük olanlar: `karar gerçekleştirmek`, `etki gerçekleştirmek`, `cevap sağlamak`, `risk sergilemek`, `artış deneyimlemek`, `fayda üretmek`, `X hakkında odaklanmak`. Yapısal olarak düzelt; ama alıntı, kod, resmî ad ya da tanımlı teknik terim içindeyse dokunma.
+
+*Sınıf B — yüksek riskli sözcüksel çekirdek.* `çerçeve`, `kampanya`, `gerçekleştirmek`, `sağlamak`, `yürütmek`, `sunmak`, `ortaya koymak`, `göstermek`, `işaret etmek`, `sergilemek`, `üretmek`, `yakalamak`, `adreslemek`, `deneyimlemek`, `mümkün kılmak`, `olanak sağlamak` ve çerçeve adları (`bağlamında`, `çerçevesinde`, `kapsamında`, `açısından`, `noktasında`, `üzerinden`, `temelinde`, `doğrultusunda`, `perspektifinden`). Bunlar yasak değil, **inceleme tetikleyicisidir**: "bu sözcük burada Türkçenin seçimi mi, yoksa İngilizce kaynağın varsayılan karşılığı mı?"
+
+*Sınıf C — alan terimi.* Yerleşik terminoloji daha doğal görünsün diye değiştirilmez: `referans çerçevesi`, `durum vektörü`, `kovaryans matrisi`, `risk değerlendirmesi`, `deney yürütmek`, `baseline`, `pipeline`. Şüpheli görünmesi değiştirmek için yeterli değildir.
+
+**Karar ağacı.** Sırayla: bu resmî ya da teknik bir terim mi (evet → güçlü koruma); gerçek bir Türkçe eşdizim mi (evet → koru); İngilizce kaynak kolayca geri kuruluyor mu (evet → kalkı ihtimali yükselir); Türkçe aynı ilişkiyi doğrudan fiille kurabiliyor mu (evet → doğrudan biçimi değerlendir); değişiklik anlamsal ilişkiyi ya da epistemik gücü değiştiriyor mu (evet → yapma); daha doğal aday alan jargonuna aykırı mı (evet → yapma)?
+
+**Tek sözcük yasaklanmaz.** `Çerçeve` yanlış değildir, `kampanya` yanlış değildir, `sağlamak` yanlış değildir. Karar birimi sözcük değil: sözcük + tümleç + bağlam + tür + alan. Sert bastırma uygulanacaksa `karar gerçekleştirmek` gibi birleşime bağlanır; bir regex'in gördüğü her `sağla` hata sayılamaz.
+
+**İngilizce kök → tek Türkçe karşılık tablosu kurma.** Bu turun en önemli yasağı budur. Doğru yapı şudur: İngilizce çekirdek → anlam ayrımları → olası Türkçe ilişkiler → korunması gereken terimler. Metinoskop sözlük değil editördür.
+
+## İngilizce kaynaklı sözcüksel çekirdekler
+
+Aşağıdaki çekirdekler İngilizceden çevrilmiş ya da İngilizce düşünülerek üretilmiş metinlerde tek bir Türkçe karşılığa çökme eğilimindedir. Tablo bir çeviri sözlüğü değil, karar rehberidir: "riskli varsayılan" sütunu yanlış demek değil, *otomatik kabul edilmemeli* demektir.
+
+| Çekirdek | Riskli varsayılan | Anlam ayrımı ve doğal yapılar | Korunur |
+|---|---|---|---|
+| provide | `sağlamak` | Somut nesne alıyorsa doğal: güvenlik, erişim, finansman, bağlantı sağlamak. Soyut nesnede adı fiile çevir: `iyileştirme sağladı` → `iyileştirdi`; `cevap sağladı` → `cevap verdi`; `görünürlük sağladı` → `görünür kıldı`. Ölçüm varsa ölçümü yaz. | Güvenliği, erişimi, koşulları, finansmanı sağlamak |
+| perform | `gerçekleştirmek` | `Analiz / değerlendirme / ölçüm / karşılaştırma gerçekleştirmek` yerine `analiz etmek`, `değerlendirmek`, `ölçmek`, `karşılaştırmak`. | `Hayalini gerçekleştirmek`; bağlama göre `proje gerçekleştirildi` |
+| conduct | `yürütmek` | `Araştırma / soruşturma / denetim / müzakere yürütmek` doğaldır. `Hesaplama / karşılaştırma / optimizasyon yürütmek` incelenir; gerçek fiile dön. | Araştırma, soruşturma, denetim, deney yürütmek |
+| address | `adreslemek` | `Problemi / riski / soruyu adreslemek` yerine `ele almak`, `çözmek`, `azaltmak`, `önlem almak`, `yanıtlamak`, `gidermek`. | Bilgisayar biliminde `belleği adreslemek` gerçek teknik anlamdır |
+| capture | `yakalamak` | `Model davranışı yakalıyor` yerine kanıt düzeyine göre `temsil ediyor`, `yansıtıyor`, `yeniden üretiyor`, `açıklıyor`, `hesaba katıyor`, `betimliyor`, `kestiriyor`. `Temsil ediyor` ile `açıklıyor` aynı şey değildir. | Alan topluluğu gerçekten kullanıyorsa |
+| drive | `yönlendirmek` | `Bu etki sonucu yönlendiriyor` yerine gerçek ilişki: `belirliyor`, `etkiliyor`, `artırıyor`, `baskın geliyor`, `tetikliyor`. Kaynak nedensellik kurmuyorsa `neden oluyor` yazma. | Gerçek yönlendirme ilişkisi |
+| enable | `mümkün kılmak`, `olanak sağlamak` | Türkçe çoğu zaman doğrudan kurar: `X ile analiz daha hızlı yapılabiliyor`, `yöntem daha yüksek derecelerin kullanılmasına izin veriyor`. | Yasak değil; `enable` için varsayılan olmasın |
+| deliver | `sunmak`, `teslim etmek` | Somut teslim doğaldır (`cihaz teslim edildi`). Sonuç bildiren kullanımda ölçümü öne çıkar: `yöntem %97 doğruluğa ulaştı`, `yöntemin doğruluğu %97`. | Fiziksel teslim, hizmet sunumu |
+| achieve | `elde etmek` | `Başarı elde etmek` yerleşiktir. Ölçüm cümlesinde `%20 iyileşme elde edildi` yerine `hata %20 azaldı` daha doğrudan. | Başarı, sonuç, derece elde etmek |
+| exhibit | `sergilemek` | `Risk / hassasiyet / performans sergilemek` yerine `risk taşımak`, `duyarlı olmak`, `performans göstermek`, `eğilim göstermek`. | Alan jargonunda `malzeme histeretik davranış sergiliyor` mümkün |
+| experience | `deneyimlemek` | `Artış / düşüş / hata deneyimlemek` yerine `arttı`, `düştü`, `hata oluştu`. | İnsan öznesi: `kullanıcı gecikme yaşadı`, `katılımcılar baş dönmesi yaşadı` |
+| reveal, demonstrate | `ortaya koymak` | Akademik Türkçede meşrudur ama genel kanıt fiiline dönüşmemeli. Gerçek ilişki: `gösteriyor`, `ölçüyor`, `belirliyor`, `doğruluyor`, `destekliyor`. Epistemik gücü koru. | Gerçekten ortaya çıkarma ilişkisi |
+| indicate | `işaret etmek` | Doğal Türkçedir; her `indicate` için varsayılan olmasın. Bağlama göre `gösteriyor`, `düşündürüyor`, `uyumlu`, `ilişkili`, `belirtiyor`. Güç düzeyini değiştirme. | Gerçek işaret etme ilişkisi |
+| support | `desteklemek` | `Bulgular hipotezi destekliyor` tamamen doğal akademik Türkçedir. Aşırı düzeltmeden kaçın. | Neredeyse her akademik kullanımda |
+| leverage | `kaldıraçlamak`, `leverage etmek` | Genel metinde düzelt: `kullanmak`, `yararlanmak`, `değerlendirmek`. | Kullanıcı şirket jargonunu korumak istiyorsa |
+| account for | tek karşılık | Çok anlamlıdır: `X'i açıklamak` (varyansın %30'unu açıklıyor), `X'i hesaba katmak` (model sürüklemeyi hesaba katıyor), `X'in ... kadarını oluşturmak`. | Anlamı çözmeden çevirme |
+| framework | `çerçeve` | Aşağıya bak. | Aşağıya bak |
+| campaign | `kampanya` | Aşağıya bak. | Aşağıya bak |
+
+**`framework` ailesi.** Sözcük çok anlamlıdır; her durumda `çerçeve` yazma. Fizik ve geometride `reference frame` → `referans çerçevesi`, `gözlem çerçevesi`; bu alan terimidir, **korunur**. Kuramsal ve kavramsal çalışmada `kuramsal çerçeve`, `kavramsal çerçeve` Türkçe akademik dilde yerleşiktir, **korunabilir**. Yazılımda bağlama göre `framework`, `yazılım çatısı`, `altyapı`; terimi kafadan Türkçeleştirme. Genel kullanımda ise `a framework for evaluating errors` otomatik olarak `hataları değerlendirmek için bir çerçeve` olmasın; kavramı çöz ve bağlama göre `değerlendirme yöntemi`, `değerlendirme ölçütleri`, `yaklaşım` yaz.
+
+`Çerçeve` için iki ayrı risk vardır ve aynı kategoriye konmaz. Terim olarak çerçeve (`referans çerçevesi`, `kuramsal çerçeve`) alanın yerleştirdiği addır. Soyut çerçeve yığını (`bu çerçevede`, `bu çerçeve kapsamında`, `değerlendirme çerçevesinde`) ilişkiyi gizler; bu ikincisi çeviri ve bürokrasi kokusudur.
+
+**`campaign` ailesi.** `Reklam kampanyası`, `seçim kampanyası`, `yardım kampanyası`, `bağış kampanyası`, `aşı kampanyası` doğaldır; `kampanya + başlatmak` eşdizimi sorunlu değildir. Teknik ve deneysel kullanımda (`test campaign`, `measurement campaign`) alan kullanımını denetle: bazı mühendislik alanlarında `test kampanyası` gerçekten kullanılır ve korunur. Ama genel bilim İngilizcesinin etkisiyle üretilmiş `doğrulama kampanyası başlatıldı` bağlama göre `doğrulama çalışmasına başlandı`, `doğrulama testleri başlatıldı`, `test serisi başladı` olabilir. Sorun `kampanya` sözcüğü değil, kavramın yanlış alana taşınmasıdır.
+
+**Sıfat ve zarf eşdizimleri.** Yalnızca fiil–ad birleşimine bakma. `Güçlü iyileşme`, `güçlü artış`, `yüksek başarı`, `derin analiz`, `sağlam sonuç` bazen doğal, bazen pazarlama ya da İngilizce kalkısıdır; ölçüm varsa sıfatı ölçüme çevir (`güçlü iyileşme` → `hata %18 azaldı`). Zarflarda eşdizim ile epistemik güç birlikte denetlenir: `anlamlı biçimde iyileşmiştir` istatistiksel anlamlılık mı bildiriyor; `önemli ölçüde` ölçülmüş mü; `güçlü biçimde göstermektedir` hangi kanıta dayanıyor?
+
+**Adlaştırma ve hafif fiil katmanları.** `Değerlendirme gerçekleştirilmesi sağlandı`, `analiz yürütülmesi sağlandı` gibi yapılarda birden çok kurumsal katman üst üste gelir. Sessizce gerçek çekirdek eylemi bul; ama statüyü değiştirme.
+
+**İngilizce geri kurma testi.** `Güçlü içgörüler sağlamaktadır` → *provides strong insights*; `davranışı yakalamaktadır` → *captures the behavior*; `problemi adreslemektedir` → *addresses the problem*. Kolay geri kurulabilirlik incelemeyi başlatır, kararı vermez. "İngilizceye geri çevrilebiliyor" diye doğal Türkçeyi bozma.
+
+**Kaynak sadakati sözcük doğallığının üstündedir.** Daha doğal fiil daha güçlü iddia olmamalı: kaynak desteklemiyorsa `ilişkili` → `etkiliyor`, `düşündürüyor` → `gösteriyor`, `destekliyor` → `kanıtlıyor`, `birlikte değişiyor` → `belirliyor` dönüşümleri yasaktır. `Bu değişken sonucu yönlendiriyor` cümlesini `belirliyor` yapmak daha doğal ama daha güçlüdür; kaynak yalnızca ilişki bildiriyorsa `sonuç bu değişkenle ilişkili` yaz.
+
+**Eşdizim düzeltmesini retorik temizlikle karıştırma.** `Proje bütçeye 40 bin TL katkı sağladı` doğal bir eşdizimdir; eşdizim denetimi bunu bozmaz. `Çalışma literatüre önemli katkı sağlamaktadır` cümlesinin sorunu eşdizim değil dayanaksız önemdir; onu retorik sistem değerlendirir.
+
+## Alan jargonu ve terminoloji kapısı
+
+Bir ifadeyi "doğal değil" diye değiştirmeden önce beş soruyu geç: terim alanın yerleşik Türkçe terminolojisi mi; standart, yönetmelik ya da ders kitabında böyle mi geçiyor; metin terimi daha önce tanımlamış mı; aynı belgede tutarlı kullanılmış mı; değiştirirsem teknik kategori değişiyor mu? Herhangi birine güçlü bir "evet" varsa koruma eğilimi yükselir.
+
+**Genel derlem ile alan derlemini ayır.** Genel Türkçede seyrek görülen bir birleşim teknik alanda doğru olabilir. Karar iki aşamalıdır: önce genel Türkçe doğallığı, sonra alan içi terminolojik yerleşiklik. Havacılık, uzay, fizik, makine, yazılım, hukuk, tıp ve finans metinlerinde bu ayrım zorunludur.
+
+Teknik belgede sessizce alan profilini çıkar: disiplin, alt disiplin, terim yoğunluğu, tanımlı terimler, olası standart dili. Astrodinamik metinde `reference frame` kararı fizik terminolojisiyle, pazarlama metninde `campaign` kararı pazarlama terminolojisiyle verilir. Genel Türkçe sezgisini uzmanlık terminolojisinin üstüne koyma.
+
 ## Türe göre eşdizim
 
 - **Akademik:** ölçülü teknik eşdizimler, denetimli adlaştırma, yerleşik disiplin terimleri. "Deney yürütmek", "hipotez sınamak", "ölçüm almak" alanın dilidir.
@@ -318,6 +397,30 @@ Alan bu terimleri kullanıyorsa Türkçe karşılık dayatılmaz; kullanıcı T�
 
 "Coğrafi olarak temsil etmek" alışılmadık ama kesin bir ayrımdır; "temsil ediyor" diye düzleştirilirse karşıtlık kaybolur.
 
+**Alan terimi olarak çerçeve**
+
+> Hesaplamalar Dünya merkezli eylemsiz referans çerçevesinde yapıldı.
+
+Fizik terimidir; `frame` çevirisi olduğu için kaldırılmaz.
+
+**Yerleşik kampanya**
+
+> Bağış kampanyası ekimde başlatıldı.
+
+`Kampanya + başlatmak` doğal bir eşdizimdir.
+
+**Akademik destekleme**
+
+> Bulgular hipotezi destekliyor.
+
+`Support` karşılığı olduğu için değiştirilmez.
+
+**Gerçek teknik adresleme**
+
+> Denetleyici belleği 16 bitlik sayfalar hâlinde adresler.
+
+Bilgisayar biliminde `address` gerçek teknik anlamdır.
+
 ## Aşırı düzeltme belirtileri
 
 - Alanın terimi ("kazanç matrisi", "baseline") sırf daha Türkçe dursun diye değiştirilmiş.
@@ -329,5 +432,12 @@ Alan bu terimleri kullanıyorsa Türkçe karşılık dayatılmaz; kullanıcı T�
 - Teknik süreç adı ("risk değerlendirmesi yapmak") yalın fiile indirilmiş.
 - Kişisel yazıdaki deyim "düzeltilmiş".
 - Yerinde bir yineleme gönderge zincirini bozacak biçimde çeşitlendirilmiş.
+- Bir sözcük İngilizce kökenli göründüğü için değiştirilmiş; birleşimin kendisi incelenmemiş.
+- Alanın yerleşik terimi (`referans çerçevesi`, `test kampanyası`, `risk değerlendirmesi`) "daha Türkçe" bir karşılıkla bozulmuş.
+- Her `sağlamak`, her `çerçeve` ya da her `kampanya` mekanik olarak değiştirilmiş.
+- Daha doğal fiil seçilirken epistemik güç yükseltilmiş (`ilişkili` → `etkiliyor`).
+- Doğal bir eşdizim yalnızca daha kısa olduğu için değiştirilmiş.
+- Ölçüm varken soyut niteleme korunmuş ya da ölçüm yokken sayı uydurulmuş.
+- Aynı varlığa belge içinde ikinci bir teknik ad verilmiş.
 
 Bu durumda ilişkiye, alana ve kayda geri dön: hangi sözcük hangi sözcükle, hangi hâlde, hangi türde birlikte durur?

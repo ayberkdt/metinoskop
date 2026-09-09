@@ -1,0 +1,1 @@
+Servis, Django framework'ü üzerinde çalışır. Framework'ün ORM katmanı sorguları önbelleğe alır.

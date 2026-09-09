@@ -1,0 +1,1 @@
+Sonuçlar iki yöntem arasındaki farkı gösteriyor; fark düşük sıcaklıkta artıyor. Bu eğilim Tablo 2'de görülüyor.

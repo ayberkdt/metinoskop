@@ -1,0 +1,1 @@
+Model düşük irtifadaki doğrusal olmayan etkiyi temsil ediyor. Bu davranış Şekil 3'te görülüyor.

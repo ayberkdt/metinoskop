@@ -1,0 +1,1 @@
+Sistemin performansı üçüncü çeyrekte %12 düştü. Kullanıcılar gecikme yaşadı.

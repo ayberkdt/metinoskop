@@ -1,0 +1,1 @@
+Yeni panel operatörün görünürlüğünü artırıyor. Yöntem bakım süresini 6 saatten 4 saate indirdi.

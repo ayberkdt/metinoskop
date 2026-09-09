@@ -188,6 +188,24 @@ REQUIRED_FILES = (
     "evals/normatif-yasak-genis-zaman-korunur.md",
     "evals/karisik-zaman-readme.md",
     "evals/yerel-hata-genel-kural-ayrimi.md",
+    "evals/framework-kalkisi.md",
+    "evals/campaign-kalkisi.md",
+    "evals/capture-kalkisi.md",
+    "evals/drive-kalkisi.md",
+    "evals/enable-kalkisi.md",
+    "evals/address-kalkisi.md",
+    "evals/provide-kalkisi.md",
+    "evals/deneyimlemek-kalkisi.md",
+    "evals/ortaya-koymak-yigini.md",
+    "evals/elde-etmek-olcum.md",
+    "evals/referans-cercevesi-korunur.md",
+    "evals/kuramsal-cerceve-korunur.md",
+    "evals/yazilim-cercevesi-korunur.md",
+    "evals/reklam-kampanyasi-korunur.md",
+    "evals/yardim-kampanyasi-korunur.md",
+    "evals/test-kampanyasi-alan-terimi.md",
+    "evals/bellek-adresleme-korunur.md",
+    "evals/hipotezi-desteklemek-korunur.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -352,6 +370,24 @@ EVAL_FILES = (
     "evals/normatif-yasak-genis-zaman-korunur.md",
     "evals/karisik-zaman-readme.md",
     "evals/yerel-hata-genel-kural-ayrimi.md",
+    "evals/framework-kalkisi.md",
+    "evals/campaign-kalkisi.md",
+    "evals/capture-kalkisi.md",
+    "evals/drive-kalkisi.md",
+    "evals/enable-kalkisi.md",
+    "evals/address-kalkisi.md",
+    "evals/provide-kalkisi.md",
+    "evals/deneyimlemek-kalkisi.md",
+    "evals/ortaya-koymak-yigini.md",
+    "evals/elde-etmek-olcum.md",
+    "evals/referans-cercevesi-korunur.md",
+    "evals/kuramsal-cerceve-korunur.md",
+    "evals/yazilim-cercevesi-korunur.md",
+    "evals/reklam-kampanyasi-korunur.md",
+    "evals/yardim-kampanyasi-korunur.md",
+    "evals/test-kampanyasi-alan-terimi.md",
+    "evals/bellek-adresleme-korunur.md",
+    "evals/hipotezi-desteklemek-korunur.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -494,6 +530,7 @@ for heading in (
     "**J. Zamansal ankraj:**",
     "**Zamansal ankrajı koru.**",
     "**Şimdiki zamanı eksik bırakma.**",
+    "**Sözcüksel kalkıyı denetle.**",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
@@ -746,6 +783,24 @@ eval_markers = {
     "evals/normatif-yasak-genis-zaman-korunur.md": ("Yönetmelik", "yalnızca ilgilinin açık rızasıyla", "idari para cezası", "cümle: 3",),
     "evals/karisik-zaman-readme.md": ("145 eval içerir", "en az dört bölüm gerektirir", "v0.4.1'de eklendi",),
     "evals/yerel-hata-genel-kural-ayrimi.md": ("Günlükteki bu hata", "Bu tür hatalar", "her zaman", "zaman aşımı",),
+    "evals/framework-kalkisi.md": ("bir çerçeve önerilmektedir", "Çerçeve kapsamında", "üç ölçütü", "çerçeve yığını: 0",),
+    "evals/campaign-kalkisi.md": ("doğrulama kampanyası başlattı", "240 test senaryosu", "12 hata kaydı",),
+    "evals/capture-kalkisi.md": ("yakalamaktadır", "doğrusal olmayan etkiyi", "Şekil 3",),
+    "evals/drive-kalkisi.md": ("yönlendirmektedir", "0,62 korelasyon", "Sıcaklık değişimi",),
+    "evals/enable-kalkisi.md": ("mümkün kılmaktadır", "olanak sağlamaktadır", "iki sensörün",),
+    "evals/address-kalkisi.md": ("problemini adreslemektedir", "gecikme riskini", "adreslemek gerekmektedir",),
+    "evals/provide-kalkisi.md": ("görünürlük sağlamaktadır", "iyileşme sağlamıştır", "6 saatten 4 saate", "hafif fiil: 0",),
+    "evals/deneyimlemek-kalkisi.md": ("performans kaybı deneyimlemiştir", "gecikme deneyimlemiştir", "%12",),
+    "evals/ortaya-koymak-yigini.md": ("ortaya koymaktadır", "Tablo 2", "düşük sıcaklıkta",),
+    "evals/elde-etmek-olcum.md": ("iyileşme elde edilmiştir", "512 MB", "410 MB", "%20",),
+    "evals/referans-cercevesi-korunur.md": ("eylemsiz referans çerçevesinde", "J2000", "cümle: 2",),
+    "evals/kuramsal-cerceve-korunur.md": ("kuramsal çerçevesi", "Kavramsal çerçeve", "planlı davranış kuramına",),
+    "evals/yazilim-cercevesi-korunur.md": ("Django framework", "ORM katmanı", "önbelleğe",),
+    "evals/reklam-kampanyasi-korunur.md": ("yaz kampanyasını", "üç mecrada", "%2,4", "%3,1",),
+    "evals/yardim-kampanyasi-korunur.md": ("Bağış kampanyası", "aşı kampanyasına", "1,2 milyon", "40 bin",),
+    "evals/test-kampanyasi-alan-terimi.md": ("Uçuş test kampanyası", "14 sortiden", "38 saat",),
+    "evals/bellek-adresleme-korunur.md": ("sayfalar hâlinde adresler", "Adresleme birimi", "16 bitlik",),
+    "evals/hipotezi-desteklemek-korunur.md": ("ikinci hipotezi destekliyor", "yeterli kanıt bulunamadı", "40 katılımcıyla",),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]
@@ -772,8 +827,8 @@ critical = (ROOT / "evals/critical-cases.txt").read_text(encoding="utf-8").split
 for name in critical:
     if not (ROOT / "evals" / f"{name}.md").is_file():
         fail(f"evals/critical-cases.txt names a missing case: {name}")
-if not 15 <= len(critical) <= 30:
-    fail("evals/critical-cases.txt must list 15-30 cases")
+if not 15 <= len(critical) <= 36:
+    fail("evals/critical-cases.txt must list 15-36 cases")
 missing_outputs = [p.stem for p in (ROOT / "evals").glob("*.md")
                    if p.name != "README.md" and not (ROOT / "evals/outputs" / f"{p.stem}.txt").is_file()]
 if missing_outputs:
@@ -782,8 +837,8 @@ if missing_outputs:
 for output_path in sorted((ROOT / "evals/outputs").glob("*.txt")):
     if not (ROOT / "evals" / f"{output_path.stem}.md").is_file():
         fail(f"Recorded output without an eval case: evals/outputs/{output_path.name}")
-if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 150:
-    fail("evals/outputs must keep at least one hundred and fifty recorded reference outputs")
+if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 170:
+    fail("evals/outputs must keep at least one hundred and seventy recorded reference outputs")
 
 SHOULD_REMAIN_CASES = (
     "evals/dogal-ve-korunur.md", "evals/gerekli-olan.md", "evals/gerekli-acisindan.md",
@@ -828,6 +883,14 @@ SHOULD_REMAIN_CASES = (
     "evals/gecmis-aliskanlik-korunur.md",
     "evals/genel-gereklilik-genis-zaman-korunur.md",
     "evals/normatif-yasak-genis-zaman-korunur.md",
+    "evals/referans-cercevesi-korunur.md",
+    "evals/kuramsal-cerceve-korunur.md",
+    "evals/yazilim-cercevesi-korunur.md",
+    "evals/reklam-kampanyasi-korunur.md",
+    "evals/yardim-kampanyasi-korunur.md",
+    "evals/test-kampanyasi-alan-terimi.md",
+    "evals/bellek-adresleme-korunur.md",
+    "evals/hipotezi-desteklemek-korunur.md",
 )
 locked = []
 for relative_path in EVAL_FILES:
