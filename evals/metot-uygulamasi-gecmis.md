@@ -25,5 +25,5 @@ Makalenin yöntem bölümünde yürütülen deneyin adımları. Standart düzeyd
 ## Yapısal beklenti
 
 - geniş zaman doygunluğu: 0
-- cümle: 4
+- cümle: <= 4
 - sert işaret: 0

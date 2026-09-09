@@ -27,7 +27,7 @@ REQUIRED_FILES = (
     "references/retorik-yapilar.md",
     "references/turkce-oruntuler.md",
     "references/turkce-ritim-ve-ceviri-golgesi.md",
-    "references/epistemik-mimari.md",
+    "references/kanit-ve-kesinlik.md",
     "references/esdizim-ve-istem.md",
     "references/metinsel-tutarlilik.md",
     "references/zamansal-ankraj-ve-rapor-kipi.md",
@@ -173,6 +173,11 @@ REQUIRED_FILES = (
     "evals/mistir-yigini-yapma.md",
     "evals/gecmis-genel-yasa-bozmasin.md",
     "evals/tetikleyici-iceren-sozcuk-korunur.md",
+    "evals/periyodik-takvim-genis-zaman-korunur.md",
+    "evals/gecmiste-surme-korunur.md",
+    "evals/once-tamamlanmis-olay-korunur.md",
+    "evals/gecmis-aliskanlik-korunur.md",
+    "evals/sirali-olayda-misti-yigini.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -322,6 +327,11 @@ EVAL_FILES = (
     "evals/mistir-yigini-yapma.md",
     "evals/gecmis-genel-yasa-bozmasin.md",
     "evals/tetikleyici-iceren-sozcuk-korunur.md",
+    "evals/periyodik-takvim-genis-zaman-korunur.md",
+    "evals/gecmiste-surme-korunur.md",
+    "evals/once-tamamlanmis-olay-korunur.md",
+    "evals/gecmis-aliskanlik-korunur.md",
+    "evals/sirali-olayda-misti-yigini.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -445,7 +455,7 @@ for heading in (
     "**Gölgeyi sözcükte değil ilişkide ara.**",
     "**Bilgi yapısı ve Türkçenin kendi kaynaklarıyla yeniden kur.**",
     "**Kesinliği bozma, aşırı Türkçeleştirme.**",
-    "## Epistemik mimari",
+    "## Kanıt ve kesinlik",
     "**Bilginin kaynağını düzenleyip yok etme.**",
     "**Aktörlüğü koru; edilgeni epistemik seçim olarak değerlendir.**",
     "**Çekince kanıttır, pekiştirici değildir.**",
@@ -458,7 +468,7 @@ for heading in (
     "Edilgenliği yalnızca aktör belli diye etkene çevirme",
     "**Bağlaç ilişki kuramaz.**",
     "**Gönderge, kapsam ve olumsuzluk yerinde kalır.**",
-    "**G. Epistemik mimari:**",
+    "**G. Kanıt ve kesinlik:**",
     "**H. Sözcük uyumu:**",
     "**I. Metinsel tutarlılık:**",
     "**J. Zamansal ankraj:**",
@@ -507,7 +517,7 @@ readme_requirements = (
     "retorik-yapilar.md",
     "yapisal-butunluk.md",
     "turkce-ritim-ve-ceviri-golgesi.md",
-    "epistemik-mimari.md",
+    "kanit-ve-kesinlik.md",
     "esdizim-ve-istem.md",
     "metinsel-tutarlilik.md",
     "zamansal-ankraj-ve-rapor-kipi.md",
@@ -680,7 +690,7 @@ eval_markers = {
     "evals/teknik-noktalama-korunur.md": ("0,2; 0,5 ve 0,8", "(bkz. Tablo 3)", "2025",),
     "evals/uzak-sinirlilik.md": ("%12", "12 istasyondan", "3 saatte", "yalnızca 30 °C",),
     "evals/ayni-iddia-yeni-rol.md": ("## Sonuçlar", "## Tartışma", "## Sonuç", "40 °C", "%11", "düşündürüyor", "önerilmektedir",),
-    "evals/ayni-iddia-hacim.md": ("Yani 40 °C", "göstermektedir", "üç kez", "cümle: 1",),
+    "evals/ayni-iddia-hacim.md": ("Yani 40 °C", "göstermektedir", "üç kez", "cümle: <= 1",),
     "evals/tutarli-metin-korunur.md": ("3 Eylül", "14.10", "14.35", "50 bağlantı", "120", "cümle: 3",),
     "evals/raporda-genis-zaman-yigini.md": ("12 Ağustos", "1.200", "%4", "%6", "Yalnızca", "geniş zaman doygunluğu: 0",),
     "evals/bu-calisma-inceler.md": ("Bu çalışma üç farklı modeli karşılaştırır", "2025", "800", "zamansal sürtünme: 0",),
@@ -700,6 +710,11 @@ eval_markers = {
     "evals/mistir-yigini-yapma.md": ("üç senaryo", "%7", "ikinci senaryoda", "karşılaştırılmıştır",),
     "evals/gecmis-genel-yasa-bozmasin.md": ("60 °C", "%3", "%11", "direnç artar", "malzemeden bağımsızdır",),
     "evals/tetikleyici-iceren-sozcuk-korunur.md": ("Güneşsiz", "eşsizlik teoremiyle", "Analog-dijital dönüştürücü", "dönüştürücüsünün", "40 W", "12 bit", "%78",),
+    "evals/periyodik-takvim-genis-zaman-korunur.md": ("15 Ekim", "her ayın ilk pazartesi", "02.00", "1 Ocak", "kendiliğinden yenilenir",),
+    "evals/gecmiste-surme-korunur.md": ("14 Mayıs", "03.12", "çalışıyordu", "henüz belirlenmedi",),
+    "evals/once-tamamlanmis-olay-korunur.md": ("kalibre edilmişti", "12 Ağustos", "0,3", "zaten",),
+    "evals/gecmis-aliskanlik-korunur.md": ("yapardı", "yalnızca başlangıçta", "belirtilmedi",),
+    "evals/sirali-olayda-misti-yigini.md": ("8 Ekim", "incelemişti", "raporlamıştı", "iki öneri", "cümle: <= 2",),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]
@@ -736,8 +751,8 @@ if missing_outputs:
 for output_path in sorted((ROOT / "evals/outputs").glob("*.txt")):
     if not (ROOT / "evals" / f"{output_path.stem}.md").is_file():
         fail(f"Recorded output without an eval case: evals/outputs/{output_path.name}")
-if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 120:
-    fail("evals/outputs must keep at least one hundred and twenty recorded reference outputs")
+if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 140:
+    fail("evals/outputs must keep at least one hundred and forty recorded reference outputs")
 
 SHOULD_REMAIN_CASES = (
     "evals/dogal-ve-korunur.md", "evals/gerekli-olan.md", "evals/gerekli-acisindan.md",
@@ -776,7 +791,21 @@ SHOULD_REMAIN_CASES = (
     "evals/tablo-sekil-zaman-korunur.md",
     "evals/gecmise-zorlama-yok.md",
     "evals/tetikleyici-iceren-sozcuk-korunur.md",
+    "evals/periyodik-takvim-genis-zaman-korunur.md",
+    "evals/gecmiste-surme-korunur.md",
+    "evals/once-tamamlanmis-olay-korunur.md",
+    "evals/gecmis-aliskanlik-korunur.md",
 )
+locked = []
+for relative_path in EVAL_FILES:
+    if relative_path in SHOULD_REMAIN_CASES:
+        continue  # korunur vakasında çıktı kaynağa eşittir; cümle sayısı sözleşmenin parçasıdır
+    if re.search(r"(?m)^- cümle: \d+\s*$", texts[ROOT / relative_path]):
+        locked.append(relative_path)
+if locked:
+    fail("Transform eval cases must not pin an exact sentence count (use '<='): "
+         + ", ".join(locked))
+
 for relative_path in SHOULD_REMAIN_CASES:
     # "Should remain" translationese cases record the source itself as the reference output.
     case_source = re.search(r"(?ms)^## Kaynak\s*\n(.*?)(?=^## (?:Talep|Korunması gerekenler|Kaçınılması gerekenler|Yapısal beklenti)\s*$)", texts[ROOT / relative_path])

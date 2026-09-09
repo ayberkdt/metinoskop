@@ -484,7 +484,13 @@ TOPIC_RESET_RE = re.compile(r"^bu (?:çalışmada|çalışma\b|raporda|belgede|b
 DASH_RE = re.compile(r"[—–]")
 TENSE_CLASSES = (
     ("mektedir", re.compile(r"m[ae]kt[ae](?:d[ıi]r)?$")),
+    # Geçmiş içinde zaman ilişkileri, yalın geçmişten önce sınanır: "-mıştı" başka
+    # bir geçmiş olaydan önceliği, "-yordu" geçmişte süren artalanı bildirir.
+    # ("-ardı" düzenli davranışı bildirir ama "sardı", "kardı" gibi yalın geçmiş
+    # biçimlerinden biçim bilgisiyle ayrılamadığı için sınıflandırılmaz.)
+    ("mıştı", re.compile(r"m[ıiuü]şt[ıi](?:m|k|n[ıi]z|lar|ler)?$")),
     ("miştir", re.compile(r"m[ıiuü]ş(?:t[ıi]r|lerdir|lardır)?$")),
+    ("yordu", re.compile(r"yordu(?:m|k|n|nuz|lar)?$")),
     ("yor", re.compile(r"yor(?:lar|du|um|uz|sunuz)?$")),
     ("dı", re.compile(r"[dt][ıiuü](?:m|k|n|lar|ler|nız|niz)?$")),
     # "-dır/-dir/-tır/-tir" is the copula, so an ambiguous high vowel after d/t is
@@ -1601,6 +1607,13 @@ def self_test() -> None:
         raise SystemExit("Öz sınama: -ar geniş zamanı koşaç sanıldı")
     if tense_class(Sentence(1, 1, "Grup büyüklüğü 410 kayıttır.")) is not None:
         raise SystemExit("Öz sınama: -tır koşacı geniş zaman sayıldı")
+    for text, expected in (("Basınç düşerken pompa hâlâ çalışıyordu.", "yordu"),
+                           ("İkinci test başlamadan önce sensör kalibre edilmişti.", "mıştı"),
+                           ("Analiz gerçekleştirilmiştir.", "miştir"),
+                           ("Model bu veriyle eğitiliyor.", "yor"),
+                           ("Deney 100 örnek üzerinde yürütüldü.", "dı")):
+        if tense_class(Sentence(1, 1, text)) != expected:
+            raise SystemExit(f"Öz sınama: geçmiş içi kip sınıfı hatalı ({expected}): {text!r}")
     report_tense = analyse(REPORT_TENSE_TEXT)
     checks = {f["check"] for f in report_tense["soylem"]}  # type: ignore[union-attr]
     for check in ("zamansal_surtunme", "genis_zaman_doygunlugu"):

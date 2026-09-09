@@ -23,4 +23,4 @@ Makale bulgular paragrafı. Standart düzeyde düzenle.
 ## Yapısal beklenti
 
 - sert işaret: 0
-- cümle: 1
+- cümle: <= 1

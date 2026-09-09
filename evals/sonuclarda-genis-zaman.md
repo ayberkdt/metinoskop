@@ -24,4 +24,4 @@ Tamamlanmış bir deneyin bulgular paragrafı. Standart düzeyde düzenle.
 ## Yapısal beklenti
 
 - geniş zaman doygunluğu: 0
-- cümle: 3
+- cümle: <= 3

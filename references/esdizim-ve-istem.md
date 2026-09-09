@@ -175,7 +175,7 @@ Kaynak yalnızca ilişki bildiriyorsa:
 
 > Yöntem daha düşük hatayla ilişkilidir.
 
-Doğallık kesinliği geçmez. "Daha doğrudan" fiil, kaynağın kurmadığı nedenselliği kuruyorsa yanlış fiildir; bkz. [Epistemik mimari › Gözlem, çıkarım, yorum](epistemik-mimari.md#gözlem-çıkarım-yorum).
+Doğallık kesinliği geçmez. "Daha doğrudan" fiil, kaynağın kurmadığı nedenselliği kuruyorsa yanlış fiildir; bkz. [Kanıt ve kesinlik › Gözlem, çıkarım, yorum](kanit-ve-kesinlik.md#gözlem-çıkarım-yorum).
 
 ## Genel fiil aşırı kullanımı
 

@@ -25,4 +25,4 @@ Bakım olay raporu. Standart düzeyde düzenle.
 ## Yapısal beklenti
 
 - zamansal sürtünme: 0
-- cümle: 4
+- cümle: <= 4

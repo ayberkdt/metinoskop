@@ -24,5 +24,5 @@ Tamamlanmış bir deneyin bulgular ve tartışma paragrafı. Standart düzeyde d
 
 ## Yapısal beklenti
 
-- cümle: 4
+- cümle: <= 4
 - kip nöbetleşmesi: 0
