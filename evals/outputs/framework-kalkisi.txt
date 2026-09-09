@@ -1,0 +1,1 @@
+Çalışmada hataları değerlendirmek için üç ölçütü bir araya getiren bir yöntem önerilmektedir. Her model bu yöntemle aynı veri kümesinde sınanmıştır.

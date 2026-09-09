@@ -1,0 +1,1 @@
+Rapor veri kaybı sorununu ele alıyor. Gecikme riskine karşı da önlem alınması gerekiyor.

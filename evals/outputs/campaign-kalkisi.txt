@@ -1,0 +1,1 @@
+Yazılım ekibi mart ayında doğrulama testlerine başladı. 240 test senaryosu çalıştırıldı ve sonunda 12 hata kaydı açıldı.

@@ -1,0 +1,1 @@
+Hata artışı sıcaklık değişimiyle ilişkili; iki değişken arasında 0,62 korelasyon ölçüldü.

@@ -83,6 +83,7 @@ EXPECTATION_KEYS = {
     "zamansal sürtünme": ("soylem_olculeri", "zamansal_surtunme"),
     "geniş zaman doygunluğu": ("soylem_olculeri", "genis_zaman_doygunlugu"),
     "geniş zaman katılığı": ("soylem_olculeri", "genis_zaman_katiligi"),
+    "sözcüksel kalkı": ("soylem_olculeri", "sozcuksel_kalki"),
 }
 
 

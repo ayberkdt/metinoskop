@@ -1,0 +1,1 @@
+Hesaplamalar Dünya merkezli eylemsiz referans çerçevesinde yapıldı. Yörünge ögeleri aynı çerçevede ifade edildi; dönüşüm için J2000 referans çerçevesi kullanıldı.

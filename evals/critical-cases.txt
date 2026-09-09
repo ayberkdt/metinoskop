@@ -28,3 +28,9 @@ repo-guncel-davranis-yor
 sonuc-guncel-yorum-yor
 genel-gereklilik-genis-zaman-korunur
 karisik-zaman-readme
+framework-kalkisi
+referans-cercevesi-korunur
+campaign-kalkisi
+reklam-kampanyasi-korunur
+address-kalkisi
+bellek-adresleme-korunur

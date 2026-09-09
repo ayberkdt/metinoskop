@@ -1,0 +1,1 @@
+Denetleyici belleği 16 bitlik sayfalar hâlinde adresler. Adresleme birimi sayfa sınırını aşan erişimi reddeder.
