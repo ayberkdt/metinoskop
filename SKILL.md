@@ -1,6 +1,6 @@
 ---
 name: metinoskop
-description: Türkçe metinleri anlamı, olguları, kesinlik düzeyini ve yazarın sesini koruyarak doğallaştırır; yapay zekâ ya da çeviri kaynaklı retorik, cümle, paragraf ve belge örüntülerini, kaynak dil gölgesini, epistemik statü kaymalarını, eşdizim ve istem sorunlarını ve metinsel tutarsızlığı düzenler. Makale, rapor, teknik belge, e-posta, tanıtım metni, deneme veya Türkçeye çevrilmiş metin için "insanileştir", "doğal Türkçe yap", "AI gibi görünmesin", "dolguyu çıkar", "parçalanmayı gider", "çeviri gibi durmasın", "kesinlik düzeyini bozma" ya da "üslubuma uyarla" dendiğinde kullan.
+description: Türkçe metinleri anlamı, olguları, kesinlik düzeyini ve yazarın sesini koruyarak doğallaştırır; yapay zekâ ya da çeviri kaynaklı retorik, cümle, paragraf ve belge örüntülerini, çeviri kokusunu, epistemik statü kaymalarını, eşdizim ve istem sorunlarını ve metinsel tutarsızlığı düzenler. Makale, rapor, teknik belge, e-posta, tanıtım metni, deneme veya Türkçeye çevrilmiş metin için "insanileştir", "doğal Türkçe yap", "AI gibi görünmesin", "dolguyu çıkar", "parçalanmayı gider", "çeviri gibi durmasın", "kesinlik düzeyini bozma" ya da "üslubuma uyarla" dendiğinde kullan.
 ---
 
 # Metinoskop
@@ -55,7 +55,7 @@ Kullanıcının istediği kapsamı aşma. Kullanıcı yalnızca belirli bir soru
 
 **Hafif.** Belirgin klişeleri, sohbet botu kalıntılarını, tiyatral vurguyu ve gereksiz dolguyu temizle. Önerme taşımayan cümleyi yalnızca açık dolgu, bölüm duyurusu, üretilmiş önem veya sohbet kalıntısıysa çıkar. Cümle yapısını, paragraf sırasını, başlıkları ve kelime tercihlerini mümkün olduğunca koru.
 
-**Standart.** Cümleleri ve paragraf içi akışı gerektiğinde yeniden kur. Mekanik ritmi, gereksiz resmiyeti, belirsiz göndergeleri, çeviri kokusunu ve kaynak dil gölgesini düzelt. Sıfır bilgi cümlelerini, işlev tekrarını, savunmacı açıklamayı, üretilmiş önem ve karşıtlığı, yol haritası dilini, kalıp giriş ve sonuç cümlelerini, yapay gerilimi ve uzun çerçeve ifadelerini çıkar. Erken bölünmüş paragrafları birleştir; mevcut başlık hiyerarşisini koru. Kullanıcı bir düzey belirtmediyse bunu kullan.
+**Standart.** Cümleleri ve paragraf içi akışı gerektiğinde yeniden kur. Mekanik ritmi, gereksiz resmiyeti, belirsiz göndergeleri, çeviri kokusunu düzelt. Sıfır bilgi cümlelerini, işlev tekrarını, savunmacı açıklamayı, üretilmiş önem ve karşıtlığı, yol haritası dilini, kalıp giriş ve sonuç cümlelerini, yapay gerilimi ve uzun çerçeve ifadelerini çıkar. Erken bölünmüş paragrafları birleştir; mevcut başlık hiyerarşisini koru. Kullanıcı bir düzey belirtmediyse bunu kullan.
 
 **Derin.** Bilgi sırasını, paragraf yapısını ve bölüm yapısını kavramsal sınırlara göre yeniden düzenle. Hak edilmemiş başlıkları birleştir veya kaldır, tekrarları birleştir, ayrılmış kanıtı iddiasına yaklaştır, metin boyunca ton ve ritim tutarlılığı kur. Olguları, ayrıntıları, kesinlik düzeyini, yazar tavrını ve dışarıdan dayatılan yapıyı koru.
 
@@ -198,7 +198,7 @@ Yapı, kavramsal sınırları izler; modelin her şeyi düzenleme isteğini değ
 
 **Sert bastırma.** Alıntı, tür, kaynak anlamı veya açık kullanıcı tercihi gerektirmedikçe çıkar: sohbet botu nezaketi, boş bölüm duyurusu ve sarmalayıcısı, genel mini sonuç, önerme taşımayan dolgu, üretilmiş önem, aciliyet, gelecek çalışma ve savunmacı açıklama, slogan gibi yeniden ifade, aynı iddianın tekrarlanan açımlamaları, yapay gerilim, paragraf sonu askısı, altında yalnızca ilk cümlesini yineleyen içerik bulunan başlık.
 
-**Bağlama duyarlı yüksek risk.** İncele ama otomatik çıkarma: `ancak`, `bu nedenle`, `önemli`, `göstermektedir`, edilgen çatı, `-maktadır`, üçlü listeler, retorik soru, kısa ve uzun paragraflar, alt başlıklar, madde işaretleri, çapraz göndermeler, akademik ihtiyat, açık yöntem gerekçesi; `bir`, `olan`, `ve`, `açısından`, `sahip olmak`, `bulunmaktadır`, açık özne tekrarı ve söylem belirteci gibi çeviri gölgesi işaretleri; `olabilir`, `düşünülebilir` gibi çekinceler. Bir sözcük veya yapı sırf dil modelleri sık kullanıyor ya da İngilizcede de var diye yasaklanmaz.
+**Bağlama duyarlı yüksek risk.** İncele ama otomatik çıkarma: `ancak`, `bu nedenle`, `önemli`, `göstermektedir`, edilgen çatı, `-maktadır`, üçlü listeler, retorik soru, kısa ve uzun paragraflar, alt başlıklar, madde işaretleri, çapraz göndermeler, akademik ihtiyat, açık yöntem gerekçesi; `bir`, `olan`, `ve`, `açısından`, `sahip olmak`, `bulunmaktadır`, açık özne tekrarı ve söylem belirteci gibi çeviri kokusu işaretleri; `olabilir`, `düşünülebilir` gibi çekinceler. Bir sözcük veya yapı sırf dil modelleri sık kullanıyor ya da İngilizcede de var diye yasaklanmaz.
 
 ## Akademik ve teknik metin
 
@@ -220,11 +220,11 @@ Bu yapıları otomatik olarak silme; içerik taşımadan vurgu, geçiş, otorite
 - Aynı doğru terimi sırf tekrar olmasın diye rastgele eş anlamlılarla değiştirme.
 - Metni aşırı sıkıştırıp telgraf diline dönüştürme.
 
-## Kaynak dil gölgesi ve Türkçe ritim
+## Çeviri kokusu ve Türkçe ritim
 
-Dil bilgisi bakımından doğru bir Türkçe cümle yapı olarak hâlâ İngilizce olabilir: bilgi yapısı, özne kullanımı, yan cümle mimarisi, niteleme yeri, bağlaç seçimi ve söylem bağlantısı İngilizceden miras kalmışsa metin çeviri gibi okunur. Hedef, güçlü bir Türkçe yazarın doğrudan Türkçe düşünerek kurabileceği düzyazıdır. Katalog, zorlu örnekler ve karşı örnekler [Türkçe ritim ve kaynak dil gölgesi](references/turkce-ritim-ve-ceviri-golgesi.md) dosyasındadır.
+Dil bilgisi bakımından doğru bir Türkçe cümle yapı olarak hâlâ İngilizce olabilir: bilgi yapısı, özne kullanımı, yan cümle mimarisi, niteleme yeri, bağlaç seçimi ve söylem bağlantısı İngilizceden miras kalmışsa metin çeviri gibi okunur. Hedef, güçlü bir Türkçe yazarın doğrudan Türkçe düşünerek kurabileceği düzyazıdır. Katalog, zorlu örnekler ve karşı örnekler [Türkçe ritim ve çeviri kokusu](references/turkce-ritim-ve-ceviri-kokusu.md) dosyasındadır.
 
-**Gölgeyi sözcükte değil ilişkide ara.** Bir cümlenin Türkçe biçimi en iyi altındaki bir İngilizce cümle yeniden kurularak açıklanabiliyorsa gölge vardır; bunu işlev testi olarak kullan, her pasaj için gizli İngilizce cümleyi kurmaya çalışma. En sık işaretler: ardışık cümlelerde yinelenen açık özne; `bu sonuç`, `bu durum` diye yeniden öznelenen önceki önerme; `ve`, `ancak`, `sonra` ile dizilmiş bağımsız çekimli cümleler; her cümle başında söylem belirteci; `sahip olmak`, `bulunmaktadır`, `rol oynamak` gibi hafif yüklemler; `açısından`, `kapsamında`, `noktasında` çerçeve yığını; `olan ... olan` zinciri; her adın önünde tanımlık `bir`. Çeviri gibi duran cümlenin sözcüklerini bir kez daha çevirme; taşıdığı anlam ilişkisini bul ve onu yeniden kur. Düzenlemeden sonra parça, bağlaç ve özne sayısı aynıysa büyük olasılıkla yalnızca sözcük değiştirdin.
+**Kokuyu sözcükte değil ilişkide ara.** Bir cümlenin Türkçe biçimi en iyi altındaki bir İngilizce cümle yeniden kurularak açıklanabiliyorsa koku vardır; bunu işlev testi olarak kullan, her pasaj için gizli İngilizce cümleyi kurmaya çalışma. En sık işaretler: ardışık cümlelerde yinelenen açık özne; `bu sonuç`, `bu durum` diye yeniden öznelenen önceki önerme; `ve`, `ancak`, `sonra` ile dizilmiş bağımsız çekimli cümleler; her cümle başında söylem belirteci; `sahip olmak`, `bulunmaktadır`, `rol oynamak` gibi hafif yüklemler; `açısından`, `kapsamında`, `noktasında` çerçeve yığını; `olan ... olan` zinciri; her adın önünde tanımlık `bir`. Çeviri gibi duran cümlenin sözcüklerini bir kez daha çevirme; taşıdığı anlam ilişkisini bul ve onu yeniden kur. Düzenlemeden sonra parça, bağlaç ve özne sayısı aynıysa büyük olasılıkla yalnızca sözcük değiştirdin.
 
 **Bilgi yapısı ve Türkçenin kendi kaynaklarıyla yeniden kur.** Sözcük sırasını konu, odak, verilmiş ve yeni bilgi belirler, mekanik özne–nesne–yüklem şablonu değil. Şüpheli pasajda sor: özne düşürülebilir mi (tek aktör, kişi eki geri kazandırıyor); eksilti yinelemeyi kaldırabilir mi; ilişkiyi adlandırıp (paralel, sıralı, neden, koşul, eş zaman, araç) `-ip`, `-ince`, `-dığından`, `-ken`, `-erek` kodlayabilir mi; ortaç adı önden niteleyebilir mi; iyelik `sahip olmak`, `var/yok` `bulunmaktadır`, hâl eki çerçeve öbeği yerine geçebilir mi; `de/da` eklemeyi belirteçsiz taşıyabilir mi? Şüpheli cümle için en az iki yapısal olarak farklı alternatif üret ve kaynak anlamını, vurguyu ve türü en iyi koruyanı seç. Özne iki aktör arasında belirsizlik doğuracaksa, paragraf ya da tablodan sonra dönüyorsa ya da karşıtlık kuruyorsa açık kalır; belirteç kaldırılınca ilişki belirsizleşiyorsa kalır.
 
@@ -244,9 +244,9 @@ Olguları değişmeyen bir cümle düzenlemeden sonra epistemik olarak yanlışl
 
 **Zamansal ankrajı koru.** Tamamlanmış bir çalışma, deney, test ya da süreç anlatılıyorsa `inceler / kullanır / uygular` gibi zamansız-genel kipleri sırf akademik göründükleri için kullanma; yapılan işi doğal olarak `incelendi / kullanıldı / uygulandı` ekseninde anlat. Her pasajda baskın zamansal ankrajı belirle: tamamlanmış çalışma olayı, genel davranış, mevcut durum, belge içi gönderme, plan. Açık geçmiş tarih, tamamlanmış örneklem ya da `bu çalışmada` çerçevesiyle geniş zamanlı yüklem yan yana geldiğinde zamansal sürtünme vardır. Ancak algoritmanın genel davranışı, bilimsel genel gerçek, ürün belirtimi, yeniden kullanılabilir prosedür veya belgenin güncel işlevi gerçekten zamansızsa geniş zamanı koru; tek gözlemi geniş zamana çevirip genelleştirme, genel ilişkiyi geçmişe çevirip tek olaya indirme. Düzeltmeyi `yapıldı / edildi` zincirine ya da `-miştir` doygunluğuna dönüştürme; tekdüzeliği kiple değil sözdizimiyle çöz. Geçmişin kendi içindeki ilişkileri düzleştirme: `-yordu` artalanı, `-mıştı` daha önce tamamlanmış olmayı, `-ardı` düzenli davranışı bildirir; kaynak bu ilişkiyi kurmuyorsa da bu ekleri uydurma. Ayrıntı için [Zamansal ankraj ve rapor kipi](references/zamansal-ankraj-ve-rapor-kipi.md).
 
-## Sözcük uyumu: eşdizim ve istem
+## Sözcük birleşimleri
 
-Bir sözcük tek başına doğru, birleşimde yanlış olabilir; dil bilgisi doğru ve yapısı Türkçe cümle, sözcükleri güçlü Türkçe düzyazının birleştirdiği gibi birleştirmiyorsa olası Türkçedir, doğal Türkçe değil. Katalog ve karşı örnekler [Eşdizim ve istem](references/esdizim-ve-istem.md) dosyasındadır.
+Bir sözcük tek başına doğru, birleşimde yanlış olabilir; dil bilgisi doğru ve yapısı Türkçe cümle, sözcükleri güçlü Türkçe düzyazının birleştirdiği gibi birleştirmiyorsa olası Türkçedir, doğal Türkçe değil. Katalog ve karşı örnekler [Sözcük birleşimleri](references/sozcuk-birlesimleri.md) dosyasındadır.
 
 **Eşdizim ve istem denetimi.** Şüpheli öbekte sor: bu ad bu fiille normalde kullanılır mı; fiil tümlecini doğru hâlde mi alıyor; İngilizce edat harfiyen bir ilgeç mi üretmiş (`X hakkında odaklanmak` → `X'e odaklanmak`); hafif fiil (`değerlendirme gerçekleştirmek`, `iyileştirme sağlamak`) daha yalın yüklemi mi gizliyor; genel fiil (`göstermektedir`, `sağlamaktadır`) kaynakta zaten bulunan kesin ilişkiyi mi örtüyor; niteleyici (`güçlü biçimde azaltmak`) ölçülebilir mi? Anlam değişmiyorsa alışılmış eşleşmeyi seç; hâl değişimi ilişkiyi değiştirebilir ("gürültüden etkilenmez" ile "gürültüyü etkilemez" iki ayrı önermedir). Ad gerçek bir süreç ya da prosedürse ("risk değerlendirmesi yapmak") bırak. Eşdizim ile klişeyi ayır: eşdizim geçişi "yerli ve kesin mi", retorik geçişi "boş mu" diye sorar.
 
@@ -290,22 +290,22 @@ Rapor düzenlemesinden sonra bulgu–yorum–öneri sınırlarını, bölüm iç
 
 **1. Envanter çıkar.** Metnin türünü, amacını, muhatabını, yapısal ölçeğini, müdahale düzeyini ve korunacak unsurları belirle. Sayı, tarih, özel ad, alıntı, kaynak işareti, kapsam belirleyicisi, terim, sembol, bölüm numarası, temel iddiaları ve her iddianın epistemik statüsünü zihinsel bir kontrol listesine al.
 
-**2. Sorun kümelerini bul.** En baskın sorunları belirle: kalıp ve ritim; retorik dolgu (önem, savunma, tekrar, yol haritası, kalıp giriş ve sonuç); yapısal parçalanma; kaynak dil gölgesi; epistemik kayma; eşdizim ve istem; tutarlılık. Tek bir işaretten "AI metni" veya "çeviri" sonucu çıkarma.
+**2. Sorun kümelerini bul.** En baskın sorunları belirle: kalıp ve ritim; retorik dolgu (önem, savunma, tekrar, yol haritası, kalıp giriş ve sonuç); yapısal parçalanma; çeviri kokusu; epistemik kayma; eşdizim ve istem; tutarlılık. Tek bir işaretten "AI metni" veya "çeviri" sonucu çıkarma.
 
 **3. Düzenle.** Seçilen müdahale düzeyinde düzenle. Komşu cümleleri ve komşu bölümleri birlikte değerlendir; bir cümledeki değişiklik sonraki cümlenin öznesini, zamanını veya mantıksal bağını, bir bölüm birleştirmesi göndermeleri ve numaraları bozmasın. Raporlarda bölümün işlevini ve bulgu–yorum–öneri sınırını koru.
 
 **4. Kaynak karşılaştırması yap.** Son metindeki her sayı, tarih, özellik, sonuç, nedensellik, karşılaştırma, olumsuzluk, koşul, istisna, nicelik sınırı, terim, gösterim ve kişisel ayrıntının kaynakta karşılığını bul; her iddianın kaynağı, statüsü ve kesinlik düzeyi aynı mı? Karşılığı yoksa çıkar veya kaynak metnin izin verdiği kesinlik düzeyine döndür.
 
-**5. Yapay düzyazı, yapı, çeviri gölgesi, kanıt, sözcük ve tutarlılık denetimi yap.** Metni teslim etmeden önce sessizce dokuz geçiş yap:
+**5. Yapay düzyazı, yapı, çeviri kokusu, kanıt, sözcük ve tutarlılık denetimi yap.** Metni teslim etmeden önce sessizce dokuz geçiş yap:
 
 - **A. Kalıp:** klişe, reklam dili, tiyatral çerçeve, sohbet botu kalıntısı, belirsiz otorite, çeviri kokusu.
 - **B. Cümle:** her cümle için "bunu silersem hangi bilgi kaybolur?"; gereksiz önem, açık olanın açıklaması, sahte karşıtlık, savunmacı gerekçe, soyut açımlama, yol haritası dili, uzun çerçeve.
 - **C. Paragraf:** farklı önerme sayısı, mini sonuç, döngüsel açıklama, zorlama denge, erken bölünme, tutarlı hareket.
 - **D. Belge:** tekrarlanan giriş ve sonuçlar, tek biçimli paragraf mimarisi, aynı gerekçenin tekrarı, yazarın sesini silen türdeş cila.
 - **E. Yapı:** başlık sayısı ve derinliği, tek paragraflık bölümler, kopmuş yakınlık, çapraz gönderme sıklığı, yapay gerilim, gereksiz liste, mini giriş-sonuç; yapısal sınırlar kavramsal sınırlardan sık mı?
-- **F. Çeviri gölgesi:** yinelenen açık özne ve `bu + ad`; çekimli cümle zinciri ve fiilimsi dengesi; art niteleme ve `olan` zinciri; çerçeve yığını; `sahip olmak` ve `bulunmaktadır`; konu–odak sırası; yerli kaynak kullanımı; aşırı düzeltme.
+- **F. Çeviri kokusu:** yinelenen açık özne ve `bu + ad`; çekimli cümle zinciri ve fiilimsi dengesi; art niteleme ve `olan` zinciri; çerçeve yığını; `sahip olmak` ve `bulunmaktadır`; konu–odak sırası; yerli kaynak kullanımı; aşırı düzeltme.
 - **G. Kanıt ve kesinlik:** her iddianın kaynağı ve statüsü; gözlem–çıkarım–olgu–nedensellik düzeyi; edilgen–etken dönüşümü ve aktör; atıf mesafesi; çekince–pekiştirici dengesi; kip bakış açısı; bölümler arası kesinlik; öneri–karar–uygulama; "gözlenmedi" ile "yoktur".
-- **H. Sözcük uyumu:** eşdizim; hâl ve tümleç; ilgeç gölgesi; hafif ve genel fiil; eş anlamlı kayması; varlık adlandırma; seyrek ama geçerli birleşim.
+- **H. Sözcük uyumu:** eşdizim; hâl ve tümleç; edat izi; hafif ve genel fiil; eş anlamlı kayması; varlık adlandırma; seyrek ama geçerli birleşim.
 - **I. Metinsel tutarlılık:** cümleler arası devir; olgu yığını; bağlaç geçerliliği; gönderge mesafesi; kapsam ve olumsuzluk bağlanması; kayıt; noktalama; iddia–dayanak yakınlığı.
 - **J. Zamansal ankraj:** pasajın baskın ankrajı; her yüklemin olay statüsü; zamansal sürtünme ve genel kip doygunluğu; kip değişiminin önermeyi genelleştirip daraltmadığı; geçmişe ya da `-miştir` biçimine zorlama.
 
@@ -319,10 +319,10 @@ Rapor düzenlemesinden sonra bulgu–yorum–öneri sınırlarını, bölüm iç
 - Cümleler doğru olduğu hâlde metin yapay okunuyorsa; önem cümleleri, savunmacı açıklama, tekrar döngüleri, yol haritası, kalıp giriş ve sonuç, soyut yüklem veya tek biçimli paragraf mimarisi varsa [Retorik yapılar](references/retorik-yapilar.md).
 - Metin çok başlıklı, kısa paragraflı, sık çapraz göndermeli veya yapay gerilimliyse; bölümler birleştirilecek ya da korunacaksa [Yapısal bütünlük](references/yapisal-butunluk.md).
 - Paragraf kopuksa, göndergeler belirsizse veya okuma akışı takılıyorsa [Akıcı Türkçe](references/akicilik.md).
-- Metin çeviri gibi okunuyorsa; açık özne, `bu sonuç`, `ve` zinciri, `sahip olmak`, `olan` zinciri, çerçeve yığını, fazla `bir` ya da uzak yüklem ritmi varsa [Türkçe ritim ve kaynak dil gölgesi](references/turkce-ritim-ve-ceviri-golgesi.md).
+- Metin çeviri gibi okunuyorsa; açık özne, `bu sonuç`, `ve` zinciri, `sahip olmak`, `olan` zinciri, çerçeve yığını, fazla `bir` ya da uzak yüklem ritmi varsa [Türkçe ritim ve çeviri kokusu](references/turkce-ritim-ve-ceviri-kokusu.md).
 - Aktarım, çıkarım, çekince, pekiştirici, edilgen çatı, kip değişimi, öneri–karar–uygulama statüsü ya da bölümler arası kesinlik söz konusuysa [Kanıt ve kesinlik](references/kanit-ve-kesinlik.md).
 - Tamamlanmış iş zamansız-genel kiple anlatılıyorsa; `bu çalışma inceler` ritmi, tarihli olayda geniş zaman, yöntem tanımı ile uygulama karışması ya da geçmişe zorlama varsa [Zamansal ankraj ve rapor kipi](references/zamansal-ankraj-ve-rapor-kipi.md).
-- Sözcükler tuhaf birleşiyorsa; hafif fiil, yanlış hâl, edat gölgesi, eş anlamlı kayması ya da terim kararsızlığı varsa [Eşdizim ve istem](references/esdizim-ve-istem.md).
+- Sözcükler tuhaf birleşiyorsa; hafif fiil, yanlış hâl, edat izi, eş anlamlı kayması ya da terim kararsızlığı varsa [Sözcük birleşimleri](references/sozcuk-birlesimleri.md).
 - Paragraflar iyi olduğu hâlde metin bir düşünceyi geliştirmiyorsa; olgu yığını, desteksiz bağlaç, uzak gönderge, kapsam ya da olumsuzluk kayması, kayıt kayması ya da noktalama yükü varsa [Metinsel tutarlılık](references/metinsel-tutarlilik.md).
 - Metin rapor, inceleme notu veya yönetici özeti ise [Rapor yazımı](references/rapor-yazimi.md).
 - Kullanıcı açıkça temel bir kavrama giriş yazılmasını istiyorsa [Kavramsal girişler](references/kavramsal-girisler.md).

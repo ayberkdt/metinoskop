@@ -26,9 +26,9 @@ REQUIRED_FILES = (
     "references/rapor-yazimi.md",
     "references/retorik-yapilar.md",
     "references/turkce-oruntuler.md",
-    "references/turkce-ritim-ve-ceviri-golgesi.md",
+    "references/turkce-ritim-ve-ceviri-kokusu.md",
     "references/kanit-ve-kesinlik.md",
-    "references/esdizim-ve-istem.md",
+    "references/sozcuk-birlesimleri.md",
     "references/metinsel-tutarlilik.md",
     "references/zamansal-ankraj-ve-rapor-kipi.md",
     "references/yapisal-butunluk.md",
@@ -448,11 +448,11 @@ for heading in (
     "Görsel parçalanmayı açıklık sanma",
     "## Sertlik düzeyleri",
     "## Akademik ve teknik metin",
-    "**5. Yapay düzyazı, yapı, çeviri gölgesi, kanıt, sözcük ve tutarlılık denetimi yap.**",
+    "**5. Yapay düzyazı, yapı, çeviri kokusu, kanıt, sözcük ve tutarlılık denetimi yap.**",
     "**E. Yapı:**",
-    "**F. Çeviri gölgesi:**",
-    "## Kaynak dil gölgesi ve Türkçe ritim",
-    "**Gölgeyi sözcükte değil ilişkide ara.**",
+    "**F. Çeviri kokusu:**",
+    "## Çeviri kokusu ve Türkçe ritim",
+    "**Kokuyu sözcükte değil ilişkide ara.**",
     "**Bilgi yapısı ve Türkçenin kendi kaynaklarıyla yeniden kur.**",
     "**Kesinliği bozma, aşırı Türkçeleştirme.**",
     "## Kanıt ve kesinlik",
@@ -460,7 +460,7 @@ for heading in (
     "**Aktörlüğü koru; edilgeni epistemik seçim olarak değerlendir.**",
     "**Çekince kanıttır, pekiştirici değildir.**",
     "**Kip ve statü zincirini ilerletme.**",
-    "## Sözcük uyumu: eşdizim ve istem",
+    "## Sözcük birleşimleri",
     "**Eşdizim ve istem denetimi.**",
     "**Sözcük kimliğini koru.**",
     "## Metinsel tutarlılık ve konu ilerleyişi",
@@ -516,9 +516,9 @@ readme_requirements = (
     "scripts/eval-suite.py",
     "retorik-yapilar.md",
     "yapisal-butunluk.md",
-    "turkce-ritim-ve-ceviri-golgesi.md",
+    "turkce-ritim-ve-ceviri-kokusu.md",
     "kanit-ve-kesinlik.md",
-    "esdizim-ve-istem.md",
+    "sozcuk-birlesimleri.md",
     "metinsel-tutarlilik.md",
     "zamansal-ankraj-ve-rapor-kipi.md",
 )
@@ -554,7 +554,7 @@ if "## [0.1.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.1.0")
 
 evals_readme = texts[ROOT / "evals/README.md"]
-for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri gölgesi", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk", "serbest değişmezler", "behavioral-regression.py", "gold", "zamansal ankraj"):
+for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri kokusu", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk", "serbest değişmezler", "behavioral-regression.py", "gold", "zamansal ankraj"):
     if requirement not in evals_readme.casefold():
         fail(f"evals/README.md must mention review axis: {requirement}")
 

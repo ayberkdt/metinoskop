@@ -385,7 +385,7 @@ Altı cümleden ikisi kaldı. "Ölçülen üç sıcaklıkta hata arttı" biçimi
 
 ## Soyut yüklem sisi
 
-Bu bölüm yüklemin boşluğunu sorar; yüklemin sözcük uyumunu (hafif fiil, eşdizim, fiil istemi, genel fiilin gizlediği kesin ilişki) [Eşdizim ve istem](esdizim-ve-istem.md) dosyası ele alır. Somut ilişkiyi yazarken kanıt düzeyini aşmamak için [Kanıt ve kesinlik › Gözlem, çıkarım, yorum](kanit-ve-kesinlik.md#gözlem-çıkarım-yorum) bölümüne bak.
+Bu bölüm yüklemin boşluğunu sorar; yüklemin sözcük uyumunu (hafif fiil, eşdizim, fiil istemi, genel fiilin gizlediği kesin ilişki) [Sözcük birleşimleri](sozcuk-birlesimleri.md) dosyası ele alır. Somut ilişkiyi yazarken kanıt düzeyini aşmamak için [Kanıt ve kesinlik › Gözlem, çıkarım, yorum](kanit-ve-kesinlik.md#gözlem-çıkarım-yorum) bölümüne bak.
 
 Aşağıdaki yüklemler tek tek yasak değildir. Sorun, somut ilişkinin yerine geçmeleridir. Her birinde "bu yüklem hangi ilişkiyi gizliyor?" diye sor.
 
@@ -409,7 +409,7 @@ Aşağıdaki yüklemler tek tek yasak değildir. Sorun, somut ilişkinin yerine 
 
 > Sinyal kaybı 10 metrede 0,8 dB, 50 metrede 4,1 dB olarak ölçülmüştür. Ekip, 30 metreyi aşan hatlarda tekrarlayıcı kullanılmasını önermektedir.
 
-Ölçüm ilişkiyi zaten gösteriyor; "belirleyici rol" ve "ışık tutmak" yüklemleri ölçümün soyut gölgesidir. Öneri kaynakta olduğu için öneri statüsüyle kalır. Metre başına kayıp gibi türetilmiş bir sayı eklenmez.
+Ölçüm ilişkiyi zaten gösteriyor; "belirleyici rol" ve "ışık tutmak" yüklemleri ölçümün soyut kokusudur. Öneri kaynakta olduğu için öneri statüsüyle kalır. Metre başına kayıp gibi türetilmiş bir sayı eklenmez.
 
 ## Boş soyut özne
 
@@ -431,7 +431,7 @@ Tekrarlanan `bu durum`, `bu yaklaşım`, `bu yapı`, `bu süreç`, `bu çerçeve
 
 İkinci cümle ölçümü soyut adla yeniden anlatır; üçüncü cümlenin öznesi kaynakta hiçbir yaklaşıma karşılık gelmez.
 
-Boş özne dolgu taşımıyor, yalnızca önceki önermeyi İngilizce "this result / this finding" alışkanlığıyla yeniden paketliyorsa sorun retorik değil çeviri gölgesidir; paketi çözmek için [Türkçe ritim ve kaynak dil gölgesi › Gösterme sıfatı ve söylem adı paketi](turkce-ritim-ve-ceviri-golgesi.md#gösterme-sıfatı-ve-söylem-adı-paketi) bölümüne bak.
+Boş özne dolgu taşımıyor, yalnızca önceki önermeyi İngilizce "this result / this finding" alışkanlığıyla yeniden paketliyorsa sorun retorik değil çeviri kokusudur; paketi çözmek için [Türkçe ritim ve çeviri kokusu › Gösterme sıfatı ve söylem adı paketi](turkce-ritim-ve-ceviri-kokusu.md#gösterme-sıfatı-ve-söylem-adı-paketi) bölümüne bak.
 
 ## Açık olanı açıklama
 

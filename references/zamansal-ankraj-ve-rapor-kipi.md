@@ -93,7 +93,7 @@ Bu, "çalışma"nın alışkanlık gereği yaptığı işlerin betimlemesi gibi 
 
 İki tanı sorusu yardımcı olur.
 
-**Kılavuz testi.** Bu cümle rapordan çıkarılıp bir kullanım kılavuzuna ya da algoritma belgesine konsa yine tam yerinde durur mu? `Sistem veriyi okur, filtreyi uygular ve çıktıyı kaydeder` doğal olarak sistem belgesi gibi okunur. Kastedilen "bu deneyde bu işlemler yapıldı" ise rapor `Veri okundu, filtre uygulandı ve çıktı kaydedildi` biçimini ister. Buna **kılavuz gölgesi** adını ver. Kanıt değil, editoryal sezgiseldir.
+**Kılavuz testi.** Bu cümle rapordan çıkarılıp bir kullanım kılavuzuna ya da algoritma belgesine konsa yine tam yerinde durur mu? `Sistem veriyi okur, filtreyi uygular ve çıktıyı kaydeder` doğal olarak sistem belgesi gibi okunur. Kastedilen "bu deneyde bu işlemler yapıldı" ise rapor `Veri okundu, filtre uygulandı ve çıktı kaydedildi` biçimini ister. Buna **kılavuz kokusu** adını ver. Kanıt değil, editoryal sezgiseldir.
 
 **Tamamlanmış iş testi.** Bir raporda geniş zamanlı yüklemi korumadan önce sor: (1) bu olay gerçekten oldu mu; (2) metin o oluşu mu anlatıyor; (3) cümle bu çalışmaya, deneye, döneme, örnekleme veya kampanyaya bağlı mı; (4) önerme bu işin dışında genel bir betimleme olarak da doğru kalır mıydı? İlk üçü "evet" ise tamamlanmış görünüş genellikle daha uygundur.
 

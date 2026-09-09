@@ -1130,7 +1130,7 @@ def analyse(text: str) -> dict[str, object]:
         "density_per_100": density,
         "structure_summary": structure_summary(doc, hits),
         "structure": structural_checks(doc, hits),
-        "ceviri_golgesi": translationese_summary(doc, hits),
+        "ceviri_kokusu": translationese_summary(doc, hits),
         "ceviri": translationese_checks(doc, hits),
         "soylem_olculeri": discourse_summary(doc, hits),
         "soylem": discourse_checks(doc, hits),
@@ -1179,8 +1179,8 @@ def compare(source_report: dict[str, object], output_report: dict[str, object]) 
     source_checks = {s["check"] for s in source_report["structure"]}  # type: ignore[union-attr]
     new_structure = [f["text"] for f in output_report["structure"]  # type: ignore[union-attr]
                      if f["check"] not in source_checks]
-    src_tr = source_report["ceviri_golgesi"]
-    out_tr = output_report["ceviri_golgesi"]
+    src_tr = source_report["ceviri_kokusu"]
+    out_tr = output_report["ceviri_kokusu"]
     translationese_delta = {
         key: {"kaynak": src_tr[key], "çıktı": out_tr[key]}  # type: ignore[index]
         for key in TRANSLATIONESE_LABELS
@@ -1261,12 +1261,12 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
         for finding in structure:
             print(f"  - {finding['text']}")
 
-    translationese: dict[str, object] = report["ceviri_golgesi"]  # type: ignore[assignment]
-    print("\nÇeviri gölgesi ölçüleri: " + " | ".join(
+    translationese: dict[str, object] = report["ceviri_kokusu"]  # type: ignore[assignment]
+    print("\nÇeviri kokusu ölçüleri: " + " | ".join(
         f"{TRANSLATIONESE_LABELS[k]}: {v}" for k, v in translationese.items()))
     ceviri: list[dict[str, object]] = report["ceviri"]  # type: ignore[assignment]
     if ceviri:
-        print("[Çeviri gölgesi · inceleme]")
+        print("[Çeviri kokusu · inceleme]")
         for finding in ceviri:
             print(f"  - {finding['text']}")
 
@@ -1303,11 +1303,11 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
             for key, pair in comparison["structure_delta"].items():  # type: ignore[union-attr]
                 print(f"    - {SUMMARY_LABELS[key]}: {pair['kaynak']} → {pair['çıktı']}")
         if comparison["introduced_translationese"]:
-            print("  Kaynakta olmayıp çıktıda beliren çeviri gölgesi bulguları (uyarı; aşırı düzeltme veya yeni kalkı olabilir):")
+            print("  Kaynakta olmayıp çıktıda beliren çeviri kokusu bulguları (uyarı; aşırı düzeltme veya yeni kalkı olabilir):")
             for text in comparison["introduced_translationese"]:  # type: ignore[union-attr]
                 print(f"    - {text}")
         if comparison["translationese_delta"]:
-            print("  Çeviri gölgesi ölçülerindeki değişim:")
+            print("  Çeviri kokusu ölçülerindeki değişim:")
             for key, pair in comparison["translationese_delta"].items():  # type: ignore[union-attr]
                 print(f"    - {TRANSLATIONESE_LABELS[key]}: {pair['kaynak']} → {pair['çıktı']}")
         if comparison["introduced_discourse"]:
@@ -1329,7 +1329,7 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
 
     print("\nNot: İşaretler inceleme içindir; tek bir işaret metni yapay yapmaz. "
           "Sert bastırma ailesindeki cümleler için \"bunu silersem hangi bilgi kaybolur?\", "
-          "yapı bulguları için \"bu sınır kavramsal mı?\", çeviri gölgesi bulguları için "
+          "yapı bulguları için \"bu sınır kavramsal mı?\", çeviri kokusu bulguları için "
           "\"bu yapı Türkçede bağımsız olarak doğal mı, yoksa gizli İngilizce cümle mi dayatıyor?\", "
           "söylem bulguları için \"kim biliyor, nasıl biliyor, ne kadar kesin; sözcükler doğal mı birleşiyor; "
           "cümle öncekinden mi büyüyor?\" sorusunu sor.")
@@ -1548,33 +1548,33 @@ def self_test() -> None:
     if missing:
         raise SystemExit(f"Öz sınama: çeviri metninde beklenen aileler bulunamadı: {sorted(missing)}")
     if translated["hard_hits"] != 0:
-        raise SystemExit(f"Öz sınama: çeviri gölgesi aileleri sert bastırma sayıldı: {translated['hits']}")
+        raise SystemExit(f"Öz sınama: çeviri kokusu aileleri sert bastırma sayıldı: {translated['hits']}")
     checks = {f["check"] for f in translated["ceviri"]}  # type: ignore[union-attr]
     for check in ("cerceve_yigini", "olan_zinciri", "bir_yogunlugu", "ve_zinciri", "fiilimsi_yigini",
                   "iyelik_zinciri", "tekrarlanan_cumle_baslangici", "baglac_yogunlugu", "gosterme_ritmi"):
         if check not in checks:
-            raise SystemExit(f"Öz sınama: çeviri metninde beklenen çeviri gölgesi bulgusu yok: {check}")
-    summary = translated["ceviri_golgesi"]
+            raise SystemExit(f"Öz sınama: çeviri metninde beklenen çeviri kokusu bulgusu yok: {check}")
+    summary = translated["ceviri_kokusu"]
     if summary["bir_per_100"] <= BIR_PER_100_MAX or summary["fiilimsi_yigini"] != 1 or summary["ve_zinciri"] != 1:  # type: ignore[index]
-        raise SystemExit(f"Öz sınama: çeviri gölgesi ölçüleri hatalı: {summary}")
+        raise SystemExit(f"Öz sınama: çeviri kokusu ölçüleri hatalı: {summary}")
 
     for label, text in (("yerli", NATIVE_TEXT), ("temiz", CLEAN_TEXT), ("iyi yapılı", WELL_STRUCTURED_TEXT), ("iç içe", NESTED_TEXT)):
         report = analyse(text)
         if report["ceviri"]:
-            raise SystemExit(f"Öz sınama: {label} metinde çeviri gölgesi bulgusu üretildi (yanlış pozitif): {report['ceviri']}")
+            raise SystemExit(f"Öz sınama: {label} metinde çeviri kokusu bulgusu üretildi (yanlış pozitif): {report['ceviri']}")
     native = analyse(NATIVE_TEXT)
-    if native["ceviri_golgesi"]["sahip_olmak"] != 1:  # type: ignore[index]
+    if native["ceviri_kokusu"]["sahip_olmak"] != 1:  # type: ignore[index]
         raise SystemExit("Öz sınama: gerçek mülkiyet bildiren tek 'sahip' bir kez işaretlenmeli, reddedilmemeli")
-    if native["ceviri_golgesi"]["tekrarlanan_cumle_baslangici"] != 0:  # type: ignore[index]
+    if native["ceviri_kokusu"]["tekrarlanan_cumle_baslangici"] != 0:  # type: ignore[index]
         raise SystemExit("Öz sınama: dönüşümlü özneler tekrarlanan cümle başlangıcı sayıldı")
     if native["structure"]:
         raise SystemExit(f"Öz sınama: yerli metinde yapı bulgusu üretildi: {native['structure']}")
 
     repaired_tr = compare(translated, native)
     if repaired_tr["introduced_translationese"]:
-        raise SystemExit("Öz sınama: yerli çıktı yeni çeviri gölgesi bulgusu üretti")
+        raise SystemExit("Öz sınama: yerli çıktı yeni çeviri kokusu bulgusu üretti")
     if repaired_tr["translationese_delta"].get("cerceve_yigini", {}).get("çıktı") != 0:  # type: ignore[union-attr]
-        raise SystemExit("Öz sınama: çeviri gölgesi ölçü değişimi çerçeve yığınını yanlış raporladı")
+        raise SystemExit("Öz sınama: çeviri kokusu ölçü değişimi çerçeve yığınını yanlış raporladı")
     if converb_count(["ekip", "toplayıp", "yaprak", "okuyarak", "gerek"]) != 2:
         raise SystemExit("Öz sınama: fiilimsi sayımı durak listesini yanlış uyguladı")
     if longest_genitive_run(["yöntemin", "performansının", "değerlendirilmesinin", "yapılmasının"]) != 4:
@@ -1627,7 +1627,7 @@ def self_test() -> None:
     if repaired_ds["introduced_discourse"]:
         raise SystemExit("Öz sınama: iyi yapılı çıktı yeni söylem bulgusu üretti")
 
-    print("Stil denetimi öz sınaması geçti (yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri gölgesi, yerli metin, söylem sinyalleri, zamansal ankraj).")
+    print("Stil denetimi öz sınaması geçti (yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj).")
 
 
 # --------------------------------------------------------------------------- #
