@@ -9,51 +9,75 @@ Türkçe metinleri yapay ritimden, basmakalıp ifadeden, kurumsal dolgudan ve ok
 
 Metinoskop bir sözcük yasaklama listesi değildir. Metni sırf farklı görünsün diye yeniden yazmaz: anlamı, olguları, kesinlik düzeyini, yazarın tavrını ve uygun resmiyet düzeyini koruyarak yalnızca gerekçesi olan müdahaleyi yapar. Metin zaten iyiyse olduğu gibi bırakır.
 
+## Bir bakışta
+
+| Önce | Sonra |
+|---|---|
+| **Günümüzün hızla değişen iş dünyasında yenilikçi** platformumuz, siparişleri tek ekranda topluyor ve tekrar eden onayları otomatikleştiriyor. | Platform, siparişleri tek ekranda topluyor ve tekrar eden onayları otomatikleştiriyor. |
+| **Bu güçlü çözüm yalnızca süreçleri kolaylaştırmakla kalmıyor,** sipariş başına gereken adım sayısını beşten üçe indir**erek verimliliği de bir üst seviyeye taşıyor**. | Bu değişiklik, sipariş başına gereken adım sayısını beşten üçe indir**iyor**. |
+
+Kalın kısımlar gitti. Kalan iki şey aynı: platformun ne yaptığı ve beşten üçe inen adım sayısı. Metinoskop yeni bir özellik uydurmadı, var olan ölçümü de silmedi.
+
 ## Örnekler
 
-Aşağıdaki çiftler depodan alınmıştır. Dosya adı verilenler `evals/outputs/` altında kayıtlı birer sözleşmedir; ikisi `SKILL.md` içindeki kısa örneklerdir.
+Aşağıdaki çiftler depodan alınmıştır. Dosya adı verilenler `evals/outputs/` altında kayıtlı birer sözleşmedir; ikisi `SKILL.md` içindeki kısa örneklerdir. Kalın yazılan yerler değişen kısımlardır.
 
-**Reklam dili ve üretilmiş önem**
+### Aynı olguyu dört kez söylemek
 
-> Günümüzün hızla değişen iş dünyasında yenilikçi platformumuz, siparişleri tek ekranda topluyor ve tekrar eden onayları otomatikleştiriyor. Bu güçlü çözüm yalnızca süreçleri kolaylaştırmakla kalmıyor, sipariş başına gereken adım sayısını beşten üçe indirerek verimliliği de bir üst seviyeye taşıyor.
+`evals/iddia-tekrar-dongusu.md`
 
-> Platform, siparişleri tek ekranda topluyor ve tekrar eden onayları otomatikleştiriyor. Bu değişiklik, sipariş başına gereken adım sayısını beşten üçe indiriyor.
+| Önce | Sonra |
+|---|---|
+| Polinom derecesi 20 ile 200 arasında değiştirildiğinde en düşük doğrulama hatası 120. derecede elde edilmiştir (%2,1). | Polinom derecesi 20 ile 200 arasında değiştirildiğinde en düşük doğrulama hatası 120. derecede elde edilmiştir (%2,1). |
+| **Başka bir ifadeyle 120. derece, denenen diğer derecelerden daha başarılı olmuştur.** | *— silindi* |
+| **Bu sonuç, derece seçiminin model başarımı açısından kritik önemini açıkça ortaya koymaktadır.** | *— silindi* |
+| **Dolayısıyla uygun derecenin seçilmesi, başarım açısından belirleyici bir etkendir.** | *— silindi* |
+| 200. derecede hata %6,8'e yükselmiştir. | 200. derecede hata %6,8'e yükselmiştir. |
 
-İşlev ve ölçüm duruyor; giden yalnızca dayanağı olmayan üstünlük iddiası. Yeni özellik uydurulmuyor.
+Beş cümlenin üçü hiçbir yeni önerme taşımıyordu: ikincisi ilkini başka sözcüklerle tekrarlıyor, üçüncüsü ondan genel bir önem çıkarıyor, dördüncüsü o önemi bir kez daha söylüyordu. İki ölçüm dokunulmadan duruyor.
 
-**Önem döngüsü** (`evals/iddia-tekrar-dongusu.md`)
+### Yapılmış işi kılavuz gibi anlatmak
 
-> Polinom derecesi 20 ile 200 arasında değiştirildiğinde en düşük doğrulama hatası 120. derecede elde edilmiştir (%2,1). Başka bir ifadeyle 120. derece, denenen diğer derecelerden daha başarılı olmuştur. Bu sonuç, derece seçiminin model başarımı açısından kritik önemini açıkça ortaya koymaktadır. Dolayısıyla uygun derecenin seçilmesi, başarım açısından belirleyici bir etkendir. 200. derecede hata %6,8'e yükselmiştir.
+`evals/raporda-genis-zaman-yigini.md`
 
-> Polinom derecesi 20 ile 200 arasında değiştirildiğinde en düşük doğrulama hatası 120. derecede elde edilmiştir (%2,1). 200. derecede hata %6,8'e yükselmiştir.
+| Önce | Sonra |
+|---|---|
+| **Bu çalışmada** 12 Ağustos'ta toplanan 1.200 kayıt incele**nir**. | 12 Ağustos'ta toplanan 1.200 kayıt incele**ndi**. |
+| Çalışma üç veri kümesi**ni kullanır**. Her kümeye aynı filtre uygula**nır** ve sonuçlar karşılaştırıl**ır**. | Üç veri kümesi **kullanıldı**; her kümeye aynı filtre uygula**ndı** ve sonuçlar karşılaştırıl**dı**. |
+| Ortalama hata %4 olarak hesapla**nır**. | Ortalama hata %4 olarak hesapla**ndı**. |
+| Yalnızca düşük yoğunluklu bölgelerde hata %6'ya **çıkar**. | Yalnızca düşük yoğunluklu bölgelerde hata %6'ya **çıktı**. |
 
-Ortadaki üç cümle aynı olguyu başka sözcüklerle tekrarlıyor ve üstüne genel bir önem cümlesi kuruyordu. İki ölçüm de yerinde; silinen hiçbir önerme yok.
+Tarih ve ölçümler bir kez olup bitmiş bir iş bildiriyor, yüklemler ise genel bir prosedür anlatıyordu. Metinoskop bu çelişkiyi **zamansal sürtünme** diye adlandırır ve baskın zaman çizgisine göre çözer. `Yalnızca` kapsam işareti yerinde kalır.
 
-**Tamamlanmış işi geniş zamanla anlatma** (`evals/raporda-genis-zaman-yigini.md`)
+### İngilizce iskeletini Türkçe sözcüklerle taşımak
 
-> Bu çalışmada 12 Ağustos'ta toplanan 1.200 kayıt incelenir. Çalışma üç veri kümesini kullanır. Her kümeye aynı filtre uygulanır ve sonuçlar karşılaştırılır. Ortalama hata %4 olarak hesaplanır.
+`evals/sahip-olmak-kalkisi.md`
 
-> 12 Ağustos'ta toplanan 1.200 kayıt incelendi. Üç veri kümesi kullanıldı; her kümeye aynı filtre uygulandı ve sonuçlar karşılaştırıldı. Ortalama hata %4 olarak hesaplandı.
+| Önce | Sonra |
+|---|---|
+| Önerilen yöntem yüksek bir hesaplama maliyeti**ne sahiptir**. | Önerilen yöntem**in** hesaplama maliyeti **yüksektir**. |
+| Model üç katman**a sahiptir** ve her katman 64 birim**e sahiptir**. | Model üç katman**lıdır**; her katman**da** 64 birim **bulunur**. |
+| Cihaz IP67 koruma sınıfı**na sahiptir**. | Cihaz**ın** koruma sınıfı **IP67'dir**. |
+| Sistem ayrıca bir hata günlüğü**ne sahiptir**. | Sistem ayrıca hata günlüğü **tutar**. |
 
-Yapılmış bir iş, kılavuz diliyle anlatılıyordu. Tarih ve ölçüm tamamlanmış olay diyor, yüklemler genel prosedür diyordu.
+Dört cümlenin dördü de İngilizce `have` iskeletini taşıyordu. Sözcükler yeniden çevrilmiyor; ilişki Türkçenin iyelik, sıfat ve yüklem kaynaklarıyla yeniden kuruluyor. Aynı vakada gerçek mülkiyet bildiren `şirketin sahip olduğu iki fabrika` ile yükümlülük bildiren `yönetici yetkisine sahip olmalıdır` olduğu gibi kalır: kalıp aynı, işlev farklı.
 
-**Çeviri gölgesi** (`evals/sahip-olmak-kalkisi.md`)
+### Fiili adın arkasına saklamak
 
-> Önerilen yöntem yüksek bir hesaplama maliyetine sahiptir. Model üç katmana sahiptir ve her katman 64 birime sahiptir. Cihaz IP67 koruma sınıfına sahiptir. Sistem ayrıca bir hata günlüğüne sahiptir.
+`evals/hafif-fiil-sismesi.md`
 
-> Önerilen yöntemin hesaplama maliyeti yüksektir. Model üç katmanlıdır; her katmanda 64 birim bulunur. Cihazın koruma sınıfı IP67'dir. Sistem ayrıca hata günlüğü tutar.
+| Önce | Sonra |
+|---|---|
+| Ekip, veri kümesi üzerinde bir **değerlendirme gerçekleştirmiştir**. Ardından 3 model üzerinde **analiz gerçekleştirilmiş** ve sonuçların **karşılaştırılması işlemi yapılmıştır**. | Ekip veri kümesini **değerlendirmiş**, ardından 3 modeli **analiz edip** sonuçları **karşılaştırmıştır**. |
+| **En iyi model için iyileştirme sağlanmış ve** hata %9'dan %6'ya düşürülmüştür. | **En iyi modelde** hata %9'dan %6'ya düşürülmüştür. |
 
-Beş cümlenin beşi de İngilizce `have` iskeletini taşıyordu. Sözcükler yeniden çevrilmiyor; ilişki Türkçenin iyelik, sıfat ve yüklem kaynaklarıyla yeniden kuruluyor. Aynı vakada gerçek mülkiyet bildiren `şirketin sahip olduğu iki fabrika` ve yükümlülük bildiren `yönetici yetkisine sahip olmalıdır` korunur.
+`Değerlendirme gerçekleştirmek` üç sözcükte bir fiil taşıyordu. Ölçümler ve aktör aynı; yalnızca yüklem gerçek yüklem oldu.
 
-**Hafif fiil şişmesi** (`evals/hafif-fiil-sismesi.md`)
+### Her kavrama başlık açmak
 
-> Ekip, veri kümesi üzerinde bir değerlendirme gerçekleştirmiştir. Ardından 3 model üzerinde analiz gerçekleştirilmiş ve sonuçların karşılaştırılması işlemi yapılmıştır. En iyi model için iyileştirme sağlanmış ve hata %9'dan %6'ya düşürülmüştür.
+Aşağıdaki dönüşüm derin düzenleme ister; standart düzeyde başlıklar korunur.
 
-> Ekip veri kümesini değerlendirmiş, ardından 3 modeli analiz edip sonuçları karşılaştırmıştır. En iyi modelde hata %9'dan %6'ya düşürülmüştür.
-
-`Değerlendirme gerçekleştirmek` gerçek yüklemi gizliyordu. Ölçümler ve aktör aynı kalıyor.
-
-**Yapısal parçalanma**
+**Önce**
 
 > ### Örnekleme stratejisinin seçimi
 >
@@ -67,17 +91,40 @@ Beş cümlenin beşi de İngilizce `have` iskeletini taşıyordu. Sözcükler ye
 >
 > Yukarıda belirtilen katmanlı örnekleme, düşük yoğunluklu bölgelerde hata oranını %9'dan %4'e düşürmüştür.
 
+**Sonra**
+
 > ### Örnekleme stratejisi
 >
 > Model eğitiminde katmanlı örnekleme kullanılmıştır; bu örnekleme, düşük yoğunluklu bölgelerde hata oranını %9'dan %4'e düşürmüştür.
 
-Üç başlık tek kavramsal birimdi. Yöntem bilgisi ve iki ölçüm duruyor; giden şey bölünmenin ürettiği dolgu: `belirleyici rol`, `bir sonraki bölümde görülecektir` askısı ve `yukarıda belirtilen` göndermesi.
+Üç başlık tek kavramsal birimdi. Yöntem bilgisi ve iki ölçüm duruyor; giden şey bölünmenin kendi ürettiği dolgu: `belirleyici rol` nitelemesi, `bir sonraki bölümde görülecektir` askısı ve `yukarıda belirtilen` göndermesi. Bölünme olmasa bu üç ifadeye gerek olmazdı.
 
-**Dokunulmayan metin** (`evals/iyi-metin.md`)
+### Hiç dokunulmayan metin
+
+`evals/iyi-metin.md`
 
 > Merhaba Selin, Mart raporunun taslağını ekte gönderiyorum. Üç bölgenin satış rakamları tamam; yalnızca Ege bölgesinin iade verisi henüz gelmedi, o sütunu boş bıraktım. Muhasebe verinin çarşamba öğleden önce geleceğini söyledi. Rapor, geçen ay konuştuğumuz gibi bayi bazında değil bölge bazında hazırlandı; bayi kırılımı istersen ayrı bir sayfa ekleyebilirim. Perşembe sabahına kadar yorumlarını bekliyorum. Ayşe
 
-Bu metnin kayıtlı çıktısı kaynağın kendisidir. Doğrulayıcı bunu denetler: kırk iki vakada Metinoskop'un hiçbir şeyi değiştirmemesi beklenir. Aynı koruma algoritma tanımı, genel bilimsel ilişki, hukuki kalıp ve teknik terim için de geçerlidir.
+Bu vakanın kayıtlı çıktısı kaynağın kendisidir. Doğru davranış hiçbir şeyi değiştirmemektir ve doğrulayıcı bu eşitliği denetler.
+
+## Neyi değiştirmemekte ısrar eder
+
+Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz kırk eval vakasının kırk ikisinde beklenen çıktı kaynağın kendisidir:
+
+| Metinde geçen | Neden dokunulmaz |
+|---|---|
+| `RK4 her adımda türevi dört kez değerlendirir.` | Algoritmanın genel davranışı. Makalede geçiyor diye geçmişe çevrilmez. |
+| `Sıcaklık yükseldikçe direnç artar.` | Genel bilimsel ilişki. Geçmişe çevrilirse tek seferlik gözleme iner. |
+| `Bakımdan önce şalter kapatılır ve hattaki basınç boşaltılır.` | Yeniden kullanılabilir prosedür; üstelik güvenlik adımı. |
+| `Filtre ölçümü 50 Hz'de alır. Gözlemci durumu günceller.` | İki ayrı aktör var; özne düşürmek göndergeyi belirsizleştirir. |
+| `Kalman kazancının hesaplanması, yenilik kovaryansının tersinin alınmasını gerektirir.` | Teknik işlemi adlandıran adlaştırma, dolgu değil. |
+| `... iade etmeyi kabul ve taahhüt eder.` | Hukuki formül. "Doğallaştırmak" hukuki etkiyi değiştirir. |
+| `Model, baseline ile aynı pipeline üzerinde üç benchmark'ta değerlendirildi.` | Yerleşik ödünç terimler; öz Türkçe hevesiyle değiştirilmez. |
+| `Bu veri kümesinde etki gözlenmedi.` | Kanıt yokluğu, yokluğun kanıtı değildir; `etki yoktur` olmaz. |
+| `Güneşsiz bir günde panel çıkışı 40 W'a düştü.` | İçinde `eşsiz` dizisi geçiyor diye pazarlama dili sayılmaz. |
+| `... çalışma gözlemsel olduğundan nedensellik göstermemektedir.` | Kanıt düzeyi bildiren çekince, "AI gibi" diye silinmez. |
+
+Her satır bir eval vakasına dayanır ve kayıtlı çıktısı kaynağın kendisidir.
 
 ## Ne yapar?
 
