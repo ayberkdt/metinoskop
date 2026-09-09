@@ -209,6 +209,16 @@ Bu atfı yalnızca kaynakta kurumun görüşü belirtilmişse kullan. Silinen ö
 
 Cümle iddiayı şirkete atfettiği ve karşılaştırmanın sınırını belirttiği için değiştirilmeden kalabilir. İddianın doğru olduğu varsayılmaz.
 
+**Sözcüğün kendisi değil, sözcük olarak kullanımı sayılır.** Bu aile bir harf dizisini değil, dayanaksız üstünlük iddiasını hedefler. Tetikleyiciyi içinde barındıran ayrı sözcükler bu aileye girmez: `güneşsiz`, `ateşsiz`, `renksiz` gibi yokluk sıfatları ile matematiksel `eşsizlik` ve `benzersizlik` (teklik) terimleri dokunulmadan kalır. Aynı biçimde `dönüştürücü`, `analog-dijital dönüştürücü` ya da `ısı dönüştürücüsü` gibi kullanımlarda bir cihaz adıdır; yalnızca `dönüştürücü bir deneyim`, `dönüştürücü etki` gibi soyut ad niteleyen kullanımı pazarlama dilidir.
+
+> Güneşsiz bir günde panel çıkışı 40 W'a düştü.
+
+> Çözümün eşsizliği eşsizlik teoremiyle gösterildi.
+
+> Analog-dijital dönüştürücü 12 bit çözünürlükte çalışır.
+
+Üçü de olgu bildirir; hiçbiri düzenlenmez.
+
 ### Soyut fayda yüklemleri
 
 `öne çıkıyor`, `fark yaratıyor`, `bir üst seviyeye taşıyor`, `yeniden tanımlıyor`, `değer katıyor` ve `kapı aralıyor` gibi yüklemler çoğu zaman işlevi gizler.

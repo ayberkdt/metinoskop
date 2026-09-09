@@ -171,6 +171,7 @@ REQUIRED_FILES = (
     "evals/her-seyi-edildi-yapma.md",
     "evals/mistir-yigini-yapma.md",
     "evals/gecmis-genel-yasa-bozmasin.md",
+    "evals/tetikleyici-iceren-sozcuk-korunur.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -319,6 +320,7 @@ EVAL_FILES = (
     "evals/her-seyi-edildi-yapma.md",
     "evals/mistir-yigini-yapma.md",
     "evals/gecmis-genel-yasa-bozmasin.md",
+    "evals/tetikleyici-iceren-sozcuk-korunur.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -683,6 +685,7 @@ eval_markers = {
     "evals/her-seyi-edildi-yapma.md": ("%4'tür", "toplanır", "kaydedilir", "fiilimsi yığını: 0",),
     "evals/mistir-yigini-yapma.md": ("üç senaryo", "%7", "ikinci senaryoda", "karşılaştırılmıştır",),
     "evals/gecmis-genel-yasa-bozmasin.md": ("60 °C", "%3", "%11", "direnç artar", "malzemeden bağımsızdır",),
+    "evals/tetikleyici-iceren-sozcuk-korunur.md": ("Güneşsiz", "eşsizlik teoremiyle", "Analog-dijital dönüştürücü", "dönüştürücüsünün", "40 W", "12 bit", "%78",),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]
@@ -758,6 +761,7 @@ SHOULD_REMAIN_CASES = (
     "evals/teknik-sistem-davranisi-korunur.md",
     "evals/tablo-sekil-zaman-korunur.md",
     "evals/gecmise-zorlama-yok.md",
+    "evals/tetikleyici-iceren-sozcuk-korunur.md",
 )
 for relative_path in SHOULD_REMAIN_CASES:
     # "Should remain" translationese cases record the source itself as the reference output.

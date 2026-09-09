@@ -31,6 +31,7 @@ Yeni bir davranış kuralı eklenirken en az bir mevcut vaka güncellenmeli veya
 | `paragraf-simetrisi` | Tek biçimli paragraf mimarisini bilgi yapısına göre yeniden kurmak |
 | `gerekli-ifade` | Yüzeyde yapay görünen ama teknik ayrım taşıyan içeriği korumak (yanlış pozitif) |
 | `egitsel-aciklama` | Yeni başlayan için öğretici açıklamayı korumak (muhatap duyarlılığı) |
+| `tetikleyici-iceren-sozcuk-korunur` | Tetikleyiciyi içinde barındıran sözcüğü (`güneşsiz`, `eşsizlik`, `dönüştürücü`) pazarlama dili saymamak (yanlış pozitif) |
 | `iyi-metin` | Zaten iyi yazılmış metni neredeyse hiç değiştirmemek |
 
 **Yapısal bütünlük:** başlık, paragraf ve bölüm sınırlarının kavramsal sınırları izleyip izlemediğini ve okur yorgunluğunu sınar.

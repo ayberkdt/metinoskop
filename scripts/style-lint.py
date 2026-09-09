@@ -342,11 +342,11 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "label": "Reklam dili",
         "level": "bağlam",
         "patterns": (
-            r"benzersiz|eşsiz|rakipsiz",
+            r"\b(?:benzersiz|eşsiz|rakipsiz)(?!li[kğ])",
             r"çığır aç|devrim niteliğinde",
             r"kusursuz|sektör lideri",
             r"bir üst seviyeye|fark yarat|yeniden tanımla",
-            r"dönüştürücü",
+            r"\bdönüştürücü (?:bir )?(?:etki|deneyim|güç|yolculuk|dokunuş|an|dönem|çözüm|potansiyel)",
         ),
     },
     {
@@ -1441,6 +1441,18 @@ Bu çalışmada model — üç katmanlı olan — ilk koşulda (ki en zor olanı
 REPORT_TENSE_TEXT = """Bu çalışmada 12 Ağustos'ta toplanan kayıtlar incelenir. Çalışma üç veri kümesini kullanır. Her kümeye aynı filtre uygulanır. Ardından model çıktıları karşılaştırılır. Son olarak hata dağılımları değerlendirilir.
 """
 
+# Sözcük içinde tetikleyici barındıran ama hiçbir aileye ait olmayan ifadeler.
+# Kalıplar sözcük sınırına saygı göstermezse burada yakalanır.
+INNOCENT_WORDS = (
+    "Güneşsiz bir günde panel çıkışı 40 W'a düştü.",
+    "Ateşsiz yanma odasında sıcaklık 300 °C'ye çıktı.",
+    "Çözümün eşsizliği eşsizlik teoremiyle gösterildi.",
+    "Benzersizlik koşulu iki kısıtla sağlanıyor.",
+    "Analog-dijital dönüştürücü 12 bit çözünürlükte çalışır.",
+    "Isı dönüştürücüsünün verimi %78 ölçüldü.",
+    "Gerilim dönüştürücü kartı değiştirildi.",
+)
+
 FILLER_SOURCE = "Model 120. derecede en düşük hatayı verdi. Bu sonuç derece seçiminin kritik önemini ortaya koymaktadır."
 FILLER_TRANSLATED = "Model 120. derecede en düşük hatayı verdi. Sonuç olarak derece seçimi önemli bir etkendir; bu bulgu derece seçiminin önemini bir kez daha ortaya koymaktadır."
 CONTEXT_ONLY = "Yani model 120. derecede en düşük hatayı verdi; öte yandan derece seçimi kritik önemini korumaktadır."
@@ -1448,6 +1460,11 @@ FILLER_DELETED = "Model 120. derecede en düşük hatayı verdi."
 
 
 def self_test() -> None:
+    for text in ("Bu eşsiz platform sektörü yeniden tanımlıyor.",
+                 "Ürün dönüştürücü bir deneyim sunuyor."):
+        if not any(h["category"] == "reklam" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: gerçek reklam dili işaretlenmedi: {text!r}")
+
     ai = analyse(SYNTHETIC_AI_TEXT)
     expected = {"onem", "acimlama", "savunma", "duyuru", "giris", "sonuc", "karsitlik", "denge",
                 "soyut_yuklem", "bos_ozne", "sohbet"}
@@ -1510,6 +1527,14 @@ def self_test() -> None:
 
     if tr_lower("İSTANBUL IŞIK") != "istanbul ışık":
         raise SystemExit("Öz sınama: Türkçe küçük harf dönüşümü hatalı")
+
+    for text in INNOCENT_WORDS:
+        report = analyse(text)
+        if report["hits"]:
+            raise SystemExit(
+                "Öz sınama: sözcük içinde kalan tetikleyici işaret üretti (yanlış pozitif): "
+                f"{text!r} -> {report['hits']}"
+            )
 
     translated = analyse(TRANSLATED_TEXT)
     expected_tr = {"sahip", "varlik", "kalki", "bos_ozne"}
