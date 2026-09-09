@@ -1,0 +1,1 @@
+Denetleyici her komutu doğrular ve geçersiz komutu `E-41` koduyla reddeder. Geçerli komutlar 20 ms içinde işlenir. Bellek doluyken denetleyici en eski kaydı siler. Cihaz IP67 koruma sınıfındadır.

@@ -1,0 +1,1 @@
+İrtifa azaldıkça yerçekimi gradyanı artar. Sıcaklık yükseldikçe direnç artar; bu ilişki 20 °C ile 80 °C arasında doğrusaldır. Daha yüksek derece daha fazla katsayı gerektirir. Su deniz seviyesinde 100 °C'de kaynar.

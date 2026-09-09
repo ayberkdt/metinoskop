@@ -1,0 +1,1 @@
+Bu çalışmada veriler toplanıp temizlendi; model eğitildi ve test uygulandı. Sonuçlar kaydedildi. Ortalama hata %4'tür.

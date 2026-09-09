@@ -1,0 +1,1 @@
+Güneşsiz bir günde panel çıkışı 40 W'a düştü. Çözümün eşsizliği eşsizlik teoremiyle gösterildi. Analog-dijital dönüştürücü 12 bit çözünürlükte çalışır. Isı dönüştürücüsünün verimi %78 ölçüldü.

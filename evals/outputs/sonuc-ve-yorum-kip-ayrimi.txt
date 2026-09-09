@@ -1,0 +1,1 @@
+Ölçülen hata 120. derecede minimuma indi. Bu davranış yüksek dereceli terimlerin etkisini gösterir. Testte 40 °C'nin üzerinde hata %11'e çıktı. Yüksek dereceli terimler modelin çözünürlüğünü artırır.

@@ -1,0 +1,1 @@
+Deneyde sıcaklık 60 °C'yi geçtiğinde hata %3'ten %11'e çıktı. Sıcaklık arttıkça direnç artar; bu ilişki malzemeden bağımsızdır. Aynı eşik üç koşuda da gözlendi.

@@ -1,0 +1,1 @@
+RK4 her adımda türevi dört kez değerlendirir. Bu çalışmada propagasyonda RK4 kullanıldı ve adım büyüklüğü 10 saniyede sabit tutuldu. Filtre ölçüm geldiğinde durumu günceller. Ölçümler 12 istasyondan alındı.

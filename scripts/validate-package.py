@@ -29,6 +29,7 @@ REQUIRED_FILES = (
     "references/epistemik-mimari.md",
     "references/esdizim-ve-istem.md",
     "references/metinsel-tutarlilik.md",
+    "references/zamansal-ankraj-ve-rapor-kipi.md",
     "references/yapisal-butunluk.md",
     "evals/README.md",
     "evals/akademik.md",
@@ -153,6 +154,24 @@ REQUIRED_FILES = (
     "evals/ayni-iddia-yeni-rol.md",
     "evals/ayni-iddia-hacim.md",
     "evals/tutarli-metin-korunur.md",
+    "evals/raporda-genis-zaman-yigini.md",
+    "evals/bu-calisma-inceler.md",
+    "evals/sonuclarda-genis-zaman.md",
+    "evals/tarihli-olay-genis-zaman.md",
+    "evals/metot-uygulamasi-gecmis.md",
+    "evals/algoritma-genel-davranis-korunur.md",
+    "evals/bilimsel-genelleme-korunur.md",
+    "evals/prosedur-kilavuz-korunur.md",
+    "evals/teknik-sistem-davranisi-korunur.md",
+    "evals/metot-ve-uygulama-ayrimi.md",
+    "evals/sonuc-ve-yorum-kip-ayrimi.md",
+    "evals/tablo-sekil-zaman-korunur.md",
+    "evals/durum-raporu-uc-zaman.md",
+    "evals/gecmise-zorlama-yok.md",
+    "evals/her-seyi-edildi-yapma.md",
+    "evals/mistir-yigini-yapma.md",
+    "evals/gecmis-genel-yasa-bozmasin.md",
+    "evals/tetikleyici-iceren-sozcuk-korunur.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -284,6 +303,24 @@ EVAL_FILES = (
     "evals/ayni-iddia-yeni-rol.md",
     "evals/ayni-iddia-hacim.md",
     "evals/tutarli-metin-korunur.md",
+    "evals/raporda-genis-zaman-yigini.md",
+    "evals/bu-calisma-inceler.md",
+    "evals/sonuclarda-genis-zaman.md",
+    "evals/tarihli-olay-genis-zaman.md",
+    "evals/metot-uygulamasi-gecmis.md",
+    "evals/algoritma-genel-davranis-korunur.md",
+    "evals/bilimsel-genelleme-korunur.md",
+    "evals/prosedur-kilavuz-korunur.md",
+    "evals/teknik-sistem-davranisi-korunur.md",
+    "evals/metot-ve-uygulama-ayrimi.md",
+    "evals/sonuc-ve-yorum-kip-ayrimi.md",
+    "evals/tablo-sekil-zaman-korunur.md",
+    "evals/durum-raporu-uc-zaman.md",
+    "evals/gecmise-zorlama-yok.md",
+    "evals/her-seyi-edildi-yapma.md",
+    "evals/mistir-yigini-yapma.md",
+    "evals/gecmis-genel-yasa-bozmasin.md",
+    "evals/tetikleyici-iceren-sozcuk-korunur.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -423,6 +460,8 @@ for heading in (
     "**G. Epistemik mimari:**",
     "**H. Sözcük uyumu:**",
     "**I. Metinsel tutarlılık:**",
+    "**J. Zamansal ankraj:**",
+    "**Zamansal ankrajı koru.**",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
@@ -467,6 +506,7 @@ readme_requirements = (
     "epistemik-mimari.md",
     "esdizim-ve-istem.md",
     "metinsel-tutarlilik.md",
+    "zamansal-ankraj-ve-rapor-kipi.md",
 )
 for requirement in readme_requirements:
     if requirement not in readme:
@@ -490,7 +530,7 @@ if "## [0.1.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.1.0")
 
 evals_readme = texts[ROOT / "evals/README.md"]
-for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri gölgesi", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk", "serbest değişmezler", "behavioral-regression.py", "gold"):
+for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri gölgesi", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk", "serbest değişmezler", "behavioral-regression.py", "gold", "zamansal ankraj"):
     if requirement not in evals_readme.casefold():
         fail(f"evals/README.md must mention review axis: {requirement}")
 
@@ -628,6 +668,24 @@ eval_markers = {
     "evals/ayni-iddia-yeni-rol.md": ("## Sonuçlar", "## Tartışma", "## Sonuç", "40 °C", "%11", "düşündürüyor", "önerilmektedir",),
     "evals/ayni-iddia-hacim.md": ("Yani 40 °C", "göstermektedir", "üç kez", "cümle: 1",),
     "evals/tutarli-metin-korunur.md": ("3 Eylül", "14.10", "14.35", "50 bağlantı", "120", "cümle: 3",),
+    "evals/raporda-genis-zaman-yigini.md": ("12 Ağustos", "1.200", "%4", "%6", "Yalnızca", "geniş zaman doygunluğu: 0",),
+    "evals/bu-calisma-inceler.md": ("Bu çalışma üç farklı modeli karşılaştırır", "2025", "800", "zamansal sürtünme: 0",),
+    "evals/sonuclarda-genis-zaman.md": ("120. derecede", "üç koşuda", "artırır", "geniş zaman doygunluğu: 0",),
+    "evals/tarihli-olay-genis-zaman.md": ("12 Ağustos'ta", "14 Ağustos'taki", "gözlenmez", "eylülde", "yapılacaktır",),
+    "evals/metot-uygulamasi-gecmis.md": ("4 °C", "iki kez", "40 dönem", "18 dakika",),
+    "evals/algoritma-genel-davranis-korunur.md": ("RK4 her adımda türevi dört kez değerlendirir", "yenilik kovaryansından", "cümle: 4",),
+    "evals/bilimsel-genelleme-korunur.md": ("yerçekimi gradyanı artar", "20 °C", "80 °C", "100 °C",),
+    "evals/prosedur-kilavuz-korunur.md": ("şalter kapatılır", "yalnızca kuru bezle", "çözücü kullanılmaz", "5 dakika",),
+    "evals/teknik-sistem-davranisi-korunur.md": ("`E-41`", "20 ms", "IP67", "en eski kaydı siler",),
+    "evals/metot-ve-uygulama-ayrimi.md": ("RK4 her adımda", "10 saniyede", "12 istasyondan", "durumu günceller",),
+    "evals/sonuc-ve-yorum-kip-ayrimi.md": ("120. derecede minimuma", "40 °C", "%11", "çözünürlüğünü artırır",),
+    "evals/tablo-sekil-zaman-korunur.md": ("Şekil 4", "Tablo 2'de", "Bölüm 3", "(7)",),
+    "evals/durum-raporu-uc-zaman.md": ("1.400", "15 Ekim'de", "hâlen", "önerir",),
+    "evals/gecmise-zorlama-yok.md": ("100 örnek", "Şekil 3'te", "gelecek ay", "0,2 mm", "cümle: 4",),
+    "evals/her-seyi-edildi-yapma.md": ("%4'tür", "toplanır", "kaydedilir", "fiilimsi yığını: 0",),
+    "evals/mistir-yigini-yapma.md": ("üç senaryo", "%7", "ikinci senaryoda", "karşılaştırılmıştır",),
+    "evals/gecmis-genel-yasa-bozmasin.md": ("60 °C", "%3", "%11", "direnç artar", "malzemeden bağımsızdır",),
+    "evals/tetikleyici-iceren-sozcuk-korunur.md": ("Güneşsiz", "eşsizlik teoremiyle", "Analog-dijital dönüştürücü", "dönüştürücüsünün", "40 W", "12 bit", "%78",),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]
@@ -664,8 +722,8 @@ if missing_outputs:
 for output_path in sorted((ROOT / "evals/outputs").glob("*.txt")):
     if not (ROOT / "evals" / f"{output_path.stem}.md").is_file():
         fail(f"Recorded output without an eval case: evals/outputs/{output_path.name}")
-if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 90:
-    fail("evals/outputs must keep at least ninety recorded reference outputs")
+if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 120:
+    fail("evals/outputs must keep at least one hundred and twenty recorded reference outputs")
 
 SHOULD_REMAIN_CASES = (
     "evals/dogal-ve-korunur.md", "evals/gerekli-olan.md", "evals/gerekli-acisindan.md",
@@ -697,6 +755,13 @@ SHOULD_REMAIN_CASES = (
     "evals/teknik-noktalama-korunur.md",
     "evals/ayni-iddia-yeni-rol.md",
     "evals/tutarli-metin-korunur.md",
+    "evals/algoritma-genel-davranis-korunur.md",
+    "evals/bilimsel-genelleme-korunur.md",
+    "evals/prosedur-kilavuz-korunur.md",
+    "evals/teknik-sistem-davranisi-korunur.md",
+    "evals/tablo-sekil-zaman-korunur.md",
+    "evals/gecmise-zorlama-yok.md",
+    "evals/tetikleyici-iceren-sozcuk-korunur.md",
 )
 for relative_path in SHOULD_REMAIN_CASES:
     # "Should remain" translationese cases record the source itself as the reference output.

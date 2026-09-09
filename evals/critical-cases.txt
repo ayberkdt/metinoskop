@@ -18,3 +18,7 @@ yerli-turkce-metin
 iyi-akademik-paragraf
 teknik-esdizim-korunur
 tutarli-metin-korunur
+raporda-genis-zaman-yigini
+algoritma-genel-davranis-korunur
+sonuclarda-genis-zaman
+durum-raporu-uc-zaman

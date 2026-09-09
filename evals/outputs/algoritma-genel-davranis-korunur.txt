@@ -1,0 +1,1 @@
+Filtre önce tahmini üretir, ardından ölçüm geldiğinde durumu günceller. Kazanç matrisi her adımda yenilik kovaryansından hesaplanır. RK4 her adımda türevi dört kez değerlendirir. Bu davranış adım büyüklüğünden bağımsızdır.

@@ -31,6 +31,7 @@ Yeni bir davranış kuralı eklenirken en az bir mevcut vaka güncellenmeli veya
 | `paragraf-simetrisi` | Tek biçimli paragraf mimarisini bilgi yapısına göre yeniden kurmak |
 | `gerekli-ifade` | Yüzeyde yapay görünen ama teknik ayrım taşıyan içeriği korumak (yanlış pozitif) |
 | `egitsel-aciklama` | Yeni başlayan için öğretici açıklamayı korumak (muhatap duyarlılığı) |
+| `tetikleyici-iceren-sozcuk-korunur` | Tetikleyiciyi içinde barındıran sözcüğü (`güneşsiz`, `eşsizlik`, `dönüştürücü`) pazarlama dili saymamak (yanlış pozitif) |
 | `iyi-metin` | Zaten iyi yazılmış metni neredeyse hiç değiştirmemek |
 
 **Yapısal bütünlük:** başlık, paragraf ve bölüm sınırlarının kavramsal sınırları izleyip izlemediğini ve okur yorgunluğunu sınar.
@@ -53,6 +54,28 @@ Yeni bir davranış kuralı eklenirken en az bir mevcut vaka güncellenmeli veya
 | `uzun-paragraf-korunur` | Tek hareket taşıyan uzun paragrafı bölmemek |
 | `kisa-paragraf-korunur` | İşlevsel olarak yalıtılmış tek cümlelik uyarıyı birleştirmemek |
 | `yapisal-iyi-metin` | Yapısı iyi metne dokunmamak |
+
+**Zamansal ankraj ve rapor kipi:** tamamlanmış işin tamamlanmış olay olarak anlatılıp anlatılmadığını, genel davranışın genel kalıp kalmadığını ve düzeltmenin geçmişe zorlamaya dönüşmediğini sınar. `algoritma-genel-davranis-korunur`, `bilimsel-genelleme-korunur`, `prosedur-kilavuz-korunur`, `teknik-sistem-davranisi-korunur`, `tablo-sekil-zaman-korunur` ve `gecmise-zorlama-yok` vakalarının kayıtlı çıktısı kaynağın kendisidir.
+
+| Vaka | Sınanan davranış |
+|---|---|
+| `raporda-genis-zaman-yigini` | Tamamlanmış saha çalışmasını geniş zaman yığınından tamamlanmış olay anlatımına taşımak |
+| `bu-calisma-inceler` | `Bu çalışma inceler` ritmini `Çalışmada ... incelendi` eksenine çevirmek |
+| `sonuclarda-genis-zaman` | Gözlenen sonucun geniş zamanla genel yasaya dönüşmesini önlemek |
+| `tarihli-olay-genis-zaman` | Tarihli ve sınırlı olayı tamamlanmış anlatmak, planı gelecekte bırakmak |
+| `metot-uygulamasi-gecmis` | Fiilen uygulanan yöntem adımlarını tamamlanmış olay olarak anlatmak |
+| `metot-ve-uygulama-ayrimi` | Aynı paragrafta yöntem tanımını geniş zamanda, uygulamayı geçmişte tutmak |
+| `sonuc-ve-yorum-kip-ayrimi` | Bulgu ile yorumu tek biçimlilik uğruna aynı kipe zorlamamak |
+| `durum-raporu-uc-zaman` | Tamamlanan, süren ve planlanan işi ayrı statülerde tutmak |
+| `her-seyi-edildi-yapma` | Düzeltmenin tek biçimli edilgen geçmiş zincirine dönüşmesini önlemek |
+| `mistir-yigini-yapma` | Geniş zamanı yaygın `-mıştır` ile değiştirmemek |
+| `gecmis-genel-yasa-bozmasin` | Geçmişe çevirirken genel bilimsel ilişkiyi bozmamak |
+| `algoritma-genel-davranis-korunur` | Algoritma tanımını geniş zamanda bırakmak (yanlış pozitif) |
+| `bilimsel-genelleme-korunur` | Genel bilimsel ilişkiyi geçmişe çekmemek |
+| `prosedur-kilavuz-korunur` | Yeniden kullanılabilir prosedürü tek seferlik bakıma indirmemek |
+| `teknik-sistem-davranisi-korunur` | Ürün belirtimini test kaydına çevirmemek |
+| `tablo-sekil-zaman-korunur` | Belge göndermelerinin farklı kiplerini korumak |
+| `gecmise-zorlama-yok` | Gerekçeli kip çeşitliliğine dokunmamak |
 
 **Çeviri gölgesi ve Türkçe ritim:** dil bilgisi doğru olduğu hâlde İngilizce cümle iskeleti taşıyan metinde ilişkinin Türkçe kaynaklarla yeniden kurulup kurulmadığını ve yerli yapıya dokunulmadığını sınar. Her "korunur" vakasının kayıtlı çıktısı kaynağın kendisidir.
 
