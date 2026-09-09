@@ -206,6 +206,8 @@ REQUIRED_FILES = (
     "evals/test-kampanyasi-alan-terimi.md",
     "evals/bellek-adresleme-korunur.md",
     "evals/hipotezi-desteklemek-korunur.md",
+    "evals/davranisi-yakalamak-alan-terimi-korunur.md",
+    "evals/erisim-saglamak-korunur.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -388,6 +390,8 @@ EVAL_FILES = (
     "evals/test-kampanyasi-alan-terimi.md",
     "evals/bellek-adresleme-korunur.md",
     "evals/hipotezi-desteklemek-korunur.md",
+    "evals/davranisi-yakalamak-alan-terimi-korunur.md",
+    "evals/erisim-saglamak-korunur.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -801,6 +805,8 @@ eval_markers = {
     "evals/test-kampanyasi-alan-terimi.md": ("Uçuş test kampanyası", "14 sortiden", "38 saat",),
     "evals/bellek-adresleme-korunur.md": ("sayfalar hâlinde adresler", "Adresleme birimi", "16 bitlik",),
     "evals/hipotezi-desteklemek-korunur.md": ("ikinci hipotezi destekliyor", "yeterli kanıt bulunamadı", "40 katılımcıyla",),
+    "evals/davranisi-yakalamak-alan-terimi-korunur.md": ("davranışı iyi yakalıyor", "surrogate", "0,4 mm",),
+    "evals/erisim-saglamak-korunur.md": ("erişim sağlıyor", "bağlantı sağlıyor", "güvenliği sağlamayı", "yetkili kullanıcılara",),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]
@@ -837,8 +843,8 @@ if missing_outputs:
 for output_path in sorted((ROOT / "evals/outputs").glob("*.txt")):
     if not (ROOT / "evals" / f"{output_path.stem}.md").is_file():
         fail(f"Recorded output without an eval case: evals/outputs/{output_path.name}")
-if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 170:
-    fail("evals/outputs must keep at least one hundred and seventy recorded reference outputs")
+if len(list((ROOT / "evals/outputs").glob("*.txt"))) < 175:
+    fail("evals/outputs must keep at least one hundred and seventy-five recorded reference outputs")
 
 SHOULD_REMAIN_CASES = (
     "evals/dogal-ve-korunur.md", "evals/gerekli-olan.md", "evals/gerekli-acisindan.md",
@@ -891,6 +897,8 @@ SHOULD_REMAIN_CASES = (
     "evals/test-kampanyasi-alan-terimi.md",
     "evals/bellek-adresleme-korunur.md",
     "evals/hipotezi-desteklemek-korunur.md",
+    "evals/davranisi-yakalamak-alan-terimi-korunur.md",
+    "evals/erisim-saglamak-korunur.md",
 )
 locked = []
 for relative_path in EVAL_FILES:

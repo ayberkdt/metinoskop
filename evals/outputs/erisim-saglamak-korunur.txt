@@ -1,0 +1,1 @@
+Sistem yetkili kullanıcılara arşiv kayıtlarına erişim sağlıyor. Aynı altyapı yedek hat üzerinden bağlantı sağlıyor ve kesinti anında güvenliği sağlamayı sürdürüyor.

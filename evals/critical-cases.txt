@@ -4,9 +4,7 @@ bilinmeyen-aktor
 epistemik-guvensiz-fiil
 sonuc-sonuclardan-guclu
 tekrarlanan-acik-ozne
-sahip-olmak-kalkisi
 cerceve-yigini
-ve-zinciri
 belirsizlik-icin-acik-ozne
 asiri-bolumleme
 kisa-paragraf-yigini
@@ -34,3 +32,5 @@ campaign-kalkisi
 reklam-kampanyasi-korunur
 address-kalkisi
 bellek-adresleme-korunur
+provide-kalkisi
+erisim-saglamak-korunur

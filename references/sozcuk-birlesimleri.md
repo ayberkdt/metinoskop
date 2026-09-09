@@ -288,9 +288,9 @@ Sözcük sözcük doğru. Ama Türkçe aynı ilişkiyi çoğu bağlamda doğruda
 
 **Üç sınıf.** Her şüpheli birleşim bir sınıfa girer.
 
-*Sınıf A — birleşim düzeyinde sert aday.* Türkçede doğal birleşim değeri çok düşük olanlar: `karar gerçekleştirmek`, `etki gerçekleştirmek`, `cevap sağlamak`, `risk sergilemek`, `artış deneyimlemek`, `fayda üretmek`, `X hakkında odaklanmak`. Yapısal olarak düzelt; ama alıntı, kod, resmî ad ya da tanımlı teknik terim içindeyse dokunma.
+*Sınıf A — birleşim düzeyinde sert aday.* Türkçede doğal birleşim değeri çok düşük olanlar: `karar gerçekleştirmek`, `etki gerçekleştirmek`, `cevap sağlamak`, `risk sergilemek`, `artış deneyimlemek`, `X hakkında odaklanmak`. Yapısal olarak düzelt; ama alıntı, kod, resmî ad ya da tanımlı teknik terim içindeyse dokunma.
 
-*Sınıf B — yüksek riskli sözcüksel çekirdek.* `çerçeve`, `kampanya`, `gerçekleştirmek`, `sağlamak`, `yürütmek`, `sunmak`, `ortaya koymak`, `göstermek`, `işaret etmek`, `sergilemek`, `üretmek`, `yakalamak`, `adreslemek`, `deneyimlemek`, `mümkün kılmak`, `olanak sağlamak` ve çerçeve adları (`bağlamında`, `çerçevesinde`, `kapsamında`, `açısından`, `noktasında`, `üzerinden`, `temelinde`, `doğrultusunda`, `perspektifinden`). Bunlar yasak değil, **inceleme tetikleyicisidir**: "bu sözcük burada Türkçenin seçimi mi, yoksa İngilizce kaynağın varsayılan karşılığı mı?"
+*Sınıf B — yüksek riskli sözcüksel çekirdek.* `çerçeve`, `kampanya`, `gerçekleştirmek`, `sağlamak`, `yürütmek`, `sunmak`, `ortaya koymak`, `göstermek`, `işaret etmek`, `sergilemek`, `üretmek`, `yakalamak`, `adreslemek`, `deneyimlemek`, `mümkün kılmak`, `olanak sağlamak` ve çerçeve adları (`bağlamında`, `çerçevesinde`, `kapsamında`, `açısından`, `noktasında`, `üzerinden`, `temelinde`, `doğrultusunda`, `perspektifinden`). `Fayda üretmek` de buraya girer: teknik bir sonuç cümlesinde kalkı olabilir ama iktisat, kamu politikası ve kurumsal metinlerde `toplumsal fayda üretmek`, `kamusal fayda üretmek` doğaldır. Bunlar yasak değil, **inceleme tetikleyicisidir**: "bu sözcük burada Türkçenin seçimi mi, yoksa İngilizce kaynağın varsayılan karşılığı mı?"
 
 *Sınıf C — alan terimi.* Yerleşik terminoloji daha doğal görünsün diye değiştirilmez: `referans çerçevesi`, `durum vektörü`, `kovaryans matrisi`, `risk değerlendirmesi`, `deney yürütmek`, `baseline`, `pipeline`. Şüpheli görünmesi değiştirmek için yeterli değildir.
 
@@ -306,7 +306,7 @@ Aşağıdaki çekirdekler İngilizceden çevrilmiş ya da İngilizce düşünül
 
 | Çekirdek | Riskli varsayılan | Anlam ayrımı ve doğal yapılar | Korunur |
 |---|---|---|---|
-| provide | `sağlamak` | Somut nesne alıyorsa doğal: güvenlik, erişim, finansman, bağlantı sağlamak. Soyut nesnede adı fiile çevir: `iyileştirme sağladı` → `iyileştirdi`; `cevap sağladı` → `cevap verdi`; `görünürlük sağladı` → `görünür kıldı`. Ölçüm varsa ölçümü yaz. | Güvenliği, erişimi, koşulları, finansmanı sağlamak |
+| provide | `sağlamak` | Somut nesne alıyorsa doğal: güvenlik, erişim, finansman, bağlantı sağlamak. Soyut nesnede adı fiile çevir: `iyileştirme sağladı` → `iyileştirdi`; `cevap sağladı` → `cevap verdi`. Ama adı fiile çevirirken yönü denetle: `operatöre görünürlük sağladı` cümlesinde operatör *görendir*; `operatörün görünürlüğünü artırdı` onu *görülen* yapar ve anlamı ters çevirir. Böyle durumlarda doğal karşılık yine `sağlamak` ile kurulur (`daha iyi görmesini sağlıyor`). Ölçüm varsa ölçümü yaz. | Güvenliği, erişimi, koşulları, finansmanı sağlamak |
 | perform | `gerçekleştirmek` | `Analiz / değerlendirme / ölçüm / karşılaştırma gerçekleştirmek` yerine `analiz etmek`, `değerlendirmek`, `ölçmek`, `karşılaştırmak`. | `Hayalini gerçekleştirmek`; bağlama göre `proje gerçekleştirildi` |
 | conduct | `yürütmek` | `Araştırma / soruşturma / denetim / müzakere yürütmek` doğaldır. `Hesaplama / karşılaştırma / optimizasyon yürütmek` incelenir; gerçek fiile dön. | Araştırma, soruşturma, denetim, deney yürütmek |
 | address | `adreslemek` | `Problemi / riski / soruyu adreslemek` yerine `ele almak`, `çözmek`, `azaltmak`, `önlem almak`, `yanıtlamak`, `gidermek`. | Bilgisayar biliminde `belleği adreslemek` gerçek teknik anlamdır |
@@ -336,6 +336,8 @@ Aşağıdaki çekirdekler İngilizceden çevrilmiş ya da İngilizce düşünül
 **Adlaştırma ve hafif fiil katmanları.** `Değerlendirme gerçekleştirilmesi sağlandı`, `analiz yürütülmesi sağlandı` gibi yapılarda birden çok kurumsal katman üst üste gelir. Sessizce gerçek çekirdek eylemi bul; ama statüyü değiştirme.
 
 **İngilizce geri kurma testi.** `Güçlü içgörüler sağlamaktadır` → *provides strong insights*; `davranışı yakalamaktadır` → *captures the behavior*; `problemi adreslemektedir` → *addresses the problem*. Kolay geri kurulabilirlik incelemeyi başlatır, kararı vermez. "İngilizceye geri çevrilebiliyor" diye doğal Türkçeyi bozma.
+
+**Kalkıyı kaldırırken yeni kalkı üretme.** Yerine konan yapı da doğal eşdizim olmalı. `Hata oranında iyileşme elde edildi` kalkısı `hata oranı iyileşti` ile değil, `hata oranı azaldı` ile çözülür: hata oranı azalır ya da düşer, iyileşmez. Düzeltmeden sonra yeni birleşimi aynı denetimden geçir.
 
 **Kaynak sadakati sözcük doğallığının üstündedir.** Daha doğal fiil daha güçlü iddia olmamalı: kaynak desteklemiyorsa `ilişkili` → `etkiliyor`, `düşündürüyor` → `gösteriyor`, `destekliyor` → `kanıtlıyor`, `birlikte değişiyor` → `belirliyor` dönüşümleri yasaktır. `Bu değişken sonucu yönlendiriyor` cümlesini `belirliyor` yapmak daha doğal ama daha güçlüdür; kaynak yalnızca ilişki bildiriyorsa `sonuç bu değişkenle ilişkili` yaz.
 

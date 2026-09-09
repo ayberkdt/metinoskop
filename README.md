@@ -119,7 +119,7 @@ Bu vakanın kayıtlı çıktısı kaynağın kendisidir. Doğru davranış hiçb
 
 ## Neyi değiştirmemekte ısrar eder
 
-Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz yetmiş üç eval vakasının elli altısında beklenen çıktı kaynağın kendisidir:
+Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz yetmiş beş eval vakasının elli sekizinde beklenen çıktı kaynağın kendisidir:
 
 | Metinde geçen | Neden dokunulmaz |
 |---|---|
@@ -138,6 +138,8 @@ Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. 
 | `Hesaplamalar eylemsiz referans çerçevesinde yapıldı.` | Fizik terimi; `frame` çevirisi olduğu için bozulmaz. |
 | `Uçuş test kampanyası 14 sortiden oluştu.` | Havacılığın kendi terimi; `campaign` kalkısı sanılmaz. |
 | `Denetleyici belleği sayfalar hâlinde adresler.` | `Address` burada gerçek teknik anlamdır. |
+| `Sistem yetkili kullanıcılara erişim sağlıyor.` | `Erişim sağlamak` yerleşik eşdizim; `provide` kalkısı değil. |
+| `Model yüksek frekanslı davranışı iyi yakalıyor.` | Modelleme grubunun kendi terminolojisi. |
 | `Yönetmelik kişisel verilerin izinsiz aktarılmasını yasaklar.` | Kuralın normatif içeriği; işleyen bir sistemin bugünkü davranışı değil. |
 | `Bu tür sonuçlar dikkatli inceleme gerektirir.` | Bir sonuç sınıfı hakkında; `bu sonuç ... gerektiriyor` ile karıştırılmaz. |
 
@@ -460,7 +462,7 @@ metinoskop/
 │   ├── yapisal-butunluk.md
 │   └── zamansal-ankraj-ve-rapor-kipi.md
 ├── evals/
-│   ├── (173 davranışsal vaka: kaynak sadakati, retorik mimari, yapısal
+│   ├── (175 davranışsal vaka: kaynak sadakati, retorik mimari, yapısal
 │   │    bütünlük, çeviri kokusu, epistemik mimari, eşdizim ve istem,
 │   │    metinsel tutarlılık, zamansal ankraj)
 │   ├── critical-cases.txt
@@ -556,7 +558,7 @@ GitHub Actions, `main` dalına gönderilen her değişiklikte ve pull request'le
 
 Bu ilke yapısal beklentileri de bağlar. Dönüşüm vakaları cümle sayısını üst sınırla verir (`cümle: <= 4`), kesin sayıyla değil: önermeleri işlevlerine göre gruplayan bir düzenleme de geçerlidir. Kesin sayı yalnızca korunur vakalarında meşrudur, çünkü orada beklenen çıktı kaynağın kendisidir. Doğrulayıcı bu ayrımı denetliyor.
 
-Yüz yetmiş üç vakanın elli altısı **korunur** vakasıdır: doğru davranış hiçbir şeyi değiştirmemektir ve kayıtlı çıktı kaynağın kendisidir. Doğrulayıcı bu eşitliği denetliyor. Korunması gerekenler arasında zaten iyi yazılmış e-posta, gerekli açık özne, teknik adlaştırma, hukuki kalıp, ödünç terim, uzun ama tek hareketli paragraf, tekrarlanabilirlik için ayrılmış deney bölümleri, algoritma tanımı, genel bilimsel ilişki, ürün belirtimi ve gerekçeli kip çeşitliliği vardır.
+Yüz yetmiş beş vakanın elli sekizi **korunur** vakasıdır: doğru davranış hiçbir şeyi değiştirmemektir ve kayıtlı çıktı kaynağın kendisidir. Doğrulayıcı bu eşitliği denetliyor. Korunması gerekenler arasında zaten iyi yazılmış e-posta, gerekli açık özne, teknik adlaştırma, hukuki kalıp, ödünç terim, uzun ama tek hareketli paragraf, tekrarlanabilirlik için ayrılmış deney bölümleri, algoritma tanımı, genel bilimsel ilişki, ürün belirtimi ve gerekçeli kip çeşitliliği vardır.
 
 ## Sürümleme
 

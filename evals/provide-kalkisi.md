@@ -12,7 +12,8 @@ Teknik rapor paragrafı. Standart düzeyde düzenle.
 
 - 6 saat ve 4 saat korunmalı; ölçüm soyut nitelemenin önüne geçmeli.
 - Panelin operatöre etkisi korunmalı.
-- `Sağlamak` fiili yasak değildir; burada adın kendisi fiile dönüşebiliyor.
+- `Sağlamak` fiili yasak değildir. Birinci cümlede doğal karşılık yine `sağlamak` ile kurulur; ikinci cümlede ad fiile dönüşür. Amaç `sağlamak` sözcüğünü sökmek değil, `provide` için varsayılan olmasını engellemek.
+- Görme yönü korunmalı: kaynak operatörün *daha iyi görmesini* söylüyor, operatörün *başkalarınca görülmesini* değil.
 
 ## Kaçınılması gerekenler
 
@@ -20,6 +21,8 @@ Teknik rapor paragrafı. Standart düzeyde düzenle.
 - Ölçümü düşürüp yalnızca `iyileşme sağladı` demek
 - Kaynakta bulunmayan bir yüzde ya da oran türetmek
 - Panelin etkisini ölçülmüş bir değere çevirmek
+- `Operatörün görünürlüğünü artırmak` gibi, operatörün başkaları tarafından görülmesi diye okunabilecek belirsiz bir karşılık kurmak
+- Her `sağlamak` geçişini sökmek; doğal olduğu yerde kalır
 
 ## Yapısal beklenti
 

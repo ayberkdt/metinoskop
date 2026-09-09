@@ -1,0 +1,1 @@
+Önerilen surrogate model, düşük irtifadaki yüksek frekanslı davranışı iyi yakalıyor. Kalan sapma 0,4 mm'nin altında kaldı.
