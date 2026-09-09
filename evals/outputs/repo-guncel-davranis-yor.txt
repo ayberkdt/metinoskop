@@ -1,0 +1,1 @@
+Repo bunu yasaklıyor. Doğrulayıcı eksik kayıtlı çıktıyı reddediyor; bu denetim mevcut sürümde bütün eval'lere uygulanıyor.

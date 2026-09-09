@@ -516,6 +516,19 @@ COMPLETED_WORK_RE = re.compile(
     r"\bbu (?:çalışma|araştırma|analiz|rapor|inceleme|deneme|deney|test|kampanya)\w*"
     r"|\b(?:deneyde|testte|analizde|ölçümlerde|kampanyada|pilotta|denetimde|saha çalışmasında)\b"
 )
+# Güncel gönderge + geniş zaman: söylem güncel olanı konu ederken cümlenin
+# zamansız tanım gibi kurulup kurulmadığını soran inceleme sinyali. Regex
+# anlamı bilemez; yalnızca aday gösterir.
+CURRENT_REFERENT_RE = re.compile(
+    r"^(?:repo|depo|metinoskop|readme|bu (?:bölüm|örnek|tablo|şekil|belge|dosya|depo|sürüm|uygulama|değişiklik|"
+    r"sonuç|bulgu|karşılaştırma|gözlem|hata|denetim|ayrım)|mevcut (?:sürüm|uygulama|yapı|durum)|"
+    r"(?:şekil|tablo|bölüm|denklem|ek)\s*\(?\d)"
+)
+CURRENT_PREDICATE_RE = re.compile(
+    r"^(?:göster|gerektir|düşündür|redded|denetle|kapsa|sağla|üret|çalıştır|içer|kaldır|koru|"
+    r"düzenle|kullan|dönüştür|uygula|atla|açıkla|yasakla|ekle|çöz|ver|ed|koy|gir|tanımla|özetle|"
+    r"karşılaştır)(?:ir|ır|ur|ür|er|ar|r|m[ae]z)$"
+)
 AORIST_MIN = 3
 AORIST_RATIO_MIN = 0.6
 FRAME_STACK_MIN = 2
@@ -915,6 +928,11 @@ def discourse_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict[
         if parenthetical_load(s):
             findings.append({"check": "parantez_yuku",
                              "text": f"P{s.paragraph}C{s.index}: ara söz yükü (parantez, uzun çizgi veya noktalı virgül yığını): ara söz ana cümleye mi ait, ayrı cümle mi olmalı?"})
+        if CURRENT_REFERENT_RE.match(s.lowered):
+            words = sentence_words(s)
+            if words and CURRENT_PREDICATE_RE.match(words[-1]):
+                findings.append({"check": "genis_zaman_katiligi",
+                                 "text": f"P{s.paragraph}C{s.index}: güncel gönderge ile geniş zamanlı yüklem: gerçekten genel bir kural mı, yoksa `-yor` güncel geçerliliği daha iyi mi verir? «{excerpt(s)}»"})
         date_marks = DATE_ANCHOR_RE.findall(s.lowered)
         if date_marks and tense_class(s) == "r":
             findings.append({"check": "zamansal_surtunme",
@@ -1231,6 +1249,7 @@ DISCOURSE_LABELS = {
     "esanlam_kaymasi": "eş anlamlı kayması", "konu_sifirlama": "konu sıfırlama",
     "parantez_yuku": "parantez yükü", "kayit_kaymasi": "kayıt kayması",
     "zamansal_surtunme": "zamansal sürtünme", "genis_zaman_doygunlugu": "geniş zaman doygunluğu",
+    "genis_zaman_katiligi": "geniş zaman katılığı",
 }
 
 
@@ -1614,6 +1633,17 @@ def self_test() -> None:
                            ("Deney 100 örnek üzerinde yürütüldü.", "dı")):
         if tense_class(Sentence(1, 1, text)) != expected:
             raise SystemExit(f"Öz sınama: geçmiş içi kip sınıfı hatalı ({expected}): {text!r}")
+    for text in ("Repo bunu yasaklar.", "Bu sonuç ek inceleme gerektirir.",
+                 "Şekil 4 iki yöntem arasındaki farkı gösterir."):
+        if not any(f["check"] == "genis_zaman_katiligi" for f in analyse(text)["soylem"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: güncel gönderge + geniş zaman adayı işaretlenmedi: {text!r}")
+    for text in ("Yerçekimi gradyanı irtifa azaldıkça artar.",
+                 "Yönetmelik veri aktarımını yasaklar.",
+                 "RK4 her adımda türevi dört kez değerlendirir.",
+                 "Başvurular her yıl 15 Ekim'de kapanır.",
+                 "Bu tür sonuçlar ek doğrulama gerektirir."):
+        if any(f["check"] == "genis_zaman_katiligi" for f in analyse(text)["soylem"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: genel önerme geniş zaman katılığı sayıldı (yanlış pozitif): {text!r}")
     report_tense = analyse(REPORT_TENSE_TEXT)
     checks = {f["check"] for f in report_tense["soylem"]}  # type: ignore[union-attr]
     for check in ("zamansal_surtunme", "genis_zaman_doygunlugu"):

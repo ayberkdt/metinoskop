@@ -24,3 +24,7 @@ sonuclarda-genis-zaman
 durum-raporu-uc-zaman
 periyodik-takvim-genis-zaman-korunur
 once-tamamlanmis-olay-korunur
+repo-guncel-davranis-yor
+sonuc-guncel-yorum-yor
+genel-gereklilik-genis-zaman-korunur
+karisik-zaman-readme

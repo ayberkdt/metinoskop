@@ -1,0 +1,1 @@
+Hata 120. derecede minimuma indi. Bu davranış düşük dereceli modelin yetersiz kaldığını düşündürüyor.
