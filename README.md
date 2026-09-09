@@ -1,7 +1,7 @@
 # Metinoskop
 
 [![Validate package](https://github.com/ayberkdt/metinoskop/actions/workflows/validate.yml/badge.svg)](https://github.com/ayberkdt/metinoskop/actions/workflows/validate.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-2e7d32)](LICENSE)
+[![License: CC BY 4.0](https://img.shields.io/badge/license-CC%20BY%204.0-2e7d32)](LICENSE)
 ![Agent Skill](https://img.shields.io/badge/agent-skill-2563eb)
 ![Language: Türkçe](https://img.shields.io/badge/language-T%C3%BCrk%C3%A7e-c62828)
 
@@ -378,6 +378,7 @@ metinoskop/
 ├── AGENTS.md
 ├── CHANGELOG.md
 ├── LICENSE
+├── NOTICE
 └── README.md
 ```
 
@@ -458,6 +459,16 @@ Proje anlamsal sürümleme yaklaşımını izler. Kullanıcıya dönük davranı
 
 Hata örneklerini ve geliştirme önerilerini [GitHub Issues](https://github.com/ayberkdt/metinoskop/issues) üzerinden paylaşabilirsiniz. Davranış değişikliği yapan pull request'lerde `SKILL.md`, README ve ilgili eval vakalarının birbiriyle uyumlu kalması gerekir.
 
-## Lisans
+## Lisans ve atıf
 
-Bu proje MIT Lisansı altında yayımlanmıştır. Ayrıntılar için [LICENSE](LICENSE) dosyasına bakın.
+Metinoskop, Creative Commons Atıf 4.0 Uluslararası (CC BY 4.0) lisansıyla sunulur. Kopyalayabilir, dağıtabilir, uyarlayabilir ve ticari olarak kullanabilirsiniz. Tek şart atıftır: eseri kullandığınız ya da uyarladığınız her yerde kaynağı makul biçimde belirtin ve değişiklik yaptıysanız bunu söyleyin.
+
+Kısa atıf satırı:
+
+```text
+"Metinoskop" (Ayberk Demirkanat, https://github.com/ayberkdt/metinoskop), CC BY 4.0
+```
+
+Skill'i bir agent ürününe gömüyorsanız bu satırı skill listesinde, dokümantasyonda ya da ürünün künye bölümünde görünür tutun. Atıf, lisans verenin sizi veya kullanımınızı onayladığı izlenimi verecek biçimde yapılamaz.
+
+Lisansın tam metni [LICENSE](LICENSE), telif ve atıf ayrıntısı [NOTICE](NOTICE) dosyasındadır.

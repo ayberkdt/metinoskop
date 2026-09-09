@@ -19,6 +19,7 @@ REQUIRED_FILES = (
     "AGENTS.md",
     "CHANGELOG.md",
     "LICENSE",
+    "NOTICE",
     "agents/openai.yaml",
     "references/akicilik.md",
     "references/kavramsal-girisler.md",
@@ -496,6 +497,9 @@ readme_requirements = (
     "## Lisans",
     "npx skills add ayberkdt/metinoskop --global",
     "[LICENSE](LICENSE)",
+    "[NOTICE](NOTICE)",
+    "## Lisans ve atıf",
+    "CC BY 4.0",
     "[CHANGELOG.md](CHANGELOG.md)",
     "scripts/eval-runner.py",
     "scripts/style-lint.py",
@@ -514,10 +518,20 @@ for requirement in readme_requirements:
 if f"v{CURRENT_VERSION}" not in readme:
     fail(f"README.md must mention the current version: v{CURRENT_VERSION}")
 
-if not license_text.startswith("MIT License\n"):
-    fail("LICENSE must contain the MIT License")
-if "Copyright (c) 2026 Ayberk Demirkanat" not in license_text:
-    fail("LICENSE copyright notice is missing")
+if not license_text.startswith("Attribution 4.0 International\n"):
+    fail("LICENSE must contain the Creative Commons Attribution 4.0 International legal code")
+for clause in ("Section 3 -- License Conditions", "Attribution.", "Section 2 -- Scope"):
+    if clause not in license_text:
+        fail(f"LICENSE is missing a CC BY 4.0 clause: {clause}")
+for foreign in ("ShareAlike", "NonCommercial", "NoDerivatives"):
+    if foreign in license_text:
+        fail(f"LICENSE must be plain CC BY 4.0, not a variant carrying {foreign}")
+notice = (ROOT / "NOTICE").read_text(encoding="utf-8")
+if "Copyright (c) 2026 Ayberk Demirkanat" not in notice:
+    fail("NOTICE copyright notice is missing")
+for requirement in ("CC BY 4.0", "https://github.com/ayberkdt/metinoskop", "Ayberk Demirkanat"):
+    if requirement not in notice:
+        fail(f"NOTICE must carry the attribution detail: {requirement}")
 
 changelog = texts[ROOT / "CHANGELOG.md"]
 if "## [Unreleased]" not in changelog:

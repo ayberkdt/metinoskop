@@ -6,6 +6,10 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ## [Unreleased]
 
+### Değişti
+
+- Lisans MIT'ten Creative Commons Atıf 4.0 Uluslararası'na (CC BY 4.0) geçirildi. Kullanım, değiştirme, dağıtım ve ticari kullanım serbest kalır; atıf artık lisansın merkezî şartıdır. `LICENSE` kanonik CC BY 4.0 yasal metnini taşır, yeni `NOTICE` dosyası telif sahibini ve beklenen atıf biçimini verir, README'de `## Lisans ve atıf` bölümü kopyalanabilir bir atıf satırı sunar. Doğrulayıcı lisans metnini, CC BY maddelerini ve NOTICE atıf ayrıntılarını denetler; ShareAlike, NonCommercial ya da NoDerivatives maddesi taşıyan bir varyant reddedilir.
+
 ### Eklendi
 
 - Dört düzeyde (sözcük ve kalıp, cümle, paragraf, belge) yapay düzyazı denetimi: sıfır bilgi cümlesi kuralı ve silme testi, işlev tekrarı, savunmacı düzyazı, iddia → açımlama → önem → mini sonuç döngüsü, üretilmiş önem, üretilmiş karşıtlık, yol haritası ve okur yönlendirmesi, kalıp giriş ve sonuç, soyut yüklem sisi, boş soyut özne, açıklık testi, paragraf simetrisi ve zorlama denge kuralları.

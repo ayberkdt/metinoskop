@@ -24,7 +24,8 @@ Bu depo, Türkçe metinleri doğal ve kaynak sadakatini koruyan bir dille düzen
 - `scripts/eval-suite.py`: `evals/outputs/` altındaki kayıtlı referans çıktılar üzerinde değişmez, sert kalıp ve yapısal beklenti denetimi yapar; CI'da `--require-all` ile çalışır ve model hakem istemi üretebilir.
 - `scripts/behavioral-regression.py`: `SKILL.md` ve referansları gerçek bir modele verip `evals/critical-cases.txt` vakalarını taze üretir, deterministik denetimden ve model hakeminden geçirir; `.github/workflows/behavioral.yml` bunu haftalık ve elle tetiklemeyle çalıştırır. Kayıtlı çıktı denetimi fixture'ları, bu betik skill'i sınar.
 - `scripts/validate-package.py`: Paket yapısını ve adlandırma tutarlılığını bağımlılık kullanmadan doğrular.
-- `LICENSE`: Paketin MIT Lisansı altında kullanılma, değiştirilme ve dağıtılma koşullarını belirtir.
+- `LICENSE`: Creative Commons Atıf 4.0 Uluslararası (CC BY 4.0) yasal metnidir; kullanma, değiştirme ve dağıtma serbesttir, atıf zorunludur.
+- `NOTICE`: Telif sahibini ve beklenen atıf biçimini belirtir. Lisans değişirse README'deki rozet, `## Lisans ve atıf` bölümü ve doğrulayıcıdaki lisans denetimi birlikte güncellenir.
 - `CHANGELOG.md`: Sürümler arasındaki kullanıcıya dönük davranış ve paket değişikliklerini kaydeder.
 
 ## Bakım sözleşmesi
