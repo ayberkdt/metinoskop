@@ -125,7 +125,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "label": "Yol haritası ve duyuru",
         "level": "sert",
         "patterns": (
-            r"bu (?:bölümde|kısımda|yazıda|makalede|çalışmada|belgede|notta) .*(?:ele alın|incelen|açıklan|değinil|anlatıl|sunul|tartışıl|özetlen)",
+            r"bu (?:bölümde|kısımda|yazıda|makalede|çalışmada|belgede|notta) .*(?:ele alın|incelen|açıklan|değinil|anlatıl|sunul|tartışıl|özetlen)(?!m[ae](?:d|m|y|z))",  # olumsuz biçim (incelenmedi) sınırlılıktır, duyuru değil
             r"aşağıda .*(?:incelen|açıklan|sunul|ele alın|anlatıl)",
             r"(?:şimdi|önce|öncelikle) .*(?:bakalım|geçelim|ele alalım|inceleyelim)",
             r"öncelikle .*anlamak gerek|bunu anlamak için önce",
@@ -417,6 +417,31 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"\bbir (?:değerlendirme|analiz|inceleme|ölçüm|kontrol|uygulama|iyileştirme) (?:yap|gerçekleştir|yürüt)",
             r"karar alma süreci",
             r"(?:etki|rol)y?e sahip|özelli(?:ğ|g)ine sahip",
+        ),
+    },
+    {
+        "key": "anlam_kalkisi",
+        "label": "Anlamı değiştiren kalkı",
+        "level": "sert",
+        "patterns": (
+            # suggest → önermek: veri öznesi tavsiye edemez; "-dığını önermek" çıkarım değil öneri okunur.
+            r"^(?:\S+ ){0,3}(?:sonuç|bulgu|veri|analiz|gözlem|ölçüm)(?:lar|ler)(?:ımız|imiz|ı|i)?,? .{0,120}(?:ğını|ğini|ğunu|ğünü) öner(?:mekte|miş|iyor|ir\b|di)",
+        ),
+    },
+    {
+        "key": "anlam_kaymasi_adayi",
+        "label": "Anlam kayması adayı",
+        "level": "bağlam",
+        "patterns": (
+            r"^(?!.*\b(?:nasıl|neden|niçin|niye|hangi|ne kadar|kim|kaç|olup olma)).*?\S+(?:ğını|ğini|ğunu|ğünü) tartış(?:makta|mış|ıyor|ır\b|tı)",
+            r"^(?!.*\b(?:nasıl|neden|niçin|niye|hangi|ne kadar|kim|kaç|olup olma)).*?\S+(?:dığı|diği|duğu|düğü|tığı|tiği|tuğu|tüğü|acağı|eceği) tartışıl(?:makta|mış|ıyor|ır\b)",
+            r"^(?:\S+ ){0,2}(?:deney|ölçüm|toplantı|görüşme|kesinti|olay|kaza|tören|çalıştay|konferans|sınav)(?:ler|lar)?\b(?! \S+(?:ı|i|u|ü)\b).{0,60}\byer al(?:dı|mıştır|mıştı|acak)\b",
+            r"\baktüel (?:değer|veri|maliyet|ölçüm|sonuç|gider)",
+            r"\b\d+(?:[.,]\d+)? faktörü (?:ile|kadar|oranında)",
+            r"\d+ (?:k|m|g)?hz(?:'?lik)? örnekleme oranı|örnekleme oranı\w*.{0,15}\b\d+ (?:k|m|g)?hz\b",
+            r"\btepkime oranı",
+            r"^(?!.*\b(?:hasta|klinik|ilaç|plasebo|doz))(?=.*\btedavi grub).*?tedavi grub",
+            r"önemli (?:ölçüde|düzeyde|derecede|bir fark|fark).{0,80}\(?p ?[<=≤]",
         ),
     },
     {
@@ -1534,6 +1559,24 @@ INNOCENT_WORDS = (
     "Binanın temel taşı 1923'te atıldı.",
     "Kapının anahtarı masada kaldı.",
 )
+# Olumsuz biçim sınırlılık bildirir; yol haritası duyurusu değildir.
+NEGATED_SCOPE = "Bu çalışmada yaş etkisi incelenmedi; bu belgede maliyet ele alınmamıştır."
+
+# İngilizceden anlam değiştirerek gelen akademik kalkılar ve doğru kullanımları.
+MEANING_CALQUE_TEXT = """Deney 12 Mart'ta Ankara'daki laboratuvarda yer aldı. Sinyaller 500 Hz örnekleme oranıyla kaydedildi. Yeni filtre gürültüyü 3 faktörü ile azalttı. Tedavi grubundaki öğrencilerin sınav puanları önemli ölçüde yüksekti (p = 0,003). Bu bulgular, geri bildirimin öğrenmeyi desteklediğini önermektedir. Bazı araştırmacılar etkinin yaşa bağlı olduğunu tartışmaktadır. Aktüel değerler tahminden %4 düşüktü.
+"""
+MEANING_CORRECT = (
+    "Yazarlar, eksik verileri doldurmak için yeni bir yöntem önermektedir.",
+    "Rapor, izleme süresinin altı aya çıkarılmasını önermektedir.",
+    "Yöntemin sınırlılıkları beşinci bölümde tartışılmıştır.",
+    "Kuralın kimlere uygulanacağı tartışılıyor; etkinin yaşa bağlı olup olmadığı tartışılmaktadır.",
+    "Bu yazıda eğitimin nasıl değiştiğini tartışıyorum.",
+    "Karşılaştırılan üç model Tablo 2'de yer alıyor.",
+    "Toplantıda üç konu yer aldı.",
+    "Tedavi grubundaki 40 hastaya ilaç, kontrol grubundaki 38 hastaya plasebo verildi.",
+    "Risk faktörü olarak sigara kullanımı incelendi; nüfusun %5'i seçildi, örnekleme oranı %5 idi.",
+    "Aktüel konular listesi her ay güncellenir.",
+)
 
 # Sosyal medya, blog ve kişisel deneme kaydındaki hazır şablon.
 SOCIAL_TEXT = """🚀 Bugün sizlerle çok özel bir haberi paylaşmak istiyorum!
@@ -1631,6 +1674,20 @@ def self_test() -> None:
                 "Öz sınama: sözcük içinde kalan tetikleyici işaret üretti (yanlış pozitif): "
                 f"{text!r} -> {report['hits']}"
             )
+
+    if any(h["category"] == "duyuru" for h in analyse(NEGATED_SCOPE)["hits"]):  # type: ignore[union-attr]
+        raise SystemExit("Öz sınama: olumsuz kapsam cümlesi (incelenmedi) duyuru sayıldı")
+    if not any(h["category"] == "duyuru" for h in analyse("Bu bölümde maliyet ele alınacaktır.")["hits"]):  # type: ignore[union-attr]
+        raise SystemExit("Öz sınama: gerçek bölüm duyurusu işaretlenmedi")
+
+    meaning = analyse(MEANING_CALQUE_TEXT)
+    flagged = [h for h in meaning["hits"] if h["category"] in ("anlam_kalkisi", "anlam_kaymasi_adayi")]  # type: ignore[union-attr]
+    if not any(h["category"] == "anlam_kalkisi" for h in flagged) or len(flagged) < 7:
+        raise SystemExit(f"Öz sınama: anlam değiştiren kalkılar eksik işaretlendi ({len(flagged)}/7): {flagged}")
+    for text in MEANING_CORRECT:
+        stray = [h for h in analyse(text)["hits"] if h["category"] in ("anlam_kalkisi", "anlam_kaymasi_adayi")]  # type: ignore[union-attr]
+        if stray:
+            raise SystemExit(f"Öz sınama: doğru kullanım anlam kalkısı sayıldı (yanlış pozitif): {text!r} -> {stray}")
 
     social = analyse(SOCIAL_TEXT)
     expected_social = {"duyuru", "gerilim", "savunma", "sohbet", "karsitlik", "reklam", "mecaz", "sus"}

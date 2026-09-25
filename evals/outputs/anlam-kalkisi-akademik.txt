@@ -1,0 +1,3 @@
+Deney 12 Mart'ta Ankara'daki laboratuvarda yapıldı. Göz hareketleri 250 Hz örnekleme frekansıyla kaydedildi; yeni kalibrasyon adımı ölçüm hatasını üçte birine indirdi.
+
+Deney grubundaki öğrencilerin (n = 42) sınav puanları kontrol grubundakilerden istatistiksel olarak anlamlı düzeyde yüksekti (p = 0,003). Bu bulgular, geri bildirimin öğrenmeyi desteklediğini düşündürüyor. Bazı araştırmacılar geri bildirimin etkisinin yaşa bağlı olduğunu savunuyor; bu çalışmada yaş etkisi incelenmedi.

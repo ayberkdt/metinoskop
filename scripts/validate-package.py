@@ -211,6 +211,8 @@ REQUIRED_FILES = (
     "evals/gorus-ambalaji.md",
     "evals/ozgun-imge-korunur.md",
     "evals/sosyal-medya-sablonu.md",
+    "evals/anlam-kalkisi-akademik.md",
+    "evals/anlam-kalkisi-korunur.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -398,6 +400,8 @@ EVAL_FILES = (
     "evals/gorus-ambalaji.md",
     "evals/ozgun-imge-korunur.md",
     "evals/sosyal-medya-sablonu.md",
+    "evals/anlam-kalkisi-akademik.md",
+    "evals/anlam-kalkisi-korunur.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -816,6 +820,8 @@ eval_markers = {
     "evals/gorus-ambalaji.md": ("adeta bir pencere", "çok daha fazlasıdır", "Jules Verne", "kilit bir rol",),
     "evals/ozgun-imge-korunur.md": ("açılmış bir parantez", "Bence", "kalabalık, gürültü, trafik", "cümle: 3",),
     "evals/sosyal-medya-sablonu.md": ("Gelin birlikte bakalım", "Sonuç mu?", "120'den 310'a", "liste ögesi: 0",),
+    "evals/anlam-kalkisi-akademik.md": ("desteklediğini önermektedir", "yer aldı", "3 faktörü", "p = 0,003",),
+    "evals/anlam-kalkisi-korunur.md": ("yeni bir yöntem önermektedir", "Tablo 2'de yer alıyor", "Tedavi grubundaki 40 hastaya", "cümle: 6",),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]
@@ -909,6 +915,7 @@ SHOULD_REMAIN_CASES = (
     "evals/davranisi-yakalamak-alan-terimi-korunur.md",
     "evals/erisim-saglamak-korunur.md",
     "evals/ozgun-imge-korunur.md",
+    "evals/anlam-kalkisi-korunur.md",
 )
 locked = []
 for relative_path in EVAL_FILES:

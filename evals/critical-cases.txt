@@ -5,8 +5,6 @@ epistemik-guvensiz-fiil
 sonuc-sonuclardan-guclu
 tekrarlanan-acik-ozne
 belirsizlik-icin-acik-ozne
-asiri-bolumleme
-kisa-paragraf-yigini
 korunacak-basliklar
 uzun-paragraf-korunur
 iyi-metin
@@ -34,3 +32,5 @@ provide-kalkisi
 erisim-saglamak-korunur
 gorus-ambalaji
 ozgun-imge-korunur
+anlam-kalkisi-akademik
+anlam-kalkisi-korunur
