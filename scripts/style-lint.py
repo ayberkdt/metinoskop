@@ -62,7 +62,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "level": "sert",
         "patterns": (
             r"açısından (?:son derece |oldukça |büyük |özellikle )?(?:önem|kritik)",
-            r"(?:önemli|kritik|temel|belirleyici|merkezi) (?:bir )?rol (?:oyna|üstlen)",
+            r"(?:önemli|kritik|temel|belirleyici|merkezi|hayati|kilit) (?:bir )?rol (?:oyna|üstlen)",
             r"kritik (?:bir )?önem",
             r"belirleyici (?:bir )?(?:etken|faktör|unsur)|belirleyici olmaktadır|belirleyicidir",
             r"dikkat çekici (?:bir )?(?:sonuç|bulgu|gelişme)",
@@ -117,6 +117,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"şaşırtıcı değil|sürpriz değil",
             r"beklenen bir (?:sonuç|durum)",
             r"özellikle (?:belirtmek|vurgula)",
+            r"unutulmamalıdır ki|unutmamak gerekir ki|unutmayalım ki",
         ),
     },
     {
@@ -135,6 +136,9 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"^peki\b.*\?",
             r"bizi şu soruya",
             r"ne anlama geliyor\?",
+            r"^gelin,? (?:birlikte )?(?:bakalım|inceleyelim|göz atalım|keşfedelim)",
+            r"derinlemesine (?:ele ala|inceleye|bakaca|ele alalım|inceleyelim)",
+            r"bu (?:yazıda|yazımızda|bölümde|makalede|rehberde) .*(?:ele alacağız|inceleyeceğiz|bakacağız|değineceğiz|anlatacağız)",
         ),
     },
     {
@@ -169,6 +173,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"tablo (?:değişmektedir|değişiyor|nettir)",
             r"kritik bir kırılma",
             r"asıl mesele (?:burada|bundan sonra)",
+            r"^(?:peki )?(?:sonuç mu|cevap mı|yanıt mı|sır mı|işin sırrı mı|fark mı)\?",
         ),
     },
     {
@@ -260,6 +265,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"ötesine geç",
             r"olmaktan öte",
             r"bir araçtan (?:fazla|öte)",
+            r"(?:tan|ten|dan|den) (?:çok )?daha fazlası",
         ),
     },
     {
@@ -335,6 +341,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"umarım .*(?:faydalı|yardımcı)",
             r"^dilerseniz|dilerseniz .*(?:paylaşabilir|yapabilir|gönderebilir)",
             r"memnuniyetle",
+            r"umarım bu (?:e-?posta|mesaj|ileti) (?:sizi )?(?:iyi|sağlıkla) bul",
         ),
     },
     {
@@ -347,6 +354,31 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"kusursuz|sektör lideri",
             r"bir üst seviyeye|fark yarat|yeniden tanımla",
             r"\bdönüştürücü (?:bir )?(?:etki|deneyim|güç|yolculuk|dokunuş|an|dönem|çözüm|potansiyel)",
+            r"sorunsuz (?:bir şekilde|biçimde)|emin ellerde|bir adım önde",
+            r"\b(?:güçlü|esnek|ölçeklenebilir|yenilikçi|modern|kullanıcı dostu|sezgisel), (?:güçlü|esnek|ölçeklenebilir|yenilikçi|modern|kullanıcı dostu|sezgisel),? ve ",
+        ),
+    },
+    {
+        "key": "mecaz",
+        "label": "Hazır mecaz ve vecize",
+        "level": "bağlam",
+        "patterns": (
+            r"\badeta\b",
+            r"(?:başarı|çözüm|dönüşüm|büyüme|verimlilik|mutluluk)\w* anahtarı",
+            r"\btemel taşı(?!.{0,30}(?:atıl|konul|döşen))",
+            r"olmazsa olmaz",
+            r"(?:dönüşüm|keşif|öğrenme|büyüme|gelişim|dijital|başarı) yolculuğ|yolculuğ(?:umuz|unuz) (?:daha )?(?:yeni )?başlı",
+            r"\bbir \w+, bir \w+(?:,| ve) bir \w+(?:dur|dır|dir|dür|tur|tır|tir|tür)\b",
+            r"^her \S+ (?:yeni )?bir (?:kapı|ufuk|fırsat|başlangıç)",
+            r"imk[âa]nsız diye bir şey yok",
+        ),
+    },
+    {
+        "key": "sus",
+        "label": "Süs emojisi",
+        "level": "bağlam",
+        "patterns": (
+            r"[\U0001F300-\U0001FAFF\u2705\u2728\u26A1\u2B50\u2757\u2714]",
         ),
     },
     {
@@ -438,6 +470,8 @@ MAKTADIR_RE = re.compile(r"m[ae]kt[ae]d[ıi]r[.!?]*$")
 SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-ZÇĞİÖŞÜ0-9\"'«(`])")
 STRUCTURE_SKIP_PREFIXES = ("#", "|", "```", "- ", "* ", "+ ")
 LIST_ITEM_RE = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+")
+# Optional leading emoji or check mark, then a bold label ending in a colon.
+LABELLED_ITEM_RE = re.compile(r"^(?:[\U0001F300-\U0001FAFF\u2600-\u27BF\uFE0F]+\s*)?\*\*[^*]{1,40}:\*\*")
 HEADING_RE = re.compile(r"^(#{1,6})\s+(.*\S)\s*$")
 LIST_CHAIN_OPENERS = (
     "bu nedenle", "sonuç olarak", "dolayısıyla", "böylece", "bu yüzden", "bu da",
@@ -1107,6 +1141,11 @@ def structural_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict
         findings.append({"check": "liste_yogunlugu",
                          "text": f"{doc.list_items} liste ögesi, {prose_sentences} düzyazı cümlesi: metnin çoğu listeye çevrilmiş olabilir."})
 
+    labelled = [item for item in doc.list_item_texts if LABELLED_ITEM_RE.match(item)]
+    if len(labelled) >= 3 and len(labelled) == doc.list_items:
+        findings.append({"check": "etiketli_liste",
+                         "text": f"{len(labelled)} liste ögesinin hepsi \"**Etiket:** açıklama\" kalıbında: etiketler taramaya mı yarıyor, yoksa sunum şablonu mu?"})
+
     for heading in headings:
         if not heading.first_sentence or heading.level == 1:
             continue
@@ -1491,7 +1530,24 @@ INNOCENT_WORDS = (
     "Analog-dijital dönüştürücü 12 bit çözünürlükte çalışır.",
     "Isı dönüştürücüsünün verimi %78 ölçüldü.",
     "Gerilim dönüştürücü kartı değiştirildi.",
+    "Otobüs yolculuğu altı saat sürdü.",
+    "Binanın temel taşı 1923'te atıldı.",
+    "Kapının anahtarı masada kaldı.",
 )
+
+# Sosyal medya, blog ve kişisel deneme kaydındaki hazır şablon.
+SOCIAL_TEXT = """🚀 Bugün sizlerle çok özel bir haberi paylaşmak istiyorum!
+
+Gelin birlikte bakalım 👇
+
+- ✅ **İnsan odaklılık:** Başarının anahtarı insandır.
+- ✅ **Çeviklik:** Ayakta kalmanın olmazsa olmaz koşulu.
+- ✅ **Şeffaflık:** Güvenin temel taşı.
+
+Sonuç mu? Müşteri sayımız 120'den 310'a çıktı. Unutulmamalıdır ki okumak bir alışkanlıktan çok daha fazlasıdır; o, bir keşif, bir dönüşüm, bir yolculuktur.
+
+Umarım bu e-posta sizi iyi bulur. Araç mevcut altyapınıza sorunsuz bir şekilde entegre olur ve metin adeta bir pencere işlevi görür.
+"""
 
 FILLER_SOURCE = "Model 120. derecede en düşük hatayı verdi. Bu sonuç derece seçiminin kritik önemini ortaya koymaktadır."
 FILLER_TRANSLATED = "Model 120. derecede en düşük hatayı verdi. Sonuç olarak derece seçimi önemli bir etkendir; bu bulgu derece seçiminin önemini bir kez daha ortaya koymaktadır."
@@ -1575,6 +1631,18 @@ def self_test() -> None:
                 "Öz sınama: sözcük içinde kalan tetikleyici işaret üretti (yanlış pozitif): "
                 f"{text!r} -> {report['hits']}"
             )
+
+    social = analyse(SOCIAL_TEXT)
+    expected_social = {"duyuru", "gerilim", "savunma", "sohbet", "karsitlik", "reklam", "mecaz", "sus"}
+    missing = expected_social - set(social["per_category"])  # type: ignore[arg-type]
+    if missing:
+        raise SystemExit(f"Öz sınama: sosyal medya metninde beklenen aileler bulunamadı: {sorted(missing)}")
+    if "etiketli_liste" not in {f["check"] for f in social["structure"]}:  # type: ignore[union-attr]
+        raise SystemExit("Öz sınama: etiketli emoji listesi yapı bulgusu üretmedi")
+    for label, text in (("temiz", CLEAN_TEXT), ("iyi yapılı", WELL_STRUCTURED_TEXT), ("yerli", NATIVE_TEXT), ("iç içe", NESTED_TEXT)):
+        stray = [h for h in analyse(text)["hits"] if h["category"] in ("mecaz", "sus")]  # type: ignore[union-attr]
+        if stray:
+            raise SystemExit(f"Öz sınama: {label} metinde hazır mecaz/emoji işareti üretildi (yanlış pozitif): {stray}")
 
     translated = analyse(TRANSLATED_TEXT)
     expected_tr = {"sahip", "varlik", "kalki", "bos_ozne"}

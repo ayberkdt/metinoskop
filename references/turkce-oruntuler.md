@@ -8,11 +8,12 @@
 4. [Klişe geçişler ve dolgu](#klişe-geçişler-ve-dolgu)
 5. [Pazarlama dili ve değerlendirme](#pazarlama-dili-ve-değerlendirme)
 6. [Tiyatral ve sahte derinlikli anlatım](#tiyatral-ve-sahte-derinlikli-anlatım)
-7. [Belirsiz otorite ve spekülasyon](#belirsiz-otorite-ve-spekülasyon)
-8. [Çeviri kokusu](#çeviri-kokusu)
-9. [Biçimsel işaretler](#biçimsel-işaretler)
-10. [Yanlış pozitifler](#yanlış-pozitifler)
-11. [Türlere göre örnekler](#türlere-göre-örnekler)
+7. [Görüş ambalajı](#görüş-ambalajı)
+8. [Belirsiz otorite ve spekülasyon](#belirsiz-otorite-ve-spekülasyon)
+9. [Çeviri kokusu](#çeviri-kokusu)
+10. [Biçimsel işaretler](#biçimsel-işaretler)
+11. [Yanlış pozitifler](#yanlış-pozitifler)
+12. [Türlere göre örnekler](#türlere-göre-örnekler)
 
 ## Kullanım ilkesi
 
@@ -340,6 +341,86 @@ Yüksek riskli formüller:
 
 Gerçekten cevabı açık olmayan soru, konuşma veya denemede kalabilir.
 
+## Görüş ambalajı
+
+Deneme, köşe yazısı, kişisel blog ve sosyal medya gönderisinde yazarın görüşü ve çıkardığı ders metnin içeriğidir; silinmez. Ama görüşü taşıyan hazır kalıp yazarın sesi değildir. Model bu iki şeyi karıştırdığında kalıbı "yazarın görüşü" diye olduğu gibi bırakır ya da aynı imgeyi daha sakin sözcüklerle yeniden kurar. Sonuç, düzenlenmiş ama hâlâ yapay okunan bir metindir.
+
+Karar sorusu: bu ifade yalnızca bu yazara ve bu konuya mı ait, yoksa başka herhangi bir konunun yazısına da yapıştırılabilir mi? Yapıştırılabiliyorsa ambalajdır. Ambalajın altındaki önermeyi (varsa) ve gücünü koru; imgeyi, formülü ve süsü at.
+
+Yüksek riskli ambalajlar:
+
+- `adeta ... işlevi görür`, `... gibidir` ile kurulan hazır benzetme (pencere, anahtar, pusula, köprü, temel taşı)
+- `X'ten çok daha fazlasıdır`: reddedilen tarafı küçültüp kabul edileni büyüten formül
+- `bir keşif, bir dönüşüm, bir yolculuk` gibi yakın anlamlı soyut adlardan üçlü
+- `her sayfa yeni bir kapı, her cümle yeni bir ufuk` gibi koşut vecize
+- `asıl yarış pistte değil, zihinde kazanılır`, `imkânsız diye bir şey yoktur` gibi her deneyime uyan ders
+- `bugün atacağımız adımlar yarının dünyasını şekillendirecek` gibi her öneriye uyan kapanış
+- `yolculuğumuz daha yeni başlıyor`, `başarının anahtarı`, `olmazsa olmaz koşul`
+
+### Aynı imgeyi yumuşatma
+
+**Önce**
+
+> Kitap okumak, insan hayatında adeta bir pencere işlevi görür. Bu pencereden baktığımızda yalnızca başka dünyaları değil, aynı zamanda kendimizi de görürüz.
+
+**Yanlış sonra**
+
+> Kitap okumak bir pencere gibidir; o pencereden yalnızca başka dünyaları değil, kendimizi de görürüz.
+
+`Adeta` gitti ama imge ve karşıtlık formülü yerinde; metin aynı hazır kompozisyon cümlesi olarak okunuyor.
+
+**Sonra**
+
+> Kitap okurken başka dünyaları olduğu kadar kendimizi de görürüz.
+
+Önerme (okurken hem başka dünyaları hem kendimizi görürüz) ve iki tarafı da korundu; hazır pencere imgesi ve `yalnızca ... değil, aynı zamanda` ambalajı gitti.
+
+### Üçlü ve vecize
+
+**Önce**
+
+> Bu deneyim bana şunu öğretti: Okumak bir alışkanlıktan çok daha fazlasıdır; o, bir keşif, bir dönüşüm, bir yolculuktur. Her sayfa yeni bir kapı, her cümle yeni bir ufuktur.
+
+**Sonra**
+
+> Bu deneyim bana okumanın bir keşif ve bir dönüşüm olduğunu öğretti.
+
+Silinenlerin her biri önerme taşımıyor: `yolculuk`, `yeni bir kapı` ve `yeni bir ufuk` `keşif` önermesini yineliyor; `alışkanlıktan çok daha fazlası` reddedilen bir taraf kurup kabul edileni büyütüyor ve kalan cümle bu büyütmeyi zaten içeriyor. `Keşif` ve `dönüşüm` iki ayrı önermedir; ikisi de kalır.
+
+### Yargının gücü korunur
+
+**Önce**
+
+> Metrobüs hattının genişletilmesi, şehrin geleceği için hayati bir öneme sahiptir. Unutmayalım ki bugün atacağımız adımlar, yarının şehirlerini şekillendirecektir.
+
+**Sonra**
+
+> Metrobüs hattının genişletilmesi şehrin geleceği için hayati önemde.
+
+İlk cümle köşe yazarının kendi yargısıdır; `hayati` gücü korunur, yalnızca `sahip olmak` kalkısı gider. İkinci cümle her kamu politikası için yazılabilecek bir kapanıştır; yazarın ne düşündüğüne bir şey eklemez, silinir. Yargıyı öneriye çevirmek (`Metrobüs hattı genişletilmeli`) ya da `hayati`yi `önemli`ye indirmek yanlıştır.
+
+### Sosyal medya şablonu
+
+**Önce**
+
+> Peki bu süreçte ne öğrendik? Gelin birlikte bakalım 👇
+>
+> ✅ **Çeviklik:** Hızla değişen dünyada ayakta kalmanın olmazsa olmaz koşulu.
+>
+> Sonuç mu? Geçen çeyrekte müşteri sayımızı 120'den 310'a çıkardık — üstelik hiçbir yatırım almadan.
+
+**Sonra**
+
+> Bu süreçte çevik olmadan ayakta kalamayacağımızı öğrendik. Geçen çeyrekte müşteri sayımızı hiç yatırım almadan 120'den 310'a çıkardık.
+
+Retorik soru, `Gelin birlikte bakalım` duyurusu, `Sonuç mu?` açılışı ve her maddeyi açan onay işaretli etiket, sayıyı sahneye çıkarmak için kurulmuş bir şablondur. Sayı ve yatırım almadan elde edildiği bilgisi korunur. Sosyal medyada emoji tek başına yapaylık işareti değildir; kişinin kendi gönderisinde tek bir emoji kalabilir. Şablon, her satırın aynı süsle açılmasıdır.
+
+### Karşı örnek: yazarın kendi imgesi
+
+> Vapurdaki yirmi dakika, günün ortasına açılmış bir parantez gibi.
+
+Bu benzetme bir konuya değil bu yazarın vapuruna aittir; başka bir yazıya yapıştırılamaz. Ses budur; korunur. Hazır imgeyi atarken yazarın özgün imgesini de "süs" sayıp düzleştirme.
+
 ## Belirsiz otorite ve spekülasyon
 
 ### Kaynaksız çoğunluk
@@ -503,6 +584,8 @@ Soyut değerlendirme yeni bir değerlendirme ifadesiyle yeniden kurulmaz; kaynak
 > Belediye, 12 kilometrelik tramvay hattının inşaatına eylülde başlayacağını açıkladı.
 
 ### E-posta
+
+`Umarım bu e-posta sizi iyi bulur` İngilizce açılış formülünün kalkısıdır; bilgi taşımaz, silinir. `Bizimle iletişime geçmekten çekinmeyin` ise Türkçe iş yazışmasında yerleşiktir; tek başına işaret değildir, ama `Size yardımcı olmaktan memnuniyet duyarız!` ile yığıldığında kapanış şablonuna dönüşür.
 
 **Önce**
 

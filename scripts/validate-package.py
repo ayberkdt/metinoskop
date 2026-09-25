@@ -208,6 +208,9 @@ REQUIRED_FILES = (
     "evals/hipotezi-desteklemek-korunur.md",
     "evals/davranisi-yakalamak-alan-terimi-korunur.md",
     "evals/erisim-saglamak-korunur.md",
+    "evals/gorus-ambalaji.md",
+    "evals/ozgun-imge-korunur.md",
+    "evals/sosyal-medya-sablonu.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -392,6 +395,9 @@ EVAL_FILES = (
     "evals/hipotezi-desteklemek-korunur.md",
     "evals/davranisi-yakalamak-alan-terimi-korunur.md",
     "evals/erisim-saglamak-korunur.md",
+    "evals/gorus-ambalaji.md",
+    "evals/ozgun-imge-korunur.md",
+    "evals/sosyal-medya-sablonu.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -807,6 +813,9 @@ eval_markers = {
     "evals/hipotezi-desteklemek-korunur.md": ("ikinci hipotezi destekliyor", "yeterli kanıt bulunamadı", "40 katılımcıyla",),
     "evals/davranisi-yakalamak-alan-terimi-korunur.md": ("davranışı iyi yakalıyor", "surrogate", "0,4 mm",),
     "evals/erisim-saglamak-korunur.md": ("erişim sağlıyor", "bağlantı sağlıyor", "güvenliği sağlamayı", "yetkili kullanıcılara",),
+    "evals/gorus-ambalaji.md": ("adeta bir pencere", "çok daha fazlasıdır", "Jules Verne", "kilit bir rol",),
+    "evals/ozgun-imge-korunur.md": ("açılmış bir parantez", "Bence", "kalabalık, gürültü, trafik", "cümle: 3",),
+    "evals/sosyal-medya-sablonu.md": ("Gelin birlikte bakalım", "Sonuç mu?", "120'den 310'a", "liste ögesi: 0",),
 }
 for relative_path, markers in eval_markers.items():
     content = texts[ROOT / relative_path]
@@ -899,6 +908,7 @@ SHOULD_REMAIN_CASES = (
     "evals/hipotezi-desteklemek-korunur.md",
     "evals/davranisi-yakalamak-alan-terimi-korunur.md",
     "evals/erisim-saglamak-korunur.md",
+    "evals/ozgun-imge-korunur.md",
 )
 locked = []
 for relative_path in EVAL_FILES:

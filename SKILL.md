@@ -99,6 +99,8 @@ Soyut ifade her zaman gereksiz değildir. Yazarın duygusunu, değerlendirmesini
 
 Yazar değerlendirmesi ile üretilmiş önem farklıdır: değerlendirme, kaynakta bir kişiye veya kuruma ait bir tavırdır; üretilmiş önem, bir olgu var diye eklenen genel önem cümlesidir. İlkini koru, ikincisini çıkar.
 
+**Görüş korunur, hazır ambalajı korunmaz.** Deneme, köşe yazısı, kişisel yazı ve sosyal medyada görüşü koruma kuralı en çok burada kötüye kullanılır: model "yazarın görüşü" diye kalıbı olduğu gibi ya da yumuşatarak bırakır. Korumadan önce sor: bu ifade yalnızca bu yazara ve bu konuya mı ait, yoksa her konuya yapıştırılabilir mi? `adeta ... gibidir`, `X'ten çok daha fazlasıdır`, `bir keşif, bir dönüşüm, bir yolculuk` üçlüsü, `her sayfa yeni bir kapı`, `başarının anahtarı`, `temel taşı`, `kilit rol`, `yarının dünyasını şekillendirecek`, `asıl X burada değil, şurada kazanılır`, `imkânsız diye bir şey yok` her konuya yapışır; bunlar ses değil ambalajdır. Önermeyi ve gücünü yazarın en yalın sözcükleriyle koru, ambalajı at. Aynı imgeyi ya da formülü daha sakin biçimde bırakmak (`adeta bir pencere` → `bir pencere gibidir`, `alışkanlıktan çok daha fazlasıdır` → `alışkanlıktan çok daha fazlası olduğunu`) dolguyu dolguya çevirmektir; buna karşılık `hayati bir öneme sahiptir` → `hayati önemde` meşrudur, çünkü yazarın yargısı aynı güçte kalır ve yalnızca kalkı gider. Ders ya da görüş kaynaktaki somut malzemeye (anı, sayı, olay) dayanıyorsa ona yaslan; önerme yoksa silme testini uygula. Yazarın kendine özgü imgesi (belirli bir koku, belirli bir yer) sestir; korunur. Görüşü öneriye (`önemlidir` → `genişletilmeli`) ya da daha güçlü yargıya çevirme. Ayrıntı: [Türkçe örüntüler › Görüş ambalajı](references/turkce-oruntuler.md).
+
 ## Dört düzeyde yapay düzyazı
 
 Hiçbir klişe sözcük içermeyen bir metin, her olgudan sonra önem cümlesi kuruyor, her paragrafı aynı şablonla kapatıyor ve her bölümü duyuruyla açıyorsa yine yapay okunur. Sözcük ve kalıp düzeyinde klişe, reklam dili, tiyatral vurgu, sohbet botu kalıntısı ve çeviri kokusuna; cümle düzeyinde bilgi taşımayan cümle, dayanaksız önem, savunmacı gerekçe, üretilmiş karşıtlık, soyut yüklem ve boş özneye; paragraf düzeyinde açımlama döngüsü, mini sonuç, zorlama denge ve tek biçimli şablona; belge düzeyinde kalıp giriş ve sonuç, yol haritası, aynı gerekçenin tekrarı ve yazarın sesini silen türdeş cilaya bak.
@@ -208,7 +210,7 @@ Geçerli bilimsel iddiayı zayıflatma. Kaynak yenilik, önem, sağlamlık, meka
 
 ## Kalıp düzeyinde yüksek riskli ifadeler
 
-Bu yapıları otomatik olarak silme; içerik taşımadan vurgu, geçiş, otorite veya heyecan üretmek için kullanıldıklarında düzenle: "günümüzün hızla değişen dünyasında", "bu bağlamda", "bu noktada"; "bir araçtan fazlası", "dönüşümün anahtarı"; "benzersiz", "çığır açan", "kusursuz"; "fark yaratıyor", "bir üst seviyeye taşıyor"; "ve sonra her şey değişti", "asıl mesele şu"; art arda retorik sorular ve tek cümlelik dramatik paragraflar; "Elbette!", "Umarım faydalı olur"; kaynaksız "uzmanlara göre", "araştırmalar gösteriyor". Hukuki, akademik, teknik veya edebî bağlamda işlev taşıyan ifadeyi koru. Örüntüleri tek sözcükte değil, kümeler ve tekrarlar hâlinde ara; katalog [Türkçe örüntüler](references/turkce-oruntuler.md) dosyasındadır.
+Bu yapıları otomatik olarak silme; içerik taşımadan vurgu, geçiş, otorite veya heyecan üretmek için kullanıldıklarında düzenle: "günümüzün hızla değişen dünyasında", "bu bağlamda", "bu noktada"; "bir araçtan fazlası", "dönüşümün anahtarı"; "benzersiz", "çığır açan", "kusursuz"; "fark yaratıyor", "bir üst seviyeye taşıyor"; "ve sonra her şey değişti", "asıl mesele şu"; art arda retorik sorular, "Sonuç mu?" ile açılan açıklama ve tek cümlelik dramatik paragraflar; "Gelin birlikte bakalım", "derinlemesine ele alacağız"; "Elbette!", "Umarım faydalı olur", "Umarım bu e-posta sizi iyi bulur"; bilgi vermeyen süs emojisi ve her maddeyi `**Etiket:**` ile açan liste; kaynaksız "uzmanlara göre", "araştırmalar gösteriyor". Hukuki, akademik, teknik veya edebî bağlamda işlev taşıyan ifadeyi koru. Örüntüleri tek sözcükte değil, kümeler ve tekrarlar hâlinde ara; katalog [Türkçe örüntüler](references/turkce-oruntuler.md) dosyasındadır.
 
 ## Türkçeye özgü düzenleme
 
@@ -302,7 +304,7 @@ Rapor düzenlemesinden sonra bulgu–yorum–öneri sınırlarını, bölüm iç
 
 **5. Yapay düzyazı, yapı, çeviri kokusu, kanıt, sözcük ve tutarlılık denetimi yap.** Metni teslim etmeden önce sessizce dokuz geçiş yap:
 
-- **A. Kalıp:** klişe, reklam dili, tiyatral çerçeve, sohbet botu kalıntısı, belirsiz otorite, çeviri kokusu.
+- **A. Kalıp:** klişe, reklam dili, tiyatral çerçeve, sohbet botu kalıntısı, belirsiz otorite, çeviri kokusu; "yazarın görüşü" diye bırakılan ya da yumuşatılan hazır ambalaj.
 - **B. Cümle:** her cümle için "bunu silersem hangi bilgi kaybolur?"; gereksiz önem, açık olanın açıklaması, sahte karşıtlık, savunmacı gerekçe, soyut açımlama, yol haritası dili, uzun çerçeve.
 - **C. Paragraf:** farklı önerme sayısı, mini sonuç, döngüsel açıklama, zorlama denge, erken bölünme, tutarlı hareket.
 - **D. Belge:** tekrarlanan giriş ve sonuçlar, tek biçimli paragraf mimarisi, aynı gerekçenin tekrarı, yazarın sesini silen türdeş cila.
