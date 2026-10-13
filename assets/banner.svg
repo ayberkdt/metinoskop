@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320" role="img" aria-labelledby="title desc">
+  <title id="title">Metinoskop</title>
+  <desc id="desc">Büyüteç camından geçen dağınık metin satırları camın içinde düz ve sade görünüyor. Yanında: Metinoskop. Türkçe metni net ve anlaşılır kılar.</desc>
+  <style>
+    .bg { fill: #FBF7F1; }
+    .ink { fill: #2D2A32; }
+    .sub { fill: #5E5966; }
+    .noise { stroke: #D9D1C5; }
+    .clean { stroke: #2D2A32; }
+    .accent { stroke: #D9534A; }
+    .accent-fill { fill: #D9534A; }
+    .glass { fill: #FFFFFF; }
+    text { font-family: -apple-system, "Segoe UI", system-ui, "Helvetica Neue", Arial, sans-serif; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #1C1B21; }
+      .ink { fill: #F4EFE8; }
+      .sub { fill: #B9B2A8; }
+      .noise { stroke: #46434E; }
+      .clean { stroke: #F4EFE8; }
+      .accent { stroke: #F07D74; }
+      .accent-fill { fill: #F07D74; }
+      .glass { fill: #26252D; }
+    }
+  </style>
+  <defs>
+    <clipPath id="lens-inside">
+      <circle cx="300" cy="160" r="84"/>
+    </clipPath>
+    <mask id="lens-outside">
+      <rect width="1280" height="320" fill="#fff"/>
+      <circle cx="300" cy="160" r="94" fill="#000"/>
+    </mask>
+  </defs>
+
+  <rect class="bg" width="1280" height="320" rx="28"/>
+
+  <g transform="translate(55 0)">
+  <!-- Dağınık satırlar: camın dışında -->
+  <g class="noise" stroke-width="8" stroke-linecap="round" fill="none" mask="url(#lens-outside)">
+    <path d="M120 124h28 M162 124h12 M188 124h46 M248 124h10 M272 124h40 M326 124h8 M348 124h44 M406 124h14 M434 124h34 M482 124h28"/>
+    <path d="M132 160h18 M164 160h40 M218 160h8 M240 160h52 M306 160h14 M334 160h30 M378 160h10 M402 160h48 M464 160h22"/>
+    <path d="M120 196h36 M170 196h10 M194 196h30 M238 196h18 M270 196h44 M328 196h12 M354 196h38 M406 196h20 M440 196h30"/>
+  </g>
+
+  <!-- Büyüteç -->
+  <circle class="glass" cx="300" cy="160" r="88"/>
+  <g class="clean" stroke-width="10" stroke-linecap="round" fill="none" clip-path="url(#lens-inside)">
+    <path d="M236 128h128"/>
+    <path d="M228 160h144"/>
+    <path d="M236 192h92"/>
+  </g>
+  <circle class="accent" cx="300" cy="160" r="88" stroke-width="10" fill="none"/>
+  <path class="accent" d="M364 224l46 46" stroke-width="18" stroke-linecap="round" fill="none"/>
+  <path class="accent-fill" d="M400 92l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+
+  <!-- Ad ve vaat -->
+  <text class="ink" x="610" y="168" font-size="76" font-weight="700" letter-spacing="-1">Metinoskop</text>
+  <text class="sub" x="612" y="220" font-size="30">Türkçe metni net ve anlaşılır kılar.</text>
+  </g>
+</svg>

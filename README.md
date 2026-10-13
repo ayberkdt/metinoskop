@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/banner.svg" alt="Metinoskop: Türkçe metni net ve anlaşılır kılar." width="100%"></p>
+
 # Metinoskop
 
 [![Validate package](https://github.com/ayberkdt/metinoskop/actions/workflows/validate.yml/badge.svg)](https://github.com/ayberkdt/metinoskop/actions/workflows/validate.yml)
@@ -10,6 +12,8 @@ Türkçe metni net ve anlaşılır kılan taşınabilir bir agent skill paketi: 
 Omurgası, havacılık belgeleri için geliştirilmiş ASD-STE100 (Simplified Technical English) standardının yazım ilkelerinden Türkçeye uyarlanmıştır: bir paragraf bir konu, kısa ve doğrudan cümle, bir terim bir anlam; şişirme, döngüsel anlatım ve aynı konuyu yeniden açma yok. Öncelikli alan bilimsel ve teknik metindir, ilkeler her konuda geçerlidir.
 
 Metinoskop bir sözcük yasaklama listesi değildir. Metni sırf farklı görünsün diye yeniden yazmaz: anlamı, olguları, kesinlik düzeyini ve yazarın tavrını koruyarak yalnızca gerekçesi olan müdahaleyi yapar. Netlik hiçbir zaman kesinliğin önüne geçmez. Metin zaten iyiyse olduğu gibi bırakır.
+
+Kullanmak için metni verip "Bu metni geliştir" demeniz yeterli; düzeyi, kapsamı ve neyin düzeltileceğini Metinoskop kendisi belirler ([Kullanım](#kullanım)).
 
 ## Bir bakışta
 
@@ -461,6 +465,8 @@ Metinoskop düzenlemeyi dört adımda yapar:
 ```text
 metinoskop/
 ├── SKILL.md
+├── assets/
+│   └── banner.svg
 ├── agents/
 │   └── openai.yaml
 ├── references/
