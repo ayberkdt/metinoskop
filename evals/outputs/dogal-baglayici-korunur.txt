@@ -1,0 +1,1 @@
+Basınç 2 bar'ın altına düştüğünde vana kapanır; sistem ancak basınç yeniden 2,5 bar'a çıkınca açılır. Vana kapalıyken pompa çalışmaya devam ederse hat ısınır, bu yüzden pompa da aynı sinyalle durdurulur. Bakım sırasında sinyal elle verilebilir, ama bu durumda vananın kapandığı göstergeden doğrulanmalıdır.

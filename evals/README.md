@@ -13,9 +13,31 @@ Yeni bir davranış kuralı eklenirken en az bir mevcut vaka güncellenmeli veya
 
 ## Vaka grupları
 
-**Kaynak sadakati ve kapsam:** `akademik`, `belirsizlik`, `bicim-koruma`, `hukuki`, `kapsam-ve-kosul`, `kaynak-sadakati`, `teknik`, `rapor-bulgu-yorum-oneri`, `rapor-yapisal-butunluk`, `yonetici-ozeti`.
+**Netlik omurgası (STE100 uyarlaması):** `SKILL.md`'deki yedi netlik kuralını bilimsel ve teknik metinde sınar. Yapısal beklentilerde `döngüsel tanım`, `döngüsel tekrar`, `uzun cümle` ve `kalabalık paragraf` anahtarları `style-lint.py` netlik ölçülerine bağlanır.
 
-**Ton, ses ve değişiklik bütçesi:** `kurumsal`, `kisisel`, `uslup-eslestirme`, `degisiklik-butcesi`, `kavramsal-giris`.
+| Vaka | Sınanan davranış |
+|---|---|
+| `dongusel-tanim` | Terimi kendisiyle tanımlayan cümleyi ve aynı ölçümün açımlama, önem ve mini sonuç olarak üç kez yeniden söylenmesini tek cümleye indirmek; tek ölçümü genel yasaya çevirmemek |
+| `dagilmis-konu` | Yöntem bilgisinin bulgularda ve tartışmada yeniden açılmasını kaldırırken başlıkları, bulguyu ve `olabilir` çekincesini korumak |
+| `cok-konulu-cumle` | Tek cümleye yığılmış ilgisiz önermeleri ayrı cümlelere bölmek; aralarına kaynakta olmayan neden ya da sıra ilişkisi koymamak |
+| `talimat-tek-adim` | Edilgen ve adlaştırılmış bakım talimatını cümle başına bir adım veren numaralı listeye çevirmek; zorunluluğu tavsiyeye, beklenen değeri ölçüme çevirmemek |
+
+Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (tek ilişki taşıyan uzun cümle), `uzun-paragraf-korunur` (tek hareketli uzun paragraf), `ayni-iddia-yeni-rol` (yeni rol kazanan yineleme), `kanonik-terim-tekrari` (gerekli terim tekrarı).
+
+**Kısa talep, bütüncül düzenleme ve bağlayıcılar:** kullanıcının yalnızca "geliştir" dediği durumda ajanın sorunları kendisi teşhis edip katmanları birlikte düzeltmesini; doğru ama yanlış yerde duran cümlenin taşınmasını; ilişkilerin Türkçenin bağlayıcı kaynaklarıyla, kaynakta olmayan ilişki kurmadan kurulmasını sınar. `yakın tekrar` beklentisi `style-lint.py` netlik ölçüsüne bağlanır.
+
+| Vaka | Sınanan davranış |
+|---|---|
+| `belirsiz-talep-gelistir` | Yalnızca "Bu metni geliştir, çok AI slop gibi" denen metinde soru sormadan ve seçenek sunmadan önem cümlesini silmek, yanlış bağlanmış veri kaybı cümlesini yöntem bilgisinin yanına taşımak, `Ayrıca/Ancak` tekrarını gidermek; sayıları ve yorumun gücünü korumak |
+| `yerinden-kopuk-cumle` | Her cümlesi doğru ama yöntem ve bulgu cümleleri yer değiştirmiş iki bölümde cümleleri yeniden yazmak yerine ait oldukları bölüme taşımak |
+| `tekduze-baglayicilar` | Her cümleyi `Ayrıca/Ancak` ile açan paragrafı ek kaynaklarıyla (`-ın katılımıyla`, `-masına rağmen`) kurmak; kaynakta olmayan nedenselliği `sayesinde` ile eklememek, planı sonuca bağlamamak |
+| `dogal-baglayici-korunur` | `-diğinde`, `ancak ... -ınca`, `-ken`, `bu yüzden` ile zaten doğal bağlanmış teknik metni bağlaçlara açmamak, çeşitlilik için değiştirmemek (yanlış pozitif) |
+
+**Kaynak sadakati ve kapsam:** `akademik`, `belirsizlik`, `bicim-koruma`, `kapsam-ve-kosul`, `kaynak-sadakati`, `teknik`, `rapor-bulgu-yorum-oneri`, `rapor-yapisal-butunluk`, `yonetici-ozeti`.
+
+**Ton ve değişiklik bütçesi:** `degisiklik-butcesi`, `kavramsal-giris`.
+
+**Kenar türler** (`references/kenar-turler.md`): metin bu türlerdense devreye giren ek kuralları sınar; kritik canlı sette yer almaz. Hukuki: `hukuki`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`. Tanıtım: `reklam-kampanyasi-korunur`, `yardim-kampanyasi-korunur`. Deneme ve sosyal medya: `gorus-ambalaji`, `ozgun-imge-korunur`, `sosyal-medya-sablonu`. Kişisel ve kurumsal yazışma: `kisisel`, `kurumsal`, `dogal-is-epostasi`. Üslup eşleme: `uslup-eslestirme`.
 
 **Retorik mimari:** cümle, paragraf ve belge düzeyindeki yapay düzyazıyı sınar.
 
@@ -33,9 +55,9 @@ Yeni bir davranış kuralı eklenirken en az bir mevcut vaka güncellenmeli veya
 | `egitsel-aciklama` | Yeni başlayan için öğretici açıklamayı korumak (muhatap duyarlılığı) |
 | `tetikleyici-iceren-sozcuk-korunur` | Tetikleyiciyi içinde barındıran sözcüğü (`güneşsiz`, `eşsizlik`, `dönüştürücü`) pazarlama dili saymamak (yanlış pozitif) |
 | `iyi-metin` | Zaten iyi yazılmış metni neredeyse hiç değiştirmemek |
-| `gorus-ambalaji` | Denemede görüşü önerme ve güç olarak korurken hazır imgeyi, `çok daha fazlası` formülünü, soyut üçlüyü ve vecizeyi atmak; aynı imgeyi yumuşatarak bırakmamak |
-| `ozgun-imge-korunur` | Yazara ve konuya özgü benzetmeyi hazır ambalaj sanıp silmemek (yanlış pozitif) |
-| `sosyal-medya-sablonu` | Sosyal medya gönderisinde retorik soru, `Gelin birlikte bakalım`, `Sonuç mu?`, emoji ve etiketli madde şablonunu atıp sayıları ve öğrenilen dersleri korumak |
+| `gorus-ambalaji` | (kenar tür) Denemede görüşü önerme ve güç olarak korurken hazır imgeyi, `çok daha fazlası` formülünü, soyut üçlüyü ve vecizeyi atmak; aynı imgeyi yumuşatarak bırakmamak |
+| `ozgun-imge-korunur` | (kenar tür) Yazara ve konuya özgü benzetmeyi hazır ambalaj sanıp silmemek (yanlış pozitif) |
+| `sosyal-medya-sablonu` | (kenar tür) Sosyal medya gönderisinde retorik soru, `Gelin birlikte bakalım`, `Sonuç mu?`, emoji ve etiketli madde şablonunu atıp sayıları ve öğrenilen dersleri korumak |
 | `anlam-kalkisi-akademik` | Türkçe okura başka önerme veren kalkıları (`bulgular ... önermektedir`, `yer aldı`, `3 faktörü`, Hz ile `örnekleme oranı`, tıp dışı `tedavi grubu`, p değerli `önemli`) hafif düzeyde de düzeltmek; statüyü ve atfı korumak |
 | `anlam-kalkisi-korunur` | Aynı sözcüklerin doğru kullanımını (`yöntem önermek`, `Tablo 2'de yer almak`, klinik `tedavi grubu`, `kontrol edildiğinde`, `tartışılmıştır`) kalkı sanmamak (yanlış pozitif) |
 

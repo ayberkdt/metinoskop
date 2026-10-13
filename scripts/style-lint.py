@@ -22,6 +22,12 @@ context-sensitive families such as ``yani``, ``öte yandan`` or ``işaret etmek`
 only warn, because the skill itself forbids deleting them automatically.
 ``--fail-on-introduced-any`` is the strict mode.
 
+Clarity signals adapt ASD-STE100's descriptive-writing limits and are review
+findings only: sentences over 25 words, paragraphs over six sentences,
+sentence pairs that share most of their content stems (a restated proposition)
+and terms defined by their own stem (``Kalibrasyon, ... kalibre edilmesidir``).
+Stem overlap cannot see a paraphrase built from synonyms; the judge decides.
+
 Source-language-shadow (translationese) signals are reported as review
 findings only: frame-noun stacks (``açısından / kapsamında / noktasında``),
 ``bir`` density, ``olan`` chains, runs of sentences opening with the same
@@ -1210,6 +1216,160 @@ def structural_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict
     return findings
 
 
+# --- clarity spine (ASD-STE100 adaptation) ------------------------------------ #
+# Thresholds come from STE's descriptive-writing limits (25 words per sentence,
+# six sentences per paragraph). They mark sentences and paragraphs for review;
+# a long sentence carrying one relation is fine. Restatement is detected by
+# content-stem overlap: two sentences that share most of their content stems
+# say the same thing twice unless the second gives it a new role.
+
+STE_SENTENCE_WORDS = 25
+STE_PARAGRAPH_SENTENCES = 6
+RESTATEMENT_MIN_STEMS = 3
+RESTATEMENT_MIN_SHARED = 3
+RESTATEMENT_JACCARD = 0.5
+STEM_LENGTH = 5
+CLARITY_STOP = {
+    "ancak", "ayrıca", "aynı", "bunun", "bunlar", "bunların", "böyle", "çünkü", "daha", "değil", "diğer",
+    "durum", "durumu", "durumda", "fakat", "gibi", "göre", "hâle", "haline", "hale", "için", "ilgili", "kadar",
+    "olarak", "olan", "olduğu", "olduğunu", "olması", "önce", "sonra", "sonuç", "sonucu", "şekilde",
+    "tüm", "üzere", "veya", "yani", "yalnızca", "sadece", "zaman", "çok", "kısaca", "deyişle", "başka",
+    "olmuştur", "olmaktadır", "gelmiştir", "göstermektedir", "ortaya", "koymaktadır", "açıkça",
+    "önemli", "kritik", "açısından", "bakımından", "çalışmada", "çalışma", "bölümde",
+}
+CIRCULAR_DEFINITION_END_RE = re.compile(r"(?:d[ıiuü]r|t[ıiuü]r|demektir)[.!?]*$")
+# "Kalibrasyon, ... kalibre edilmesidir." -- a term (one or two words) set off by
+# a comma, then its own stem again inside a copular definition.
+DEFINITION_HEAD_RE = re.compile(r"^\W*(\w+)(?:\s+\w+)?\s*,\s*(.+)$")
+
+
+# Near repetition: the words *around* terms (connectives, generic verbs,
+# evaluative adjectives) repeated inside one paragraph. Terms themselves are
+# never counted -- "one term, one meaning" wants them repeated.
+NEAR_REPEAT_CONNECTIVES = (
+    ("ayrıca", r"(?<!\w)ayrıca(?!\w)"),
+    ("ancak", r"(?<!\w)ancak(?!\w)"),
+    ("bununla birlikte", r"(?<!\w)bununla birlikte(?!\w)"),
+    ("bu nedenle", r"(?<!\w)bu nedenle(?!\w)"),
+    ("dolayısıyla", r"(?<!\w)dolayısıyla(?!\w)"),
+    ("buna ek olarak", r"(?<!\w)buna ek olarak(?!\w)"),
+    ("öte yandan", r"(?<!\w)öte yandan(?!\w)"),
+    ("bu bağlamda", r"(?<!\w)bu bağlamda(?!\w)"),
+    ("bu doğrultuda", r"(?<!\w)bu doğrultuda(?!\w)"),
+    ("sonuç olarak", r"(?<!\w)sonuç olarak(?!\w)"),
+)
+NEAR_REPEAT_WORDS = (
+    ("göstermek", r"(?<!\w)göster(?!ge)\w*"),
+    ("sağlamak", r"(?<!\w)sağla(?!m)\w*"),
+    ("ortaya koymak", r"(?<!\w)ortaya koy\w*"),
+    ("gerçekleştirmek", r"(?<!\w)gerçekleştir\w*"),
+    ("katkı", r"(?<!\w)katkı\w*"),
+    ("rol oynamak", r"(?<!\w)rol oyna\w*"),
+    ("olanak", r"(?<!\w)olana(?:k|ğ)\w*"),
+    ("önemli", r"(?<!\w)önemli\w*"),
+    ("etkili", r"(?<!\w)etkili\w*"),
+    ("kritik", r"(?<!\w)kritik(?!\w)"),
+    ("oldukça", r"(?<!\w)oldukça(?!\w)"),
+    ("büyük ölçüde", r"(?<!\w)büyük ölçüde(?!\w)"),
+)
+NEAR_REPEAT_COMPILED = tuple((label, re.compile(p), True) for label, p in NEAR_REPEAT_CONNECTIVES) + \
+    tuple((label, re.compile(p), False) for label, p in NEAR_REPEAT_WORDS)
+
+
+NEAR_REPEAT_CONNECTIVE_LABELS = {label for label, _ in NEAR_REPEAT_CONNECTIVES}
+
+
+def near_repetitions(doc: Document) -> list[tuple[Paragraph, str, list[int]]]:
+    found: list[tuple[Paragraph, str, list[int]]] = []
+    for paragraph in (p for p in doc.paragraphs if p.prose):
+        for label, pattern, connective in NEAR_REPEAT_COMPILED:
+            hits = [s.index for s in paragraph.sentences if pattern.search(s.lowered)]
+            if connective:
+                repeated = len(hits) >= 2
+            else:
+                repeated = len(hits) >= 3 or any(b - a == 1 for a, b in zip(hits, hits[1:]))
+            if repeated:
+                found.append((paragraph, label, hits))
+    return found
+
+
+def content_stems(sentence: Sentence) -> set[str]:
+    stems: set[str] = set()
+    for word in WORD_RE.findall(sentence.lowered):
+        if word.isdigit():
+            stems.add(word)
+        elif len(word) >= 4 and word not in CLARITY_STOP:
+            stems.add(word[:STEM_LENGTH])
+    return stems
+
+
+def restatement_pairs(doc: Document) -> list[tuple[Sentence, Sentence, float]]:
+    sentences = [s for p in doc.paragraphs if p.prose for s in p.sentences]
+    stems = [content_stems(s) for s in sentences]
+    pairs: list[tuple[Sentence, Sentence, float]] = []
+    for i, first in enumerate(sentences):
+        if len(stems[i]) < RESTATEMENT_MIN_STEMS:
+            continue
+        for j in range(i + 1, len(sentences)):
+            if len(stems[j]) < RESTATEMENT_MIN_STEMS:
+                continue
+            shared = stems[i] & stems[j]
+            if len(shared) < RESTATEMENT_MIN_SHARED:
+                continue
+            score = len(shared) / len(stems[i] | stems[j])
+            if score >= RESTATEMENT_JACCARD:
+                pairs.append((first, sentences[j], round(score, 2)))
+    return pairs
+
+
+def circular_definition(sentence: Sentence) -> bool:
+    match = DEFINITION_HEAD_RE.match(sentence.lowered)
+    if match is None or CIRCULAR_DEFINITION_END_RE.search(sentence.lowered) is None:
+        return False
+    term = match.group(1)
+    if len(term) < STEM_LENGTH or term.isdigit():
+        return False
+    return any(w.startswith(term[:STEM_LENGTH]) for w in WORD_RE.findall(match.group(2)))
+
+
+def clarity_summary(doc: Document) -> dict[str, object]:
+    prose = [p for p in doc.paragraphs if p.prose]
+    return {
+        "uzun_cumle": sum(1 for p in prose for s in p.sentences if len(sentence_words(s)) > STE_SENTENCE_WORDS),
+        "kalabalik_paragraf": sum(1 for p in prose if len(p.sentences) > STE_PARAGRAPH_SENTENCES),
+        "dongusel_tekrar": len(restatement_pairs(doc)),
+        "dongusel_tanim": sum(1 for p in prose for s in p.sentences if circular_definition(s)),
+        "yakin_tekrar": len(near_repetitions(doc)),
+    }
+
+
+def clarity_checks(doc: Document) -> list[dict[str, object]]:
+    findings: list[dict[str, object]] = []
+    prose = [p for p in doc.paragraphs if p.prose]
+    for paragraph in prose:
+        for sentence in paragraph.sentences:
+            count = len(sentence_words(sentence))
+            if count > STE_SENTENCE_WORDS:
+                findings.append({"check": "uzun_cumle",
+                                 "text": f"P{sentence.paragraph}C{sentence.index}: {count} sözcük (STE betimleme eşiği {STE_SENTENCE_WORDS}); tek ilişki mi taşıyor, yoksa ilgisiz önermeler mi yığılmış?"})
+            if circular_definition(sentence):
+                findings.append({"check": "dongusel_tanim",
+                                 "text": f"P{sentence.paragraph}C{sentence.index}: terim kendi kökeniyle tanımlanıyor olabilir: «{sentence.text[:80]}»"})
+        if len(paragraph.sentences) > STE_PARAGRAPH_SENTENCES:
+            findings.append({"check": "kalabalik_paragraf",
+                             "text": f"P{paragraph.number}: {len(paragraph.sentences)} cümle (STE eşiği {STE_PARAGRAPH_SENTENCES}); paragraf tek konu mu taşıyor?"})
+    for paragraph, label, hits in near_repetitions(doc):
+        where = ", ".join(f"C{i}" for i in hits)
+        advice = ("ilişkiyi eke, ilgece ya da bağlaçsız yapıya taşı" if label in NEAR_REPEAT_CONNECTIVE_LABELS
+                  else "yapıyı değiştir ya da ilişkinin gerektirdiği kesin sözcüğü seç; terimse dokunma")
+        findings.append({"check": "yakin_tekrar",
+                         "text": f"P{paragraph.number}: «{label}» aynı paragrafta {len(hits)} kez ({where}); {advice}."})
+    for first, second, score in restatement_pairs(doc):
+        findings.append({"check": "dongusel_tekrar",
+                         "text": f"P{first.paragraph}C{first.index} ile P{second.paragraph}C{second.index} içerik köklerinin %{round(score * 100)}'ini paylaşıyor: aynı önerme yeni rol kazanmadan yineleniyor mu?"})
+    return findings
+
+
 def analyse(text: str) -> dict[str, object]:
     doc = parse(text)
     hits = find_hits(doc.paragraphs)
@@ -1231,6 +1391,8 @@ def analyse(text: str) -> dict[str, object]:
         "ceviri": translationese_checks(doc, hits),
         "soylem_olculeri": discourse_summary(doc, hits),
         "soylem": discourse_checks(doc, hits),
+        "netlik_olculeri": clarity_summary(doc),
+        "netlik": clarity_checks(doc),
     }
 
 
@@ -1296,11 +1458,22 @@ def compare(source_report: dict[str, object], output_report: dict[str, object]) 
         for key in DISCOURSE_LABELS
         if src_ds[key] != out_ds[key]  # type: ignore[index]
     }
+    source_cl_checks = {s["check"] for s in source_report["netlik"]}  # type: ignore[union-attr]
+    new_clarity = [f["text"] for f in output_report["netlik"]  # type: ignore[union-attr]
+                   if f["check"] not in source_cl_checks]
+    src_cl = source_report["netlik_olculeri"]
+    out_cl = output_report["netlik_olculeri"]
+    clarity_delta = {
+        key: {"kaynak": src_cl[key], "çıktı": out_cl[key]}  # type: ignore[index]
+        for key in CLARITY_LABELS
+        if src_cl[key] != out_cl[key]  # type: ignore[index]
+    }
     return {"introduced": introduced, "introduced_hard": introduced_hard,
             "introduced_context": introduced_context, "remaining": remaining, "removed": removed,
             "structure_delta": structure_delta, "introduced_structure": new_structure,
             "translationese_delta": translationese_delta, "introduced_translationese": new_translationese,
-            "discourse_delta": discourse_delta, "introduced_discourse": new_discourse}
+            "discourse_delta": discourse_delta, "introduced_discourse": new_discourse,
+            "clarity_delta": clarity_delta, "introduced_clarity": new_clarity}
 
 
 # --------------------------------------------------------------------------- #
@@ -1313,6 +1486,12 @@ SUMMARY_LABELS = {
     "prose_paragraphs": "düzyazı paragrafı", "list_items": "liste ögesi",
     "cross_references": "çapraz gönderme", "announcements": "duyuru/sarmalayıcı",
     "mini_conclusions": "önem/sonuç cümlesi",
+}
+CLARITY_PRINT_LIMIT = 7  # restatement pairs grow with the square of the sentence count
+CLARITY_LABELS = {
+    "uzun_cumle": "uzun cümle", "kalabalik_paragraf": "kalabalık paragraf",
+    "dongusel_tekrar": "döngüsel tekrar", "dongusel_tanim": "döngüsel tanım",
+    "yakin_tekrar": "yakın tekrar",
 }
 TRANSLATIONESE_LABELS = {
     "sahip_olmak": "sahip olmak", "varlik_kalibi": "varlık kalıbı", "cerceve_yigini": "çerçeve yığını",
@@ -1359,6 +1538,17 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
         for finding in structure:
             print(f"  - {finding['text']}")
 
+    clarity: dict[str, object] = report["netlik_olculeri"]  # type: ignore[assignment]
+    print("\nNetlik ölçüleri (STE100 uyarlaması): " + " | ".join(
+        f"{CLARITY_LABELS[k]}: {v}" for k, v in clarity.items()))
+    netlik: list[dict[str, object]] = report["netlik"]  # type: ignore[assignment]
+    if netlik:
+        print("[Netlik · inceleme]")
+        for finding in netlik[:CLARITY_PRINT_LIMIT]:
+            print(f"  - {finding['text']}")
+        if len(netlik) > CLARITY_PRINT_LIMIT:
+            print(f"  … ve {len(netlik) - CLARITY_PRINT_LIMIT} bulgu daha (tamamı için --json)")
+
     translationese: dict[str, object] = report["ceviri_kokusu"]  # type: ignore[assignment]
     print("\nÇeviri kokusu ölçüleri: " + " | ".join(
         f"{TRANSLATIONESE_LABELS[k]}: {v}" for k, v in translationese.items()))
@@ -1400,6 +1590,14 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
             print("  Yapı ölçülerindeki değişim:")
             for key, pair in comparison["structure_delta"].items():  # type: ignore[union-attr]
                 print(f"    - {SUMMARY_LABELS[key]}: {pair['kaynak']} → {pair['çıktı']}")
+        if comparison["introduced_clarity"]:
+            print("  Kaynakta olmayıp çıktıda beliren netlik bulguları (uyarı; yeni tekrar ya da yığılmış cümle olabilir):")
+            for text in comparison["introduced_clarity"]:  # type: ignore[union-attr]
+                print(f"    - {text}")
+        if comparison["clarity_delta"]:
+            print("  Netlik ölçülerindeki değişim:")
+            for key, pair in comparison["clarity_delta"].items():  # type: ignore[union-attr]
+                print(f"    - {CLARITY_LABELS[key]}: {pair['kaynak']} → {pair['çıktı']}")
         if comparison["introduced_translationese"]:
             print("  Kaynakta olmayıp çıktıda beliren çeviri kokusu bulguları (uyarı; aşırı düzeltme veya yeni kalkı olabilir):")
             for text in comparison["introduced_translationese"]:  # type: ignore[union-attr]
@@ -1427,7 +1625,8 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
 
     print("\nNot: İşaretler inceleme içindir; tek bir işaret metni yapay yapmaz. "
           "Sert bastırma ailesindeki cümleler için \"bunu silersem hangi bilgi kaybolur?\", "
-          "yapı bulguları için \"bu sınır kavramsal mı?\", çeviri kokusu bulguları için "
+          "yapı bulguları için \"bu sınır kavramsal mı?\", "
+          "netlik bulguları için \"bu cümle tek ilişki mi taşıyor, bu önerme yeni rol kazanmadan mı yineleniyor?\", çeviri kokusu bulguları için "
           "\"bu yapı Türkçede bağımsız olarak doğal mı, yoksa gizli İngilizce cümle mi dayatıyor?\", "
           "söylem bulguları için \"kim biliyor, nasıl biliyor, ne kadar kesin; sözcükler doğal mı birleşiyor; "
           "cümle öncekinden mi büyüyor?\" sorusunu sor.")
@@ -1596,6 +1795,29 @@ FILLER_SOURCE = "Model 120. derecede en düşük hatayı verdi. Bu sonuç derece
 FILLER_TRANSLATED = "Model 120. derecede en düşük hatayı verdi. Sonuç olarak derece seçimi önemli bir etkendir; bu bulgu derece seçiminin önemini bir kez daha ortaya koymaktadır."
 CONTEXT_ONLY = "Yani model 120. derecede en düşük hatayı verdi; öte yandan derece seçimi kritik önemini korumaktadır."
 FILLER_DELETED = "Model 120. derecede en düşük hatayı verdi."
+
+
+CIRCULAR_TEXT = """Kalibrasyon, ölçüm sisteminin kalibre edilmesi işlemidir. Kalibrasyon 12 referans ağırlıkla yapıldı ve doğrusallık hatası %0,8'den %0,2'ye indi. Kalibrasyon sayesinde doğrusallık hatası %0,8'den %0,2'ye indi.
+
+Yeni pompa, eski pompaya göre daha az enerji tüketen ve bakım aralığı 600 saatten 900 saate çıkarılmış olan, ayrıca tedarikçisi değiştirilmiş ve montajı iki kişi yerine tek kişiyle yapılabilen bir model olarak 2024 yılında hatta takıldı.
+"""
+CLEAR_TEXT = """Ölçüm sistemi 12 referans ağırlıkla kalibre edildi; doğrusallık hatası %0,8'den %0,2'ye indi.
+
+Yeni pompa 2024'te hatta takıldı. Eski pompaya göre daha az enerji tüketiyor ve bakım aralığı 600 saatten 900 saate çıkarıldı.
+"""
+MONOTONE_TEXT = """Yeni tasarım çekirdek sıcaklığını 12 °C düşürdü. Ayrıca fan gürültüsü 4 dB azaldı. Ancak maliyet %18 arttı. Ancak ekip tasarımı onayladı. Ayrıca tasarım iki ayda üretime alınacak.
+
+Sonuçlar yöntemin hatayı azalttığını göstermektedir. Tablo 3 aynı eğilimi göstermektedir. Şekil 2 sapmanın düşük frekanslarda yoğunlaştığını göstermektedir.
+"""
+NEAR_REPEAT_INNOCENT = (
+    "Gösterge paneli sağlam bir kasaya yerleştirildi. Gösterge her saniye güncellenir. Kasa sağlam kaldı.",
+    "Gözlemci durumu tahmin eder. Gözlemci ölçümü 50 Hz'de alır. Gözlemci sonucu kaydeder.",
+)
+NOT_DEFINITIONS = (
+    "Katılımcıların yalnızca %40'ı ikinci ölçüme katıldığı için sonuçlar bu alt grupla sınırlıdır.",
+    "Model, modelin önceki sürümünden iki kat hızlı çalıştı.",
+    "Sistem, üç bileşenden oluşan bir düzenektir.",
+)
 
 
 def self_test() -> None:
@@ -1812,7 +2034,33 @@ def self_test() -> None:
     if repaired_ds["introduced_discourse"]:
         raise SystemExit("Öz sınama: iyi yapılı çıktı yeni söylem bulgusu üretti")
 
-    print("Stil denetimi öz sınaması geçti (yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj).")
+    circular = analyse(CIRCULAR_TEXT)
+    clarity = {f["check"] for f in circular["netlik"]}  # type: ignore[union-attr]
+    for check in ("dongusel_tanim", "dongusel_tekrar", "uzun_cumle"):
+        if check not in clarity:
+            raise SystemExit(f"Öz sınama: döngüsel ve yığılmış metinde beklenen netlik bulgusu yok: {check}")
+    clear = analyse(CLEAR_TEXT)
+    if clear["netlik"]:
+        raise SystemExit(f"Öz sınama: net metinde netlik bulgusu üretildi: {clear['netlik']}")
+    if not compare(circular, clear)["clarity_delta"]:
+        raise SystemExit("Öz sınama: netleştirilmiş çıktıda netlik ölçüleri değişmedi")
+    for label, text in (("yerli", NATIVE_TEXT), ("temiz", CLEAN_TEXT), ("iyi yapılı", WELL_STRUCTURED_TEXT)):
+        found = [f for f in analyse(text)["netlik"] if f["check"] in ("dongusel_tekrar", "dongusel_tanim")]  # type: ignore[union-attr]
+        if found:
+            raise SystemExit(f"Öz sınama: {label} metinde döngüsel tekrar ya da tanım işaretlendi: {found}")
+    monotone = {(f["check"], f["text"].split("»")[0]) for f in analyse(MONOTONE_TEXT)["netlik"]}  # type: ignore[union-attr]
+    for word in ("ayrıca", "ancak", "göstermek"):
+        if ("yakin_tekrar", f"P{1 if word != 'göstermek' else 2}: «{word}") not in monotone:
+            raise SystemExit(f"Öz sınama: tekdüze paragrafta yakın tekrar işaretlenmedi: {word}")
+    for label, text in (("yerli", NATIVE_TEXT), ("temiz", CLEAN_TEXT), ("iyi yapılı", WELL_STRUCTURED_TEXT)) + \
+            tuple(("terim", t) for t in NEAR_REPEAT_INNOCENT):
+        if analyse(text)["netlik_olculeri"]["yakin_tekrar"]:  # type: ignore[index]
+            raise SystemExit(f"Öz sınama: {label} metinde yakın tekrar işaretlendi (yanlış pozitif): {text[:60]!r}")
+    for text in NOT_DEFINITIONS:
+        if analyse(text)["netlik_olculeri"]["dongusel_tanim"]:  # type: ignore[index]
+            raise SystemExit(f"Öz sınama: tanım olmayan cümle döngüsel tanım sayıldı (yanlış pozitif): {text!r}")
+
+    print("Stil denetimi öz sınaması geçti (netlik omurgası, yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj).")
 
 
 # --------------------------------------------------------------------------- #

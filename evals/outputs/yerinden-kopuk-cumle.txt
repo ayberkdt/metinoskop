@@ -1,0 +1,7 @@
+## Yöntem
+
+Modeller 2.000 örnekle eğitildi ve öğrenme oranı 0,001'de sabit tutuldu. Hiperparametreler beş katlı çapraz doğrulamayla seçildi. Test kümesi eğitimde hiç kullanılmayan 500 örnekten oluşuyordu.
+
+## Bulgular
+
+En iyi model test kümesinde %4,2, en küçük model %9,8 hata verdi. Hata, model büyüdükçe azaldı.

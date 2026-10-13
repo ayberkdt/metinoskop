@@ -55,6 +55,11 @@ EXPECTATION_KEYS = {
     "çapraz gönderme": ("structure_summary", "cross_references"),
     "duyuru/sarmalayıcı": ("structure_summary", "announcements"),
     "önem/sonuç cümlesi": ("structure_summary", "mini_conclusions"),
+    "uzun cümle": ("netlik_olculeri", "uzun_cumle"),
+    "kalabalık paragraf": ("netlik_olculeri", "kalabalik_paragraf"),
+    "döngüsel tekrar": ("netlik_olculeri", "dongusel_tekrar"),
+    "döngüsel tanım": ("netlik_olculeri", "dongusel_tanim"),
+    "yakın tekrar": ("netlik_olculeri", "yakin_tekrar"),
     "sert işaret": ("", "hard_hits"),
     "cümle": ("", "sentences"),
     "sahip olmak": ("ceviri_kokusu", "sahip_olmak"),
@@ -178,6 +183,7 @@ def evaluate_case(case_path: Path, output_path: Path) -> dict[str, object]:
     warnings.extend(comparison["introduced_structure"])
     warnings.extend(f"yeni çeviri kokusu bulgusu: {text}" for text in comparison["introduced_translationese"])
     warnings.extend(f"yeni söylem bulgusu: {text}" for text in comparison["introduced_discourse"])
+    warnings.extend(f"yeni netlik bulgusu: {text}" for text in comparison["introduced_clarity"])
 
     return {
         "case": case_path.stem,

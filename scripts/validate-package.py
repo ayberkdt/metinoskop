@@ -32,6 +32,9 @@ REQUIRED_FILES = (
     "references/metinsel-tutarlilik.md",
     "references/zamansal-ankraj-ve-rapor-kipi.md",
     "references/yapisal-butunluk.md",
+    "references/netlik-omurgasi.md",
+    "references/kenar-turler.md",
+    "references/turkce-baglayicilar.md",
     "evals/README.md",
     "evals/akademik.md",
     "evals/belirsizlik.md",
@@ -213,6 +216,14 @@ REQUIRED_FILES = (
     "evals/sosyal-medya-sablonu.md",
     "evals/anlam-kalkisi-akademik.md",
     "evals/anlam-kalkisi-korunur.md",
+    "evals/dongusel-tanim.md",
+    "evals/dagilmis-konu.md",
+    "evals/cok-konulu-cumle.md",
+    "evals/talimat-tek-adim.md",
+    "evals/belirsiz-talep-gelistir.md",
+    "evals/yerinden-kopuk-cumle.md",
+    "evals/tekduze-baglayicilar.md",
+    "evals/dogal-baglayici-korunur.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -402,6 +413,14 @@ EVAL_FILES = (
     "evals/sosyal-medya-sablonu.md",
     "evals/anlam-kalkisi-akademik.md",
     "evals/anlam-kalkisi-korunur.md",
+    "evals/dongusel-tanim.md",
+    "evals/dagilmis-konu.md",
+    "evals/cok-konulu-cumle.md",
+    "evals/talimat-tek-adim.md",
+    "evals/belirsiz-talep-gelistir.md",
+    "evals/yerinden-kopuk-cumle.md",
+    "evals/tekduze-baglayicilar.md",
+    "evals/dogal-baglayici-korunur.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -467,88 +486,77 @@ if "# Metinoskop" not in skill:
     fail("SKILL.md must use the Metinoskop heading")
 if len(skill.splitlines()) > 400:
     fail("SKILL.md exceeds the 400-line portability budget")
-if len(skill.encode("utf-8")) > 60_000:
-    fail("SKILL.md exceeds the 60 KB attention budget; move detail to references/")
+if len(skill.encode("utf-8")) > 40_000:
+    fail("SKILL.md exceeds the 40 KB attention budget; move detail to references/")
 if len(frontmatter_match.group(1)) > 1_200:
     fail("SKILL.md description must stay a trigger description, not a catalog (max 1200 bytes)")
 for heading in (
-    "## Belirsizlik ve yorum seçimi",
-    "## Terim ve gösterim tutarlılığı",
-    "## Rapor bütünlüğünü koru",
-    "## Dört düzeyde yapay düzyazı",
-    "### Cümle düzeyi",
-    "### Paragraf düzeyi",
-    "### Belge düzeyi",
-    "**Sıfır bilgi cümlesi.**",
+    "## Netlik omurgası",
+    "ASD-STE100",
+    "**1. Bir paragraf, bir konu.**",
+    "**2. Her önermeyi bir kez söyle.**",
+    "**3. Yalnızca gerekli bilgiyi yaz.**",
+    "**4. Kısa ve doğrudan cümle.**",
+    "**5. Bir terim, bir anlam.**",
+    "**6. Somut özne, somut yüklem.**",
+    "**7. Yapı okura hizmet eder.**",
+    "döngüsel tanım",
+    "## Şişirme kataloğu",
     "**Dolguyu başka dolguya çevirme.**",
-    "**İşlev tekrarı.**",
-    "**Savunmacı düzyazı.**",
     "**Üretilmiş önem.**",
-    "**Üretilmiş karşıtlık.**",
-    "**Soyut yüklem sisi.**",
-    "**Açık olanı açıklama.**",
-    "**Paragraf simetrisi.**",
-    "**Zorlama denge.**",
-    "**Yol haritası ve okur yönlendirmesi.**",
+    "**Savunmacı düzyazı.**",
+    "**Üretilmiş karşıtlık ve zorlama denge.**",
+    "**Okur yönlendirmesi ve sarmalayıcı.**",
     "**Kalıp giriş ve kalıp sonuç.**",
-    "## Yapı ve okur yorgunluğu",
-    "Yapı, kavramsal sınırları izler",
-    "### Bölme kararı",
-    "### Okuru yoran alışkanlıklar",
-    "### Cümle ekonomisi",
-    "### Yapısal koruma",
-    "**Önce süreklilik.**",
-    "**Başlık hakkını kazanmalıdır.**",
-    "**Derinlik testi.**",
-    "**Başlık sıkıştırma.**",
-    "**Paragraf görsel parça değil kavramsal birimdir.**",
-    "**Zihinsel model sürekliliği.**",
-    "**Yakınlık kuralı.**",
-    "**Açıklama, metin ilerlemeden bitmelidir.**",
-    "**Slayt değil belge.**",
     "**Yapay gerilim.**",
-    "**Paragraf sonu askısı.**",
-    "**Bağlam yeniden başlatma ve çapraz gönderme.**",
-    "**Başlık tekrarı ve boş sarmalayıcılar.**",
-    "**Zorlama geçişler.**",
-    "**Yinelenme haritası.**",
-    "**Gereksiz uzun ifadeler.**",
-    "**Yığılmış çerçeve.**",
-    "**Okur emeği.**",
-    "Görsel parçalanmayı açıklık sanma",
-    "## Sertlik düzeyleri",
-    "## Akademik ve teknik metin",
-    "**5. Yapay düzyazı, yapı, çeviri kokusu, kanıt, sözcük ve tutarlılık denetimi yap.**",
-    "**E. Yapı:**",
-    "**F. Çeviri kokusu:**",
-    "## Çeviri kokusu ve Türkçe ritim",
-    "**Kokuyu sözcükte değil ilişkide ara.**",
-    "**Bilgi yapısı ve Türkçenin kendi kaynaklarıyla yeniden kur.**",
-    "**Kesinliği bozma, aşırı Türkçeleştirme.**",
-    "## Kanıt ve kesinlik",
-    "**Bilginin kaynağını düzenleyip yok etme.**",
-    "**Aktörlüğü koru; edilgeni epistemik seçim olarak değerlendir.**",
-    "**Çekince kanıttır, pekiştirici değildir.**",
-    "**Kip ve statü zincirini ilerletme.**",
-    "## Sözcük birleşimleri",
-    "**Eşdizim ve istem denetimi.**",
-    "**Sözcük kimliğini koru.**",
-    "## Metinsel tutarlılık ve konu ilerleyişi",
-    "**Her cümle öncekinden büyür.**",
-    "Edilgenliği yalnızca aktör belli diye etkene çevirme",
+    "**Paragraf simetrisi.**",
+    "## Değişmezler: netlik kesinliği bozmaz",
+    "**Kaynak sadakati.**",
+    "**Belirsizlik ve yorum seçimi.**",
+    "**Bilginin kaynağı ve statüsü.**",
+    "**Çekince kanıttır.**",
+    "**Statü zinciri ilerlemez.**",
+    "**Zamansal ankraj.**",
+    "## Türkçe doğallık",
+    "**Çeviri kokusunu ilişkide ara.**",
+    "**Aşırı Türkçeleştirme.**",
+    "**Eşdizim ve istem.**",
+    "**Sözcüksel kalkı.**",
+    "**Anlamı değiştiren kalkıyı her düzeyde düzelt.**",
     "**Bağlaç ilişki kuramaz.**",
-    "**Gönderge, kapsam ve olumsuzluk yerinde kalır.**",
-    "**G. Kanıt ve kesinlik:**",
-    "**H. Sözcük uyumu:**",
-    "**I. Metinsel tutarlılık:**",
-    "**J. Zamansal ankraj:**",
-    "**Zamansal ankrajı koru.**",
-    "**Şimdiki zamanı eksik bırakma.**",
-    "**Sözcüksel kalkıyı denetle.**",
+    "## Müdahale düzeyi ve değişiklik bütçesi",
+    "**Değişiklik bütçesi.**",
+    "## Bilimsel ve teknik metin",
+    "**Rapor bütünlüğü.**",
+    "**Kavramsal giriş.**",
+    "**Kenar türler ayrı tutulur.**",
+    "## Çalışma yöntemi",
+    "**4. Netlik denetimi.**",
+    "## Referans yönlendirmesi",
+    "## Çıktı biçimi",
+    "Görsel parçalanmayı açıklık sanma",
+    "Edilgenliği yalnızca aktör belli diye etkene çevirme",
+    "references/netlik-omurgasi.md",
+    "references/kenar-turler.md",
+    "## Kısa talep, tam iş",
+    "**Seçenek sunma.**",
+    "**Düzeyi teşhis seçer.**",
+    "## Bütüncül düzenleme",
+    "**Yukarıdan aşağı teşhis, aşağıdan yukarı doğrulama.**",
+    "**Paragraf testi.**",
+    "**Yerinde olmayan cümle yeniden yazılmaz, taşınır.**",
+    "**Türkçenin bağlayıcı kaynaklarını kullan.**",
+    "**Terim sabit, çevresi değişken.**",
+    "**2. Düzenle, katman katman.**",
+    "references/turkce-baglayicilar.md",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
 
+for genre_detail in ("kabul ve taahhüt eder", "Görüş korunur, hazır ambalajı korunmaz",
+                     "Umarım bu e-posta sizi iyi bulur", "Gelin birlikte bakalım"):
+    if genre_detail in skill:
+        fail(f"SKILL.md carries genre-specific detail ({genre_detail}); keep it in references/kenar-turler.md")
 if re.search(r"(?m)^####", skill):
     fail("SKILL.md must not use fourth-level headings (its own structure rule)")
 if len(re.findall(r"(?m)^### ", skill)) > 12:
@@ -560,7 +568,7 @@ for relative_path in re.findall(r"\]\((references/[^)]+)\)", skill):
 
 metadata_requirements = (
     'display_name: "Metinoskop"',
-    'short_description: "Türkçe metindeki mekanik kalıpları ve yapay ritmi azaltır"',
+    'short_description: "Türkçe metni net ve anlaşılır kılar; şişirmeyi ve tekrarı kaldırır"',
     'default_prompt: "$metinoskop kullanarak',
 )
 for requirement in metadata_requirements:
@@ -593,6 +601,10 @@ readme_requirements = (
     "sozcuk-birlesimleri.md",
     "metinsel-tutarlilik.md",
     "zamansal-ankraj-ve-rapor-kipi.md",
+    "netlik-omurgasi.md",
+    "kenar-turler.md",
+    "turkce-baglayicilar.md",
+    "STE100",
 )
 for requirement in readme_requirements:
     if requirement not in readme:
@@ -626,7 +638,7 @@ if "## [0.1.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.1.0")
 
 evals_readme = texts[ROOT / "evals/README.md"]
-for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri kokusu", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk", "serbest değişmezler", "behavioral-regression.py", "gold", "zamansal ankraj"):
+for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri kokusu", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk", "serbest değişmezler", "behavioral-regression.py", "gold", "zamansal ankraj", "netlik", "döngüsel", "bütüncül", "bağlayıcı"):
     if requirement not in evals_readme.casefold():
         fail(f"evals/README.md must mention review axis: {requirement}")
 
@@ -821,6 +833,14 @@ eval_markers = {
     "evals/ozgun-imge-korunur.md": ("açılmış bir parantez", "Bence", "kalabalık, gürültü, trafik", "cümle: 3",),
     "evals/sosyal-medya-sablonu.md": ("Gelin birlikte bakalım", "Sonuç mu?", "120'den 310'a", "liste ögesi: 0",),
     "evals/anlam-kalkisi-akademik.md": ("desteklediğini önermektedir", "yer aldı", "3 faktörü", "p = 0,003",),
+    "evals/dongusel-tanim.md": ("işlemidir", "%0,8", "%0,2", "12 referans", "Başka bir deyişle", "döngüsel tanım: 0",),
+    "evals/dagilmis-konu.md": ("## Yöntem", "## Bulgular", "## Tartışma", "60 °C", "%6,1", "Daha önce de belirtildiği gibi", "döngüsel tekrar: 0",),
+    "evals/cok-konulu-cumle.md": ("4.212", "2023/41", "çoklu atama", "bir veri kümesidir", "uzun cümle: 0",),
+    "evals/talimat-tek-adim.md": ("gerekmektedir", "eldiven kullanılmalıdır", "1,000 kg", "liste ögesi: >= 5",),
+    "evals/belirsiz-talep-gelistir.md": ("Bu metni geliştir", "14 sabit istasyon", "3,1 °C", "0,9 °C", "kritik bir konudur", "yakın tekrar: 0",),
+    "evals/yerinden-kopuk-cumle.md": ("## Yöntem", "## Bulgular", "%9,8", "%4,2", "500 örnekten", "beş katlı",),
+    "evals/tekduze-baglayicilar.md": ("1.240", "%22", "%31", "düşüklüğe rağmen", "planlıyor", "yakın tekrar: 0",),
+    "evals/dogal-baglayici-korunur.md": ("ancak basınç", "bu yüzden", "2,5 bar", "yakın tekrar: 0",),
     "evals/anlam-kalkisi-korunur.md": ("yeni bir yöntem önermektedir", "Tablo 2'de yer alıyor", "Tedavi grubundaki 40 hastaya", "cümle: 6",),
 }
 for relative_path, markers in eval_markers.items():
@@ -916,6 +936,7 @@ SHOULD_REMAIN_CASES = (
     "evals/erisim-saglamak-korunur.md",
     "evals/ozgun-imge-korunur.md",
     "evals/anlam-kalkisi-korunur.md",
+    "evals/dogal-baglayici-korunur.md",
 )
 locked = []
 for relative_path in EVAL_FILES:
