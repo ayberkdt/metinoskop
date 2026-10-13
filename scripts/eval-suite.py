@@ -59,6 +59,7 @@ EXPECTATION_KEYS = {
     "kalabalık paragraf": ("netlik_olculeri", "kalabalik_paragraf"),
     "döngüsel tekrar": ("netlik_olculeri", "dongusel_tekrar"),
     "döngüsel tanım": ("netlik_olculeri", "dongusel_tanim"),
+    "yakın tekrar": ("netlik_olculeri", "yakin_tekrar"),
     "sert işaret": ("", "hard_hits"),
     "cümle": ("", "sentences"),
     "sahip olmak": ("ceviri_kokusu", "sahip_olmak"),

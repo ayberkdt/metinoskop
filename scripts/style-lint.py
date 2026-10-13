@@ -1243,6 +1243,56 @@ CIRCULAR_DEFINITION_END_RE = re.compile(r"(?:d[ıiuü]r|t[ıiuü]r|demektir)[.!?
 DEFINITION_HEAD_RE = re.compile(r"^\W*(\w+)(?:\s+\w+)?\s*,\s*(.+)$")
 
 
+# Near repetition: the words *around* terms (connectives, generic verbs,
+# evaluative adjectives) repeated inside one paragraph. Terms themselves are
+# never counted -- "one term, one meaning" wants them repeated.
+NEAR_REPEAT_CONNECTIVES = (
+    ("ayrıca", r"(?<!\w)ayrıca(?!\w)"),
+    ("ancak", r"(?<!\w)ancak(?!\w)"),
+    ("bununla birlikte", r"(?<!\w)bununla birlikte(?!\w)"),
+    ("bu nedenle", r"(?<!\w)bu nedenle(?!\w)"),
+    ("dolayısıyla", r"(?<!\w)dolayısıyla(?!\w)"),
+    ("buna ek olarak", r"(?<!\w)buna ek olarak(?!\w)"),
+    ("öte yandan", r"(?<!\w)öte yandan(?!\w)"),
+    ("bu bağlamda", r"(?<!\w)bu bağlamda(?!\w)"),
+    ("bu doğrultuda", r"(?<!\w)bu doğrultuda(?!\w)"),
+    ("sonuç olarak", r"(?<!\w)sonuç olarak(?!\w)"),
+)
+NEAR_REPEAT_WORDS = (
+    ("göstermek", r"(?<!\w)göster(?!ge)\w*"),
+    ("sağlamak", r"(?<!\w)sağla(?!m)\w*"),
+    ("ortaya koymak", r"(?<!\w)ortaya koy\w*"),
+    ("gerçekleştirmek", r"(?<!\w)gerçekleştir\w*"),
+    ("katkı", r"(?<!\w)katkı\w*"),
+    ("rol oynamak", r"(?<!\w)rol oyna\w*"),
+    ("olanak", r"(?<!\w)olana(?:k|ğ)\w*"),
+    ("önemli", r"(?<!\w)önemli\w*"),
+    ("etkili", r"(?<!\w)etkili\w*"),
+    ("kritik", r"(?<!\w)kritik(?!\w)"),
+    ("oldukça", r"(?<!\w)oldukça(?!\w)"),
+    ("büyük ölçüde", r"(?<!\w)büyük ölçüde(?!\w)"),
+)
+NEAR_REPEAT_COMPILED = tuple((label, re.compile(p), True) for label, p in NEAR_REPEAT_CONNECTIVES) + \
+    tuple((label, re.compile(p), False) for label, p in NEAR_REPEAT_WORDS)
+
+
+NEAR_REPEAT_CONNECTIVE_LABELS = {label for label, _ in NEAR_REPEAT_CONNECTIVES}
+
+
+def near_repetitions(doc: Document) -> list[tuple[Paragraph, str, list[int]]]:
+    found: list[tuple[Paragraph, str, list[int]]] = []
+    for paragraph in (p for p in doc.paragraphs if p.prose):
+        for label, pattern, connective in NEAR_REPEAT_COMPILED:
+            hits = [s.index for s in paragraph.sentences if pattern.search(s.lowered)]
+            if connective:
+                repeated = len(hits) >= 2
+            else:
+                repeated = len(hits) >= 3 or any(b - a == 1 for a, b in zip(hits, hits[1:]))
+            if repeated:
+                found.append((paragraph, label, hits))
+    return found
+
+
 def content_stems(sentence: Sentence) -> set[str]:
     stems: set[str] = set()
     for word in WORD_RE.findall(sentence.lowered):
@@ -1289,6 +1339,7 @@ def clarity_summary(doc: Document) -> dict[str, object]:
         "kalabalik_paragraf": sum(1 for p in prose if len(p.sentences) > STE_PARAGRAPH_SENTENCES),
         "dongusel_tekrar": len(restatement_pairs(doc)),
         "dongusel_tanim": sum(1 for p in prose for s in p.sentences if circular_definition(s)),
+        "yakin_tekrar": len(near_repetitions(doc)),
     }
 
 
@@ -1307,6 +1358,12 @@ def clarity_checks(doc: Document) -> list[dict[str, object]]:
         if len(paragraph.sentences) > STE_PARAGRAPH_SENTENCES:
             findings.append({"check": "kalabalik_paragraf",
                              "text": f"P{paragraph.number}: {len(paragraph.sentences)} cümle (STE eşiği {STE_PARAGRAPH_SENTENCES}); paragraf tek konu mu taşıyor?"})
+    for paragraph, label, hits in near_repetitions(doc):
+        where = ", ".join(f"C{i}" for i in hits)
+        advice = ("ilişkiyi eke, ilgece ya da bağlaçsız yapıya taşı" if label in NEAR_REPEAT_CONNECTIVE_LABELS
+                  else "yapıyı değiştir ya da ilişkinin gerektirdiği kesin sözcüğü seç; terimse dokunma")
+        findings.append({"check": "yakin_tekrar",
+                         "text": f"P{paragraph.number}: «{label}» aynı paragrafta {len(hits)} kez ({where}); {advice}."})
     for first, second, score in restatement_pairs(doc):
         findings.append({"check": "dongusel_tekrar",
                          "text": f"P{first.paragraph}C{first.index} ile P{second.paragraph}C{second.index} içerik köklerinin %{round(score * 100)}'ini paylaşıyor: aynı önerme yeni rol kazanmadan yineleniyor mu?"})
@@ -1434,6 +1491,7 @@ CLARITY_PRINT_LIMIT = 7  # restatement pairs grow with the square of the sentenc
 CLARITY_LABELS = {
     "uzun_cumle": "uzun cümle", "kalabalik_paragraf": "kalabalık paragraf",
     "dongusel_tekrar": "döngüsel tekrar", "dongusel_tanim": "döngüsel tanım",
+    "yakin_tekrar": "yakın tekrar",
 }
 TRANSLATIONESE_LABELS = {
     "sahip_olmak": "sahip olmak", "varlik_kalibi": "varlık kalıbı", "cerceve_yigini": "çerçeve yığını",
@@ -1747,6 +1805,14 @@ CLEAR_TEXT = """Ölçüm sistemi 12 referans ağırlıkla kalibre edildi; doğru
 
 Yeni pompa 2024'te hatta takıldı. Eski pompaya göre daha az enerji tüketiyor ve bakım aralığı 600 saatten 900 saate çıkarıldı.
 """
+MONOTONE_TEXT = """Yeni tasarım çekirdek sıcaklığını 12 °C düşürdü. Ayrıca fan gürültüsü 4 dB azaldı. Ancak maliyet %18 arttı. Ancak ekip tasarımı onayladı. Ayrıca tasarım iki ayda üretime alınacak.
+
+Sonuçlar yöntemin hatayı azalttığını göstermektedir. Tablo 3 aynı eğilimi göstermektedir. Şekil 2 sapmanın düşük frekanslarda yoğunlaştığını göstermektedir.
+"""
+NEAR_REPEAT_INNOCENT = (
+    "Gösterge paneli sağlam bir kasaya yerleştirildi. Gösterge her saniye güncellenir. Kasa sağlam kaldı.",
+    "Gözlemci durumu tahmin eder. Gözlemci ölçümü 50 Hz'de alır. Gözlemci sonucu kaydeder.",
+)
 NOT_DEFINITIONS = (
     "Katılımcıların yalnızca %40'ı ikinci ölçüme katıldığı için sonuçlar bu alt grupla sınırlıdır.",
     "Model, modelin önceki sürümünden iki kat hızlı çalıştı.",
@@ -1982,6 +2048,14 @@ def self_test() -> None:
         found = [f for f in analyse(text)["netlik"] if f["check"] in ("dongusel_tekrar", "dongusel_tanim")]  # type: ignore[union-attr]
         if found:
             raise SystemExit(f"Öz sınama: {label} metinde döngüsel tekrar ya da tanım işaretlendi: {found}")
+    monotone = {(f["check"], f["text"].split("»")[0]) for f in analyse(MONOTONE_TEXT)["netlik"]}  # type: ignore[union-attr]
+    for word in ("ayrıca", "ancak", "göstermek"):
+        if ("yakin_tekrar", f"P{1 if word != 'göstermek' else 2}: «{word}") not in monotone:
+            raise SystemExit(f"Öz sınama: tekdüze paragrafta yakın tekrar işaretlenmedi: {word}")
+    for label, text in (("yerli", NATIVE_TEXT), ("temiz", CLEAN_TEXT), ("iyi yapılı", WELL_STRUCTURED_TEXT)) + \
+            tuple(("terim", t) for t in NEAR_REPEAT_INNOCENT):
+        if analyse(text)["netlik_olculeri"]["yakin_tekrar"]:  # type: ignore[index]
+            raise SystemExit(f"Öz sınama: {label} metinde yakın tekrar işaretlendi (yanlış pozitif): {text[:60]!r}")
     for text in NOT_DEFINITIONS:
         if analyse(text)["netlik_olculeri"]["dongusel_tanim"]:  # type: ignore[index]
             raise SystemExit(f"Öz sınama: tanım olmayan cümle döngüsel tanım sayıldı (yanlış pozitif): {text!r}")

@@ -24,6 +24,15 @@ Yeni bir davranış kuralı eklenirken en az bir mevcut vaka güncellenmeli veya
 
 Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (tek ilişki taşıyan uzun cümle), `uzun-paragraf-korunur` (tek hareketli uzun paragraf), `ayni-iddia-yeni-rol` (yeni rol kazanan yineleme), `kanonik-terim-tekrari` (gerekli terim tekrarı).
 
+**Kısa talep, bütüncül düzenleme ve bağlayıcılar:** kullanıcının yalnızca "geliştir" dediği durumda ajanın sorunları kendisi teşhis edip katmanları birlikte düzeltmesini; doğru ama yanlış yerde duran cümlenin taşınmasını; ilişkilerin Türkçenin bağlayıcı kaynaklarıyla, kaynakta olmayan ilişki kurmadan kurulmasını sınar. `yakın tekrar` beklentisi `style-lint.py` netlik ölçüsüne bağlanır.
+
+| Vaka | Sınanan davranış |
+|---|---|
+| `belirsiz-talep-gelistir` | Yalnızca "Bu metni geliştir, çok AI slop gibi" denen metinde soru sormadan ve seçenek sunmadan önem cümlesini silmek, yanlış bağlanmış veri kaybı cümlesini yöntem bilgisinin yanına taşımak, `Ayrıca/Ancak` tekrarını gidermek; sayıları ve yorumun gücünü korumak |
+| `yerinden-kopuk-cumle` | Her cümlesi doğru ama yöntem ve bulgu cümleleri yer değiştirmiş iki bölümde cümleleri yeniden yazmak yerine ait oldukları bölüme taşımak |
+| `tekduze-baglayicilar` | Her cümleyi `Ayrıca/Ancak` ile açan paragrafı ek kaynaklarıyla (`-ın katılımıyla`, `-masına rağmen`) kurmak; kaynakta olmayan nedenselliği `sayesinde` ile eklememek, planı sonuca bağlamamak |
+| `dogal-baglayici-korunur` | `-diğinde`, `ancak ... -ınca`, `-ken`, `bu yüzden` ile zaten doğal bağlanmış teknik metni bağlaçlara açmamak, çeşitlilik için değiştirmemek (yanlış pozitif) |
+
 **Kaynak sadakati ve kapsam:** `akademik`, `belirsizlik`, `bicim-koruma`, `kapsam-ve-kosul`, `kaynak-sadakati`, `teknik`, `rapor-bulgu-yorum-oneri`, `rapor-yapisal-butunluk`, `yonetici-ozeti`.
 
 **Ton ve değişiklik bütçesi:** `degisiklik-butcesi`, `kavramsal-giris`.

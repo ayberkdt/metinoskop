@@ -126,7 +126,7 @@ Bu vakanın kayıtlı çıktısı kaynağın kendisidir. Doğru davranış hiçb
 
 ## Neyi değiştirmemekte ısrar eder
 
-Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz seksen dört eval vakasının altmışında beklenen çıktı kaynağın kendisidir:
+Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz seksen sekiz eval vakasının altmış birinde beklenen çıktı kaynağın kendisidir:
 
 | Metinde geçen | Neden dokunulmaz |
 |---|---|
@@ -155,6 +155,10 @@ Her satır bir eval vakasına dayanır ve kayıtlı çıktısı kaynağın kendi
 ## Ne yapar?
 
 **Netlik omurgası.** Yedi kural, ASD-STE100'ün yazım ilkelerinden uyarlanmıştır: (1) bir paragraf bir konu taşır, dağılmış konu tek yerde toplanır; (2) her önerme bir kez söylenir, döngüsel tanım ve açımlama döngüsü kalkar; (3) yalnızca gerekli bilgi yazılır; (4) cümle kısa ve doğrudandır, ilgisiz önermeler tek cümleye yığılmaz, talimatta cümle başına bir adım vardır; (5) bir kavramın tek adı olur; (6) aktör biliniyorsa somut özne ve somut yüklem kullanılır; (7) yapı okura hizmet eder. STE'nin sayısal eşikleri (betimleyici cümlede 25 sözcük, paragrafta altı cümle) inceleme işaretidir, kesme kuralı değildir: tek bir ilişkiyi taşıyan uzun cümle korunur. STE'nin İngilizceye özgü sözlüğü ve fiil kısıtları alınmamıştır. Ayrıntı ve STE eşleme tablosu: [`references/netlik-omurgasi.md`](references/netlik-omurgasi.md).
+
+**Bütüncül düzenleme.** Tek başına kusursuz bir cümle, paragrafında yanlış yerde durabilir. Metinoskop metni cümle cümle değil, belge, paragraf, cümle ve sözcük katmanlarını birlikte düşünerek düzenler: önce yukarıdan aşağı teşhis eder, her düzeltmeden sonra bir üst katmanı yeniden okur. Her paragrafta cümlelerin rolünü (iddia, kanıt, yorum, sınırlılık) ve sırasını sınar; doğru ama yanlış yerde duran cümleyi yeniden yazmaz, ait olduğu yere taşır.
+
+**Türkçenin bağlayıcı kaynakları.** İlişkileri yalnızca `Ayrıca`, `Ancak`, `Bu nedenle` gibi cümle başı etiketlerle değil, Türkçenin eklerle ve ilgeçlerle kurduğu kaynaklarla kurar: `-e rağmen`, `-mesine karşın`, `olmasının yanında`, `-mesinin yanı sıra`, `-den/-dan`, `-dığından`, `sayesinde`, `ise`, `-ken`, `-erek`, `-e kıyasla`, `merceğinden`. Bağlayıcı yalnızca kaynağın kurduğu ilişkiyi kodlar: `sayesinde` ile nedensellik uydurmaz. Aynı paragrafta peş peşe gelen aynı bağlacı, genel fiili (`göstermek`, `sağlamak`) ya da değerlendirme sıfatını giderir; terimi ise sabit tutar. Katalog: [`references/turkce-baglayicilar.md`](references/turkce-baglayicilar.md).
 
 **Kalıp ve ritim.** Mekanik cümle ritmini, tekrarlanan kalıpları, gereksiz `-maktadır/-mektedir` zincirlerini ve `gerçekleştirilmesi`, `sağlanması` gibi ad zincirlerini sadeleştirir. Kurumsal dolguyu, reklam dilini ve tiyatral vurguyu azaltır.
 
@@ -255,23 +259,23 @@ git clone https://github.com/ayberkdt/metinoskop.git /path/to/skills/metinoskop
 
 ## Kullanım
 
-Skill'i doğrudan adıyla çağırabilirsiniz:
+Metni verip ne istediğinizi kısaca söylemeniz yeterli:
 
 ```text
-$metinoskop
-
-Aşağıdaki metni anlamını ve olgularını koruyarak doğal Türkçeyle düzenle:
+Bu metni geliştir, çok AI slop gibi duruyor.
 
 [metin]
 ```
 
-Doğal dilde bir talep de yeterlidir: `Bu metni insanileştir; robotik ifadeleri ve pazarlama dilini temizle.`
+Düzey, kapsam ya da hangi sorunun düzeltileceğini söylemeniz gerekmez. Metinoskop metni belge, paragraf, cümle ve sözcük katmanlarında birlikte okur, sorunları kendisi teşhis eder ve tek bir düzenlenmiş metin verir. Size seçenek sunmaz, alternatif sürüm vermez. Yalnızca düzenleme kaynakta olmayan bir yorumu seçmeyi gerektiriyorsa soru sorar. `$metinoskop` ile adını açıkça da çağırabilirsiniz.
+
+Belirli bir şey istiyorsanız söyleyin; açık talep varsayılanın önüne geçer: `Yalnızca dolguyu çıkar, cümle yapısına dokunma.`
 
 Metinoskop kaynak dilden çeviri yapmaz; Türkçeye çevrilmiş mevcut bir metni doğallaştırır.
 
 ### Müdahale düzeyi
 
-Kapsamı siz belirlersiniz. Hafif düzeyde cümle yapısı ve başlıklar korunur, yalnızca klişe ve dolgu temizlenir:
+Belirtmezseniz düzeyi teşhis seçer: varsayılan standarttır, yapısal parçalanma varsa o bölümlere derin düzeyin yapı kuralları da uygulanır. İsterseniz kapsamı siz belirlersiniz. Hafif düzeyde cümle yapısı ve başlıklar korunur, yalnızca klişe ve dolgu temizlenir:
 
 ```text
 Bu e-postaya hafif bir Metinoskop düzenlemesi uygula. Cümle yapısını mümkün olduğunca koru.
@@ -435,7 +439,7 @@ Kavramsal giriş yalnızca açıkça istendiğinde kullanılan ikincil bir kabil
 Metinoskop düzenlemeyi dört adımda yapar:
 
 1. **Envanter.** Metnin türünü, amacını, muhatabını; korunacak sayıları, kapsam belirleyicilerini, terimleri ve her iddianın kanıt statüsünü belirler. Metnin konularını çıkarır: hangi konu nerede açılıyor, nerede yeniden açılıyor?
-2. **Düzenleme.** Önce yapı (dağılmış konuları toplar, gereksiz bölünmeyi kaldırır), sonra tekrar ve şişirme, sonra cümle, sonra terim ve Türkçe doğallık. Komşu cümleleri ve bölümleri birlikte değerlendirir.
+2. **Katman katman düzenleme.** Belge (dağılmış konuları toplar), paragraf (cümle rollerini ve sırasını kurar, yerinde olmayan cümleyi taşır, tekrarı ve şişirmeyi çıkarır), cümle, sözcük (terim, bağlayıcı, yakın tekrar). Her katmandan sonra bir üst katmanı yeniden okur.
 3. **Kaynak karşılaştırması.** Son metindeki her sayı, tarih, iddia, nedensellik, karşılaştırma, koşul, istisna, nicelik sınırı ve terimin kaynakta karşılığını arar.
 4. **Netlik denetimi.** Teslimden önce metni aşağıdaki sorulara göre bir kez daha okur.
 
@@ -443,6 +447,8 @@ Metinoskop düzenlemeyi dört adımda yapar:
 |---|---|
 | Konu | Her paragraf tek konu mu; bir konu birden fazla yerde mi açılıyor? |
 | Tekrar | Aynı önerme yeni rol kazanmadan ikinci kez geçiyor mu; döngüsel tanım kaldı mı? |
+| Yerleşim | Her cümle paragrafında bir rol taşıyor ve doğru konumda mı? |
+| Akış | İlişkiler Türkçenin bağlayıcı kaynaklarıyla mı kurulmuş; aynı bağlaç ya da fiil peş peşe mi geliyor? |
 | Gereklilik | Her cümle silme testini geçiyor mu; dolgu daha sakin eş anlamlılarla geri geldi mi? |
 | Cümle | İlgisiz önermeler tek cümlede mi; uzun ifade, çerçeve yığını, ad zinciri kaldı mı; telgraf diline inildi mi? |
 | Terim | Her kavramın tek adı var mı; kısaltma, sembol ve numaralar tutarlı mı? |
@@ -467,13 +473,14 @@ metinoskop/
 │   ├── rapor-yazimi.md
 │   ├── retorik-yapilar.md
 │   ├── sozcuk-birlesimleri.md
+│   ├── turkce-baglayicilar.md
 │   ├── turkce-oruntuler.md
 │   ├── turkce-ritim-ve-ceviri-kokusu.md
 │   ├── yapisal-butunluk.md
 │   └── zamansal-ankraj-ve-rapor-kipi.md
 ├── evals/
-│   ├── (184 davranışsal vaka: netlik omurgası, kaynak sadakati, retorik
-│   │    mimari, yapısal bütünlük, çeviri kokusu, epistemik mimari,
+│   ├── (188 davranışsal vaka: netlik omurgası, bütüncül düzenleme,
+│   │    bağlayıcılar, kaynak sadakati, retorik mimari, yapısal bütünlük, çeviri kokusu, epistemik mimari,
 │   │    eşdizim ve istem, metinsel tutarlılık, zamansal ankraj)
 │   ├── critical-cases.txt
 │   └── outputs/
@@ -522,7 +529,7 @@ python scripts/style-lint.py outputs/iddia-tekrar-dongusu.txt --source evals/idd
 
 `scripts/style-lint.py` beş grup bulgu üretiyor:
 
-- **Netlik ölçüleri (STE100 uyarlaması):** 25 sözcüğü aşan cümle, altı cümleyi aşan paragraf, içerik sözcüklerinin çoğunu paylaşan cümle çifti (yeni rol kazanmadan yinelenen önerme adayı) ve terimi kendi köküyle tanımlayan cümle (`Kalibrasyon, ... kalibre edilmesidir`). Kök örtüşmesi eş anlamlılarla kurulmuş açımlamayı göremez; onu hakem yakalar.
+- **Netlik ölçüleri (STE100 uyarlaması):** 25 sözcüğü aşan cümle, altı cümleyi aşan paragraf, içerik sözcüklerinin çoğunu paylaşan cümle çifti (yeni rol kazanmadan yinelenen önerme adayı) terimi kendi köküyle tanımlayan cümle (`Kalibrasyon, ... kalibre edilmesidir`) ve aynı paragrafta yinelenen bağlaç, genel fiil ya da değerlendirme sıfatı (yakın tekrar; terimler sayılmaz). Kök örtüşmesi eş anlamlılarla kurulmuş açımlamayı göremez; onu hakem yakalar.
 - **Kalıp aileleri:** üretilmiş önem, savunmacı açıklama, yol haritası, boş sarmalayıcı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, uzun çerçeve, kalıp giriş ve sonuç, üretilmiş karşıtlık, soyut yüklem, boş özne, sohbet botu kalıntısı, hazır mecaz ve vecize, süs emojisi, anlamı değiştiren çeviri kalkısı.
 - **Yapı ölçüleri:** başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, her maddesi `**Etiket:**` ile açılan liste, çapraz gönderme sıklığı.
 - **Çeviri kokusu ölçüleri:** `sahip olmak`, varlık kalıbı, çerçeve yığını, `olan` zinciri, tekrarlanan cümle başlangıcı, `ve` zinciri, fiilimsi yığını, iyelik zinciri, 100 sözcük başına `bir`.

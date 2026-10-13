@@ -34,6 +34,7 @@ REQUIRED_FILES = (
     "references/yapisal-butunluk.md",
     "references/netlik-omurgasi.md",
     "references/kenar-turler.md",
+    "references/turkce-baglayicilar.md",
     "evals/README.md",
     "evals/akademik.md",
     "evals/belirsizlik.md",
@@ -219,6 +220,10 @@ REQUIRED_FILES = (
     "evals/dagilmis-konu.md",
     "evals/cok-konulu-cumle.md",
     "evals/talimat-tek-adim.md",
+    "evals/belirsiz-talep-gelistir.md",
+    "evals/yerinden-kopuk-cumle.md",
+    "evals/tekduze-baglayicilar.md",
+    "evals/dogal-baglayici-korunur.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -412,6 +417,10 @@ EVAL_FILES = (
     "evals/dagilmis-konu.md",
     "evals/cok-konulu-cumle.md",
     "evals/talimat-tek-adim.md",
+    "evals/belirsiz-talep-gelistir.md",
+    "evals/yerinden-kopuk-cumle.md",
+    "evals/tekduze-baglayicilar.md",
+    "evals/dogal-baglayici-korunur.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -529,6 +538,17 @@ for heading in (
     "Edilgenliği yalnızca aktör belli diye etkene çevirme",
     "references/netlik-omurgasi.md",
     "references/kenar-turler.md",
+    "## Kısa talep, tam iş",
+    "**Seçenek sunma.**",
+    "**Düzeyi teşhis seçer.**",
+    "## Bütüncül düzenleme",
+    "**Yukarıdan aşağı teşhis, aşağıdan yukarı doğrulama.**",
+    "**Paragraf testi.**",
+    "**Yerinde olmayan cümle yeniden yazılmaz, taşınır.**",
+    "**Türkçenin bağlayıcı kaynaklarını kullan.**",
+    "**Terim sabit, çevresi değişken.**",
+    "**2. Düzenle, katman katman.**",
+    "references/turkce-baglayicilar.md",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
@@ -583,6 +603,7 @@ readme_requirements = (
     "zamansal-ankraj-ve-rapor-kipi.md",
     "netlik-omurgasi.md",
     "kenar-turler.md",
+    "turkce-baglayicilar.md",
     "STE100",
 )
 for requirement in readme_requirements:
@@ -617,7 +638,7 @@ if "## [0.1.0] - 2026-07-31" not in changelog:
     fail("CHANGELOG.md must document version 0.1.0")
 
 evals_readme = texts[ROOT / "evals/README.md"]
-for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri kokusu", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk", "serbest değişmezler", "behavioral-regression.py", "gold", "zamansal ankraj", "netlik", "döngüsel"):
+for requirement in ("sıfır bilgi", "işlev tekrarı", "savunmacı", "paragraf", "style-lint.py", "başlık", "parçalanma", "yakınlık", "eval-suite.py", "yapısal beklenti", "sentez", "çeviri kokusu", "açık özne", "sahip olmak", "epistemik", "eşdizim", "konu ilerleyişi", "aktarım", "olumsuzluk", "serbest değişmezler", "behavioral-regression.py", "gold", "zamansal ankraj", "netlik", "döngüsel", "bütüncül", "bağlayıcı"):
     if requirement not in evals_readme.casefold():
         fail(f"evals/README.md must mention review axis: {requirement}")
 
@@ -816,6 +837,10 @@ eval_markers = {
     "evals/dagilmis-konu.md": ("## Yöntem", "## Bulgular", "## Tartışma", "60 °C", "%6,1", "Daha önce de belirtildiği gibi", "döngüsel tekrar: 0",),
     "evals/cok-konulu-cumle.md": ("4.212", "2023/41", "çoklu atama", "bir veri kümesidir", "uzun cümle: 0",),
     "evals/talimat-tek-adim.md": ("gerekmektedir", "eldiven kullanılmalıdır", "1,000 kg", "liste ögesi: >= 5",),
+    "evals/belirsiz-talep-gelistir.md": ("Bu metni geliştir", "14 sabit istasyon", "3,1 °C", "0,9 °C", "kritik bir konudur", "yakın tekrar: 0",),
+    "evals/yerinden-kopuk-cumle.md": ("## Yöntem", "## Bulgular", "%9,8", "%4,2", "500 örnekten", "beş katlı",),
+    "evals/tekduze-baglayicilar.md": ("1.240", "%22", "%31", "düşüklüğe rağmen", "planlıyor", "yakın tekrar: 0",),
+    "evals/dogal-baglayici-korunur.md": ("ancak basınç", "bu yüzden", "2,5 bar", "yakın tekrar: 0",),
     "evals/anlam-kalkisi-korunur.md": ("yeni bir yöntem önermektedir", "Tablo 2'de yer alıyor", "Tedavi grubundaki 40 hastaya", "cümle: 6",),
 }
 for relative_path, markers in eval_markers.items():
@@ -911,6 +936,7 @@ SHOULD_REMAIN_CASES = (
     "evals/erisim-saglamak-korunur.md",
     "evals/ozgun-imge-korunur.md",
     "evals/anlam-kalkisi-korunur.md",
+    "evals/dogal-baglayici-korunur.md",
 )
 locked = []
 for relative_path in EVAL_FILES:
