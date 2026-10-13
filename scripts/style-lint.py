@@ -131,7 +131,9 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "label": "Yol haritası ve duyuru",
         "level": "sert",
         "patterns": (
-            r"bu (?:bölümde|kısımda|yazıda|makalede|çalışmada|belgede|notta) .*(?:ele alın|incelen|açıklan|değinil|anlatıl|sunul|tartışıl|özetlen)(?!m[ae](?:d|m|y|z))",  # olumsuz biçim (incelenmedi) sınırlılıktır, duyuru değil
+            r"bu (?:bölümde|kısımda|yazıda|makalede|belgede|notta) .*(?:ele alın|incelen|açıklan|değinil|anlatıl|sunul|tartışıl|özetlen)(?!m[ae](?:d|m|y|z))",  # olumsuz biçim (incelenmedi) sınırlılıktır, duyuru değil
+            # "Bu çalışmada ... incelendi/incelenmiştir" yapılmış işin raporudur; duyuru yalnızca şimdiki, geniş ya da gelecek zamandır.
+            r"bu çalışmada .*(?:ele alın|incelen|açıklan|değinil|anlatıl|sunul|tartışıl|özetlen)(?:m[ae]kt[ae]|[ae]c[ae]k|[ıiuü]r\b)",
             r"aşağıda .*(?:incelen|açıklan|sunul|ele alın|anlatıl)",
             r"(?:şimdi|önce|öncelikle) .*(?:bakalım|geçelim|ele alalım|inceleyelim)",
             r"öncelikle .*anlamak gerek|bunu anlamak için önce",
@@ -2034,6 +2036,15 @@ def self_test() -> None:
     if repaired_ds["introduced_discourse"]:
         raise SystemExit("Öz sınama: iyi yapılı çıktı yeni söylem bulgusu üretti")
 
+    for text in ("Bu çalışmada 120 bataryanın 18 aylık kapasite verileri incelendi.",
+                 "Bu çalışmada üç veri kümesi incelenmiştir."):
+        if any(h["category"] == "duyuru" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: yapılmış işin raporu duyuru sayıldı (yanlış pozitif): {text!r}")
+    for text in ("Bu çalışmada önce veri toplama süreci ele alınacaktır.",
+                 "Bu çalışmada kentsel ısı adası etkisi incelenmektedir.",
+                 "Bu bölümde yöntem incelenmiştir."):
+        if not any(h["category"] == "duyuru" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: duyuru işaretlenmedi: {text!r}")
     circular = analyse(CIRCULAR_TEXT)
     clarity = {f["check"] for f in circular["netlik"]}  # type: ignore[union-attr]
     for check in ("dongusel_tanim", "dongusel_tekrar", "uzun_cumle"):
