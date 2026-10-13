@@ -5,18 +5,25 @@
 ![Agent Skill](https://img.shields.io/badge/agent-skill-2563eb)
 ![Language: Türkçe](https://img.shields.io/badge/language-T%C3%BCrk%C3%A7e-c62828)
 
-Türkçe metinleri yapay ritimden, basmakalıp ifadeden, kurumsal dolgudan ve okuru yoran yapısal parçalanmadan arındıran taşınabilir bir agent skill paketi.
+Türkçe metni net ve anlaşılır kılan taşınabilir bir agent skill paketi: her önerme bir kez, doğru yerde ve kaynağın kesinliğiyle söylenir.
 
-Metinoskop bir sözcük yasaklama listesi değildir. Metni sırf farklı görünsün diye yeniden yazmaz: anlamı, olguları, kesinlik düzeyini, yazarın tavrını ve uygun resmiyet düzeyini koruyarak yalnızca gerekçesi olan müdahaleyi yapar. Metin zaten iyiyse olduğu gibi bırakır.
+Omurgası, havacılık belgeleri için geliştirilmiş ASD-STE100 (Simplified Technical English) standardının yazım ilkelerinden Türkçeye uyarlanmıştır: bir paragraf bir konu, kısa ve doğrudan cümle, bir terim bir anlam; şişirme, döngüsel anlatım ve aynı konuyu yeniden açma yok. Öncelikli alan bilimsel ve teknik metindir, ilkeler her konuda geçerlidir.
+
+Metinoskop bir sözcük yasaklama listesi değildir. Metni sırf farklı görünsün diye yeniden yazmaz: anlamı, olguları, kesinlik düzeyini ve yazarın tavrını koruyarak yalnızca gerekçesi olan müdahaleyi yapar. Netlik hiçbir zaman kesinliğin önüne geçmez. Metin zaten iyiyse olduğu gibi bırakır.
 
 ## Bir bakışta
 
+`evals/dongusel-tanim.md`
+
 | Önce | Sonra |
 |---|---|
-| **Günümüzün hızla değişen iş dünyasında yenilikçi** platformumuz, siparişleri tek ekranda topluyor ve tekrar eden onayları otomatikleştiriyor. | Platform, siparişleri tek ekranda topluyor ve tekrar eden onayları otomatikleştiriyor. |
-| **Bu güçlü çözüm yalnızca süreçleri kolaylaştırmakla kalmıyor,** sipariş başına gereken adım sayısını beşten üçe indir**erek verimliliği de bir üst seviyeye taşıyor**. | Bu değişiklik, sipariş başına gereken adım sayısını beşten üçe indir**iyor**. |
+| **Kalibrasyon, ölçüm sisteminin kalibre edilmesi işlemidir.** | *— silindi* |
+| Bu çalışmada kuvvet sensörü 12 referans ağırlıkla kalibre edildi **ve** doğrusallık hatası %0,8'den %0,2'ye indi. | Bu çalışmada kuvvet sensörü 12 referans ağırlıkla kalibre edildi**;** doğrusallık hatası %0,8'den %0,2'ye indi. |
+| **Başka bir deyişle, kalibrasyondan sonra sensörün doğrusallık hatası azaldı.** | *— silindi* |
+| **Bu sonuç, kalibrasyonun ölçüm doğruluğu açısından kritik önemini açıkça ortaya koymaktadır.** | *— silindi* |
+| **Sonuç olarak, kalibrasyon sensörün doğrusallık hatasını düşürmektedir.** | *— silindi* |
 
-Kalın kısımlar gitti. Kalan iki şey aynı: platformun ne yaptığı ve beşten üçe inen adım sayısı. Metinoskop yeni bir özellik uydurmadı, var olan ölçümü de silmedi.
+Beş cümlede tek bir ölçüm vardı. Birinci cümle terimi kendisiyle tanımlıyordu. Son üç cümle aynı ölçümü açımlama, önem ve mini sonuç olarak üç kez daha söylüyordu; sonuncusu da tek bir ölçümü genel bir yasaya çeviriyordu. Kalan cümlede sayıların hepsi duruyor.
 
 ## Örnekler
 
@@ -119,7 +126,7 @@ Bu vakanın kayıtlı çıktısı kaynağın kendisidir. Doğru davranış hiçb
 
 ## Neyi değiştirmemekte ısrar eder
 
-Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz yetmiş beş eval vakasının elli sekizinde beklenen çıktı kaynağın kendisidir:
+Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz seksen dört eval vakasının altmışında beklenen çıktı kaynağın kendisidir:
 
 | Metinde geçen | Neden dokunulmaz |
 |---|---|
@@ -147,11 +154,13 @@ Her satır bir eval vakasına dayanır ve kayıtlı çıktısı kaynağın kendi
 
 ## Ne yapar?
 
+**Netlik omurgası.** Yedi kural, ASD-STE100'ün yazım ilkelerinden uyarlanmıştır: (1) bir paragraf bir konu taşır, dağılmış konu tek yerde toplanır; (2) her önerme bir kez söylenir, döngüsel tanım ve açımlama döngüsü kalkar; (3) yalnızca gerekli bilgi yazılır; (4) cümle kısa ve doğrudandır, ilgisiz önermeler tek cümleye yığılmaz, talimatta cümle başına bir adım vardır; (5) bir kavramın tek adı olur; (6) aktör biliniyorsa somut özne ve somut yüklem kullanılır; (7) yapı okura hizmet eder. STE'nin sayısal eşikleri (betimleyici cümlede 25 sözcük, paragrafta altı cümle) inceleme işaretidir, kesme kuralı değildir: tek bir ilişkiyi taşıyan uzun cümle korunur. STE'nin İngilizceye özgü sözlüğü ve fiil kısıtları alınmamıştır. Ayrıntı ve STE eşleme tablosu: [`references/netlik-omurgasi.md`](references/netlik-omurgasi.md).
+
 **Kalıp ve ritim.** Mekanik cümle ritmini, tekrarlanan kalıpları, gereksiz `-maktadır/-mektedir` zincirlerini ve `gerçekleştirilmesi`, `sağlanması` gibi ad zincirlerini sadeleştirir. Kurumsal dolguyu, reklam dilini ve tiyatral vurguyu azaltır.
 
 **Bilgi taşımayan cümleler.** Bir cümleyi silince hiçbir olgu, ilişki ya da yazar görüşü kaybolmuyorsa o cümle *sıfır bilgi cümlesi*dir ve çıkar. Dayanaksız önem iddiaları, savunmacı açıklamalar, aynı olgunun başka sözcüklerle tekrarı, bölüm duyuruları, kalıp giriş ve sonuçlar, sırf ölçülü görünmek için kurulan karşıtlıklar bu sınıfa girer. Buna karşılık birkaç bulguyu tek karar cümlesinde toplayan cümleyi, adı konmuş sınırlılığı ve ölçülmüş yöntem gerekçesini korur. Çıkardığı dolguyu daha sakin eş anlamlılarla geri koymaz.
 
-**Görüş ve ambalajı.** Deneme, köşe yazısı ve sosyal medya gönderisinde yazarın görüşü içeriktir ve kalır; ama `adeta bir pencere`, `alışkanlıktan çok daha fazlası`, `bir keşif, bir dönüşüm, bir yolculuk` gibi her konuya yapışan kalıp görüş değil ambalajdır. Metinoskop görüşü aynı güçte ve yazarın yalın sözcükleriyle bırakır, ambalajı atar; yazara özgü bir benzetmeyi ise ses sayar ve korur.
+**Kenar türler.** Hukuki metin, tanıtım ve pazarlama, deneme, köşe yazısı ve sosyal medya, kişisel yazışma, edebî metin ve üslup eşleme için ek kurallar ayrı bir dosyada durur: [`references/kenar-turler.md`](references/kenar-turler.md). Ajan bu dosyayı yalnızca metin o türdense okur; hukuki kalıp, ikna amacı ya da yazara özgü imge gibi istisnalar bilimsel metne taşınmaz. Örneğin denemede görüş korunur ama `adeta bir pencere`, `bir keşif, bir dönüşüm, bir yolculuk` gibi her konuya yapışan ambalaj atılır.
 
 **Yapı.** Hak edilmemiş başlıkları ve tek paragraflık bölümleri birleştirir, erken bölünmüş paragrafları toplar, sonucu sınırlılığıyla yan yana getirir, gereksiz derinliği düzleştirir. Bölüm sonuna asılan "asıl cevap sonraki bölümde" tipi kapanışları, her bölümde yinelenen bağlam hatırlatmalarını ve boş bölüm duyurularını kaldırır. Tekrarlanabilirlik, mevzuat, dergi kuralı, güvenlik adımları ve uzun belgelerde gezinme gerektiren yapıyı korur; hedef yazarın kendi ölçeğini aşan makine parçalanmasıdır, evrensel asgaricilik değil.
 
@@ -198,6 +207,7 @@ Depo birkaç kavramı kendi adıyla anar. Bunlar `references/` altındaki dosya 
 7. Bir cümle silindiğinde hiçbir önerme, ilişki, kronoloji, yorum veya yazar tavrı kaybolmuyorsa çıkarılır; dolgu başka dolguya çevrilmez.
 8. Sözcükler tek başına yasaklanmaz; yargı birimi sözcüğün bağlamdaki işlevidir. Kısalık amaç değil, tekrar ve dolgunun çıkarılmasının sonucudur.
 9. Yapı kavramsal sınırları izler. Her yeni başlık, paragraf veya liste okura bilişsel maliyet yükler; bu maliyet yalnızca anlama veya gezinme kazancıyla karşılanır.
+10. Netlik konu ne olursa olsun zorunludur: bir paragraf bir konu taşır, her önerme bir kez söylenir, bir kavramın tek adı olur (STE100 uyarlaması). Netlik kaynak sadakatinin ve kesinliğin önüne geçmez.
 
 ## Kurulum
 
@@ -418,31 +428,27 @@ Metinoskop bir dil, paragraf ve yapı editörüdür. Şunları yapmaz:
 
 Kavramsal giriş yalnızca açıkça istendiğinde kullanılan ikincil bir kabiliyettir; olay örgüsünün veya bakış açısının yeniden kurulması değildir.
 
+Öncelikli alan bilimsel ve teknik metindir. Hukuki, tanıtım, deneme, sosyal medya, kişisel ve edebî metin desteklenir ama kuralları ana dosyada değil, yalnızca o türde okunan `references/kenar-turler.md` dosyasındadır.
+
 ## Nasıl çalışır?
 
-Metinoskop düzenleme sırasında altı aşamalı bir denetim uyguluyor:
+Metinoskop düzenlemeyi dört adımda yapar:
 
-1. **Envanter.** Metnin türünü, amacını, muhatabını; korunacak kapsam belirleyicilerini, terimleri ve gösterimleri belirler. Raporlarda bölüm ve paragraf işlevlerini de çıkarır.
-2. **Sorun kümeleri.** Ritim, dolgu, reklam cilası, belirsiz atıf, yapısal parçalanma, çeviri kokusu, kesinlik düzeyi kayması ve kopukluğu kümeler hâlinde inceler. Tek bir işaretten "AI metni" sonucu çıkarmaz.
-3. **Düzenleme.** İstenen müdahale düzeyinde düzenler; komşu cümleleri ve bölümleri birlikte değerlendirir.
-4. **Kaynak karşılaştırması.** Son metindeki her sayı, tarih, iddia, nedensellik, karşılaştırma, koşul, istisna, nicelik sınırı, terim ve gösterimin kaynakta karşılığını arar.
-5. **On geçişli denetim.** Aşağıdaki tabloya göre metni bir kez daha okur.
-6. **Ses ve akış.** Gerekli bir sınırlılığın dolgu sanılıp silinmediğini, metnin Türkçe düşünülmüş gibi okunup okunmadığını ve her cümlenin öncekinden yararlı bir şey alıp sonrakine bıraktığını kontrol eder.
+1. **Envanter.** Metnin türünü, amacını, muhatabını; korunacak sayıları, kapsam belirleyicilerini, terimleri ve her iddianın kanıt statüsünü belirler. Metnin konularını çıkarır: hangi konu nerede açılıyor, nerede yeniden açılıyor?
+2. **Düzenleme.** Önce yapı (dağılmış konuları toplar, gereksiz bölünmeyi kaldırır), sonra tekrar ve şişirme, sonra cümle, sonra terim ve Türkçe doğallık. Komşu cümleleri ve bölümleri birlikte değerlendirir.
+3. **Kaynak karşılaştırması.** Son metindeki her sayı, tarih, iddia, nedensellik, karşılaştırma, koşul, istisna, nicelik sınırı ve terimin kaynakta karşılığını arar.
+4. **Netlik denetimi.** Teslimden önce metni aşağıdaki sorulara göre bir kez daha okur.
 
-Beşinci aşamadaki geçişler:
-
-| Geçiş | Neye bakar |
+| Soru | Neye bakar |
 |---|---|
-| A. Kalıp | Klişe, reklam dili, tiyatral çerçeve, sohbet botu kalıntısı, çeviri kokusu |
-| B. Cümle | "Bunu silersem hangi bilgi kaybolur?"; gereksiz önem, sahte karşıtlık, savunmacı gerekçe |
-| C. Paragraf | Farklı önerme sayısı, mini sonuç, zorlama denge, erken bölünme |
-| D. Belge | Tekrarlanan giriş ve sonuçlar, tek biçimli mimari, aynı gerekçenin tekrarı |
-| E. Yapı | Başlık sayısı ve derinliği, tek paragraflık bölümler, kopmuş yakınlık, gereksiz liste |
-| F. Çeviri kokusu | Özne, yan cümle, niteleme, çerçeve, iyelik, bilgi yapısı, aşırı düzeltme |
-| G. Kanıt ve kesinlik | Bilginin kaynağı, aktörlük, atıf, çekince–pekiştirici, bölümler arası kesinlik |
-| H. Sözcük uyumu | Sözcük eşleşmeleri, hâl ekleri, edatlar, hafif fiil, sözcüksel kalkı, alan jargonu, terim tutarlılığı |
-| I. Metinsel tutarlılık | Konu ilerleyişi, bağlaç geçerliliği, gönderge mesafesi, kapsam ve olumsuzluk |
-| J. Zamansal ankraj | Baskın ankraj, zamansal sürtünme, prosedür ile uygulama ayrımı, geçmiş içi ilişkiler, güncel geçerlilik, geçmişe ya da `-yor` biçimine zorlama |
+| Konu | Her paragraf tek konu mu; bir konu birden fazla yerde mi açılıyor? |
+| Tekrar | Aynı önerme yeni rol kazanmadan ikinci kez geçiyor mu; döngüsel tanım kaldı mı? |
+| Gereklilik | Her cümle silme testini geçiyor mu; dolgu daha sakin eş anlamlılarla geri geldi mi? |
+| Cümle | İlgisiz önermeler tek cümlede mi; uzun ifade, çerçeve yığını, ad zinciri kaldı mı; telgraf diline inildi mi? |
+| Terim | Her kavramın tek adı var mı; kısaltma, sembol ve numaralar tutarlı mı? |
+| Kesinlik | Her iddia kaynaktaki kişiye, statüye ve kesinliğe bağlı mı; kip ankrajı doğru mu? |
+| Türkçe | Metin Türkçe düşünülmüş gibi okunuyor mu; anlamı değiştiren kalkı ya da aşırı düzeltme var mı? |
+| Bütçe | İstenenden fazla değişiklik yapıldı mı; gerekli bir sınırlılık ya da başlık dolgu sanılıp silindi mi? |
 
 ## Depo yapısı
 
@@ -455,7 +461,9 @@ metinoskop/
 │   ├── akicilik.md
 │   ├── kanit-ve-kesinlik.md
 │   ├── kavramsal-girisler.md
+│   ├── kenar-turler.md
 │   ├── metinsel-tutarlilik.md
+│   ├── netlik-omurgasi.md
 │   ├── rapor-yazimi.md
 │   ├── retorik-yapilar.md
 │   ├── sozcuk-birlesimleri.md
@@ -464,9 +472,9 @@ metinoskop/
 │   ├── yapisal-butunluk.md
 │   └── zamansal-ankraj-ve-rapor-kipi.md
 ├── evals/
-│   ├── (180 davranışsal vaka: kaynak sadakati, retorik mimari, yapısal
-│   │    bütünlük, çeviri kokusu, epistemik mimari, eşdizim ve istem,
-│   │    metinsel tutarlılık, zamansal ankraj)
+│   ├── (184 davranışsal vaka: netlik omurgası, kaynak sadakati, retorik
+│   │    mimari, yapısal bütünlük, çeviri kokusu, epistemik mimari,
+│   │    eşdizim ve istem, metinsel tutarlılık, zamansal ankraj)
 │   ├── critical-cases.txt
 │   └── outputs/
 ├── scripts/
@@ -512,8 +520,9 @@ Bir çıktıdaki şüpheli örüntüleri işlev ailesine göre işaretlemek içi
 python scripts/style-lint.py outputs/iddia-tekrar-dongusu.txt --source evals/iddia-tekrar-dongusu.md
 ```
 
-`scripts/style-lint.py` dört grup bulgu üretiyor:
+`scripts/style-lint.py` beş grup bulgu üretiyor:
 
+- **Netlik ölçüleri (STE100 uyarlaması):** 25 sözcüğü aşan cümle, altı cümleyi aşan paragraf, içerik sözcüklerinin çoğunu paylaşan cümle çifti (yeni rol kazanmadan yinelenen önerme adayı) ve terimi kendi köküyle tanımlayan cümle (`Kalibrasyon, ... kalibre edilmesidir`). Kök örtüşmesi eş anlamlılarla kurulmuş açımlamayı göremez; onu hakem yakalar.
 - **Kalıp aileleri:** üretilmiş önem, savunmacı açıklama, yol haritası, boş sarmalayıcı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, uzun çerçeve, kalıp giriş ve sonuç, üretilmiş karşıtlık, soyut yüklem, boş özne, sohbet botu kalıntısı, hazır mecaz ve vecize, süs emojisi, anlamı değiştiren çeviri kalkısı.
 - **Yapı ölçüleri:** başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, her maddesi `**Etiket:**` ile açılan liste, çapraz gönderme sıklığı.
 - **Çeviri kokusu ölçüleri:** `sahip olmak`, varlık kalıbı, çerçeve yığını, `olan` zinciri, tekrarlanan cümle başlangıcı, `ve` zinciri, fiilimsi yığını, iyelik zinciri, 100 sözcük başına `bir`.

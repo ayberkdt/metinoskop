@@ -48,10 +48,12 @@ BUILD = ROOT / "build" / "behavioral"
 DEFAULT_EDITOR = "claude-opus-5"
 DEFAULT_JUDGE = "claude-opus-5"
 REFERENCE_ORDER = (
-    "turkce-oruntuler.md", "retorik-yapilar.md", "yapisal-butunluk.md", "akicilik.md",
+    "netlik-omurgasi.md", "turkce-oruntuler.md", "retorik-yapilar.md", "yapisal-butunluk.md", "akicilik.md",
     "turkce-ritim-ve-ceviri-kokusu.md", "kanit-ve-kesinlik.md", "sozcuk-birlesimleri.md",
     "metinsel-tutarlilik.md", "zamansal-ankraj-ve-rapor-kipi.md", "rapor-yazimi.md",
     "kavramsal-girisler.md",
+    # Genre extras last: SKILL.md tells the model to read them only for those genres.
+    "kenar-turler.md",
 )
 VERDICT_RE = re.compile(r"SONUÇ:\s*(GEÇTİ|BAŞARISIZ)", re.IGNORECASE)
 

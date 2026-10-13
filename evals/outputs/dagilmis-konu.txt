@@ -1,0 +1,11 @@
+## Yöntem
+
+Numuneler 24 saat boyunca 60 °C'de kurutuldu. Ardından her numunenin kütlesi üç kez tartıldı.
+
+## Bulgular
+
+Kurutulmuş numunelerin ortalama kütle kaybı %4,3 oldu. En yüksek kayıp B serisinde ölçüldü (%6,1).
+
+## Tartışma
+
+B serisindeki yüksek kayıp, bu serinin nem oranının daha yüksek olmasıyla ilişkili olabilir.

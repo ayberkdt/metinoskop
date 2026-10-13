@@ -1,0 +1,1 @@
+Veri kümesi 2019-2023 yılları arasında üç hastanede 4.212 hastadan toplandı. Eksik değerler çoklu atama yöntemiyle dolduruldu. Etik kurul onayı 2023/41 numarasıyla alındı; kodlar açık kaynak olarak yayımlandı.

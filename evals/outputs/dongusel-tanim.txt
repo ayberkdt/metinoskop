@@ -1,0 +1,1 @@
+Bu çalışmada kuvvet sensörü 12 referans ağırlıkla kalibre edildi; doğrusallık hatası %0,8'den %0,2'ye indi.

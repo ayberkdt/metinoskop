@@ -1,0 +1,8 @@
+Cihazı kalibre etmek için:
+
+1. Güç kablosunu çıkarın.
+2. Kapağı açın.
+3. Eldiven takın.
+4. Sensör yuvasını temizleyin.
+5. Referans ağırlığı tablaya yerleştirin.
+6. Ekrandaki değeri okuyun. Beklenen değer 1,000 kg'dır.
