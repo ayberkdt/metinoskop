@@ -33,6 +33,11 @@ Yeni bir davranış kuralı eklenirken en az bir mevcut vaka güncellenmeli veya
 | `egitsel-aciklama` | Yeni başlayan için öğretici açıklamayı korumak (muhatap duyarlılığı) |
 | `tetikleyici-iceren-sozcuk-korunur` | Tetikleyiciyi içinde barındıran sözcüğü (`güneşsiz`, `eşsizlik`, `dönüştürücü`) pazarlama dili saymamak (yanlış pozitif) |
 | `iyi-metin` | Zaten iyi yazılmış metni neredeyse hiç değiştirmemek |
+| `gorus-ambalaji` | Denemede görüşü önerme ve güç olarak korurken hazır imgeyi, `çok daha fazlası` formülünü, soyut üçlüyü ve vecizeyi atmak; aynı imgeyi yumuşatarak bırakmamak |
+| `ozgun-imge-korunur` | Yazara ve konuya özgü benzetmeyi hazır ambalaj sanıp silmemek (yanlış pozitif) |
+| `sosyal-medya-sablonu` | Sosyal medya gönderisinde retorik soru, `Gelin birlikte bakalım`, `Sonuç mu?`, emoji ve etiketli madde şablonunu atıp sayıları ve öğrenilen dersleri korumak |
+| `anlam-kalkisi-akademik` | Türkçe okura başka önerme veren kalkıları (`bulgular ... önermektedir`, `yer aldı`, `3 faktörü`, Hz ile `örnekleme oranı`, tıp dışı `tedavi grubu`, p değerli `önemli`) hafif düzeyde de düzeltmek; statüyü ve atfı korumak |
+| `anlam-kalkisi-korunur` | Aynı sözcüklerin doğru kullanımını (`yöntem önermek`, `Tablo 2'de yer almak`, klinik `tedavi grubu`, `kontrol edildiğinde`, `tartışılmıştır`) kalkı sanmamak (yanlış pozitif) |
 
 **Yapısal bütünlük:** başlık, paragraf ve bölüm sınırlarının kavramsal sınırları izleyip izlemediğini ve okur yorgunluğunu sınar.
 

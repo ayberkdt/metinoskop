@@ -37,6 +37,14 @@ jobs:
         run: pip install anthropic
       - name: Plan
         run: python3 scripts/behavioral-regression.py --dry-run
+      - name: Check credentials
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error title=ANTHROPIC_API_KEY eksik::Depo sırlarında ANTHROPIC_API_KEY yok; davranışsal regresyon hiç çalışmadı. Bu kırmızı sonuç skill davranışı hakkında bilgi taşımaz."
+            exit 1
+          fi
       - name: Run behavioral regression
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

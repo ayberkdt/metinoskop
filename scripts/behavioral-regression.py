@@ -35,6 +35,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import os
 import re
 import sys
 import time
@@ -49,7 +50,8 @@ DEFAULT_JUDGE = "claude-opus-5"
 REFERENCE_ORDER = (
     "turkce-oruntuler.md", "retorik-yapilar.md", "yapisal-butunluk.md", "akicilik.md",
     "turkce-ritim-ve-ceviri-kokusu.md", "kanit-ve-kesinlik.md", "sozcuk-birlesimleri.md",
-    "metinsel-tutarlilik.md", "rapor-yazimi.md", "kavramsal-girisler.md",
+    "metinsel-tutarlilik.md", "zamansal-ankraj-ve-rapor-kipi.md", "rapor-yazimi.md",
+    "kavramsal-girisler.md",
 )
 VERDICT_RE = re.compile(r"SONUÇ:\s*(GEÇTİ|BAŞARISIZ)", re.IGNORECASE)
 
@@ -98,13 +100,21 @@ class CaseResult:
         return self.deterministic_ok and self.judge_verdict == "GEÇTİ"
 
 
+def reference_files() -> list[Path]:
+    """REFERENCE_ORDER first, then any reference file the list forgot, so a new
+    reference can never silently drop out of the system prompt."""
+    listed = [ROOT / "references" / name for name in REFERENCE_ORDER]
+    extra = sorted(p for p in (ROOT / "references").glob("*.md") if p.name not in REFERENCE_ORDER)
+    return [p for p in listed if p.is_file()] + extra
+
+
 def skill_system_prompt(with_references: bool) -> list[dict[str, object]]:
     """SKILL.md first, then the reference files, each as a cached block so a
     run over many cases pays for the skill text once."""
     blocks: list[dict[str, object]] = [{"type": "text", "text": (ROOT / "SKILL.md").read_text(encoding="utf-8")}]
     if with_references:
-        for name in REFERENCE_ORDER:
-            path = ROOT / "references" / name
+        for path in reference_files():
+            name = path.name
             if path.is_file():
                 blocks.append({"type": "text", "text": f"\n\n<!-- references/{name} -->\n\n" + path.read_text(encoding="utf-8")})
     blocks[-1]["cache_control"] = {"type": "ephemeral"}
@@ -220,9 +230,16 @@ def main() -> int:
     if args.dry_run:
         print(f"Kuru çalıştırma: {len(cases)} vaka, düzenleyici {args.editor_model}, hakem {args.judge_model}, "
               f"sistem istemi {system_bytes // 1024} KB ({len(system)} blok, sonuncusu önbellekli).")
+        if not args.no_references:
+            print("Referanslar: " + ", ".join(p.name for p in reference_files()))
         for case in cases:
             print(f"  - {case.stem}")
         return 0
+
+    if not (os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("ANTHROPIC_AUTH_TOKEN")):
+        print("Hata: ANTHROPIC_API_KEY tanımlı değil; hiçbir vaka çalıştırılmadı. CI'da depo sırlarına "
+              "ANTHROPIC_API_KEY ekleyin. Bu bir davranış sonucu değildir.", file=sys.stderr)
+        return 2
 
     try:
         import anthropic

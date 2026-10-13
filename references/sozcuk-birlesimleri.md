@@ -18,10 +18,11 @@
 14. [Teknik terim](#teknik-terim)
 15. [Sözcüksel kalkı](#sözcüksel-kalkı)
 16. [İngilizce kaynaklı sözcüksel çekirdekler](#ingilizce-kaynaklı-sözcüksel-çekirdekler)
-17. [Alan jargonu ve terminoloji kapısı](#alan-jargonu-ve-terminoloji-kapısı)
-18. [Türe göre eşdizim](#türe-göre-eşdizim)
-19. [Karşı örnekler](#karşı-örnekler)
-20. [Aşırı düzeltme belirtileri](#aşırı-düzeltme-belirtileri)
+17. [Anlamı değiştiren kalkı](#anlamı-değiştiren-kalkı)
+18. [Alan jargonu ve terminoloji kapısı](#alan-jargonu-ve-terminoloji-kapısı)
+19. [Türe göre eşdizim](#türe-göre-eşdizim)
+20. [Karşı örnekler](#karşı-örnekler)
+21. [Aşırı düzeltme belirtileri](#aşırı-düzeltme-belirtileri)
 
 ## Kullanım ilkesi
 
@@ -342,6 +343,42 @@ Aşağıdaki çekirdekler İngilizceden çevrilmiş ya da İngilizce düşünül
 **Kaynak sadakati sözcük doğallığının üstündedir.** Daha doğal fiil daha güçlü iddia olmamalı: kaynak desteklemiyorsa `ilişkili` → `etkiliyor`, `düşündürüyor` → `gösteriyor`, `destekliyor` → `kanıtlıyor`, `birlikte değişiyor` → `belirliyor` dönüşümleri yasaktır. `Bu değişken sonucu yönlendiriyor` cümlesini `belirliyor` yapmak daha doğal ama daha güçlüdür; kaynak yalnızca ilişki bildiriyorsa `sonuç bu değişkenle ilişkili` yaz.
 
 **Eşdizim düzeltmesini retorik temizlikle karıştırma.** `Proje bütçeye 40 bin TL katkı sağladı` doğal bir eşdizimdir; eşdizim denetimi bunu bozmaz. `Çalışma literatüre önemli katkı sağlamaktadır` cümlesinin sorunu eşdizim değil dayanaksız önemdir; onu retorik sistem değerlendirir.
+
+## Anlamı değiştiren kalkı
+
+Sözcüksel kalkının çoğu yalnızca doğal değildir: `iyileşme elde edildi` tuhaftır ama okur doğru anlamı çıkarır. Bir grup kalkı ise Türkçe okura **başka bir önerme** verir. İngilizce sözcük, Türkçede başka anlamı olan bir sözcüğe ya da çok anlamlı bir sözcüğün yanlış anlamına çevrilmiştir; okur cümleyi dil bilgisi bakımından kusursuz bulur ve yanlış anlar. Akademik çeviride en sık görülen tür budur, çünkü kaynak metnin kanıt dili (`suggest`, `argue`, `significant`) Türkçede başka statü kodlayan sözcüklere düşer.
+
+**Bu bir üslup tercihi değil, anlam hatasıdır.** Bu yüzden müdahale düzeyinden bağımsız düzeltilir: hafif düzenlemede de, yalnızca "dolguyu çıkar" denmişse de. Karar birimi yine birleşimdir, sözcük değil; aşağıdaki sözcüklerin hepsinin doğru Türkçe kullanımı vardır ve korunur.
+
+| Kalkı | Türkçe okurun anladığı | Kastedilen | Düzeltme | Doğru kullanım, korunur |
+|---|---|---|---|---|
+| `Bulgular, X'in Y olduğunu önermektedir` (suggest) | Bulgular bir şey tavsiye ediyor | Bulgular bir çıkarımı düşündürüyor | `düşündürüyor`, `X'in Y olabileceğine işaret ediyor` | `Yazarlar yeni bir yöntem önermektedir`; `Rapor sürenin uzatılmasını önermektedir` |
+| `Yazarlar X'in Y olduğunu tartışmaktadır` (argue) | Yazarlar konuyu tartışıyor, fikir ayrılığı var | Yazarlar bir iddiayı savunuyor | `savunuyor`, `öne sürüyor`, `ileri sürüyor` | `Sonuçlar beşinci bölümde tartışılmıştır`; `X'in Y olup olmadığı tartışılmaktadır` |
+| `Deney Mart'ta laboratuvarda yer aldı` (take place) | Deney bir şeyin içinde bulunuyor, bir şeye katıldı | Deney yapıldı | `yapıldı`, `gerçekleşti`, `düzenlendi` | `Tabloda üç değişken yer alıyor`; `Çalışmada 40 gönüllü yer aldı` |
+| `aktüel değerler`, `aktüel maliyet` (actual) | Güncel değerler | Gerçek, gerçekleşen değerler | `gerçek değerler`, `gerçekleşen maliyet` | `aktüel konular` (güncel konular) |
+| p değeri verilmiş karşılaştırmada `önemli fark` (significant) | Büyük ya da önemli bir fark | İstatistiksel olarak anlamlı fark | `istatistiksel olarak anlamlı fark` | Test yoksa `önemli` bir değerlendirmedir; `anlamlı` yapılmaz |
+| Tıp dışı deneyde `tedavi grubu` (treatment group) | Hasta grubu, tedavi uygulanan grup | Müdahale uygulanan grup | `deney grubu`, `uygulama grubu`, `müdahale grubu` | Klinik çalışmada `tedavi grubu` terimdir |
+| `500 Hz örnekleme oranı` (sampling rate) | Örneklenen kesrin büyüklüğü | Saniyedeki örnek sayısı | `örnekleme frekansı`, `örnekleme hızı` | `Nüfusun %5'i seçildi; örnekleme oranı %5` |
+| `Gürültüyü 3 faktörü ile azalttı` (by a factor of 3) | Anlaşılmaz ya da "üç etken" | Üçte birine indirdi | `üçte birine indirdi` | `risk faktörü`, `güvenlik faktörü` |
+| `tepkime oranı` (reaction rate) | Tepkimeye giren kesrin oranı | Birim zamandaki tepkime hızı | `tepkime hızı` | Ankette `yanıt oranı` (%) |
+
+**Birim ya da bağlam okuru doğru anlama götürse de düzelt.** `1 kHz örnekleme oranı` cümlesinde okur birimden frekansı çıkarabilir; ama `örnekleme oranı` Türkçede başka bir kavramın (örneklenen kesrin) adıdır ve aynı metinde iki anlamda kullanılamaz. Terim başka bir kavramın yerleşik adıysa kalkı hafif düzeyde de düzeltilir; bu bir terminoloji tercihi değil, iki kavramı karıştırmamaktır.
+
+**Belirsizse seçme.** Kalkının hangi anlamı kastettiği kaynaktan çıkmıyorsa kendin seçme; belirsizlik kuralı geçerlidir. `Kuraklığın göçü artırdığı tartışılmaktadır` iki şey olabilir: literatürde öne sürülmüş bir iddia ya da gündemde olan bir tartışma. Öznesiz edilgen biçimde bağlam karar vermiyorsa koru ya da sor. `Bulgular ... önermektedir` ise belirsiz değildir: bulgular tavsiye edemez.
+
+**Anlamı düzeltirken statüyü koru.** `Suggest` bir çıkarımdır; `düşündürüyor` olur, `gösteriyor` olmaz. `Argue` bir iddiadır; `savunuyor` atıflı kalır, olguya dönüşmez. p değeri olmayan bir `önemli` farkı `istatistiksel olarak anlamlı` yapmak kaynakta olmayan bir test uydurmaktır. `3 faktörü ile azalttı` → `üçte birine indirdi` aynı niceliği söyler; `%67 azalttı` yazmak yeni sayı türetmektir, yapma.
+
+**Yerleşik akademik Türkçeyi kalkı sanma.** Türkçe akademik yazım bazı İngilizce kaynaklı kullanımları benimsemiştir: `Tartışma` bölümü ve `sonuçlar tartışılmıştır`, `yaş ve gelir kontrol edildiğinde` (istatistiksel kontrol), `hipotezi desteklemek`, `rol oynamak`. Bunlar okura doğru önermeyi iletir; değiştirilmez. Ölçüt köken değil, okurun cümleden hangi önermeyi çıkardığıdır.
+
+**Önce**
+
+> Deney 12 Mart'ta Ankara'daki laboratuvarda yer aldı. Tedavi grubundaki öğrencilerin (n = 42) sınav puanları kontrol grubundakilerden önemli ölçüde yüksekti (p = 0,003). Bu bulgular, geri bildirimin öğrenmeyi desteklediğini önermektedir.
+
+**Sonra**
+
+> Deney 12 Mart'ta Ankara'daki laboratuvarda yapıldı. Deney grubundaki öğrencilerin (n = 42) sınav puanları kontrol grubundakilerden istatistiksel olarak anlamlı düzeyde yüksekti (p = 0,003). Bu bulgular geri bildirimin öğrenmeyi desteklediğini düşündürüyor.
+
+Üç düzeltme de anlamı düzeltir, üslubu değil: deney bir yere "katılmadı", yapıldı; öğrenciler tedavi görmedi; bulgular bir şey tavsiye etmiyor, bir çıkarımı destekliyor. Çıkarımın gücü aynı kaldı: `düşündürüyor`, `gösteriyor` değil.
 
 ## Alan jargonu ve terminoloji kapısı
 

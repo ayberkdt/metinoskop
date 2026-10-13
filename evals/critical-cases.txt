@@ -4,11 +4,7 @@ bilinmeyen-aktor
 epistemik-guvensiz-fiil
 sonuc-sonuclardan-guclu
 tekrarlanan-acik-ozne
-cerceve-yigini
 belirsizlik-icin-acik-ozne
-asiri-bolumleme
-kisa-paragraf-yigini
-yapay-gerilim
 korunacak-basliklar
 uzun-paragraf-korunur
 iyi-metin
@@ -34,3 +30,7 @@ address-kalkisi
 bellek-adresleme-korunur
 provide-kalkisi
 erisim-saglamak-korunur
+gorus-ambalaji
+ozgun-imge-korunur
+anlam-kalkisi-akademik
+anlam-kalkisi-korunur
