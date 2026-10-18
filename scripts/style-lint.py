@@ -1472,11 +1472,58 @@ def clarity_checks(doc: Document) -> list[dict[str, object]]:
 TESLIM_FAMILIES = ("etiket", "anons")
 
 
+# Listede olmayan etiket biçimi için yapısal aday: cümle başında 1-3 sözcük ve iki nokta. Sözlük maddesi
+# (`Gecikme: ...`) aynı biçimde olduğu için engel değil uyarıdır; belgenin bilinen alanları hiç listelenmez.
+# `[^1]:` dipnot tanımı Markdown yapısıdır, etiket değildir.
+ETIKET_ADAY_RE = re.compile(r"^(?:\*\*|__)?\s*([^\s:*_`\[][^:\n*_`]{0,40}?)\s*(?:\*\*|__)?\s*:(?:\s|$)")
+ALAN_ETIKETLERI = frozenset((
+    "girdi", "çıktı", "uyarı", "dikkat", "not", "konu", "tarih", "yer", "saat", "kayıt", "karar", "gerekçe",
+    "bağlam", "sonuçlar", "örnek", "kaynak", "adres", "telefon", "e-posta", "kimden", "kime", "özellikler",
+    "uç nokta", "yöntem", "sayfa boyutu", "komut", "gereksinimler", "kurulum", "lisans", "sürüm",
+))
+
+
+def etiket_adaylari(text: str) -> list[str]:
+    """Sentence-initial `X:` lead-ins of one to three words that neither the etiket family nor the
+    list of document fields covers. Review items for unlisted phrasings; they do not block delivery."""
+    body = re.split(r"(?m)^---\s*$", text.lstrip("\ufeff"))[0]
+    found = []
+    for paragraph in parse(body).paragraphs:
+        for sentence in paragraph.sentences:
+            match = ETIKET_ADAY_RE.match(sentence.text.strip())
+            if not match:
+                continue
+            label = tr_lower(match.group(1).strip())
+            if len(label.split()) > 3 or label in ALAN_ETIKETLERI or re.match(r"(?:tablo|şekil|adım|ek)\s*\d", label):
+                continue
+            if any(p.search(sentence.lowered) for p in COMPILED["etiket"]):
+                continue
+            found.append(sentence.text.strip()[:100])
+    return found
+
+
 def teslim_gate(text: str) -> list[dict[str, object]]:
     """Hits that block delivery: label lead-ins and reader-addressed announcement or
     marketing. A note after a `---` line is outside the text and is not checked."""
-    body = re.split(r"(?m)^---\s*$", text.lstrip("﻿"))[0]
-    return [h for h in analyse(body, son_okur=True)["hits"] if h["category"] in TESLIM_FAMILIES]
+    body = re.split(r"(?m)^---\s*$", text.lstrip("\ufeff"))[0]
+    doc = parse(body)
+    # Yalnız iki aile ve başlık denetimi: tam analyse() yapı, çeviri ve netlik ölçülerini de hesaplar.
+    hits: list[dict[str, object]] = []
+    for heading in doc.headings:
+        heading_text = tr_lower(heading.text.strip().strip("*_ "))
+        if ETIKET_HEADING_RE.match(heading_text):
+            hits.append({"category": "etiket", "label": LABELS["etiket"], "level": LEVELS["etiket"],
+                         "pattern": ETIKET_HEADING_RE.pattern, "paragraph": 0, "sentence": 0,
+                         "text": heading.text, "match": heading_text})
+    for paragraph in doc.paragraphs:
+        for sentence in paragraph.sentences:
+            for key in TESLIM_FAMILIES:
+                match = next((m for m in (pat.search(sentence.lowered) for pat in COMPILED[key]) if m), None)
+                if match:
+                    hits.append({"category": key, "label": LABELS[key], "level": LEVELS[key],
+                                 "pattern": match.re.pattern, "paragraph": paragraph.number,
+                                 "sentence": sentence.index, "text": sentence.text, "match": match.group(0)})
+    return hits
 
 
 def analyse(text: str, son_okur: bool = False) -> dict[str, object]:
@@ -2305,6 +2352,10 @@ def self_test() -> None:
         found = {h["category"]: h["level"] for h in analyse(text)["hits"]}  # type: ignore[union-attr]
         if found.get(family) != "sert":
             raise SystemExit(f"Öz sınama: {family} sert işaret üretmedi: {text!r} -> {found}")
+    if etiket_adaylari("Öğretmen gözüyle: bu ayrım dersin ilk haftasında kurulur.") != ["Öğretmen gözüyle: bu ayrım dersin ilk haftasında kurulur."]:
+        raise SystemExit("Öz sınama: listede olmayan etiket biçimi aday olarak gösterilmedi")
+    if etiket_adaylari("Girdi: CSV dosyası.\n\nTablo 2: Hata oranı.\n\nKavramsal ayrım: A saklar.\n\n---\nKısa not: kapsam dışı."):
+        raise SystemExit("Öz sınama: alan etiketi, bilinen etiket ya da metin dışı not aday sayıldı")
     if teslim_gate(ETIKET_INNOCENT_TEXT):
         raise SystemExit("Öz sınama: teslim kapısı alan etiketi ya da metin dışı notu engelledi")
     if {h["category"] for h in teslim_gate("Kavramsal ayrım: A saklar. Merak etmeyin, kolay.")} != set(TESLIM_FAMILIES):
@@ -2363,18 +2414,23 @@ def main() -> int:
 
     if args.teslim:
         try:
-            gate = teslim_gate(read_text(args.output))
+            text = read_text(args.output)
         except (OSError, UnicodeError) as error:
             print(f"Hata: {error}", file=sys.stderr)
             return 2
+        gate = teslim_gate(text)
         counts = {key: sum(1 for h in gate if h["category"] == key) for key in TESLIM_FAMILIES}
+        candidates = etiket_adaylari(text)
         if args.json:
-            print(json.dumps({"teslim": not gate, "sayilar": counts, "bulgular": gate}, ensure_ascii=False, indent=2))
+            print(json.dumps({"teslim": not gate, "sayilar": counts, "bulgular": gate, "etiket_adaylari": candidates},
+                             ensure_ascii=False, indent=2))
         else:
             for hit in sorted(gate, key=lambda h: (int(h["paragraph"]) > 0, h["paragraph"], h["sentence"])):
                 where = f"P{hit['paragraph']}C{hit['sentence']}" if hit["paragraph"] else "başlık"
                 print(f"{where} · {hit['category']} · «{hit['match']}» · {str(hit['text'])[:100]}")
-            summary = f"{counts['etiket']} etiket · {counts['anons']} anons"
+            for text in candidates:
+                print(f"uyarı · etiket adayı · {text}")
+            summary = f"{counts['etiket']} etiket · {counts['anons']} anons · {len(candidates)} etiket adayı (engellemez)"
             print(f"Teslim kapısı: {summary} — " + ("TESLİM" if not gate else
                   "TESLİM YOK: işaretli cümlelerin bilgisini doğrudan yaz, etiketi ve anonsu sil."))
         return 1 if gate else 0
