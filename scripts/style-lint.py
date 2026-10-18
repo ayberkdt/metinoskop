@@ -350,6 +350,29 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"^dilerseniz|dilerseniz .*(?:paylaşabilir|yapabilir|gönderebilir)",
             r"memnuniyetle",
             r"umarım bu (?:e-?posta|mesaj|ileti) (?:sizi )?(?:iyi|sağlıkla) bul",
+            # Ajan kimliği: yalnızca ilk tekil şahısla birlikte; "yapay zekâ asistanı olarak tasarlanan ürün" işaretlenmez.
+            r"^(?:bir )?(?:yapay zek[aâ]|(?:büyük )?dil modeli)(?: asistanı)? olarak\b(?=.*\b(?:ben|bana|benim|\w+(?:[ıiuü]yorum|[ae]m[ae]m|[ae]bilirim)))",
+        ),
+    },
+    {
+        # Konuşmayı görmemiş son okura sızan ajan–kullanıcı konuşması. Aynı biçimler yazışmada,
+        # sürüm notunda ve gereksinim metninde içeriktir; bu yüzden bağlamsal. --son-okur sert sayar.
+        "key": "sizinti",
+        "label": "Konuşma sızıntısı adayı",
+        "level": "bağlam",
+        "patterns": (
+            r"\b(?:konuştuğumuz|görüştüğümüz|yazıştığımız|konuşmamızda|sohbetimizde)\b",
+            r"\b(?:paylaştığın|paylaştığınız|gönderdiğin|gönderdiğiniz|verdiğin|verdiğiniz|belirttiğin|belirttiğiniz|istediğin|istediğiniz|sorduğun|sorduğunuz)\b",
+            r"\b(?:isteğin|isteğiniz|talebin|talebiniz|talimatın|talimatınız) (?:üzerine|doğrultusunda|uyarınca)",
+            r"\bkullanıcının (?:isteğ|talebi|talimat|belirttiğ|istediğ)",
+            r"\b(?:önceki|yukarıdaki) (?:mesaj|yanıt|cevap)\w*",
+            r"^(?:istersen|isterseniz|dilersen)\b|\bister misin(?:iz)?\b",
+            r"\b\w+[ae]bilir(?:im|iz)\b",
+            r"\b(?:inceledim|okudum|çalıştırdım|kontrol ettim|baktım|denedim|doğruladım|varsaydım|düzelttim|güncelledim|yeniden yazdım|düzenledim|tamamladım|doğrulayamadım)\b",
+            r"\b(?:önceki|ilk|eski) (?:taslak|sürüm|versiyon)\w*",
+            r"\((?:düzeltildi|güncellendi|eklendi|kaldırıldı|değiştirildi|yeniden yazıldı)\)",
+            r"^işte (?:düzenlenmiş|güncellenmiş|gözden geçirilmiş|hazırladığım|istediğin|istediğiniz)\b",
+            r"\bprompt\w*",
         ),
     },
     {
@@ -498,6 +521,12 @@ COMPILED: dict[str, tuple[re.Pattern[str], ...]] = {
 }
 LABELS: dict[str, str] = {str(c["key"]): str(c["label"]) for c in CATEGORIES}
 LEVELS: dict[str, str] = {str(c["key"]): str(c["level"]) for c in CATEGORIES}
+# Okurun konuşmayı görmediği bilindiğinde (--son-okur) sert sayılan bağlamsal aileler.
+SON_OKUR_SERT = frozenset({"sizinti"})
+
+
+def level_of(category: str, son_okur: bool = False) -> str:
+    return "sert" if son_okur and category in SON_OKUR_SERT else LEVELS[category]
 
 MAKTADIR_RE = re.compile(r"m[ae]kt[ae]d[ıi]r[.!?]*$")
 SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-ZÇĞİÖŞÜ0-9\"'«(`])")
@@ -1372,9 +1401,11 @@ def clarity_checks(doc: Document) -> list[dict[str, object]]:
     return findings
 
 
-def analyse(text: str) -> dict[str, object]:
+def analyse(text: str, son_okur: bool = False) -> dict[str, object]:
     doc = parse(text)
     hits = find_hits(doc.paragraphs)
+    for hit in hits:
+        hit["level"] = level_of(str(hit["category"]), son_okur)
     sentences = sum(len(p.sentences) for p in doc.paragraphs)
     per_category: dict[str, int] = {}
     for hit in hits:
@@ -1386,6 +1417,8 @@ def analyse(text: str) -> dict[str, object]:
         "hits": hits,
         "per_category": per_category,
         "hard_hits": sum(1 for h in hits if h["level"] == "sert"),
+        "sizinti": per_category.get("sizinti", 0),
+        "son_okur": son_okur,
         "density_per_100": density,
         "structure_summary": structure_summary(doc, hits),
         "structure": structural_checks(doc, hits),
@@ -1419,7 +1452,8 @@ def compare(source_report: dict[str, object], output_report: dict[str, object]) 
     for key, count in out.items():
         extra = count - src.get(key, 0)
         if extra > 0:
-            introduced.append({"category": key[0], "label": LABELS[key[0]], "level": LEVELS[key[0]],
+            introduced.append({"category": key[0], "label": LABELS[key[0]],
+                               "level": level_of(key[0], bool(output_report.get("son_okur"))),
                                "count": extra, "example": examples[key]})
     introduced_hard = [item for item in introduced if item["level"] == "sert"]
     introduced_context = [item for item in introduced if item["level"] != "sert"]
@@ -1527,8 +1561,8 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
     by_category: dict[str, list[dict[str, object]]] = {}
     for hit in hits:
         by_category.setdefault(str(hit["category"]), []).append(hit)
-    for key, items in sorted(by_category.items(), key=lambda kv: (LEVELS[kv[0]] != "sert", kv[0])):
-        print(f"\n[{LABELS[key]} · {LEVELS[key]}] {len(items)} işaret")
+    for key, items in sorted(by_category.items(), key=lambda kv: (kv[1][0]["level"] != "sert", kv[0])):
+        print(f"\n[{LABELS[key]} · {items[0]['level']}] {len(items)} işaret")
         for hit in items:
             text = str(hit["text"])
             excerpt = text if len(text) <= 140 else text[:137] + "..."
@@ -1632,6 +1666,12 @@ def print_report(path: str, report: dict[str, object], comparison: dict[str, obj
           "\"bu yapı Türkçede bağımsız olarak doğal mı, yoksa gizli İngilizce cümle mi dayatıyor?\", "
           "söylem bulguları için \"kim biliyor, nasıl biliyor, ne kadar kesin; sözcükler doğal mı birleşiyor; "
           "cümle öncekinden mi büyüyor?\" sorusunu sor.")
+    if report["son_okur"]:
+        if report["sizinti"]:
+            print(f"\nSon okur denetimi: {report['sizinti']} konuşma sızıntısı adayı; metin bu hâliyle okura gitmez. "
+                  "Sonraki adım: her adayı references/okura-dogrudan-metin.md ile çöz (bilgiyi kurtar, ambalajı at).")
+        else:
+            print("\nSon okur denetimi: konuşma sızıntısı adayı yok.")
 
 
 # --------------------------------------------------------------------------- #
@@ -1748,6 +1788,17 @@ REPORT_TENSE_TEXT = """Bu çalışmada 12 Ağustos'ta toplanan kayıtlar incelen
 
 # Sözcük içinde tetikleyici barındıran ama hiçbir aileye ait olmayan ifadeler.
 # Kalıplar sözcük sınırına saygı göstermezse burada yakalanır.
+LEAK_TEXT = """İstediğin gibi önbellek sorununu inceledim. Önce `cache.py` dosyasına baktım, sonra yük testini çalıştırdım. Verdiğin günlük dosyasına göre 14 Ekim'deki 37 zaman aşımının 29'u önbellek yenilemesiyle aynı dakikada oluştu. Burada sunucu saatlerinin senkron olduğunu varsaydım; bunu doğrulayamadım.
+
+Yenileme aralığını 5 dakikadan 15 dakikaya çıkarırsak zaman aşımları azalabilir. İstersen bir sonraki adımda bunu deneyebilirim ya da yük testini tekrarlayabiliriz. Bu bölümü önceki taslağa göre daha net olsun diye yeniden yazdım (düzeltildi).
+"""
+LEAK_REPAIRED = """`cache.py` incelendi ve yük testi çalıştırıldı. Günlük kayıtlarına göre 14 Ekim'deki 37 zaman aşımının 29'u önbellek yenilemesiyle aynı dakikada oluştu. Bu eşleşme, sunucu saatlerinin senkron olduğu varsayımına dayanır; varsayım doğrulanmadı.
+
+Yenileme aralığı 5 dakikadan 15 dakikaya çıkarılırsa zaman aşımları azalabilir.
+"""
+AI_SELF_REFERENCE = "Bir yapay zekâ olarak bu konuda kişisel görüş bildiremem."
+AI_TOPIC = "Bir yapay zekâ asistanı olarak tasarlanan ürün iki dilde çalışıyor."
+
 INNOCENT_WORDS = (
     "Güneşsiz bir günde panel çıkışı 40 W'a düştü.",
     "Ateşsiz yanma odasında sıcaklık 300 °C'ye çıktı.",
@@ -1925,6 +1976,26 @@ def self_test() -> None:
         if stray:
             raise SystemExit(f"Öz sınama: {label} metinde hazır mecaz/emoji işareti üretildi (yanlış pozitif): {stray}")
 
+    leak = analyse(LEAK_TEXT)
+    leak_levels = [h["level"] for h in leak["hits"] if h["category"] == "sizinti"]  # type: ignore[union-attr]
+    if len(leak_levels) < 6 or "sert" in leak_levels:
+        raise SystemExit(f"Öz sınama: sızıntılı rapor eksik ya da varsayılan kipte sert işaretlendi: {leak_levels}")
+    leak_reader = analyse(LEAK_TEXT, son_okur=True)
+    if leak_reader["hard_hits"] != leak["hard_hits"] + len(leak_levels):  # type: ignore[operator]
+        raise SystemExit("Öz sınama: --son-okur kipinde sızıntı adayları sert sayılmadı")
+    repaired_leak = compare(leak_reader, analyse(LEAK_REPAIRED, son_okur=True))
+    if analyse(LEAK_REPAIRED)["sizinti"] or repaired_leak["introduced"]:
+        raise SystemExit("Öz sınama: sızıntısı temizlenmiş rapor yeni ya da kalan sızıntı adayı üretti")
+    if "sizinti" not in repaired_leak["removed"]:  # type: ignore[operator]
+        raise SystemExit("Öz sınama: sızıntı temizliği azalma olarak raporlanmadı")
+    if not any(h["category"] == "sohbet" for h in analyse(AI_SELF_REFERENCE)["hits"]):  # type: ignore[union-attr]
+        raise SystemExit("Öz sınama: ajan kimliği cümlesi sohbet kalıntısı sayılmadı")
+    if analyse(AI_TOPIC)["hits"]:
+        raise SystemExit(f"Öz sınama: yapay zekâyı konu edinen cümle işaretlendi (yanlış pozitif): {analyse(AI_TOPIC)['hits']}")
+    for label, text in (("temiz", CLEAN_TEXT), ("iyi yapılı", WELL_STRUCTURED_TEXT), ("yerli", NATIVE_TEXT), ("iç içe", NESTED_TEXT)):
+        if analyse(text)["sizinti"]:
+            raise SystemExit(f"Öz sınama: {label} metinde konuşma sızıntısı adayı üretildi (yanlış pozitif)")
+
     translated = analyse(TRANSLATED_TEXT)
     expected_tr = {"sahip", "varlik", "kalki", "bos_ozne"}
     missing = expected_tr - set(translated["per_category"])  # type: ignore[arg-type]
@@ -2071,7 +2142,7 @@ def self_test() -> None:
         if analyse(text)["netlik_olculeri"]["dongusel_tanim"]:  # type: ignore[index]
             raise SystemExit(f"Öz sınama: tanım olmayan cümle döngüsel tanım sayıldı (yanlış pozitif): {text!r}")
 
-    print("Stil denetimi öz sınaması geçti (netlik omurgası, yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj).")
+    print("Stil denetimi öz sınaması geçti (netlik omurgası, yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj, konuşma sızıntısı).")
 
 
 # --------------------------------------------------------------------------- #
@@ -2101,6 +2172,9 @@ def main() -> int:
                         help="Çıktı kaynakta olmayan bir SERT bastırma kalıbı eklemişse 1 ile çık; bağlamsal aileler yalnızca uyarır (yalnızca --source ile)")
     parser.add_argument("--fail-on-introduced-any", action="store_true",
                         help="Bağlamsal aileler dahil, kaynakta olmayan herhangi bir kalıp eklenmişse 1 ile çık (katı mod)")
+    parser.add_argument("--son-okur", action="store_true",
+                        help="Metin konuşmayı görmemiş son okura gidecek: konuşma sızıntısı adayları sert sayılır, "
+                             "çıktıda bir tane bile varsa 1 ile çık (yanıt e-postası gibi okurun tarafı olduğu yazışmada kullanma)")
     parser.add_argument("--self-test", action="store_true", help="Yerleşik öz sınamayı çalıştır")
     args = parser.parse_args()
 
@@ -2111,10 +2185,10 @@ def main() -> int:
         parser.error("denetlenecek metin dosyası verilmelidir")
 
     try:
-        report = analyse(read_text(args.output))
+        report = analyse(read_text(args.output), son_okur=args.son_okur)
         comparison = None
         if args.source is not None:
-            comparison = compare(analyse(read_text(args.source)), report)
+            comparison = compare(analyse(read_text(args.source), son_okur=args.son_okur), report)
     except (OSError, UnicodeError) as error:
         print(f"Hata: {error}", file=sys.stderr)
         return 2
@@ -2132,6 +2206,8 @@ def main() -> int:
             return 1
         if args.fail_on_introduced_hard and comparison["introduced_hard"]:
             return 1
+    if args.son_okur and report["sizinti"]:
+        return 1
     return 0
 
 

@@ -26,8 +26,8 @@ repo-guncel-davranis-yor
 genel-gereklilik-genis-zaman-korunur
 framework-kalkisi
 referans-cercevesi-korunur
-campaign-kalkisi
-test-kampanyasi-alan-terimi
+konusma-sizintisi-rapor
+sizinti-sanilan-icerik-korunur
 address-kalkisi
 bellek-adresleme-korunur
 provide-kalkisi

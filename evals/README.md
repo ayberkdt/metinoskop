@@ -33,6 +33,17 @@ Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (t
 | `tekduze-baglayicilar` | Her cümleyi `Ayrıca/Ancak` ile açan paragrafı ek kaynaklarıyla (`-ın katılımıyla`, `-masına rağmen`) kurmak; kaynakta olmayan nedenselliği `sayesinde` ile eklememek, planı sonuca bağlamamak |
 | `dogal-baglayici-korunur` | `-diğinde`, `ancak ... -ınca`, `-ken`, `bu yüzden` ile zaten doğal bağlanmış teknik metni bağlaçlara açmamak, çeşitlilik için değiştirmemek (yanlış pozitif) |
 
+**Okura doğrudan metin:** metnin konuşmayı görmemiş son okura gittiğini; konuşma sızıntısının (konuşmaya gönderme, kullanıcıya teklif, çalışma süreci, düzenleme geçmişi) bilgisi kurtarılarak silindiğini, kullanıcıya söylenecek notun metnin dışında kaldığını sınar. `konuşma sızıntısı` beklentisi `style-lint.py` `sizinti` ailesine bağlanır.
+
+| Vaka | Sınanan davranış |
+|---|---|
+| `konusma-sizintisi-rapor` | Ajanın konuşma üzerine yazdığı rapordan `istediğin gibi`, `verdiğin`, `istersen ... deneyebilirim`, `önce ... baktım` izlerini atıp yöntemi, veri kaynağını, varsayımı, doğrulanmamış olmayı, koşulu ve olasılığı okura yazmak; `yapabiliriz`i öneriye yükseltmemek, aktör uydurmamak |
+| `talep-bilgisi-metne-gecer` | Kullanıcının talepte verdiği bilgiyi (pilot iptal edildi) kaynağın parçası sayıp olgu olarak yazmak; `kullanıcının bildirdiğine göre` ya da `(düzeltildi)` izi bırakmamak, iptalin nedenini uydurmamak |
+| `dar-kapsam-metin-disi-not` | Kapsam yalnızca noktalamaya daraltıldığında anlam kalkısına dokunmamak ama metnin dışında, `---` ile ayrılmış tek bir notla bildirmek |
+| `sizinti-sanilan-icerik-korunur` | Sürüm notundaki `önceki sürümde`, ürünün kullanıcısını anlatan `kullanıcının isteği üzerine`, dil modeli metnindeki `istemde` ve okura yapılan `dönebilirsiniz` yönlendirmesini sızıntı sanmamak (yanlış pozitif) |
+
+Korunur tarafı ayrıca `iyi-metin` taşır: okurun da tarafı olduğu e-postada `geçen ay konuştuğumuz gibi` içeriktir.
+
 **Kaynak sadakati ve kapsam:** `akademik`, `belirsizlik`, `bicim-koruma`, `kapsam-ve-kosul`, `kaynak-sadakati`, `teknik`, `rapor-bulgu-yorum-oneri`, `rapor-yapisal-butunluk`, `yonetici-ozeti`.
 
 **Ton ve değişiklik bütçesi:** `degisiklik-butcesi`, `kavramsal-giris`.

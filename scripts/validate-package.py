@@ -35,6 +35,7 @@ REQUIRED_FILES = (
     "references/netlik-omurgasi.md",
     "references/kenar-turler.md",
     "references/turkce-baglayicilar.md",
+    "references/okura-dogrudan-metin.md",
     "evals/README.md",
     "evals/akademik.md",
     "evals/belirsizlik.md",
@@ -224,6 +225,10 @@ REQUIRED_FILES = (
     "evals/yerinden-kopuk-cumle.md",
     "evals/tekduze-baglayicilar.md",
     "evals/dogal-baglayici-korunur.md",
+    "evals/konusma-sizintisi-rapor.md",
+    "evals/sizinti-sanilan-icerik-korunur.md",
+    "evals/talep-bilgisi-metne-gecer.md",
+    "evals/dar-kapsam-metin-disi-not.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -421,6 +426,10 @@ EVAL_FILES = (
     "evals/yerinden-kopuk-cumle.md",
     "evals/tekduze-baglayicilar.md",
     "evals/dogal-baglayici-korunur.md",
+    "evals/konusma-sizintisi-rapor.md",
+    "evals/sizinti-sanilan-icerik-korunur.md",
+    "evals/talep-bilgisi-metne-gecer.md",
+    "evals/dar-kapsam-metin-disi-not.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -549,6 +558,10 @@ for heading in (
     "**Terim sabit, çevresi değişken.**",
     "**2. Düzenle, katman katman.**",
     "references/turkce-baglayicilar.md",
+    "## Okura doğrudan metin",
+    "**Bilgiyi kurtar, ambalajı at.**",
+    "**Not metnin dışına yazılır.**",
+    "references/okura-dogrudan-metin.md",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
@@ -841,6 +854,10 @@ eval_markers = {
     "evals/yerinden-kopuk-cumle.md": ("## Yöntem", "## Bulgular", "%9,8", "%4,2", "500 örnekten", "beş katlı",),
     "evals/tekduze-baglayicilar.md": ("1.240", "%22", "%31", "düşüklüğe rağmen", "planlıyor", "yakın tekrar: 0",),
     "evals/dogal-baglayici-korunur.md": ("ancak basınç", "bu yüzden", "2,5 bar", "yakın tekrar: 0",),
+    "evals/konusma-sizintisi-rapor.md": ("İstediğin gibi", "varsaydım", "doğrulayamadım", "`cache.py`", "konuşma sızıntısı: 0"),
+    "evals/sizinti-sanilan-icerik-korunur.md": ("Önceki sürümde", "Kullanıcının isteği üzerine", "istemde belirtilen", "dönebilirsiniz"),
+    "evals/talep-bilgisi-metne-gecer.md": ("iptal etti", "Kasım'da başlayacak", "konuşma sızıntısı: 0"),
+    "evals/dar-kapsam-metin-disi-not.md": ("Yalnızca noktalama", "önermektedir", "tekrarlandı ,ve"),
     "evals/anlam-kalkisi-korunur.md": ("yeni bir yöntem önermektedir", "Tablo 2'de yer alıyor", "Tedavi grubundaki 40 hastaya", "cümle: 6",),
 }
 for relative_path, markers in eval_markers.items():
@@ -937,6 +954,7 @@ SHOULD_REMAIN_CASES = (
     "evals/ozgun-imge-korunur.md",
     "evals/anlam-kalkisi-korunur.md",
     "evals/dogal-baglayici-korunur.md",
+    "evals/sizinti-sanilan-icerik-korunur.md",
 )
 locked = []
 for relative_path in EVAL_FILES:

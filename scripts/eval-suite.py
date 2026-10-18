@@ -61,6 +61,7 @@ EXPECTATION_KEYS = {
     "döngüsel tanım": ("netlik_olculeri", "dongusel_tanim"),
     "yakın tekrar": ("netlik_olculeri", "yakin_tekrar"),
     "sert işaret": ("", "hard_hits"),
+    "konuşma sızıntısı": ("", "sizinti"),
     "cümle": ("", "sentences"),
     "sahip olmak": ("ceviri_kokusu", "sahip_olmak"),
     "varlık kalıbı": ("ceviri_kokusu", "varlik_kalibi"),
