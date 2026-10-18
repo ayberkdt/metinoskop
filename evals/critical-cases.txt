@@ -12,12 +12,12 @@ bilinmeyen-aktor
 epistemik-guvensiz-fiil
 sonuc-sonuclardan-guclu
 tekrarlanan-acik-ozne
-belirsizlik-icin-acik-ozne
+belirsizligi-onleyen-ozne-korunur
 yazma-kipi-notlardan-rapor
 uzun-paragraf-korunur
-iyi-metin
-yerli-turkce-metin
-iyi-akademik-paragraf
+iyi-yazilmis-metin-korunur
+turkce-dusunulmus-metin-korunur
+akademik-paragraf-korunur
 teknik-esdizim-korunur
 tutarli-metin-korunur
 raporda-genis-zaman-yigini

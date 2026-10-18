@@ -13,7 +13,7 @@ Metinoskop'un öncelikli alanı bilimsel ve teknik metindir. Bu dosya, ana alan�
 - Koşul, istisna, süre ve yükümlülük sınırlarını (`-dıkça`, `ancak`, `şu kadar ki`, `en geç`) dolgu sayma; hukuki metinde bunlar hükmün kendisidir.
 - Edilgen ve adlaştırılmış yapı (`ödenmesi zorunludur`) hukuki kayıtta meşrudur; aktör belirtilmemişse uydurma.
 - Netlik kuralları burada da işler: aynı hükmü iki maddede yineleyen, gerekçeyi hükmün önüne yığan ya da tek yükümlülüğü üç eş anlamlıyla söyleyen metni sadeleştirebilirsin; ama yalnızca anlam ve kapsam değişmiyorsa.
-- Eval: `hukuki`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`.
+- Eval: `hukuki-metin-korunur`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`.
 
 ## Tanıtım ve pazarlama
 
@@ -52,7 +52,7 @@ Soyut ifade her zaman gereksiz değildir; yazarın değerlendirmesini ya da ikna
 - Kişisel düzyazı serbest sözcük sırasına ve eksiltiye hak sahibidir; bunları çeviri kokusu ya da hata sayma.
 - Kişisel yazıya kurumsal eşdizim, resmî türe konuşma eşdizimi dayatma.
 - Sohbet botu nezaketini (`Elbette!`, `Umarım faydalı olur`, `Umarım bu e-posta sizi iyi bulur`) çıkar; yazarın kendi samimi selamını ve kapanışını koru.
-- Eval: `kisisel`, `kurumsal`, `dogal-is-epostasi`.
+- Eval: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`.
 
 ## Edebî ve anlatı metni
 

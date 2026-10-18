@@ -1,6 +1,6 @@
 # Araştırma özellikleri görevleri 2: uzun yazı ve yapay taslak
 
-İlk özellik setinin kısa olgu görevleri izleri kışkırtmadı; skill'siz kol da temiz yazdı. Bu set, `references/insan-ve-yapay-metin.md` izlerinin çıktığı iki durumu sınar: serbest, 150–200 sözcüklük yazı (T1–T3) ve iz taşıyan bir taslağın düzeltilmesi (T4–T5). Teşhis setidir: çıktılarından dört `SKILL.md` yaması çıkarıldı; yamalar ayrık sette (`ab-gorevler-ozellik3.md`) etkisiz çıktığı için alınmadı. Her görevin çıktısını yalnızca son metin olarak ver.
+İlk özellik setinin kısa olgu görevleri izleri kışkırtmadı; skill'siz kol da temiz yazdı. Bu set, `references/insan-ve-yapay-metin.md` izlerinin çıktığı iki durumu sınar: serbest, 150–200 sözcüklük yazı (T1–T3) ve iz taşıyan bir taslağın düzeltilmesi (T4–T5). Teşhis setidir: çıktılarından dört `SKILL.md` yaması çıkarıldı; yamalar ayrık sette (`scripts/ab-gorevler/ozellik-3.md`) etkisiz çıktığı için alınmadı. Her görevin çıktısını yalnızca son metin olarak ver.
 
 ## T1
 

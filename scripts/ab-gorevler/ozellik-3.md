@@ -1,6 +1,6 @@
 # Araştırma özellikleri görevleri 3: ayrık set
 
-`ab-gorevler-ozellik2.md` teşhis setidir; skill yamaları o setin çıktılarından çıkarıldı. Bu set aynı iki durumu (uzunluk istenen serbest yazı, kurumsal ambalaj ve örtülmüş sorun taşıyan taslak) yeni içerikle sınar ve skill'i düzeltmek için kullanılmaz. Her görevin çıktısını yalnızca son metin olarak ver.
+`scripts/ab-gorevler/ozellik-2.md` teşhis setidir; skill yamaları o setin çıktılarından çıkarıldı. Bu set aynı iki durumu (uzunluk istenen serbest yazı, kurumsal ambalaj ve örtülmüş sorun taşıyan taslak) yeni içerikle sınar ve skill'i düzeltmek için kullanılmaz. Her görevin çıktısını yalnızca son metin olarak ver.
 
 ## T1
 

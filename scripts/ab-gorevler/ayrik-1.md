@@ -1,6 +1,6 @@
 # Ayrık görevler
 
-`ab-gorevler.md` ile aynı hata türlerini, farklı içerikle sınar. Skill bu görevlere bakılarak düzeltilmez; düzeltmenin genellenip genellenmediğini ölçmek için kullanılır. Her görevin çıktısını yalnızca son metin olarak ver.
+`scripts/ab-gorevler/teshis.md` ile aynı hata türlerini, farklı içerikle sınar. Skill bu görevlere bakılarak düzeltilmez; düzeltmenin genellenip genellenmediğini ölçmek için kullanılır. Her görevin çıktısını yalnızca son metin olarak ver.
 
 ## T1
 

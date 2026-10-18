@@ -21,7 +21,7 @@ every push. Fresh outputs, judge verdicts and a summary are written under
 
 Usage:
     python scripts/behavioral-regression.py                # critical cases
-    python scripts/behavioral-regression.py --cases evals/akademik.md evals/hukuki.md
+    python scripts/behavioral-regression.py --cases evals/akademik-metin-korunur.md evals/hukuki-metin-korunur.md
     python scripts/behavioral-regression.py --all
     python scripts/behavioral-regression.py --dry-run      # no API calls; prints the plan
     python scripts/behavioral-regression.py --editor-model claude-opus-5 --judge-model claude-opus-5

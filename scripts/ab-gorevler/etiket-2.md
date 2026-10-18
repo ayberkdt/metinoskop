@@ -1,6 +1,6 @@
 # Etiket ve anons görevleri 2: pazarlama ağırlıklı ayrık set
 
-`ab-gorevler-etiket.md` sonrasında son `SKILL.md`'yi (`Kural şudur:` eklenmiş hâliyle) yeni içerikle sınar; skill bu görevlere bakılarak düzeltilmez. T1, T2 ve T4 yazma kipidir: ürün duyurusu, kavram açıklaması, sık sorulan soru yanıtı. T3 ve T5 anons ve pazarlama dolu taslakların düzeltilmesidir; T5'teki etkinlik alanları (`Tarih:`, `Yer:`, `Kayıt:`) kalmalıdır. Model örneklerine bu başlık verilmez, yalnızca `## T1` ile başlayan görevler verilir. Her görevin çıktısını yalnızca son metin olarak ver.
+`scripts/ab-gorevler/etiket-1.md` sonrasında son `SKILL.md`'yi (`Kural şudur:` eklenmiş hâliyle) yeni içerikle sınar; skill bu görevlere bakılarak düzeltilmez. T1, T2 ve T4 yazma kipidir: ürün duyurusu, kavram açıklaması, sık sorulan soru yanıtı. T3 ve T5 anons ve pazarlama dolu taslakların düzeltilmesidir; T5'teki etkinlik alanları (`Tarih:`, `Yer:`, `Kayıt:`) kalmalıdır. Model örneklerine bu başlık verilmez, yalnızca `## T1` ile başlayan görevler verilir. Her görevin çıktısını yalnızca son metin olarak ver.
 
 ## T1
 

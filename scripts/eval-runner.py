@@ -297,7 +297,7 @@ def self_test() -> None:
     root = Path(__file__).resolve().parent.parent
     scenarios = (
         (
-            root / "evals/teknik.md",
+            root / "evals/teknik-gosterim-korunur.md",
             "GRGM1200 modeli 1200 derece ve 1190 mertebeye kadar kullanıldı. "
             "Denklem (3), Δv değerini km/s cinsinden verir. DOP853 çözücüsünde "
             "bağıl tolerans 10⁻⁶ olarak ayarlandı; sonuç 2,40 ± 0,03 km/s bulundu.",
@@ -310,8 +310,8 @@ def self_test() -> None:
             "Sistemi üç ay kullanan tüm katılımcılar iyileşti.",
         ),
         (
-            root / "evals/bicim-koruma.md",
-            section((root / "evals/bicim-koruma.md").read_text(encoding="utf-8"), "Kaynak"),
+            root / "evals/markdown-bicimi-korunur.md",
+            section((root / "evals/markdown-bicimi-korunur.md").read_text(encoding="utf-8"), "Kaynak"),
             "Sonuçlar raporda yer alıyor.",
         ),
         (

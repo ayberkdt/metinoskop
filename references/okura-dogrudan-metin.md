@@ -6,7 +6,7 @@ Metin, ajan ile kullanıcı arasındaki konuşmayı görmemiş son okura gider. 
 
 - **Varsayılan:** okur konuşmayı görmedi.
 - **Kullanıcı tanımlarsa** ("bana not olarak yaz", "Selin'e yanıt olarak düzenle") o tanım geçerlidir. Okur kullanıcının kendisiyse ortak bağlama gönderme sızıntı değildir.
-- **Okurun tarafı olduğu yazışma:** e-postadaki `geçen ay konuştuğumuz gibi` ortak geçmişe gönderir; içeriktir (`iyi-metin`).
+- **Okurun tarafı olduğu yazışma:** e-postadaki `geçen ay konuştuğumuz gibi` ortak geçmişe gönderir; içeriktir (`iyi-yazilmis-metin-korunur`).
 - **Test:** konuşmayı görmemiş okur `ben`, `biz`, `sen` kim, anlıyor mu; cümle ona bilgi veriyor mu? `Biz` ajan ile kullanıcıysa ya da `sen` kullanıcıysa ve okur bunlardan biri değilse sızıntı vardır.
 
 ## Sızıntı aileleri
@@ -57,7 +57,7 @@ Metin önce ve eksiksiz gelir; olduğu gibi okura gönderilebilmelidir. Not, met
 - Akademik `biz` (`... olduğunu çıkarabiliriz`): yazarın okurla kurduğu akıl yürütmedir.
 - Okura yönelik yönlendirme (`--legacy-timeout ile dönebilirsiniz`).
 
-Bekçi vakalar: `sizinti-sanilan-icerik-korunur`, `iyi-metin`.
+Bekçi vakalar: `sizinti-sanilan-icerik-korunur`, `iyi-yazilmis-metin-korunur`.
 
 ## Aşırı uygulama belirtileri
 

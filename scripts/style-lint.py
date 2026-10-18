@@ -752,6 +752,7 @@ class Paragraph:
     sentences: list[Sentence] = field(default_factory=list)
     prose: bool = True
     heading_index: int | None = None
+    quote: bool = False  # `>` ile açılan alıntı bloğu
 
 
 @dataclass
@@ -828,7 +829,8 @@ def parse(text: str) -> Document:
         prose = not first.startswith(STRUCTURE_SKIP_PREFIXES) and not LIST_ITEM_RE.match(first)
         number += 1
         paragraph = Paragraph(number=number, prose=prose,
-                              heading_index=stack[-1].index if stack else None)
+                              heading_index=stack[-1].index if stack else None,
+                              quote=first.startswith(">"))
         for index, sentence in enumerate(split_sentences(strip_markup(block)), start=1):
             paragraph.sentences.append(Sentence(number, index, sentence))
         if paragraph.sentences:
@@ -1489,6 +1491,8 @@ def etiket_adaylari(text: str) -> list[str]:
     body = re.split(r"(?m)^---\s*$", text.lstrip("\ufeff"))[0]
     found = []
     for paragraph in parse(body).paragraphs:
+        if paragraph.quote:
+            continue
         for sentence in paragraph.sentences:
             match = ETIKET_ADAY_RE.match(sentence.text.strip())
             if not match:
@@ -1504,7 +1508,8 @@ def etiket_adaylari(text: str) -> list[str]:
 
 def teslim_gate(text: str) -> list[dict[str, object]]:
     """Hits that block delivery: label lead-ins and reader-addressed announcement or
-    marketing. A note after a `---` line is outside the text and is not checked."""
+    marketing. A note after a `---` line is outside the text and is not checked; nor is a
+    `>` quotation, which the skill keeps as it is."""
     body = re.split(r"(?m)^---\s*$", text.lstrip("\ufeff"))[0]
     doc = parse(body)
     # Yalnız iki aile ve başlık denetimi: tam analyse() yapı, çeviri ve netlik ölçülerini de hesaplar.
@@ -1516,6 +1521,8 @@ def teslim_gate(text: str) -> list[dict[str, object]]:
                          "pattern": ETIKET_HEADING_RE.pattern, "paragraph": 0, "sentence": 0,
                          "text": heading.text, "match": heading_text})
     for paragraph in doc.paragraphs:
+        if paragraph.quote:
+            continue  # alıntı korunur (SKILL.md › Görevin sınırı); kapı yazarın kendi cümlelerine bakar
         for sentence in paragraph.sentences:
             for key in TESLIM_FAMILIES:
                 match = next((m for m in (pat.search(sentence.lowered) for pat in COMPILED[key]) if m), None)
@@ -2362,6 +2369,11 @@ def self_test() -> None:
         raise SystemExit("Öz sınama: teslim kapısı etiketi ya da anonsu kaçırdı")
     if teslim_gate("Önceki sürümde zaman aşımı 30 saniyeydi. İstersen bölge kırılımını da eklerim."):
         raise SystemExit("Öz sınama: teslim kapısı bağlama bağlı sızıntı adayını engelledi")
+    quoted = "Eski duyuru iki gün yayında kaldı.\n\n> Kısa cevap: evet.\n>\n> Merak etmeyin, hemen deneyin!\n\nYeni sürümde bu iki cümle yok."
+    if teslim_gate(quoted) or etiket_adaylari(quoted):
+        raise SystemExit("Öz sınama: teslim kapısı alıntı bloğundaki etiketi ya da anonsu engelledi")
+    if len(teslim_gate(quoted.replace("> ", ""))) != 2:
+        raise SystemExit("Öz sınama: alıntı dışındaki etiket ve anons kapıdan geçti")
     stray = [h["text"] for h in analyse(ETIKET_INNOCENT_TEXT)["hits"] if h["category"] in ("etiket", "anons")]  # type: ignore[union-attr]
     if stray:
         raise SystemExit(f"Öz sınama: alan etiketi ya da sıradan cümle etiket/anons sayıldı (yanlış pozitif): {stray}")
@@ -2402,7 +2414,7 @@ def main() -> int:
                              "çıktıda bir tane bile varsa 1 ile çık (yanıt e-postası gibi okurun tarafı olduğu yazışmada kullanma)")
     parser.add_argument("--teslim", action="store_true",
                         help="Teslim kapısı: etiketle açılan cümle ya da anons/pazarlama cümlesi varsa cümleleri "
-                             "listele ve 1 ile çık; `---` sonrası not denetlenmez, sızıntı için --son-okur")
+                             "listele ve 1 ile çık; `---` sonrası not ve `>` alıntısı denetlenmez, sızıntı için --son-okur")
     parser.add_argument("--self-test", action="store_true", help="Yerleşik öz sınamayı çalıştır")
     args = parser.parse_args()
 
