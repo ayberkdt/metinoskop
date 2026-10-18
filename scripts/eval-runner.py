@@ -61,7 +61,8 @@ MARKER_GROUPS = (
     ("kesinlik", "değerlendir", ("değerlendir", "görüş")),
     ("kesinlik", "belirtil", ("belirtil", "aktar", "ifade edil")),
     ("kesinlik", "savun", ("savun",)),
-    ("kesinlik", "olabilir", ("olabilir", "mümkün", "ihtimal")),
+    # "olabileceğini", "olabileceği" çekincenin çekimli biçimleridir; yalnızca "olabilir" aramak korunmuş çekinceyi kayıp sayar.
+    ("kesinlik", "olabilir", ("olabil", "mümkün", "ihtimal")),
 )
 
 # Epistemic markers an edit must not ADD. Preservation checks above catch a
@@ -75,12 +76,13 @@ ADDED_MARKER_FAMILIES = (
      r"|makta\w*|mekte\w*|yacak\w*|yecek\w*|yabil\w*|yebil\w*)|\b\w{2,}m[ıiuü]yor\w*"),
     ("cekince", "çekince ya da olasılık",
      r"\bolabil\w*|\bolası\b|\bmuhtemel\w*|\bbelki\b|\bgörün(?:mektedir|üyor|ür)\b|\bdüşündür\w*|\bsanıl\w*"
-     r"|\btahmin edil\w*|\bişaret e\w*|\b\w+[ae]bil(?:ir|ece[kğ]|mekte)\w*"),
+     r"|\btahmin edil\w*|\bişaret e\w*|\bsanırım\b|\bgaliba\b|\b\w+[ae]bil(?:ir|ece[kğ]|mekte)\w*"),
     ("nedensellik", "nedensellik ya da sonuç bağı",
      r"\bneden ol\w*|\byol aç\w*|\betkile\w*|\bsayesinde|\bbu sayede|\byüzünden|\bdolayı\w*|\bnedeniyle"
      r"|\bbu nedenle|\bbu yüzden|\bsonuç olarak|\bsonucunda|\bkaynaklan\w*|\b\w+[dt][ıiuü]ğ[ıiuü]ndan\b"),
     ("pekistirici", "pekiştirici",
-     r"\baçıkça\b|\bkesin(?:likle)?\b|\bkanıtla\w*|\btartışmasız|\bkuşkusuz|\bşüphesiz"),
+     # "kesin bir bilgim yok", "kesin değil" çekincedir, pekiştirici değil.
+     r"\baçıkça\b|\bkesin(?:likle)?\b(?!(?:\s+\S+){0,3}?\s+(?:değil|yok))|\bkanıtla\w*|\btartışmasız|\bkuşkusuz|\bşüphesiz"),
     ("karsilastirma", "karşılaştırma ya da üstünlük",
      r"\bdaha\b|\ben\b|\bkıyasla|\boranla|\bzamankinden"),
     ("tumel", "tümel nicelik",
@@ -88,7 +90,7 @@ ADDED_MARKER_FAMILIES = (
     ("zorunluluk", "zorunluluk",
      r"\b\w+m[ae]l[ıi](?:d[ıi]r|y[ıi]z)?(?=\s*[.!?;:,]|\s*$)|\b\w+m[ae]l[ıi]d[ıi]r\w*|\bgerek\w*|\bzorunlu\w*"),
     ("gelecek", "gelecek ya da taahhüt",
-     r"\b\w+[ae]c[ae]k(?:t[ıi]r|lar|ler)?(?=\s*[.!?;:,]|\s*$)"),
+     r"\b\w+[ae]c[ae]k(?:t[ıi]r|lar|ler)?(?=\s*[.!?;:,(]|\s*$)"),
 )
 ADDED_MARKER_RE = tuple((key, label, re.compile(pattern, re.MULTILINE)) for key, label, pattern in ADDED_MARKER_FAMILIES)
 CODE_SPAN_RE = re.compile(r"`[^`\n]*`")
@@ -224,6 +226,10 @@ def added_markers(source: str, output: str, allowed: set[str] = frozenset()) -> 
     added: list[dict[str, object]] = []
     for key, label, _ in ADDED_MARKER_RE:
         extra = len(after[key]) - len(before[key])
+        # Kaynakta plan zaten varsa (yazma kipinde `bakımın amacı sürüm yükseltmesi` → `sürüm yükseltilecek`),
+        # ek gelecek biçimi aynı planın dağılmasıdır; risk, kaynakta hiç plan yokken taahhüt yazmaktır.
+        if key == "gelecek" and before[key]:
+            continue
         if extra > 0 and key not in allowed:
             new_forms = [form for form in after[key] if form not in before[key]] or after[key]
             added.append({"family": key, "label": label, "count": extra,
@@ -375,6 +381,10 @@ def self_test() -> None:
          "Doğrulama kümesi yüksek doğruluklu, düşük gecikmeli filtreyi seçti."),
         ("Ölçüm `max_iter=500` ile yapılmadı mı?", "Ölçüm `max_iter=500` ile yapılmadı mı?"),
         ("Bu bir çalışmadır.", "Bu bir çalışmadır."),
+        # Yazma kipi: kaynaktaki plan duyuru kipine geçer; paranteze bitişik gelecek kipi de sayılır.
+        ("Bakım 4 saat sürecek (22.00–02.00). Panel kapalı olacak.", "Bakım 22.00–02.00 arasında yapılacak. Panel kapalı olacak."),
+        ("İyileşme mevsimsel olabilir, emin değilim.", "İyileşme mevsimsel olabilir; bu konuda kesin bir bilgim yok."),
+        ("İyileşme mevsimsel olabilir, emin değilim.", "İyileşme mevsimsel olabilir; kesin bir sonuca varmış değilim."),
     ):
         if added_markers(source, output):
             raise SystemExit(f"Öz sınama: aynı aile içi dönüşüm eklenen işaret sayıldı: {output!r} -> {added_markers(source, output)}")
@@ -382,6 +392,9 @@ def self_test() -> None:
                         "## Serbest eklemeler", "- cekince — kalkı düzeltmesi")) + "\n"
     if not evaluate(case, "Bulgular düşündürüyor.")["passed"]:
         raise SystemExit("Öz sınama: ## Serbest eklemeler muafiyeti uygulanmadı")
+    hedge_case = "## Kaynak\n\nİyileşme kısmen mevsimsel olabilir, emin değilim.\n\n## Talep\n\nx\n"
+    if not evaluate(hedge_case, "İyileşmenin kısmen mevsimsel olabileceğini düşünüyorum, ancak emin değilim.")["passed"]:
+        raise SystemExit("Öz sınama: çekimli çekince (`olabileceğini`) kayıp sayıldı")
 
     print(f"Eval runner öz sınaması geçti ({len(scenarios)} vaka, {len(drift)} eklenen işaret senaryosu).")
 

@@ -285,6 +285,30 @@ Söylem ölçüleri de yalnızca inceleme içindir: çekince (`olabilir`, `düş
 
 Her vakanın kayıtlı bir referans çıktısı vardır ve CI `--require-all` ile çalıştığından yeni vaka çıktısız eklenemez; yapı korunacaksa kaynağı olduğu gibi kaydedin. Kayıtlı çıktı ("gold") bir sözleşmedir: skill'in kendi kurallarını ihlal eden bir gold yanlış davranışı kilitler. Bu yüzden her gold, kaydedilmeden önce kaynağına karşı şu üç soruyla okunur: hangi iddia hangi epistemik statüde (gözlem, ölçüm, aktarım, çıkarım, öneri, karar) ve çıktıda aynı statüde mi; kaynağa olumsuz iddia ya da yeni çekince eklenmiş mi; daha doğrudan bir fiil nedensellik kurmuş mu? Rastgele atanmamış iki grup arasındaki farkı "etkiler" ya da "azaltır" diye yazan, "karar sürecine girdi"yi "henüz karar vermedi"ye çeviren ya da şişmiş iddiayı indirirken "mekanizma ortaya konmamıştır" ekleyen gold bu denetimde düzeltilmiştir. Üçü de sayıları koruduğu için eski deterministik denetimden geçmişti; eklenen işaret denetimi üçünü de yakalar. Anlam yönü (`operatörün görünürlüğünü artırdı`), yeni eşdizim ve derece zayıflaması sayımla yakalanmaz; hakem ve `SKILL.md` › **Yerine yazdığın ifade yeni bir iddiadır** kuralı bunlar içindir. `python scripts/eval-suite.py --export-judge-prompts build/judge` her vaka için kaynak, talep, kayıtlı çıktı ve ölçütleri içeren bir model hakem istemi üretir.
 
+### Kör A/B ölçümü
+
+Kayıtlı çıktılar fixture'ı sınar, skill'i değil. Bir skill değişikliğinin model çıktısını değiştirip değiştirmediği kör A/B ile ölçülür. Her skill sürümü, başka hiçbir dosyaya bakmayan bağımsız model örneklerine yalnızca görev dosyasıyla verilir; örnekler hangi sürümü okuduklarını bilmez. Her örnek `=== T1 ===` blokları olan tek bir dosya yazar; dosya adının sonu kol harfi ve örnek numarasıdır (`hk_E3.md`). Puanlama:
+
+```bash
+python scripts/ab-score.py <çıktı-klasörü> --tasks scripts/ab-gorevler.md --glob "hk_*.md"
+```
+
+Betik kaynakta olmayan epistemik işareti, kayıp değişmezi, listeye dönüşmeyi, cümle sonu kuyruğunu, sızıntıyı ve bilinen yanılgıları (çıkarım dolgusu, kişi kayması, değişiklik notu, olumluya çekme, yumuşatılmış iddia, kalıp kapanış) sayar. `ab-gorevler.md` teşhis setidir; skill ona bakarak düzeltilir. `ab-gorevler-ayrik.md` ve `ab-gorevler-ayrik2.md` ayrık setlerdir: düzeltmenin genellenip genellenmediğini ölçer, skill onlara bakarak düzeltilmez. Teşhiste kullanılan bir ayrık set artık ayrık değildir; yenisi yazılır.
+
+2026-10-18 sonuçları (Haiku; A ve P bu turdan önceki `SKILL.md`, E, Q ve R düzeltilmiş sürümler, C skill'siz):
+
+| Set | Kol | Örnek | Eklenen işaret / örnek | Kayıp / örnek | Yanılgı / örnek |
+|---|---|---|---|---|---|
+| Teşhis | C (skill yok) | 2 | 14,50 | 2,50 | 2,50 |
+| Teşhis | A (eski) | 2 | 1,50 | 0 | 3,00 |
+| Teşhis | E (yeni) | 4 | 0 | 0 | 0 |
+| Ayrık 1 | P (eski) | 3 | 0 | 0 | 2,00 |
+| Ayrık 1 | Q (kişi kuralı genelleşmeden) | 3 | 0 | 0 | 1,00 |
+| Ayrık 2 | P (eski) | 2 | 0 | 0 | 0,50 |
+| Ayrık 2 | R (son sürüm) | 3 | 0 | 0 | 0 |
+
+Opus'ta eski ve yeni skill dört görevde de sıfırda kaldı (tavan etkisi). Sınırlar: örnek sayısı küçüktür; sayaçlar kalıp tabanlıdır ve biçim değişince kaçırır (ayrık set 1'deki `bir tahmin var` kişi kayması önce elle okunarak bulundu); sayım hakem değildir.
+
 ### Gerçek model regresyonu
 
 Kayıtlı çıktı denetimi fixture'ları sınar, skill'i değil: `SKILL.md` bozulsa da eski çıktılar yerinde durduğu için yeşil kalır. `scripts/behavioral-regression.py` bu boşluğu kapatır: `SKILL.md` ve referans dosyalarını sistem istemi olarak gerçek bir modele verir, her vakanın talebini kaynağına uygulatır, taze çıktıyı önce `eval-runner.py` değişmezleri ve `style-lint.py` sert kalıp denetiminden geçirir, sonra bir model hakemine vakanın koruma ve kaçınma maddeleri ile bu dosyadaki hakem ölçütlerine göre puanlatır. Hakem son satırda `SONUÇ: GEÇTİ` ya da `SONUÇ: BAŞARISIZ` yazar; her vaka hem deterministik hem hakem kapısından geçmelidir.

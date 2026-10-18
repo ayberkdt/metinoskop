@@ -21,7 +21,7 @@ Alt sıradaki kural üst sıradakini bozmaz. Açık talep kapsamı, amacı ve ok
 
 ## Görevin sınırı
 
-**Yazma ve düzenleme.** Kurallar iki kipte aynıdır. **Yazma:** kullanıcı istek ve bilgi verir (not, veri, dosya, konuşma); kaynak bu bilgidir, metni sen kurarsın. Kuralları ilk taslakta uygula. Eksik bilgiyi uydurma, yer tutucu koyma; metnin dışında sor. **Düzenleme:** kaynak verilen metindir; kullanıcı istemedikçe yeni bölüm ya da giriş üretme.
+**Yazma ve düzenleme.** Kurallar iki kipte aynıdır. **Yazma:** kullanıcı istek ve bilgi verir (not, veri, dosya, konuşma); kaynak bu bilgidir, metni sen kurarsın. Kuralları ilk taslakta uygula. Eksik bilgiyi uydurma, yer tutucu koyma; metnin dışında sor. Notun sonucunu da çıkarma: `veri henüz gelmedi` notu `etkisi değerlendirilemiyor` cümlesine dönmez. Yazarın kanaati birinci şahısla kalır (`sanırım`, `bence`); öznesiz kanaat (`düşünülüyor`, `bir tahmin var`) kimin düşündüğünü siler. **Düzenleme:** kaynak verilen metindir; kullanıcı istemedikçe yeni bölüm ya da giriş üretme.
 
 - Yeni olgu, tarih, sayı, alıntı, kaynak, özellik, sonuç, deneyim veya görüş üretme.
 - Kaynak dilden çeviri yapma; Türkçeye çevrilmiş metni düzenle.
@@ -37,11 +37,11 @@ Metin konuşmayı görmemiş son okura gider. Kullanıcıyla konuşma, talimat v
 
 **Bilgiyi kurtar, ambalajı at.** Sızıntıyı sil, taşıdığı önermeyi kaynağın statüsüyle yaz: `Verdiğin 2024 dosyasına göre` → `2024 verilerine göre`; `X'i varsaydım` → `hesap X varsayımına dayanır`; `doğrulayamadım` → `doğrulanmadı`. `Yapabiliriz` olasılıktır: `yapılabilir` olur, `yapılmalıdır` olmaz; `biz` yerine aktör uydurma. Bilgi vermeyen teklif ve ambalaj karşılıksız gider; çekince, varsayım ve yöntem bilgisi kalır. Okurun tarafı olduğu yazışmadaki ortak geçmiş, kurumsal yanıtta `talebiniz doğrultusunda`, sürüm notunda önceki sürüm sızıntı değildir.
 
-**Not metnin dışına yazılır.** Soru, kapsam dışı uyarı ya da açıklama metne girmez (`[?]`, `TODO` dahil). Gerekiyorsa metinden sonra `---` ile ayrılmış kısa nottur; metin olduğu gibi okura gönderilebilmelidir.
+**Not metnin dışına yazılır.** Soru ya da kapsam dışı uyarı metne girmez (`[?]`, `TODO` dahil); gerekiyorsa metinden sonra `---` ile ayrılmış kısa nottur. Neyi sildiğini anlatan not, inceleme istenmedikçe yazılmaz.
 
 ## Bağlamı çıkar
 
-Yazmadan önce sessizce belirle: **tür** (bilimsel, teknik, rapor, kurumsal, gündelik ya da kenar tür); **amaç** (bilgi, açıklama, talimat, ikna, kayıt); **okur** (uzman, genel okur, yeni başlayan; kullanıcı değil, metni okuyacak kişi); **yapısal ölçek** (yazarın paragraf ve bölüm ölçeği, dışarıdan dayatılmış yapı); **istenen değişiklik**; raporsa her bölümün **işlevi** (bağlam, yöntem, bulgu, yorum, sınırlılık, öneri). Okurun bilgi düzeyi hangi açıklamanın gerekli, hangisinin dolgu olduğunu belirler.
+Yazmadan önce sessizce belirle: **tür** ve **amaç**; **okur** (uzman, genel okur, yeni başlayan; kullanıcı değil, metni okuyacak kişi); **yapısal ölçek** (dayatılmış yapı dahil); **istenen değişiklik**; raporsa her bölümün **işlevi** (bağlam, yöntem, bulgu, yorum, sınırlılık, öneri).
 
 **Kenar türler ayrı tutulur.** Hukuki metin, tanıtım ve pazarlama, deneme, köşe yazısı ve sosyal medya, kişisel yazışma, edebî metin ve üslup eşleme için ek kurallar [Kenar türler](references/kenar-turler.md) dosyasındadır. Metin bu türlerden biri değilse o dosyayı okuma ve oradaki istisnaları (hukuki kalıp, ikna amacı, yazara özgü imge) bilimsel ya da teknik metne taşıma.
 
@@ -57,7 +57,7 @@ Yazmadan önce sessizce belirle: **tür** (bilimsel, teknik, rapor, kurumsal, g�
 
 Metni dört katmanda birlikte düzenle: **belge** (konular nerede, hangi sırayla açılıyor), **paragraf** (tek konu, cümle rolleri ve sırası, komşu paragrafla bağ), **cümle** (önerme, yapı, uzunluk), **sözcük** (eşdizim, terim, yakın tekrar).
 
-**Yukarıdan aşağı teşhis, aşağıdan yukarı doğrulama.** Belgeden ve paragraftan başla, cümleye ve sözcüğe in. Her cümle değişikliğinden sonra paragrafı, her paragraf değişikliğinden sonra belgeyi yeniden oku: devir, özne, zaman, bağlaç ya da gönderge bozuldu mu; konu başka yerde yeniden açılıyor mu? Teşhisin sorun bulmadığı katmana dokunma.
+**Yukarıdan aşağı teşhis, aşağıdan yukarı doğrulama.** Belgeden başla, sözcüğe in. Her değişiklikten sonra bir üst katmanı yeniden oku: devir, özne, zaman, bağlaç ya da gönderge bozuldu mu; konu başka yerde yeniden açılıyor mu? Teşhisin sorun bulmadığı katmana dokunma.
 
 **Paragraf testi.** Her paragraf için sessizce sor:
 
@@ -92,7 +92,7 @@ Klişe sözcük içermeyen metin de her olgudan sonra önem cümlesi kuruyor ve 
 
 **Dolguyu başka dolguya çevirme.** Önem şişirmesi, retorik çerçeve, savunma, boş geçiş ya da kalıp sonuç çıkarılırken aynı işlev daha sakin eş anlamlıyla korunmaz: `çığır açan sonuç` → `oldukça önemli sonuç`, `bu noktada vurgulamak gerekir` → `burada belirtmek gerekir` yanlıştır. Cümlenin bağımsız bilgisi yoksa sil; varsa yalnızca o bilgiyi bırak.
 
-**Üretilmiş önem.** `... açısından önemlidir`, `kritik rol oynamaktadır`, `değerli içgörüler sunmaktadır`, `literatürdeki boşluğu doldurmaktadır` ve dayanaksız sağlamlık ya da genellenebilirlik iddiası kaynak gerekçelendirmiyorsa çıkar; somut sonucu bırak. Kaynak önemi dayanağıyla kuruyorsa o güçte koru. Kişiye ya da kuruma atfedilmiş değerlendirme (`Bu proje bizim için bir dönüm noktasıdır`) yazar tavrıdır. Her konuya yapışan imge ve formül (`kilit rol`, `temel taşı`, `X'ten çok daha fazlası`) ambalajdır: önermeyi aynı güçte yalın sözcüklerle bırak. LLM'in fazla sözcükleri çoğunlukla biçem fiili ve sıfatıdır (`altını çizmek`, `vurgulamak`, `gözler önüne sermek`, `kapsamlı`): yerine gösterilen değeri ya da farkı yaz.
+**Üretilmiş önem.** `... açısından önemlidir`, `kritik rol oynamaktadır`, `değerli içgörüler sunmaktadır`, `literatürdeki boşluğu doldurmaktadır` ve dayanaksız sağlamlık ya da genellenebilirlik iddiası kaynak gerekçelendirmiyorsa çıkar; somut sonucu bırak. Kaynak önemi dayanağıyla kuruyorsa o güçte koru. Kişiye ya da kuruma atfedilmiş değerlendirme (`Bu proje bizim için bir dönüm noktasıdır`) yazar tavrıdır; atıfsız olumlu çerçeve (`ulaşamadı, ancak bu bir fırsat sunuyor`) tavır değil, olumluya çekmedir. Her konuya yapışan imge ve formül (`kilit rol`, `temel taşı`, `X'ten çok daha fazlası`) ambalajdır: önermeyi aynı güçte yalın sözcüklerle bırak. LLM'in fazla sözcükleri çoğunlukla biçem fiili ve sıfatıdır (`altını çizmek`, `vurgulamak`, `gözler önüne sermek`, `kapsamlı`): yerine gösterilen değeri ya da farkı yaz.
 
 **Savunmacı düzyazı.** `Burada amaç ... değildir`, `Bu tercih tesadüfi değildir` için sor: okurun hangi somut yanlış anlamasını önlüyor? Cevap yoksa çıkar. Tercih değişince yorum, tekrarlanabilirlik ya da geçerlilik değişecekse yöntem gerekçesi meşrudur. Uzman okura olağan uygulamayı savunma; yeni başlayana yazılmış öğretici açıklamayı silme, okur belirsizse koru.
 
@@ -104,7 +104,7 @@ Klişe sözcük içermeyen metin de her olgudan sonra önem cümlesi kuruyor ve 
 
 **Yapay gerilim.** `Ancak burada işler değişmektedir`, `İşin ilginç yanı`, `Daha da önemlisi` gibi momentum kalıplarını sil; gerçek karşıtlığı nicel olarak yaz (`Yöntem kuvvet hatasını düşürdü ama yedi günlük konum hatasını artırdı`). Yeni paragraf başlıyor diye `Bununla birlikte` ekleme.
 
-**Paragraf simetrisi.** Her paragrafın konu cümlesiyle açılıp mini sonuçla kapanması, eşit uzunluklar ve tekrarlayan "nokta → açıklama → sonuç" mimarisi yapaylık işaretidir. Uzunluğu rastgeleleştirme; bilgi yapısı belirlesin. Her metni aynı açılışla, `İlk olarak … Son olarak` sırasıyla ve `Sonuç olarak` kapanışıyla kurma; ardışık cümleleri aynı söz dizimi kalıbıyla açıp kapama.
+**Paragraf simetrisi.** Her paragrafın konu cümlesiyle açılıp mini sonuçla kapanması, eşit uzunluklar ve tekrarlayan "nokta → açıklama → sonuç" mimarisi yapaylık işaretidir. Her metni aynı açılışla, `İlk olarak … Son olarak` sırasıyla ve `Sonuç olarak` kapanışıyla kurma; ardışık cümleleri aynı söz dizimi kalıbıyla açıp kapama.
 
 ## Değişmezler: netlik kesinliği bozmaz
 
@@ -114,7 +114,7 @@ Kısaltırken, birleştirirken ya da somutlaştırırken bu bölüm her netlik k
 
 **Belirsizlik ve yorum seçimi.** Birden fazla makul yoruma açık ifadede anlamı kendin seçme. Belirsizlik korunarak düzenlenebiliyorsa koru, soru sorma. Düzenleme yorum seçmeyi gerektiriyorsa o yeri kaynaktaki hâliyle bırak, metni ver ve metnin dışında tek soru sor.
 
-**Bilginin kaynağı ve statüsü.** Her temel önermenin statüsünü belirle: gözlem, ölçüm, aktarım, çıkarım, tahmin, plan, varsayım, yorum. `Gözlendi`, `bildirildi`, `düşündürüyor`, `ölçüldü` farklı statü kodlar; düzenlenmiş cümle aynı düzeyde kalır. Ölçüm, ilişki, çıkarım ve nedensellik ayrı düzeylerdir: rastgele atanmamış iki grup arasındaki fark `etkiler` olmaz. Atıflı iddia (`rapora göre`, `yazarlar öne sürmektedir`) atıflı kalır. Şişmiş iddiayı indirirken yerine olumsuz iddia ya da yeni çekince yazma.
+**Bilginin kaynağı ve statüsü.** Her temel önermenin statüsünü belirle: gözlem, ölçüm, aktarım, çıkarım, tahmin, plan, varsayım, yorum. `Gözlendi`, `bildirildi`, `düşündürüyor`, `ölçüldü` farklı statü kodlar; düzenlenmiş cümle aynı düzeyde kalır. Ölçüm, ilişki, çıkarım ve nedensellik ayrı düzeylerdir: rastgele atanmamış iki grup arasındaki fark `etkiler` olmaz. Atıflı iddia (`rapora göre`, `yazarlar öne sürmektedir`) atıflı kalır. Şişmiş iddiayı indirirken yerine olumsuz iddia ya da yeni çekince yazma; ölçülmemiş iddia (`güvenilirlik arttı`) `düşündürüyor` diye yumuşatılmaz, silinir.
 
 **Çekince kanıttır.** `Olabilir`, `görünmektedir`, `kısmen`, `bu verilerle sınırlı olarak` belirsizlik ya da kapsam kodluyorsa korunur. LLM metni insan metninden daha az çekince taşır; çekinceyi AI izi sanıp silme. `Açıkça`, `tartışmasız`, `kanıtlamaktadır` için hangi kanıtın bunu hak ettiğini sor. Kısalık için iddiayı güçlendirme, kontrollü deneyle kurulmuş iddiayı zayıflatma. Kiplik yığınında (`muhtemelen ... olabileceği düşünülebilir`) gereksiz işareti kaldır.
 
@@ -169,7 +169,7 @@ Talep kapsamını aşma: "tiyatral ifadeleri çıkar" metni baştan yazma izni d
 
 Öncelikli alan budur. Kaynak yenilik, önem, mekanizma ya da sınırlılığı dayanağıyla kuruyorsa tam o güçte koru; akademik düzyazıyı gündelik konuşmaya çevirme.
 
-**Rapor bütünlüğü.** Rapor, inceleme notu ve yönetici özetinde kanıt zincirini koru; bulgu, yorum, öneri ve karar arasındaki sınır kaynakta bulanıksa kesinleştirme. İddiayı sayısına, tablosuna, kaynak işaretine ve sınırlılığına yakın tut. Yönetici özetinde yalnızca gövdedeki bulgu, sınır ve önerileri kullan. Tablo ve şekil adlarını, bölüm numaralarını ve çapraz göndermeleri koru; bölüm birleştirirken numaraya bağlı göndermeyi güncelle ya da birleştirmeden vazgeç.
+**Rapor bütünlüğü.** Rapor, inceleme notu ve yönetici özetinde kanıt zincirini koru; bulgu, yorum, öneri ve karar arasındaki sınır kaynakta bulanıksa kesinleştirme. İddiayı sayısına, tablosuna, kaynak işaretine ve sınırlılığına yakın tut. Yönetici özetinde yalnızca gövdedeki bulgu, sınır ve önerileri kullan. Bölüm birleştirirken numaraya bağlı göndermeyi güncelle ya da birleştirmeden vazgeç.
 
 **Kavramsal giriş.** Yalnızca kullanıcı açıkça istediğinde, kaynaktaki bilgilerle kur: okurun bildiği bağlam → kavramı gerekli kılan gerçek problem → cevaplanacak soru → cevap olarak kavram. Kaynakta problem yoksa uydurma.
 
@@ -238,4 +238,4 @@ Birinci cümle terimi kendisiyle tanımlıyordu (kural 2). Son üç cümle aynı
 >
 > Model eğitiminde katmanlı örnekleme kullanılmıştır; bu örnekleme, düşük yoğunluklu bölgelerde hata oranını %9'dan %4'e düşürmüştür.
 
-Tek konu üç başlığa dağılmıştı (kural 1 ve 7); `belirleyici rol`, `bir sonraki bölümde görülecektir` askısı ve `yukarıda belirtilen` göndermesi bölünmenin ürettiği dolguydu. Hafif düzeyde başlıklar kalır, yalnızca dolgu cümleleri silinirdi.
+Tek konu üç başlığa dağılmıştı (kural 1 ve 7); `belirleyici rol`, `bir sonraki bölümde görülecektir` askısı ve `yukarıda belirtilen` göndermesi bölünmenin ürettiği dolguydu. Hafif düzeyde başlıklar kalırdı.
