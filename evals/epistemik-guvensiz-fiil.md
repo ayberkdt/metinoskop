@@ -12,7 +12,7 @@ Makale bulgular paragrafı. Standart düzeyde düzenle; hafif yüklemi gerçek y
 
 - 30 koşu, %4 ve %7 doğru gruplarla korunmalı.
 - "Rastgele atanmamıştır" sınırlılığı korunmalı.
-- Koşular rastgele atanmadığı için kaynağın "olumlu etki" iddiası ölçümle desteklenmez; iddia nedensel semantik taşıyan bir fiile ("etkiler", "azaltır", "düşürür") çevrilemez. Güvenli çıktı yalnızca ölçümü ve sınırlılığı taşır; iddia korunacaksa kaynağın kendi hafif biçimiyle ve ölçümden ayrı durmalıdır.
+- Koşular rastgele atanmadığı için kaynağın "olumlu etki" iddiası ölçümle desteklenmez; iddia nedensel semantik taşıyan bir fiile ("etkiler", "azaltır", "düşürür") çevrilemez. Talep hafif yüklemin gerçek yüklemle kurulmasını istiyor: ölçümün taşıdığı düzey ilişkidir (`yöntem daha düşük hatayla ilişkili bulundu`). İddiayı silip yalnızca ölçümü ve sınırlılığı bırakmak da güvenlidir.
 
 ## Kaçınılması gerekenler
 
@@ -25,3 +25,7 @@ Makale bulgular paragrafı. Standart düzeyde düzenle; hafif yüklemi gerçek y
 
 - sahip olmak: 0
 - sert işaret: 0
+
+## Serbest eklemeler
+
+- karsilastirma — `daha düşük hatayla ilişkili`, kaynaktaki %4 ile %7 karşılaştırmasını ilişki düzeyinde yazar; yeni karşılaştırma zemini kurmaz.

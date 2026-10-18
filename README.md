@@ -7,9 +7,9 @@
 ![Agent Skill](https://img.shields.io/badge/agent-skill-2563eb)
 ![Language: Türkçe](https://img.shields.io/badge/language-T%C3%BCrk%C3%A7e-c62828)
 
-Türkçe metni net ve anlaşılır kılan taşınabilir bir agent skill paketi: her önerme bir kez, doğru yerde ve kaynağın kesinliğiyle söylenir.
+AI ajanlarının Türkçe metni insan ritmiyle yazması ve düzenlemesi için taşınabilir bir agent skill paketi: her önerme bir kez, doğru yerde ve kaynağın kesinliğiyle söylenir. Ajan kullanıcının isteğinden rapor, özet ya da belge yazarken de, verilen bir metni düzenlerken de aynı kurallara uyar.
 
-Omurgası, havacılık belgeleri için geliştirilmiş ASD-STE100 (Simplified Technical English) standardının yazım ilkelerinden Türkçeye uyarlanmıştır: bir paragraf bir konu, kısa ve doğrudan cümle, bir terim bir anlam; şişirme, döngüsel anlatım ve aynı konuyu yeniden açma yok. Öncelikli alan bilimsel ve teknik metindir, ilkeler her konuda geçerlidir.
+Omurgası, havacılık belgeleri için geliştirilmiş ASD-STE100 (Simplified Technical English) standardının yazım ilkelerinden Türkçeye uyarlanmıştır: bir paragraf bir konu, kısa ve doğrudan cümle, bir terim bir anlam; şişirme, döngüsel anlatım ve aynı konuyu yeniden açma yok. Öncelikli alan bilimsel ve teknik metindir, ilkeler her konuda geçerlidir. AI ve insan metnini karşılaştıran on dört araştırmanın bulguları (ortaç kuyruğu, adlaştırma, dar cümle uzunluğu bandı, biçem sözcükleri, eksik çekince, yumuşatılmış ton, kalıp iskelet) kurallara işlendi: [`references/insan-ve-yapay-metin.md`](references/insan-ve-yapay-metin.md).
 
 Metinoskop bir sözcük yasaklama listesi değildir. Metni sırf farklı görünsün diye yeniden yazmaz: anlamı, olguları, kesinlik düzeyini ve yazarın tavrını koruyarak yalnızca gerekçesi olan müdahaleyi yapar. Netlik hiçbir zaman kesinliğin önüne geçmez. Metin zaten iyiyse olduğu gibi bırakır.
 
@@ -130,7 +130,7 @@ Bu vakanın kayıtlı çıktısı kaynağın kendisidir. Doğru davranış hiçb
 
 ## Neyi değiştirmemekte ısrar eder
 
-Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz seksen sekiz eval vakasının altmış birinde beklenen çıktı kaynağın kendisidir:
+Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz doksan beş eval vakasının altmış üçünde beklenen çıktı kaynağın kendisidir:
 
 | Metinde geçen | Neden dokunulmaz |
 |---|---|
@@ -153,6 +153,7 @@ Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. 
 | `Model yüksek frekanslı davranışı iyi yakalıyor.` | Modelleme grubunun kendi terminolojisi. |
 | `Yönetmelik kişisel verilerin izinsiz aktarılmasını yasaklar.` | Kuralın normatif içeriği; işleyen bir sistemin bugünkü davranışı değil. |
 | `Bu tür sonuçlar dikkatli inceleme gerektirir.` | Bir sonuç sınıfı hakkında; `bu sonuç ... gerektiriyor` ile karıştırılmaz. |
+| `Önceki sürümde zaman aşımı 30 saniyeydi; bu sürümde 60 saniyeye çıkarıldı.` | Sürüm notunun okuru önceki sürümü kullandı; konuşma sızıntısı değil, içerik. |
 
 Her satır bir eval vakasına dayanır ve kayıtlı çıktısı kaynağın kendisidir.
 
@@ -181,6 +182,10 @@ Her satır bir eval vakasına dayanır ve kayıtlı çıktısı kaynağın kendi
 **Sözcüklerin birbirine tutunması.** Bir sözcük tek başına doğru olup birleşimde yanlış olabilir: `karar gerçekleştirmek`, `X hakkında odaklanmak`, `cevap sağlamak`. Metinoskop bu birleşimleri Türkçenin alışılmış eşleşmeleriyle kurar; `bir değerlendirme gerçekleştirmek` gibi yapıların arkasına saklanan gerçek fiili öne çıkarır. Aynı nesneyi `yöntem`, `yaklaşım`, `yapı`, `çözüm` arasında gezdirmez; teknik terimi, ödünç sözcüğü ve hukuki kalıbı korur. Sözcükler Türkçe olduğu hâlde birleşme tercihi İngilizceden taşınmışsa bunu da görür: `framework` her yerde `çerçeve`, `provide` her yerde `sağlamak`, `address` her yerde `adreslemek` olmaz. Ama karar alan jargonuna bakar — `referans çerçevesi`, `test kampanyası`, `belleği adreslemek` ve `hipotezi desteklemek` yerleşik terimlerdir, yabancı kökenli göründükleri için bozulmaz.
 
 **Cümleler arası bağ.** İyi cümlelerden kurulu bir metin yine de bir düşünceyi geliştiremeyebilir. Her cümlenin öncekinden ne aldığına, `bu nedenle` gibi bağlaçların gerçekten kurduğu ilişkiyi taşıyıp taşımadığına, `bu / söz konusu` göndergesinin kaç cümle uzaktan geri bulunabildiğine, `yalnızca` ve olumsuzluğun doğru ögeye bağlı kalmasına, sınırlılığın sınırladığı iddianın yanında durmasına bakar. Zaman sırasını nedenselliğe çevirmez, eksik öncül uydurmaz.
+
+**İnsan ritmi.** Araştırmalar LLM metninin cümleleri orta uzunlukta topladığını, cümle sonuna `-ing` kuyruğu eklediğini, insanınkinin 1,5–2 katı adlaştırma ve daha az çekince kullandığını, olumsuzu yumuşattığını gösteriyor. Metinoskop bunları içerikten giderir: virgülden sonra `-arak/-erek` ile biten cümleyi ayrı cümleye çevirir ya da siler, yüklemi çekimli fiille kurar, tek ilişkili uzun cümleyi bölmez, çekinceyi korur. Uzunluğu rastgeleleştirmez; değişkenlik içerikten gelir.
+
+**Okura doğrudan metin.** Metin, ajan ile kullanıcı arasındaki konuşmayı görmemiş okura gider. `konuştuğumuz gibi`, `istersen ekleyebilirim`, `önce şu dosyaya baktım` gibi izler silinir; taşıdıkları varsayım, doğrulanmamışlık ve yöntem bilgisi okura yazılır. Okurun tarafı olduğu yazışmadaki ortak geçmiş ve sürüm notundaki önceki sürüm korunur. Kullanıcıya söylenecek soru metinden sonra ayrı bir nottur. Katalog: [`references/okura-dogrudan-metin.md`](references/okura-dogrudan-metin.md).
 
 **Ses ve biçim.** Verdiğiniz yazı örneğine göre ton eşleştirmesi yapar. Olumsuzluğu, sayıları, koşulları, istisnaları ve `yalnızca`, `en az`, `henüz` gibi kapsam sözcüklerini; teknik terimleri, sembolleri, birimleri ve belge biçimini korur. Raporlarda bulgu, yorum, sınırlılık, öneri ve karar sınırlarını; tablo, atıf ve çapraz göndermeleri yerinde tutar. Muhataba göre karar verir: uzman metninde herkesin bildiği şeyin açıklamasını çıkarır, ders notunda öğretici açıklamayı korur.
 
@@ -304,6 +309,20 @@ Bu raporu doğal ve profesyonel Türkçeyle düzenle. Bulgu, yorum, sınırlıl�
 ```
 
 Rapor daha “insani” görünsün diye gündelikleştirilmez veya süslenmez. Bürokratik dolgu azalır, gerçek ilişkiler görünür olur, her iddia kaynakta taşıdığı kanıt düzeyinde kalır. Yönetici özeti ancak siz isterseniz üretilir ve rapor gövdesindeki bilgiyle sınırlı kalır.
+
+### Ajan raporunu okura hazırlama
+
+Bir ajanın konuşma ya da `/goal` talimatı üzerine yazdığı raporu, konuşmayı görmemiş okura gidecek hâle getirir:
+
+```text
+$metinoskop
+
+Bu raporu ekip liderine gönderilecek hâle getir.
+
+[rapor]
+```
+
+Talepte verdiğiniz yeni bilgi (`pilot iptal edildi, düzelt`) metne `kullanıcının bildirdiğine göre` diye değil, olgu olarak girer. Çıktıyı `python scripts/style-lint.py rapor.md --son-okur` ile denetleyebilirsiniz; tek bir sızıntı adayı kalsa bile betik 1 ile çıkar.
 
 ### Rapor zamanını yerine oturtma
 
@@ -433,6 +452,7 @@ Metinoskop bir dil, paragraf ve yapı editörüdür. Şunları yapmaz:
 - İnsan yazmış gibi görünmesi için hata, argo, rastgelelik veya cümle uzunluğu gürültüsü üretmez.
 - Kullanıcı hafif düzenleme veya yapı koruma istediyse başlık hiyerarşisine dokunmaz.
 - Her düzgün cümleyi değiştirmeye çalışmaz; metin zaten doğal ve uygunsa olduğu gibi bırakır.
+- Metne kullanıcıya yönelik not, soru, teklif ya da değişiklik açıklaması koymaz; bunlar gerekiyorsa metinden sonra ayrı bir nottur.
 
 Kavramsal giriş yalnızca açıkça istendiğinde kullanılan ikincil bir kabiliyettir; olay örgüsünün veya bakış açısının yeniden kurulması değildir.
 
@@ -473,9 +493,11 @@ metinoskop/
 │   ├── akicilik.md
 │   ├── kanit-ve-kesinlik.md
 │   ├── kavramsal-girisler.md
+│   ├── insan-ve-yapay-metin.md
 │   ├── kenar-turler.md
 │   ├── metinsel-tutarlilik.md
 │   ├── netlik-omurgasi.md
+│   ├── okura-dogrudan-metin.md
 │   ├── rapor-yazimi.md
 │   ├── retorik-yapilar.md
 │   ├── sozcuk-birlesimleri.md
@@ -485,8 +507,8 @@ metinoskop/
 │   ├── yapisal-butunluk.md
 │   └── zamansal-ankraj-ve-rapor-kipi.md
 ├── evals/
-│   ├── (188 davranışsal vaka: netlik omurgası, bütüncül düzenleme,
-│   │    bağlayıcılar, kaynak sadakati, retorik mimari, yapısal bütünlük, çeviri kokusu, epistemik mimari,
+│   ├── (195 davranışsal vaka: netlik omurgası, bütüncül düzenleme, yazma kipi,
+│   │    bağlayıcılar, okura doğrudan metin, cümle sonu kuyruğu, kaynak sadakati, retorik mimari, yapısal bütünlük, çeviri kokusu, epistemik mimari,
 │   │    eşdizim ve istem, metinsel tutarlılık, zamansal ankraj)
 │   ├── critical-cases.txt
 │   └── outputs/
@@ -523,7 +545,7 @@ Bir eval vakası için üretilen çıktıyı dosyaya kaydettikten sonra kaynakta
 python scripts/eval-runner.py evals/teknik.md outputs/teknik.txt
 ```
 
-`scripts/eval-runner.py` sayı ve tarihleri, URL'leri, satır içi kodu, kod bloklarını, dipnotları, kapsam belirleyicilerini, teknik adları, sembolleri ve ölçümleri kontrol eder. Birebir çıktı eşleşmesi aramaz; akıcılık, ton ve genel anlam uyumu insan veya model hakemine kalır. JSON raporu için `--json`, yerleşik örnekleri sınamak için `--self-test` seçeneğini kullanın.
+`scripts/eval-runner.py` sayı ve tarihleri, URL'leri, satır içi kodu, kod bloklarını, dipnotları, kapsam belirleyicilerini, teknik adları, sembolleri ve ölçümleri kontrol eder; çıktının kaynakta olmayan olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk ya da gelecek işareti ekleyip eklemediğini de sayar. Birebir çıktı eşleşmesi aramaz; akıcılık, ton ve genel anlam uyumu insan veya model hakemine kalır. JSON raporu için `--json`, yerleşik örnekleri sınamak için `--self-test` seçeneğini kullanın.
 
 ### Stil denetimi
 
@@ -536,12 +558,12 @@ python scripts/style-lint.py outputs/iddia-tekrar-dongusu.txt --source evals/idd
 `scripts/style-lint.py` beş grup bulgu üretiyor:
 
 - **Netlik ölçüleri (STE100 uyarlaması):** 25 sözcüğü aşan cümle, altı cümleyi aşan paragraf, içerik sözcüklerinin çoğunu paylaşan cümle çifti (yeni rol kazanmadan yinelenen önerme adayı) terimi kendi köküyle tanımlayan cümle (`Kalibrasyon, ... kalibre edilmesidir`) ve aynı paragrafta yinelenen bağlaç, genel fiil ya da değerlendirme sıfatı (yakın tekrar; terimler sayılmaz). Kök örtüşmesi eş anlamlılarla kurulmuş açımlamayı göremez; onu hakem yakalar.
-- **Kalıp aileleri:** üretilmiş önem, savunmacı açıklama, yol haritası, boş sarmalayıcı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, uzun çerçeve, kalıp giriş ve sonuç, üretilmiş karşıtlık, soyut yüklem, boş özne, sohbet botu kalıntısı, hazır mecaz ve vecize, süs emojisi, anlamı değiştiren çeviri kalkısı.
+- **Kalıp aileleri:** üretilmiş önem, savunmacı açıklama, yol haritası, boş sarmalayıcı, yapay gerilim, paragraf sonu askısı, çapraz gönderme, uzun çerçeve, kalıp giriş ve sonuç, üretilmiş karşıtlık, soyut yüklem, boş özne, sohbet botu kalıntısı ve ajan kimliği, cümle sonu kuyruğu (virgülden sonra `-arak/-erek` ile biten cümle, `, bu da …` eki), konuşma sızıntısı adayı (konuşmaya gönderme, kullanıcıya teklif, ilk tekil şahıs süreç fiili, önceki taslak, parantez içi düzenleme işareti), hazır mecaz ve vecize, süs emojisi, anlamı değiştiren çeviri kalkısı.
 - **Yapı ölçüleri:** başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, her maddesi `**Etiket:**` ile açılan liste, çapraz gönderme sıklığı.
 - **Çeviri kokusu ölçüleri:** `sahip olmak`, varlık kalıbı, çerçeve yığını, `olan` zinciri, tekrarlanan cümle başlangıcı, `ve` zinciri, fiilimsi yığını, iyelik zinciri, 100 sözcük başına `bir`.
 - **Söylem ölçüleri:** çekince, pekiştirici, aktarım, hafif fiil; kiplik yığını, pekiştirici çatışması, kip nöbetleşmesi, zamansal sürtünme, geniş zaman doygunluğu, ilgeç yoğunluğu, eş anlamlı kayması, konu sıfırlama, kayıt kayması.
 
-Bunlar inceleme bulgusudur; tek bir `bir`, `olan`, `ve` ya da `açısından` işaretlenmez ve hiçbir regex epistemik doğruluğa karar vermez. Kalıplar sözcük sınırına saygı gösterir: `eşsiz` kalıbı `güneşsiz` içinde eşleşmez. `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıplar ayrıca listelenir; `--fail-on-introduced-hard` yalnızca sert bastırma ailesinde başarısız çıkış kodu verir, `--fail-on-introduced-any` katı moddur. Öz sınama için:
+Bunlar inceleme bulgusudur; tek bir `bir`, `olan`, `ve` ya da `açısından` işaretlenmez ve hiçbir regex epistemik doğruluğa karar vermez. Kalıplar sözcük sınırına saygı gösterir: `eşsiz` kalıbı `güneşsiz` içinde eşleşmez. `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıplar ayrıca listelenir; `--fail-on-introduced-hard` yalnızca sert bastırma ailesinde başarısız çıkış kodu verir, `--fail-on-introduced-any` katı moddur. Konuşma sızıntısı adayları yazışmada ve sürüm notunda içerik olabildiği için varsayılan olarak bağlamsaldır; okurun konuşmayı görmediği biliniyorsa `--son-okur` onları sert sayar ve metinde tek bir aday kalsa bile 1 ile çıkar. Öz sınama için:
 
 ```bash
 python scripts/style-lint.py --self-test

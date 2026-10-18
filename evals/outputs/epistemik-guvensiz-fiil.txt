@@ -1,1 +1,1 @@
-Yöntemi kullanan 30 koşuda ortalama hata %4, kullanmayan 30 koşuda %7 idi. Koşular rastgele atanmamıştır.
+Deneylerde yöntemi kullanan 30 koşuda ortalama hata %4, kullanmayan 30 koşuda %7 idi; yöntem daha düşük hatayla ilişkili bulundu. Koşular rastgele atanmamıştır.

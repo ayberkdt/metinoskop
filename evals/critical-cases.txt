@@ -13,7 +13,7 @@ epistemik-guvensiz-fiil
 sonuc-sonuclardan-guclu
 tekrarlanan-acik-ozne
 belirsizlik-icin-acik-ozne
-korunacak-basliklar
+yazma-kipi-notlardan-rapor
 uzun-paragraf-korunur
 iyi-metin
 yerli-turkce-metin
@@ -26,10 +26,10 @@ repo-guncel-davranis-yor
 genel-gereklilik-genis-zaman-korunur
 framework-kalkisi
 referans-cercevesi-korunur
-campaign-kalkisi
-test-kampanyasi-alan-terimi
-address-kalkisi
-bellek-adresleme-korunur
+konusma-sizintisi-rapor
+sizinti-sanilan-icerik-korunur
+cumle-sonu-kuyrugu
+zarf-fiil-korunur
 provide-kalkisi
 erisim-saglamak-korunur
 anlam-kalkisi-akademik

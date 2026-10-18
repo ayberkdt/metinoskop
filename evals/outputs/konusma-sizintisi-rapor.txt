@@ -1,0 +1,3 @@
+`cache.py` incelendi ve yük testi çalıştırıldı. Günlük kayıtlarına göre 14 Ekim'deki 37 zaman aşımının 29'u önbellek yenilemesiyle aynı dakikada oluştu. Bu eşleşme, sunucu saatlerinin senkron olduğu varsayımına dayanır; varsayım doğrulanmadı.
+
+Yenileme aralığı 5 dakikadan 15 dakikaya çıkarılırsa zaman aşımları azalabilir.

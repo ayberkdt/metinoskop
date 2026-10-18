@@ -1,0 +1,5 @@
+Bulgular, yeni filtrenin gürültüyü azalttığını önermektedir. Ölçümler üç farklı günde tekrarlandı ve sonuçlar tutarlıydı.
+
+---
+
+Not: Birinci cümledeki `önermektedir` Türkçede tavsiye bildirir; kastedilen çıkarımsa `düşündürüyor` yazılabilir. Kapsam dışı olduğu için değiştirilmedi.

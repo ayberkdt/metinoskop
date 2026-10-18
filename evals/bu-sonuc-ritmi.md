@@ -23,6 +23,7 @@ Mühendislik raporu. Standart düzeyde düzenle; her cümlenin önceki önermeyi
 - Kaynakta bulunmayan gürültü mekanizması, önerilen kazanç değeri veya uygulama türü eklemek
 - "Göstermektedir", "ortaya koymaktadır" yüklemlerini "gözler önüne sermektedir", "işaret etmektedir" ile değiştirmek
 - Paragrafı tek dev cümleye sıkıştırmak
+- Ödünleşimi yalnızca gürültü artışına bağlamak (`iki katına çıktığından kazanç seçimi bir ödünleşimdir`); kaynakta ödünleşim iki ölçümün birlikte değerlendirilmesinden çıkar, tek nedenden değil
 
 ## Yapısal beklenti
 

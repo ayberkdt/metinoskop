@@ -33,6 +33,25 @@ Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (t
 | `tekduze-baglayicilar` | Her cümleyi `Ayrıca/Ancak` ile açan paragrafı ek kaynaklarıyla (`-ın katılımıyla`, `-masına rağmen`) kurmak; kaynakta olmayan nedenselliği `sayesinde` ile eklememek, planı sonuca bağlamamak |
 | `dogal-baglayici-korunur` | `-diğinde`, `ancak ... -ınca`, `-ken`, `bu yüzden` ile zaten doğal bağlanmış teknik metni bağlaçlara açmamak, çeşitlilik için değiştirmemek (yanlış pozitif) |
 
+**Yazma kipi ve insan ritmi** (`references/insan-ve-yapay-metin.md`): ajanın kullanıcı notlarından metin yazmasını ve AI–insan metni araştırmalarından gelen kuralları sınar. `cümle sonu kuyruğu` beklentisi `style-lint.py` `kuyruk` ailesine bağlanır.
+
+| Vaka | Sınanan davranış |
+|---|---|
+| `yazma-kipi-notlardan-rapor` | Madde notlarından yönetime gidecek düzyazı not yazmak; her olguyu ve sayıyı kullanmak, yazarın çekincesini korumak, kararı gelecek kipte bırakmak; liste kopyalamamak, değerlendirme ve konuşma izi eklememek |
+| `cumle-sonu-kuyrugu` | Virgülden sonra `-arak/-erek` ile biten cümleyi ve `, bu da …` ekini çözmek: önerme taşıyan kuyruğu ayrı cümle yapmak, ölçülmemiş değerlendirmeyi silmek, iki ölçümü tek özneye bağlamamak |
+| `zarf-fiil-korunur` | Yüklemden önce gelen doğal zarf-fiili (`alarak denetledi`, `kapatarak boşalttı`) kuyruk sanmamak (yanlış pozitif) |
+
+**Okura doğrudan metin:** metnin konuşmayı görmemiş son okura gittiğini; konuşma sızıntısının (konuşmaya gönderme, kullanıcıya teklif, çalışma süreci, düzenleme geçmişi) bilgisi kurtarılarak silindiğini, kullanıcıya söylenecek notun metnin dışında kaldığını sınar. `konuşma sızıntısı` beklentisi `style-lint.py` `sizinti` ailesine bağlanır.
+
+| Vaka | Sınanan davranış |
+|---|---|
+| `konusma-sizintisi-rapor` | Ajanın konuşma üzerine yazdığı rapordan `istediğin gibi`, `verdiğin`, `istersen ... deneyebilirim`, `önce ... baktım` izlerini atıp yöntemi, veri kaynağını, varsayımı, doğrulanmamış olmayı, koşulu ve olasılığı okura yazmak; `yapabiliriz`i öneriye yükseltmemek, aktör uydurmamak |
+| `talep-bilgisi-metne-gecer` | Kullanıcının talepte verdiği bilgiyi (pilot iptal edildi) kaynağın parçası sayıp olgu olarak yazmak; `kullanıcının bildirdiğine göre` ya da `(düzeltildi)` izi bırakmamak, iptalin nedenini uydurmamak |
+| `dar-kapsam-metin-disi-not` | Kapsam yalnızca noktalamaya daraltıldığında anlam kalkısına dokunmamak ama metnin dışında, `---` ile ayrılmış tek bir notla bildirmek |
+| `sizinti-sanilan-icerik-korunur` | Sürüm notundaki `önceki sürümde`, ürünün kullanıcısını anlatan `kullanıcının isteği üzerine`, dil modeli metnindeki `istemde` ve okura yapılan `dönebilirsiniz` yönlendirmesini sızıntı sanmamak (yanlış pozitif) |
+
+Korunur tarafı ayrıca `iyi-metin` taşır: okurun da tarafı olduğu e-postada `geçen ay konuştuğumuz gibi` içeriktir.
+
 **Kaynak sadakati ve kapsam:** `akademik`, `belirsizlik`, `bicim-koruma`, `kapsam-ve-kosul`, `kaynak-sadakati`, `teknik`, `rapor-bulgu-yorum-oneri`, `rapor-yapisal-butunluk`, `yonetici-ozeti`.
 
 **Ton ve değişiklik bütçesi:** `degisiklik-butcesi`, `kavramsal-giris`.
@@ -259,12 +278,96 @@ Söylem ölçüleri de yalnızca inceleme içindir: çekince (`olabilir`, `düş
 
 `evals/outputs/<vaka>.txt` dosyaları referans düzenlemelerdir: tek doğru çıktı değil, skill'in belgelenen davranışını sessizce kaybetmemek için sabitlenmiş örneklerdir. Yapısı korunması gereken vakalarda kayıtlı çıktı kaynağın kendisidir. `python scripts/eval-suite.py` her kayıtlı çıktı için üç deterministik denetim yapar ve CI'da çalışır:
 
-1. `eval-runner.py` ile kaynak değişmezleri (sayı, tarih, kod, kapsam belirleyicisi); başlık satırlarındaki noktalı bölüm numaraları (`2.3`, `3.1.1`) olgu sayılmaz.
+1. `eval-runner.py` ile kaynak değişmezleri (sayı, tarih, kod, kapsam belirleyicisi); başlık satırlarındaki noktalı bölüm numaraları (`2.3`, `3.1.1`) olgu sayılmaz. Aynı betik çıktının kaynakta olmayan epistemik işaret **ekleyip eklemediğini** de denetler: olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk ve gelecek ailelerinde sayı artarsa vaka başarısız olur. Aile içi dönüşüm (`Sonuç olarak` → `Dolayısıyla`, `Bu nedenle` → `-dığından`) ekleme sayılmaz. Gerekçeli ekleme vakanın `## Serbest eklemeler` bölümüne `- <aile> — <gerekçe>` satırıyla yazılır (`- gelecek — kaynak planı geniş zamanla kodluyor`).
 2. `style-lint.py` ile kaynakta olmayan sert kalıp eklenip eklenmediği; bağlamsal aileler uyarı olarak listelenir.
 3. Vakanın isteğe bağlı `## Serbest değişmezler` bölümü: kaynakta geçen ama dolgu olduğu için silinmesi beklenen kapsam ya da kesinlik işaretini (`- bazı — "bazı sınırlılıkları bulunmaktadır" adlandırılmamış denge dolgusudur`) değişmez denetiminden muaf tutar; her muafiyet gerekçeli olmalıdır ve yalnızca `kapsam` ile `kesinlik` gruplarına uygulanır.
 4. Vakanın isteğe bağlı `## Yapısal beklenti` bölümündeki ölçüler: `- başlık: <= 1`, `- en derin düzey: <= 3`, `- düzyazı paragrafı: 4`, `- liste ögesi: 0`, `- çapraz gönderme: 0`, `- duyuru/sarmalayıcı: 0`, `- sert işaret: 0`, `- cümle: 4` gibi satırlar (`=`, `<=`, `>=`, `<`, `>`). Çeviri kokusu ölçüleri de kullanılabilir: `- sahip olmak: 0`, `- varlık kalıbı: <= 1`, `- çerçeve yığını: 0`, `- olan zinciri: 0`, `- tekrarlanan cümle başlangıcı: 0`, `- ve zinciri: 0`, `- fiilimsi yığını: 0`, `- iyelik zinciri: 0`, `- bağlaçla başlayan cümle: <= 1`, `- bir / 100 sözcük: <= 6`. Söylem ölçüleri: `- kiplik yığını: 0`, `- pekiştirici: 0`, `- pekiştirici çatışması: 0`, `- aktarım sonrası sonuç: 0`, `- kip nöbetleşmesi: 0`, `- edilgen adlaştırma: 0`, `- hafif fiil: 0`, `- ilgeç yoğunluğu: 0`, `- eş anlamlı kayması: 0`, `- konu sıfırlama: 0`, `- parantez yükü: 0`, `- kayıt kayması: 0`.
 
-Her vakanın kayıtlı bir referans çıktısı vardır ve CI `--require-all` ile çalıştığından yeni vaka çıktısız eklenemez; yapı korunacaksa kaynağı olduğu gibi kaydedin. Kayıtlı çıktı ("gold") bir sözleşmedir: skill'in kendi kurallarını ihlal eden bir gold yanlış davranışı kilitler. Bu yüzden her gold, kaydedilmeden önce kaynağına karşı şu üç soruyla okunur: hangi iddia hangi epistemik statüde (gözlem, ölçüm, aktarım, çıkarım, öneri, karar) ve çıktıda aynı statüde mi; kaynağa olumsuz iddia ya da yeni çekince eklenmiş mi; daha doğrudan bir fiil nedensellik kurmuş mu? Rastgele atanmamış iki grup arasındaki farkı "etkiler" ya da "azaltır" diye yazan, "karar sürecine girdi"yi "henüz karar vermedi"ye çeviren ya da şişmiş iddiayı indirirken "mekanizma ortaya konmamıştır" ekleyen gold bu denetimde düzeltilmiştir. `python scripts/eval-suite.py --export-judge-prompts build/judge` her vaka için kaynak, talep, kayıtlı çıktı ve ölçütleri içeren bir model hakem istemi üretir.
+Her vakanın kayıtlı bir referans çıktısı vardır ve CI `--require-all` ile çalıştığından yeni vaka çıktısız eklenemez; yapı korunacaksa kaynağı olduğu gibi kaydedin. Kayıtlı çıktı ("gold") bir sözleşmedir: skill'in kendi kurallarını ihlal eden bir gold yanlış davranışı kilitler. Bu yüzden her gold, kaydedilmeden önce kaynağına karşı şu üç soruyla okunur: hangi iddia hangi epistemik statüde (gözlem, ölçüm, aktarım, çıkarım, öneri, karar) ve çıktıda aynı statüde mi; kaynağa olumsuz iddia ya da yeni çekince eklenmiş mi; daha doğrudan bir fiil nedensellik kurmuş mu? Rastgele atanmamış iki grup arasındaki farkı "etkiler" ya da "azaltır" diye yazan, "karar sürecine girdi"yi "henüz karar vermedi"ye çeviren ya da şişmiş iddiayı indirirken "mekanizma ortaya konmamıştır" ekleyen gold bu denetimde düzeltilmiştir. Üçü de sayıları koruduğu için eski deterministik denetimden geçmişti; eklenen işaret denetimi üçünü de yakalar. Anlam yönü (`operatörün görünürlüğünü artırdı`), yeni eşdizim ve derece zayıflaması sayımla yakalanmaz; hakem ve `SKILL.md` › **Yerine yazdığın ifade yeni bir iddiadır** kuralı bunlar içindir. `python scripts/eval-suite.py --export-judge-prompts build/judge` her vaka için kaynak, talep, kayıtlı çıktı ve ölçütleri içeren bir model hakem istemi üretir.
+
+### Gold çıktılarının araştırma profili
+
+`python scripts/research-profile.py --list` korunur vakalar dışındaki gold çıktılarını kaynaklarına karşı `references/insan-ve-yapay-metin.md` farklarıyla ölçer ve izi kalan gold'u listeler. 2026-10-18 (132 dönüşüm vakası):
+
+| Ölçü | Kaynak | Gold |
+|---|---|---|
+| Cümle sonu kuyruğu | 3 | 0 |
+| Biçem fiili ve sıfatı | 8 | 0 |
+| Sert dolgu kalıbı | 50 | 1 (`dar-kapsam-metin-disi-not`, kapsam dışı olduğu için bilerek) |
+| Kalıp açılış (`Sonuç olarak` …) | 7 | 0 |
+| Adlaştırma / 100 sözcük | 0,84 | 0,49 |
+| 7–20 sözcük bandındaki cümle | %62 | %70 |
+
+Bant oranının artması büyük ölçüde parçalanmış kısa cümlelerin birleştirildiği vakalardan gelir (`kisa-paragraf-yigini`, `yol-haritasi`). Profil `paragraf-simetrisi` gold'unun kendisinin simetrik olduğunu gösterdi (iki paragraf, ikişer cümle, 16-15-15-12 sözcük; geçmiş kış düşüşü ile 2026 planı aynı paragrafta); gold konuya göre üç paragrafa ayrıldı ve ana bulgu kısa cümleyle verildi.
+
+### Kör A/B ölçümü
+
+Kayıtlı çıktılar fixture'ı sınar, skill'i değil. Bir skill değişikliğinin model çıktısını değiştirip değiştirmediği kör A/B ile ölçülür. Her skill sürümü, başka hiçbir dosyaya bakmayan bağımsız model örneklerine yalnızca görev dosyasıyla verilir; örnekler hangi sürümü okuduklarını bilmez. Her örnek `=== T1 ===` blokları olan tek bir dosya yazar; dosya adının sonu kol harfi ve örnek numarasıdır (`hk_E3.md`). Puanlama:
+
+```bash
+python scripts/ab-score.py <çıktı-klasörü> --tasks scripts/ab-gorevler.md --glob "hk_*.md"
+```
+
+Betik kaynakta olmayan epistemik işareti, kayıp değişmezi, listeye dönüşmeyi, cümle sonu kuyruğunu, sızıntıyı ve bilinen yanılgıları (çıkarım dolgusu, kişi kayması, değişiklik notu, olumluya çekme, yumuşatılmış iddia, kalıp kapanış) sayar. `ab-gorevler.md` teşhis setidir; skill ona bakarak düzeltilir. `ab-gorevler-ayrik.md` ve `ab-gorevler-ayrik2.md` ayrık setlerdir: düzeltmenin genellenip genellenmediğini ölçer, skill onlara bakarak düzeltilmez. Teşhiste kullanılan bir ayrık set artık ayrık değildir; yenisi yazılır.
+
+2026-10-18 sonuçları (Haiku; A ve P bu turdan önceki `SKILL.md`, E, Q ve R düzeltilmiş sürümler, C skill'siz):
+
+| Set | Kol | Örnek | Eklenen işaret / örnek | Kayıp / örnek | Yanılgı / örnek |
+|---|---|---|---|---|---|
+| Teşhis | C (skill yok) | 2 | 14,50 | 2,50 | 2,50 |
+| Teşhis | A (eski) | 2 | 1,50 | 0 | 3,00 |
+| Teşhis | E (yeni) | 4 | 0 | 0 | 0 |
+| Ayrık 1 | P (eski) | 3 | 0 | 0 | 2,00 |
+| Ayrık 1 | Q (kişi kuralı genelleşmeden) | 3 | 0 | 0 | 1,00 |
+| Ayrık 2 | P (eski) | 2 | 0 | 0 | 0,50 |
+| Ayrık 2 | R (son sürüm) | 3 | 0 | 0 | 0 |
+
+| Ayrık 3 | P (eski) | 6 | 1,33 | 0,17 | 1,67 |
+| Ayrık 3 | R (son sürüm) | 6 | 1,17 | 0 | 0,33 |
+
+Ayrık set 3 (`ab-gorevler-ayrik3.md`) anlamlılık testi için kuruldu: dört görev, kol başına altı örnek, 24'er görev çıktısı. `--compare P R` bir görev çıktısını eklenen işaret, kayıp, yanılgı, kuyruk ya da sızıntı varsa hatalı sayar. Ham sayaçla hatalı çıktı eskide 15/24, yenide 7/24 (tek yönlü Fisher p = 0,021). Çıktılar okunup sayacın yanlış alarmları ayıklandığında (duyuruda `boya için kapalı` → `boya nedeniyle kapalı` aynı ilişkidir; `ama sormadık` → `sorulmadığından doğrulanmış değil` sadık aktarımdır) eskide 10/24, yenide 2/24 (p = 0,0087). Eski skill altı örneğin altısında yazarın `bence`sini öznesiz yazdı (`düşünülüyor`, `görüşü var`), dördünde olumsuz sonucu `gelişim fırsatı` diye bıraktı; yeni skill'de bunlar 0/6 ve 1/6.
+
+Opus'ta eski ve yeni skill dört görevde de sıfırda kaldı (tavan etkisi).
+
+#### Depo vakalarıyla ölçüm (iki model)
+
+Ayrık görevler depo dışıdır; skill'in kendi vakalarındaki davranışı da ölçülür. Sekiz vakanın (`konusma-sizintisi-rapor`, `cumle-sonu-kuyrugu`, `yazma-kipi-notlardan-rapor`, `talep-bilgisi-metne-gecer`, `dar-kapsam-metin-disi-not`, `paragraf-simetrisi`, `sonuc-sonuclardan-guclu`, `iyi-metin`) yalnızca `## Kaynak` ve `## Talep` bölümleri modele verilir, beklentiler gizli kalır; çıktılar `python scripts/ab-case-score.py <klasör> --compare ESKI YENI` ile tam olarak bir gold gibi (`eval-suite.py` vaka değerlendirmesiyle) puanlanır.
+
+2026-10-18, kol başına 4 örnek × 8 vaka:
+
+| Model | Önceki skill | İlk revizyon | Son sürüm |
+|---|---|---|---|
+| Haiku | 27/32 | 21/32 | 27/32 |
+| Sonnet | 26/32 | 27/32 | 29/32 |
+
+Bu ölçüm iyileşme kadar gerilemeyi de gösterdi. İlk revizyon Haiku'da `iyi-metin`i bozdu (2/4): sızıntı örneklerindeki `istersen eklerim`, e-postada okura yapılan teklifi de sızıntı gibi gösteriyordu; bir örnek `istersen`i `gerekirse` yaptı. Bütün sürümler `konusma-sizintisi-rapor`'da yöntem cümlesini (`cache.py` incelendi, yük testi çalıştırıldı) sızıntıyla birlikte siliyordu. Bir örnek, skill'in "yapma" diye alıntıladığı `mekanizma ortaya konmamıştır` ifadesini birebir yazdı. Son sürümde okura teklif sızıntı olmayanlar arasına girdi, `Bilgiyi kurtar` yöntem örneği aldı, yanlış ifadenin alıntısı doğru hedefle değiştirildi. Sonuç: `iyi-metin` 4/4'e döndü; yöntemi koruyan çıktı önceki sürümlerde 5/16, son sürümde 8/8 (tek yönlü Fisher p = 0,0018, iki modelde aynı yön). Kalan başarısızlıklar `cache.py`'nin ters tırnaksız yazılması (biçim), okura seçenek olarak yazılan `denenebilir` cümlesindeki `sonraki adım` (stil denetiminin yol haritası ailesi) ve Haiku'da tek örnekte süren olumsuz iddia eklemesidir.
+
+Aynı turda değerlendiricinin iki hatası düzeltildi: talepte verilen bilgi (`Kasım'da başlamayacak`) eklenen işaret sayılıyordu, oysa `SKILL.md`'ye göre kaynağın parçasıdır; `---` sonrası nottaki ifadeler metne eklenmiş sayılıyordu.
+
+Ayrık set 3 birleşik örneklemde (Haiku, kol başına 8 örnek, 32 görev çıktısı) hatalı çıktı ham sayaçla 20/32'den 11/32'ye iner (p = 0,022). Sonnet'te iki kol da tavandadır (4/16 ve 3/16, hepsi `için` → `nedeniyle` yanlış alarmı). Sınırlar: örnek sayısı küçüktür; sayaçlar kalıp tabanlıdır ve biçim değişince kaçırır (ayrık set 1'deki `bir tahmin var` kişi kayması önce elle okunarak bulundu); sayım hakem değildir.
+
+#### Skill'siz taban ve araştırma özellikleri
+
+Üç görev setiyle (`scripts/ab-gorevler-ozellik.md`, `-ozellik2.md`, `-ozellik3.md`) skill'siz kol, önceki skill (`2244f54`) ve son skill Haiku ile Sonnet'te kol başına dört örnekle karşılaştırıldı. `python scripts/ab-score.py <klasör> --tasks <set> --traits --compare A B` araştırma özelliklerini (cümle sonu kuyruğu, biçem sözcüğü, sert dolgu, kalıp açılış, olumluya çekme, adlaştırma, 7–20 sözcük bandı, tek cümlelik paragraf, istenen uzunluk) ve olgu hatasını (eklenen epistemik işaret, kayıp değişmez) sayar. Sayımlar çıktılar okunarak ayıklandı.
+
+- **Set 1, kısa olgu görevleri.** Araştırma izleri altı kolun hepsinde sıfırdı: görevler izleri kışkırtmadı (skill'siz kola giden dosyanın başlığı izlerin adını da anıyordu). Elle ayıklanan hata (yazarın `bence`sini öznesiz ya da `olabilir` yapmak; kaynakta olmayan öneri, söz, değerlendirme ya da kullanım talimatı): Haiku'da skill'siz 5/20, önceki 4/20, son 0/20 (skill'siz–son p = 0,024; önceki–son p = 0,053); Sonnet'te skill'siz 13/20, önceki 0/20, son 0/20 (skill'siz–son p = 0,00001).
+- **Set 2, teşhis: 150–200 sözcüklük yazı ve iz taşıyan taslak.** Skill'siz kollar istenen uzunluğu tutturdu (Haiku 10/12, Sonnet 12/12), ama 20 çıktının 18'ine kaynakta olmayan değerlendirme, söz ya da karşılaştırma ekledi (`Birinci yılın bilançosu karışık`, `birlikte karar vereceğiz`). Skill'li kollar uydurmadı ama uzunluğu hiç tutturmadı (0/12); paragrafların %33–52'si tek cümleydi. Olgu hatalı çıktı (sayaç): Haiku'da skill'siz 18/20, son 7/20 (p = 0,0004); Sonnet'te skill'siz 18/20, son 2/20 (p < 0,0001); önceki ile son arasındaki fark anlamlı değil. Kurumsal taslakta iz kalan çıktı (`gelişime açık alan`, `kararlılığımızın altını çizmektedir`, `kapsamlı`): Haiku'da üç kolda da 4/4; Sonnet'te skill'siz 0/4, önceki 2/4, son 1/4.
+- **Set 3, ayrık.** Set 2'den dört `SKILL.md` yaması çıktı: istenen uzunluğu kaynaktan türeyen malzemeyle (giriş, terim açıklaması, okur için doğrudan karşılık) kurmak; kuruma atfedilmiş kalıbı ve örtülmüş sorunu ambalaj saymak; desteksiz nedensel bağlacı korumamak; `mevcut sürüm` ile bugüne bağlanan durumu `-yor` ile yazmak. Yamalar yeni içerikle sınandı. Uzunluk iki sürümde de 0/12 kaldı; Sonnet yamalı skill'le metni kısa bırakıp eksik bilgiyi notta sordu. Kurumsal ambalajda iz kalan çıktı eski skill'de 8/16, yamalıda 8/16. Depo vakalarında yamalı skill 116/132, son skill 118/132 geçti (p = 0,72). Etkisi gösterilemeyen yamalar `SKILL.md`'ye alınmadı.
+
+Açık bulgu: kaynaktaki bilgi istenen uzunluğa yetmediğinde skill'li ajan uzunluğu tutturamıyor, skill'siz ajan uydurarak tutturuyor. Skill'li ajanın çıktısı kısa metin ve eksik bilgiyi soran nottur. Uzunluğu kaynaktan türeyen malzemeyle kuran kural ilk denemede bu davranışı değiştirmedi.
+
+#### Gold denetimi: model çıktısıyla yeniden ölçüm
+
+132 dönüşüm vakasının yalnızca `## Kaynak` ve `## Talep` bölümleri son skill'le Sonnet'e verildi; çıktılar `ab-case-score.py` ile gold gibi puanlandı ve 113/132 vakayı geçti. On dokuz başarısızlık okundu:
+
+- On tanesi model hatasıydı, gold doğruydu: `bu-sonuc-ritmi`'nde `değerlendirilmelidir` kipi iddiaya döndü, `savunmaci-akademik`'te yöntem gerekçesi silindi, `gorus-ambalaji`'nda `kilit rol` `gereklidir` oldu, `dayanaksiz-pekistirici`'de `yalnızca` düştü, `ingilizce-noktalama`'da savunmacı kapanış kaldı.
+- Üçü skill metninin yanlış okunmasıydı: `kaynağın kurduğu nedensel bağlacı silme` cümlesi `kronoloji-nedensellik`'teki desteksiz `Bu nedenle`yi de korutuyor, `-yor alabilir` bugüne bağlanan durumu (`repo-guncel-davranis-yor`, `karisik-zaman-readme`) geniş zamanda bırakıyor. Yama yukarıda etkisiz çıktı; vakalar açık kaldı.
+- Birinde skill ile vaka çatışıyor: `sonuc-ve-yorum-kip-ayrimi` yorumu geniş zamanda bekliyor, `SKILL.md` yorumun `-yor` alabileceğini söylüyor.
+- Birinde model gold'dan iyiydi: `epistemik-guvensiz-fiil` talebi hafif yüklemin gerçek yüklemle kurulmasını istiyor, gold iddiayı siliyordu. Model ölçümün taşıdığı düzeyi yazdı (`yöntem daha düşük hatayla ilişkili bulundu`); gold bu biçime geçti, karşılaştırma eklemesi gerekçesiyle `## Serbest eklemeler`e yazıldı.
+- Üçü değerlendirici yanlış alarmıydı ve düzeltildi: sıra bildiren `en son` üstünlük, soru cümlesindeki `verilebilir mi?` çekince sayılıyordu; `günlük olarak` → `her gün` için vakaya gerekçeli muafiyet yazıldı.
+- Birinde beklenti fazla katıydı: `ayni-iddia-hacim` doğru iki cümleyi reddediyordu; beklenti `cümle: <= 2` oldu.
+
+Düzeltilmiş değerlendiriciyle aynı çıktılar 118/132 geçer. Araştırma profilinde gold'lar modelin çıktısından fazla iz taşımıyor (beş iz ailesinde toplam 1'e 4); adlaştırma (100 sözcükte 0,49 ve 0,45) ve 7–20 sözcük bandı (%70 ve %68) yakın.
 
 ### Gerçek model regresyonu
 

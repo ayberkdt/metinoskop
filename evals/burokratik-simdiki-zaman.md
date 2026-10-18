@@ -25,3 +25,7 @@ Sıradan bir proje raporu; kurum ya da dergi biçim kuralı yok. Standart düzey
 
 - cümle: <= 3
 - sert işaret: 0
+
+## Serbest eklemeler
+
+- tumel — `günlük olarak` ile `her gün` aynı izleme sıklığını yazar.

@@ -1,0 +1,3 @@
+## 2.3 sürümündeki değişiklikler
+
+Önceki sürümde istek zaman aşımı 30 saniyeydi; bu sürümde 60 saniyeye çıkarıldı. Eski davranışa `--legacy-timeout` bayrağıyla dönebilirsiniz. Kullanıcının isteği üzerine silinen hesapların kişisel verileri artık 30 gün içinde yok ediliyor. Özetleme modeli, istemde belirtilen JSON biçimine 200 denemenin 11'inde uymadı; bu nedenle çıktı artık biçim doğrulamasından geçiyor.

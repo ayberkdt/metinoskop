@@ -51,7 +51,7 @@ REFERENCE_ORDER = (
     "netlik-omurgasi.md", "turkce-oruntuler.md", "retorik-yapilar.md", "yapisal-butunluk.md", "akicilik.md",
     "turkce-ritim-ve-ceviri-kokusu.md", "turkce-baglayicilar.md", "kanit-ve-kesinlik.md", "sozcuk-birlesimleri.md",
     "metinsel-tutarlilik.md", "zamansal-ankraj-ve-rapor-kipi.md", "rapor-yazimi.md",
-    "kavramsal-girisler.md",
+    "kavramsal-girisler.md", "okura-dogrudan-metin.md", "insan-ve-yapay-metin.md",
     # Genre extras last: SKILL.md tells the model to read them only for those genres.
     "kenar-turler.md",
 )
@@ -156,6 +156,8 @@ def deterministic_checks(case_text: str, output: str) -> tuple[bool, list[str]]:
     invariants = runner.evaluate(case_text, output)
     for item in invariants["missing"]:
         problems.append(f"eksik {item['category']}: {' | '.join(item['alternatives'])}")
+    for item in invariants["added"]:
+        problems.append(f"eklenen {item['label']}: «{', '.join(item['examples'])}»")
     comparison = lint.compare(lint.analyse(section(case_text, "Kaynak")), lint.analyse(output))
     for item in comparison["introduced_hard"]:
         problems.append(f"yeni sert kalıp: {item['label']} «{item['example']}»")

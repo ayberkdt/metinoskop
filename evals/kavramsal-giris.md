@@ -22,3 +22,8 @@ Sistem aynı veritabanı sorgularını tekrar tekrar çalıştırıyor. Bu tekra
 - Önbelleği her sistem için kesin çözüm gibi sunmak
 - Tiyatral soru, yapay aciliyet veya pazarlama dili kullanmak
 - Ölçülen sonucu genel performans garantisine dönüştürmek
+
+## Serbest eklemeler
+
+- tumel — talep kavramsal giriş istiyor; `her seferinde` girişin soru adımıdır ve kaynaktaki `tekrar tekrar` bilgisini sorar.
+- zorunluluk — aynı soru adımındaki `gerekiyor mu?` bir iddia değil, sorudur.

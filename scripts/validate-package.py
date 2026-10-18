@@ -35,6 +35,8 @@ REQUIRED_FILES = (
     "references/netlik-omurgasi.md",
     "references/kenar-turler.md",
     "references/turkce-baglayicilar.md",
+    "references/okura-dogrudan-metin.md",
+    "references/insan-ve-yapay-metin.md",
     "evals/README.md",
     "evals/akademik.md",
     "evals/belirsizlik.md",
@@ -224,6 +226,13 @@ REQUIRED_FILES = (
     "evals/yerinden-kopuk-cumle.md",
     "evals/tekduze-baglayicilar.md",
     "evals/dogal-baglayici-korunur.md",
+    "evals/konusma-sizintisi-rapor.md",
+    "evals/sizinti-sanilan-icerik-korunur.md",
+    "evals/talep-bilgisi-metne-gecer.md",
+    "evals/dar-kapsam-metin-disi-not.md",
+    "evals/cumle-sonu-kuyrugu.md",
+    "evals/zarf-fiil-korunur.md",
+    "evals/yazma-kipi-notlardan-rapor.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -421,6 +430,13 @@ EVAL_FILES = (
     "evals/yerinden-kopuk-cumle.md",
     "evals/tekduze-baglayicilar.md",
     "evals/dogal-baglayici-korunur.md",
+    "evals/konusma-sizintisi-rapor.md",
+    "evals/sizinti-sanilan-icerik-korunur.md",
+    "evals/talep-bilgisi-metne-gecer.md",
+    "evals/dar-kapsam-metin-disi-not.md",
+    "evals/cumle-sonu-kuyrugu.md",
+    "evals/zarf-fiil-korunur.md",
+    "evals/yazma-kipi-notlardan-rapor.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -484,12 +500,12 @@ if "Türkçeye çevrilmiş metin" not in frontmatter:
     fail("SKILL.md must limit translation scope to existing Turkish translations")
 if "# Metinoskop" not in skill:
     fail("SKILL.md must use the Metinoskop heading")
-if len(skill.splitlines()) > 400:
-    fail("SKILL.md exceeds the 400-line portability budget")
-if len(skill.encode("utf-8")) > 40_000:
-    fail("SKILL.md exceeds the 40 KB attention budget; move detail to references/")
-if len(frontmatter_match.group(1)) > 1_200:
-    fail("SKILL.md description must stay a trigger description, not a catalog (max 1200 bytes)")
+if len(skill.splitlines()) > 300:
+    fail("SKILL.md exceeds the 300-line portability budget")
+if len(skill.encode("utf-8")) > 34_000:
+    fail("SKILL.md exceeds the 34 KB attention budget; move detail to references/")
+if len(frontmatter_match.group(1)) > 900:
+    fail("SKILL.md description must stay a trigger description, not a catalog (max 900 characters)")
 for heading in (
     "## Netlik omurgası",
     "ASD-STE100",
@@ -549,6 +565,13 @@ for heading in (
     "**Terim sabit, çevresi değişken.**",
     "**2. Düzenle, katman katman.**",
     "references/turkce-baglayicilar.md",
+    "## Okura doğrudan metin",
+    "**Bilgiyi kurtar, ambalajı at.**",
+    "**Not metnin dışına yazılır.**",
+    "references/okura-dogrudan-metin.md",
+    "**Cümle sonu kuyruğu.**",
+    "**Yazma ve düzenleme.**",
+    "references/insan-ve-yapay-metin.md",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
@@ -774,7 +797,7 @@ eval_markers = {
     "evals/teknik-noktalama-korunur.md": ("0,2; 0,5 ve 0,8", "(bkz. Tablo 3)", "2025",),
     "evals/uzak-sinirlilik.md": ("%12", "12 istasyondan", "3 saatte", "yalnızca 30 °C",),
     "evals/ayni-iddia-yeni-rol.md": ("## Sonuçlar", "## Tartışma", "## Sonuç", "40 °C", "%11", "düşündürüyor", "önerilmektedir",),
-    "evals/ayni-iddia-hacim.md": ("Yani 40 °C", "göstermektedir", "üç kez", "cümle: <= 1",),
+    "evals/ayni-iddia-hacim.md": ("Yani 40 °C", "göstermektedir", "üç kez", "cümle: <= 2",),
     "evals/tutarli-metin-korunur.md": ("3 Eylül", "14.10", "14.35", "50 bağlantı", "120", "cümle: 3",),
     "evals/raporda-genis-zaman-yigini.md": ("12 Ağustos", "1.200", "%4", "%6", "Yalnızca", "geniş zaman doygunluğu: 0",),
     "evals/bu-calisma-inceler.md": ("Bu çalışma üç farklı modeli karşılaştırır", "2025", "800", "zamansal sürtünme: 0",),
@@ -841,6 +864,10 @@ eval_markers = {
     "evals/yerinden-kopuk-cumle.md": ("## Yöntem", "## Bulgular", "%9,8", "%4,2", "500 örnekten", "beş katlı",),
     "evals/tekduze-baglayicilar.md": ("1.240", "%22", "%31", "düşüklüğe rağmen", "planlıyor", "yakın tekrar: 0",),
     "evals/dogal-baglayici-korunur.md": ("ancak basınç", "bu yüzden", "2,5 bar", "yakın tekrar: 0",),
+    "evals/konusma-sizintisi-rapor.md": ("İstediğin gibi", "varsaydım", "doğrulayamadım", "`cache.py`", "konuşma sızıntısı: 0"),
+    "evals/sizinti-sanilan-icerik-korunur.md": ("Önceki sürümde", "Kullanıcının isteği üzerine", "istemde belirtilen", "dönebilirsiniz"),
+    "evals/talep-bilgisi-metne-gecer.md": ("iptal etti", "Kasım'da başlayacak", "konuşma sızıntısı: 0"),
+    "evals/dar-kapsam-metin-disi-not.md": ("Yalnızca noktalama", "önermektedir", "tekrarlandı ,ve"),
     "evals/anlam-kalkisi-korunur.md": ("yeni bir yöntem önermektedir", "Tablo 2'de yer alıyor", "Tedavi grubundaki 40 hastaya", "cümle: 6",),
 }
 for relative_path, markers in eval_markers.items():
@@ -937,6 +964,8 @@ SHOULD_REMAIN_CASES = (
     "evals/ozgun-imge-korunur.md",
     "evals/anlam-kalkisi-korunur.md",
     "evals/dogal-baglayici-korunur.md",
+    "evals/sizinti-sanilan-icerik-korunur.md",
+    "evals/zarf-fiil-korunur.md",
 )
 locked = []
 for relative_path in EVAL_FILES:

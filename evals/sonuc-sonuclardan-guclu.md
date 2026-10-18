@@ -38,3 +38,7 @@ Makale bölümleri. Standart düzeyde düzenle; her bölümdeki iddiayı sonuçl
 
 - başlık: 3
 - sert işaret: 0
+
+## Serbest eklemeler
+
+- cekince — `açıklamaktadır` iddiası sonuçlar bölümünün kanıt düzeyine (`işaret etmektedir`) indirilir; yeni belirsizlik değil, kaynağın kendi kanıt düzeyidir.

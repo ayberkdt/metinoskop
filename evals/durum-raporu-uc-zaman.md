@@ -25,3 +25,7 @@ Proje durum raporu paragrafı. Standart düzeyde düzenle.
 
 - zamansal sürtünme: 0
 - cümle: <= 4
+
+## Serbest eklemeler
+
+- gelecek — kaynak planı geniş zamanla kodluyor (`15 Ekim'de başlatılır`); vakanın amacı planı gelecek statüsüne taşımaktır.
