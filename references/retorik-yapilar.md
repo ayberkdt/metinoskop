@@ -360,7 +360,7 @@ Karar: etiketi sil, cümleyi içeriğiyle kur. Etiket bir ayrımı duyuruyorsa a
 - Hadi başlayalım. / İşte tam da burada ... devreye giriyor.
 - İşin en heyecan verici kısmına geldik. / Büyük bir haberimiz var.
 
-Karar: anonsu sil; okurun eylemi gerekiyorsa (`kurulum için X'i çalıştırın`) onu emir kipiyle yaz. Tanıtım metninde ikna, somut olgu ve fayda ile kurulur (`arama 3 kat hızlı`); anons kalıbı ikna aracı sayılmaz.
+Karar: anonsu sil. Eylem çağrısı (`Hemen deneyin`, `Kaçırmayın`, `Sizi bekliyoruz`) eylem bildirmez, satar; o da silinir. Kalan emir somut adımdır ve kaynaktaki bilgiyi taşır (`Ayarlar > Depolama bölümünden açın`, `5 Kasım'a kadar formu doldurun`). Tanıtım metninde ikna, somut olgu ve fayda ile kurulur (`arama 3 kat hızlı`); anons kalıbı ikna aracı sayılmaz.
 
 ### Kalan: belgenin dayattığı alan etiketi
 

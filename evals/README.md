@@ -373,6 +373,19 @@ Açık bulgu: kaynaktaki bilgi istenen uzunluğa yetmediğinde skill'li ajan uzu
 
 Haiku'da önceki–yeni p = 0,0016, skill'siz–yeni p = 0,0042 (tek yönlü Fisher). Önceki skill'le Haiku etiketli taslağı dört örneğin dördünde etiketleriyle bıraktı (`**Kavramsal ayrım:**`, `**Sezgisel açıklama:**`); yeni skill'le dördünde sildi ve etiketin altındaki bilgiyi korudu. Sonnet önceki skill'le de etiket kurmuyordu (taban sıfır); yeni skill'le bir örnek cümle içinde `Başlangıç için kural şudur:` yazdı. Bu biçim stil denetimine ve kuralın örnek listesine eklendi. Belgenin alan etiketleri (`Uç nokta:`, `Yöntem:`, `Sayfa boyutu:`, `Uyarı:`) bütün skill'li kollarda korundu (16/16).
 
+İkinci ayrık set (`scripts/ab-gorevler-etiket2.md`) pazarlama ağırlıklıdır: ürün duyurusu, kavram açıklaması, sık sorulan soru yanıtı, açılış sayfası ve etkinlik duyurusu taslağı. `0685e48` skill'iyle Sonnet açılış sayfasındaki `Hemen deneyin` eylem çağrısını altı örneğin altısında, Haiku altıda birinde korudu; Haiku bir örnekte `Sizi bekliyoruz` bıraktı. Sebep kuralın kendisiydi: referans "okurun eylemi gerekiyorsa emir kipiyle yaz" diyordu ve eylem çağrısı listede yoktu. Kural `Hemen deneyin` ve `Sizi bekliyoruz` örneklerini aldı; emir yalnızca somut adımsa (`Ayarlar > Depolama'dan açın`) kalıyor. Aynı set yeniden çalıştırıldı:
+
+| Kol | İz taşıyan çıktı |
+|---|---|
+| Haiku, skill'siz | 10/20 |
+| Haiku, önceki skill (`b1cd0d9`) | 7/20 |
+| Haiku, `0685e48` | 2/30 |
+| Haiku, son skill | 0/30 |
+| Sonnet, `0685e48` | 6/30 |
+| Sonnet, son skill | 0/30 |
+
+Haiku'da önceki–son p = 0,0008; Sonnet'te `0685e48`–son p = 0,012. Etkinlik alanları (`Tarih:`, `Yer:`, `Kayıt:`) son skill'li 12 örneğin hepsinde korundu. Sınırda kalan: Haiku iki örnekte `Sizin için en güvenli ... çözümünü hazırladık` cümlesini `Bulut yedekleme çözümümüzü hazırladık` diye sadeleştirdi; üstünlük ve seslenme gitti, duyuru cümlesi kaldı. Stil denetiminin `anons` ailesi bu turda `Hazır mısınız?`, `yepyeni bir dönem başlıyor`, `Sizi bekliyoruz`, `gelin birlikte`, `karşınızdayız` ve `Farkı hissedin` kalıplarını da aldı.
+
 #### Gold denetimi: model çıktısıyla yeniden ölçüm
 
 132 dönüşüm vakasının yalnızca `## Kaynak` ve `## Talep` bölümleri son skill'le Sonnet'e verildi; çıktılar `ab-case-score.py` ile gold gibi puanlandı ve 113/132 vakayı geçti. On dokuz başarısızlık okundu:

@@ -16,6 +16,7 @@ Bu duyuruyu müşterilere gönderilecek hâle getir.
 ## Kaçınılması gerekenler
 
 - `Büyük bir haberimiz var`, `tanışın`, `Sizin için ... hazırladık`, `Merak etmeyin`, `Hemen indirin, farkı keşfedin` anons ve pazarlama kalıplarını ya da daha sakin eş anlamlılarını (`Yeni uygulamamızı sizlere sunmaktan mutluluk duyuyoruz`) korumak
+- `Hemen indirin` eylem çağrısını `Uygulamayı indirin` gibi yalın bir emre çevirip korumak; indirme adımı kaynakta somut değildir
 - `en iyi bankacılık deneyimi` ve `hayatınızı kolaylaştıracak` gibi dayanaksız üstünlük ve fayda iddiasını bırakmak
 - Kaynakta olmayan işlev, tarih, mağaza adı ya da indirme bağlantısı eklemek
 

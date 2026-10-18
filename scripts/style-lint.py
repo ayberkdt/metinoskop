@@ -421,7 +421,9 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "patterns": (
             r"\b(?:merak|endişe) etmeyin\b|\bendişelenmeyin\b|\bkorkmayın\b",
             r"\b(?:sizin|siz(?:ler)?) için .{0,40}hazırladık",
-            r"\btanışın\b|\bsizi bekliyor\b|\bkaçırmayın\b",
+            r"\btanışın\b|\bsizi bekliyor\w*|\bkaçırmayın\b|\bkarşınızda(?:yız)?\b",
+            r"^hazır mısınız\b|\bgelin,? birlikte\b|\bfarkı (?:hissedin|görün|yaşayın|keşfedin)\b",
+            r"\b(?:yepyeni|yeni) bir (?:dönem|çağ|sayfa)(?:in)? (?:başlıyor|açılıyor|aç)|bir dönemin kapılarını",
             r"\bhemen (?:deneyin|keşfedin|indirin|başlayın|katılın)\b|\bkeşfedin\b",
             r"hayatınızı (?:kolaylaştır|değiştir)|(?:her şeyi|oyunun kurallarını) değiştir",
             r"^hadi\b|^haydi\b",
@@ -1958,6 +1960,11 @@ ETIKET_ANONS_TEXTS = (
     ("anons", "Bu yazıda önbelleğin nasıl çalıştığını öğreneceksiniz."),
     ("anons", "İşte tam da burada önbellek devreye giriyor."),
     ("anons", "Hadi başlayalım."),
+    ("anons", "Hazır mısınız?"),
+    ("anons", "Bulut yedeklemede yepyeni bir dönem başlıyor!"),
+    ("anons", "Sizi bekliyoruz, gelin birlikte öğrenelim!"),
+    ("anons", "Teknoloji günümüzle karşınızdayız."),
+    ("anons", "Farkı hissedin."),
 )
 # Belgenin dayattığı alan etiketi, raporun Özet başlığı, sözlük ve sıradan cümle işaretlenmez.
 ETIKET_INNOCENT_TEXT = """### Özet
