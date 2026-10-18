@@ -1,0 +1,5 @@
+## Önbellek mi, tampon mu?
+
+Önbellek sık okunan veriyi saklar; aynı veri ikinci kez istendiğinde onu yeniden hesaplatmaz. Tampon ise veriyi iki bileşen arasında aktarırken geçici olarak tutar.
+
+Sistemimizde önbellek Redis üzerinde çalışır ve kayıtları 10 dakika tutar. Tampon, günlük yazıcısının önünde 4 MB'lık bir kuyruk olarak durur.

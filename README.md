@@ -130,7 +130,7 @@ Bu vakanın kayıtlı çıktısı kaynağın kendisidir. Doğru davranış hiçb
 
 ## Neyi değiştirmemekte ısrar eder
 
-Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz doksan beş eval vakasının altmış üçünde beklenen çıktı kaynağın kendisidir:
+Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz doksan sekiz eval vakasının altmış dördünde beklenen çıktı kaynağın kendisidir:
 
 | Metinde geçen | Neden dokunulmaz |
 |---|---|
@@ -507,8 +507,8 @@ metinoskop/
 │   ├── yapisal-butunluk.md
 │   └── zamansal-ankraj-ve-rapor-kipi.md
 ├── evals/
-│   ├── (195 davranışsal vaka: netlik omurgası, bütüncül düzenleme, yazma kipi,
-│   │    bağlayıcılar, okura doğrudan metin, cümle sonu kuyruğu, kaynak sadakati, retorik mimari, yapısal bütünlük, çeviri kokusu, epistemik mimari,
+│   ├── (198 davranışsal vaka: netlik omurgası, bütüncül düzenleme, yazma kipi,
+│   │    bağlayıcılar, okura doğrudan metin, cümle sonu kuyruğu, etiket ve anons, kaynak sadakati, retorik mimari, yapısal bütünlük, çeviri kokusu, epistemik mimari,
 │   │    eşdizim ve istem, metinsel tutarlılık, zamansal ankraj)
 │   ├── critical-cases.txt
 │   └── outputs/

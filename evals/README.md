@@ -40,6 +40,9 @@ Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (t
 | `yazma-kipi-notlardan-rapor` | Madde notlarından yönetime gidecek düzyazı not yazmak; her olguyu ve sayıyı kullanmak, yazarın çekincesini korumak, kararı gelecek kipte bırakmak; liste kopyalamamak, değerlendirme ve konuşma izi eklememek |
 | `cumle-sonu-kuyrugu` | Virgülden sonra `-arak/-erek` ile biten cümleyi ve `, bu da …` ekini çözmek: önerme taşıyan kuyruğu ayrı cümle yapmak, ölçülmemiş değerlendirmeyi silmek, iki ölçümü tek özneye bağlamamak |
 | `zarf-fiil-korunur` | Yüklemden önce gelen doğal zarf-fiili (`alarak denetledi`, `kapatarak boşalttı`) kuyruk sanmamak (yanlış pozitif) |
+| `etiket-ve-anons` | Cümlenin türünü adlandıran etiketi (`Kısa cevap:`, `Kavramsal ayrım:`, `Sezgisel açıklama:`, `Detaylı açıklama:`) ve okura seslenen anonsu (`Merak etmeyin`, `Bu yazıda öğreneceksiniz`) silmek; etiketin altındaki bilgiyi etiketsiz bırakmak |
+| `pazarlama-anonsu` | Müşteri duyurusunda `Büyük bir haberimiz var`, `tanışın`, `Sizin için hazırladık`, `Hemen indirin` kalıplarını silip ikna yükünü somut işleve bırakmak |
+| `alan-etiketi-korunur` | Belgenin alan etiketini (`Girdi:`, `Çıktı:`, `Uyarı:`) ve sözlük maddesini etiket sanmamak (yanlış pozitif) |
 
 **Okura doğrudan metin:** metnin konuşmayı görmemiş son okura gittiğini; konuşma sızıntısının (konuşmaya gönderme, kullanıcıya teklif, çalışma süreci, düzenleme geçmişi) bilgisi kurtarılarak silindiğini, kullanıcıya söylenecek notun metnin dışında kaldığını sınar. `konuşma sızıntısı` beklentisi `style-lint.py` `sizinti` ailesine bağlanır.
 
@@ -355,6 +358,20 @@ Ayrık set 3 birleşik örneklemde (Haiku, kol başına 8 örnek, 32 görev çı
 - **Set 3, ayrık.** Set 2'den dört `SKILL.md` yaması çıktı: istenen uzunluğu kaynaktan türeyen malzemeyle (giriş, terim açıklaması, okur için doğrudan karşılık) kurmak; kuruma atfedilmiş kalıbı ve örtülmüş sorunu ambalaj saymak; desteksiz nedensel bağlacı korumamak; `mevcut sürüm` ile bugüne bağlanan durumu `-yor` ile yazmak. Yamalar yeni içerikle sınandı. Uzunluk iki sürümde de 0/12 kaldı; Sonnet yamalı skill'le metni kısa bırakıp eksik bilgiyi notta sordu. Kurumsal ambalajda iz kalan çıktı eski skill'de 8/16, yamalıda 8/16. Depo vakalarında yamalı skill 116/132, son skill 118/132 geçti (p = 0,72). Etkisi gösterilemeyen yamalar `SKILL.md`'ye alınmadı.
 
 Açık bulgu: kaynaktaki bilgi istenen uzunluğa yetmediğinde skill'li ajan uzunluğu tutturamıyor, skill'siz ajan uydurarak tutturuyor. Skill'li ajanın çıktısı kısa metin ve eksik bilgiyi soran nottur. Uzunluğu kaynaktan türeyen malzemeyle kuran kural ilk denemede bu davranışı değiştirmedi.
+
+#### Etiket ve anons
+
+`SKILL.md` › **Etiket ve anons yok** kuralı `scripts/ab-gorevler-etiket.md` ile sınandı. Görevler: açıklayıcı wiki bölümü, yeni başlayana açıklama, müşteri e-postası, etiketli blog taslağı, alan etiketli API belgesi. Kollar: skill'siz Haiku, önceki skill (`b1cd0d9`) ve yeni skill, Haiku ve Sonnet'te kol başına dört örnek. `ab-score.py --traits` etiket ve anons cümlelerini `style-lint.py`'nin iki sert ailesiyle sayar; çıktılar ayrıca okundu.
+
+| Kol | Etiket | Anons | İz taşıyan çıktı |
+|---|---|---|---|
+| Haiku, skill'siz | 13 | 6 | 7/20 |
+| Haiku, önceki skill | 17 | 3 | 8/20 |
+| Haiku, yeni skill | 0 | 0 | 0/20 |
+| Sonnet, önceki skill | 0 | 0 | 0/20 |
+| Sonnet, yeni skill | 1 | 0 | 1/20 |
+
+Haiku'da önceki–yeni p = 0,0016, skill'siz–yeni p = 0,0042 (tek yönlü Fisher). Önceki skill'le Haiku etiketli taslağı dört örneğin dördünde etiketleriyle bıraktı (`**Kavramsal ayrım:**`, `**Sezgisel açıklama:**`); yeni skill'le dördünde sildi ve etiketin altındaki bilgiyi korudu. Sonnet önceki skill'le de etiket kurmuyordu (taban sıfır); yeni skill'le bir örnek cümle içinde `Başlangıç için kural şudur:` yazdı. Bu biçim stil denetimine ve kuralın örnek listesine eklendi. Belgenin alan etiketleri (`Uç nokta:`, `Yöntem:`, `Sayfa boyutu:`, `Uyarı:`) bütün skill'li kollarda korundu (16/16).
 
 #### Gold denetimi: model çıktısıyla yeniden ölçüm
 

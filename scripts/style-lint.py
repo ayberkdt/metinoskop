@@ -61,6 +61,17 @@ from pathlib import Path
 # level "bağlam": context-sensitive families (inspect, do not auto-delete).
 # --------------------------------------------------------------------------- #
 
+# Etiket ailesi: cümle başı (isteğe bağlı emoji ve kalın işaret), değerlendirici niteleyici, meta ad.
+ETIKET_PREFIX = r"^(?:[\U0001F300-\U0001FAFF\u2600-\u27BF\uFE0F]+\s*)?(?:\*\*|__)?\s*"
+ETIKET_MOD = (r"kavramsal|sezgisel|detaylı|ayrıntılı|kısa|uzun|temel|ana|asıl|kilit|kritik|önemli|pratik|teknik|genel"
+              r"|somut|basit|net|hızlı|gerçek|altın|can alıcı|en önemli")
+ETIKET_NOUN = (r"açıklama|ayrım|fark|fikir|nokta|özet|sonuç|çıkarım|yorum|değerlendirme|gözlem|ders|mesaj|ipucu|cevap"
+               r"|yanıt|tespit|vurgu|bakış|anlatım|tanım|sezgi|mantık|kural|husus|mesele|neden|gerekçe|özü")
+# Başlık olarak etiket: "### Sezgisel açıklama". Çıplak "Özet", "Sonuç" başlığı raporda meşrudur; niteleyici şart.
+ETIKET_HEADING_RE = re.compile(
+    r"^(?:kavramsal|sezgisel|detaylı|ayrıntılı|kısa|temel|ana|asıl|kilit|kritik|önemli|pratik|basit|net|altın)\s+"
+    r"(?:açıklama|ayrım|fark|fikir|nokta|cevap|yanıt|sezgi|çıkarım|mesaj|ders|ipucu)\w{0,4}\s*:?$")
+
 CATEGORIES: tuple[dict[str, object], ...] = (
     {
         "key": "onem",
@@ -385,6 +396,41 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "patterns": (
             r",\s+(?:\S+\s+){0,8}(?!(?:toprak|yaprak|bayrak|gerek|merak|mübarek|kürek|börek)\b)\S+(?:[ae]rak|[ae]rek)[.!?…]*$",
             r",\s+bu da\b",
+        ),
+    },
+    {
+        # Cümlenin türünü adlandıran etiket: "Kavramsal ayrım:", "Sezgisel açıklama:", "**Kısa cevap:**".
+        # Okur ayrımı ya da açıklamayı cümlenin kendisinden almalı; etiket onu duyurur. Belgenin dayattığı
+        # alan etiketi (Girdi:, Uyarı:, Konu:, sözlükte terim, ADR'de Karar:) bu listede yoktur.
+        "key": "etiket",
+        "label": "Etiketle açılan cümle",
+        "level": "sert",
+        "patterns": (
+            ETIKET_PREFIX + r"(?:" + ETIKET_MOD + r")\s+(?:" + ETIKET_NOUN + r")\w{0,4}(?:\s+şu(?:dur)?)?\s*(?:\*\*|__)?\s*:",
+            ETIKET_PREFIX + r"(?:kısaca|kısacası|özetle|özetlersek|özet|sonuç|sonuç olarak|yani|tl;dr)\s*(?:\*\*|__)?\s*:",
+            ETIKET_PREFIX + r"(?:" + ETIKET_NOUN + r")\w{0,4}\s+şu(?:dur)?\s*(?:\*\*|__)?\s*:",
+            # Cümle içinde de duyuru: "Başlangıç için kural şudur: ...".
+            r"\b(?:" + ETIKET_NOUN + r")\w{0,4}\s+şu(?:dur)?\s*:",
+        ),
+    },
+    {
+        # Okura seslenen anons ve pazarlama: duyurur, satar, bilgi vermez.
+        "key": "anons",
+        "label": "Anons ve pazarlama cümlesi",
+        "level": "sert",
+        "patterns": (
+            r"\b(?:merak|endişe) etmeyin\b|\bendişelenmeyin\b|\bkorkmayın\b",
+            r"\b(?:sizin|siz(?:ler)?) için .{0,40}hazırladık",
+            r"\btanışın\b|\bsizi bekliyor\b|\bkaçırmayın\b",
+            r"\bhemen (?:deneyin|keşfedin|indirin|başlayın|katılın)\b|\bkeşfedin\b",
+            r"hayatınızı (?:kolaylaştır|değiştir)|(?:her şeyi|oyunun kurallarını) değiştir",
+            r"^hadi\b|^haydi\b",
+            r"(?:işin|konunun) en (?:heyecan verici|ilginç|can alıcı|eğlenceli) (?:kısm|yer|nokta)",
+            r"\bişte (?:tam )?(?:da )?(?:burada|bu noktada)\b",
+            r"bu (?:yazıda|yazımızda|bölümde|rehberde|makalede|belgede|yazının devamında) .*(?:öğreneceksiniz|göreceğiz|göreceksiniz|bulacaksınız|keşfedeceğiz|keşfedeceksiniz)",
+            r"\bşunları (?:göreceğiz|öğreneceğiz|öğreneceksiniz|ele alacağız|inceleyeceğiz)",
+            r"^aşağıda .*(?:anlatıyoruz|açıklıyoruz|sıralıyoruz|bulabilirsiniz|bulacaksınız)",
+            r"(?:büyük|güzel|harika|heyecan verici) (?:bir )?haber(?:imiz)? var|\bmüjde\b",
         ),
     },
     {
@@ -1418,6 +1464,12 @@ def clarity_checks(doc: Document) -> list[dict[str, object]]:
 def analyse(text: str, son_okur: bool = False) -> dict[str, object]:
     doc = parse(text)
     hits = find_hits(doc.paragraphs)
+    for heading in doc.headings:
+        heading_text = tr_lower(heading.text.strip().strip("*_ "))
+        if ETIKET_HEADING_RE.match(heading_text):
+            hits.append({"category": "etiket", "label": LABELS["etiket"], "level": LEVELS["etiket"],
+                         "pattern": ETIKET_HEADING_RE.pattern, "paragraph": 0, "sentence": 0,
+                         "text": heading.text, "match": heading_text})
     for hit in hits:
         hit["level"] = level_of(str(hit["category"]), son_okur)
     sentences = sum(len(p.sentences) for p in doc.paragraphs)
@@ -1433,6 +1485,8 @@ def analyse(text: str, son_okur: bool = False) -> dict[str, object]:
         "hard_hits": sum(1 for h in hits if h["level"] == "sert"),
         "sizinti": per_category.get("sizinti", 0),
         "kuyruk": per_category.get("kuyruk", 0),
+        "etiket": per_category.get("etiket", 0),
+        "anons": per_category.get("anons", 0),
         "son_okur": son_okur,
         "density_per_100": density,
         "structure_summary": structure_summary(doc, hits),
@@ -1888,6 +1942,49 @@ NOT_DEFINITIONS = (
 )
 
 
+# Etiket ve anons: her cümle tek başına işaretlenmeli.
+ETIKET_ANONS_TEXTS = (
+    ("etiket", "Kavramsal ayrım: önbellek veriyi saklar, tampon ise aktarır."),
+    ("etiket", "Detaylı açıklama: model iki aşamada eğitildi."),
+    ("etiket", "Sezgisel açıklama: filtre gürültüyü ortalamayla bastırır."),
+    ("etiket", "**Kısa cevap:** Evet, hata oranı düştü."),
+    ("etiket", "Ana fikir şu: veri önce temizlenir."),
+    ("etiket", "Kısaca: gecikme 40 ms azaldı."),
+    ("etiket", "Başlangıç için kural şudur: paylaşılan dalda rebase yapmayın."),
+    ("etiket", "### Sezgisel açıklama\n\nFiltre gürültüyü bastırır."),
+    ("anons", "Merak etmeyin, kurulum çok kolay."),
+    ("anons", "Hayatınızı kolaylaştıracak bu özellikle tanışın."),
+    ("anons", "Sizin için en iyi çözümü hazırladık."),
+    ("anons", "Bu yazıda önbelleğin nasıl çalıştığını öğreneceksiniz."),
+    ("anons", "İşte tam da burada önbellek devreye giriyor."),
+    ("anons", "Hadi başlayalım."),
+)
+# Belgenin dayattığı alan etiketi, raporun Özet başlığı, sözlük ve sıradan cümle işaretlenmez.
+ETIKET_INNOCENT_TEXT = """### Özet
+
+Model iki koşulda sınandı ve hata %4'e indi.
+
+### Temel kavramlar
+
+Gecikme: isteğin gönderilmesiyle yanıtın gelmesi arasındaki süre.
+
+Girdi: CSV dosyası. Çıktı: bozuk satırların listesi.
+
+Uyarı: Cihazı açmadan önce fişi çekin.
+
+Konu: Nöbet düzeni
+
+Karar: Önbellek Redis ile kurulacak. Gerekçe: ekip Redis'i biliyor.
+
+Tablo 2: Koşullara göre hata oranı.
+
+Temel fark iki ölçümün zamanlamasındadır. Ekip yeni üyelerle cuma günü tanıştı. Kısaca anlatmak gerekirse yöntem iki aşamalıdır.
+
+---
+Not: kapsam dışı olduğundan değiştirilmedi.
+"""
+
+
 def self_test() -> None:
     for text in ("Bu eşsiz platform sektörü yeniden tanımlıyor.",
                  "Ürün dönüştürücü bir deneyim sunuyor."):
@@ -2174,7 +2271,15 @@ def self_test() -> None:
         if analyse(text)["netlik_olculeri"]["dongusel_tanim"]:  # type: ignore[index]
             raise SystemExit(f"Öz sınama: tanım olmayan cümle döngüsel tanım sayıldı (yanlış pozitif): {text!r}")
 
-    print("Stil denetimi öz sınaması geçti (netlik omurgası, yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj, konuşma sızıntısı, cümle sonu kuyruğu).")
+    for family, text in ETIKET_ANONS_TEXTS:
+        found = {h["category"]: h["level"] for h in analyse(text)["hits"]}  # type: ignore[union-attr]
+        if found.get(family) != "sert":
+            raise SystemExit(f"Öz sınama: {family} sert işaret üretmedi: {text!r} -> {found}")
+    stray = [h["text"] for h in analyse(ETIKET_INNOCENT_TEXT)["hits"] if h["category"] in ("etiket", "anons")]  # type: ignore[union-attr]
+    if stray:
+        raise SystemExit(f"Öz sınama: alan etiketi ya da sıradan cümle etiket/anons sayıldı (yanlış pozitif): {stray}")
+
+    print("Stil denetimi öz sınaması geçti (netlik omurgası, yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj, konuşma sızıntısı, cümle sonu kuyruğu, etiket ve anons).")
 
 
 # --------------------------------------------------------------------------- #

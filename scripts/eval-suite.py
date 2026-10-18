@@ -63,6 +63,8 @@ EXPECTATION_KEYS = {
     "sert işaret": ("", "hard_hits"),
     "konuşma sızıntısı": ("", "sizinti"),
     "cümle sonu kuyruğu": ("", "kuyruk"),
+    "etiketli cümle": ("", "etiket"),
+    "anons cümlesi": ("", "anons"),
     "cümle": ("", "sentences"),
     "sahip olmak": ("ceviri_kokusu", "sahip_olmak"),
     "varlık kalıbı": ("ceviri_kokusu", "varlik_kalibi"),

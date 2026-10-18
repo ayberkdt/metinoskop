@@ -19,7 +19,7 @@ Metinoskop'un öncelikli alanı bilimsel ve teknik metindir. Bu dosya, ana alan�
 
 Soyut ifade her zaman gereksiz değildir; yazarın değerlendirmesini ya da ikna amacını taşıyabilir.
 
-- Tanıtım metninde ikna amacını koru; hazır reklam kalıplarını daha özgül ve ölçülü bir söyleyişle değiştir.
+- Tanıtım metninde ikna amacını koru; hazır reklam kalıplarını daha özgül ve ölçülü bir söyleyişle değiştir. İkna somut olgu ve faydayla kurulur: okura seslenen anons (`Merak etmeyin`, `tanışın`, `Sizin için hazırladık`) ve etiketle açılan cümle (`Kısa cevap:`) bu türde de yazılmaz ([Retorik yapılar](retorik-yapilar.md#etiket-ve-anons)).
 - Bilgi verme amacı taşıyan bölümde olgu gibi sunulan kanıtsız fayda ve üstünlük iddiasını daralt, kaynağı varsa ona bağla ya da çıkar.
 - Kullanıcı "pazarlama dilini kaldır" ya da "nötrleştir" dediyse soyut fayda ve üstünlük iddialarını daha sıkı temizle.
 - Reklam cümlesini yalnızca daha sakin eş anlamlılarla yeniden kurma; cümlenin işlevini ve metindeki dayanağını değerlendir.

@@ -1,0 +1,15 @@
+### Komut
+
+`csvtara rapor.csv`
+
+Girdi: UTF-8 kodlamalı CSV dosyası.
+
+Çıktı: Bozuk satırların numarası ve hata türü.
+
+Uyarı: Araç dosyayı yerinde düzeltmez; düzeltilmiş kopya için `--duzelt` seçeneği gerekir.
+
+### Terimler
+
+Bozuk satır: sütun sayısı başlık satırınınkiyle eşleşmeyen satır.
+
+Kaçış hatası: tırnak içinde kapanmamış alan.

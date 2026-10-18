@@ -232,6 +232,9 @@ REQUIRED_FILES = (
     "evals/dar-kapsam-metin-disi-not.md",
     "evals/cumle-sonu-kuyrugu.md",
     "evals/zarf-fiil-korunur.md",
+    "evals/etiket-ve-anons.md",
+    "evals/pazarlama-anonsu.md",
+    "evals/alan-etiketi-korunur.md",
     "evals/yazma-kipi-notlardan-rapor.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
@@ -436,6 +439,9 @@ EVAL_FILES = (
     "evals/dar-kapsam-metin-disi-not.md",
     "evals/cumle-sonu-kuyrugu.md",
     "evals/zarf-fiil-korunur.md",
+    "evals/etiket-ve-anons.md",
+    "evals/pazarlama-anonsu.md",
+    "evals/alan-etiketi-korunur.md",
     "evals/yazma-kipi-notlardan-rapor.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
@@ -966,6 +972,7 @@ SHOULD_REMAIN_CASES = (
     "evals/dogal-baglayici-korunur.md",
     "evals/sizinti-sanilan-icerik-korunur.md",
     "evals/zarf-fiil-korunur.md",
+    "evals/alan-etiketi-korunur.md",
 )
 locked = []
 for relative_path in EVAL_FILES:
