@@ -33,6 +33,14 @@ Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (t
 | `tekduze-baglayicilar` | Her cümleyi `Ayrıca/Ancak` ile açan paragrafı ek kaynaklarıyla (`-ın katılımıyla`, `-masına rağmen`) kurmak; kaynakta olmayan nedenselliği `sayesinde` ile eklememek, planı sonuca bağlamamak |
 | `dogal-baglayici-korunur` | `-diğinde`, `ancak ... -ınca`, `-ken`, `bu yüzden` ile zaten doğal bağlanmış teknik metni bağlaçlara açmamak, çeşitlilik için değiştirmemek (yanlış pozitif) |
 
+**Yazma kipi ve insan ritmi** (`references/insan-ve-yapay-metin.md`): ajanın kullanıcı notlarından metin yazmasını ve AI–insan metni araştırmalarından gelen kuralları sınar. `cümle sonu kuyruğu` beklentisi `style-lint.py` `kuyruk` ailesine bağlanır.
+
+| Vaka | Sınanan davranış |
+|---|---|
+| `yazma-kipi-notlardan-rapor` | Madde notlarından yönetime gidecek düzyazı not yazmak; her olguyu ve sayıyı kullanmak, yazarın çekincesini korumak, kararı gelecek kipte bırakmak; liste kopyalamamak, değerlendirme ve konuşma izi eklememek |
+| `cumle-sonu-kuyrugu` | Virgülden sonra `-arak/-erek` ile biten cümleyi ve `, bu da …` ekini çözmek: önerme taşıyan kuyruğu ayrı cümle yapmak, ölçülmemiş değerlendirmeyi silmek, iki ölçümü tek özneye bağlamamak |
+| `zarf-fiil-korunur` | Yüklemden önce gelen doğal zarf-fiili (`alarak denetledi`, `kapatarak boşalttı`) kuyruk sanmamak (yanlış pozitif) |
+
 **Okura doğrudan metin:** metnin konuşmayı görmemiş son okura gittiğini; konuşma sızıntısının (konuşmaya gönderme, kullanıcıya teklif, çalışma süreci, düzenleme geçmişi) bilgisi kurtarılarak silindiğini, kullanıcıya söylenecek notun metnin dışında kaldığını sınar. `konuşma sızıntısı` beklentisi `style-lint.py` `sizinti` ailesine bağlanır.
 
 | Vaka | Sınanan davranış |

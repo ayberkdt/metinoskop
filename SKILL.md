@@ -1,11 +1,11 @@
 ---
 name: metinoskop
-description: Türkçe metni net ve doğal kılar; her önermeyi bir kez, doğru yerde ve kaynağın kesinliğiyle söyletir, olguları, sayıları, kanıt statüsünü ve yazarın tavrını korur. Omurgası ASD-STE100 yazım ilkelerinden uyarlanmıştır. Öncelikli alan bilimsel ve teknik metindir (makale, tez, rapor, README); Türkçeye çevrilmiş metin için de kullanılır. Metni konuşmayı görmemiş son okura göre kurar; ajanın konuşma ya da talimat üzerine yazdığı rapordaki konuşma izlerini temizler. Türkçe bir metin verilip "geliştir", "düzelt", "toparla", "akıcı yap", "AI slop gibi", "yapay duruyor", "netleştir", "sadeleştir", "çeviri gibi durmasın", "okura hazırla" dendiğinde kullan.
+description: AI ajanının Türkçe metni insan ritmiyle yazmasını ve düzenlemesini sağlar; her önerme bir kez, doğru yerde ve kaynağın kesinliğiyle söylenir, olgular, sayılar, kanıt statüsü ve yazarın tavrı korunur. Dayanağı ASD-STE100 yazım ilkeleri ve AI–insan metnini karşılaştıran araştırmalardır. Öncelikli alan bilimsel ve teknik metindir (makale, tez, rapor, README); Türkçeye çevrilmiş metin de düzenlenir. Metin konuşmayı görmemiş son okura gider. Ajan kullanıcı için Türkçe metin yazarken (rapor, özet, e-posta, belge) ya da Türkçe bir metin verilip "geliştir", "düzelt", "toparla", "akıcı yap", "AI slop gibi", "yapay duruyor", "netleştir", "sadeleştir", "çeviri gibi durmasın", "okura hazırla" dendiğinde kullan.
 ---
 
 # Metinoskop
 
-Türkçe metni net yap: okur her önermeyi bir kez, doğru yerde, kaynağın verdiği kesinlikte bulsun. Netlik kaynak sadakatinin, kanıt statüsünün ve kesinliğin önüne geçmez. Bu dosya karar noktalarını verir; katalog, örnek ve karşı örnekler **Referans yönlendirmesi** listesindeki dosyalardadır.
+Türkçe metni, yazarken de düzenlerken de, net ve insan ritmiyle kur: okur her önermeyi bir kez, doğru yerde, kaynağın verdiği kesinlikte bulsun. Netlik kaynak sadakatinin, kanıt statüsünün ve kesinliğin önüne geçmez. Bu dosya karar noktalarını verir; katalog, örnek ve karşı örnekler **Referans yönlendirmesi** listesindeki dosyalardadır.
 
 ## Kural önceliği
 
@@ -21,12 +21,13 @@ Alt sıradaki kural üst sıradakini bozmaz. Açık talep kapsamı, amacı ve ok
 
 ## Görevin sınırı
 
-- Mevcut metnin dilini, akışını ve gerekiyorsa yapısını düzenle; kullanıcı açıkça istemedikçe yeni bölüm ya da giriş üretme.
+**Yazma ve düzenleme.** Kurallar iki kipte aynıdır. **Yazma:** kullanıcı istek ve bilgi verir (not, veri, dosya, konuşma); kaynak bu bilgidir, metni sen kurarsın. Kuralları ilk taslakta uygula. Eksik bilgiyi uydurma, yer tutucu koyma; metnin dışında sor. **Düzenleme:** kaynak verilen metindir; kullanıcı istemedikçe yeni bölüm ya da giriş üretme.
+
 - Yeni olgu, tarih, sayı, alıntı, kaynak, özellik, sonuç, deneyim veya görüş üretme.
 - Kaynak dilden çeviri yapma; Türkçeye çevrilmiş metni düzenle.
 - Alıntıyı, kodu, URL'yi, dipnotu, kaynak işaretini, tablo hücresini ve Markdown yapısını koru. Başlık hiyerarşisini yalnızca yapısal düzenleme istendiğinde ya da derin düzeyde, kavramsal sınırlara göre değiştir.
 - Anlatıda olay sırasını, sahneyi, bakış açısını ve sonucu değiştirme.
-- AI dedektöründen geçme vaadi verme; metni "insanileştirmek" için hata, argo, rastgelelik ya da uzunluk gürültüsü üretme.
+- AI dedektöründen geçme vaadi verme; metni "insanileştirmek" için hata, argo, rastgelelik ya da uzunluk gürültüsü üretme. İnsan metnindeki çeşitlilik içerikten gelir.
 
 ## Okura doğrudan metin
 
@@ -42,7 +43,7 @@ Metin konuşmayı görmemiş son okura gider. Kullanıcıyla konuşma, talimat v
 
 Yazmadan önce sessizce belirle: **tür** (bilimsel, teknik, rapor, kurumsal, gündelik ya da kenar tür); **amaç** (bilgi, açıklama, talimat, ikna, kayıt); **okur** (uzman, genel okur, yeni başlayan; kullanıcı değil, metni okuyacak kişi); **yapısal ölçek** (yazarın paragraf ve bölüm ölçeği, dışarıdan dayatılmış yapı); **istenen değişiklik**; raporsa her bölümün **işlevi** (bağlam, yöntem, bulgu, yorum, sınırlılık, öneri). Okurun bilgi düzeyi hangi açıklamanın gerekli, hangisinin dolgu olduğunu belirler.
 
-**Kenar türler ayrı tutulur.** Hukuki metin, tanıtım ve pazarlama, deneme, köşe yazısı ve sosyal medya, kişisel yazışma, edebî metin ve üslup eşleme için ek kurallar [Kenar türler](references/kenar-turler.md) dosyasındadır. Metin bu türlerden biri değilse o dosyayı okuma ve oradaki istisnaları (hukuki kalıp, ikna amacı, yazara özgü imge) bilimsel ya da teknik metne taşıma. Bilimsel metindeki alıntılanmış yasa maddesi ya da formül alıntı kuralıyla korunur.
+**Kenar türler ayrı tutulur.** Hukuki metin, tanıtım ve pazarlama, deneme, köşe yazısı ve sosyal medya, kişisel yazışma, edebî metin ve üslup eşleme için ek kurallar [Kenar türler](references/kenar-turler.md) dosyasındadır. Metin bu türlerden biri değilse o dosyayı okuma ve oradaki istisnaları (hukuki kalıp, ikna amacı, yazara özgü imge) bilimsel ya da teknik metne taşıma.
 
 ## Kısa talep, tam iş
 
@@ -77,7 +78,7 @@ Yedi kural ASD-STE100 yazım kurallarından Türkçeye uyarlanmıştır; sözlü
 
 **3. Yalnızca gerekli bilgiyi yaz.** Her cümle yeni bir olgu, gerekli bir nitelendirme, açık olmayan bir ilişki, kaynağın desteklediği bir yorum, yorumu değiştiren bir sınırlılık ya da önceki bilgiyi birleştiren bir sentez taşır. Silme testi: cümle çıkınca önerme, akıl yürütme, kronoloji, yorum veya yazar tavrı değişiyor mu; değişmiyorsa cümle okurun çıkarım yükünü azaltıyor mu? İkisine de hayırsa sil.
 
-**4. Kısa ve doğrudan cümle.** Cümle bir ana önerme ya da bir ilişki taşır; talimatta bir cümle bir adımdır. İlgisiz önermeleri tek cümleye yığma, yapay olarak parçalanmış tek düşünceyi birleştir: ölçüt kavramsal birliktir. 25 sözcüğü aşan betimleyici, 20 sözcüğü aşan talimat cümlesi incelenir. Uzun biçimi kısa eşdeğeriyle değiştir (`bir değerlendirme yapılması gerekmektedir` → `değerlendirilmelidir`); yığılmış çerçeveyi, isim-fiil zincirini, üçten uzun ad ya da iyelik zincirini çöz. Cümle ögesi düşürüp telgraf diline inme.
+**4. Kısa ve doğrudan cümle.** Cümle bir ana önerme ya da bir ilişki taşır; talimatta bir cümle bir adımdır. İlgisiz önermeleri tek cümleye yığma, yapay olarak parçalanmış tek düşünceyi birleştir: ölçüt kavramsal birliktir. 25 sözcüğü aşan betimleyici, 20 sözcüğü aşan talimat cümlesi incelenir. LLM cümleleri orta uzunlukta toplanır: tek ilişkili uzun cümleyi bölme, ana bulguyu kısa cümleyle verebilirsin. Varsayılan yüklem çekimli fiildir, adlaştırma değil. Uzun biçimi kısa eşdeğeriyle değiştir (`bir değerlendirme yapılması gerekmektedir` → `değerlendirilmelidir`); yığılmış çerçeveyi, isim-fiil zincirini, üçten uzun ad ya da iyelik zincirini çöz. Cümle ögesi düşürüp telgraf diline inme.
 
 **5. Bir terim, bir anlam.** Bir kavrama bir ad ver ve onu kullan; aynı varlığı `yöntem`, `yaklaşım`, `yapı`, `sistem` arasında kaydırma, aynı sözcüğü iki anlamda kullanma. Kısaltmayı ilk geçtiği yerde aç. Sembol, birim, değişken ve bölüm numarasını değiştirme; kaynakta ayrı anlamlı iki terimi birleştirme; terimi tekrar olmasın diye eş anlamlıyla değiştirme.
 
@@ -91,31 +92,31 @@ Klişe sözcük içermeyen metin de her olgudan sonra önem cümlesi kuruyor ve 
 
 **Dolguyu başka dolguya çevirme.** Önem şişirmesi, retorik çerçeve, savunma, boş geçiş ya da kalıp sonuç çıkarılırken aynı işlev daha sakin eş anlamlıyla korunmaz: `çığır açan sonuç` → `oldukça önemli sonuç`, `bu noktada vurgulamak gerekir` → `burada belirtmek gerekir` yanlıştır. Cümlenin bağımsız bilgisi yoksa sil; varsa yalnızca o bilgiyi bırak.
 
-**Üretilmiş önem.** `... açısından önemlidir`, `kritik rol oynamaktadır`, `değerli içgörüler sunmaktadır`, `literatürdeki boşluğu doldurmaktadır` ve dayanaksız sağlamlık ya da genellenebilirlik iddiası kaynak gerekçelendirmiyorsa çıkar; somut sonucu bırak. Kaynak önemi dayanağıyla kuruyorsa o güçte koru. Kişiye ya da kuruma atfedilmiş değerlendirme (`Bu proje bizim için bir dönüm noktasıdır`) yazar tavrıdır. Her konuya yapışan imge ve formül (`kilit rol`, `temel taşı`, `X'ten çok daha fazlası`) ambalajdır: önermeyi aynı güçte yalın sözcüklerle bırak.
+**Üretilmiş önem.** `... açısından önemlidir`, `kritik rol oynamaktadır`, `değerli içgörüler sunmaktadır`, `literatürdeki boşluğu doldurmaktadır` ve dayanaksız sağlamlık ya da genellenebilirlik iddiası kaynak gerekçelendirmiyorsa çıkar; somut sonucu bırak. Kaynak önemi dayanağıyla kuruyorsa o güçte koru. Kişiye ya da kuruma atfedilmiş değerlendirme (`Bu proje bizim için bir dönüm noktasıdır`) yazar tavrıdır. Her konuya yapışan imge ve formül (`kilit rol`, `temel taşı`, `X'ten çok daha fazlası`) ambalajdır: önermeyi aynı güçte yalın sözcüklerle bırak. LLM'in fazla sözcükleri çoğunlukla biçem fiili ve sıfatıdır (`altını çizmek`, `vurgulamak`, `gözler önüne sermek`, `kapsamlı`): yerine gösterilen değeri ya da farkı yaz.
 
-**Savunmacı düzyazı.** `Burada amaç ... değildir`, `Bu tercih tesadüfi değildir`, `Bu bir eksiklik olarak görülmemelidir` için sor: okurun hangi somut yanlış anlamasını önlüyor? Cevap yoksa çıkar. Tercih değişince yorum, tekrarlanabilirlik ya da geçerlilik değişecekse yöntem gerekçesi meşrudur. Uzman okura olağan uygulamayı savunma; yeni başlayana yazılmış öğretici açıklamayı silme, okur belirsizse koru.
+**Savunmacı düzyazı.** `Burada amaç ... değildir`, `Bu tercih tesadüfi değildir` için sor: okurun hangi somut yanlış anlamasını önlüyor? Cevap yoksa çıkar. Tercih değişince yorum, tekrarlanabilirlik ya da geçerlilik değişecekse yöntem gerekçesi meşrudur. Uzman okura olağan uygulamayı savunma; yeni başlayana yazılmış öğretici açıklamayı silme, okur belirsizse koru.
 
-**Üretilmiş karşıtlık ve zorlama denge.** `X değil, Y`, `Asıl mesele X`, `yalnızca ... değil, aynı zamanda ...` karşıtlığını reddedilen taraf kaynakta yoksa kurma. `Güçlü olmakla birlikte bazı sınırlamaları da vardır` adlandırılmış sınırlılık yoksa çıkar. Kanıt düzeyi bildiren çekince (`çalışma gözlemseldir`) denge değil kesinlik bilgisidir.
+**Üretilmiş karşıtlık ve zorlama denge.** `X değil, Y`, `yalnızca ... değil, aynı zamanda ...` karşıtlığını reddedilen taraf kaynakta yoksa kurma. `Güçlü olmakla birlikte bazı sınırlamaları da vardır` adlandırılmış sınırlılık yoksa çıkar. Kanıt düzeyi bildiren çekince (`çalışma gözlemseldir`) denge değil kesinlik bilgisidir.
 
-**Okur yönlendirmesi ve sarmalayıcı.** `Bu bölümde ... ele alınacaktır`, `Şimdi ... bakalım`, `Bu noktaya daha sonra döneceğiz`, `Sonuç olarak bu bölüm X'in önemini ortaya koymaktadır` gibi duyuru, askı ve kapanışları sil; olguyu doğrudan söyle. Yol haritası uzun ve karmaşık belgede, bir kez meşrudur. Sık `yukarıda belirtildiği gibi` ve her bölümde düzeneği yeniden tanıtma yanlış bölünmeyi gösterir; birleştir ya da yeniden sırala. Tablo, şekil, ek ve kaynak göndermeleri korunur.
+**Okur yönlendirmesi ve sarmalayıcı.** `Bu bölümde ... ele alınacaktır`, `Şimdi ... bakalım`, `Bu noktaya daha sonra döneceğiz` gibi duyuru ve askıları sil; olguyu doğrudan söyle. Yol haritası uzun ve karmaşık belgede, bir kez meşrudur. Sık `yukarıda belirtildiği gibi` ve her bölümde düzeneği yeniden tanıtma yanlış bölünmeyi gösterir; birleştir ya da yeniden sırala. Tablo, şekil, ek ve kaynak göndermeleri korunur.
 
 **Kalıp giriş ve kalıp sonuç.** Giriş hunisini (geniş dünya → hızla değişen ortam → `giderek önem kazanıyor`) at; kaynaktaki somut nedenle başla. Sonuç sentez yapabilir, girişi ya da özeti yeniden anlatamaz. Kaynakta yoksa `gelecek çalışmalar` cümlesi ekleme.
 
 **Yapay gerilim.** `Ancak burada işler değişmektedir`, `İşin ilginç yanı`, `Daha da önemlisi` gibi momentum kalıplarını sil; gerçek karşıtlığı nicel olarak yaz (`Yöntem kuvvet hatasını düşürdü ama yedi günlük konum hatasını artırdı`). Yeni paragraf başlıyor diye `Bununla birlikte` ekleme.
 
-**Paragraf simetrisi.** Her paragrafın konu cümlesiyle açılıp mini sonuçla kapanması, eşit uzunluklar ve tekrarlayan "nokta → açıklama → sonuç" mimarisi yapaylık işaretidir. Uzunluğu rastgeleleştirme; bilgi yapısı belirlesin.
+**Paragraf simetrisi.** Her paragrafın konu cümlesiyle açılıp mini sonuçla kapanması, eşit uzunluklar ve tekrarlayan "nokta → açıklama → sonuç" mimarisi yapaylık işaretidir. Uzunluğu rastgeleleştirme; bilgi yapısı belirlesin. Her metni aynı açılışla, `İlk olarak … Son olarak` sırasıyla ve `Sonuç olarak` kapanışıyla kurma; ardışık cümleleri aynı söz dizimi kalıbıyla açıp kapama.
 
 ## Değişmezler: netlik kesinliği bozmaz
 
 Kısaltırken, birleştirirken ya da somutlaştırırken bu bölüm her netlik kuralının üstündedir.
 
-**Kaynak sadakati.** Önermeleri ayır: olgu veya ölçüm; amaç, plan veya vaat; görüş ya da değerlendirme; duygu veya tavır; belirsizlik ve çekince; tekrar ve dolgu. İlk beşinin anlamını ve kesinliğini koru, sonuncusunu yeniden üretme. Hedefi sonuç, değerlendirmeyi ölçüm, kronolojiyi nedensellik gibi yazma. Karşılaştırma zemini yoksa `daha`, ölçüt yoksa `en` ekleme. Olumsuzluğu, istisnayı, koşulu ve nicelik sınırını koru: `bazı` → `tüm`, `en az` → kesin sayı, `yalnızca` → genel kapsam olmaz; `henüz`, `artık`, `genellikle` dolgu değildir. Kaynaktaki sayılardan oran, fark ya da ortalama türetme.
+**Kaynak sadakati.** Önermeleri ayır: olgu veya ölçüm; amaç, plan veya vaat; görüş ya da değerlendirme; duygu veya tavır; belirsizlik ve çekince; tekrar ve dolgu. İlk beşinin anlamını ve kesinliğini koru, sonuncusunu yeniden üretme. Hedefi sonuç, değerlendirmeyi ölçüm, kronolojiyi nedensellik gibi yazma. Karşılaştırma zemini yoksa `daha`, ölçüt yoksa `en` ekleme. Olumsuzluğu, istisnayı, koşulu ve nicelik sınırını koru: `bazı` → `tüm`, `en az` → kesin sayı, `yalnızca` → genel kapsam olmaz; `henüz`, `artık`, `genellikle` dolgu değildir. Kaynaktaki sayılardan oran, fark ya da ortalama türetme. Olumsuz bulguyu ve eleştiriyi yumuşatma (`başarısız oldu` → `beklenen düzeye ulaşamadı`); LLM tonu nötre ve olumluya çeker.
 
 **Belirsizlik ve yorum seçimi.** Birden fazla makul yoruma açık ifadede anlamı kendin seçme. Belirsizlik korunarak düzenlenebiliyorsa koru, soru sorma. Düzenleme yorum seçmeyi gerektiriyorsa o yeri kaynaktaki hâliyle bırak, metni ver ve metnin dışında tek soru sor.
 
 **Bilginin kaynağı ve statüsü.** Her temel önermenin statüsünü belirle: gözlem, ölçüm, aktarım, çıkarım, tahmin, plan, varsayım, yorum. `Gözlendi`, `bildirildi`, `düşündürüyor`, `ölçüldü` farklı statü kodlar; düzenlenmiş cümle aynı düzeyde kalır. Ölçüm, ilişki, çıkarım ve nedensellik ayrı düzeylerdir: rastgele atanmamış iki grup arasındaki fark `etkiler` olmaz. Atıflı iddia (`rapora göre`, `yazarlar öne sürmektedir`) atıflı kalır. Şişmiş iddiayı indirirken yerine olumsuz iddia ya da yeni çekince yazma.
 
-**Çekince kanıttır.** `Olabilir`, `görünmektedir`, `kısmen`, `bu verilerle sınırlı olarak` belirsizlik ya da kapsam kodluyorsa korunur. `Açıkça`, `tartışmasız`, `kanıtlamaktadır` için hangi kanıtın bunu hak ettiğini sor. Kısalık için iddiayı güçlendirme, kontrollü deneyle kurulmuş iddiayı zayıflatma. Kiplik yığınında (`muhtemelen ... olabileceği düşünülebilir`) gereksiz işareti kaldır.
+**Çekince kanıttır.** `Olabilir`, `görünmektedir`, `kısmen`, `bu verilerle sınırlı olarak` belirsizlik ya da kapsam kodluyorsa korunur. LLM metni insan metninden daha az çekince taşır; çekinceyi AI izi sanıp silme. `Açıkça`, `tartışmasız`, `kanıtlamaktadır` için hangi kanıtın bunu hak ettiğini sor. Kısalık için iddiayı güçlendirme, kontrollü deneyle kurulmuş iddiayı zayıflatma. Kiplik yığınında (`muhtemelen ... olabileceği düşünülebilir`) gereksiz işareti kaldır.
 
 **Statü zinciri ilerlemez.** Bulgu yorum, yorum öneri, öneri karar, karar uygulama, beklenti taahhüt olmaz. İddia yeni kanıt olmadan sonraki bölümde güçlenmez. `Gözlenmedi` `yoktur`, `sınanmadı` `geçersizdir` olmaz.
 
@@ -132,7 +133,9 @@ Kısaltırken, birleştirirken ya da somutlaştırırken bu bölüm her netlik k
 
 Netlik İngilizce iskeletle kurulmaz; hedef Türkçe düşünülerek yazılmış düzyazıdır.
 
-**Çeviri kokusunu ilişkide ara.** Bilgi yapısı, özne kullanımı, yan cümle mimarisi ve bağlaç seçimi İngilizceden kalmışsa metin çeviri gibi okunur. İşaretler: ardışık cümlelerde yinelenen açık özne; `bu sonuç`, `bu durum` diye yeniden öznelenen önerme; `ve`, `ancak` ile dizilmiş çekimli cümleler; her cümle başında söylem belirteci; `sahip olmak`, `bulunmaktadır`; `açısından`, `kapsamında` yığını; `olan ... olan` zinciri; her adın önünde `bir`. Sözcükleri yeniden çevirme; ilişkiyi bul ve Türkçenin kaynaklarıyla kur (özne düşürme, eksilti, `-ip`, `-ince`, `-dığından`, `-ken`, `-erek`, önden niteleyen ortaç, hâl eki, `de/da`). Şüpheli cümle için yapısal olarak farklı iki seçenek üret, anlamı en iyi koruyanı seç. Özne iki aktör arasında belirsizlik doğuracaksa açık kalır.
+**Çeviri kokusunu ilişkide ara.** Bilgi yapısı, özne kullanımı, yan cümle mimarisi ve bağlaç seçimi İngilizceden kalmışsa metin çeviri gibi okunur. İşaretler: ardışık cümlelerde yinelenen açık özne; `bu sonuç`, `bu durum` diye yeniden öznelenen önerme; `ve`, `ancak` ile dizilmiş çekimli cümleler; her cümle başında söylem belirteci; `sahip olmak`, `bulunmaktadır`; `açısından`, `kapsamında` yığını; `olan ... olan` zinciri; her adın önünde `bir`. Sözcükleri yeniden çevirme; ilişkiyi bul ve Türkçenin kaynaklarıyla kur (özne düşürme, eksilti, zarf-fiil, ortaç, hâl eki). Şüpheli cümle için yapısal olarak farklı iki seçenek üret, anlamı en iyi koruyanı seç. Özne iki aktör arasında belirsizlik doğuracaksa açık kalır.
+
+**Cümle sonu kuyruğu.** Virgülle cümle sonuna eklenen `-arak/-erek` öbeği (`yanıt süresini 240 ms'ye indirdi, kullanıcı deneyimini iyileştirerek.`) ve `, bu da … sağlamaktadır` eki İngilizce `-ing` ve `, which` iskeletidir ve LLM metninin en sık izlerindendir. Kuyruk yeni önerme taşıyorsa öznesi ve yüklemiyle ayrı cümle yap; kaynakta olmayan değerlendirme taşıyorsa sil. Yüklemden önce gelen zarf-fiil (`ölçümleri iki kez alarak denetledi`) doğaldır.
 
 **Aşırı Türkçeleştirme.** `İlişkili`yi `neden olur`, `olumsuz etki`yi `bozuldu` yapma. Alan terimini (`parametre`, `pipeline`, `baseline`) öz Türkçe hevesiyle değiştirme. Tek yükleme asılmış dört beş fiilimsi, arkaik sözcük, zorlama deyim ve gereksiz devriklik aşırı düzeltmedir. Akademik metin adlaştırmaya ve edilgenliğe, teknik belge güvenlik için açık özne yinelemesine hak sahibidir. Peş peşe `-maktadır` yüklemlerini sadeleştir ama sırf çeşitlilik için kip değiştirme; teknik işlemi adlandıran isim-fiili koru.
 
@@ -178,25 +181,26 @@ Talep kapsamını aşma: "tiyatral ifadeleri çıkar" metni baştan yazma izni d
 
 **3. Kaynakla karşılaştır.** Son metindeki her sayı, tarih, sonuç, nedensellik, karşılaştırma, olumsuzluk, koşul, istisna, nicelik sınırı, terim ve kişisel ayrıntının kaynakta karşılığını bul; kaynağı, statüsü ve kesinliği aynı mı? Karşılığı yoksa çıkar ya da kaynağın düzeyine döndür. Çıktıda kaynakta olmayan olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk ya da gelecek işareti belirdiyse dayanağını bul; yoksa kaldır.
 
-**4. Netlik denetimi.** Metni konuşmayı görmemiş okur gibi baştan oku ve düzenlemenin kendi ürettiği hataları ara: eş anlamlıyla geri gelen dolgu; kayan statü, kesinlik ya da kip; bağlayıcıyla eklenmiş ilişki; bozulan devir, özne ya da gönderge; silinmiş çekince, sınırlılık, öğretici açıklama ya da gezinme başlığı; kalan sızıntı ya da metne konmuş not; istenenden fazla değişiklik.
+**4. Netlik denetimi.** Metni konuşmayı görmemiş okur gibi baştan oku ve yazımın ya da düzenlemenin ürettiği hataları ara: eş anlamlıyla geri gelen dolgu; kayan statü, kesinlik ya da kip; bağlayıcıyla eklenmiş ilişki; bozulan devir, özne ya da gönderge; silinmiş çekince, sınırlılık, öğretici açıklama ya da gezinme başlığı; kalan sızıntı ya da metne konmuş not; cümle sonu kuyruğu, biçem fiili ya da yumuşatılmış olumsuz bulgu; istenenden fazla değişiklik.
 
 ## Referans yönlendirmesi
 
 - STE100 kaynağı, eşikler ve örnekler: [Netlik omurgası](references/netlik-omurgasi.md).
-- Önem cümlesi, savunma, döngüsel tekrar, yol haritası, kalıp giriş ve sonuç: [Retorik yapılar](references/retorik-yapilar.md).
-- Çok başlık, kısa paragraf, çapraz gönderme, dağılmış konu, korunacak bölümler: [Yapısal bütünlük](references/yapisal-butunluk.md).
+- Önem cümlesi, savunma, döngüsel tekrar, kalıp giriş ve sonuç: [Retorik yapılar](references/retorik-yapilar.md).
+- Başlık, paragraf ve bölüm sınırları: [Yapısal bütünlük](references/yapisal-butunluk.md).
 - Kopuk paragraf, belirsiz gönderge, takılan akış: [Akıcı Türkçe](references/akicilik.md).
 - Tekdüze bağlaç, etiketle kurulan ilişki, yakın tekrar: [Türkçenin bağlayıcı kaynakları](references/turkce-baglayicilar.md).
 - Klişe, yapay ritim, gereksiz resmiyet: [Türkçe örüntüler](references/turkce-oruntuler.md).
 - Çeviri gibi okunan cümle: [Türkçe ritim ve çeviri kokusu](references/turkce-ritim-ve-ceviri-kokusu.md).
-- Aktarım, çıkarım, çekince, edilgen çatı, öneri–karar–uygulama: [Kanıt ve kesinlik](references/kanit-ve-kesinlik.md).
-- Tamamlanmış işin geniş zamanla anlatılması ya da geçmişe zorlama: [Zamansal ankraj ve rapor kipi](references/zamansal-ankraj-ve-rapor-kipi.md).
+- Kanıt statüsü, çekince, edilgen çatı: [Kanıt ve kesinlik](references/kanit-ve-kesinlik.md).
+- Zaman ve kip: [Zamansal ankraj ve rapor kipi](references/zamansal-ankraj-ve-rapor-kipi.md).
 - Tuhaf eşdizim, kalkı, terim kararsızlığı: [Sözcük birleşimleri](references/sozcuk-birlesimleri.md).
-- Olgu yığını, desteksiz bağlaç, kapsam ya da olumsuzluk kayması: [Metinsel tutarlılık](references/metinsel-tutarlilik.md).
+- Olgu yığını, desteksiz bağlaç, kapsam kayması: [Metinsel tutarlılık](references/metinsel-tutarlilik.md).
 - Rapor, inceleme notu, yönetici özeti: [Rapor yazımı](references/rapor-yazimi.md).
 - İstenen kavramsal giriş: [Kavramsal girişler](references/kavramsal-girisler.md).
+- AI ve insan metni farkları, araştırma kaynakları, yanılgılar: [İnsan ve yapay metin](references/insan-ve-yapay-metin.md).
 - Konuşma sızıntısı, kullanıcıya teklif, metin dışı not: [Okura doğrudan metin](references/okura-dogrudan-metin.md).
-- Hukuki, tanıtım, deneme, sosyal medya, kişisel ya da edebî metin, üslup eşleme: [Kenar türler](references/kenar-turler.md).
+- Hukuki, tanıtım, deneme, sosyal medya, kişisel, edebî metin, üslup eşleme: [Kenar türler](references/kenar-turler.md).
 
 ## Çıktı biçimi
 
@@ -212,7 +216,7 @@ Yalnızca son metni ver; `İşte düzenlenmiş metin` girişi, kapanış teklifi
 
 > Ölçüm sistemi 12 referans ağırlıkla kalibre edildi; doğrusallık hatası %0,8'den %0,2'ye indi.
 
-Birinci cümle terimi kendisiyle tanımlıyordu (kural 2). Son üç cümle aynı ölçümü önem, açımlama ve mini sonuç olarak yeniden söylüyordu (kural 2 ve 3); `açıkça ortaya koymaktadır` ve `artırmaktadır` tek ölçümü genel nedensel yasaya çeviriyordu (değişmezler). Ölçüm ve sayılar korundu.
+Birinci cümle terimi kendisiyle tanımlıyordu (kural 2). Son üç cümle aynı ölçümü önem, açımlama ve mini sonuç olarak yeniden söylüyordu (kural 2 ve 3); `açıkça ortaya koymaktadır` ve `artırmaktadır` tek ölçümü genel nedensel yasaya çeviriyordu (değişmezler).
 
 **Önce**
 

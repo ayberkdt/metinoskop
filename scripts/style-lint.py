@@ -376,6 +376,18 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         ),
     },
     {
+        # İngilizce "-ing" / ", which" kuyruğunun Türkçe izi (Reinhart 2025: LLM metninde ortaç yan cümlesi
+        # insanınkinin 2-5 katı). Türkçe yüklem sonda olduğundan virgülden sonra -arak/-erek ile biten cümle
+        # doğal düzenin dışındadır; yüklemden önceki zarf-fiil ("alarak denetledi") işaretlenmez.
+        "key": "kuyruk",
+        "label": "Cümle sonu kuyruğu",
+        "level": "bağlam",
+        "patterns": (
+            r",\s+(?:\S+\s+){0,8}(?!(?:toprak|yaprak|bayrak|gerek|merak|mübarek|kürek|börek)\b)\S+(?:[ae]rak|[ae]rek)[.!?…]*$",
+            r",\s+bu da\b",
+        ),
+    },
+    {
         "key": "reklam",
         "label": "Reklam dili",
         "level": "bağlam",
@@ -1420,6 +1432,7 @@ def analyse(text: str, son_okur: bool = False) -> dict[str, object]:
         "per_category": per_category,
         "hard_hits": sum(1 for h in hits if h["level"] == "sert"),
         "sizinti": per_category.get("sizinti", 0),
+        "kuyruk": per_category.get("kuyruk", 0),
         "son_okur": son_okur,
         "density_per_100": density,
         "structure_summary": structure_summary(doc, hits),
@@ -1973,6 +1986,16 @@ def self_test() -> None:
         if any(h["category"] == "anlam_kaymasi_adayi" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
             raise SystemExit(f"Öz sınama: yönü açık cümle anlam kayması adayı sayıldı (yanlış pozitif): {text!r}")
 
+    for text in ("Sistem yanıt süresini 800 ms'den 240 ms'ye indirdi, kullanıcı deneyimini önemli ölçüde iyileştirerek.",
+                 "Model hatayı %12 azalttı, bu da yöntemin güvenilirliğini artırmaktadır."):
+        if not any(h["category"] == "kuyruk" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: cümle sonu kuyruğu işaretlenmedi: {text!r}")
+    for text in ("Ekip, ölçümleri iki kez alarak tutarlılığı denetledi.",
+                 "Bu iş için zaman, emek ve sabır gerek.",
+                 "Pompa, basınç düşerken çalışmaya devam etti."):
+        if any(h["category"] == "kuyruk" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: doğal zarf-fiil ya da ad cümle sonu kuyruğu sayıldı (yanlış pozitif): {text!r}")
+
     social = analyse(SOCIAL_TEXT)
     expected_social = {"duyuru", "gerilim", "savunma", "sohbet", "karsitlik", "reklam", "mecaz", "sus"}
     missing = expected_social - set(social["per_category"])  # type: ignore[arg-type]
@@ -2151,7 +2174,7 @@ def self_test() -> None:
         if analyse(text)["netlik_olculeri"]["dongusel_tanim"]:  # type: ignore[index]
             raise SystemExit(f"Öz sınama: tanım olmayan cümle döngüsel tanım sayıldı (yanlış pozitif): {text!r}")
 
-    print("Stil denetimi öz sınaması geçti (netlik omurgası, yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj, konuşma sızıntısı).")
+    print("Stil denetimi öz sınaması geçti (netlik omurgası, yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj, konuşma sızıntısı, cümle sonu kuyruğu).")
 
 
 # --------------------------------------------------------------------------- #

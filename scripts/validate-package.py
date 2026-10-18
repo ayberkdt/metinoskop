@@ -36,6 +36,7 @@ REQUIRED_FILES = (
     "references/kenar-turler.md",
     "references/turkce-baglayicilar.md",
     "references/okura-dogrudan-metin.md",
+    "references/insan-ve-yapay-metin.md",
     "evals/README.md",
     "evals/akademik.md",
     "evals/belirsizlik.md",
@@ -229,6 +230,9 @@ REQUIRED_FILES = (
     "evals/sizinti-sanilan-icerik-korunur.md",
     "evals/talep-bilgisi-metne-gecer.md",
     "evals/dar-kapsam-metin-disi-not.md",
+    "evals/cumle-sonu-kuyrugu.md",
+    "evals/zarf-fiil-korunur.md",
+    "evals/yazma-kipi-notlardan-rapor.md",
     "scripts/eval-runner.py",
     "scripts/eval-suite.py",
     "scripts/style-lint.py",
@@ -430,6 +434,9 @@ EVAL_FILES = (
     "evals/sizinti-sanilan-icerik-korunur.md",
     "evals/talep-bilgisi-metne-gecer.md",
     "evals/dar-kapsam-metin-disi-not.md",
+    "evals/cumle-sonu-kuyrugu.md",
+    "evals/zarf-fiil-korunur.md",
+    "evals/yazma-kipi-notlardan-rapor.md",
 )
 TEXT_SUFFIXES = (".md", ".yaml", ".yml")
 
@@ -562,6 +569,9 @@ for heading in (
     "**Bilgiyi kurtar, ambalajı at.**",
     "**Not metnin dışına yazılır.**",
     "references/okura-dogrudan-metin.md",
+    "**Cümle sonu kuyruğu.**",
+    "**Yazma ve düzenleme.**",
+    "references/insan-ve-yapay-metin.md",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
@@ -955,6 +965,7 @@ SHOULD_REMAIN_CASES = (
     "evals/anlam-kalkisi-korunur.md",
     "evals/dogal-baglayici-korunur.md",
     "evals/sizinti-sanilan-icerik-korunur.md",
+    "evals/zarf-fiil-korunur.md",
 )
 locked = []
 for relative_path in EVAL_FILES:

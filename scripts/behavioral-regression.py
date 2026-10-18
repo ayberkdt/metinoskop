@@ -51,7 +51,7 @@ REFERENCE_ORDER = (
     "netlik-omurgasi.md", "turkce-oruntuler.md", "retorik-yapilar.md", "yapisal-butunluk.md", "akicilik.md",
     "turkce-ritim-ve-ceviri-kokusu.md", "turkce-baglayicilar.md", "kanit-ve-kesinlik.md", "sozcuk-birlesimleri.md",
     "metinsel-tutarlilik.md", "zamansal-ankraj-ve-rapor-kipi.md", "rapor-yazimi.md",
-    "kavramsal-girisler.md", "okura-dogrudan-metin.md",
+    "kavramsal-girisler.md", "okura-dogrudan-metin.md", "insan-ve-yapay-metin.md",
     # Genre extras last: SKILL.md tells the model to read them only for those genres.
     "kenar-turler.md",
 )

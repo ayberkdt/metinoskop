@@ -1,0 +1,1 @@
+Yeni önbellek katmanı ortalama yanıt süresini 800 ms'den 240 ms'ye indirdi. Hata oranı %2,1'den %1,4'e düştü. Bellek kullanımı ise 1,2 GB'tan 1,8 GB'a çıktı ve sunucu maliyetini artırdı. Ekip, ölçümleri üç gün boyunca tekrarlayarak sonuçları doğruladı.
