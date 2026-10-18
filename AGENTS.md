@@ -6,9 +6,9 @@ Bu depo `metinoskop` agent skill'ini içerir: Türkçe metni kaynak sadakatini, 
 
 - `SKILL.md`: her çağrıda yüklenen sözleşme; yalnızca karar noktaları.
 - `references/`: gerektiğinde okunan kataloglar. Hangi belirtide hangisinin okunacağı `SKILL.md` › Referans yönlendirmesi'ndedir; `kenar-turler.md` yalnızca o türlerde okunur.
-- `evals/`: davranış vakaları (`## Kaynak`, `## Talep`, `## Korunması gerekenler`, `## Kaçınılması gerekenler`, isteğe bağlı `## Yapısal beklenti` ve `## Serbest değişmezler`), `evals/outputs/` altındaki gold çıktılar ve 15–36 vakalık canlı regresyon seti `critical-cases.txt`. Gruplar ve vaka adları `evals/README.md`'dedir.
+- `evals/`: davranış vakaları (`## Kaynak`, `## Talep`, `## Korunması gerekenler`, `## Kaçınılması gerekenler`, isteğe bağlı `## Yapısal beklenti`, `## Serbest değişmezler` ve `## Serbest eklemeler`), `evals/outputs/` altındaki gold çıktılar ve 15–36 vakalık canlı regresyon seti `critical-cases.txt`. Gruplar ve vaka adları `evals/README.md`'dedir.
 - `scripts/validate-package.py`: paket yapısı, `SKILL.md` bütçesi ve başlık pinleri, eval bölümleri ve işaretleri, lisans.
-- `scripts/eval-runner.py`: çıktıda kaynak değişmezlerini (sayı, tarih, kod, kapsam sözcüğü) denetler.
+- `scripts/eval-runner.py`: çıktıda kaynak değişmezlerinin (sayı, tarih, kod, kapsam sözcüğü) korunduğunu ve kaynakta olmayan epistemik işaretin (olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk, gelecek) eklenmediğini denetler.
 - `scripts/style-lint.py`: retorik, yapı, netlik, çeviri kokusu, söylem ve konuşma sızıntısı bulgularını inceleme işareti olarak raporlar; `--source` yeni eklenen kalıpları sert/bağlamsal ayırır, `--son-okur` sızıntı adaylarını sert sayar.
 - `scripts/eval-suite.py`: gold çıktıları değişmez, sert kalıp ve yapısal beklenti açısından denetler (CI: `--require-all`).
 - `scripts/behavioral-regression.py`: kritik vakaları gerçek modelde taze üretip deterministik denetimden ve model hakeminden geçirir; `.github/workflows/behavioral.yml` haftalık çalıştırır.
@@ -50,7 +50,7 @@ Her örnekte: "sonra" sürümündeki her önermenin "önce"de karşılığı var
 
 ### Eval'ler
 
-- Her vakanın `evals/outputs/<vaka>.txt` gold çıktısı vardır. Gold bir sözleşmedir: kaydetmeden önce her iddianın statüsünü kaynakla karşılaştırın; rastgele atanmamış grup farkını nedensel fiille yazan, şişmiş iddiayı indirirken olumsuz iddia ya da çekince ekleyen, statüyü (süreç → karar, öneri → uygulama) kaydıran gold kabul edilmez. Kaynaktaki dolgunun silinmesi değişmez denetimine takılırsa `## Serbest değişmezler`de gerekçesiyle muaf tutun; çıktıyı bükmeyin.
+- Her vakanın `evals/outputs/<vaka>.txt` gold çıktısı vardır. Gold bir sözleşmedir: kaydetmeden önce her iddianın statüsünü kaynakla karşılaştırın; rastgele atanmamış grup farkını nedensel fiille yazan, şişmiş iddiayı indirirken olumsuz iddia ya da çekince ekleyen, statüyü (süreç → karar, öneri → uygulama) kaydıran gold kabul edilmez. Kaynaktaki dolgunun silinmesi değişmez denetimine takılırsa `## Serbest değişmezler`de, gerekçeli bir epistemik ekleme (kalkı düzeltmesi, planın gelecek kipe taşınması) eklenen işaret denetimine takılırsa `## Serbest eklemeler`de gerekçesiyle muaf tutun; çıktıyı bükmeyin, muafiyeti gerekçesiz yazmayın. Eklenen işaret ailesi genişletilirken bütün gold'larda yeni bulgu sayısı ölçülür ve aile içi dönüşüm (`Sonuç olarak` → `Dolayısıyla`) ekleme sayılmaz.
 - Korunur vakasının gold'u kaynağın kendisidir ve doğrulayıcının `SHOULD_REMAIN_CASES` listesinde durur; orada kesin cümle sayısı meşrudur. Dönüşüm vakasında `- cümle: <= N` yazın; vakanın talebi yapı dayatıyorsa `- cümle: = N`.
 - Davranış değişince ilgili grubun dönüşüm ve korunur vakalarını birlikte güncelleyin; tek yönlü ekleme sistemi tek yöne kaydırır.
 - Yanlış pozitif bekçileri; sezgiseli sıkılaştırırken bozmayın: `periyodik-takvim-genis-zaman-korunur` (yinelenen takvim kuralı iki zamansal sinyali de yakar ve doğrudur), `sizinti-sanilan-icerik-korunur`, `iyi-metin`, `anlam-kalkisi-korunur`, `dogal-baglayici-korunur`, `degisiklik-butcesi`.

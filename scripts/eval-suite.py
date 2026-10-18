@@ -42,7 +42,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 EVALS = ROOT / "evals"
 OUTPUTS = EVALS / "outputs"
-SECTION_HEADINGS = ("Kaynak", "Talep", "Korunması gerekenler", "Kaçınılması gerekenler", "Yapısal beklenti", "Serbest değişmezler")
+SECTION_HEADINGS = ("Kaynak", "Talep", "Korunması gerekenler", "Kaçınılması gerekenler", "Yapısal beklenti", "Serbest değişmezler", "Serbest eklemeler")
 EXPECTATION_RE = re.compile(r"^-\s*(?P<key>[^:]+?)\s*:\s*(?P<op><=|>=|==|=|<|>)?\s*(?P<value>-?\d+(?:[.,]\d+)?)\s*$")
 EXPECTATION_KEYS = {
     "başlık": ("structure_summary", "headings"),
@@ -177,6 +177,8 @@ def evaluate_case(case_path: Path, output_path: Path) -> dict[str, object]:
     problems: list[str] = []
     for item in invariants["missing"]:
         problems.append(f"eksik {item['category']}: {' | '.join(item['alternatives'])}")
+    for item in invariants.get("added", []):
+        problems.append(f"eklenen {item['label']}: {item['source']} → {item['output']} «{', '.join(item['examples'])}»")
     for item in comparison["introduced_hard"]:
         problems.append(f"yeni sert kalıp: {item['label']} «{item['example']}»")
     problems.extend(failed_expectations)

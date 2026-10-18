@@ -14,7 +14,7 @@ from pathlib import Path
 
 SECTION_PATTERN = (
     r"(?ms)^## {heading}\s*\r?\n(.*?)"
-    r"(?=^## (?:Kaynak|Talep|Korunması gerekenler|Kaçınılması gerekenler|Yapısal beklenti|Serbest değişmezler)\s*$|\Z)"
+    r"(?=^## (?:Kaynak|Talep|Korunması gerekenler|Kaçınılması gerekenler|Yapısal beklenti|Serbest değişmezler|Serbest eklemeler)\s*$|\Z)"
 )
 HEADING_LINE_RE = re.compile(r"(?m)^#{1,6}[ \t].*$")
 URL_RE = re.compile(r"https?://[^\s)>\]]+")
@@ -63,6 +63,35 @@ MARKER_GROUPS = (
     ("kesinlik", "savun", ("savun",)),
     ("kesinlik", "olabilir", ("olabilir", "mümkün", "ihtimal")),
 )
+
+# Epistemic markers an edit must not ADD. Preservation checks above catch a
+# number or a scope word that disappears; they pass an output that keeps every
+# number but writes a new negative claim, hedge, causal verb or commitment
+# into a deflated sentence. Families group interchangeable forms, so turning
+# "Sonuç olarak" into "-dığından" or "Bu nedenle" is not an addition.
+ADDED_MARKER_FAMILIES = (
+    ("olumsuzluk", "olumsuz iddia",
+     r"\bdeğil\w*|\byok(?:tur|tu|muş)?\b|\bhiç\w*|\b\w{2,}m[ae](?:d[ıi](?!r)\w*|m[ıi]ş\w*|z(?:lar|ler|dı|di)?\b"
+     r"|makta\w*|mekte\w*|yacak\w*|yecek\w*|yabil\w*|yebil\w*)|\b\w{2,}m[ıiuü]yor\w*"),
+    ("cekince", "çekince ya da olasılık",
+     r"\bolabil\w*|\bolası\b|\bmuhtemel\w*|\bbelki\b|\bgörün(?:mektedir|üyor|ür)\b|\bdüşündür\w*|\bsanıl\w*"
+     r"|\btahmin edil\w*|\bişaret e\w*|\b\w+[ae]bil(?:ir|ece[kğ]|mekte)\w*"),
+    ("nedensellik", "nedensellik ya da sonuç bağı",
+     r"\bneden ol\w*|\byol aç\w*|\betkile\w*|\bsayesinde|\bbu sayede|\byüzünden|\bdolayı\w*|\bnedeniyle"
+     r"|\bbu nedenle|\bbu yüzden|\bsonuç olarak|\bsonucunda|\bkaynaklan\w*|\b\w+[dt][ıiuü]ğ[ıiuü]ndan\b"),
+    ("pekistirici", "pekiştirici",
+     r"\baçıkça\b|\bkesin(?:likle)?\b|\bkanıtla\w*|\btartışmasız|\bkuşkusuz|\bşüphesiz"),
+    ("karsilastirma", "karşılaştırma ya da üstünlük",
+     r"\bdaha\b|\ben\b|\bkıyasla|\boranla|\bzamankinden"),
+    ("tumel", "tümel nicelik",
+     r"\btüm\w*|\bbütün\w*|\bher\b|\bhepsi\w*|\btamamı\w*|\btamamen|\bdaima"),
+    ("zorunluluk", "zorunluluk",
+     r"\b\w+m[ae]l[ıi](?:d[ıi]r|y[ıi]z)?(?=\s*[.!?;:,]|\s*$)|\b\w+m[ae]l[ıi]d[ıi]r\w*|\bgerek\w*|\bzorunlu\w*"),
+    ("gelecek", "gelecek ya da taahhüt",
+     r"\b\w+[ae]c[ae]k(?:t[ıi]r|lar|ler)?(?=\s*[.!?;:,]|\s*$)"),
+)
+ADDED_MARKER_RE = tuple((key, label, re.compile(pattern, re.MULTILINE)) for key, label, pattern in ADDED_MARKER_FAMILIES)
+CODE_SPAN_RE = re.compile(r"`[^`\n]*`")
 
 
 @dataclass(frozen=True)
@@ -164,6 +193,44 @@ def free_invariants(case_text: str) -> set[str]:
     return freed
 
 
+def tr_fold(text: str) -> str:
+    return CODE_SPAN_RE.sub(" ", normalize(text).replace("I", "ı").replace("İ", "i").lower())
+
+
+def marker_hits(text: str) -> dict[str, list[str]]:
+    folded = tr_fold(text)
+    return {key: pattern.findall(folded) for key, _, pattern in ADDED_MARKER_RE}
+
+
+def free_additions(case_text: str) -> set[str]:
+    """Families a case allows the output to add, listed under
+    ``## Serbest eklemeler`` as ``- <aile> — <gerekçe>`` lines."""
+    try:
+        block = section(case_text, "Serbest eklemeler")
+    except ValueError:
+        return set()
+    allowed: set[str] = set()
+    for line in block.splitlines():
+        line = line.strip()
+        if line.startswith("-"):
+            family = re.split(r"\s+[—–-]\s+", line[1:].strip(), maxsplit=1)[0].strip().strip("`")
+            if family:
+                allowed.add(family.casefold())
+    return allowed
+
+
+def added_markers(source: str, output: str, allowed: set[str] = frozenset()) -> list[dict[str, object]]:
+    before, after = marker_hits(source), marker_hits(output)
+    added: list[dict[str, object]] = []
+    for key, label, _ in ADDED_MARKER_RE:
+        extra = len(after[key]) - len(before[key])
+        if extra > 0 and key not in allowed:
+            new_forms = [form for form in after[key] if form not in before[key]] or after[key]
+            added.append({"family": key, "label": label, "count": extra,
+                          "source": len(before[key]), "output": len(after[key]), "examples": new_forms[:3]})
+    return added
+
+
 def evaluate(case_text: str, output_text: str) -> dict[str, object]:
     source = section(case_text, "Kaynak")
     output = normalize(output_text)
@@ -185,10 +252,13 @@ def evaluate(case_text: str, output_text: str) -> dict[str, object]:
         if not any(value in haystack for value in alternatives):
             missing.append(asdict(item))
 
+    added = added_markers(source, output, free_additions(case_text))
+
     return {
-        "passed": not missing,
+        "passed": not missing and not added,
         "checked": len(invariants),
         "missing": missing,
+        "added": added,
     }
 
 
@@ -199,6 +269,10 @@ def print_report(case_path: Path, output_path: Path, report: dict[str, object]) 
     for item in report["missing"]:
         alternatives = " | ".join(item["alternatives"])
         print(f"- Eksik {item['category']}: {alternatives}")
+    for item in report["added"]:
+        print(f"- Eklenen {item['label']}: {item['source']} → {item['output']} «{', '.join(item['examples'])}»")
+    if report["added"]:
+        print("Eklenen işaretin kaynakta dayanağı yoksa kaldır; gerekçeliyse vakaya `## Serbest eklemeler` yaz.")
     print("Not: Akıcılık, ton ve genel anlam uyumu insan veya model hakemi gerektirir.")
 
 
@@ -278,7 +352,38 @@ def self_test() -> None:
         if evaluate(case_text, failing_output)["passed"]:
             raise SystemExit(f"Öz sınama bozuk çıktıyı kabul etti: {case_path.name}")
 
-    print(f"Eval runner öz sınaması geçti ({len(scenarios)} vaka).")
+
+    drift = (
+        # Historical gold errors that kept every number and passed the suite.
+        ("Bu bulgu yöntemin davranışını açıklamaktadır.",
+         "Davranış mekanizması bu çalışmada ortaya konmamıştır; olası bir açıklama önerilebilir.",
+         {"olumsuzluk", "cekince"}),
+        ("Yöntemi kullanan 30 koşuda ortalama hata %4, kullanmayan 30 koşuda %7 idi.",
+         "Yöntem hatayı olumlu yönde etkilemektedir: kullanan 30 koşuda hata %4, kullanmayan 30 koşuda %7 idi.",
+         {"nedensellik"}),
+        ("Yönetim üç aylık pilot öneriyor.", "Pilot üç ay sürecek ve sorunu çözecek.", {"gelecek"}),
+    )
+    for source, output, expected in drift:
+        found = {item["family"] for item in added_markers(source, output)}
+        if not expected <= found:
+            raise SystemExit(f"Öz sınama: eklenen işaret yakalanmadı: beklenen {sorted(expected)}, bulunan {sorted(found)}")
+    # Same family, different form: a connective conversion is not an addition.
+    for source, output in (
+        ("Sonuç olarak tek deneme yapılır.", "Dolayısıyla tek deneme yapılır."),
+        ("Hata birikmektedir. Bu nedenle düzeltme gerekir.", "Hata biriktiğinden düzeltme gerekir."),
+        ("Doğrulama kümesi yüksek doğruluğa sahip olan ve düşük gecikmeye sahip olan filtreyi seçti.",
+         "Doğrulama kümesi yüksek doğruluklu, düşük gecikmeli filtreyi seçti."),
+        ("Ölçüm `max_iter=500` ile yapılmadı mı?", "Ölçüm `max_iter=500` ile yapılmadı mı?"),
+        ("Bu bir çalışmadır.", "Bu bir çalışmadır."),
+    ):
+        if added_markers(source, output):
+            raise SystemExit(f"Öz sınama: aynı aile içi dönüşüm eklenen işaret sayıldı: {output!r} -> {added_markers(source, output)}")
+    case = "\n\n".join(("## Kaynak", "Bulgular önermektedir.", "## Talep", "x",
+                        "## Serbest eklemeler", "- cekince — kalkı düzeltmesi")) + "\n"
+    if not evaluate(case, "Bulgular düşündürüyor.")["passed"]:
+        raise SystemExit("Öz sınama: ## Serbest eklemeler muafiyeti uygulanmadı")
+
+    print(f"Eval runner öz sınaması geçti ({len(scenarios)} vaka, {len(drift)} eklenen işaret senaryosu).")
 
 
 def main() -> int:

@@ -156,6 +156,8 @@ def deterministic_checks(case_text: str, output: str) -> tuple[bool, list[str]]:
     invariants = runner.evaluate(case_text, output)
     for item in invariants["missing"]:
         problems.append(f"eksik {item['category']}: {' | '.join(item['alternatives'])}")
+    for item in invariants["added"]:
+        problems.append(f"eklenen {item['label']}: «{', '.join(item['examples'])}»")
     comparison = lint.compare(lint.analyse(section(case_text, "Kaynak")), lint.analyse(output))
     for item in comparison["introduced_hard"]:
         problems.append(f"yeni sert kalıp: {item['label']} «{item['example']}»")

@@ -27,3 +27,8 @@ Yalnızca noktalama hatalarını düzelt; başka hiçbir şeye dokunma.
 
 - sert işaret: <= 1
 - konuşma sızıntısı: 0
+
+## Serbest eklemeler
+
+- olumsuzluk — `değiştirilmedi` metnin dışındaki nottadır, metne girmez.
+- cekince — `yazılabilir` nottaki öneridir, metne girmez.

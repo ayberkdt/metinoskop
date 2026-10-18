@@ -40,3 +40,7 @@ Makalemin yöntem ve bulgular kısmı. Hafif düzenle; yalnızca çeviriden kala
 
 - sert işaret: 0
 - düzyazı paragrafı: 2
+
+## Serbest eklemeler
+
+- cekince — `önermektedir` kalkısı `düşündürüyor` ile düzeltilir; çıkarım statüsü kaynakta vardı, yalnızca doğru fiile taşındı.

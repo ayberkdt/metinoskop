@@ -119,6 +119,13 @@ Kısaltırken, birleştirirken ya da somutlaştırırken bu bölüm her netlik k
 
 **Statü zinciri ilerlemez.** Bulgu yorum, yorum öneri, öneri karar, karar uygulama, beklenti taahhüt olmaz. İddia yeni kanıt olmadan sonraki bölümde güçlenmez. `Gözlenmedi` `yoktur`, `sınanmadı` `geçersizdir` olmaz.
 
+**Yerine yazdığın ifade yeni bir iddiadır.** Hata çoğu zaman silinende değil, yerine yazılanda doğar. Dolguyu, kalkıyı ya da şişmiş iddiayı değiştirdiğin her yerde yeni ifadeyi kaynağa karşı beş soruyla sına:
+- **Güç:** İndirirken kaynakta olmayan olumsuz iddia ya da çekince girdi mi (`açıklamaktadır` → `mekanizma ortaya konmamıştır`), statü kaydı mı (`karar sürecinde` → `henüz karar vermedi`)?
+- **Yön:** Kim neyi yapıyor, aynı mı (`operatöre görünürlük sağladı` → `operatörün görünürlüğünü artırdı` operatörü görülen yapar)?
+- **Eşdizim:** Yeni birleşim doğal mı (`hata oranı iyileşti` değil, `azaldı`)?
+- **Derece:** Karşılaştırma ve kapsam aynı güçte mi (`her zamankinden` → `eskisinden` zayıflatır)?
+- **Neden:** İki ölçümden çıkan sonuç tek nedene bağlandı mı (`gürültü arttığından ödünleşimdir`)?
+
 **Zamansal ankraj.** Tamamlanmış çalışma `incelendi / kullanıldı / uygulandı` ekseninde anlatılır; açık geçmiş tarih ya da `bu çalışmada` çerçevesiyle zamansız geniş zaman (`inceler / kullanır`) yan yana gelince zamansal sürtünme vardır. Algoritmanın genel davranışı, bilimsel genel ilişki, ürün belirtimi, yeniden kullanılabilir prosedür ve normatif kural geniş zamanda kalır. Güncel durum, belgenin işlevi ve tartışılan bulgunun yorumu `-yor` alabilir (`Şekil 4 ... gösteriyor`). Kipi çeşitlilik için nöbetleştirme; düzeltmeyi `yapıldı / edildi` ya da `-miştir` zincirine çevirme. `-yordu`, `-mıştı`, `-ardı` ilişkilerini ne düzleştir ne uydur.
 
 ## Türkçe doğallık
@@ -169,7 +176,7 @@ Talep kapsamını aşma: "tiyatral ifadeleri çıkar" metni baştan yazma izni d
 
 **2. Düzenle, katman katman.** **Bütüncül düzenleme** sırasıyla: belgede kural 1 ve 7; paragrafta paragraf testi ve kural 2–3; cümlede kural 4 ve 6; sözcükte kural 5, eşdizim, bağlayıcı ve yakın tekrar.
 
-**3. Kaynakla karşılaştır.** Son metindeki her sayı, tarih, sonuç, nedensellik, karşılaştırma, olumsuzluk, koşul, istisna, nicelik sınırı, terim ve kişisel ayrıntının kaynakta karşılığını bul; kaynağı, statüsü ve kesinliği aynı mı? Karşılığı yoksa çıkar ya da kaynağın düzeyine döndür.
+**3. Kaynakla karşılaştır.** Son metindeki her sayı, tarih, sonuç, nedensellik, karşılaştırma, olumsuzluk, koşul, istisna, nicelik sınırı, terim ve kişisel ayrıntının kaynakta karşılığını bul; kaynağı, statüsü ve kesinliği aynı mı? Karşılığı yoksa çıkar ya da kaynağın düzeyine döndür. Çıktıda kaynakta olmayan olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk ya da gelecek işareti belirdiyse dayanağını bul; yoksa kaldır.
 
 **4. Netlik denetimi.** Metni konuşmayı görmemiş okur gibi baştan oku ve düzenlemenin kendi ürettiği hataları ara: eş anlamlıyla geri gelen dolgu; kayan statü, kesinlik ya da kip; bağlayıcıyla eklenmiş ilişki; bozulan devir, özne ya da gönderge; silinmiş çekince, sınırlılık, öğretici açıklama ya da gezinme başlığı; kalan sızıntı ya da metne konmuş not; istenenden fazla değişiklik.
 

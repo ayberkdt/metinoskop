@@ -542,7 +542,7 @@ Bir eval vakası için üretilen çıktıyı dosyaya kaydettikten sonra kaynakta
 python scripts/eval-runner.py evals/teknik.md outputs/teknik.txt
 ```
 
-`scripts/eval-runner.py` sayı ve tarihleri, URL'leri, satır içi kodu, kod bloklarını, dipnotları, kapsam belirleyicilerini, teknik adları, sembolleri ve ölçümleri kontrol eder. Birebir çıktı eşleşmesi aramaz; akıcılık, ton ve genel anlam uyumu insan veya model hakemine kalır. JSON raporu için `--json`, yerleşik örnekleri sınamak için `--self-test` seçeneğini kullanın.
+`scripts/eval-runner.py` sayı ve tarihleri, URL'leri, satır içi kodu, kod bloklarını, dipnotları, kapsam belirleyicilerini, teknik adları, sembolleri ve ölçümleri kontrol eder; çıktının kaynakta olmayan olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk ya da gelecek işareti ekleyip eklemediğini de sayar. Birebir çıktı eşleşmesi aramaz; akıcılık, ton ve genel anlam uyumu insan veya model hakemine kalır. JSON raporu için `--json`, yerleşik örnekleri sınamak için `--self-test` seçeneğini kullanın.
 
 ### Stil denetimi
 

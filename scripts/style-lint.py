@@ -473,6 +473,8 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"\btepkime oranı",
             r"^(?!.*\b(?:hasta|klinik|ilaç|plasebo|doz))(?=.*\btedavi grub).*?tedavi grub",
             r"önemli (?:ölçüde|düzeyde|derecede|bir fark|fark).{0,80}\(?p ?[<=≤]",
+            # Azaldıkça iyi olan ölçü + "iyileşti": yön okura kalır (`hata oranı %20 iyileşti` → `azaldı`).
+            r"\b(?:hata|kayıp|kayb|gecikme|maliyet|gürültü|sapma|tüketim|yanıt süre|çalışma süre)\w*(?:\s+\S+){0,3}?\s+iyileş",
         ),
     },
     {
@@ -1963,6 +1965,13 @@ def self_test() -> None:
         stray = [h for h in analyse(text)["hits"] if h["category"] in ("anlam_kalkisi", "anlam_kaymasi_adayi")]  # type: ignore[union-attr]
         if stray:
             raise SystemExit(f"Öz sınama: doğru kullanım anlam kalkısı sayıldı (yanlış pozitif): {text!r} -> {stray}")
+
+    direction = [h for h in analyse("Yeni ayarla hata oranı %20 iyileşti.")["hits"] if h["category"] == "anlam_kaymasi_adayi"]  # type: ignore[union-attr]
+    if not direction:
+        raise SystemExit("Öz sınama: azaldıkça iyi olan ölçü + `iyileşti` yön adayı işaretlenmedi")
+    for text in ("Yeni ayarla hata oranı %20 azaldı.", "Doğruluk %3 iyileşti.", "Hasta iki haftada iyileşti."):
+        if any(h["category"] == "anlam_kaymasi_adayi" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: yönü açık cümle anlam kayması adayı sayıldı (yanlış pozitif): {text!r}")
 
     social = analyse(SOCIAL_TEXT)
     expected_social = {"duyuru", "gerilim", "savunma", "sohbet", "karsitlik", "reklam", "mecaz", "sus"}
