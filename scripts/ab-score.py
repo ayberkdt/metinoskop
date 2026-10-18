@@ -32,6 +32,11 @@ def load(name: str, filename: str):
 
 lint = load("style_lint", "style-lint.py")
 runner = load("eval_runner", "eval-runner.py")
+research = load("research_profile", "research-profile.py")
+
+# Research traits (references/insan-ve-yapay-metin.md) that mark an output as
+# machine-like; list items are reported but not counted, a README may need one.
+TRAITS = ("kuyruk", "bicem", "sert", "kalip_acilis", "olumluya")
 
 POSITIVE = re.compile(r"fırsat|potansiyel|altını çiz|değerli|önemli ölçüde")
 
@@ -41,7 +46,8 @@ def task_sources(tasks_text: str) -> dict[str, str]:
     for match in re.finditer(r"(?ms)^## (T\d)\s*$(.*?)(?=^## T\d|\Z)", tasks_text):
         for key in ("Metin:", "Notlar:", "İstek:"):
             if key in match.group(2):
-                sources[match.group(1)] = match.group(2).split(key, 1)[1]
+                # A requested length (`150–200 sözcüklük`) is an instruction, not a fact to preserve.
+                sources[match.group(1)] = re.sub(r"\d+\s*[–-]\s*\d+ sözcük\w*", "", match.group(2).split(key, 1)[1])
                 break
     return sources
 
@@ -110,11 +116,15 @@ def main() -> int:
     parser.add_argument("--tasks", type=Path, default=ROOT / "scripts" / "ab-gorevler.md")
     parser.add_argument("--glob", default="*.md", help="Çıktı dosyası deseni (son harf + sayı kolu ve örneği verir)")
     parser.add_argument("--detail", action="store_true", help="Her görevin ölçümünü de yazdır")
-    parser.add_argument("--compare", nargs=2, metavar=("ESKI", "YENI"),
-                        help="İki kolun hatalı görev çıktısı oranını tek yönlü Fisher kesin testiyle karşılaştır")
+    parser.add_argument("--compare", nargs=2, metavar=("ESKI", "YENI"), action="append",
+                        help="İki kolun hatalı görev çıktısı oranını tek yönlü Fisher kesin testiyle karşılaştır (tekrarlanabilir)")
+    parser.add_argument("--traits", action="store_true",
+                        help="Araştırma özelliklerini (kuyruk, biçem sözcüğü, adlaştırma, kalıp açılış, olumluya çekme) kol başına ölç")
     args = parser.parse_args()
 
     sources = task_sources(args.tasks.read_text(encoding="utf-8"))
+    if args.traits:
+        return traits_report(args, sources)
     arms: dict[str, dict[str, float]] = {}
     for path in sorted(args.outputs.glob(args.glob)):
         arm_match = re.search(r"([A-Z])\d+$", path.stem)
@@ -142,11 +152,63 @@ def main() -> int:
         print(f"{name} | {arm['örnek']} | {arm.get('eklenen', 0) / n:.2f} | {arm.get('kayip', 0) / n:.2f} | "
               f"{arm.get('yanilgi', 0) / n:.2f} | {arm.get('olumluya_cekme', 0)} | {arm.get('liste', 0)} | "
               f"{arm.get('kuyruk', 0)} | {arm.get('sizinti', 0)} | {arm.get('sert', 0)}")
-    if args.compare:
-        old, new = (arms[name] for name in args.compare)
+    for pair in args.compare or []:
+        old, new = (arms[name] for name in pair)
         p = fisher_one_sided(int(old.get("hatali", 0)), int(old["cikti"]), int(new.get("hatali", 0)), int(new["cikti"]))
-        print(f"\nHatalı görev çıktısı: {args.compare[0]} {old.get('hatali', 0)}/{old['cikti']}, "
-              f"{args.compare[1]} {new.get('hatali', 0)}/{new['cikti']}; tek yönlü Fisher p = {p:.4f}")
+        print(f"\nHatalı görev çıktısı: {pair[0]} {old.get('hatali', 0)}/{old['cikti']}, "
+              f"{pair[1]} {new.get('hatali', 0)}/{new['cikti']}; tek yönlü Fisher p = {p:.4f}")
+    return 0
+
+
+def traits_report(args: argparse.Namespace, sources: dict[str, str]) -> int:
+    """Per arm: research-trait counts, nominalization density, sentence band and
+    the share of outputs that carry a trait or break a fact (added marker, lost invariant)."""
+    # Requested length (`120–150 sözcüklük`): an output within ±10% of the range meets it.
+    lengths = {task: (int(low), int(high)) for task, low, high in re.findall(
+        r"(?ms)^## (T\d)\s*$.*?(\d+)\s*[–-]\s*(\d+) sözcük", args.tasks.read_text(encoding="utf-8"))}
+    arms: dict[str, dict[str, float]] = {}
+    for path in sorted(args.outputs.glob(args.glob)):
+        arm_match = re.search(r"([A-Z])\d+$", path.stem)
+        if not arm_match:
+            continue
+        arm = arms.setdefault(arm_match.group(1), {})
+        for task, output in parse_output(path).items():
+            if task not in sources:
+                continue
+            body = re.split(r"(?m)^---\s*$", output)[0].strip()
+            traits = research.profile(body)
+            paragraphs = [p for p in lint.parse(body).paragraphs if p.sentences]
+            arm["paragraf"] = arm.get("paragraf", 0) + len(paragraphs)
+            arm["tek_cumle"] = arm.get("tek_cumle", 0) + sum(1 for p in paragraphs if len(p.sentences) == 1)
+            if task in lengths:
+                low, high = lengths[task]
+                arm["uzunluk_istenen"] = arm.get("uzunluk_istenen", 0) + 1
+                arm["uzunluk_uyan"] = arm.get("uzunluk_uyan", 0) + int(0.9 * low <= traits["sozcuk"] <= 1.1 * high)
+            facts = score(task, output, sources[task])
+            if args.detail:
+                print(f"{path.stem} {task}: { {k: traits[k] for k in TRAITS if traits[k]} } "
+                      f"eklenen={facts['eklenen_ornek']} kayip={facts['kayip']}")
+            for key, value in traits.items():
+                arm[key] = arm.get(key, 0) + value
+            arm["cikti"] = arm.get("cikti", 0) + 1
+            arm["izli"] = arm.get("izli", 0) + int(any(traits[k] for k in TRAITS))
+            arm["olgu_hatali"] = arm.get("olgu_hatali", 0) + int(bool(facts["eklenen"] or facts["kayip"]))
+
+    print("Kol | çıktı | kuyruk | biçem | sert | kalıp açılış | olumluya | liste | adlaştırma/100 | 7–20 bandı | sözcük/çıktı "
+          "| tek cümlelik paragraf | istenen uzunluk | izli çıktı | olgu hatalı")
+    for name, a in sorted(arms.items()):
+        n = a["cikti"] or 1
+        length = f"{a['uzunluk_uyan']:.0f}/{a['uzunluk_istenen']:.0f}" if a.get("uzunluk_istenen") else "-"
+        print(f"{name} | {a['cikti']:.0f} | {a['kuyruk']:.0f} | {a['bicem']:.0f} | {a['sert']:.0f} | {a['kalip_acilis']:.0f} | "
+              f"{a['olumluya']:.0f} | {a['liste']:.0f} | {100 * a['adlastirma'] / max(1, a['sozcuk']):.2f} | "
+              f"%{100 * a['bant'] / max(1, a['cumle']):.0f} | {a['sozcuk'] / n:.0f} | "
+              f"%{100 * a['tek_cumle'] / max(1, a['paragraf']):.0f} | {length} | {a['izli']:.0f} | {a['olgu_hatali']:.0f}")
+    for pair in args.compare or []:
+        old, new = (arms[name] for name in pair)
+        for key, label in (("izli", "İz taşıyan çıktı"), ("olgu_hatali", "Olgu hatalı çıktı")):
+            p = fisher_one_sided(int(old[key]), int(old["cikti"]), int(new[key]), int(new["cikti"]))
+            print(f"{label}: {pair[0]} {old[key]:.0f}/{old['cikti']:.0f}, {pair[1]} {new[key]:.0f}/{new['cikti']:.0f}; "
+                  f"tek yönlü Fisher p = {p:.4f}")
     return 0
 
 

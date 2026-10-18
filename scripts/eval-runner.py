@@ -84,7 +84,8 @@ ADDED_MARKER_FAMILIES = (
      # "kesin bir bilgim yok", "kesin değil" çekincedir, pekiştirici değil.
      r"\baçıkça\b|\bkesin(?:likle)?\b(?!(?:\s+\S+){0,3}?\s+(?:değil|yok))|\bkanıtla\w*|\btartışmasız|\bkuşkusuz|\bşüphesiz"),
     ("karsilastirma", "karşılaştırma ya da üstünlük",
-     r"\bdaha\b|\ben\b|\bkıyasla|\boranla|\bzamankinden"),
+     # "en son" sıra bildirir (`en son hata dağılımları değerlendirildi`), üstünlük değil.
+     r"\bdaha\b|\ben\b(?!\s+son\b)|\bkıyasla|\boranla|\bzamankinden"),
     ("tumel", "tümel nicelik",
      r"\btüm\w*|\bbütün\w*|\bher\b|\bhepsi\w*|\btamamı\w*|\btamamen|\bdaima"),
     ("zorunluluk", "zorunluluk",
@@ -222,7 +223,9 @@ def free_additions(case_text: str) -> set[str]:
 
 
 def added_markers(source: str, output: str, allowed: set[str] = frozenset()) -> list[dict[str, object]]:
-    before, after = marker_hits(source), marker_hits(output)
+    # Soru cümlesi önerme kurmaz: kavramsal girişin `... verilebilir mi?` sorusu çekince eklemez.
+    asserted = re.sub(r"[^.!?\n]*\?", "", output)
+    before, after = marker_hits(source), marker_hits(asserted)
     added: list[dict[str, object]] = []
     for key, label, _ in ADDED_MARKER_RE:
         extra = len(after[key]) - len(before[key])
@@ -377,6 +380,8 @@ def self_test() -> None:
          {"nedensellik"}),
         ("Yönetim üç aylık pilot öneriyor.", "Pilot üç ay sürecek ve sorunu çözecek.", {"gelecek"}),
     )
+    # Soru muafiyeti önermeyi kapsamaz: sorudan sonra gelen çekince yine sayılır.
+    drift += (("Sonuç saklanır.", "Saklanabilir mi? Sonuç saklanabilir.", {"cekince"}),)
     for source, output, expected in drift:
         found = {item["family"] for item in added_markers(source, output)}
         if not expected <= found:
@@ -393,6 +398,8 @@ def self_test() -> None:
         ("Bakım 4 saat sürecek (22.00–02.00). Panel kapalı olacak.", "Bakım 22.00–02.00 arasında yapılacak. Panel kapalı olacak."),
         ("İyileşme mevsimsel olabilir, emin değilim.", "İyileşme mevsimsel olabilir; bu konuda kesin bir bilgim yok."),
         ("İyileşme mevsimsel olabilir, emin değilim.", "İyileşme mevsimsel olabilir; kesin bir sonuca varmış değilim."),
+        ("Son olarak hata dağılımlarını değerlendirir.", "En son hata dağılımları değerlendirildi."),
+        ("Sistem aynı sorguları tekrar çalıştırıyor.", "Sistem aynı sorguları tekrar çalıştırıyor. Sonuç yeniden üretilmeden verilebilir mi?"),
     ):
         if added_markers(source, output):
             raise SystemExit(f"Öz sınama: aynı aile içi dönüşüm eklenen işaret sayıldı: {output!r} -> {added_markers(source, output)}")

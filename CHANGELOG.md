@@ -8,6 +8,9 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Değişti
 
+- Skill'siz taban ölçüldü (`evals/README.md` › Skill'siz taban ve araştırma özellikleri). Skill, kaynakta olmayan değerlendirme, öneri, söz ve öznesiz kanaati her iki modelde belirgin biçimde azaltıyor: kısa görevlerde Sonnet 13/20 → 0/20, Haiku 5/20 → 0/20; uzun yazıda olgu hatalı çıktı Sonnet 18/20 → 2/20, Haiku 18/20 → 7/20. Araştırmadaki biçem izleri (kuyruk, biçem sözcüğü, kalıp açılış) bu görevlerde skill'siz de nadir çıktı. Açık bulgu: kaynak bilgisi istenen uzunluğa yetmediğinde skill'li ajan uzunluğu tutturamıyor (0/12), skill'siz ajan uydurarak tutturuyor; bu ve kurumsal ambalaj için yazılan `SKILL.md` yamaları ayrık sette etkisiz çıktığı için alınmadı.
+- Gold'lar model çıktısıyla yeniden ölçüldü: 132 dönüşüm vakası son skill'le kör olarak Sonnet'e verildi, çıktılar 113/132 geçti; on dokuz başarısızlık okunup sınıflandı (on model hatası, üç skill metni okuması, bir skill–vaka çatışması, bir gold iyileştirmesi, üç değerlendirici yanlış alarmı, bir katı beklenti). `epistemik-guvensiz-fiil` gold'u iddiayı silmek yerine ilişki düzeyinde yazıyor; `ayni-iddia-hacim` iki cümleye izin veriyor; `burokratik-simdiki-zaman` `her gün`e gerekçeli muafiyet aldı. Düzeltilmiş değerlendiriciyle 118/132.
+- Değerlendirici düzeltmeleri: sıra bildiren `en son` üstünlük sayılmıyor; soru cümlesi önerme kurmadığı için eklenen işaret sayımına girmiyor (sorudan sonraki çekince yine sayılır). Öz sınamada.
 - Skill, deponun kendi sekiz vakasıyla iki modelde (Haiku, Sonnet) kör olarak ölçüldü; beklentiler modele verilmedi, çıktılar `eval-suite.py` ile puanlandı. İlk revizyonun Haiku'da `iyi-metin`i bozduğu (2/4) ve bütün sürümlerin sızıntı vakasında yöntem cümlesini sildiği görüldü. `SKILL.md` düzeltildi: okura yapılan teklif sızıntı değildir; `Bilgiyi kurtar` yöntem örneği aldı; olumsuz iddia kuralında yanlış ifadenin alıntısı yerine doğru hedef gösterildi (bir örnek alıntıyı birebir kopyalamıştı). Son sürümde Haiku 27/32, Sonnet 29/32 geçiyor; yöntemi koruyan çıktı 5/16'dan 8/8'e çıktı (tek yönlü Fisher p = 0,0018).
 - Değerlendirici düzeltmeleri: talepte verilen bilgi eklenen epistemik işaret karşılaştırmasında kaynağa dahil edilir; `---` sonrası not metin dışı sayılır. Öz sınamada.
 - Son `SKILL.md`, hiç görülmemiş dört görevlik ayrık set 3'te kol başına altı Haiku örneğiyle önceki sürüme karşı sınandı. Hatalı görev çıktısı ham sayaçla 15/24'ten 7/24'e (tek yönlü Fisher p = 0,021), elle ayıklanmış sayımla 10/24'ten 2/24'e indi (p = 0,0087). Eski skill altı örneğin altısında yazarın kanaatini öznesiz yazdı, dördünde olumsuz sonucu fırsat diye bıraktı.
@@ -69,6 +72,7 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Eklendi
 
+- `scripts/ab-score.py --traits`: araştırma özelliklerini, tek cümlelik paragraf oranını, istenen uzunluğa uyumu ve olgu hatasını kol başına sayar; `--compare` tekrarlanabilir. Görev setleri `scripts/ab-gorevler-ozellik.md`, `-ozellik2.md` (teşhis), `-ozellik3.md` (ayrık).
 - `scripts/ab-case-score.py`: depo vakalarıyla kör A/B puanlayıcısı.
 - `scripts/research-profile.py`: gold çıktılarının araştırma profili. `scripts/ab-gorevler-ayrik3.md`: anlamlılık testi için ayrık set; `ab-score.py --compare` tek yönlü Fisher kesin testi.
 - `scripts/ab-score.py`, `scripts/ab-gorevler.md` (teşhis seti), `scripts/ab-gorevler-ayrik.md` ve `scripts/ab-gorevler-ayrik2.md` (ayrık setler): skill sürümlerini kör A/B ile karşılaştırma düzeneği.

@@ -346,6 +346,29 @@ Aynı turda değerlendiricinin iki hatası düzeltildi: talepte verilen bilgi (`
 
 Ayrık set 3 birleşik örneklemde (Haiku, kol başına 8 örnek, 32 görev çıktısı) hatalı çıktı ham sayaçla 20/32'den 11/32'ye iner (p = 0,022). Sonnet'te iki kol da tavandadır (4/16 ve 3/16, hepsi `için` → `nedeniyle` yanlış alarmı). Sınırlar: örnek sayısı küçüktür; sayaçlar kalıp tabanlıdır ve biçim değişince kaçırır (ayrık set 1'deki `bir tahmin var` kişi kayması önce elle okunarak bulundu); sayım hakem değildir.
 
+#### Skill'siz taban ve araştırma özellikleri
+
+Üç görev setiyle (`scripts/ab-gorevler-ozellik.md`, `-ozellik2.md`, `-ozellik3.md`) skill'siz kol, önceki skill (`2244f54`) ve son skill Haiku ile Sonnet'te kol başına dört örnekle karşılaştırıldı. `python scripts/ab-score.py <klasör> --tasks <set> --traits --compare A B` araştırma özelliklerini (cümle sonu kuyruğu, biçem sözcüğü, sert dolgu, kalıp açılış, olumluya çekme, adlaştırma, 7–20 sözcük bandı, tek cümlelik paragraf, istenen uzunluk) ve olgu hatasını (eklenen epistemik işaret, kayıp değişmez) sayar. Sayımlar çıktılar okunarak ayıklandı.
+
+- **Set 1, kısa olgu görevleri.** Araştırma izleri altı kolun hepsinde sıfırdı: görevler izleri kışkırtmadı (skill'siz kola giden dosyanın başlığı izlerin adını da anıyordu). Elle ayıklanan hata (yazarın `bence`sini öznesiz ya da `olabilir` yapmak; kaynakta olmayan öneri, söz, değerlendirme ya da kullanım talimatı): Haiku'da skill'siz 5/20, önceki 4/20, son 0/20 (skill'siz–son p = 0,024; önceki–son p = 0,053); Sonnet'te skill'siz 13/20, önceki 0/20, son 0/20 (skill'siz–son p = 0,00001).
+- **Set 2, teşhis: 150–200 sözcüklük yazı ve iz taşıyan taslak.** Skill'siz kollar istenen uzunluğu tutturdu (Haiku 10/12, Sonnet 12/12), ama 20 çıktının 18'ine kaynakta olmayan değerlendirme, söz ya da karşılaştırma ekledi (`Birinci yılın bilançosu karışık`, `birlikte karar vereceğiz`). Skill'li kollar uydurmadı ama uzunluğu hiç tutturmadı (0/12); paragrafların %33–52'si tek cümleydi. Olgu hatalı çıktı (sayaç): Haiku'da skill'siz 18/20, son 7/20 (p = 0,0004); Sonnet'te skill'siz 18/20, son 2/20 (p < 0,0001); önceki ile son arasındaki fark anlamlı değil. Kurumsal taslakta iz kalan çıktı (`gelişime açık alan`, `kararlılığımızın altını çizmektedir`, `kapsamlı`): Haiku'da üç kolda da 4/4; Sonnet'te skill'siz 0/4, önceki 2/4, son 1/4.
+- **Set 3, ayrık.** Set 2'den dört `SKILL.md` yaması çıktı: istenen uzunluğu kaynaktan türeyen malzemeyle (giriş, terim açıklaması, okur için doğrudan karşılık) kurmak; kuruma atfedilmiş kalıbı ve örtülmüş sorunu ambalaj saymak; desteksiz nedensel bağlacı korumamak; `mevcut sürüm` ile bugüne bağlanan durumu `-yor` ile yazmak. Yamalar yeni içerikle sınandı. Uzunluk iki sürümde de 0/12 kaldı; Sonnet yamalı skill'le metni kısa bırakıp eksik bilgiyi notta sordu. Kurumsal ambalajda iz kalan çıktı eski skill'de 8/16, yamalıda 8/16. Depo vakalarında yamalı skill 116/132, son skill 118/132 geçti (p = 0,72). Etkisi gösterilemeyen yamalar `SKILL.md`'ye alınmadı.
+
+Açık bulgu: kaynaktaki bilgi istenen uzunluğa yetmediğinde skill'li ajan uzunluğu tutturamıyor, skill'siz ajan uydurarak tutturuyor. Skill'li ajanın çıktısı kısa metin ve eksik bilgiyi soran nottur. Uzunluğu kaynaktan türeyen malzemeyle kuran kural ilk denemede bu davranışı değiştirmedi.
+
+#### Gold denetimi: model çıktısıyla yeniden ölçüm
+
+132 dönüşüm vakasının yalnızca `## Kaynak` ve `## Talep` bölümleri son skill'le Sonnet'e verildi; çıktılar `ab-case-score.py` ile gold gibi puanlandı ve 113/132 vakayı geçti. On dokuz başarısızlık okundu:
+
+- On tanesi model hatasıydı, gold doğruydu: `bu-sonuc-ritmi`'nde `değerlendirilmelidir` kipi iddiaya döndü, `savunmaci-akademik`'te yöntem gerekçesi silindi, `gorus-ambalaji`'nda `kilit rol` `gereklidir` oldu, `dayanaksiz-pekistirici`'de `yalnızca` düştü, `ingilizce-noktalama`'da savunmacı kapanış kaldı.
+- Üçü skill metninin yanlış okunmasıydı: `kaynağın kurduğu nedensel bağlacı silme` cümlesi `kronoloji-nedensellik`'teki desteksiz `Bu nedenle`yi de korutuyor, `-yor alabilir` bugüne bağlanan durumu (`repo-guncel-davranis-yor`, `karisik-zaman-readme`) geniş zamanda bırakıyor. Yama yukarıda etkisiz çıktı; vakalar açık kaldı.
+- Birinde skill ile vaka çatışıyor: `sonuc-ve-yorum-kip-ayrimi` yorumu geniş zamanda bekliyor, `SKILL.md` yorumun `-yor` alabileceğini söylüyor.
+- Birinde model gold'dan iyiydi: `epistemik-guvensiz-fiil` talebi hafif yüklemin gerçek yüklemle kurulmasını istiyor, gold iddiayı siliyordu. Model ölçümün taşıdığı düzeyi yazdı (`yöntem daha düşük hatayla ilişkili bulundu`); gold bu biçime geçti, karşılaştırma eklemesi gerekçesiyle `## Serbest eklemeler`e yazıldı.
+- Üçü değerlendirici yanlış alarmıydı ve düzeltildi: sıra bildiren `en son` üstünlük, soru cümlesindeki `verilebilir mi?` çekince sayılıyordu; `günlük olarak` → `her gün` için vakaya gerekçeli muafiyet yazıldı.
+- Birinde beklenti fazla katıydı: `ayni-iddia-hacim` doğru iki cümleyi reddediyordu; beklenti `cümle: <= 2` oldu.
+
+Düzeltilmiş değerlendiriciyle aynı çıktılar 118/132 geçer. Araştırma profilinde gold'lar modelin çıktısından fazla iz taşımıyor (beş iz ailesinde toplam 1'e 4); adlaştırma (100 sözcükte 0,49 ve 0,45) ve 7–20 sözcük bandı (%70 ve %68) yakın.
+
 ### Gerçek model regresyonu
 
 Kayıtlı çıktı denetimi fixture'ları sınar, skill'i değil: `SKILL.md` bozulsa da eski çıktılar yerinde durduğu için yeşil kalır. `scripts/behavioral-regression.py` bu boşluğu kapatır: `SKILL.md` ve referans dosyalarını sistem istemi olarak gerçek bir modele verir, her vakanın talebini kaynağına uygulatır, taze çıktıyı önce `eval-runner.py` değişmezleri ve `style-lint.py` sert kalıp denetiminden geçirir, sonra bir model hakemine vakanın koruma ve kaçınma maddeleri ile bu dosyadaki hakem ölçütlerine göre puanlatır. Hakem son satırda `SONUÇ: GEÇTİ` ya da `SONUÇ: BAŞARISIZ` yazar; her vaka hem deterministik hem hakem kapısından geçmelidir.

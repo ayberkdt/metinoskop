@@ -797,7 +797,7 @@ eval_markers = {
     "evals/teknik-noktalama-korunur.md": ("0,2; 0,5 ve 0,8", "(bkz. Tablo 3)", "2025",),
     "evals/uzak-sinirlilik.md": ("%12", "12 istasyondan", "3 saatte", "yalnızca 30 °C",),
     "evals/ayni-iddia-yeni-rol.md": ("## Sonuçlar", "## Tartışma", "## Sonuç", "40 °C", "%11", "düşündürüyor", "önerilmektedir",),
-    "evals/ayni-iddia-hacim.md": ("Yani 40 °C", "göstermektedir", "üç kez", "cümle: <= 1",),
+    "evals/ayni-iddia-hacim.md": ("Yani 40 °C", "göstermektedir", "üç kez", "cümle: <= 2",),
     "evals/tutarli-metin-korunur.md": ("3 Eylül", "14.10", "14.35", "50 bağlantı", "120", "cümle: 3",),
     "evals/raporda-genis-zaman-yigini.md": ("12 Ağustos", "1.200", "%4", "%6", "Yalnızca", "geniş zaman doygunluğu: 0",),
     "evals/bu-calisma-inceler.md": ("Bu çalışma üç farklı modeli karşılaştırır", "2025", "800", "zamansal sürtünme: 0",),
