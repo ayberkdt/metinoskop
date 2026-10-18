@@ -386,6 +386,16 @@ Haiku'da önceki–yeni p = 0,0016, skill'siz–yeni p = 0,0042 (tek yönlü Fis
 
 Haiku'da önceki–son p = 0,0008; Sonnet'te `0685e48`–son p = 0,012. Etkinlik alanları (`Tarih:`, `Yer:`, `Kayıt:`) son skill'li 12 örneğin hepsinde korundu. Haiku iki örnekte `Sizin için en güvenli ... çözümünü hazırladık` cümlesini `Bulut yedekleme çözümümüzü hazırladık` diye sadeleştirdi: üstünlük ve seslenme gitti, ürünün var olduğunu duyuran cümle kaldı. Ürünü sunan duyuru (`çözümümüzü hazırladık`, `sizlere sunuyoruz`) kurala ve `anons` ailesine eklendi; yeni denetim bu iki örneği yakalıyor. Son skill aynı sette yeniden çalıştırıldı: Haiku 0/30, Sonnet 0/30; açılış sayfası düzeltmelerinin hiçbirinde duyuru cümlesi yok, sık sorulan soru yanıtlarının hiçbiri `Kısa cevap:` ile açılmıyor, etkinlik alanları 12/12 korundu. Stil denetiminin `anons` ailesi bu turda `Hazır mısınız?`, `yepyeni bir dönem başlıyor`, `Sizi bekliyoruz`, `gelin birlikte`, `karşınızdayız` ve `Farkı hissedin` kalıplarını da aldı.
 
+Son skill (`ea4e363`) üç kaynakta daha kör çalıştırıldı ve bütün çıktılar `etiket` ile `anons` aileleriyle, ayrıca listede olmayan `X:` girişleri için ayrı bir taramayla okundu:
+
+| Kaynak | Metin | Etiket ya da anons |
+|---|---|---|
+| İlk etiket seti (`ab-gorevler-etiket.md`), Haiku ve Sonnet, dörder örnek | 40 | 0 |
+| Tür çeşitliliği seti (`ab-gorevler-etiket3.md`: LinkedIn gönderisi, iş ilanı, eğitim yazısı girişi, bülten, mağaza açıklaması), Haiku ve Sonnet, dörder örnek | 40 | 0 |
+| Deponun 132 dönüşüm vakası, Sonnet | 132 | 0 |
+
+Taramanın işaretlediği üç aday elle okundu ve etiket değildi: `Yeni not uygulaması:` ürünü adlandıran liste başlığıdır (`Özellikler:` gibi), `Önbellek sorunu incelendi: ...` yüklemli cümlenin açıklamaya geçişidir, `Cihazı kalibre etmek için:` adım listesinin girişidir. Bülten taslağındaki `Bu sayıda neler var?`, `Önemli not:`, `Kritik bilgi:`, `Özetle:`, `Sizi yeni sayımızda bekliyoruz!` sekiz örneğin hepsinde silindi; bu biçimler ve `Gelin hep birlikte` stil denetimine de eklendi. 132 vakada eval geçişi 115/132; başarısızlıklar önceki denetimin aileleridir (model hatası, bilinen iki sert işaret, eklenen çekince ya da neden), hiçbiri etiket kuralının ürettiği silme değildir.
+
 #### Gold denetimi: model çıktısıyla yeniden ölçüm
 
 132 dönüşüm vakasının yalnızca `## Kaynak` ve `## Talep` bölümleri son skill'le Sonnet'e verildi; çıktılar `ab-case-score.py` ile gold gibi puanlandı ve 113/132 vakayı geçti. On dokuz başarısızlık okundu:

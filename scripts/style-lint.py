@@ -66,7 +66,8 @@ ETIKET_PREFIX = r"^(?:[\U0001F300-\U0001FAFF\u2600-\u27BF\uFE0F]+\s*)?(?:\*\*|__
 ETIKET_MOD = (r"kavramsal|sezgisel|detaylı|ayrıntılı|kısa|uzun|temel|ana|asıl|kilit|kritik|önemli|pratik|teknik|genel"
               r"|somut|basit|net|hızlı|gerçek|altın|can alıcı|en önemli")
 ETIKET_NOUN = (r"açıklama|ayrım|fark|fikir|nokta|özet|sonuç|çıkarım|yorum|değerlendirme|gözlem|ders|mesaj|ipucu|cevap"
-               r"|yanıt|tespit|vurgu|bakış|anlatım|tanım|sezgi|mantık|kural|husus|mesele|neden|gerekçe|özü")
+               r"|yanıt|tespit|vurgu|bakış|anlatım|tanım|sezgi|mantık|kural|husus|mesele|neden|gerekçe|özü"
+               r"|not|bilgi|hatırlatma")
 # Başlık olarak etiket: "### Sezgisel açıklama". Çıplak "Özet", "Sonuç" başlığı raporda meşrudur; niteleyici şart.
 ETIKET_HEADING_RE = re.compile(
     r"^(?:kavramsal|sezgisel|detaylı|ayrıntılı|kısa|temel|ana|asıl|kilit|kritik|önemli|pratik|basit|net|altın)\s+"
@@ -421,8 +422,9 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "patterns": (
             r"\b(?:merak|endişe) etmeyin\b|\bendişelenmeyin\b|\bkorkmayın\b",
             r"\b(?:sizin|siz(?:ler)?) için .{0,40}hazırladık",
-            r"\btanışın\b|\bsizi bekliyor\w*|\bkaçırmayın\b|\bkarşınızda(?:yız)?\b",
-            r"^hazır mısınız\b|\bgelin,? birlikte\b|\bfarkı (?:hissedin|görün|yaşayın|keşfedin)\b",
+            r"\btanışın\b|\bsizi\b.{0,30}\bbekliyor\w*|\bkaçırmayın\b|\bkarşınızda(?:yız)?\b",
+            r"\b(?:sayıda|sayımızda|bültende|bültenimizde|yazıda|yazımızda) neler (?:var|bulacaksınız|göreceksiniz)",
+            r"^hazır mısınız\b|\bgelin,? (?:hep )?birlikte\b|\bfarkı (?:hissedin|görün|yaşayın|keşfedin)\b",
             r"\b(?:yepyeni|yeni) bir (?:dönem|çağ|sayfa)(?:in)? (?:başlıyor|açılıyor|aç)|bir dönemin kapılarını",
             r"\bhemen (?:deneyin|keşfedin|indirin|başlayın|katılın)\b|\bkeşfedin\b",
             r"hayatınızı (?:kolaylaştır|değiştir)|(?:her şeyi|oyunun kurallarını) değiştir",
@@ -1967,6 +1969,11 @@ ETIKET_ANONS_TEXTS = (
     ("anons", "Sizi bekliyoruz, gelin birlikte öğrenelim!"),
     ("anons", "Teknoloji günümüzle karşınızdayız."),
     ("anons", "Farkı hissedin."),
+    ("anons", "Bu sayıda neler var?"),
+    ("anons", "Gelin hep birlikte göz atalım!"),
+    ("anons", "Sizi yeni sayımızda bekliyoruz!"),
+    ("etiket", "Önemli not: Ofis ağı bakımda olacak."),
+    ("etiket", "Kritik bilgi: VPN çalışmayacak."),
     ("anons", "Bulut yedekleme çözümümüzü hazırladık."),
     ("anons", "Yeni uygulamamızı sizlere sunmaktan mutluluk duyuyoruz."),
 )
