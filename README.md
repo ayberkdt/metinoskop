@@ -183,7 +183,7 @@ Her satır bir eval vakasına dayanır ve kayıtlı çıktısı kaynağın kendi
 
 **Cümleler arası bağ.** İyi cümlelerden kurulu bir metin yine de bir düşünceyi geliştiremeyebilir. Her cümlenin öncekinden ne aldığına, `bu nedenle` gibi bağlaçların gerçekten kurduğu ilişkiyi taşıyıp taşımadığına, `bu / söz konusu` göndergesinin kaç cümle uzaktan geri bulunabildiğine, `yalnızca` ve olumsuzluğun doğru ögeye bağlı kalmasına, sınırlılığın sınırladığı iddianın yanında durmasına bakar. Zaman sırasını nedenselliğe çevirmez, eksik öncül uydurmaz.
 
-**Okura doğrudan metin.** Bir ajan çoğu zaman bir konuşmanın içinde yazar ve konuşma metne sızar: `konuştuğumuz gibi`, `istersen ekleyebilirim`, `önce şu dosyaya baktım`, `bu bölümü daha net olsun diye yeniden yazdım`. Metni okuyacak kişi o konuşmayı görmedi. Metinoskop her metni konuşmayı görmemiş son okura doğrudan verilecekmiş gibi kurar: konuşmaya, talimata, önceki taslağa ve ajanın çalışma sırasına göndermeyi, kullanıcıya yapılan teklifi ve teslim ambalajını atar. Taşıdıkları bilgiyi ise atmaz: `burada X'i varsaydım` → `hesap X varsayımına dayanır`, `doğrulayamadım` → `doğrulanmadı`, `şunu yapabiliriz` → `yapılabilir` (öneriye ya da karara yükseltmeden). Okurun da tarafı olduğu yazışmadaki `geçen ay konuştuğumuz gibi` ve sürüm notundaki `önceki sürümde` içeriktir, korunur. Kullanıcıya söylenecek soru ya da uyarı metne değil, metinden sonra ayrı bir nota yazılır. Katalog: [`references/okura-dogrudan-metin.md`](references/okura-dogrudan-metin.md).
+**Okura doğrudan metin.** Metin, ajan ile kullanıcı arasındaki konuşmayı görmemiş okura gider. `konuştuğumuz gibi`, `istersen ekleyebilirim`, `önce şu dosyaya baktım` gibi izler silinir; taşıdıkları varsayım, doğrulanmamışlık ve yöntem bilgisi okura yazılır. Okurun tarafı olduğu yazışmadaki ortak geçmiş ve sürüm notundaki önceki sürüm korunur. Kullanıcıya söylenecek soru metinden sonra ayrı bir nottur. Katalog: [`references/okura-dogrudan-metin.md`](references/okura-dogrudan-metin.md).
 
 **Ses ve biçim.** Verdiğiniz yazı örneğine göre ton eşleştirmesi yapar. Olumsuzluğu, sayıları, koşulları, istisnaları ve `yalnızca`, `en az`, `henüz` gibi kapsam sözcüklerini; teknik terimleri, sembolleri, birimleri ve belge biçimini korur. Raporlarda bulgu, yorum, sınırlılık, öneri ve karar sınırlarını; tablo, atıf ve çapraz göndermeleri yerinde tutar. Muhataba göre karar verir: uzman metninde herkesin bildiği şeyin açıklamasını çıkarır, ders notunda öğretici açıklamayı korur.
 
@@ -320,7 +320,7 @@ Bu raporu ekip liderine gönderilecek hâle getir.
 [rapor]
 ```
 
-`İstediğin gibi`, `verdiğin dosyaya göre`, `istersen bir sonraki adımda ... deneyebilirim`, `önce ... baktım, sonra ...` gibi izler gider; yöntem, veri kaynağı, varsayım, doğrulanmamış olma ve olasılık okura yazılır. Talepte verdiğiniz yeni bilgi (`pilot iptal edildi, düzelt`) metne `kullanıcının bildirdiğine göre` diye değil, olgu olarak girer. Okurun konuşmayı görmediği biliniyorsa çıktıyı `python scripts/style-lint.py rapor.md --son-okur` ile de denetleyebilirsiniz; tek bir sızıntı adayı kalsa bile betik 1 ile çıkar.
+Talepte verdiğiniz yeni bilgi (`pilot iptal edildi, düzelt`) metne `kullanıcının bildirdiğine göre` diye değil, olgu olarak girer. Çıktıyı `python scripts/style-lint.py rapor.md --son-okur` ile denetleyebilirsiniz; tek bir sızıntı adayı kalsa bile betik 1 ile çıkar.
 
 ### Rapor zamanını yerine oturtma
 

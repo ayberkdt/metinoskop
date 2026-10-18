@@ -493,12 +493,12 @@ if "Türkçeye çevrilmiş metin" not in frontmatter:
     fail("SKILL.md must limit translation scope to existing Turkish translations")
 if "# Metinoskop" not in skill:
     fail("SKILL.md must use the Metinoskop heading")
-if len(skill.splitlines()) > 400:
-    fail("SKILL.md exceeds the 400-line portability budget")
-if len(skill.encode("utf-8")) > 40_000:
-    fail("SKILL.md exceeds the 40 KB attention budget; move detail to references/")
-if len(frontmatter_match.group(1)) > 1_200:
-    fail("SKILL.md description must stay a trigger description, not a catalog (max 1200 bytes)")
+if len(skill.splitlines()) > 300:
+    fail("SKILL.md exceeds the 300-line portability budget")
+if len(skill.encode("utf-8")) > 34_000:
+    fail("SKILL.md exceeds the 34 KB attention budget; move detail to references/")
+if len(frontmatter_match.group(1)) > 900:
+    fail("SKILL.md description must stay a trigger description, not a catalog (max 900 characters)")
 for heading in (
     "## Netlik omurgası",
     "ASD-STE100",
