@@ -285,6 +285,21 @@ Söylem ölçüleri de yalnızca inceleme içindir: çekince (`olabilir`, `düş
 
 Her vakanın kayıtlı bir referans çıktısı vardır ve CI `--require-all` ile çalıştığından yeni vaka çıktısız eklenemez; yapı korunacaksa kaynağı olduğu gibi kaydedin. Kayıtlı çıktı ("gold") bir sözleşmedir: skill'in kendi kurallarını ihlal eden bir gold yanlış davranışı kilitler. Bu yüzden her gold, kaydedilmeden önce kaynağına karşı şu üç soruyla okunur: hangi iddia hangi epistemik statüde (gözlem, ölçüm, aktarım, çıkarım, öneri, karar) ve çıktıda aynı statüde mi; kaynağa olumsuz iddia ya da yeni çekince eklenmiş mi; daha doğrudan bir fiil nedensellik kurmuş mu? Rastgele atanmamış iki grup arasındaki farkı "etkiler" ya da "azaltır" diye yazan, "karar sürecine girdi"yi "henüz karar vermedi"ye çeviren ya da şişmiş iddiayı indirirken "mekanizma ortaya konmamıştır" ekleyen gold bu denetimde düzeltilmiştir. Üçü de sayıları koruduğu için eski deterministik denetimden geçmişti; eklenen işaret denetimi üçünü de yakalar. Anlam yönü (`operatörün görünürlüğünü artırdı`), yeni eşdizim ve derece zayıflaması sayımla yakalanmaz; hakem ve `SKILL.md` › **Yerine yazdığın ifade yeni bir iddiadır** kuralı bunlar içindir. `python scripts/eval-suite.py --export-judge-prompts build/judge` her vaka için kaynak, talep, kayıtlı çıktı ve ölçütleri içeren bir model hakem istemi üretir.
 
+### Gold çıktılarının araştırma profili
+
+`python scripts/research-profile.py --list` korunur vakalar dışındaki gold çıktılarını kaynaklarına karşı `references/insan-ve-yapay-metin.md` farklarıyla ölçer ve izi kalan gold'u listeler. 2026-10-18 (132 dönüşüm vakası):
+
+| Ölçü | Kaynak | Gold |
+|---|---|---|
+| Cümle sonu kuyruğu | 3 | 0 |
+| Biçem fiili ve sıfatı | 8 | 0 |
+| Sert dolgu kalıbı | 50 | 1 (`dar-kapsam-metin-disi-not`, kapsam dışı olduğu için bilerek) |
+| Kalıp açılış (`Sonuç olarak` …) | 7 | 0 |
+| Adlaştırma / 100 sözcük | 0,84 | 0,49 |
+| 7–20 sözcük bandındaki cümle | %62 | %70 |
+
+Bant oranının artması büyük ölçüde parçalanmış kısa cümlelerin birleştirildiği vakalardan gelir (`kisa-paragraf-yigini`, `yol-haritasi`). Profil `paragraf-simetrisi` gold'unun kendisinin simetrik olduğunu gösterdi (iki paragraf, ikişer cümle, 16-15-15-12 sözcük; geçmiş kış düşüşü ile 2026 planı aynı paragrafta); gold konuya göre üç paragrafa ayrıldı ve ana bulgu kısa cümleyle verildi.
+
 ### Kör A/B ölçümü
 
 Kayıtlı çıktılar fixture'ı sınar, skill'i değil. Bir skill değişikliğinin model çıktısını değiştirip değiştirmediği kör A/B ile ölçülür. Her skill sürümü, başka hiçbir dosyaya bakmayan bağımsız model örneklerine yalnızca görev dosyasıyla verilir; örnekler hangi sürümü okuduklarını bilmez. Her örnek `=== T1 ===` blokları olan tek bir dosya yazar; dosya adının sonu kol harfi ve örnek numarasıdır (`hk_E3.md`). Puanlama:
@@ -306,6 +321,11 @@ Betik kaynakta olmayan epistemik işareti, kayıp değişmezi, listeye dönüşm
 | Ayrık 1 | Q (kişi kuralı genelleşmeden) | 3 | 0 | 0 | 1,00 |
 | Ayrık 2 | P (eski) | 2 | 0 | 0 | 0,50 |
 | Ayrık 2 | R (son sürüm) | 3 | 0 | 0 | 0 |
+
+| Ayrık 3 | P (eski) | 6 | 1,33 | 0,17 | 1,67 |
+| Ayrık 3 | R (son sürüm) | 6 | 1,17 | 0 | 0,33 |
+
+Ayrık set 3 (`ab-gorevler-ayrik3.md`) anlamlılık testi için kuruldu: dört görev, kol başına altı örnek, 24'er görev çıktısı. `--compare P R` bir görev çıktısını eklenen işaret, kayıp, yanılgı, kuyruk ya da sızıntı varsa hatalı sayar. Ham sayaçla hatalı çıktı eskide 15/24, yenide 7/24 (tek yönlü Fisher p = 0,021). Çıktılar okunup sayacın yanlış alarmları ayıklandığında (duyuruda `boya için kapalı` → `boya nedeniyle kapalı` aynı ilişkidir; `ama sormadık` → `sorulmadığından doğrulanmış değil` sadık aktarımdır) eskide 10/24, yenide 2/24 (p = 0,0087). Eski skill altı örneğin altısında yazarın `bence`sini öznesiz yazdı (`düşünülüyor`, `görüşü var`), dördünde olumsuz sonucu `gelişim fırsatı` diye bıraktı; yeni skill'de bunlar 0/6 ve 1/6.
 
 Opus'ta eski ve yeni skill dört görevde de sıfırda kaldı (tavan etkisi). Sınırlar: örnek sayısı küçüktür; sayaçlar kalıp tabanlıdır ve biçim değişince kaçırır (ayrık set 1'deki `bir tahmin var` kişi kayması önce elle okunarak bulundu); sayım hakem değildir.
 
