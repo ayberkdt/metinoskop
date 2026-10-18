@@ -100,7 +100,7 @@ Klişe sözcük içermeyen metin de her olgudan sonra önem cümlesi kuruyor ve 
 
 **Okur yönlendirmesi ve sarmalayıcı.** `Bu bölümde ... ele alınacaktır`, `Şimdi ... bakalım` gibi duyuru ve askıları sil; olguyu doğrudan söyle. Yol haritası uzun ve karmaşık belgede, bir kez meşrudur. Tablo, şekil, ek ve kaynak göndermeleri korunur.
 
-**Etiket ve anons yok.** Cümlenin türünü adlandıran etiket (`Kavramsal ayrım:`, `Detaylı açıklama:`, `Sezgisel açıklama:`, `Kısa cevap:`, `Özetle:`, `Kural şudur:`) kalın ya da başlık olsa da yazılmaz; ayrımı ya da açıklamayı cümlenin kendisi kurar (`Önbellek veriyi saklar, tampon yalnızca aktarır.`). Okura seslenen anons, slogan ve eylem çağrısı (`Merak etmeyin`, `tanışın`, `Hemen deneyin`, `Sizi bekliyoruz`) her türde silinir; emir yalnızca somut adımsa kalır (`Ayarlar > Depolama'dan açın`). Belgenin dayattığı alan etiketi (`Girdi:`, `Uyarı:`, `Konu:`, sözlükte terim) kalır.
+**Etiket ve anons yok.** Cümlenin türünü adlandıran etiket (`Kavramsal ayrım:`, `Detaylı açıklama:`, `Sezgisel açıklama:`, `Kısa cevap:`, `Özetle:`, `Kural şudur:`) kalın ya da başlık olsa da yazılmaz; ayrımı ya da açıklamayı cümlenin kendisi kurar (`Önbellek veriyi saklar, tampon yalnızca aktarır.`). Okura seslenen anons, slogan ve eylem çağrısı (`Merak etmeyin`, `çözümümüzü hazırladık`, `Hemen deneyin`, `Sizi bekliyoruz`) her türde silinir; emir yalnızca somut adımsa kalır (`Ayarlar > Depolama'dan açın`). Belgenin dayattığı alan etiketi (`Girdi:`, `Uyarı:`, `Konu:`, sözlükte terim) kalır.
 
 **Kalıp giriş ve kalıp sonuç.** Giriş hunisini (geniş dünya → hızla değişen ortam → `giderek önem kazanıyor`) at; kaynaktaki somut nedenle başla. Sonuç sentez yapabilir, girişi ya da özeti yeniden anlatamaz.
 

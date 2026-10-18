@@ -384,7 +384,7 @@ Haiku'da önceki–yeni p = 0,0016, skill'siz–yeni p = 0,0042 (tek yönlü Fis
 | Sonnet, `0685e48` | 6/30 |
 | Sonnet, son skill | 0/30 |
 
-Haiku'da önceki–son p = 0,0008; Sonnet'te `0685e48`–son p = 0,012. Etkinlik alanları (`Tarih:`, `Yer:`, `Kayıt:`) son skill'li 12 örneğin hepsinde korundu. Sınırda kalan: Haiku iki örnekte `Sizin için en güvenli ... çözümünü hazırladık` cümlesini `Bulut yedekleme çözümümüzü hazırladık` diye sadeleştirdi; üstünlük ve seslenme gitti, duyuru cümlesi kaldı. Stil denetiminin `anons` ailesi bu turda `Hazır mısınız?`, `yepyeni bir dönem başlıyor`, `Sizi bekliyoruz`, `gelin birlikte`, `karşınızdayız` ve `Farkı hissedin` kalıplarını da aldı.
+Haiku'da önceki–son p = 0,0008; Sonnet'te `0685e48`–son p = 0,012. Etkinlik alanları (`Tarih:`, `Yer:`, `Kayıt:`) son skill'li 12 örneğin hepsinde korundu. Haiku iki örnekte `Sizin için en güvenli ... çözümünü hazırladık` cümlesini `Bulut yedekleme çözümümüzü hazırladık` diye sadeleştirdi: üstünlük ve seslenme gitti, ürünün var olduğunu duyuran cümle kaldı. Ürünü sunan duyuru (`çözümümüzü hazırladık`, `sizlere sunuyoruz`) kurala ve `anons` ailesine eklendi; yeni denetim bu iki örneği yakalıyor. Son skill aynı sette yeniden çalıştırıldı: Haiku 0/30, Sonnet 0/30; açılış sayfası düzeltmelerinin hiçbirinde duyuru cümlesi yok, sık sorulan soru yanıtlarının hiçbiri `Kısa cevap:` ile açılmıyor, etkinlik alanları 12/12 korundu. Stil denetiminin `anons` ailesi bu turda `Hazır mısınız?`, `yepyeni bir dönem başlıyor`, `Sizi bekliyoruz`, `gelin birlikte`, `karşınızdayız` ve `Farkı hissedin` kalıplarını da aldı.
 
 #### Gold denetimi: model çıktısıyla yeniden ölçüm
 

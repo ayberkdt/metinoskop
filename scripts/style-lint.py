@@ -433,6 +433,8 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"\bşunları (?:göreceğiz|öğreneceğiz|öğreneceksiniz|ele alacağız|inceleyeceğiz)",
             r"^aşağıda .*(?:anlatıyoruz|açıklıyoruz|sıralıyoruz|bulabilirsiniz|bulacaksınız)",
             r"(?:büyük|güzel|harika|heyecan verici) (?:bir )?haber(?:imiz)? var|\bmüjde\b",
+            # Ürünü sunan duyuru: ne yaptığını değil var olduğunu bildirir ("çözümümüzü hazırladık").
+            r"\bçözüm\w* (?:hazırladık|sunuyoruz|geliştirdik)\b|\b(?:sizlere|size) sun(?:uyoruz|maktan)",
         ),
     },
     {
@@ -1965,6 +1967,8 @@ ETIKET_ANONS_TEXTS = (
     ("anons", "Sizi bekliyoruz, gelin birlikte öğrenelim!"),
     ("anons", "Teknoloji günümüzle karşınızdayız."),
     ("anons", "Farkı hissedin."),
+    ("anons", "Bulut yedekleme çözümümüzü hazırladık."),
+    ("anons", "Yeni uygulamamızı sizlere sunmaktan mutluluk duyuyoruz."),
 )
 # Belgenin dayattığı alan etiketi, raporun Özet başlığı, sözlük ve sıradan cümle işaretlenmez.
 ETIKET_INNOCENT_TEXT = """### Özet
