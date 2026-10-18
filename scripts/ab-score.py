@@ -36,7 +36,7 @@ research = load("research_profile", "research-profile.py")
 
 # Research traits (references/insan-ve-yapay-metin.md) that mark an output as
 # machine-like; list items are reported but not counted, a README may need one.
-TRAITS = ("kuyruk", "bicem", "sert", "kalip_acilis", "olumluya")
+TRAITS = ("kuyruk", "bicem", "sert", "kalip_acilis", "olumluya", "etiket", "anons")
 
 POSITIVE = re.compile(r"fırsat|potansiyel|altını çiz|değerli|önemli ölçüde")
 
@@ -177,6 +177,8 @@ def traits_report(args: argparse.Namespace, sources: dict[str, str]) -> int:
                 continue
             body = re.split(r"(?m)^---\s*$", output)[0].strip()
             traits = research.profile(body)
+            report = lint.analyse(body)
+            traits["etiket"], traits["anons"] = report["etiket"], report["anons"]
             paragraphs = [p for p in lint.parse(body).paragraphs if p.sentences]
             arm["paragraf"] = arm.get("paragraf", 0) + len(paragraphs)
             arm["tek_cumle"] = arm.get("tek_cumle", 0) + sum(1 for p in paragraphs if len(p.sentences) == 1)
@@ -195,14 +197,15 @@ def traits_report(args: argparse.Namespace, sources: dict[str, str]) -> int:
             arm["olgu_hatali"] = arm.get("olgu_hatali", 0) + int(bool(facts["eklenen"] or facts["kayip"]))
 
     print("Kol | çıktı | kuyruk | biçem | sert | kalıp açılış | olumluya | liste | adlaştırma/100 | 7–20 bandı | sözcük/çıktı "
-          "| tek cümlelik paragraf | istenen uzunluk | izli çıktı | olgu hatalı")
+          "| tek cümlelik paragraf | istenen uzunluk | etiket | anons | izli çıktı | olgu hatalı")
     for name, a in sorted(arms.items()):
         n = a["cikti"] or 1
         length = f"{a['uzunluk_uyan']:.0f}/{a['uzunluk_istenen']:.0f}" if a.get("uzunluk_istenen") else "-"
         print(f"{name} | {a['cikti']:.0f} | {a['kuyruk']:.0f} | {a['bicem']:.0f} | {a['sert']:.0f} | {a['kalip_acilis']:.0f} | "
               f"{a['olumluya']:.0f} | {a['liste']:.0f} | {100 * a['adlastirma'] / max(1, a['sozcuk']):.2f} | "
               f"%{100 * a['bant'] / max(1, a['cumle']):.0f} | {a['sozcuk'] / n:.0f} | "
-              f"%{100 * a['tek_cumle'] / max(1, a['paragraf']):.0f} | {length} | {a['izli']:.0f} | {a['olgu_hatali']:.0f}")
+              f"%{100 * a['tek_cumle'] / max(1, a['paragraf']):.0f} | {length} | {a['etiket']:.0f} | {a['anons']:.0f} | "
+              f"{a['izli']:.0f} | {a['olgu_hatali']:.0f}")
     for pair in args.compare or []:
         old, new = (arms[name] for name in pair)
         for key, label in (("izli", "İz taşıyan çıktı"), ("olgu_hatali", "Olgu hatalı çıktı")):

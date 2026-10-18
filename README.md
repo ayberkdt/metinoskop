@@ -130,7 +130,7 @@ Bu vakanın kayıtlı çıktısı kaynağın kendisidir. Doğru davranış hiçb
 
 ## Neyi değiştirmemekte ısrar eder
 
-Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz doksan beş eval vakasının altmış üçünde beklenen çıktı kaynağın kendisidir:
+Bir metin düzenleyicisini asıl zor kılan, ne zaman duracağını bilmesidir. Yüz doksan sekiz eval vakasının altmış dördünde beklenen çıktı kaynağın kendisidir:
 
 | Metinde geçen | Neden dokunulmaz |
 |---|---|
@@ -507,8 +507,8 @@ metinoskop/
 │   ├── yapisal-butunluk.md
 │   └── zamansal-ankraj-ve-rapor-kipi.md
 ├── evals/
-│   ├── (195 davranışsal vaka: netlik omurgası, bütüncül düzenleme, yazma kipi,
-│   │    bağlayıcılar, okura doğrudan metin, cümle sonu kuyruğu, kaynak sadakati, retorik mimari, yapısal bütünlük, çeviri kokusu, epistemik mimari,
+│   ├── (198 davranışsal vaka: netlik omurgası, bütüncül düzenleme, yazma kipi,
+│   │    bağlayıcılar, okura doğrudan metin, cümle sonu kuyruğu, etiket ve anons, kaynak sadakati, retorik mimari, yapısal bütünlük, çeviri kokusu, epistemik mimari,
 │   │    eşdizim ve istem, metinsel tutarlılık, zamansal ankraj)
 │   ├── critical-cases.txt
 │   └── outputs/
@@ -563,7 +563,7 @@ python scripts/style-lint.py outputs/iddia-tekrar-dongusu.txt --source evals/idd
 - **Çeviri kokusu ölçüleri:** `sahip olmak`, varlık kalıbı, çerçeve yığını, `olan` zinciri, tekrarlanan cümle başlangıcı, `ve` zinciri, fiilimsi yığını, iyelik zinciri, 100 sözcük başına `bir`.
 - **Söylem ölçüleri:** çekince, pekiştirici, aktarım, hafif fiil; kiplik yığını, pekiştirici çatışması, kip nöbetleşmesi, zamansal sürtünme, geniş zaman doygunluğu, ilgeç yoğunluğu, eş anlamlı kayması, konu sıfırlama, kayıt kayması.
 
-Bunlar inceleme bulgusudur; tek bir `bir`, `olan`, `ve` ya da `açısından` işaretlenmez ve hiçbir regex epistemik doğruluğa karar vermez. Kalıplar sözcük sınırına saygı gösterir: `eşsiz` kalıbı `güneşsiz` içinde eşleşmez. `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıplar ayrıca listelenir; `--fail-on-introduced-hard` yalnızca sert bastırma ailesinde başarısız çıkış kodu verir, `--fail-on-introduced-any` katı moddur. Konuşma sızıntısı adayları yazışmada ve sürüm notunda içerik olabildiği için varsayılan olarak bağlamsaldır; okurun konuşmayı görmediği biliniyorsa `--son-okur` onları sert sayar ve metinde tek bir aday kalsa bile 1 ile çıkar. Öz sınama için:
+Bunlar inceleme bulgusudur; tek bir `bir`, `olan`, `ve` ya da `açısından` işaretlenmez ve hiçbir regex epistemik doğruluğa karar vermez. Kalıplar sözcük sınırına saygı gösterir: `eşsiz` kalıbı `güneşsiz` içinde eşleşmez. `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıplar ayrıca listelenir; `--fail-on-introduced-hard` yalnızca sert bastırma ailesinde başarısız çıkış kodu verir, `--fail-on-introduced-any` katı moddur. Konuşma sızıntısı adayları yazışmada ve sürüm notunda içerik olabildiği için varsayılan olarak bağlamsaldır; okurun konuşmayı görmediği biliniyorsa `--son-okur` onları sert sayar ve metinde tek bir aday kalsa bile 1 ile çıkar. `--teslim` teslim kapısıdır: etiketle açılan cümle (`Kavramsal ayrım:`, `Sezgisel açıklama:`) ya da okura seslenen anons ve pazarlama cümlesi kalırsa cümleleri konumlarıyla listeler ve 1 ile çıkar; belgenin alan etiketi (`Girdi:`, `Uyarı:`) ve `---` sonrası not engellenmez. Listede olmayan bir etiket biçimi (`Öğretmen gözüyle:`) kapıyı durdurmaz ama `etiket adayı` uyarısı olarak listelenir; sözlük maddesi de aynı biçimde olduğu için bu satırlar elle okunur. Öz sınama için:
 
 ```bash
 python scripts/style-lint.py --self-test

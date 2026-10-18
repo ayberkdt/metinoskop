@@ -40,6 +40,9 @@ Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (t
 | `yazma-kipi-notlardan-rapor` | Madde notlarından yönetime gidecek düzyazı not yazmak; her olguyu ve sayıyı kullanmak, yazarın çekincesini korumak, kararı gelecek kipte bırakmak; liste kopyalamamak, değerlendirme ve konuşma izi eklememek |
 | `cumle-sonu-kuyrugu` | Virgülden sonra `-arak/-erek` ile biten cümleyi ve `, bu da …` ekini çözmek: önerme taşıyan kuyruğu ayrı cümle yapmak, ölçülmemiş değerlendirmeyi silmek, iki ölçümü tek özneye bağlamamak |
 | `zarf-fiil-korunur` | Yüklemden önce gelen doğal zarf-fiili (`alarak denetledi`, `kapatarak boşalttı`) kuyruk sanmamak (yanlış pozitif) |
+| `etiket-ve-anons` | Cümlenin türünü adlandıran etiketi (`Kısa cevap:`, `Kavramsal ayrım:`, `Sezgisel açıklama:`, `Detaylı açıklama:`) ve okura seslenen anonsu (`Merak etmeyin`, `Bu yazıda öğreneceksiniz`) silmek; etiketin altındaki bilgiyi etiketsiz bırakmak |
+| `pazarlama-anonsu` | Müşteri duyurusunda `Büyük bir haberimiz var`, `tanışın`, `Sizin için hazırladık`, `Hemen indirin` kalıplarını silip ikna yükünü somut işleve bırakmak |
+| `alan-etiketi-korunur` | Belgenin alan etiketini (`Girdi:`, `Çıktı:`, `Uyarı:`) ve sözlük maddesini etiket sanmamak (yanlış pozitif) |
 
 **Okura doğrudan metin:** metnin konuşmayı görmemiş son okura gittiğini; konuşma sızıntısının (konuşmaya gönderme, kullanıcıya teklif, çalışma süreci, düzenleme geçmişi) bilgisi kurtarılarak silindiğini, kullanıcıya söylenecek notun metnin dışında kaldığını sınar. `konuşma sızıntısı` beklentisi `style-lint.py` `sizinti` ailesine bağlanır.
 
@@ -355,6 +358,45 @@ Ayrık set 3 birleşik örneklemde (Haiku, kol başına 8 örnek, 32 görev çı
 - **Set 3, ayrık.** Set 2'den dört `SKILL.md` yaması çıktı: istenen uzunluğu kaynaktan türeyen malzemeyle (giriş, terim açıklaması, okur için doğrudan karşılık) kurmak; kuruma atfedilmiş kalıbı ve örtülmüş sorunu ambalaj saymak; desteksiz nedensel bağlacı korumamak; `mevcut sürüm` ile bugüne bağlanan durumu `-yor` ile yazmak. Yamalar yeni içerikle sınandı. Uzunluk iki sürümde de 0/12 kaldı; Sonnet yamalı skill'le metni kısa bırakıp eksik bilgiyi notta sordu. Kurumsal ambalajda iz kalan çıktı eski skill'de 8/16, yamalıda 8/16. Depo vakalarında yamalı skill 116/132, son skill 118/132 geçti (p = 0,72). Etkisi gösterilemeyen yamalar `SKILL.md`'ye alınmadı.
 
 Açık bulgu: kaynaktaki bilgi istenen uzunluğa yetmediğinde skill'li ajan uzunluğu tutturamıyor, skill'siz ajan uydurarak tutturuyor. Skill'li ajanın çıktısı kısa metin ve eksik bilgiyi soran nottur. Uzunluğu kaynaktan türeyen malzemeyle kuran kural ilk denemede bu davranışı değiştirmedi.
+
+#### Etiket ve anons
+
+`SKILL.md` › **Etiket ve anons yok** kuralı `scripts/ab-gorevler-etiket.md` ile sınandı. Görevler: açıklayıcı wiki bölümü, yeni başlayana açıklama, müşteri e-postası, etiketli blog taslağı, alan etiketli API belgesi. Kollar: skill'siz Haiku, önceki skill (`b1cd0d9`) ve yeni skill, Haiku ve Sonnet'te kol başına dört örnek. `ab-score.py --traits` etiket ve anons cümlelerini `style-lint.py`'nin iki sert ailesiyle sayar; çıktılar ayrıca okundu.
+
+| Kol | Etiket | Anons | İz taşıyan çıktı |
+|---|---|---|---|
+| Haiku, skill'siz | 13 | 6 | 7/20 |
+| Haiku, önceki skill | 17 | 3 | 8/20 |
+| Haiku, yeni skill | 0 | 0 | 0/20 |
+| Sonnet, önceki skill | 0 | 0 | 0/20 |
+| Sonnet, yeni skill | 1 | 0 | 1/20 |
+
+Haiku'da önceki–yeni p = 0,0016, skill'siz–yeni p = 0,0042 (tek yönlü Fisher). Önceki skill'le Haiku etiketli taslağı dört örneğin dördünde etiketleriyle bıraktı (`**Kavramsal ayrım:**`, `**Sezgisel açıklama:**`); yeni skill'le dördünde sildi ve etiketin altındaki bilgiyi korudu. Sonnet önceki skill'le de etiket kurmuyordu (taban sıfır); yeni skill'le bir örnek cümle içinde `Başlangıç için kural şudur:` yazdı. Bu biçim stil denetimine ve kuralın örnek listesine eklendi. Belgenin alan etiketleri (`Uç nokta:`, `Yöntem:`, `Sayfa boyutu:`, `Uyarı:`) bütün skill'li kollarda korundu (16/16).
+
+İkinci ayrık set (`scripts/ab-gorevler-etiket2.md`) pazarlama ağırlıklıdır: ürün duyurusu, kavram açıklaması, sık sorulan soru yanıtı, açılış sayfası ve etkinlik duyurusu taslağı. `0685e48` skill'iyle Sonnet açılış sayfasındaki `Hemen deneyin` eylem çağrısını altı örneğin altısında, Haiku altıda birinde korudu; Haiku bir örnekte `Sizi bekliyoruz` bıraktı. Sebep kuralın kendisiydi: referans "okurun eylemi gerekiyorsa emir kipiyle yaz" diyordu ve eylem çağrısı listede yoktu. Kural `Hemen deneyin` ve `Sizi bekliyoruz` örneklerini aldı; emir yalnızca somut adımsa (`Ayarlar > Depolama'dan açın`) kalıyor. Aynı set yeniden çalıştırıldı:
+
+| Kol | İz taşıyan çıktı |
+|---|---|
+| Haiku, skill'siz | 10/20 |
+| Haiku, önceki skill (`b1cd0d9`) | 7/20 |
+| Haiku, `0685e48` | 2/30 |
+| Haiku, son skill | 0/30 |
+| Sonnet, `0685e48` | 6/30 |
+| Sonnet, son skill | 0/30 |
+
+Haiku'da önceki–son p = 0,0008; Sonnet'te `0685e48`–son p = 0,012. Etkinlik alanları (`Tarih:`, `Yer:`, `Kayıt:`) son skill'li 12 örneğin hepsinde korundu. Haiku iki örnekte `Sizin için en güvenli ... çözümünü hazırladık` cümlesini `Bulut yedekleme çözümümüzü hazırladık` diye sadeleştirdi: üstünlük ve seslenme gitti, ürünün var olduğunu duyuran cümle kaldı. Ürünü sunan duyuru (`çözümümüzü hazırladık`, `sizlere sunuyoruz`) kurala ve `anons` ailesine eklendi; yeni denetim bu iki örneği yakalıyor. Son skill aynı sette yeniden çalıştırıldı: Haiku 0/30, Sonnet 0/30; açılış sayfası düzeltmelerinin hiçbirinde duyuru cümlesi yok, sık sorulan soru yanıtlarının hiçbiri `Kısa cevap:` ile açılmıyor, etkinlik alanları 12/12 korundu. Stil denetiminin `anons` ailesi bu turda `Hazır mısınız?`, `yepyeni bir dönem başlıyor`, `Sizi bekliyoruz`, `gelin birlikte`, `karşınızdayız` ve `Farkı hissedin` kalıplarını da aldı.
+
+Son skill (`ea4e363`) üç kaynakta daha kör çalıştırıldı ve bütün çıktılar `etiket` ile `anons` aileleriyle, ayrıca listede olmayan `X:` girişleri için ayrı bir taramayla okundu:
+
+| Kaynak | Metin | Etiket ya da anons |
+|---|---|---|
+| İlk etiket seti (`ab-gorevler-etiket.md`), Haiku ve Sonnet, dörder örnek | 40 | 0 |
+| Tür çeşitliliği seti (`ab-gorevler-etiket3.md`: LinkedIn gönderisi, iş ilanı, eğitim yazısı girişi, bülten, mağaza açıklaması), Haiku ve Sonnet, dörder örnek | 40 | 0 |
+| Deponun 132 dönüşüm vakası, Sonnet | 132 | 0 |
+
+Taramanın işaretlediği üç aday elle okundu ve etiket değildi: `Yeni not uygulaması:` ürünü adlandıran liste başlığıdır (`Özellikler:` gibi), `Önbellek sorunu incelendi: ...` yüklemli cümlenin açıklamaya geçişidir, `Cihazı kalibre etmek için:` adım listesinin girişidir. Bülten taslağındaki `Bu sayıda neler var?`, `Önemli not:`, `Kritik bilgi:`, `Özetle:`, `Sizi yeni sayımızda bekliyoruz!` sekiz örneğin hepsinde silindi; bu biçimler ve `Gelin hep birlikte` stil denetimine de eklendi. 132 vakada eval geçişi 115/132; başarısızlıklar önceki denetimin aileleridir (model hatası, bilinen iki sert işaret, eklenen çekince ya da neden), hiçbiri etiket kuralının ürettiği silme değildir.
+
+Teslim kapısı (`python scripts/style-lint.py --teslim <dosya>`) bu iki aileyi bağlamdan bağımsız yasak olarak uygular: bir cümle bile kalırsa konumuyla listeler ve 1 ile çıkar. Sızıntı adayı kapıya girmez, çünkü bağlama bağlıdır (`önceki sürümde`, okura yapılan `istersen ... eklerim`); onu `--son-okur` ayrıca denetler. Kapı 198 gold'un hiçbirini, son skill'in bu bölümdeki 272 kör çıktısının da hiçbirini durdurmuyor; öz sınama hem yasak cümleyi hem alan etiketini ve sızıntı sanılan içeriği tutuyor. `SKILL.md`'nin netlik denetimi adımı, kabuk erişimi olan ajandan son metni bu kapıdan geçirmeden teslim etmemesini istiyor. Kapı yalnız bilinen biçimleri durdurur; listede olmayan biçim için cümle başındaki bir-üç sözcüklük `X:` girişlerini, belgenin bilinen alanları (`Girdi:`, `Tarih:`, `Tablo 2:`) ve dipnot tanımı dışında, engellemeyen `etiket adayı` uyarısı olarak listeler. Bu uyarı 198 gold'da 2 satır (sözlük maddesi), 272 kör çıktıda 2 satır (ürün adını veren liste başlığı, yüklemli cümlenin açıklamaya geçişi) verdi; ikisi de elle okunup etiket olmadığı görüldü. Kapı tam `analyse()` yerine yalnız iki aileyi tarar (dört sınama metninde aynı sonuç); tek dosya 345–371 ms, soğuk ilk çalıştırma 449 ms.
 
 #### Gold denetimi: model çıktısıyla yeniden ölçüm
 

@@ -10,17 +10,18 @@
 6. [Üretilmiş önem](#üretilmiş-önem)
 7. [Üretilmiş karşıtlık](#üretilmiş-karşıtlık)
 8. [Yol haritası ve okur yönlendirmesi](#yol-haritası-ve-okur-yönlendirmesi)
-9. [Kalıp giriş](#kalıp-giriş)
-10. [Kalıp sonuç ve gelecek çalışma](#kalıp-sonuç-ve-gelecek-çalışma)
-11. [Soyut yüklem sisi](#soyut-yüklem-sisi)
-12. [Boş soyut özne](#boş-soyut-özne)
-13. [Açık olanı açıklama](#açık-olanı-açıklama)
-14. [Paragraf simetrisi](#paragraf-simetrisi)
-15. [Zorlama denge](#zorlama-denge)
-16. [Akademik ve teknik metin](#akademik-ve-teknik-metin)
-17. [Dolguyu dolguya çevirme](#dolguyu-dolguya-çevirme)
-18. [Zorlu örnekler](#zorlu-örnekler)
-19. [Karşı örnekler: kalması gerekenler](#karşı-örnekler-kalması-gerekenler)
+9. [Etiket ve anons](#etiket-ve-anons)
+10. [Kalıp giriş](#kalıp-giriş)
+11. [Kalıp sonuç ve gelecek çalışma](#kalıp-sonuç-ve-gelecek-çalışma)
+12. [Soyut yüklem sisi](#soyut-yüklem-sisi)
+13. [Boş soyut özne](#boş-soyut-özne)
+14. [Açık olanı açıklama](#açık-olanı-açıklama)
+15. [Paragraf simetrisi](#paragraf-simetrisi)
+16. [Zorlama denge](#zorlama-denge)
+17. [Akademik ve teknik metin](#akademik-ve-teknik-metin)
+18. [Dolguyu dolguya çevirme](#dolguyu-dolguya-çevirme)
+19. [Zorlu örnekler](#zorlu-örnekler)
+20. [Karşı örnekler: kalması gerekenler](#karşı-örnekler-kalması-gerekenler)
 
 ## Kullanım ilkesi
 
@@ -321,6 +322,49 @@ Ana işlevi içerik vermek değil, metni duyurmak olan cümleler.
 > Yapılandırma dosyası `config/settings.yaml` yolunda bulunur. `timeout` alanı saniye cinsinden bekleme süresini belirler; varsayılan değer 30'dur.
 
 Beş cümleden ikisi kaldı; hiçbir alan, yol veya değer kaybolmadı.
+
+## Etiket ve anons
+
+Kesin yasaktır; tür, düzey ve okur fark etmez. Etiket cümlenin ne tür bir cümle olduğunu duyurur, anons okura seslenip metni satar; ikisi de bilgi vermez.
+
+### Etiketle açılan cümle
+
+- Kavramsal ayrım: ... / Kritik fark: ...
+- Detaylı açıklama: ... / Sezgisel açıklama: ...
+- Kısa cevap: ... / Uzun cevap: ...
+- Temel fikir: ... / Ana fikir şu: ... / Asıl mesele şu: ...
+- Önemli nokta: ... / Pratik sonuç: ... / Altın kural: ...
+- Kısaca: ... / Özetle: ... / Sonuç: ...
+- Aynı etiket kalın yazıldığında (`**Kısa cevap:**`), başlık yapıldığında (`### Sezgisel açıklama`) ya da madde başına konduğunda da etikettir.
+
+Karar: etiketi sil, cümleyi içeriğiyle kur. Etiket bir ayrımı duyuruyorsa ayrımı iki tarafıyla tek cümlede yaz; bir sonucu duyuruyorsa sonucu yaz. Etiketin altındaki cümle zaten tam ise yalnızca etiket gider.
+
+**Önce**
+
+> **Kavramsal ayrım:** Önbellek ile tampon farklı şeylerdir. **Sezgisel açıklama:** Önbellek bir kısayol gibidir. **Detaylı açıklama:** Önbellek sık okunan veriyi saklar; tampon ise veriyi iki bileşen arasında aktarırken geçici olarak tutar.
+
+**Sonra**
+
+> Önbellek sık okunan veriyi saklar; tampon ise veriyi iki bileşen arasında aktarırken yalnızca geçici olarak tutar.
+
+İlk iki cümle bilgi taşımıyordu: biri ayrımın varlığını duyuruyor, öteki ayrımı imgeyle anıyordu. Üçüncüsü ayrımın kendisiydi.
+
+### Anons ve pazarlama
+
+- Merak etmeyin / Endişelenmeyin ...
+- ... ile tanışın / ... sizi bekliyor / Kaçırmayın / Hemen deneyin
+- Sizin için ... hazırladık / ... çözümümüzü hazırladık / ... sizlere sunuyoruz
+- Hayatınızı kolaylaştıracak ... / Her şeyi değiştiren ...
+- Bu yazıda ... öğreneceksiniz / Şunları göreceğiz:
+- Aşağıda adım adım anlatıyoruz.
+- Hadi başlayalım. / İşte tam da burada ... devreye giriyor.
+- İşin en heyecan verici kısmına geldik. / Büyük bir haberimiz var.
+
+Karar: anonsu sil. Eylem çağrısı (`Hemen deneyin`, `Kaçırmayın`, `Sizi bekliyoruz`) eylem bildirmez, satar; o da silinir. Kalan emir somut adımdır ve kaynaktaki bilgiyi taşır (`Ayarlar > Depolama bölümünden açın`, `5 Kasım'a kadar formu doldurun`). Tanıtım metninde ikna, somut olgu ve fayda ile kurulur (`arama 3 kat hızlı`); anons kalıbı ikna aracı sayılmaz.
+
+### Kalan: belgenin dayattığı alan etiketi
+
+Etiket içeriğin adı değil, belgenin alanıysa kalır: `Girdi:` / `Çıktı:` alanları, güvenlik metninde `Uyarı:`, e-postada `Konu:`, sözlükte `Gecikme: isteğin gönderilmesiyle yanıtın gelmesi arasındaki süre.`, karar kaydında `Karar:` / `Gerekçe:`, `Tablo 2:` başlığı, raporun `Özet` bölümü. Metin dışı not (`---` sonrası `Not:`) metne ait değildir.
 
 ## Kalıp giriş
 
