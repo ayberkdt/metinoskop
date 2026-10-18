@@ -65,7 +65,7 @@ Yöntem bilgisi yöntemde toplandı; ölçüm sonucu sonuçlarda kaldı. Bölüm
 
 **Açımlama döngüsü.** Olgu → açımlama → önem → mini sonuç dizisi tek önermeye iner (`SKILL.md` kısa örneği; eval `iddia-tekrar-dongusu`).
 
-**Korunur.** Aynı önerme yeni bir rol kazanıyorsa yinelenir: bulgularda ölçüm olarak (`hata %9'dan %4'e indi`), tartışmada yorumun dayanağı olarak (`%4'lük hata, ... için yeterli düzeydedir`). Eval: `ayni-iddia-yeni-rol`.
+**Korunur.** Aynı önerme yeni bir rol kazanıyorsa yinelenir: bulgularda ölçüm olarak (`hata %9'dan %4'e indi`), tartışmada yorumun dayanağı olarak (`%4'lük hata, ... için yeterli düzeydedir`). Eval: `ayni-iddia-yeni-rol-korunur`.
 
 ### 3. Yalnızca gerekli bilgiyi yaz
 
@@ -75,7 +75,7 @@ Yöntem bilgisi yöntemde toplandı; ölçüm sonucu sonuçlarda kaldı. Bölüm
 >
 > Sonra: Ölçümler üç tekrarla alındı; tekrarlar arasındaki en büyük fark %1,2 oldu.
 
-**Korunur.** Yeni başlayana yazılmış öğretici açıklama, adlandırılmış sınırlılık ve ölçülmüş yöntem gerekçesi bilgi taşır (`egitsel-aciklama`, `savunmaci-akademik`).
+**Korunur.** Yeni başlayana yazılmış öğretici açıklama, adlandırılmış sınırlılık ve ölçülmüş yöntem gerekçesi bilgi taşır (`egitsel-aciklama-korunur`, `savunmaci-akademik`).
 
 ### 4. Kısa ve doğrudan cümle
 
@@ -97,7 +97,7 @@ Karşılaştırma zemini (`eski pompaya göre`) yalnızca enerji tüketimine ba�
 >
 > Sonra: Önerilen yöntem üç aşamadan oluşur: veri temizleme, özellik seçimi ve model eğitimi.
 
-`Yöntem`, `yaklaşım`, `sistem`, `çözüm` aynı varlığı adlandırıyordu; okur dört ayrı şey olup olmadığını soracaktı. Eval: `varlik-yeniden-adlandirma`, `kanonik-terim-tekrari`.
+`Yöntem`, `yaklaşım`, `sistem`, `çözüm` aynı varlığı adlandırıyordu; okur dört ayrı şey olup olmadığını soracaktı. Eval: `varlik-yeniden-adlandirma`, `kanonik-terim-tekrari-korunur`.
 
 **Korunur.** Terimin yinelenmesi tekrar değildir. `Hata`, `sapma` ve `belirsizlik` ayrı kavramlarsa üçü de kalır.
 
@@ -117,7 +117,7 @@ Karşılaştırma zemini (`eski pompaya göre`) yalnızca enerji tüketimine ba�
 
 **Zincir düzyazıdır.** Maddeler `bu nedenle`, `dolayısıyla` ile birbirine bağlanıyorsa paralel değil nedenseldir; düzyazıya dön (`gereksiz-listeleme`).
 
-**Başlık hakkını kazanır.** Altında tek kısa paragraf olan başlık, komşusuyla aynı konuyu işliyorsa birleşir (`tek-paragraf-bolumler`). Uzun belgenin gezinme başlıkları ve tekrarlanabilirlik için ayrılmış deney bölümleri korunur (`korunacak-basliklar`, `yontem-ayrimi`).
+**Başlık hakkını kazanır.** Altında tek kısa paragraf olan başlık, komşusuyla aynı konuyu işliyorsa birleşir (`tek-paragraf-bolumler`). Uzun belgenin gezinme başlıkları ve tekrarlanabilirlik için ayrılmış deney bölümleri korunur (`gerekli-basliklar-korunur`, `yontem-ayrimi-korunur`).
 
 ## Aşırı uygulama belirtileri
 

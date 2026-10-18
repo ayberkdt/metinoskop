@@ -2,7 +2,7 @@
 """Score blind A/B skill outputs with the repo's deterministic checks.
 
 Each skill version is given, with nothing else, to independent model samples
-together with ``scripts/ab-gorevler.md``. Every sample writes one file with
+together with ``scripts/ab-gorevler/teshis.md``. Every sample writes one file with
 ``=== T1 ===`` ... ``=== T5 ===`` blocks; the file name ends in the arm letter
 and a sample number (``hk_D3.md`` is arm D, sample 3). The script reports, per
 arm, what the eval suite cannot see without fresh model output: epistemic
@@ -113,7 +113,7 @@ def main() -> int:
     lint.configure_stdio()
     parser = argparse.ArgumentParser(description="Kör A/B skill çıktılarını deterministik denetimle puanlar.")
     parser.add_argument("outputs", type=Path, help="Örnek çıktılarının klasörü")
-    parser.add_argument("--tasks", type=Path, default=ROOT / "scripts" / "ab-gorevler.md")
+    parser.add_argument("--tasks", type=Path, default=ROOT / "scripts" / "ab-gorevler" / "teshis.md")
     parser.add_argument("--glob", default="*.md", help="Çıktı dosyası deseni (son harf + sayı kolu ve örneği verir)")
     parser.add_argument("--detail", action="store_true", help="Her görevin ölçümünü de yazdır")
     parser.add_argument("--compare", nargs=2, metavar=("ESKI", "YENI"), action="append",

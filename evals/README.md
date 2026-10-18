@@ -22,7 +22,7 @@ Yeni bir davranış kuralı eklenirken en az bir mevcut vaka güncellenmeli veya
 | `cok-konulu-cumle` | Tek cümleye yığılmış ilgisiz önermeleri ayrı cümlelere bölmek; aralarına kaynakta olmayan neden ya da sıra ilişkisi koymamak |
 | `talimat-tek-adim` | Edilgen ve adlaştırılmış bakım talimatını cümle başına bir adım veren numaralı listeye çevirmek; zorunluluğu tavsiyeye, beklenen değeri ölçüme çevirmemek |
 
-Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (tek ilişki taşıyan uzun cümle), `uzun-paragraf-korunur` (tek hareketli uzun paragraf), `ayni-iddia-yeni-rol` (yeni rol kazanan yineleme), `kanonik-terim-tekrari` (gerekli terim tekrarı).
+Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (tek ilişki taşıyan uzun cümle), `uzun-paragraf-korunur` (tek hareketli uzun paragraf), `ayni-iddia-yeni-rol-korunur` (yeni rol kazanan yineleme), `kanonik-terim-tekrari-korunur` (gerekli terim tekrarı).
 
 **Kısa talep, bütüncül düzenleme ve bağlayıcılar:** kullanıcının yalnızca "geliştir" dediği durumda ajanın sorunları kendisi teşhis edip katmanları birlikte düzeltmesini; doğru ama yanlış yerde duran cümlenin taşınmasını; ilişkilerin Türkçenin bağlayıcı kaynaklarıyla, kaynakta olmayan ilişki kurmadan kurulmasını sınar. `yakın tekrar` beklentisi `style-lint.py` netlik ölçüsüne bağlanır.
 
@@ -53,13 +53,13 @@ Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (t
 | `dar-kapsam-metin-disi-not` | Kapsam yalnızca noktalamaya daraltıldığında anlam kalkısına dokunmamak ama metnin dışında, `---` ile ayrılmış tek bir notla bildirmek |
 | `sizinti-sanilan-icerik-korunur` | Sürüm notundaki `önceki sürümde`, ürünün kullanıcısını anlatan `kullanıcının isteği üzerine`, dil modeli metnindeki `istemde` ve okura yapılan `dönebilirsiniz` yönlendirmesini sızıntı sanmamak (yanlış pozitif) |
 
-Korunur tarafı ayrıca `iyi-metin` taşır: okurun da tarafı olduğu e-postada `geçen ay konuştuğumuz gibi` içeriktir.
+Korunur tarafı ayrıca `iyi-yazilmis-metin-korunur` taşır: okurun da tarafı olduğu e-postada `geçen ay konuştuğumuz gibi` içeriktir.
 
-**Kaynak sadakati ve kapsam:** `akademik`, `belirsizlik`, `bicim-koruma`, `kapsam-ve-kosul`, `kaynak-sadakati`, `teknik`, `rapor-bulgu-yorum-oneri`, `rapor-yapisal-butunluk`, `yonetici-ozeti`.
+**Kaynak sadakati ve kapsam:** `akademik-metin-korunur`, `belirsiz-gonderge-korunur`, `markdown-bicimi-korunur`, `kapsam-ve-kosul`, `kaynak-sadakati`, `teknik-gosterim-korunur`, `rapor-bulgu-yorum-oneri`, `rapor-yapisi-korunur`, `yonetici-ozeti`.
 
-**Ton ve değişiklik bütçesi:** `degisiklik-butcesi`, `kavramsal-giris`.
+**Ton ve değişiklik bütçesi:** `degisiklik-butcesi-korunur`, `kavramsal-giris`.
 
-**Kenar türler** (`references/kenar-turler.md`): metin bu türlerdense devreye giren ek kuralları sınar; kritik canlı sette yer almaz. Hukuki: `hukuki`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`. Tanıtım: `reklam-kampanyasi-korunur`, `yardim-kampanyasi-korunur`. Deneme ve sosyal medya: `gorus-ambalaji`, `ozgun-imge-korunur`, `sosyal-medya-sablonu`. Kişisel ve kurumsal yazışma: `kisisel`, `kurumsal`, `dogal-is-epostasi`. Üslup eşleme: `uslup-eslestirme`.
+**Kenar türler** (`references/kenar-turler.md`): metin bu türlerdense devreye giren ek kuralları sınar; kritik canlı sette yer almaz. Hukuki: `hukuki-metin-korunur`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`. Tanıtım: `reklam-kampanyasi-korunur`, `yardim-kampanyasi-korunur`. Deneme ve sosyal medya: `gorus-ambalaji`, `ozgun-imge-korunur`, `sosyal-medya-sablonu`. Kişisel ve kurumsal yazışma: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`. Üslup eşleme: `uslup-eslestirme`.
 
 **Retorik mimari:** cümle, paragraf ve belge düzeyindeki yapay düzyazıyı sınar.
 
@@ -74,9 +74,9 @@ Korunur tarafı ayrıca `iyi-metin` taşır: okurun da tarafı olduğu e-postada
 | `soyut-yuklem` | Soyut yüklemi ölçülmüş ilişkiyle değiştirmek, türetilmiş sayı eklememek |
 | `paragraf-simetrisi` | Tek biçimli paragraf mimarisini bilgi yapısına göre yeniden kurmak |
 | `gerekli-ifade` | Yüzeyde yapay görünen ama teknik ayrım taşıyan içeriği korumak (yanlış pozitif) |
-| `egitsel-aciklama` | Yeni başlayan için öğretici açıklamayı korumak (muhatap duyarlılığı) |
+| `egitsel-aciklama-korunur` | Yeni başlayan için öğretici açıklamayı korumak (muhatap duyarlılığı) |
 | `tetikleyici-iceren-sozcuk-korunur` | Tetikleyiciyi içinde barındıran sözcüğü (`güneşsiz`, `eşsizlik`, `dönüştürücü`) pazarlama dili saymamak (yanlış pozitif) |
-| `iyi-metin` | Zaten iyi yazılmış metni neredeyse hiç değiştirmemek |
+| `iyi-yazilmis-metin-korunur` | Zaten iyi yazılmış metni neredeyse hiç değiştirmemek |
 | `gorus-ambalaji` | (kenar tür) Denemede görüşü önerme ve güç olarak korurken hazır imgeyi, `çok daha fazlası` formülünü, soyut üçlüyü ve vecizeyi atmak; aynı imgeyi yumuşatarak bırakmamak |
 | `ozgun-imge-korunur` | (kenar tür) Yazara ve konuya özgü benzetmeyi hazır ambalaj sanıp silmemek (yanlış pozitif) |
 | `sosyal-medya-sablonu` | (kenar tür) Sosyal medya gönderisinde retorik soru, `Gelin birlikte bakalım`, `Sonuç mu?`, emoji ve etiketli madde şablonunu atıp sayıları ve öğrenilen dersleri korumak |
@@ -98,13 +98,13 @@ Korunur tarafı ayrıca `iyi-metin` taşır: okurun da tarafı olduğu e-postada
 | `uzun-cerceve-ifadeleri` | Yığılmış nitelemeyi özne, yüklem ve gerekli nitelemeye indirmek |
 | `ayrilmis-kanit` | Sınırlılığı sınırladığı sonucun yanına taşımak |
 | `gereksiz-listeleme` | Nedensel zinciri listeden düzyazıya çevirmek |
-| `korunacak-basliklar` | Uzun belgenin gezinme başlıklarını ve yönlendirme cümlesini korumak |
-| `yontem-ayrimi` | Tekrarlanabilirlik için ayrı deney bölümlerini korumak |
+| `gerekli-basliklar-korunur` | Uzun belgenin gezinme başlıklarını ve yönlendirme cümlesini korumak |
+| `yontem-ayrimi-korunur` | Tekrarlanabilirlik için ayrı deney bölümlerini korumak |
 | `uzun-paragraf-korunur` | Tek hareket taşıyan uzun paragrafı bölmemek |
 | `kisa-paragraf-korunur` | İşlevsel olarak yalıtılmış tek cümlelik uyarıyı birleştirmemek |
-| `yapisal-iyi-metin` | Yapısı iyi metne dokunmamak |
+| `iyi-yapi-korunur` | Yapısı iyi metne dokunmamak |
 
-**Zamansal ankraj ve rapor kipi:** tamamlanmış işin tamamlanmış olay olarak anlatılıp anlatılmadığını, genel davranışın genel kalıp kalmadığını ve düzeltmenin geçmişe zorlamaya dönüşmediğini sınar. `algoritma-genel-davranis-korunur`, `bilimsel-genelleme-korunur`, `prosedur-kilavuz-korunur`, `teknik-sistem-davranisi-korunur`, `tablo-sekil-zaman-korunur` ve `gecmise-zorlama-yok` vakalarının kayıtlı çıktısı kaynağın kendisidir.
+**Zamansal ankraj ve rapor kipi:** tamamlanmış işin tamamlanmış olay olarak anlatılıp anlatılmadığını, genel davranışın genel kalıp kalmadığını ve düzeltmenin geçmişe zorlamaya dönüşmediğini sınar. `algoritma-genel-davranis-korunur`, `bilimsel-genelleme-korunur`, `prosedur-kilavuz-korunur`, `teknik-sistem-davranisi-korunur`, `tablo-sekil-zaman-korunur` ve `gerekceli-kip-cesitliligi-korunur` vakalarının kayıtlı çıktısı kaynağın kendisidir.
 
 | Vaka | Sınanan davranış |
 |---|---|
@@ -116,15 +116,15 @@ Korunur tarafı ayrıca `iyi-metin` taşır: okurun da tarafı olduğu e-postada
 | `metot-ve-uygulama-ayrimi` | Aynı paragrafta yöntem tanımını geniş zamanda, uygulamayı geçmişte tutmak |
 | `sonuc-ve-yorum-kip-ayrimi` | Bulgu ile yorumu tek biçimlilik uğruna aynı kipe zorlamamak |
 | `durum-raporu-uc-zaman` | Tamamlanan, süren ve planlanan işi ayrı statülerde tutmak |
-| `her-seyi-edildi-yapma` | Düzeltmenin tek biçimli edilgen geçmiş zincirine dönüşmesini önlemek |
-| `mistir-yigini-yapma` | Geniş zamanı yaygın `-mıştır` ile değiştirmemek |
-| `gecmis-genel-yasa-bozmasin` | Geçmişe çevirirken genel bilimsel ilişkiyi bozmamak |
+| `edilgen-gecmis-zinciri-tuzagi` | Düzeltmenin tek biçimli edilgen geçmiş zincirine dönüşmesini önlemek |
+| `mistir-yigini-tuzagi` | Geniş zamanı yaygın `-mıştır` ile değiştirmemek |
+| `genel-yasa-gecmis-tuzagi` | Geçmişe çevirirken genel bilimsel ilişkiyi bozmamak |
 | `algoritma-genel-davranis-korunur` | Algoritma tanımını geniş zamanda bırakmak (yanlış pozitif) |
 | `bilimsel-genelleme-korunur` | Genel bilimsel ilişkiyi geçmişe çekmemek |
 | `prosedur-kilavuz-korunur` | Yeniden kullanılabilir prosedürü tek seferlik bakıma indirmemek |
 | `teknik-sistem-davranisi-korunur` | Ürün belirtimini test kaydına çevirmemek |
 | `tablo-sekil-zaman-korunur` | Belge göndermelerinin farklı kiplerini korumak |
-| `gecmise-zorlama-yok` | Gerekçeli kip çeşitliliğine dokunmamak |
+| `gerekceli-kip-cesitliligi-korunur` | Gerekçeli kip çeşitliliğine dokunmamak |
 
 **Çeviri kokusu ve Türkçe ritim:** dil bilgisi doğru olduğu hâlde İngilizce cümle iskeleti taşıyan metinde ilişkinin Türkçe kaynaklarla yeniden kurulup kurulmadığını ve yerli yapıya dokunulmadığını sınar. Her "korunur" vakasının kayıtlı çıktısı kaynağın kendisidir.
 
@@ -136,24 +136,24 @@ Korunur tarafı ayrıca `iyi-metin` taşır: okurun da tarafı olduğu e-postada
 | `sahip-olmak-kalkisi` | `X, Y'ye sahiptir` kalkısını ilişki türüne göre iyelik, sıfat veya fiille kurmak; mülkiyet ve yetki dilini korumak |
 | `bulunmaktadir-kalkisi` | `Bulunmaktadır / yer almaktadır / mevcuttur / içermektedir` kalıplarını doğrudan varlık veya iyelik ilişkisiyle kurmak |
 | `ve-zinciri` | Bağımsız çekimli cümle zincirini `-ip`, noktalı virgül ve aktör değişimine göre yeniden kurmak |
-| `dogal-ve-korunur` | Eş düzeyli iki olguyu bağlayan `ve` bağlacını sıraya veya karşıtlığa çevirmemek |
+| `dogal-ve-baglaci-korunur` | Eş düzeyli iki olguyu bağlayan `ve` bağlacını sıraya veya karşıtlığa çevirmemek |
 | `yararli-ip-yapisi` | Belirteçle dizilmiş sıralı adımları `-ip` ve `-dikten sonra` ile kurmak |
 | `asiri-ip-zinciri` | Tek yükleme asılı yedi fiilimsiyi kavramsal sınırda bölmek |
 | `art-niteleme` | Adın ardına eklenen İngilizce nitelemeyi ad önü ortaçla kurmak |
-| `gerekli-olan` | Koşulu sınırlayan tek `olan` yapısını korumak |
+| `gerekli-olan-korunur` | Koşulu sınırlayan tek `olan` yapısını korumak |
 | `gereksiz-olan` | `Olan` zincirini ve `sahip olan` kalkılarını sıfat ve iyelikle çözmek |
 | `cerceve-yigini` | `Açısından / kapsamında / bağlamında / noktasında` yığınını hâl eki, iyelik veya fiille kurmak |
-| `gerekli-acisindan` | Gerçek karşılaştırma eksenini kuran `açısından` çiftini korumak |
+| `gerekli-acisindan-korunur` | Gerçek karşılaştırma eksenini kuran `açısından` çiftini korumak |
 | `soyut-ad-yuklemi` | Soyut ad yüklemlerini ve hafif yüklemleri kaynağın desteklediği fiille kurmak; ölçülmemiş etkiyi ölçülmüş gibi yazmamak |
 | `teknik-adlastirma-korunur` | Teknik işlemi ve tablo büyüklüğünü adlandıran isim-fiil ve iyelik zincirini korumak |
 | `ozne-dusurme-akisi` | Tek aktörlü sürüm notunda özne düşürerek akışı kurmak |
-| `belirsizlik-icin-acik-ozne` | Dönüşümlü iki aktörde açık özne tekrarını korumak |
+| `belirsizligi-onleyen-ozne-korunur` | Dönüşümlü iki aktörde açık özne tekrarını korumak |
 | `dogal-uzun-cumle-korunur` | Tek ana önerme ve denetimli tümleç taşıyan uzun cümleyi bölmemek |
 | `asiri-yuklu-cumle` | İç içe çerçeve ve uzak yüklemli cümleyi kavramsal sınırda bölmek, sonucu uydurmamak |
 | `ingilizce-soylem-belirtecleri` | Belirteçle etiketlenmiş ilişkileri `ise`, `de/da` ve `-dığından` ile kurmak; kapsam sınırını korumak |
 | `hukuki-kalip-korunur` | Sözleşme dilinde yinelenen tarafı, `işbu`, `söz konusu`, `takdirde` kalıplarını korumak |
 | `teknik-ozne-tekrari-korunur` | Ayrı kaydedilen adımlarda açık özne tekrarını korumak |
-| `yerli-turkce-metin` | Zaten Türkçe düşünülmüş metne dokunmamak |
+| `turkce-dusunulmus-metin-korunur` | Zaten Türkçe düşünülmüş metne dokunmamak |
 
 **Epistemik mimari:** kimin bildiğini, nasıl bildiğini, ne kadar kesin iddia ettiğini ve her iddianın statüsünü düzenleme boyunca koruyup korumadığını sınar.
 
@@ -167,16 +167,16 @@ Korunur tarafı ayrıca `iyi-metin` taşır: okurun da tarafı olduğu e-postada
 | `cekince-korunur` | Kanıt düzeyi taşıyan çekince ve kapsam sınırını korumak |
 | `kiplik-yigini` | Aynı şeyi söyleyen üç kiplik işaretini teke indirmek; atıf ile olasılığı birlikte korumak |
 | `dayanaksiz-pekistirici` | "Açıkça kanıtlamaktadır" pekiştiricisini kaynağın sınırlı gözlemine indirmek |
-| `mesru-guclu-iddia` | Ölçümle desteklenen kesin iddiaya çekince eklememek |
-| `gerekceli-kip-degisimi` | Dört işlevli dört kipi korumak |
+| `mesru-guclu-iddia-korunur` | Ölçümle desteklenen kesin iddiaya çekince eklememek |
+| `gerekceli-kip-degisimi-korunur` | Dört işlevli dört kipi korumak |
 | `uslup-kip-nobetlesmesi` | Tek bakış açısına ait beş cümledeki kip nöbetleşmesini gidermek |
 | `oneri-karar-degil` | Öneriyi karara, beklentiyi taahhüde çevirmemek |
-| `karar-uygulama-degil` | Kararı uygulamaya, planı sonuca çevirmemek |
+| `karar-uygulama-ayrimi-korunur` | Kararı uygulamaya, planı sonuca çevirmemek |
 | `gozlenmedi-yoktur-degil` | "Gözlenmedi", "sınanmadı", "çözümsüz" statülerini ayrı tutmak |
 | `atif-kapsami` | Atıflı yorumdan sonra gelen "bu nedenle" olgusunu kaldırmak |
-| `kapsam-isareti-baglanmasi` | `Yalnızca` işaretinin bağlandığı ögeyi korumak |
+| `kapsam-isareti-bagi-korunur` | `Yalnızca` işaretinin bağlandığı ögeyi korumak |
 | `sonuc-sonuclardan-guclu` | Tartışma ve sonuç bölümlerini sonuçlar bölümünün kanıt düzeyine indirmek |
-| `iyi-akademik-paragraf` | Kanıt düzeyini zaten doğru taşıyan paragrafa dokunmamak |
+| `akademik-paragraf-korunur` | Kanıt düzeyini zaten doğru taşıyan paragrafa dokunmamak |
 
 **Eşdizim ve istem:** sözcüklerin doğal Türkçedeki gibi birleşip birleşmediğini ve teknik ayrımların korunup korunmadığını sınar.
 
@@ -185,17 +185,17 @@ Korunur tarafı ayrıca `iyi-metin` taşır: okurun da tarafı olduğu e-postada
 | `tuhaf-esdizim` | Dil bilgisi doğru ama deyimsel olmayan eşdizimleri alışılmış eşleşmeyle kurmak |
 | `teknik-esdizim-korunur` | Alanın terim eşdizimlerini korumak |
 | `yanlis-hal-cercevesi` | İngilizce edat izini taşıyan hâl çerçevelerini fiilin doğal istemiyle kurmak |
-| `dogru-alisilmadik-hal` | Farklı ilişki kuran çıkma ve yönelme hâllerini korumak |
+| `alisilmadik-hal-korunur` | Farklı ilişki kuran çıkma ve yönelme hâllerini korumak |
 | `edat-aktarimi` | Çift ilgeçleri kaldırmak, gerçek ilişki kuran `üzerinden` ifadesini korumak |
 | `hafif-fiil-sismesi` | Hafif fiilleri gerçek yüklemle kurmak, prosedür adını korumak |
 | `surec-adi-korunur` | Süreç adı olan hafif fiil kuruluşunu korumak |
 | `genel-fiil-kesin-iliski` | Dört "göstermektedir" yükleminin gizlediği dört ilişkiyi yazmak |
 | `epistemik-guvensiz-fiil` | Hafif yüklemi kurarken nedensel fiil eklememek |
 | `esanlam-kaymasi-teknik` | Aynı büyüklüğe gönderen teknik terimleri tek terimde toplamak |
-| `kanonik-terim-tekrari` | Yinelenen kanonik terimi çeşitlendirmemek |
+| `kanonik-terim-tekrari-korunur` | Yinelenen kanonik terimi çeşitlendirmemek |
 | `varlik-yeniden-adlandirma` | Beş adla anılan tek varlığı tek adla kurmak |
 | `hukuki-formul-korunur` | "Kabul ve taahhüt eder" formülünü korumak |
-| `dogal-is-epostasi` | Zaten doğal e-postaya kurumsal eşdizim dayatmamak |
+| `is-epostasi-korunur` | Zaten doğal e-postaya kurumsal eşdizim dayatmamak |
 | `odunc-terim-korunur` | Alanın ödünç terimlerini (`baseline`, `pipeline`, `benchmark`) korumak |
 
 **Metinsel tutarlılık ve konu ilerleyişi:** metnin bir düşünceyi geliştirip geliştirmediğini, bağlaçların gerçek ilişki taşıyıp taşımadığını ve kapsam, olumsuzluk, kayıt ve noktalamanın korunup korunmadığını sınar.
@@ -206,23 +206,23 @@ Korunur tarafı ayrıca `iyi-metin` taşır: okurun da tarafı olduğu e-postada
 | `sabit-konu-korunur` | Prosedürdeki sabit konu ilerleyişini korumak |
 | `dogrusal-ilerleyis-korunur` | Doğrusal ilerleyişi yeniden sıralamamak |
 | `desteksiz-bu-nedenle` | Önermelerin desteklemediği "bu nedenle" ilişkisini kaldırmak, öncül uydurmamak |
-| `gecerli-nedensel-baglac` | Kaynağın kurduğu nedensel bağlacı korumak |
+| `gecerli-nedensel-baglac-korunur` | Kaynağın kurduğu nedensel bağlacı korumak |
 | `esanlam-donusu` | Sonuç, bulgu, çıktı, gözlem dönüşünü tek terimde toplamak |
-| `gerekli-ad-tekrari` | Karşıtlık kuran grup adlarının yinelenmesini korumak |
-| `uzak-bu` | Dört olası öncüle sahip "bu" göndergesini rastgele çözmemek |
-| `kisa-mesafe-eksilti` | Tek ve yakın öncülde yeniden tanıtım eklememek |
+| `gerekli-ad-tekrari-korunur` | Karşıtlık kuran grup adlarının yinelenmesini korumak |
+| `belirsiz-uzak-bu-korunur` | Dört olası öncüle sahip "bu" göndergesini rastgele çözmemek |
+| `kisa-mesafe-eksilti-korunur` | Tek ve yakın öncülde yeniden tanıtım eklememek |
 | `bolum-basi-sifirlama` | Her bölümde yinelenen düzenek cümlesini teke indirmek, başlıkları korumak |
-| `temiz-devir` | Doğal paragraf devrine duyuru eklememek |
+| `temiz-devir-korunur` | Doğal paragraf devrine duyuru eklememek |
 | `islev-kaymasi` | Sonuçtan öneriye kayan paragraftaki dayanaksız öneriyi kaldırmak |
 | `kronoloji-nedensellik` | Kronolojiyi nedenselliğe çeviren bağlacı kaldırmak |
-| `kapsam-isareti-tasinmasi` | Kapsam işaretinin bağlandığı ögeyi korumak |
+| `tasinan-kapsam-isareti-korunur` | Kapsam işaretinin bağlandığı ögeyi korumak |
 | `olumsuzluk-kapsami` | Cümle birleştirirken olumsuzluğun kapsamını korumak |
 | `kayit-kaymasi` | Üç mikro kaydı tek akademik kayıtta kurmak |
-| `bilincli-kayit-degisimi` | Uyarı kutusunun bilinçli kayıt değişimini korumak |
+| `bilincli-kayit-degisimi-korunur` | Uyarı kutusunun bilinçli kayıt değişimini korumak |
 | `ingilizce-noktalama` | Uzun çizgili ara söz ve özne–yüklem virgülünü Türkçe gruplamaya çevirmek |
 | `teknik-noktalama-korunur` | Ondalık listedeki noktalı virgülü ve parantez içi göndermeyi korumak |
 | `uzak-sinirlilik` | Sınırlılığı sınırladığı iddianın yanına getirmek |
-| `ayni-iddia-yeni-rol` | Üç bölümde üç rol taşıyan aynı ölçümü korumak |
+| `ayni-iddia-yeni-rol-korunur` | Üç bölümde üç rol taşıyan aynı ölçümü korumak |
 | `ayni-iddia-hacim` | Aynı önermenin açımlamalarını kaldırmak |
 | `tutarli-metin-korunur` | Zaten tutarlı metne dokunmamak |
 
@@ -256,7 +256,7 @@ Bu ölçütler `Kaçınılması gerekenler` maddelerinin üstünde, bütün vaka
 Bir model çıktısını kaynakta açıkça korunan değişmezler bakımından denetlemek için:
 
 ```bash
-python scripts/eval-runner.py evals/teknik.md outputs/teknik.txt
+python scripts/eval-runner.py evals/teknik-gosterim-korunur.md outputs/teknik-gosterim-korunur.txt
 ```
 
 Çalıştırıcı sayı, tarih, URL, kod, dipnot, kapsam belirleyicisi, teknik ad, sembol, denklem numarası ve ölçüm kayıplarını yakalar. Birebir çıktı karşılaştırması yapmaz. Akıcılık, ton, gönderge yorumu ve genel anlam uyumu elle veya model hakemiyle değerlendirilmelidir.
@@ -269,13 +269,13 @@ python scripts/eval-runner.py evals/teknik.md outputs/teknik.txt
 python scripts/style-lint.py outputs/iddia-tekrar-dongusu.txt --source evals/iddia-tekrar-dongusu.md
 ```
 
-`scripts/style-lint.py` üretilmiş önem, savunmacı açıklama, yol haritası, kalıp giriş ve sonuç, üretilmiş karşıtlık, zorlama denge, soyut yüklem, boş özne ve sohbet botu kalıntısı ailelerini işaretler; paragraf uzunluğu tek biçimliliği, önem cümlesiyle kapanış oranı, `-maktadır` zinciri ve işlev tekrarı gibi yapı bulgularını raporlar. `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıpları kalıp düzeyinde ayrıca listeler; aynı aileden farklı bir kalıp da yeni sayılır. Bu, dolgunun başka dolguya çevrildiğine ilişkin güçlü bir deterministik işarettir; kaynakta olup çıktıda kalan sert aileler ise hakemin silme testiyle incelemesi için listelenir. Çıkış kodu sert ve bağlamsal aileleri ayırır: `--fail-on-introduced-hard` yalnızca kaynakta olmayan bir sert bastırma kalıbı eklenmişse 1 döndürür; `yani`, `öte yandan`, `işaret etmek` gibi bağlamsal aileler yalnızca uyarı olarak listelenir, çünkü skill bunları otomatik silmeyi yasaklar. `--fail-on-introduced-any` katı moddur. Rapor ayrıca parçalanma yoğunluğunu (başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, çapraz gönderme) özetler ve `--source` ile bu ölçülerdeki değişimi gösterir; `korunacak-basliklar` veya `yontem-ayrimi` gibi vakalarda başlık sayısının düşmesi hata işaretidir, `asiri-bolumleme` gibi vakalarda beklenen sonuçtur.
+`scripts/style-lint.py` üretilmiş önem, savunmacı açıklama, yol haritası, kalıp giriş ve sonuç, üretilmiş karşıtlık, zorlama denge, soyut yüklem, boş özne ve sohbet botu kalıntısı ailelerini işaretler; paragraf uzunluğu tek biçimliliği, önem cümlesiyle kapanış oranı, `-maktadır` zinciri ve işlev tekrarı gibi yapı bulgularını raporlar. `--source` verildiğinde kaynakta olmayıp çıktıda beliren kalıpları kalıp düzeyinde ayrıca listeler; aynı aileden farklı bir kalıp da yeni sayılır. Bu, dolgunun başka dolguya çevrildiğine ilişkin güçlü bir deterministik işarettir; kaynakta olup çıktıda kalan sert aileler ise hakemin silme testiyle incelemesi için listelenir. Çıkış kodu sert ve bağlamsal aileleri ayırır: `--fail-on-introduced-hard` yalnızca kaynakta olmayan bir sert bastırma kalıbı eklenmişse 1 döndürür; `yani`, `öte yandan`, `işaret etmek` gibi bağlamsal aileler yalnızca uyarı olarak listelenir, çünkü skill bunları otomatik silmeyi yasaklar. `--fail-on-introduced-any` katı moddur. Rapor ayrıca parçalanma yoğunluğunu (başlık sayısı ve derinliği, başlık başına paragraf, tek paragraflık bölüm, kısa paragraf oranı, liste ögesi, çapraz gönderme) özetler ve `--source` ile bu ölçülerdeki değişimi gösterir; `gerekli-basliklar-korunur` veya `yontem-ayrimi-korunur` gibi vakalarda başlık sayısının düşmesi hata işaretidir, `asiri-bolumleme` gibi vakalarda beklenen sonuçtur.
 
-Denetim tek bir sözcüğe bakarak metni reddetmez. `gerekli-ifade` ve `iyi-metin` vakalarında işaretlenen ifadelerin çoğu kalmalıdır; işaret, hakemin işlevi incelemesi içindir.
+Denetim tek bir sözcüğe bakarak metni reddetmez. `gerekli-ifade` ve `iyi-yazilmis-metin-korunur` vakalarında işaretlenen ifadelerin çoğu kalmalıdır; işaret, hakemin işlevi incelemesi içindir.
 
-Rapor ayrıca çeviri kokusu ölçülerini verir: `sahip olmak` ve varlık kalıbı işaretleri, tek cümlede iki farklı (ya da üç) çerçeve adı, tek cümlede iki `olan`, aynı bir iki sözcükle başlayan üç ardışık cümle (`tekrarlanan cümle başlangıcı`: özne tespiti değildir, "İlk deney ... İlk sonuç ..." de yakalanır; tekrarın özne tekrarı olup olmadığına hakem karar verir), tek cümlede üç `ve`, tek yükleme asılı dört fiilimsi, üç ardışık iyelik eki, söylem belirteciyle başlayan cümle oranı ve 100 sözcük başına `bir`. Bunların hiçbiri sert aile değildir; hepsi "bu yapı Türkçede bağımsız olarak doğal mı?" sorusu için inceleme işaretidir. Tek `bir`, `olan`, `ve` ya da `açısından` hiçbir zaman işaretlenmez; `gerekli-acisindan` vakasındaki "maliyet açısından ucuz, süre açısından pahalı" çifti paralel eksen sayılır, yığın sayılmaz. `--source` ile kaynakta olmayıp çıktıda beliren çeviri kokusu bulguları uyarı olarak listelenir; bunlar yeni bir kalkı ya da aşırı düzeltme (fiilimsi yığını) işareti olabilir.
+Rapor ayrıca çeviri kokusu ölçülerini verir: `sahip olmak` ve varlık kalıbı işaretleri, tek cümlede iki farklı (ya da üç) çerçeve adı, tek cümlede iki `olan`, aynı bir iki sözcükle başlayan üç ardışık cümle (`tekrarlanan cümle başlangıcı`: özne tespiti değildir, "İlk deney ... İlk sonuç ..." de yakalanır; tekrarın özne tekrarı olup olmadığına hakem karar verir), tek cümlede üç `ve`, tek yükleme asılı dört fiilimsi, üç ardışık iyelik eki, söylem belirteciyle başlayan cümle oranı ve 100 sözcük başına `bir`. Bunların hiçbiri sert aile değildir; hepsi "bu yapı Türkçede bağımsız olarak doğal mı?" sorusu için inceleme işaretidir. Tek `bir`, `olan`, `ve` ya da `açısından` hiçbir zaman işaretlenmez; `gerekli-acisindan-korunur` vakasındaki "maliyet açısından ucuz, süre açısından pahalı" çifti paralel eksen sayılır, yığın sayılmaz. `--source` ile kaynakta olmayıp çıktıda beliren çeviri kokusu bulguları uyarı olarak listelenir; bunlar yeni bir kalkı ya da aşırı düzeltme (fiilimsi yığını) işareti olabilir.
 
-Söylem ölçüleri de yalnızca inceleme içindir: çekince (`olabilir`, `düşünülebilir`, `görünmektedir`), pekiştirici (`açıkça`, `kesin olarak`, `kanıtlamaktadır`), aktarım (`bildirdi`, `belirtti`, `-e göre`) ve hafif fiil (`gerçekleştirmek`, `iyileştirme sağlamak`) aileleri bağlamsaldır; tek cümlede iki çekince (kiplik yığını), pekiştirici ile çekince çatışması, atıflı cümleden sonra gelen "bu nedenle" (aktarım sonrası sonuç), bir paragrafta üç farklı kip ve üç geçiş (kip nöbetleşmesi), iki adlaştırma ile edilgen yüklem, iki ilgeç, üç genel ad (yöntem/yaklaşım/yapı ya da sonuç/bulgu/çıktı), "bu çalışmada" ile açılan iki paragraf, ara söz yükü ve sohbet gerilimi ile bürokratik kayıt çatışması bulgu olarak listelenir. Hiçbir regex epistemik doğruluğa karar vermez; `mesru-guclu-iddia` ve `gerekceli-kip-degisimi` gibi vakalarda işaretlenen yapı kalmalıdır.
+Söylem ölçüleri de yalnızca inceleme içindir: çekince (`olabilir`, `düşünülebilir`, `görünmektedir`), pekiştirici (`açıkça`, `kesin olarak`, `kanıtlamaktadır`), aktarım (`bildirdi`, `belirtti`, `-e göre`) ve hafif fiil (`gerçekleştirmek`, `iyileştirme sağlamak`) aileleri bağlamsaldır; tek cümlede iki çekince (kiplik yığını), pekiştirici ile çekince çatışması, atıflı cümleden sonra gelen "bu nedenle" (aktarım sonrası sonuç), bir paragrafta üç farklı kip ve üç geçiş (kip nöbetleşmesi), iki adlaştırma ile edilgen yüklem, iki ilgeç, üç genel ad (yöntem/yaklaşım/yapı ya da sonuç/bulgu/çıktı), "bu çalışmada" ile açılan iki paragraf, ara söz yükü ve sohbet gerilimi ile bürokratik kayıt çatışması bulgu olarak listelenir. Hiçbir regex epistemik doğruluğa karar vermez; `mesru-guclu-iddia-korunur` ve `gerekceli-kip-degisimi-korunur` gibi vakalarda işaretlenen yapı kalmalıdır.
 
 ### Kayıtlı çıktılar üzerinde regresyon
 
@@ -308,10 +308,10 @@ Bant oranının artması büyük ölçüde parçalanmış kısa cümlelerin birl
 Kayıtlı çıktılar fixture'ı sınar, skill'i değil. Bir skill değişikliğinin model çıktısını değiştirip değiştirmediği kör A/B ile ölçülür. Her skill sürümü, başka hiçbir dosyaya bakmayan bağımsız model örneklerine yalnızca görev dosyasıyla verilir; örnekler hangi sürümü okuduklarını bilmez. Her örnek `=== T1 ===` blokları olan tek bir dosya yazar; dosya adının sonu kol harfi ve örnek numarasıdır (`hk_E3.md`). Puanlama:
 
 ```bash
-python scripts/ab-score.py <çıktı-klasörü> --tasks scripts/ab-gorevler.md --glob "hk_*.md"
+python scripts/ab-score.py <çıktı-klasörü> --tasks scripts/ab-gorevler/teshis.md --glob "hk_*.md"
 ```
 
-Betik kaynakta olmayan epistemik işareti, kayıp değişmezi, listeye dönüşmeyi, cümle sonu kuyruğunu, sızıntıyı ve bilinen yanılgıları (çıkarım dolgusu, kişi kayması, değişiklik notu, olumluya çekme, yumuşatılmış iddia, kalıp kapanış) sayar. `ab-gorevler.md` teşhis setidir; skill ona bakarak düzeltilir. `ab-gorevler-ayrik.md` ve `ab-gorevler-ayrik2.md` ayrık setlerdir: düzeltmenin genellenip genellenmediğini ölçer, skill onlara bakarak düzeltilmez. Teşhiste kullanılan bir ayrık set artık ayrık değildir; yenisi yazılır.
+Betik kaynakta olmayan epistemik işareti, kayıp değişmezi, listeye dönüşmeyi, cümle sonu kuyruğunu, sızıntıyı ve bilinen yanılgıları (çıkarım dolgusu, kişi kayması, değişiklik notu, olumluya çekme, yumuşatılmış iddia, kalıp kapanış) sayar. `scripts/ab-gorevler/teshis.md` teşhis setidir; skill ona bakarak düzeltilir. `scripts/ab-gorevler/ayrik-1.md` ve `scripts/ab-gorevler/ayrik-2.md` ayrık setlerdir: düzeltmenin genellenip genellenmediğini ölçer, skill onlara bakarak düzeltilmez. Teşhiste kullanılan bir ayrık set artık ayrık değildir; yenisi yazılır.
 
 2026-10-18 sonuçları (Haiku; A ve P bu turdan önceki `SKILL.md`, E, Q ve R düzeltilmiş sürümler, C skill'siz):
 
@@ -328,13 +328,13 @@ Betik kaynakta olmayan epistemik işareti, kayıp değişmezi, listeye dönüşm
 | Ayrık 3 | P (eski) | 6 | 1,33 | 0,17 | 1,67 |
 | Ayrık 3 | R (son sürüm) | 6 | 1,17 | 0 | 0,33 |
 
-Ayrık set 3 (`ab-gorevler-ayrik3.md`) anlamlılık testi için kuruldu: dört görev, kol başına altı örnek, 24'er görev çıktısı. `--compare P R` bir görev çıktısını eklenen işaret, kayıp, yanılgı, kuyruk ya da sızıntı varsa hatalı sayar. Ham sayaçla hatalı çıktı eskide 15/24, yenide 7/24 (tek yönlü Fisher p = 0,021). Çıktılar okunup sayacın yanlış alarmları ayıklandığında (duyuruda `boya için kapalı` → `boya nedeniyle kapalı` aynı ilişkidir; `ama sormadık` → `sorulmadığından doğrulanmış değil` sadık aktarımdır) eskide 10/24, yenide 2/24 (p = 0,0087). Eski skill altı örneğin altısında yazarın `bence`sini öznesiz yazdı (`düşünülüyor`, `görüşü var`), dördünde olumsuz sonucu `gelişim fırsatı` diye bıraktı; yeni skill'de bunlar 0/6 ve 1/6.
+Ayrık set 3 (`scripts/ab-gorevler/ayrik-3.md`) anlamlılık testi için kuruldu: dört görev, kol başına altı örnek, 24'er görev çıktısı. `--compare P R` bir görev çıktısını eklenen işaret, kayıp, yanılgı, kuyruk ya da sızıntı varsa hatalı sayar. Ham sayaçla hatalı çıktı eskide 15/24, yenide 7/24 (tek yönlü Fisher p = 0,021). Çıktılar okunup sayacın yanlış alarmları ayıklandığında (duyuruda `boya için kapalı` → `boya nedeniyle kapalı` aynı ilişkidir; `ama sormadık` → `sorulmadığından doğrulanmış değil` sadık aktarımdır) eskide 10/24, yenide 2/24 (p = 0,0087). Eski skill altı örneğin altısında yazarın `bence`sini öznesiz yazdı (`düşünülüyor`, `görüşü var`), dördünde olumsuz sonucu `gelişim fırsatı` diye bıraktı; yeni skill'de bunlar 0/6 ve 1/6.
 
 Opus'ta eski ve yeni skill dört görevde de sıfırda kaldı (tavan etkisi).
 
 #### Depo vakalarıyla ölçüm (iki model)
 
-Ayrık görevler depo dışıdır; skill'in kendi vakalarındaki davranışı da ölçülür. Sekiz vakanın (`konusma-sizintisi-rapor`, `cumle-sonu-kuyrugu`, `yazma-kipi-notlardan-rapor`, `talep-bilgisi-metne-gecer`, `dar-kapsam-metin-disi-not`, `paragraf-simetrisi`, `sonuc-sonuclardan-guclu`, `iyi-metin`) yalnızca `## Kaynak` ve `## Talep` bölümleri modele verilir, beklentiler gizli kalır; çıktılar `python scripts/ab-case-score.py <klasör> --compare ESKI YENI` ile tam olarak bir gold gibi (`eval-suite.py` vaka değerlendirmesiyle) puanlanır.
+Ayrık görevler depo dışıdır; skill'in kendi vakalarındaki davranışı da ölçülür. Sekiz vakanın (`konusma-sizintisi-rapor`, `cumle-sonu-kuyrugu`, `yazma-kipi-notlardan-rapor`, `talep-bilgisi-metne-gecer`, `dar-kapsam-metin-disi-not`, `paragraf-simetrisi`, `sonuc-sonuclardan-guclu`, `iyi-yazilmis-metin-korunur`) yalnızca `## Kaynak` ve `## Talep` bölümleri modele verilir, beklentiler gizli kalır; çıktılar `python scripts/ab-case-score.py <klasör> --compare ESKI YENI` ile tam olarak bir gold gibi (`eval-suite.py` vaka değerlendirmesiyle) puanlanır.
 
 2026-10-18, kol başına 4 örnek × 8 vaka:
 
@@ -343,7 +343,7 @@ Ayrık görevler depo dışıdır; skill'in kendi vakalarındaki davranışı da
 | Haiku | 27/32 | 21/32 | 27/32 |
 | Sonnet | 26/32 | 27/32 | 29/32 |
 
-Bu ölçüm iyileşme kadar gerilemeyi de gösterdi. İlk revizyon Haiku'da `iyi-metin`i bozdu (2/4): sızıntı örneklerindeki `istersen eklerim`, e-postada okura yapılan teklifi de sızıntı gibi gösteriyordu; bir örnek `istersen`i `gerekirse` yaptı. Bütün sürümler `konusma-sizintisi-rapor`'da yöntem cümlesini (`cache.py` incelendi, yük testi çalıştırıldı) sızıntıyla birlikte siliyordu. Bir örnek, skill'in "yapma" diye alıntıladığı `mekanizma ortaya konmamıştır` ifadesini birebir yazdı. Son sürümde okura teklif sızıntı olmayanlar arasına girdi, `Bilgiyi kurtar` yöntem örneği aldı, yanlış ifadenin alıntısı doğru hedefle değiştirildi. Sonuç: `iyi-metin` 4/4'e döndü; yöntemi koruyan çıktı önceki sürümlerde 5/16, son sürümde 8/8 (tek yönlü Fisher p = 0,0018, iki modelde aynı yön). Kalan başarısızlıklar `cache.py`'nin ters tırnaksız yazılması (biçim), okura seçenek olarak yazılan `denenebilir` cümlesindeki `sonraki adım` (stil denetiminin yol haritası ailesi) ve Haiku'da tek örnekte süren olumsuz iddia eklemesidir.
+Bu ölçüm iyileşme kadar gerilemeyi de gösterdi. İlk revizyon Haiku'da `iyi-yazilmis-metin-korunur`i bozdu (2/4): sızıntı örneklerindeki `istersen eklerim`, e-postada okura yapılan teklifi de sızıntı gibi gösteriyordu; bir örnek `istersen`i `gerekirse` yaptı. Bütün sürümler `konusma-sizintisi-rapor`'da yöntem cümlesini (`cache.py` incelendi, yük testi çalıştırıldı) sızıntıyla birlikte siliyordu. Bir örnek, skill'in "yapma" diye alıntıladığı `mekanizma ortaya konmamıştır` ifadesini birebir yazdı. Son sürümde okura teklif sızıntı olmayanlar arasına girdi, `Bilgiyi kurtar` yöntem örneği aldı, yanlış ifadenin alıntısı doğru hedefle değiştirildi. Sonuç: `iyi-yazilmis-metin-korunur` 4/4'e döndü; yöntemi koruyan çıktı önceki sürümlerde 5/16, son sürümde 8/8 (tek yönlü Fisher p = 0,0018, iki modelde aynı yön). Kalan başarısızlıklar `cache.py`'nin ters tırnaksız yazılması (biçim), okura seçenek olarak yazılan `denenebilir` cümlesindeki `sonraki adım` (stil denetiminin yol haritası ailesi) ve Haiku'da tek örnekte süren olumsuz iddia eklemesidir.
 
 Aynı turda değerlendiricinin iki hatası düzeltildi: talepte verilen bilgi (`Kasım'da başlamayacak`) eklenen işaret sayılıyordu, oysa `SKILL.md`'ye göre kaynağın parçasıdır; `---` sonrası nottaki ifadeler metne eklenmiş sayılıyordu.
 
@@ -351,7 +351,7 @@ Ayrık set 3 birleşik örneklemde (Haiku, kol başına 8 örnek, 32 görev çı
 
 #### Skill'siz taban ve araştırma özellikleri
 
-Üç görev setiyle (`scripts/ab-gorevler-ozellik.md`, `-ozellik2.md`, `-ozellik3.md`) skill'siz kol, önceki skill (`2244f54`) ve son skill Haiku ile Sonnet'te kol başına dört örnekle karşılaştırıldı. `python scripts/ab-score.py <klasör> --tasks <set> --traits --compare A B` araştırma özelliklerini (cümle sonu kuyruğu, biçem sözcüğü, sert dolgu, kalıp açılış, olumluya çekme, adlaştırma, 7–20 sözcük bandı, tek cümlelik paragraf, istenen uzunluk) ve olgu hatasını (eklenen epistemik işaret, kayıp değişmez) sayar. Sayımlar çıktılar okunarak ayıklandı.
+Üç görev setiyle (`scripts/ab-gorevler/ozellik-1.md`, `ozellik-2.md`, `ozellik-3.md`) skill'siz kol, önceki skill (`2244f54`) ve son skill Haiku ile Sonnet'te kol başına dört örnekle karşılaştırıldı. `python scripts/ab-score.py <klasör> --tasks <set> --traits --compare A B` araştırma özelliklerini (cümle sonu kuyruğu, biçem sözcüğü, sert dolgu, kalıp açılış, olumluya çekme, adlaştırma, 7–20 sözcük bandı, tek cümlelik paragraf, istenen uzunluk) ve olgu hatasını (eklenen epistemik işaret, kayıp değişmez) sayar. Sayımlar çıktılar okunarak ayıklandı.
 
 - **Set 1, kısa olgu görevleri.** Araştırma izleri altı kolun hepsinde sıfırdı: görevler izleri kışkırtmadı (skill'siz kola giden dosyanın başlığı izlerin adını da anıyordu). Elle ayıklanan hata (yazarın `bence`sini öznesiz ya da `olabilir` yapmak; kaynakta olmayan öneri, söz, değerlendirme ya da kullanım talimatı): Haiku'da skill'siz 5/20, önceki 4/20, son 0/20 (skill'siz–son p = 0,024; önceki–son p = 0,053); Sonnet'te skill'siz 13/20, önceki 0/20, son 0/20 (skill'siz–son p = 0,00001).
 - **Set 2, teşhis: 150–200 sözcüklük yazı ve iz taşıyan taslak.** Skill'siz kollar istenen uzunluğu tutturdu (Haiku 10/12, Sonnet 12/12), ama 20 çıktının 18'ine kaynakta olmayan değerlendirme, söz ya da karşılaştırma ekledi (`Birinci yılın bilançosu karışık`, `birlikte karar vereceğiz`). Skill'li kollar uydurmadı ama uzunluğu hiç tutturmadı (0/12); paragrafların %33–52'si tek cümleydi. Olgu hatalı çıktı (sayaç): Haiku'da skill'siz 18/20, son 7/20 (p = 0,0004); Sonnet'te skill'siz 18/20, son 2/20 (p < 0,0001); önceki ile son arasındaki fark anlamlı değil. Kurumsal taslakta iz kalan çıktı (`gelişime açık alan`, `kararlılığımızın altını çizmektedir`, `kapsamlı`): Haiku'da üç kolda da 4/4; Sonnet'te skill'siz 0/4, önceki 2/4, son 1/4.
@@ -361,7 +361,7 @@ Açık bulgu: kaynaktaki bilgi istenen uzunluğa yetmediğinde skill'li ajan uzu
 
 #### Etiket ve anons
 
-`SKILL.md` › **Etiket ve anons yok** kuralı `scripts/ab-gorevler-etiket.md` ile sınandı. Görevler: açıklayıcı wiki bölümü, yeni başlayana açıklama, müşteri e-postası, etiketli blog taslağı, alan etiketli API belgesi. Kollar: skill'siz Haiku, önceki skill (`b1cd0d9`) ve yeni skill, Haiku ve Sonnet'te kol başına dört örnek. `ab-score.py --traits` etiket ve anons cümlelerini `style-lint.py`'nin iki sert ailesiyle sayar; çıktılar ayrıca okundu.
+`SKILL.md` › **Etiket ve anons yok** kuralı `scripts/ab-gorevler/etiket-1.md` ile sınandı. Görevler: açıklayıcı wiki bölümü, yeni başlayana açıklama, müşteri e-postası, etiketli blog taslağı, alan etiketli API belgesi. Kollar: skill'siz Haiku, önceki skill (`b1cd0d9`) ve yeni skill, Haiku ve Sonnet'te kol başına dört örnek. `ab-score.py --traits` etiket ve anons cümlelerini `style-lint.py`'nin iki sert ailesiyle sayar; çıktılar ayrıca okundu.
 
 | Kol | Etiket | Anons | İz taşıyan çıktı |
 |---|---|---|---|
@@ -373,7 +373,7 @@ Açık bulgu: kaynaktaki bilgi istenen uzunluğa yetmediğinde skill'li ajan uzu
 
 Haiku'da önceki–yeni p = 0,0016, skill'siz–yeni p = 0,0042 (tek yönlü Fisher). Önceki skill'le Haiku etiketli taslağı dört örneğin dördünde etiketleriyle bıraktı (`**Kavramsal ayrım:**`, `**Sezgisel açıklama:**`); yeni skill'le dördünde sildi ve etiketin altındaki bilgiyi korudu. Sonnet önceki skill'le de etiket kurmuyordu (taban sıfır); yeni skill'le bir örnek cümle içinde `Başlangıç için kural şudur:` yazdı. Bu biçim stil denetimine ve kuralın örnek listesine eklendi. Belgenin alan etiketleri (`Uç nokta:`, `Yöntem:`, `Sayfa boyutu:`, `Uyarı:`) bütün skill'li kollarda korundu (16/16).
 
-İkinci ayrık set (`scripts/ab-gorevler-etiket2.md`) pazarlama ağırlıklıdır: ürün duyurusu, kavram açıklaması, sık sorulan soru yanıtı, açılış sayfası ve etkinlik duyurusu taslağı. `0685e48` skill'iyle Sonnet açılış sayfasındaki `Hemen deneyin` eylem çağrısını altı örneğin altısında, Haiku altıda birinde korudu; Haiku bir örnekte `Sizi bekliyoruz` bıraktı. Sebep kuralın kendisiydi: referans "okurun eylemi gerekiyorsa emir kipiyle yaz" diyordu ve eylem çağrısı listede yoktu. Kural `Hemen deneyin` ve `Sizi bekliyoruz` örneklerini aldı; emir yalnızca somut adımsa (`Ayarlar > Depolama'dan açın`) kalıyor. Aynı set yeniden çalıştırıldı:
+İkinci ayrık set (`scripts/ab-gorevler/etiket-2.md`) pazarlama ağırlıklıdır: ürün duyurusu, kavram açıklaması, sık sorulan soru yanıtı, açılış sayfası ve etkinlik duyurusu taslağı. `0685e48` skill'iyle Sonnet açılış sayfasındaki `Hemen deneyin` eylem çağrısını altı örneğin altısında, Haiku altıda birinde korudu; Haiku bir örnekte `Sizi bekliyoruz` bıraktı. Sebep kuralın kendisiydi: referans "okurun eylemi gerekiyorsa emir kipiyle yaz" diyordu ve eylem çağrısı listede yoktu. Kural `Hemen deneyin` ve `Sizi bekliyoruz` örneklerini aldı; emir yalnızca somut adımsa (`Ayarlar > Depolama'dan açın`) kalıyor. Aynı set yeniden çalıştırıldı:
 
 | Kol | İz taşıyan çıktı |
 |---|---|
@@ -390,20 +390,20 @@ Son skill (`ea4e363`) üç kaynakta daha kör çalıştırıldı ve bütün çı
 
 | Kaynak | Metin | Etiket ya da anons |
 |---|---|---|
-| İlk etiket seti (`ab-gorevler-etiket.md`), Haiku ve Sonnet, dörder örnek | 40 | 0 |
-| Tür çeşitliliği seti (`ab-gorevler-etiket3.md`: LinkedIn gönderisi, iş ilanı, eğitim yazısı girişi, bülten, mağaza açıklaması), Haiku ve Sonnet, dörder örnek | 40 | 0 |
+| İlk etiket seti (`scripts/ab-gorevler/etiket-1.md`), Haiku ve Sonnet, dörder örnek | 40 | 0 |
+| Tür çeşitliliği seti (`scripts/ab-gorevler/etiket-3.md`: LinkedIn gönderisi, iş ilanı, eğitim yazısı girişi, bülten, mağaza açıklaması), Haiku ve Sonnet, dörder örnek | 40 | 0 |
 | Deponun 132 dönüşüm vakası, Sonnet | 132 | 0 |
 
 Taramanın işaretlediği üç aday elle okundu ve etiket değildi: `Yeni not uygulaması:` ürünü adlandıran liste başlığıdır (`Özellikler:` gibi), `Önbellek sorunu incelendi: ...` yüklemli cümlenin açıklamaya geçişidir, `Cihazı kalibre etmek için:` adım listesinin girişidir. Bülten taslağındaki `Bu sayıda neler var?`, `Önemli not:`, `Kritik bilgi:`, `Özetle:`, `Sizi yeni sayımızda bekliyoruz!` sekiz örneğin hepsinde silindi; bu biçimler ve `Gelin hep birlikte` stil denetimine de eklendi. 132 vakada eval geçişi 115/132; başarısızlıklar önceki denetimin aileleridir (model hatası, bilinen iki sert işaret, eklenen çekince ya da neden), hiçbiri etiket kuralının ürettiği silme değildir.
 
-Teslim kapısı (`python scripts/style-lint.py --teslim <dosya>`) bu iki aileyi bağlamdan bağımsız yasak olarak uygular: bir cümle bile kalırsa konumuyla listeler ve 1 ile çıkar. Sızıntı adayı kapıya girmez, çünkü bağlama bağlıdır (`önceki sürümde`, okura yapılan `istersen ... eklerim`); onu `--son-okur` ayrıca denetler. Kapı 198 gold'un hiçbirini, son skill'in bu bölümdeki 272 kör çıktısının da hiçbirini durdurmuyor; öz sınama hem yasak cümleyi hem alan etiketini ve sızıntı sanılan içeriği tutuyor. `SKILL.md`'nin netlik denetimi adımı, kabuk erişimi olan ajandan son metni bu kapıdan geçirmeden teslim etmemesini istiyor. Kapı yalnız bilinen biçimleri durdurur; listede olmayan biçim için cümle başındaki bir-üç sözcüklük `X:` girişlerini, belgenin bilinen alanları (`Girdi:`, `Tarih:`, `Tablo 2:`) ve dipnot tanımı dışında, engellemeyen `etiket adayı` uyarısı olarak listeler. Bu uyarı 198 gold'da 2 satır (sözlük maddesi), 272 kör çıktıda 2 satır (ürün adını veren liste başlığı, yüklemli cümlenin açıklamaya geçişi) verdi; ikisi de elle okunup etiket olmadığı görüldü. Kapı tam `analyse()` yerine yalnız iki aileyi tarar (dört sınama metninde aynı sonuç); tek dosya 345–371 ms, soğuk ilk çalıştırma 449 ms.
+Teslim kapısı (`python scripts/style-lint.py --teslim <dosya>`) bu iki aileyi bağlamdan bağımsız yasak olarak uygular: bir cümle bile kalırsa konumuyla listeler ve 1 ile çıkar. Sızıntı adayı kapıya girmez, çünkü bağlama bağlıdır (`önceki sürümde`, okura yapılan `istersen ... eklerim`); onu `--son-okur` ayrıca denetler. `>` ile verilen alıntı da kapıya girmez: skill alıntıyı olduğu gibi korur, kapı yazarın kendi cümlelerine bakar. Kapı 198 gold'un hiçbirini, son skill'in bu bölümdeki 272 kör çıktısının da hiçbirini durdurmuyor; öz sınama hem yasak cümleyi hem alan etiketini ve sızıntı sanılan içeriği tutuyor. `SKILL.md`'nin netlik denetimi adımı, kabuk erişimi olan ajandan son metni bu kapıdan geçirmeden teslim etmemesini istiyor. Kapı yalnız bilinen biçimleri durdurur; listede olmayan biçim için cümle başındaki bir-üç sözcüklük `X:` girişlerini, belgenin bilinen alanları (`Girdi:`, `Tarih:`, `Tablo 2:`) ve dipnot tanımı dışında, engellemeyen `etiket adayı` uyarısı olarak listeler. Bu uyarı 198 gold'da 2 satır (sözlük maddesi), 272 kör çıktıda 2 satır (ürün adını veren liste başlığı, yüklemli cümlenin açıklamaya geçişi) verdi; ikisi de elle okunup etiket olmadığı görüldü. Kapı tam `analyse()` yerine yalnız iki aileyi tarar (dört sınama metninde aynı sonuç); tek dosya 345–371 ms, soğuk ilk çalıştırma 449 ms.
 
 #### Gold denetimi: model çıktısıyla yeniden ölçüm
 
 132 dönüşüm vakasının yalnızca `## Kaynak` ve `## Talep` bölümleri son skill'le Sonnet'e verildi; çıktılar `ab-case-score.py` ile gold gibi puanlandı ve 113/132 vakayı geçti. On dokuz başarısızlık okundu:
 
 - On tanesi model hatasıydı, gold doğruydu: `bu-sonuc-ritmi`'nde `değerlendirilmelidir` kipi iddiaya döndü, `savunmaci-akademik`'te yöntem gerekçesi silindi, `gorus-ambalaji`'nda `kilit rol` `gereklidir` oldu, `dayanaksiz-pekistirici`'de `yalnızca` düştü, `ingilizce-noktalama`'da savunmacı kapanış kaldı.
-- Üçü skill metninin yanlış okunmasıydı: `kaynağın kurduğu nedensel bağlacı silme` cümlesi `kronoloji-nedensellik`'teki desteksiz `Bu nedenle`yi de korutuyor, `-yor alabilir` bugüne bağlanan durumu (`repo-guncel-davranis-yor`, `karisik-zaman-readme`) geniş zamanda bırakıyor. Yama yukarıda etkisiz çıktı; vakalar açık kaldı.
+- Üçü skill metninin yanlış okunmasıydı: `kaynağın kurduğu nedensel bağlacı silme` cümlesi `kronoloji-nedensellik`'teki desteksiz `Bu nedenle`yi de korutuyor, `-yor alabilir` bugüne bağlanan durumu (`repo-guncel-davranis-yor`, `uc-zamansal-islev`) geniş zamanda bırakıyor. Yama yukarıda etkisiz çıktı; vakalar açık kaldı.
 - Birinde skill ile vaka çatışıyor: `sonuc-ve-yorum-kip-ayrimi` yorumu geniş zamanda bekliyor, `SKILL.md` yorumun `-yor` alabileceğini söylüyor.
 - Birinde model gold'dan iyiydi: `epistemik-guvensiz-fiil` talebi hafif yüklemin gerçek yüklemle kurulmasını istiyor, gold iddiayı siliyordu. Model ölçümün taşıdığı düzeyi yazdı (`yöntem daha düşük hatayla ilişkili bulundu`); gold bu biçime geçti, karşılaştırma eklemesi gerekçesiyle `## Serbest eklemeler`e yazıldı.
 - Üçü değerlendirici yanlış alarmıydı ve düzeltildi: sıra bildiren `en son` üstünlük, soru cümlesindeki `verilebilir mi?` çekince sayılıyordu; `günlük olarak` → `her gün` için vakaya gerekçeli muafiyet yazıldı.
