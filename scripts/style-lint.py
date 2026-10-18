@@ -1467,6 +1467,18 @@ def clarity_checks(doc: Document) -> list[dict[str, object]]:
     return findings
 
 
+# Bağlamdan bağımsız yasaklar. Sızıntı adayı bağlama bağlıdır (okurun tarafı olduğu yazışma, sürüm notu);
+# onu `--son-okur` ayrıca karar verir.
+TESLIM_FAMILIES = ("etiket", "anons")
+
+
+def teslim_gate(text: str) -> list[dict[str, object]]:
+    """Hits that block delivery: label lead-ins and reader-addressed announcement or
+    marketing. A note after a `---` line is outside the text and is not checked."""
+    body = re.split(r"(?m)^---\s*$", text.lstrip("﻿"))[0]
+    return [h for h in analyse(body, son_okur=True)["hits"] if h["category"] in TESLIM_FAMILIES]
+
+
 def analyse(text: str, son_okur: bool = False) -> dict[str, object]:
     doc = parse(text)
     hits = find_hits(doc.paragraphs)
@@ -2293,6 +2305,12 @@ def self_test() -> None:
         found = {h["category"]: h["level"] for h in analyse(text)["hits"]}  # type: ignore[union-attr]
         if found.get(family) != "sert":
             raise SystemExit(f"Öz sınama: {family} sert işaret üretmedi: {text!r} -> {found}")
+    if teslim_gate(ETIKET_INNOCENT_TEXT):
+        raise SystemExit("Öz sınama: teslim kapısı alan etiketi ya da metin dışı notu engelledi")
+    if {h["category"] for h in teslim_gate("Kavramsal ayrım: A saklar. Merak etmeyin, kolay.")} != set(TESLIM_FAMILIES):
+        raise SystemExit("Öz sınama: teslim kapısı etiketi ya da anonsu kaçırdı")
+    if teslim_gate("Önceki sürümde zaman aşımı 30 saniyeydi. İstersen bölge kırılımını da eklerim."):
+        raise SystemExit("Öz sınama: teslim kapısı bağlama bağlı sızıntı adayını engelledi")
     stray = [h["text"] for h in analyse(ETIKET_INNOCENT_TEXT)["hits"] if h["category"] in ("etiket", "anons")]  # type: ignore[union-attr]
     if stray:
         raise SystemExit(f"Öz sınama: alan etiketi ya da sıradan cümle etiket/anons sayıldı (yanlış pozitif): {stray}")
@@ -2306,7 +2324,8 @@ def self_test() -> None:
 
 
 def read_text(path: Path) -> str:
-    text = path.read_text(encoding="utf-8")
+    # utf-8-sig: Windows düzenleyicilerinin eklediği BOM ilk cümleyi `^` kalıplarından saklamasın.
+    text = path.read_text(encoding="utf-8-sig")
     if path.suffix.lower() == ".md":
         match = re.search(r"(?ms)^## Kaynak\s*\n(.*?)(?=^## (?:Talep|Korunması|Kaçınılması)|\Z)", text)
         if match:
@@ -2330,6 +2349,9 @@ def main() -> int:
     parser.add_argument("--son-okur", action="store_true",
                         help="Metin konuşmayı görmemiş son okura gidecek: konuşma sızıntısı adayları sert sayılır, "
                              "çıktıda bir tane bile varsa 1 ile çık (yanıt e-postası gibi okurun tarafı olduğu yazışmada kullanma)")
+    parser.add_argument("--teslim", action="store_true",
+                        help="Teslim kapısı: etiketle açılan cümle ya da anons/pazarlama cümlesi varsa cümleleri "
+                             "listele ve 1 ile çık; `---` sonrası not denetlenmez, sızıntı için --son-okur")
     parser.add_argument("--self-test", action="store_true", help="Yerleşik öz sınamayı çalıştır")
     args = parser.parse_args()
 
@@ -2338,6 +2360,24 @@ def main() -> int:
         return 0
     if args.output is None:
         parser.error("denetlenecek metin dosyası verilmelidir")
+
+    if args.teslim:
+        try:
+            gate = teslim_gate(read_text(args.output))
+        except (OSError, UnicodeError) as error:
+            print(f"Hata: {error}", file=sys.stderr)
+            return 2
+        counts = {key: sum(1 for h in gate if h["category"] == key) for key in TESLIM_FAMILIES}
+        if args.json:
+            print(json.dumps({"teslim": not gate, "sayilar": counts, "bulgular": gate}, ensure_ascii=False, indent=2))
+        else:
+            for hit in sorted(gate, key=lambda h: (int(h["paragraph"]) > 0, h["paragraph"], h["sentence"])):
+                where = f"P{hit['paragraph']}C{hit['sentence']}" if hit["paragraph"] else "başlık"
+                print(f"{where} · {hit['category']} · «{hit['match']}» · {str(hit['text'])[:100]}")
+            summary = f"{counts['etiket']} etiket · {counts['anons']} anons"
+            print(f"Teslim kapısı: {summary} — " + ("TESLİM" if not gate else
+                  "TESLİM YOK: işaretli cümlelerin bilgisini doğrudan yaz, etiketi ve anonsu sil."))
+        return 1 if gate else 0
 
     try:
         report = analyse(read_text(args.output), son_okur=args.son_okur)

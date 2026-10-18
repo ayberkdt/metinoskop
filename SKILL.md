@@ -118,7 +118,7 @@ Kısaltırken, birleştirirken ya da somutlaştırırken bu bölüm her netlik k
 
 **Bilginin kaynağı ve statüsü.** Her temel önermenin statüsünü belirle: gözlem, ölçüm, aktarım, çıkarım, tahmin, plan, varsayım, yorum. `Gözlendi`, `bildirildi`, `düşündürüyor`, `ölçüldü` farklı statü kodlar; düzenlenmiş cümle aynı düzeyde kalır. Ölçüm, ilişki, çıkarım ve nedensellik ayrı düzeylerdir: rastgele atanmamış iki grup arasındaki fark `etkiler` olmaz. Atıflı iddia (`rapora göre`, `yazarlar öne sürmektedir`) atıflı kalır. Şişmiş iddiayı indirirken yerine olumsuz iddia ya da yeni çekince yazma; ölçülmemiş iddia (`güvenilirlik arttı`) `düşündürüyor` diye yumuşatılmaz, silinir.
 
-**Çekince kanıttır.** `Olabilir`, `görünmektedir`, `kısmen`, `bu verilerle sınırlı olarak` belirsizlik ya da kapsam kodluyorsa korunur. LLM metni insan metninden daha az çekince taşır; çekinceyi AI izi sanıp silme. `Açıkça`, `tartışmasız`, `kanıtlamaktadır` için hangi kanıtın bunu hak ettiğini sor. Kısalık için iddiayı güçlendirme, kontrollü deneyle kurulmuş iddiayı zayıflatma. Kiplik yığınında (`muhtemelen ... olabileceği düşünülebilir`) gereksiz işareti kaldır.
+**Çekince kanıttır.** `Olabilir`, `görünmektedir`, `kısmen`, `bu verilerle sınırlı olarak` belirsizlik ya da kapsam kodluyorsa korunur. LLM metni insan metninden daha az çekince taşır; çekinceyi AI izi sanıp silme. `Açıkça`, `tartışmasız`, `kanıtlamaktadır` için hangi kanıtın bunu hak ettiğini sor. Kısalık için iddiayı güçlendirme, kontrollü deneyle kurulmuş iddiayı zayıflatma.
 
 **Statü zinciri ilerlemez.** Bulgu yorum, yorum öneri, öneri karar, karar uygulama, beklenti taahhüt olmaz. İddia yeni kanıt olmadan sonraki bölümde güçlenmez. `Gözlenmedi` `yoktur`, `sınanmadı` `geçersizdir` olmaz.
 
@@ -183,7 +183,7 @@ Talep kapsamını aşma: "tiyatral ifadeleri çıkar" metni baştan yazma izni d
 
 **3. Kaynakla karşılaştır.** Son metindeki her sayı, tarih, sonuç, nedensellik, karşılaştırma, olumsuzluk, koşul, istisna, nicelik sınırı, terim ve kişisel ayrıntının kaynakta karşılığını bul; kaynağı, statüsü ve kesinliği aynı mı? Karşılığı yoksa çıkar ya da kaynağın düzeyine döndür. Çıktıda kaynakta olmayan olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk ya da gelecek işareti belirdiyse dayanağını bul; yoksa kaldır.
 
-**4. Netlik denetimi.** Metni konuşmayı görmemiş okur gibi baştan oku ve yazımın ya da düzenlemenin ürettiği hataları ara: eş anlamlıyla geri gelen dolgu; kayan statü, kesinlik ya da kip; bağlayıcıyla eklenmiş ilişki; bozulan devir, özne ya da gönderge; silinmiş çekince, sınırlılık, öğretici açıklama ya da gezinme başlığı; kalan sızıntı, etiket, anons ya da metne konmuş not; cümle sonu kuyruğu, biçem fiili ya da yumuşatılmış olumsuz bulgu; istenenden fazla değişiklik.
+**4. Netlik denetimi.** Metni konuşmayı görmemiş okur gibi baştan oku ve yazımın ya da düzenlemenin ürettiği hataları ara: eş anlamlıyla geri gelen dolgu; kayan statü, kesinlik ya da kip; bağlayıcıyla eklenmiş ilişki; bozulan devir, özne ya da gönderge; silinmiş çekince, sınırlılık, öğretici açıklama ya da gezinme başlığı; kalan sızıntı, etiket, anons ya da metne konmuş not; cümle sonu kuyruğu, biçem fiili ya da yumuşatılmış olumsuz bulgu; istenenden fazla değişiklik. Kabuk varsa son metni `scripts/style-lint.py --teslim` ile tara; 0 dönmeden teslim etme.
 
 ## Referans yönlendirmesi
 

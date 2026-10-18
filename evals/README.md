@@ -396,6 +396,8 @@ Son skill (`ea4e363`) üç kaynakta daha kör çalıştırıldı ve bütün çı
 
 Taramanın işaretlediği üç aday elle okundu ve etiket değildi: `Yeni not uygulaması:` ürünü adlandıran liste başlığıdır (`Özellikler:` gibi), `Önbellek sorunu incelendi: ...` yüklemli cümlenin açıklamaya geçişidir, `Cihazı kalibre etmek için:` adım listesinin girişidir. Bülten taslağındaki `Bu sayıda neler var?`, `Önemli not:`, `Kritik bilgi:`, `Özetle:`, `Sizi yeni sayımızda bekliyoruz!` sekiz örneğin hepsinde silindi; bu biçimler ve `Gelin hep birlikte` stil denetimine de eklendi. 132 vakada eval geçişi 115/132; başarısızlıklar önceki denetimin aileleridir (model hatası, bilinen iki sert işaret, eklenen çekince ya da neden), hiçbiri etiket kuralının ürettiği silme değildir.
 
+Teslim kapısı (`python scripts/style-lint.py --teslim <dosya>`) bu iki aileyi bağlamdan bağımsız yasak olarak uygular: bir cümle bile kalırsa konumuyla listeler ve 1 ile çıkar. Sızıntı adayı kapıya girmez, çünkü bağlama bağlıdır (`önceki sürümde`, okura yapılan `istersen ... eklerim`); onu `--son-okur` ayrıca denetler. Kapı 198 gold'un hiçbirini, son skill'in bu bölümdeki 272 kör çıktısının da hiçbirini durdurmuyor; öz sınama hem yasak cümleyi hem alan etiketini ve sızıntı sanılan içeriği tutuyor. `SKILL.md`'nin netlik denetimi adımı, kabuk erişimi olan ajandan son metni bu kapıdan geçirmeden teslim etmemesini istiyor.
+
 #### Gold denetimi: model çıktısıyla yeniden ölçüm
 
 132 dönüşüm vakasının yalnızca `## Kaynak` ve `## Talep` bölümleri son skill'le Sonnet'e verildi; çıktılar `ab-case-score.py` ile gold gibi puanlandı ve 113/132 vakayı geçti. On dokuz başarısızlık okundu:
