@@ -258,7 +258,15 @@ def evaluate(case_text: str, output_text: str) -> dict[str, object]:
         if not any(value in haystack for value in alternatives):
             missing.append(asdict(item))
 
-    added = added_markers(source, output, free_additions(case_text))
+    # Talepte verilen bilgi kaynağın parçasıdır (SKILL.md › Kural önceliği): "Kasım'da başlamayacak" diyen
+    # kullanıcının olumsuzluğu metne eklenmiş sayılmaz. `---` sonrası not metin dışıdır; nottaki
+    # "kapsam dışı olduğundan" metne yazılmış bir iddia değildir.
+    try:
+        request = section(case_text, "Talep")
+    except ValueError:
+        request = ""
+    body = re.split(r"(?m)^---\s*$", output)[0]
+    added = added_markers(source + "\n" + request, body, free_additions(case_text))
 
     return {
         "passed": not missing and not added,
@@ -392,6 +400,13 @@ def self_test() -> None:
                         "## Serbest eklemeler", "- cekince — kalkı düzeltmesi")) + "\n"
     if not evaluate(case, "Bulgular düşündürüyor.")["passed"]:
         raise SystemExit("Öz sınama: ## Serbest eklemeler muafiyeti uygulanmadı")
+    request_case = "## Kaynak\n\nPilot Kasım'da başlayacak.\n\n## Talep\n\nPilot Kasım'da başlamayacak, düzelt.\n"
+    if not evaluate(request_case, "Pilot Kasım'da başlamayacak.")["passed"]:
+        raise SystemExit("Öz sınama: talepte verilen bilgi eklenen işaret sayıldı")
+    if not evaluate(request_case.replace("başlamayacak, düzelt", "iptal edildi, düzelt"), "Pilot iptal edildi.\n\n---\nNot: kapsam dışı olduğundan değiştirilmedi.")["passed"]:
+        raise SystemExit("Öz sınama: metin dışı nottaki ifade metne eklenmiş sayıldı")
+    if evaluate(request_case.replace("başlamayacak, düzelt", "düzelt"), "Pilot Kasım'da başlamayacak.")["passed"]:
+        raise SystemExit("Öz sınama: talepte olmayan olumsuzluk yakalanmadı")
     hedge_case = "## Kaynak\n\nİyileşme kısmen mevsimsel olabilir, emin değilim.\n\n## Talep\n\nx\n"
     if not evaluate(hedge_case, "İyileşmenin kısmen mevsimsel olabileceğini düşünüyorum, ancak emin değilim.")["passed"]:
         raise SystemExit("Öz sınama: çekimli çekince (`olabileceğini`) kayıp sayıldı")

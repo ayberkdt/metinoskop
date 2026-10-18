@@ -26,7 +26,7 @@ Alt sıradaki kural üst sıradakini bozmaz. Açık talep kapsamı, amacı ve ok
 - Yeni olgu, tarih, sayı, alıntı, kaynak, özellik, sonuç, deneyim veya görüş üretme.
 - Kaynak dilden çeviri yapma; Türkçeye çevrilmiş metni düzenle.
 - Alıntıyı, kodu, URL'yi, dipnotu, kaynak işaretini, tablo hücresini ve Markdown yapısını koru. Başlık hiyerarşisini yalnızca yapısal düzenleme istendiğinde ya da derin düzeyde, kavramsal sınırlara göre değiştir.
-- Anlatıda olay sırasını, sahneyi, bakış açısını ve sonucu değiştirme.
+- Anlatıda olay sırasını ve bakış açısını değiştirme.
 - AI dedektöründen geçme vaadi verme; metni "insanileştirmek" için hata, argo, rastgelelik ya da uzunluk gürültüsü üretme. İnsan metnindeki çeşitlilik içerikten gelir.
 
 ## Okura doğrudan metin
@@ -35,7 +35,7 @@ Metin konuşmayı görmemiş son okura gider. Kullanıcıyla konuşma, talimat v
 
 **Sızıntıyı tanı.** Konuşmaya gönderme (`konuştuğumuz gibi`, `verdiğin dosyaya göre`), kullanıcıya teklif (`şunu yapabiliriz`, `istersen eklerim`), çalışma süreci (`önce X'e baktım`), düzenleme geçmişi (`önceki taslakta`, `(düzeltildi)`), teslim ambalajı ve ajan kimliği (`İşte rapor:`, `bir yapay zekâ olarak`). Test: konuşmayı görmemiş okur `ben`, `biz`, `sen` kim, anlıyor mu; cümle ona bilgi veriyor mu?
 
-**Bilgiyi kurtar, ambalajı at.** Sızıntıyı sil, taşıdığı önermeyi kaynağın statüsüyle yaz: `Verdiğin 2024 dosyasına göre` → `2024 verilerine göre`; `X'i varsaydım` → `hesap X varsayımına dayanır`; `doğrulayamadım` → `doğrulanmadı`. `Yapabiliriz` olasılıktır: `yapılabilir` olur, `yapılmalıdır` olmaz; `biz` yerine aktör uydurma. Bilgi vermeyen teklif ve ambalaj karşılıksız gider; çekince, varsayım ve yöntem bilgisi kalır. Okurun tarafı olduğu yazışmadaki ortak geçmiş, kurumsal yanıtta `talebiniz doğrultusunda`, sürüm notunda önceki sürüm sızıntı değildir.
+**Bilgiyi kurtar, ambalajı at.** Sızıntıyı sil, taşıdığı önermeyi kaynağın statüsüyle yaz: `Verdiğin 2024 dosyasına göre` → `2024 verilerine göre`; `X'i varsaydım` → `hesap X varsayımına dayanır`; `doğrulayamadım` → `doğrulanmadı`; `önce cache.py'ye baktım, testi çalıştırdım` → `cache.py incelendi, test çalıştırıldı` (yöntem silinmez). `Yapabiliriz` → `yapılabilir`, `yapılmalıdır` değil; `biz` yerine aktör uydurma. Bilgi vermeyen teklif ve ambalaj gider; çekince ve varsayım kalır. Okurun tarafı olduğu yazışmadaki ortak geçmiş ve okura yapılan teklif (`istersen ayrı sayfa eklerim`), kurumsal yanıtta `talebiniz doğrultusunda`, sürüm notunda önceki sürüm sızıntı değildir.
 
 **Not metnin dışına yazılır.** Soru ya da kapsam dışı uyarı metne girmez (`[?]`, `TODO` dahil); gerekiyorsa metinden sonra `---` ile ayrılmış kısa nottur. Neyi sildiğini anlatan not, inceleme istenmedikçe yazılmaz.
 
@@ -98,7 +98,7 @@ Klişe sözcük içermeyen metin de her olgudan sonra önem cümlesi kuruyor ve 
 
 **Üretilmiş karşıtlık ve zorlama denge.** `X değil, Y`, `yalnızca ... değil, aynı zamanda ...` karşıtlığını reddedilen taraf kaynakta yoksa kurma. `Güçlü olmakla birlikte bazı sınırlamaları da vardır` adlandırılmış sınırlılık yoksa çıkar. Kanıt düzeyi bildiren çekince (`çalışma gözlemseldir`) denge değil kesinlik bilgisidir.
 
-**Okur yönlendirmesi ve sarmalayıcı.** `Bu bölümde ... ele alınacaktır`, `Şimdi ... bakalım`, `Bu noktaya daha sonra döneceğiz` gibi duyuru ve askıları sil; olguyu doğrudan söyle. Yol haritası uzun ve karmaşık belgede, bir kez meşrudur. Sık `yukarıda belirtildiği gibi` ve her bölümde düzeneği yeniden tanıtma yanlış bölünmeyi gösterir; birleştir ya da yeniden sırala. Tablo, şekil, ek ve kaynak göndermeleri korunur.
+**Okur yönlendirmesi ve sarmalayıcı.** `Bu bölümde ... ele alınacaktır`, `Şimdi ... bakalım` gibi duyuru ve askıları sil; olguyu doğrudan söyle. Yol haritası uzun ve karmaşık belgede, bir kez meşrudur. Sık `yukarıda belirtildiği gibi` ve her bölümde düzeneği yeniden tanıtma yanlış bölünmeyi gösterir; birleştir ya da yeniden sırala. Tablo, şekil, ek ve kaynak göndermeleri korunur.
 
 **Kalıp giriş ve kalıp sonuç.** Giriş hunisini (geniş dünya → hızla değişen ortam → `giderek önem kazanıyor`) at; kaynaktaki somut nedenle başla. Sonuç sentez yapabilir, girişi ya da özeti yeniden anlatamaz. Kaynakta yoksa `gelecek çalışmalar` cümlesi ekleme.
 
@@ -121,7 +121,7 @@ Kısaltırken, birleştirirken ya da somutlaştırırken bu bölüm her netlik k
 **Statü zinciri ilerlemez.** Bulgu yorum, yorum öneri, öneri karar, karar uygulama, beklenti taahhüt olmaz. İddia yeni kanıt olmadan sonraki bölümde güçlenmez. `Gözlenmedi` `yoktur`, `sınanmadı` `geçersizdir` olmaz.
 
 **Yerine yazdığın ifade yeni bir iddiadır.** Hata çoğu zaman silinende değil, yerine yazılanda doğar. Dolguyu, kalkıyı ya da şişmiş iddiayı değiştirdiğin her yerde yeni ifadeyi kaynağa karşı beş soruyla sına:
-- **Güç:** İndirirken kaynakta olmayan olumsuz iddia ya da çekince girdi mi (`açıklamaktadır` → `mekanizma ortaya konmamıştır`), statü kaydı mı (`karar sürecinde` → `henüz karar vermedi`)?
+- **Güç:** İndirirken olumsuz iddia ya da çekince eklemedin mi? Şişmiş iddia kaynağın düzeyine iner (`açıklamaktadır` → `zayıf bir ilişkiye işaret ediyor`); statü kaymaz (`karar sürecinde` kalır).
 - **Yön:** Kim neyi yapıyor, aynı mı (`operatöre görünürlük sağladı` → `operatörün görünürlüğünü artırdı` operatörü görülen yapar)?
 - **Eşdizim:** Yeni birleşim doğal mı (`hata oranı iyileşti` değil, `azaldı`)?
 - **Derece:** Karşılaştırma ve kapsam aynı güçte mi (`her zamankinden` → `eskisinden` zayıflatır)?
@@ -238,4 +238,4 @@ Birinci cümle terimi kendisiyle tanımlıyordu (kural 2). Son üç cümle aynı
 >
 > Model eğitiminde katmanlı örnekleme kullanılmıştır; bu örnekleme, düşük yoğunluklu bölgelerde hata oranını %9'dan %4'e düşürmüştür.
 
-Tek konu üç başlığa dağılmıştı (kural 1 ve 7); `belirleyici rol`, `bir sonraki bölümde görülecektir` askısı ve `yukarıda belirtilen` göndermesi bölünmenin ürettiği dolguydu. Hafif düzeyde başlıklar kalırdı.
+Tek konu üç başlığa dağılmıştı (kural 1 ve 7); `belirleyici rol`, `bir sonraki bölümde görülecektir` askısı ve `yukarıda belirtilen` göndermesi bölünmenin ürettiği dolguydu.

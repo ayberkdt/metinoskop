@@ -35,3 +35,7 @@ Bu notlardan yönetime gidecek kısa bir durum notu yaz.
 - sert işaret: 0
 - liste ögesi: 0
 - cümle: <= 7
+
+## Serbest eklemeler
+
+- nedensellik — notta `doğu ölçülemedi (okuyucu arızası, 9 gün)` parantezi nedeni zaten bildiriyor; `arıza nedeniyle ölçülemedi` aynı ilişkiyi yazar.

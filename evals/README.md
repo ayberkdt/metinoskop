@@ -327,7 +327,24 @@ Betik kaynakta olmayan epistemik işareti, kayıp değişmezi, listeye dönüşm
 
 Ayrık set 3 (`ab-gorevler-ayrik3.md`) anlamlılık testi için kuruldu: dört görev, kol başına altı örnek, 24'er görev çıktısı. `--compare P R` bir görev çıktısını eklenen işaret, kayıp, yanılgı, kuyruk ya da sızıntı varsa hatalı sayar. Ham sayaçla hatalı çıktı eskide 15/24, yenide 7/24 (tek yönlü Fisher p = 0,021). Çıktılar okunup sayacın yanlış alarmları ayıklandığında (duyuruda `boya için kapalı` → `boya nedeniyle kapalı` aynı ilişkidir; `ama sormadık` → `sorulmadığından doğrulanmış değil` sadık aktarımdır) eskide 10/24, yenide 2/24 (p = 0,0087). Eski skill altı örneğin altısında yazarın `bence`sini öznesiz yazdı (`düşünülüyor`, `görüşü var`), dördünde olumsuz sonucu `gelişim fırsatı` diye bıraktı; yeni skill'de bunlar 0/6 ve 1/6.
 
-Opus'ta eski ve yeni skill dört görevde de sıfırda kaldı (tavan etkisi). Sınırlar: örnek sayısı küçüktür; sayaçlar kalıp tabanlıdır ve biçim değişince kaçırır (ayrık set 1'deki `bir tahmin var` kişi kayması önce elle okunarak bulundu); sayım hakem değildir.
+Opus'ta eski ve yeni skill dört görevde de sıfırda kaldı (tavan etkisi).
+
+#### Depo vakalarıyla ölçüm (iki model)
+
+Ayrık görevler depo dışıdır; skill'in kendi vakalarındaki davranışı da ölçülür. Sekiz vakanın (`konusma-sizintisi-rapor`, `cumle-sonu-kuyrugu`, `yazma-kipi-notlardan-rapor`, `talep-bilgisi-metne-gecer`, `dar-kapsam-metin-disi-not`, `paragraf-simetrisi`, `sonuc-sonuclardan-guclu`, `iyi-metin`) yalnızca `## Kaynak` ve `## Talep` bölümleri modele verilir, beklentiler gizli kalır; çıktılar `python scripts/ab-case-score.py <klasör> --compare ESKI YENI` ile tam olarak bir gold gibi (`eval-suite.py` vaka değerlendirmesiyle) puanlanır.
+
+2026-10-18, kol başına 4 örnek × 8 vaka:
+
+| Model | Önceki skill | İlk revizyon | Son sürüm |
+|---|---|---|---|
+| Haiku | 27/32 | 21/32 | 27/32 |
+| Sonnet | 26/32 | 27/32 | 29/32 |
+
+Bu ölçüm iyileşme kadar gerilemeyi de gösterdi. İlk revizyon Haiku'da `iyi-metin`i bozdu (2/4): sızıntı örneklerindeki `istersen eklerim`, e-postada okura yapılan teklifi de sızıntı gibi gösteriyordu; bir örnek `istersen`i `gerekirse` yaptı. Bütün sürümler `konusma-sizintisi-rapor`'da yöntem cümlesini (`cache.py` incelendi, yük testi çalıştırıldı) sızıntıyla birlikte siliyordu. Bir örnek, skill'in "yapma" diye alıntıladığı `mekanizma ortaya konmamıştır` ifadesini birebir yazdı. Son sürümde okura teklif sızıntı olmayanlar arasına girdi, `Bilgiyi kurtar` yöntem örneği aldı, yanlış ifadenin alıntısı doğru hedefle değiştirildi. Sonuç: `iyi-metin` 4/4'e döndü; yöntemi koruyan çıktı önceki sürümlerde 5/16, son sürümde 8/8 (tek yönlü Fisher p = 0,0018, iki modelde aynı yön). Kalan başarısızlıklar `cache.py`'nin ters tırnaksız yazılması (biçim), okura seçenek olarak yazılan `denenebilir` cümlesindeki `sonraki adım` (stil denetiminin yol haritası ailesi) ve Haiku'da tek örnekte süren olumsuz iddia eklemesidir.
+
+Aynı turda değerlendiricinin iki hatası düzeltildi: talepte verilen bilgi (`Kasım'da başlamayacak`) eklenen işaret sayılıyordu, oysa `SKILL.md`'ye göre kaynağın parçasıdır; `---` sonrası nottaki ifadeler metne eklenmiş sayılıyordu.
+
+Ayrık set 3 birleşik örneklemde (Haiku, kol başına 8 örnek, 32 görev çıktısı) hatalı çıktı ham sayaçla 20/32'den 11/32'ye iner (p = 0,022). Sonnet'te iki kol da tavandadır (4/16 ve 3/16, hepsi `için` → `nedeniyle` yanlış alarmı). Sınırlar: örnek sayısı küçüktür; sayaçlar kalıp tabanlıdır ve biçim değişince kaçırır (ayrık set 1'deki `bir tahmin var` kişi kayması önce elle okunarak bulundu); sayım hakem değildir.
 
 ### Gerçek model regresyonu
 
