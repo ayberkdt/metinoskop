@@ -222,9 +222,14 @@ def free_additions(case_text: str) -> set[str]:
     return allowed
 
 
+BITISIK_NICELIK_RE = re.compile(r"\b([Hh]er|[Bb]ir)(şey)")
+
+
 def added_markers(source: str, output: str, allowed: set[str] = frozenset()) -> list[dict[str, object]]:
     # Soru cümlesi önerme kurmaz: kavramsal girişin `... verilebilir mi?` sorusu çekince eklemez.
     asserted = re.sub(r"[^.!?\n]*\?", "", output)
+    # Bitişik yazım yanlışının düzeltilmesi (`herşey` → `her şey`) kaynaktaki niceliği ayırır, eklemez.
+    source = BITISIK_NICELIK_RE.sub(r"\1 \2", source)
     before, after = marker_hits(source), marker_hits(asserted)
     added: list[dict[str, object]] = []
     for key, label, _ in ADDED_MARKER_RE:
@@ -393,6 +398,8 @@ def self_test() -> None:
         ("Doğrulama kümesi yüksek doğruluğa sahip olan ve düşük gecikmeye sahip olan filtreyi seçti.",
          "Doğrulama kümesi yüksek doğruluklu, düşük gecikmeli filtreyi seçti."),
         ("Ölçüm `max_iter=500` ile yapılmadı mı?", "Ölçüm `max_iter=500` ile yapılmadı mı?"),
+        # Yazım düzeltmesi: `herşey` zaten `her`i taşır; ayrı yazılınca tümel nicelik eklenmez.
+        ("Taslakta herşey tamam değildi.", "Taslakta her şey tamam değildi."),
         ("Bu bir çalışmadır.", "Bu bir çalışmadır."),
         # Yazma kipi: kaynaktaki plan duyuru kipine geçer; paranteze bitişik gelecek kipi de sayılır.
         ("Bakım 4 saat sürecek (22.00–02.00). Panel kapalı olacak.", "Bakım 22.00–02.00 arasında yapılacak. Panel kapalı olacak."),

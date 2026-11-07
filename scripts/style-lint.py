@@ -41,6 +41,12 @@ followed by an unattributed "bu nedenle", unmotivated tense alternation,
 passive + nominalization clusters, light-verb density, postposition clusters,
 synonym drift among generic nouns, per-section topic resets, parenthetical
 load and register clashes. No regex decides epistemic correctness.
+
+Orthography (``yazim``, hard) flags spellings that clearly break the TDK Yazım
+Kılavuzu (``Türkçe'de``, ``herşey``, ``farketti``, ``kayıt etmek``, ``8.'inci``,
+``hatı``, ``kontrolu``); ``yazim_adayi`` (context) flags candidates that an
+official name or a table may legitimately keep (``Kurumu'na``, ``makina``,
+``25%``). Code spans, quoted speech and ``>`` quotes are never checked.
 """
 
 from __future__ import annotations
@@ -579,7 +585,48 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"işlemi (?:yap|gerçekleştir)|(?:değerlendirme|analiz|inceleme|ölçüm|kontrol|karşılaştırma|uygulama) (?:yap|gerçekleştir|yürüt)",
         ),
     },
+    {
+        # TDK Yazım Kılavuzu'na açıkça aykırı yazım (references/yazim-ve-dil-bilgisi.md). AI izi değil,
+        # biçim doğruluğudur. Kod, tırnak içi alıntı ve `>` alıntı bloğu denetlenmez (YAZIM_KEYS).
+        "key": "yazim",
+        "label": "Yazım yanlışı",
+        "level": "sert",
+        "patterns": (
+            # Dil adı yapım ekiyle türer; ardından gelen ek kesmeyle ayrılmaz: Türkçede, İngilizceye.
+            r"\b(?:türkçe|ingilizce|almanca|fransızca|arapça|farsça|rusça|ispanyolca|italyanca|japonca|çince|korece|latince|yunanca|osmanlıca)['’]",
+            # Ayrı yazılanlar: her şey, bir şey, pek çok, fark etmek; bitişik yazılanlar: birkaç, herhangi.
+            r"\b(?:her|bir)şey|\bpekçok\b|\bfarket|\bbir kaç\b|\bher hangi\b",
+            # Bağlaç ki ayrı yazılır.
+            r"\b(?:dedi|öyle|şöyle|böyle|demek|kaldı|bilmem)ki\b",
+            # Ses olayına uğrayan ad + etmek bitişik yazılır: kaybetmek, hissetmek, reddetmek, kaydetmek.
+            r"\b(?:kayıp|his|af|ret|zan|emir|kayıt|sabır|seyir|kahır|hapis|keşif|şükür) (?:et(?:mek|me|ti|tir|miş|se)|ed(?:er|en|ip|ecek|eceğ|ebil|il|iyor|erek|ince))",
+            # Sıra sayısında rakamdan sonra nokta ile ek birlikte kullanılmaz: 8'inci ya da 8.
+            r"\d\.['’](?:inci|ıncı|uncu|üncü|nci|ncı|ncu|ncü)\b",
+            # Arapça ikiz ünsüz ünlüyle başlayan ekte geri gelir: hakkı, hissi, hattı, zannı, tıbbı.
+            r"\b(?:hakı|hakın|hisi|zanı|tıpı|hatı)\b",
+            # İnce söylenen son ünsüz ince ünlülü ek alır: kontrolü, protokolde, rolü, saate.
+            r"\b(?:alkol|kontrol|protokol|sembol|rol|petrol|kabul|usul)(?:u|un|a|da|dan|lar|ları|ların)\b|\bsaat(?:a|ı|ın|lar|tan)\b",
+            r"\b(?:orjinal|yanlız|herkez|yalnış|malesef)\w*",
+        ),
+    },
+    {
+        # Bağlam isteyen yazım adayları: resmî ad kendi yazımını korur (Makina Mühendisleri Odası),
+        # `yada` bir ad da olabilir, `hiç bir araya` ve `bir çok yönlü` doğrudur, tabloda `25%` biçimi dayatılmış olabilir.
+        "key": "yazim_adayi",
+        "label": "Yazım adayı",
+        "level": "bağlam",
+        "patterns": (
+            # Kurum adına gelen ek kesmeyle ayrılmaz (Türk Dil Kurumuna); unvan (Başkanı'na) ayrılır.
+            r"\b(?:kurumu|bakanlığı|başkanlığı|müdürlüğü|rektörlüğü|üniversitesi|fakültesi|enstitüsü|derneği|vakfı|meclisi|bankası|şirketi|kurulu|ajansı|belediyesi|odası|birliği|federasyonu)['’]",
+            r"\byada\b|\bhiç bir\b|\bbir çok\b",
+            r"\b\d+(?:[.,]\d+)?\s?%",
+            r"\blaboratuar\w*|\bmakina(?:\b|sı|lar|da|nın)|\bmetod(?:\b|lar)",
+        ),
+    },
 )
+# Yazım aileleri kod, tırnak içi alıntı ve `>` alıntı bloğunda çalışmaz: alıntı ve kod kaynağın yazımıyla kalır.
+YAZIM_KEYS = frozenset({"yazim", "yazim_adayi"})
+YAZIM_MASK_RE = re.compile(r"`[^`]*`|“[^”]*”|«[^»]*»|\"[^\"]*\"")
 
 COMPILED: dict[str, tuple[re.Pattern[str], ...]] = {
     str(category["key"]): tuple(re.compile(p) for p in category["patterns"])  # type: ignore[union-attr]
@@ -853,9 +900,13 @@ def find_hits(paragraphs: list[Paragraph]) -> list[dict[str, object]]:
     hits: list[dict[str, object]] = []
     for paragraph in paragraphs:
         for sentence in paragraph.sentences:
+            masked = YAZIM_MASK_RE.sub(" ", sentence.lowered)
             for key, patterns in COMPILED.items():
+                if key in YAZIM_KEYS and paragraph.quote:
+                    continue
+                target = masked if key in YAZIM_KEYS else sentence.lowered
                 for pattern in patterns:
-                    match = pattern.search(sentence.lowered)
+                    match = pattern.search(target)
                     if match:
                         hits.append(
                             {
@@ -1559,6 +1610,7 @@ def analyse(text: str, son_okur: bool = False) -> dict[str, object]:
         "kuyruk": per_category.get("kuyruk", 0),
         "etiket": per_category.get("etiket", 0),
         "anons": per_category.get("anons", 0),
+        "yazim": per_category.get("yazim", 0),
         "son_okur": son_okur,
         "density_per_100": density,
         "structure_summary": structure_summary(doc, hits),
@@ -1952,6 +2004,37 @@ INNOCENT_WORDS = (
     "Binanın temel taşı 1923'te atıldı.",
     "Kapının anahtarı masada kaldı.",
 )
+# TDK Yazım Kılavuzu'na aykırı yazım ve doğru karşılıkları (references/yazim-ve-dil-bilgisi.md).
+YAZIM_WRONG = (
+    "Raporun Türkçe'si hazırlandı.",
+    "Taslakta herşey tamamdı.",
+    "Ekip hatayı geç farketti.",
+    "Bir kaç sensör yeniden kalibre edildi.",
+    "Kayıtlar her hangi bir sırayla alınmadı.",
+    "Sistem verileri kayıt ediyor.",
+    "Şikâyet ret edildi.",
+    "Bu 8.'inci denemeydi.",
+    "Veri hatı kesildi.",
+    "Kalite kontrolu iki kez yapıldı.",
+    "Öyleki hiçbir ölçüm tekrarlanmadı.",
+    "Sabır ederek bekledik.",
+)
+YAZIM_RIGHT = (
+    "Raporun Türkçesi hazırlandı; İngilizceye sonra çevrilecek.",
+    "Taslakta her şey tamamdı; bir şey eksik değildi.",
+    "Ekip hatayı geç fark etti ve birkaç sensörü değiştirdi.",
+    "Sistem verileri kaydediyor; şikâyet reddedildi ve kayıp olarak işlendi.",
+    "Bu 8'inci denemeydi; 8. deneme Nisan'da yapıldı.",
+    "Veri hattı kesildi; hakkı saklıdır, hissi doğrudur.",
+    "Kalite kontrolü iki kez yapıldı; protokolde rolü belliydi.",
+    "Belge Türk Dil Kurumu Başkanı'na sunuldu; Cannes'a ve Linux'ta.",
+    "Demek ki ölçüm tekrarlanmadı; hiçbir sapma yoktu.",
+    "Kullanıcı “sistem herşeyi siliyor” diye yazdı.",
+    "Fonksiyon `herSeyiFarket()` adıyla çağrıldı.",
+    "Tablodaki metodu ve metotları karşılaştırdık; saate göre sıraladık.",
+)
+YAZIM_WRONG_PARAGRAPH = """Raporun Türkçe'si hazırlandı. Taslakta herşey tamam değildi. Veri hatı kesintisi geç farkedildi. Bir kaç sensör yeniden kayıt edildi. Kalite kontrolu iki kez yapıldı.
+"""
 # Olumsuz biçim sınırlılık bildirir; yol haritası duyurusu değildir.
 NEGATED_SCOPE = "Bu çalışmada yaş etkisi incelenmedi; bu belgede maliyet ele alınmamıştır."
 
@@ -2177,6 +2260,19 @@ def self_test() -> None:
         if any(h["category"] == "kuyruk" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
             raise SystemExit(f"Öz sınama: doğal zarf-fiil ya da ad cümle sonu kuyruğu sayıldı (yanlış pozitif): {text!r}")
 
+    for text in YAZIM_WRONG:
+        if not any(h["category"] == "yazim" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: TDK'ye aykırı yazım işaretlenmedi: {text!r}")
+    for text in YAZIM_RIGHT:
+        stray = [h for h in analyse(text)["hits"] if h["category"] in YAZIM_KEYS]  # type: ignore[union-attr]
+        if stray:
+            raise SystemExit(f"Öz sınama: doğru yazım, alıntı ya da kod yazım bulgusu üretti (yanlış pozitif): {text!r} -> {stray}")
+    if analyse(YAZIM_WRONG_PARAGRAPH)["yazim"] < 5:  # cümle başına bir bulgu
+        raise SystemExit("Öz sınama: yazım yanlışlı paragrafta beklenen yazım bulguları eksik")
+    for text in ("Belge Türk Dil Kurumu'na gönderildi.", "Örnekler 12 Mart'ta makinada test edildi."):
+        if not any(h["category"] == "yazim_adayi" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: bağlamsal yazım adayı işaretlenmedi: {text!r}")
+
     social = analyse(SOCIAL_TEXT)
     expected_social = {"duyuru", "gerilim", "savunma", "sohbet", "karsitlik", "reklam", "mecaz", "sus"}
     missing = expected_social - set(social["per_category"])  # type: ignore[arg-type]
@@ -2378,7 +2474,7 @@ def self_test() -> None:
     if stray:
         raise SystemExit(f"Öz sınama: alan etiketi ya da sıradan cümle etiket/anons sayıldı (yanlış pozitif): {stray}")
 
-    print("Stil denetimi öz sınaması geçti (netlik omurgası, yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj, konuşma sızıntısı, cümle sonu kuyruğu, etiket ve anons).")
+    print("Stil denetimi öz sınaması geçti (netlik omurgası, yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj, konuşma sızıntısı, cümle sonu kuyruğu, etiket ve anons, yazım).")
 
 
 # --------------------------------------------------------------------------- #

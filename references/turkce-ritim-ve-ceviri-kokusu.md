@@ -488,7 +488,7 @@ Türkçe iyelik biçim bilgisi güçlüdür; aşırı yığın işlem yükü yar
 
 > Modelin hata dağılımı değişince uzun dönem kararlılığın nasıl etkilendiği incelenmelidir.
 
-Beş iyelikten ikisi kaldı; "değişim" bir fiilimsiye, "etki" bir tümleç cümlesine döndü. Teknik mülkiyet ayrımını zedeleme: "filtrenin durum kovaryansı" ile "durum kovaryansının filtresi" farklı nesnelerdir; zinciri çözerken hangi adın hangisine ait olduğunu koru.
+Beş iyelikten ikisi kaldı; "değişim" bir fiilimsiye, "etki" bir tümleç cümlesine döndü. Teknik mülkiyet ayrımını zedeleme: "filtrenin durum kovaryansı" ile "durum kovaryansının filtresi" farklı nesnelerdir; zinciri çözerken hangi adın hangisine ait olduğunu koru. Belirtili ile belirtisiz tamlamanın gönderge farkı, terim tamlaması ve ek ortaklığı için [Yazım ve dil bilgisi › Tamlamalar](yazim-ve-dil-bilgisi.md#tamlamalar) bölümüne bak.
 
 ## Küçük kalkı aileleri
 

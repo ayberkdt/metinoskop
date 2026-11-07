@@ -95,7 +95,7 @@ Aktarım kaynaklı sık sorunlar:
 | X ile ilgilenmek ("deal with" anlamında) | X'i ele almak, X'le uğraşmak |
 | X'i sağlamak ("ensure that" anlamında) | X'in ... olmasını sağlamak |
 
-Körü körüne yeniden yazma; anlam ayrımlarını koru. "X ile ilişkili olmak" doğru olabilir, "X'e bağlı olmak" başka bir ilişki (bağımlılık) anlatır; ikisi eş anlamlı değildir.
+Körü körüne yeniden yazma; anlam ayrımlarını koru. "X ile ilişkili olmak" doğru olabilir, "X'e bağlı olmak" başka bir ilişki (bağımlılık) anlatır; ikisi eş anlamlı değildir. Sık fiillerin hâl çerçevesi listesi ve iki yüklemin paylaştığı ögenin uyumu için [Yazım ve dil bilgisi › Fiil–hâl çerçevesi listesi](yazim-ve-dil-bilgisi.md#fiilhâl-çerçevesi-listesi) bölümüne bak.
 
 ## Hâl seçimi ve fiil–hâl çerçevesi
 

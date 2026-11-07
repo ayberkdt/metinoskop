@@ -37,7 +37,13 @@ REQUIRED_FILES = (
     "references/turkce-baglayicilar.md",
     "references/okura-dogrudan-metin.md",
     "references/insan-ve-yapay-metin.md",
+    "references/yazim-ve-dil-bilgisi.md",
     "evals/README.md",
+    "evals/kesme-ve-bitisik-yazim-yanlisi.md",
+    "evals/ortak-oge-ve-sayi-uyumsuzlugu.md",
+    "evals/anlamca-tekrar-alinti-ve-kisaltma.md",
+    "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
+    "evals/tamlama-ve-uyum-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -245,6 +251,11 @@ REQUIRED_FILES = (
     "evals/critical-cases.txt",
 )
 EVAL_FILES = (
+    "evals/kesme-ve-bitisik-yazim-yanlisi.md",
+    "evals/ortak-oge-ve-sayi-uyumsuzlugu.md",
+    "evals/anlamca-tekrar-alinti-ve-kisaltma.md",
+    "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
+    "evals/tamlama-ve-uyum-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -578,6 +589,8 @@ for heading in (
     "**Cümle sonu kuyruğu.**",
     "**Yazma ve düzenleme.**",
     "references/insan-ve-yapay-metin.md",
+    "**Yazım ve ek uyumu.**",
+    "references/yazim-ve-dil-bilgisi.md",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
@@ -633,6 +646,7 @@ readme_requirements = (
     "netlik-omurgasi.md",
     "kenar-turler.md",
     "turkce-baglayicilar.md",
+    "yazim-ve-dil-bilgisi.md",
     "STE100",
 )
 for requirement in readme_requirements:
@@ -988,6 +1002,8 @@ SHOULD_REMAIN_CASES = (
     "evals/uzun-paragraf-korunur.md",
     "evals/iyi-yapi-korunur.md",
     "evals/yontem-ayrimi-korunur.md",
+    "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
+    "evals/tamlama-ve-uyum-korunur.md",
 )
 misnamed = sorted({p for p in SHOULD_REMAIN_CASES if not Path(p).stem.endswith("-korunur")}
                   | {p for p in EVAL_FILES if Path(p).stem.endswith("-korunur") and p not in SHOULD_REMAIN_CASES})

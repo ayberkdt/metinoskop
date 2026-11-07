@@ -99,7 +99,7 @@ Konuşmaya gönderme, çalışma sırası ve kullanıcıya teklif silindi. Taş�
 
 ### Dokunulmayan cümleler
 
-198 vakanın 79'unda doğru davranış hiçbir şeyi değiştirmemektir. Bu korunur vakalarının kayıtlı çıktısı kaynağın kendisidir ve doğrulayıcı bu eşitliği denetler. Aşağıdaki cümlelerin her biri bir korunur vakasının kaynağından alındı.
+203 vakanın 81'inde doğru davranış hiçbir şeyi değiştirmemektir. Bu korunur vakalarının kayıtlı çıktısı kaynağın kendisidir ve doğrulayıcı bu eşitliği denetler. Aşağıdaki cümlelerin her biri bir korunur vakasının kaynağından alındı.
 
 | Cümle | Vaka | Neden kalır |
 |---|---|---|
@@ -169,6 +169,7 @@ Ana kurallar `SKILL.md` dosyasındadır. Ajan `references/` altındaki katalogla
 | Zaman ve kip | Baskın zaman çizgisini bulur; `-yordu`, `-mıştı`, `-ardı` ilişkilerini ne düzleştirir ne uydurur. | `zamansal-ankraj-ve-rapor-kipi.md` |
 | Tuhaf eşdizim, sözcüksel kalkı | `karar gerçekleştirmek`, `X hakkında odaklanmak` gibi birleşimleri düzeltir; `referans çerçevesi`, `hipotezi desteklemek` gibi yerleşik terimleri korur. | `sozcuk-birlesimleri.md` |
 | Paragraflar bir düşünceyi geliştirmiyor | Desteksiz `bu nedenle`yi, kayan kapsam işaretini ve iddiasından uzak düşen sınırlılığı düzeltir; zaman sırasını nedenselliğe çevirmez. | `metinsel-tutarlilik.md` |
+| Yazım yanlışı, alıntı sözcüğün eki, anlam tekrarı, tamlama, ortak öge | TDK Yazım Kılavuzu'na açıkça aykırı yazımı (`Türkçede`, `Kurumuna`, `her şey`, `kaydetmek`, `hattı`, `kontrolü`) her düzeyde düzeltir; `geri iade`, `PIN numarası` gibi tekrarı atar, `IP adresi`ni bırakır; birleştirdiği cümlede ortak ögeyi iki yüklemin hâline uydurur. Alıntıyı, kodu, resmî adı (`Türk Standardları Enstitüsü`) ve kaynağın tutarlı yazım tercihini değiştirmez. | `yazim-ve-dil-bilgisi.md` |
 | Rapor, inceleme notu, yönetici özeti | Bulgu, yorum, öneri ve karar sınırını korur; yönetici özeti gövdede olmayan çıkarım üretmez. | `rapor-yazimi.md` |
 | AI metnine özgü izler | Cümle sonu `-arak/-erek` kuyruğunu, biçem fiilini ve yumuşatılmış olumsuz bulguyu giderir; uzunluğu rastgeleleştirmez. | `insan-ve-yapay-metin.md` |
 | Konuşma sızıntısı | Sızıntıyı siler, taşıdığı varsayımı ve yöntemi okura yazar. | `okura-dogrudan-metin.md` |
@@ -193,6 +194,8 @@ Bu terimler referans dosyalarında ve `style-lint.py` çıktısında geçer.
 | Eşdizim | Sözcüklerin birlikte kullanılma alışkanlığı: `karar almak` doğaldır, `karar gerçekleştirmek` değildir. |
 | Etiket | Cümlenin türünü adlandıran giriş (`Sezgisel açıklama:`); belgenin dayattığı alan etiketinden (`Girdi:`) ayrıdır. |
 | Anons | Okura seslenen duyuru, slogan ya da eylem çağrısı (`Merak etmeyin`, `Hemen deneyin`). |
+| Ortak öge | İki yüklemin paylaştığı özne, nesne ya da tümleç; iki yüklemin hâl ve çatısına da uymalıdır: `uygulamayı seviyor ve ona güveniyor`. |
+| Anlam tekrarı | Alıntı sözcüğün ya da kısaltmanın anlamında bulunan ögenin Türkçe sözcükle yinelenmesi: `geri iade`, `ATM makinesi`. |
 | Korunur vakası | Doğru davranışın hiçbir şeyi değiştirmemek olduğu vaka; adı `-korunur` ile biter, kayıtlı çıktısı kaynağın kendisidir. |
 
 ## Kurulum
@@ -257,6 +260,7 @@ Düzeyi belirtmezseniz ajan standart düzeyde çalışır. Teşhis yapısal par�
 | Yapı | `Derin düzeyde düzenle; hak edilmemiş başlıkları birleştir, numaralı göndermelerin gerektirdiği bölümleri koru.` |
 | Çeviri kokusu | `Metin Türkçe düşünülmüş gibi okunsun; sayıları, terimleri ve kesinlik düzeyini koru.` |
 | Kanıt düzeyi | `Her iddiayı kaynaktaki kanıt düzeyinde tut; çekinceleri koru, dayanaksız pekiştiricileri kaldır.` |
+| Yazım | `Yalnızca yazım yanlışlarını TDK Yazım Kılavuzu'na göre düzelt; alıntıları, kodu ve kurum adlarını olduğu gibi bırak.` |
 | Üslup eşleme | `Önce şu iki paragraftan üslubumu çıkar, sonra bu metni aynı resmiyet ve ritimle düzenle.` |
 
 Üslup eşlemede yazım yanlışları ve tesadüfi tekrarlar üslup özelliği sayılmaz.
@@ -306,8 +310,8 @@ Hukuki, tanıtım, deneme, sosyal medya, kişisel ve edebî metin desteklenir; b
 ```text
 metinoskop/
 ├── SKILL.md                    Her çağrıda yüklenen kurallar
-├── references/                 İlgili sorun görülünce okunan 16 katalog
-├── evals/                      198 davranış vakası: 79 korunur, 119 dönüşüm
+├── references/                 İlgili sorun görülünce okunan 17 katalog
+├── evals/                      203 davranış vakası: 81 korunur, 122 dönüşüm
 │   ├── outputs/                Her vakanın kayıtlı çıktısı
 │   ├── critical-cases.txt      Canlı regresyondaki 36 kritik vaka
 │   └── README.md               Vaka grupları, hakem ölçütleri, ölçüm sonuçları

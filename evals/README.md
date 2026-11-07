@@ -55,6 +55,18 @@ Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (t
 
 Korunur tarafı ayrıca `iyi-yazilmis-metin-korunur` taşır: okurun da tarafı olduğu e-postada `geçen ay konuştuğumuz gibi` içeriktir.
 
+**Yazım ve dil bilgisi** (`references/yazim-ve-dil-bilgisi.md`): TDK Yazım Kılavuzu'na açıkça aykırı yazımın her düzeyde düzeltildiğini, alıntı sözcüğün ses ve ek davranışının, kökenden gelen anlam tekrarının, tamlamanın ve ortak öge uyumunun kaynak sadakatini bozmadan onarıldığını sınar. `yazım yanlışı` beklentisi `style-lint.py` `yazim` ailesine bağlanır; aile kodu, tırnak içi alıntıyı ve `>` alıntı bloğunu denetlemez.
+
+| Vaka | Sınanan davranış |
+|---|---|
+| `kesme-ve-bitisik-yazim-yanlisi` | Hafif düzeyde yalnızca yazımı düzeltmek: dil ve kurum adına kesmesiz ek (`Türkçesi`, `Kurumuna`), `her şey`, `fark etti`, `Birkaç`, `8'inci`, ünsüz ikizleşmesi (`hattı`), ses düşmeli birleşik fiil (`kaydedilemedi`); `hâlâ`, tarih, yüzde ve cümle yapısını korumak |
+| `ortak-oge-ve-sayi-uyumsuzlugu` | Sayı sıfatından sonraki çokluk ekini, insan dışı öznedeki yüklem çokluğunu, hâl uyumsuz ortak nesneyi (`inceledi ve protokole itiraz etti`) ve çatı uyuşmazlığını gidermek; toplayanı `biz`e bağlamamak, analizi yapanı silmemek, `ilişkili`yi güçlendirmemek |
+| `anlamca-tekrar-alinti-ve-kisaltma` | Kısaltmanın açılımının başını yineleyen adı (`ATM makinesi`, `PIN numarası`, `API arayüzü`) ve alıntının anlamındaki ögeyi (`geri iade`, `en optimum`) silmek; başı yinelemeyen `IP adresi` ve `SMS mesajı`nı, `0,35`i ve olumsuzluğu korumak |
+| `ozel-ad-kod-ve-alinti-yazimi-korunur` | Yazım düzeltmesi istendiğinde unvana gelen kesmeyi (`Başkanı'na`), kurumun resmî yazımını (`Standardları`, `Makina`), sürüm numarasını (`3.5`), kodu ve doğrudan alıntıdaki yanlışı değiştirmemek (yanlış pozitif) |
+| `tamlama-ve-uyum-korunur` | Terim tamlamasını (`görüntü işleme`), zincir içi düşmüş iyeliği (`veri analiz hattı`, `Türk Dil Kurumu`), ek ortaklığını (`hız ve güvenilirliği`), `bazı` + çoğul adı, insan öznede çoğul yüklemi ve uyumlu ortak nesneyi düzeltme sanmamak (yanlış pozitif) |
+
+Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tümel nicelik `her`" sayılıyordu; kaynakta `her` bitişik yazımın içinde zaten bulunduğu için `eval-runner.py` sayımdan önce kaynaktaki `herşey`, `birşey` biçimlerini ayırır. Kritik canlı set 36 vakalık üst sınırdadır; bu grup bu yüzden henüz kritik sete girmedi.
+
 **Kaynak sadakati ve kapsam:** `akademik-metin-korunur`, `belirsiz-gonderge-korunur`, `markdown-bicimi-korunur`, `kapsam-ve-kosul`, `kaynak-sadakati`, `teknik-gosterim-korunur`, `rapor-bulgu-yorum-oneri`, `rapor-yapisi-korunur`, `yonetici-ozeti`.
 
 **Ton ve değişiklik bütçesi:** `degisiklik-butcesi-korunur`, `kavramsal-giris`.
