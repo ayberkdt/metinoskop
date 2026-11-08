@@ -38,6 +38,9 @@ REQUIRED_FILES = (
     "references/okura-dogrudan-metin.md",
     "references/insan-ve-yapay-metin.md",
     "references/yazim-ve-dil-bilgisi.md",
+    "references/turkce-dil-literaturu.md",
+    "references/turkce-dil-literaturu.csv",
+    "scripts/literatur.py",
     "evals/README.md",
     "evals/kesme-ve-bitisik-yazim-yanlisi.md",
     "evals/ortak-oge-ve-sayi-uyumsuzlugu.md",
@@ -1030,11 +1033,26 @@ for relative_path in SHOULD_REMAIN_CASES:
     if case_source is None or case_source.group(1).strip() != recorded.strip():
         fail(f"{relative_path}: recorded output must equal the source for a should-remain case")
 
-for relative_path in ("scripts/eval-runner.py", "scripts/eval-suite.py", "scripts/style-lint.py", "scripts/validate-package.py", "scripts/behavioral-regression.py"):
+for relative_path in ("scripts/eval-runner.py", "scripts/eval-suite.py", "scripts/style-lint.py", "scripts/validate-package.py", "scripts/behavioral-regression.py", "scripts/literatur.py"):
     try:
         ast.parse((ROOT / relative_path).read_text(encoding="utf-8"))
     except SyntaxError as error:
         fail(f"Invalid Python syntax in {relative_path}: {error}")
+
+# Literatür veritabanı: şema, doğrulama düzeyi ve her kaydın taramada anılması.
+import importlib.util as _ilu
+_spec = _ilu.spec_from_file_location("literatur", ROOT / "scripts/literatur.py")
+_lit = _ilu.module_from_spec(_spec)
+_spec.loader.exec_module(_lit)  # type: ignore[union-attr]
+_rows = _lit.load()
+for _problem in _lit.problems(_rows):
+    fail(f"references/turkce-dil-literaturu.csv: {_problem}")
+_review = (ROOT / "references/turkce-dil-literaturu.md").read_text(encoding="utf-8")
+_unmentioned = [r["id"] for r in _rows if f"`{r['id']}`" not in _review]
+if _unmentioned:
+    fail("references/turkce-dil-literaturu.md must cite every database id: " + ", ".join(_unmentioned))
+if len(_rows) < 50:
+    fail("references/turkce-dil-literaturu.csv must keep at least fifty verified records")
 
 print(
     "Metinoskop package is valid "

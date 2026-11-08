@@ -1,6 +1,6 @@
 # İnsan ve yapay metin: araştırma bulguları
 
-LLM metnini insan metninden ayıran ölçülmüş farklar ve Metinoskop'taki karşılıkları. Bulgular İngilizce derlemlerdendir. AI ve insan Türkçesini üslup bakımından karşılaştıran hakemli bir çalışma bulunamadı (2026-10 taraması); Türkçe karşılıklar bu yüzden çıkarımdır ve depo vakalarıyla sınanmıştır.
+LLM metnini insan metninden ayıran ölçülmüş farklar ve Metinoskop'taki karşılıkları. Aşağıdaki bulgular İngilizce derlemlerdendir. 2026-10 taramasında AI ve insan Türkçesini üslup bakımından karşılaştıran hakemli çalışma bulunamamıştı; 2026-11 taraması 2025–2026'dan dergi makaleleri buldu (Kocagül 2026: noktalı virgül ve virgül yoğunluğu, cümle başı söylem belirleyicisi, `-ArAk` zinciri, kalıp kapanış; Coşar 2025; Çınar ve Karayel Çınar 2026). Bunlar yalnızca özet düzeyinde okundu ve bu tabloya henüz girmedi; Türkçe karşılıklar çıkarım olmayı sürdürür ve depo vakalarıyla sınanır. Kayıtlar: [Türkçe dil bilgisi ve kullanım literatürü › Dil modelleri ve yapay zekâ Türkçesi](turkce-dil-literaturu.md#dil-modelleri-ve-yapay-zekâ-türkçesi).
 
 Güven: **A** birden çok bağımsız çalışma aynı yönü buldu; **B** tek çalışma, büyük derlem; **C** modele ya da türe göre değişiyor.
 

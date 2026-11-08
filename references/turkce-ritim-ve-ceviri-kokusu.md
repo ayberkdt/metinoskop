@@ -86,12 +86,12 @@ Sözcük değişimi ile ilişki kurulumunu ayırt etmenin kısa yolu: düzenleme
 
 ## Bilgi yapısı ve sözcük sırası
 
-Türkçe sözcük sırasını mekanik bir özne–nesne–yüklem şablonuna indirgeme. Sırayı belirleyen konu, odak, verilmiş bilgi, yeni bilgi, karşıtlık ve söylem sürekliliğidir. Yüklem önündeki konum odak konumudur; cümle başı ise konu konumudur. Her cümlede sor:
+Türkçe sözcük sırasını mekanik bir özne–nesne–yüklem şablonuna indirgeme. Sırayı belirleyen konu, odak, verilmiş bilgi, yeni bilgi, karşıtlık ve söylem sürekliliğidir. Cümle başı konuyu taşır; yeni ve önemli bilgi çoğunlukla yüklemin hemen önüne yakın durur (Erguvanlı 1984). Yüklem önü cümle vurgusunun yeridir ama odağın tek yeri değildir: odak yüklem öncesi alanın başka bir yerinde de durabilir (Göksel ve Özsoy 2000; Kılıçaslan 2004). Yazıda ezgi olmadığı için okur odağı dizimden ve bağlamdan kurar. Kaynaklar: [Türkçe dil bilgisi ve kullanım literatürü › Sözcük dizimi ve bilgi yapısı](turkce-dil-literaturu.md#sözcük-dizimi-ve-bilgi-yapısı). Her cümlede sor:
 
 1. Okurun zihninde şu anda ne etkin?
 2. Bu cümlede yeni olan ne?
 3. Karşıt olan ne?
-4. Yüklem önü odağı hangi öge hak ediyor?
+4. Yeni bilgi yükleme yakın mı, yoksa İngilizce sıradan kalıp yüklemden uzağa mı düşmüş?
 5. Cümlenin açık bir özneyle başlaması gerçekten gerekli mi?
 
 **Mekanik**

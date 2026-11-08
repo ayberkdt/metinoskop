@@ -264,6 +264,8 @@ Kural metinleri TDK'nin çevrim içi yazım sayfalarından alınmıştır (2026-
 - Türk Dili dergisi (2013), "Çokluk Kavramı ve -lar (-ler) Ekinin Kullanımı" (sayı ve çokluk sıfatından sonra çokluk eki, belgisiz zamir öznede yüklem). https://tdk.gov.tr/wp-content/uploads/2013/04/20130409.pdf
 - Zülfikar H. (2013), "Anlatım Bozukluğuyla Ne Anlıyoruz?", *Türk Dili*. https://tdk.gov.tr/wp-content/uploads/2013/09/20130906.pdf
 
+Dil bilgisi kitapları, tamlama ve biçim bilgisi çalışmaları ve akademik Türkçe derlemleri: [Türkçe dil bilgisi ve kullanım literatürü](turkce-dil-literaturu.md) ve veritabanı [`turkce-dil-literaturu.csv`](turkce-dil-literaturu.csv).
+
 Doğrulama düzeyi:
 
 | Kural | Düzey |
