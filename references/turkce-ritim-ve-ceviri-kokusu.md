@@ -289,7 +289,7 @@ Sor: önceki önerme adlaştırılmadan etkin kalabilir mi? Sonraki cümle yeni 
 
 > Modelin hatası %8 arttı ve uzun dönem kararlılığını olumsuz etkiledi.
 
-"Bozuldu" yalnızca kaynak destekliyorsa yazılır. Kaynak "olumsuz etki" düzeyinde kalıyorsa ikinci sürüm hem paketi çözer hem belirsizliği korur. Gösterme sıfatı bir paragrafta ilk kez ve tek göndergeyle kullanılıyorsa meşrudur; ritim hâline geldiğinde kokudur.
+"Bozuldu" yalnızca kaynak destekliyorsa yazılır. Kaynak "olumsuz etki" düzeyinde kalıyorsa ikinci sürüm hem paketi çözer hem belirsizliği korur. Gösterme sıfatı bir paragrafta ilk kez ve tek göndergeyle kullanılıyorsa meşrudur; ritim hâline geldiğinde kokudur. Türkçe akademik metinde `bu durum`, `söz konusu`, `bu süreç` sıklığını ölçen kabuk ad çalışması bulunamadı. Türk yazarların İngilizce tezlerinde üstsöylemsel ad kullanımı ana dili İngilizce yazarlarınkine benzer (Yuvayapan 2019), ama bu Türkçe için kanıt değildir. Karar sıklık eşiğine değil, paketin gönderge belirsizliğine ve ritmine dayanır.
 
 ## `Bir` fazlası
 

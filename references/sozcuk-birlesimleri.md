@@ -149,6 +149,8 @@ Her önemli yüklem için sor:
 
 Çift ilgeçler ("hakkında ilişkin", "üzerinde dair") gitti; "yönelik olarak" yönelme hâline döndü; "tahmin içermektedir" doğal eşdizimdir ve kaldı. Yığın ölçüsü için [Türkçe ritim › Çerçeve yığını](turkce-ritim-ve-ceviri-kokusu.md#çerçeve-yığını) bölümüne bak.
 
+Tablo çıkarımdır: `hakkında`, `ilişkin`, `üzerine`, `konusunda`, `ile ilgili`, `yönelik`, `dair` ilgeçlerinin anlam ve kayıt farkını karşılaştıran ya da baş adla eşdizimini ölçen hakemli çalışma bulunamadı ([literatür › İlgeçler ve kabuk adlar](turkce-dil-literaturu.md#ilgeçler-ve-kabuk-adlar)). Kesin olan dil bilgisi düzeyidir: çift ilgeç ve fiilin istediği hâlle çatışan ilgeç düzeltilir; tek başına ilgeç tercihi (`X'e ilişkin` ↔ `X'le ilgili`) kaynakta kalır. Ad + ilgeç birlikteliği eşdizimden ayrı bir dilbilgisel birliktelik düzeyidir (Gündoğdu 2019). İlgeç değişince tümlecin hâli de değişir (`X'e yönelik`, `X'le ilgili`, `X hakkında`, `X üzerine`); düzeltme ikisini birlikte denetler.
+
 ## Hafif fiiller
 
 `Gerçekleştirmek`, `yapmak`, `sağlamak`, `sunmak`, `yürütmek`, `bulunmak`, `göstermek`, `meydana gelmek`, `oluşturmak`, `ortaya koymak` gerekli olabilir; ama neredeyse hiç anlam yükü taşımadıklarında incele.
