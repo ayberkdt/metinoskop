@@ -487,6 +487,8 @@ Uzak yüklem yorgunluğunu tanı: ana yüklem çok geç geliyor, önünde birka�
 
 ## İyelik zinciri
 
+İngilizce `'s` ve `of` ikisi de Türkçe ilgi ekine karşılık geldiği için iç içe `of` öbeğinin birebir aktarımı iyelik zincirinde bağlanma belirsizliği üretir; Penn Treebank'ın Türkçe çevirisinde bu bağlanma hataları ayrıca düzeltilmek zorunda kalınmıştır (Solak ve ark. 2015). Okur iyelikli ad öbeğini adlaştırılmış yan cümleden ayrı işler (Bahadır 2012); iki yapı tek kuralla kırpılmaz. Yasa metninde uzun ad öbeği tekrarı önleme işlevi görür (Özyıldırım 2001) ve açılmaz. Çeviride iyelik zinciri sıklığını özgün Türkçeyle karşılaştıran derlem çalışması bulunamadı.
+
 Yüksek riskli diziler:
 
 > yöntemin performansının değerlendirilmesinin yapılmasının ...

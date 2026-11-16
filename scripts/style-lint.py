@@ -2398,6 +2398,12 @@ def self_test() -> None:
                       ("giris", "Günümüzde teknoloji hızla ilerliyor."), ("reklam", "Bu özellik gerçekten fark yaratıyor.")):
         if key not in analyse(text)["per_category"]:  # type: ignore[operator]
             raise SystemExit(f"Öz sınama: daraltılan örüntü hedef kullanımı kaçırdı: {key} {text!r}")
+    # Yerleşik uzatım (`denildi`, `konuldu`; Doğan 2019) ve Arapça tekil–çoğul ikilemesi (`fakir fukara`; Kalaycı 2025)
+    # yazım ya da anlam tekrarı bulgusu üretmez.
+    for text in ("Toplantıda takvimin değiştiği denildi.", "Ürün rafa konuldu.", "Fakir fukara yardım bekliyor."):
+        stray = [h for h in analyse(text)["hits"] if h["category"] in YAZIM_KEYS]  # type: ignore[union-attr]
+        if stray:
+            raise SystemExit(f"Öz sınama: yerleşik uzatım ya da ikileme yazım bulgusu üretti (yanlış pozitif): {text!r}")
     for text in ("Bankalar eski sahiplerine iade edildi.", "Ekip kendi koduna sahip çıktı.", "Kent turnuvaya ev sahipliği yaptı."):
         if "sahip" in analyse(text)["per_category"]:  # type: ignore[operator]
             raise SystemExit(f"Öz sınama: ad ya da deyim olan `sahip` kalkı adayı sayıldı (yanlış pozitif): {text!r}")
