@@ -1,0 +1,39 @@
+aile,seviye,dayanak,kanit,karsi_kanit,referans,not
+onem,sert,ai-arastirmasi,iym:4;iym:9,—,retorik-yapilar.md,Biçem fiili ve sıfatı ile her konuya uyan genel cümle; somut değer ya da fark yazılır.
+acimlama,bağlam,depo-kurali,—,—,retorik-yapilar.md,Kural 2 (her önermeyi bir kez söyle).
+savunma,sert,depo-kurali,—,—,retorik-yapilar.md,Ölçülmüş yöntem gerekçesi korunur (savunmaci-akademik).
+duyuru,sert,depo-kurali,—,aydin-iseri-2023,retorik-yapilar.md,Kabuk ad (`çalışmanın amacı`) duyuru sayılmaz; lint işaretlemiyor.
+sarmalayici,sert,depo-kurali,—,—,yapisal-butunluk.md,Kural 7 (yapı okura hizmet eder).
+gerilim,sert,depo-kurali,—,—,retorik-yapilar.md,Gerçek karşıtlık nicel olarak yazılır.
+aski,sert,depo-kurali,—,—,retorik-yapilar.md,İleri gönderen askı.
+capraz,bağlam,depo-kurali,—,—,yapisal-butunluk.md,"Tablo, şekil ve numaralı gönderme korunur."
+baglam_tekrari,bağlam,depo-kurali,—,—,metinsel-tutarlilik.md,Bölüm başı bağlam sıfırlaması.
+giris,bağlam,ai-arastirmasi,iym:9,—,retorik-yapilar.md,Kalıp giriş hunisi.
+sonuc,bağlam,ai-arastirmasi,iym:8,—,retorik-yapilar.md,Kalıp kapanış.
+karsitlik,bağlam,depo-kurali,—,—,retorik-yapilar.md,Reddedilen taraf kaynakta yoksa karşıtlık kurulmaz.
+denge,bağlam,depo-kurali,—,calisir-zenci-2020,retorik-yapilar.md,Adlandırılmış sınırlılık ve olumsuz tümce retorik edim taşır; silinmez.
+soyut_yuklem,bağlam,ai-arastirmasi,iym:4,—,turkce-oruntuler.md,"Biçem fiili; somut ilişki yazılır, nedensellik eklenmez."
+uzun_ifade,bağlam,ai-arastirmasi,iym:2,turkkan-2009;kaya-apaydin-2019,turkce-ritim-ve-ceviri-kokusu.md,Adlaştırma akademik ve öğretici metinde olağandır; yalnız yığın ele alınır.
+bos_ozne,bağlam,depo-kurali,—,aydin-iseri-2023,turkce-ritim-ve-ceviri-kokusu.md,Kabuk ad özette işlevseldir.
+sohbet,sert,depo-kurali,—,—,okura-dogrudan-metin.md,Sohbet botu kalıntısı.
+sizinti,bağlam,literatur,yilmaz-2004,ruhi-2009-yani;guclu-2025,okura-dogrudan-metin.md,Cümle başı `işte` ve söylem `şey`i; açımlayıcı `yani` ve biz ekleri sızıntı değildir.
+kuyruk,bağlam,ai-arastirmasi,iym:1;kocagul-2026,johanson-1995,turkce-ritim-ve-ceviri-kokusu.md,Yüklemden önceki zarf-fiil doğaldır.
+etiket,sert,depo-kurali,—,—,retorik-yapilar.md,Kör A/B ile ölçüldü (evals/README.md › Etiket ve anons); alan etiketi korunur.
+anons,sert,depo-kurali,—,—,retorik-yapilar.md,Kör A/B ile ölçüldü (evals/README.md › Etiket ve anons).
+reklam,bağlam,depo-kurali,—,—,kenar-turler.md,Tanıtım türünde ikna amacı ayrıca değerlendirilir.
+mecaz,bağlam,depo-kurali,—,—,turkce-oruntuler.md,Yazara özgü imge korunur (ozgun-imge-korunur).
+sus,bağlam,depo-kurali,—,—,turkce-oruntuler.md,Süs emojisi.
+klise_gecis,bağlam,ai-arastirmasi,iym:7;kocagul-2026,—,turkce-oruntuler.md,Cümle başı söylem belirleyicisi ve şablon.
+sahip,bağlam,cikarim,—,yarar-2020,turkce-ritim-ve-ceviri-kokusu.md,Mülkiyet ve yetki `sahip`i resmî Türkçede yerleşiktir; derlemle ölçülmüş çeviri dayanağı bulunamadı.
+varlik,bağlam,cikarim,—,yarar-2020,turkce-ritim-ve-ceviri-kokusu.md,Resmî dilde en sık varoluş yüklemi `var` + `-DIr`dır.
+kalki,bağlam,cikarim,—,yalap-bicer-2022;zulfikar-2023,sozcuk-birlesimleri.md,Yerleşik öyküntü terim ve ad + `etmek` korunur.
+anlam_kalkisi,sert,depo-kurali,—,—,sozcuk-birlesimleri.md,Anlam hatası; doğru kullanım anlam-kalkisi-korunur'da.
+anlam_kaymasi_adayi,bağlam,depo-kurali,—,—,sozcuk-birlesimleri.md,Anlam kayması adayı; hakem karar verir.
+kiplik,bağlam,literatur,fidan-2002;doyuran-2009;erguvanli-taylan-2018,iym:5,kanit-ve-kesinlik.md,Ölçüm ailesi; çekince silinmez.
+pekistirici,bağlam,depo-kurali,—,sen-iseri-2023;cangir-can-2026,kanit-ve-kesinlik.md,Türkçe özetlerde vurgulayıcı sıktır; yalnız dayanaksız olan ele alınır.
+aktarim,bağlam,literatur,guclu-2020;aksu-koc-slobin-1986,—,kanit-ve-kesinlik.md,Atıflı iddia atıflı kalır.
+hafif_fiil,bağlam,literatur,ucar-2010,aksehirli-2013;zulfikar-2023,sozcuk-birlesimleri.md,Ad + `et-` işaretlenmez; birleşim listesi kullanılır.
+sayi_uyumu,bağlam,literatur,bamyaci-2014;sag-2022,renans-2017;kerimoglu-2008,yazim-ve-dil-bilgisi.md,"İnsan özne, soru ve olumsuzluk dışarıda."
+tarafindan,bağlam,literatur,erdem-2007;sebzecioglu-oktar-2010,guclu-2025,kanit-ve-kesinlik.md,Kurumsal ve süreç eyleyeni meşrudur.
+yazim,sert,tdk,becker-ketrez-nevins-2011;levi-2001,—,yazim-ve-dil-bilgisi.md,TDK Yazım Kılavuzu; ünsüz ve uyum istisnaları köke bağlı olduğu için liste kullanılır.
+yazim_adayi,bağlam,tdk,—,—,yazim-ve-dil-bilgisi.md,Resmî adın ya da tablonun meşru tutabileceği biçimler.

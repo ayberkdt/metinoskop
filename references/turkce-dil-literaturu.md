@@ -226,6 +226,8 @@ Türkçe UD ağaç bankaları (IMST-UD, BOUN, Penn, ATIS, Kenet, Tourism, PUD) f
 
 ## Örüntü kararları
 
+`style-lint.py`'deki her örüntü ailesinin dayanağı [`oruntu-kanitlari.csv`](oruntu-kanitlari.csv) dosyasındadır: aile, seviye, dayanak türü (`literatur`, `ai-arastirmasi`, `tdk`, `depo-kurali`, `cikarim`), destekleyen kanıt, karşı kanıt (işaretlenmemesi gereken kullanımı gösteren çalışma) ve ilgili referans. 38 ailenin dağılımı: literatür 6, ölçülmüş AI araştırması 7, TDK 2, depo kuralı 20, çıkarım 3. Doğrulayıcı her ailenin bir kez ve lint ile aynı seviyede anıldığını, atıf yapılan kimliklerin bu veritabanında ya da `insan-ve-yapay-metin.md` tablosunda (`iym:N`) bulunduğunu ve çıkarıma dayanan ailenin sert olmadığını denetler. Aşağıdaki tablo bu turlarda kanıtla değişen kararları özetler.
+
 | Örüntü | Kanıt | Karar | Nerede |
 |---|---|---|---|
 | Dört biçimli ekler (`-DI`, `-DIr`, `-mIştI`, `-mIştIr`) | Türkçe ünlü uyumu (`goksel-kerslake-2005`, `clements-sezer-1982`) | Lint örüntüleri `u/ü` biçimlerini kapsar; `görülmüştür`, `görülmüştü`, `ölçüldü` doğru sınıflanır | `style-lint.py` zaman sınıfı ve edilgen örüntüsü |

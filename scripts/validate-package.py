@@ -40,6 +40,7 @@ REQUIRED_FILES = (
     "references/yazim-ve-dil-bilgisi.md",
     "references/turkce-dil-literaturu.md",
     "references/turkce-dil-literaturu.csv",
+    "references/oruntu-kanitlari.csv",
     "scripts/literatur.py",
     "evals/README.md",
     "evals/kesme-ve-bitisik-yazim-yanlisi.md",
@@ -1054,6 +1055,46 @@ _review = (ROOT / "references/turkce-dil-literaturu.md").read_text(encoding="utf
 _unmentioned = [r["id"] for r in _rows if f"`{r['id']}`" not in _review]
 if _unmentioned:
     fail("references/turkce-dil-literaturu.md must cite every database id: " + ", ".join(_unmentioned))
+# Örüntü kanıt eşlemesi: style-lint.py'deki her aile bir kez, aynı seviyeyle ve var olan kanıtla anılır.
+import csv as _csv
+_lint_spec = _ilu.spec_from_file_location("style_lint_for_validation", ROOT / "scripts/style-lint.py")
+_lint = _ilu.module_from_spec(_lint_spec)
+import sys as _sys
+_sys.modules["style_lint_for_validation"] = _lint
+_lint_spec.loader.exec_module(_lint)  # type: ignore[union-attr]
+_families = {str(c["key"]): str(c["level"]) for c in _lint.CATEGORIES}
+with (ROOT / "references/oruntu-kanitlari.csv").open(encoding="utf-8", newline="") as _handle:
+    _registry = list(_csv.DictReader(_handle))
+_lit_ids = {r["id"] for r in _rows}
+_iym_rows = set(re.findall(r"(?m)^\| (\d+) \|", (ROOT / "references/insan-ve-yapay-metin.md").read_text(encoding="utf-8")))
+_seen_families = [r["aile"] for r in _registry]
+for _family, _level in _families.items():
+    if _seen_families.count(_family) != 1:
+        fail(f"references/oruntu-kanitlari.csv must list style-lint family exactly once: {_family}")
+for _row in _registry:
+    _family = _row["aile"]
+    if _family not in _families:
+        fail(f"references/oruntu-kanitlari.csv lists an unknown family: {_family}")
+        continue
+    if _row["seviye"] != _families[_family]:
+        fail(f"references/oruntu-kanitlari.csv level differs from style-lint.py for {_family}")
+    if _row["dayanak"] not in {"literatur", "ai-arastirmasi", "tdk", "depo-kurali", "cikarim"}:
+        fail(f"references/oruntu-kanitlari.csv has an unknown basis for {_family}: {_row['dayanak']}")
+    if _row["dayanak"] in {"literatur", "ai-arastirmasi"} and _row["kanit"] == "—":
+        fail(f"references/oruntu-kanitlari.csv: {_family} claims evidence but cites none")
+    if _row["dayanak"] == "cikarim" and _row["seviye"] == "sert":
+        fail(f"references/oruntu-kanitlari.csv: inference-based family {_family} must not be hard")
+    for _ref in (x.strip() for col in ("kanit", "karsi_kanit") for x in _row[col].split(";")):
+        if _ref in ("", "—"):
+            continue
+        if _ref.startswith("iym:"):
+            if _ref[4:] not in _iym_rows:
+                fail(f"references/oruntu-kanitlari.csv: {_family} cites a missing insan-ve-yapay-metin row {_ref}")
+        elif _ref not in _lit_ids:
+            fail(f"references/oruntu-kanitlari.csv: {_family} cites an id missing from the literature database: {_ref}")
+    if not (ROOT / "references" / _row["referans"]).is_file():
+        fail(f"references/oruntu-kanitlari.csv: {_family} points to a missing reference file")
+
 if len(_rows) < 50:
     fail("references/turkce-dil-literaturu.csv must keep at least fifty verified records")
 
