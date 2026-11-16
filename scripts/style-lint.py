@@ -390,6 +390,9 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"\b(?:önceki|ilk|eski) (?:taslak|sürüm|versiyon)\w*",
             r"\((?:düzeltildi|güncellendi|eklendi|kaldırıldı|değiştirildi|yeniden yazıldı)\)",
             r"^işte (?:düzenlenmiş|güncellenmiş|gözden geçirilmiş|hazırladığım|istediğin|istediğiniz)\b",
+            # Konuşmanın değerlendirme parçacıkları (Yılmaz 2004): cümle başında `işte` ve söylem `şey`i.
+            # `bir şey`, `her şey` addır ve işaretlenmez; `işte` ambalajı yukarıdaki kalıptadır.
+            r"^işte\b(?! (?:düzenlenmiş|güncellenmiş|gözden geçirilmiş|hazırladığım|istediğin|istediğiniz)\b)|^şey\b",
             r"\bprompt\w*",
         ),
     },
@@ -2316,6 +2319,12 @@ def self_test() -> None:
                  "Üç sensörler arızalandı.", "Birkaç örnekler yeniden ölçüldü."):
         if not any(h["category"] == "sayi_uyumu" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
             raise SystemExit(f"Öz sınama: sayı uyumu adayı işaretlenmedi: {text!r}")
+    for text in ("İşte bu yüzden ölçüm tekrarlandı.", "Şey, ikinci sensör de arızalıydı."):
+        if not any(h["category"] == "sizinti" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: konuşma parçacığı sızıntı adayı sayılmadı: {text!r}")
+    for text in ("Her şey hazırdı; bir şey eksik değildi.", "Bu şey değil, ölçüm hatası."):
+        if any(h["category"] == "sizinti" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: ad olan `şey` sızıntı sayıldı (yanlış pozitif): {text!r}")
     for text in ("Katılımcılar formu iki kez doldurdular.", "Sonuçlar bu ilişkiyi gösteriyor.",
                  "Bu sorun on yıllardır biliniyor.", "Yüz ifadeleri iki kez kodlandı.",
                  "Tablo 3 sonuçları özetliyor.", "Bazı sorunlar yalnızca yük altında görüldü.",

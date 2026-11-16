@@ -69,6 +69,8 @@ Edilgen çatı şu durumlarda meşrudur: söylem konusunu sabit tutuyorsa; ilgis
 
 Türkçe araştırma makalelerinde birinci çoğul kişi adılı seyrektir; açık yazar göndermesini çoğunlukla biz ekleri (`-DIk`, `-(y)Iz`), örtük göndermeyi eyleyensiz edilgen ve cansız özne taşır (Güçlü 2025). Temel edilgen eyleyeni gizlemekten çok olayı öne çıkarır; `tarafından`lı edilgen ise Osmanlı Türkçesine 18. ve 19. yüzyılda girmiş geç bir araçtır ve kurallı edilgen sayılacak sıklıkta değildir (Erdem 2007; Sebzecioğlu ve Oktar 2010). Eyleyensiz edilgeni "eyleyen eksik" diye işaretleme, eyleyeni `tarafından` ile ekleme; eyleyen kaynakta adlandırılmış ve `tarafından` ile sona itilmişse etken çatı adaydır, kurumsal ve hukuki eyleyen vurgusunda `tarafından` kalır ([literatür](turkce-dil-literaturu.md#edilgen-tarafından-ve-yazar-varlığı)).
 
+**Kip gücü kaynaktan gelir.** `-Abil` temelde olasılık, `-mAlI` gereklilik taşır, geniş zaman kip bakımından zayıf ya da yansız olabilir (Erguvanlı Taylan 2018): `-mAlI` → `-Abilir` gerekliliği olasılığa indirir, `-Abilir` → geniş zaman olasılığı genel önermeye yükseltir; ikisi de statü değişikliğidir. Türkçe bilimsel makalelerde kaçınma epistemik ve çıkarımsal kip, aktarma fiili, belirteç ve soyut özneyle yapılır ve disiplin uzlaşımına bağlıdır (Doyuran 2009); kaçınma oranı alan normuna göre okunur.
+
 Edilgen çatı şu durumlarda şüphelidir: bilinen ve ilgili aktörü gizliyorsa; belirsiz kurum düzyazısı üretiyorsa; sorumluluğun kaybolmasına izin veriyorsa; adlaştırmayla birleşip bürokratik sis kuruyorsa; yalnızca İngilizce akademik düzyazı yapısal olarak kopyalandığı için oradaysa.
 
 Edilgeni etkene çevirmeden önce altı soru:

@@ -52,6 +52,7 @@ Soyut ifade her zaman gereksiz değildir; yazarın değerlendirmesini ya da ikna
 - Kişisel düzyazı serbest sözcük sırasına ve eksiltiye hak sahibidir; bunları çeviri kokusu ya da hata sayma.
 - Kişisel yazıya kurumsal eşdizim, resmî türe konuşma eşdizimi dayatma.
 - Sohbet botu nezaketini (`Elbette!`, `Umarım faydalı olur`, `Umarım bu e-posta sizi iyi bulur`) çıkar; yazarın kendi samimi selamını ve kapanışını koru.
+- Türkçe kibarlık grup bilincini ve ilişki işini öne alır (Zeyrek 2001; Ruhi ve Işık-Güler 2007): `siz`, `talebiniz doğrultusunda`, yüz koruyan deyimler İngilizce doğrudanlık normuna göre dolgu sayılıp silinmez.
 - Eval: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`.
 
 ## Edebî ve anlatı metni

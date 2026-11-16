@@ -122,6 +122,7 @@ Her örnekte "sonra" sürümündeki önermelerin "önce" sürümünde karşılı
 - **Gerekli terim tekrarı:** `Gözlemci durumu tahmin eder. Gözlemci ölçümü 50 Hz'de alır.` İki cümlede aynı terim; özne düşürülürse ya da `bu bileşen` denirse gönderge zayıflar.
 - **Bilinçli paralellik:** `Birinci deneyde sıcaklık sabit tutuldu. İkinci deneyde basınç sabit tutuldu.` Aynı yapı karşılaştırmayı taşır; çeşitlendirmek karşılaştırmayı gizler.
 - **Hukuki ve tanımlı formül:** tekrar formülün kendisidir ([Kenar türler](kenar-turler.md)).
+- **`de/da` her zaman bağlaç değildir.** `dA` ekleyici odağı da karşıtsal konuyu da işaretleyebilir (Göksel ve Özsoy 2003); bağlaç olan ve olmayan kullanımı ayrıdır (Ersöyleyen, Zeyrek ve Öter 2023). Bağlaç işlevli `dA`yı `ayrıca` ya da `ve` ile değiştirmek ekleme, karşıtlık ya da neden anlamını kaydırabilir; karşıtsal konuyu taşıyan `ise` ve `dA`yı akıcılık için silmek karşıtlığı yok eder, çünkü yazıda bu işi dizim ve parçacıklar taşır (Gürer 2020).
 - **Zaten doğal bağlantı:** `Basınç düştüğünde vana kapanır; sistem ancak basınç yeniden 2 bar'a çıkınca açılır.` Ek kaynakları ve tek bir `ancak` doğru yerde; dokunulmaz.
 
 ## Aşırı uygulama belirtileri

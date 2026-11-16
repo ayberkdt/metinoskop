@@ -24,6 +24,10 @@ Veritabanı kural kitabı değildir. Bir bulgu Metinoskop kuralına ancak ilgili
 - [Sayı uyumu](#sayı-uyumu)
 - [Metin, kayıt ve gönderge](#metin-kayıt-ve-gönderge)
 - [Yabancı etki, kalkı ve `ki`](#yabancı-etki-kalkı-ve-ki)
+- [Ses bilgisi, ünsüz değişimi ve biçim çözümleyicileri](#ses-bilgisi-ünsüz-değişimi-ve-biçim-çözümleyicileri)
+- [Odak, konu, eksilti ve söylem belirleyicileri](#odak-konu-eksilti-ve-söylem-belirleyicileri)
+- [Kiplik, noktalama ve kibarlık](#kiplik-noktalama-ve-kibarlık)
+- [Değerlendirme için hesaplamalı kaynaklar](#değerlendirme-için-hesaplamalı-kaynaklar)
 - [Örüntü kararları](#örüntü-kararları)
 - [Dil modelleri ve yapay zekâ Türkçesi](#dil-modelleri-ve-yapay-zekâ-türkçesi)
 - [Aday kurallar](#aday-kurallar)
@@ -31,10 +35,10 @@ Veritabanı kural kitabı değildir. Bir bulgu Metinoskop kuralına ancak ilgili
 
 ## Yöntem ve sınırlar
 
-İlk tarama 2026-11-08'de üç kümede yapıldı: temel dil bilgisi kaynakları ve sözdizimi; derlem, sıklık ve akademik Türkçe; çeviri ve dil modeli çalışmaları. İkinci tarama 2026-11-16'da örüntülere yönelik üç kümede yapıldı: biçim-sözdizimi (belirtme hâli, `bir`, adlaştırma, `-DIr`, `-mAktA`, hafif fiil, edilgen, sayı uyumu); metin, kayıt ve gönderge; yabancı etkili yapılar ve kalkı. İkinci turda her kayıt için bulgunun yanında örüntüye etkisi de soruldu; bu etki aşağıda ilgili bölümde ve [Örüntü kararları](#örüntü-kararları) tablosunda durur. İkinci turda web arama kotası doldu; bazı izler sürdürülemedi. Kayıtların hepsi web aramasının döndürdüğü yayıncı, katalog, depo ve kaynakça kayıtlarıyla karşılaştırıldı. Bu oturumun ağ ayarı `dergipark.org.tr`, `aclanthology.org`, `arxiv.org`, `tdk.gov.tr` ve birkaç yayıncı sitesinin doğrudan okunmasına izin vermedi. Bu yüzden:
+İlk tarama 2026-11-08'de üç kümede yapıldı: temel dil bilgisi kaynakları ve sözdizimi; derlem, sıklık ve akademik Türkçe; çeviri ve dil modeli çalışmaları. İkinci tarama 2026-11-16'da örüntülere yönelik üç kümede yapıldı: biçim-sözdizimi (belirtme hâli, `bir`, adlaştırma, `-DIr`, `-mAktA`, hafif fiil, edilgen, sayı uyumu); metin, kayıt ve gönderge; yabancı etkili yapılar ve kalkı. İkinci turda her kayıt için bulgunun yanında örüntüye etkisi de soruldu; bu etki aşağıda ilgili bölümde ve [Örüntü kararları](#örüntü-kararları) tablosunda durur. İkinci turda web arama kotası doldu; bazı izler sürdürülemedi. Üçüncü tur 2026-11-16'da ses ve biçim bilgisi (ünsüz değişimi, ünlü uyumu istisnaları, vurgu, ek sırası, biçim çözümleyicileri), sözdizimi ve edimbilim (`de/da`, `ise`, eksilti, ilgi yan cümlesi işlemleme, söylem belirleyicileri, noktalama, kiplik, kibarlık) ve değerlendirmede kullanılabilecek hesaplamalı kaynaklar üzerine yapıldı. Kayıtların hepsi web aramasının döndürdüğü yayıncı, katalog, depo ve kaynakça kayıtlarıyla karşılaştırıldı. Bu oturumun ağ ayarı `dergipark.org.tr`, `aclanthology.org`, `arxiv.org`, `tdk.gov.tr` ve birkaç yayıncı sitesinin doğrudan okunmasına izin vermedi. Bu yüzden:
 
 - **Tam metin okunmadı.** Bulgular özetlerden, yayıncı tanıtımlarından ve ikincil kaynakların aktarımından gelir; hangisi olduğu her kaydın `dogrulama` alanında yazılıdır.
-- **`künye+içerik`** (108 kayıt): künye ve bulgu görülen bir kaynakla doğrulandı. **`künye`** (27 kayıt): yalnızca künye doğrulandı; bulgu alanı boş bırakıldı ("Künye doğrulandı; içerik özetlenmedi."). `scripts/literatur.py --check` bu ayrımı denetler.
+- **`künye+içerik`** (165 kayıt): künye ve bulgu görülen bir kaynakla doğrulandı. **`künye`** (36 kayıt): yalnızca künye doğrulandı; bulgu alanı boş bırakıldı ("Künye doğrulandı; içerik özetlenmedi."). `scripts/literatur.py --check` bu ayrımı denetler.
 - **Sayısal bulgular özetteki değerdir.** Tablo düzeyinde değer, model başına yüzde ve formül katsayısı alınmadı.
 - İngilizce derlemle yapılmış çalışmalar (Türk yazarların İngilizce makaleleri) bulgu alanında belirtilir; Türkçe yazıma aktarımı çıkarımdır.
 
@@ -187,6 +191,38 @@ Kayıtlar: `sari-2014`, `dogan-2020`, `ozkan-musa-2004`, `yarar-2020`, `sargin-2
 
 **Örüntü kararı.** Kökeni yabancı diye bir yapı işaretlenmez: `ki`, `sahip`, `etmek` birleşimleri, eski alıntılar ve yerleşik öyküntü terim karşı örnektir. Aday, Türkçe kaynakla daha doğal kurulabilecek ve İngilizce sırayı izleyen kullanımdır (`that/which` sırasındaki `ki`, özellik bildiren `sahip olmak`, ad + `olan` zinciri). Duman'ın bulgusu bu deponun disiplinini destekler: popüler yasak listesi kanıt değildir, kural betimleyici ya da derlem kanıtına dayanır. `olarak`, `tarafından`'ın İngilizce kaynaklı yayılması, çeviride `bir` fazlası ve `adreslemek`, `deneyimlemek` türü kalkılar için hakemli çalışma bulunamadı; bu kalıplar çıkarımdır ve sert denetime girmez.
 
+## Ses bilgisi, ünsüz değişimi ve biçim çözümleyicileri
+
+Kayıtlar: `becker-ketrez-nevins-2011`, `inkelas-orgun-1995`, `sezer-1981-k`, `inkelas-2011-velar`, `chong-2019`, `kallestinova-2004`, `levi-2001`, `polgardi-1999`, `kabak-vogel-2001`, `inkelas-orgun-2003`, `sezer-1983`, `oflazer-1994`, `hankamer-1986`, `goksel-2006`, `coltekin-2010`, `coltekin-2014`, `sak-2008`, `sak-2011`, `oflazer-1996`, `kabak-2007`, `broadwell-2008`.
+
+Sonu durak ünsüzle biten adların yaklaşık %54'ü yumuşar; oran tek heceli köklerde %12, çok heceli köklerde %59'dur ve konuşurlar boğumlanma yerine ve hece sayısına duyarlıdır (Becker, Ketrez ve Nevins 2011). İstisnalar köke özgü sözlük özelliğidir (Inkelas ve Orgun 1995); velar düşmesini tetikleyen kısıt sözlüğün ses dizimi örüntülerinden öğrenilemez (Chong 2019) ve ek sınırına bağlıdır (Sezer 1981; Inkelas 2011). Yazımda tek `l` iki sesi karşılar ve bazı alıntılarda ek ünlüsü bu yan ünsüze uyar (`rol-e`; Levi 2001). Türkçe ek dizimi az sayıda ses kuralı ve sonlu durum makinesiyle betimlenir (Oflazer 1994; Hankamer 1986); özgür çözümleyiciler (Çöltekin 2010, 2014), belirsizlik gidericiler (Sak, Güngör ve Saraçlar 2008, 2011) ve hata toleranslı tanıma (Oflazer 1996) vardır. Ek ortaklığında askıdaki ek bütün ögeler üzerinde kapsam taşır (Kabak 2007; Broadwell 2008).
+
+**Örüntü kararı.** Ünsüz yumuşaması ve ünlü uyumu istisnaları için genel düzenli ifade kurulmaz; `yazim` ailesi listelenmiş sözcüklerle çalışır ve listede olmayan biçim yanlış sayılmaz (`yazim-ve-dil-bilgisi.md` › Sözcüğün kökeni). Ek örüntüleri arketip sınıflarıyla düşünülür (A = a/e, I = ı/i/u/ü, D = d/t); `style-lint.py` öz sınamasındaki `turet` işlevi bu arketiplerden biçim üretip zaman ve edilgen örüntülerini sınar. Biçim çözümleyicisi bağımlılık gerektirdiği için eklenmedi; aday kural olarak durur.
+
+## Odak, konu, eksilti ve söylem belirleyicileri
+
+Kayıtlar: `goksel-ozsoy-2003`, `ersoyleyen-2023`, `kamali-krifka-2020`, `gurer-2020`, `grigoras-2020`, `gurer-goksel-2019`, `hankamer-1971`, `slobin-bever-1982`, `hoffman-1995`, `ozge-bozsahin-2010`, `kahraman-2010`, `ozge-2010-ilgi`, `ozge-2015-ilgi`, `ruhi-2009-yani`, `yilmaz-2004`, `ozbek-2000`.
+
+`dA` hem ekleyici odağı hem karşıtsal konuyu işaretleyebilir (Göksel ve Özsoy 2003); bağlaç olan ve olmayan kullanımları ayrıdır (Ersöyleyen, Zeyrek ve Öter 2023). Karşıtsal konu bürünle ayrılmaz, sözdizimsel ve anlamsal araçlarla işaretlenir (Gürer 2020); konu ve karşıtsal odak öge taşımasını tetikler (Grigoraş 2020); soru ekinin yeri odağı belirler (Kamali ve Krifka 2020). Yüklemi eksiltili sıralı cümle meşrudur ve kabul yargısını bilgi yapısı da belirler (Gürer ve Göksel 2019). Türkçe en serbest dizimli dillerden biridir ama kanonik şema işlemeyi kolaylaştırır (Slobin ve Bever 1982); dizim seçimi bağlama bağlıdır (Hoffman 1995; Özge ve Bozşahin 2010). Özne ilgi yan cümlesi nesne ilgi yan cümlesinden daha hızlı işlenir (Kahraman 2010) ve daha sık üretilir (Özge, Marinis ve Zeyrek 2010), ama işlem maliyeti iki türde de vardır (Özge ve ark. 2015). Yazılı Türkçede `yani` önerme düzeyinde açımlama yapar (Ruhi 2009); `işte` ve `şey` konuşmanın değerlendirme parçacıklarıdır (Yılmaz 2004; Özbek 2000).
+
+**Örüntü kararı.** `de/da` ve `ise` akıcılık için silinmez, başka ögeye taşınmaz, `ayrıca` ile değiştirilmez (`turkce-baglayicilar.md` › Karşı örnekler). Eksilti açılmaz; açılırsa ortak yüklemin zamanı ve kipi korunur (`yazim-ve-dil-bilgisi.md` › Ortak öge uyumu). Sözcük dizimini "kanonik sıraya" çeviren kural kurulmaz; nedensiz devriklik yapay yerlilik olarak işaretlenebilir. `-(y)An` ↔ `-DIK` dönüşümü rolleri değiştirebileceği için yapılmaz; uzun nesne ilgi yan cümlesi bölünebilir. Açımlayıcı `yani` sızıntı değildir; `işte` ve söylem `şey`i bilimsel metinde sızıntı adayıdır (`okura-dogrudan-metin.md` › Sızıntı olmayanlar).
+
+## Kiplik, noktalama ve kibarlık
+
+Kayıtlar: `corcu-2005`, `kerslake-1990`, `doyuran-2009`, `kalfa-2020`, `sahin-aydogdu-2017`, `zeyrek-2001`, `ruhi-isik-guler-2007`.
+
+`-Abil` olasılık, `-mAlI` gereklilik taşır (Erguvanlı Taylan 2018; Corcu 2005; Kerslake 1990). Türkçe bilimsel makalelerde kaçınma epistemik ve çıkarımsal kip, aktarma fiili, belirteç ve soyut özneyle yapılır ve disiplin uzlaşımına bağlıdır (Doyuran 2009). Virgülün geniş işlevi ve belli ölçüde seçim özgürlüğü vardır (Şahin ve Aydoğdu Yüksel 2017; Kalfa 2020). Türkçe kibarlık grup bilincini ve ilişki işini öne alır (Zeyrek 2001; Ruhi ve Işık-Güler 2007).
+
+**Örüntü kararı.** `-mAlI` ↔ `-Abilir` ↔ geniş zaman dönüşümü kanıt statüsü değişikliğidir (`kanit-ve-kesinlik.md`); `eval-runner.py` zorunluluk ve çekince eklemesini zaten sayar. İsteğe bağlı virgül sert yazım bulgusu yapılmaz; yalnızca anlam karışıklığı yaratan virgül ve ondalık listedeki noktalı virgül ele alınır. Kurumsal yazışmada `siz` ve grup odaklı kalıplar korunur (`kenar-turler.md`, `okura-dogrudan-metin.md`).
+
+## Değerlendirme için hesaplamalı kaynaklar
+
+Kayıtlar: `sulubacak-2016-ud`, `sulubacak-2016-imst`, `turk-2019`, `kuzgun-2021`, `cesur-2024-atis`, `bakay-2021-kenet`, `marsan-2021-framenet`, `kara-2020-tropbank`, `torunoglu-eryigit-2014`, `eryigit-2017`, `arikan-2019`, `koksal-2020-turkishtweets`, `eyecioglu-keller-2018`, `karaoglan-2018`, `ilgen-biemann-2022`, `schweter-2020`, `uludogan-2024-turna`, `berk-2018-parseme`, `berk-2019`, `ozturk-2022-parseme`, `golynskaia-2022`, `ruhi-2010-std`.
+
+Türkçe UD ağaç bankaları (IMST-UD, BOUN, Penn, ATIS, Kenet, Tourism, PUD) farklı türleri temsil eder: Kenet TDK sözlüğünün örnek cümlelerinden, Tourism müşteri yorumlarından, PUD profesyonel çeviriden oluşur (UD sayfaları; yayın yılı olmadığı için kayıt açılmadı). ATIS çiftinde aynı 5.432 cümle İngilizcede yaklaşık 61.900, Türkçede yaklaşık 45.900 belirteçtir (Cesur ve ark. 2024). KeNet anlam ağı (Bakay ve ark. 2021), TRopBank (17.673 fiil; Kara ve ark. 2020), normalleştirme verileri (Torunoğlu ve Eryiğit 2014; Eryiğit ve Torunoğlu-Selamet 2017), `de/da` hatası tespiti (Arıkan ve ark. 2019), yazım düzeltme verisi (Köksal ve ark. 2020), eşanlamlı ifade derlemleri (Eyecioğlu ve Keller 2018; Karaoğlan ve ark. 2018), karmaşık sözcük derlemi (İlgen ve Biemann 2022), Türkçe dil modelleri (BERTurk, TURNA), PARSEME çok sözcüklü fiil derlemi (Berk ve ark. 2018; Berk 2019; Öztürk ve ark. 2022), öğrenici hata kodlama sistemi (Golynskaia 2022) ve Sözlü Türkçe Derlemi (Ruhi ve ark. 2010) değerlendirmede kullanılabilecek kaynaklardır.
+
+**Örüntü kararı.** Bu kaynaklar henüz depoya bağlanmadı; lisansları ve erişim koşulları kayıtların `dogrulama` alanında ya da UD sayfalarındadır. Kullanım yolları aday kurallar tablosundadır: kayıt karşıtlığında yanlış pozitif ölçümü (Kenet ↔ Tourism), çeviri Türkçesi örneklemi (PUD, ATIS), terim değişikliği adayları (KeNet; terim korumasının yerini tutmaz), fiil çerçevesi (TRopBank; TDK hâl normu değildir). İki arXiv çalışması geri çekildiği için kullanılmaz: Türkçe sözcüksel sadeleştirme (arXiv 2201.05878) ve zenginleştirilmiş Türkçe öğrenici derlemi (arXiv 2601.22875). Cümle düzeyinde paralel Türkçe sadeleştirme derlemi bulunamadı.
+
 ## Örüntü kararları
 
 | Örüntü | Kanıt | Karar | Nerede |
@@ -203,6 +239,13 @@ Kayıtlar: `sari-2014`, `dogan-2020`, `ozkan-musa-2004`, `yarar-2020`, `sargin-2
 | Kabuk ad (`çalışmanın amacı`) | `aydin-iseri-2023` | İşaretlenmez | lint davranışı denendi, değişiklik yok |
 | Cümle uzunluğu eşiği | `ari-2025` | 25 sözcük inceleme işaretidir, "zaten uzun" değildir | `netlik-omurgasi.md` |
 | `bu` ↔ `o` | `balpinar-2019` | Birbirine çevrilmez | `akicilik.md` |
+| Ünsüz yumuşaması, ünlü uyumu istisnası | `becker-ketrez-nevins-2011`, `inkelas-orgun-1995`, `levi-2001` | Genel kural yok; yalnız listelenmiş sözcük | `style-lint.py` `yazim`, `yazim-ve-dil-bilgisi.md` |
+| Ek arketipleri | `oflazer-1994` | Öz sınama biçimleri arketiplerden üretir | `style-lint.py` `turet` |
+| `de/da`, `ise` | `goksel-ozsoy-2003`, `ersoyleyen-2023`, `gurer-2020` | Silinmez, taşınmaz, `ayrıca` olmaz; bitişik `de/da` için düzenli ifade yok | `turkce-baglayicilar.md`, `yazim-ve-dil-bilgisi.md` |
+| Eksilti | `gurer-goksel-2019` | Bozukluk sayılmaz | `yazim-ve-dil-bilgisi.md` |
+| `yani`, `işte`, `şey` | `ruhi-2009-yani`, `yilmaz-2004` | Açımlayıcı `yani` kalır; cümle başı `işte` ve söylem `şey`i bağlamsal sızıntı adayı, `bir şey`/`her şey` işaretlenmez | `style-lint.py` `sizinti`, `okura-dogrudan-metin.md` |
+| Kip gücü | `erguvanli-taylan-2018`, `doyuran-2009` | `-mAlI` ↔ `-Abilir` statü değişikliği | `kanit-ve-kesinlik.md` |
+| Kibarlık kalıpları | `zeyrek-2001`, `ruhi-isik-guler-2007` | Dolgu sayılmaz | `kenar-turler.md` |
 
 ## Aday kurallar
 
@@ -216,6 +259,8 @@ Literatürden çıkan ama henüz Metinoskop kuralı olmayan öneriler. Her biri 
 | Noktalı virgül ve virgül yoğunluğunu AI izi olarak incele | `kocagul-2026` (yalnızca özet) | tam metin okunmadan vaka yazılmaz | Metinoskop gold'larının bağlaçsız ilişki için kullandığı noktalı virgülü silmek |
 | `-DIr` eklenmesini ya da silinmesini kanıt statüsü değişikliği olarak denetle | `erguvanli-taylan-2018`, `sansa-tura-1986`, `ozdemir-2023-dir` | dönüşüm: tanım cümlesinde `-DIr` silen düzenleme; korunur: `-mAktAdIr` sadeleştirmesi | kaynaklar `-DIr`'ın anlamında ayrışıyor (kesinlik ya da varsayım); `-mAktAdIr` sadeleştirmesini yanlış alarm sayma |
 | Cansız öznenin yüklemden sonra geldiği devrik cümlede sayı uyumu | `uygun-felser-2023` | dönüşüm ve korunur vakası | konuma bağlı uyum yargısı belirsiz |
+| Ek ve ünsüz kurallarını biçim çözümleyicisiyle doğrula | `coltekin-2010`, `oflazer-1996`, `sak-2011` | dış bağımlılık kararı; listede olmayan biçimlerde yanlış pozitif ölçümü | bağımlılıksız paket ilkesini bozmak; çözümleyici belirsizliği |
+| Lint yanlış pozitiflerini UD ağaç bankalarında ölç (Kenet ↔ Tourism, PUD) | `turk-2019`, `kuzgun-2021`, `cesur-2024-atis` | ölçüm betiği; lisans denetimi | CC BY-NC-SA ve CC BY-SA lisanslı veriyi depoya kopyalamak |
 
 ## Boşluklar ve doğrulanamayanlar
 
@@ -241,6 +286,9 @@ Literatürden çıkan ama henüz Metinoskop kuralı olmayan öneriler. Her biri 
 - Karaköse, `ki` bağlacı ve Batı dillerinden çeviri üzerine metin (Pamukkale Üniversitesi deposu): yayın yeri ve yılı kesin değil.
 - Kan (2021), fen ve sosyal bilim makalelerinde etkileşimli belirleyiciler (EPASR 16(3)): yazarın adı ve tam başlık görülmedi.
 - Kornfilt, "Two evidentials or two commitment phrases in Turkish?": konuşma metni, yıl ve yer görülmedi.
+- Kabak (2011), "Turkish vowel harmony", Blackwell Companion to Phonology: yazar listesi ve sayfalar çelişkili. Akın ve Akın (2007), Zemberek: yayın yeri doğrulanamadı. Kamali (2011), soru ekinin konumu üzerine doktora tezi: kurum ve yıl doğrulanamadı.
+- Bozşahin (2000), Türkçede eksilti ve sözcük dizimi: hiçbir sonuçta görülmedi. `ise` üzerine müstakil bir makale ve akademik metin gövdesinde virgül sıklığını veren bir derlem çalışması bulunamadı.
+- Demir ve ark. (2012), Turkish Paraphrase Corpus (LREC 2012) ve Sözlü Türkçe Derlemi'nin LREC 2010 ve CILC-10 bildirileri: tam yazar listeleri görülmedi.
 - Göksu, Türkçede `-DIK`, `-mA`, `-(y)Iş`, `-Im` adlaştırmalarının tipolojisi (IULC Working Papers) ve Predolac, Türkçede dilek ve bildirme kipleri (IULC Working Papers): yayın yılları görülmedi.
 
 **Kayıtlardaki belirsizlikler.** Banguoğlu'nun ilk baskı yılı (1974 ya da 1986), Csató ve Johanson (1998) bölümünün sayfa aralığı, Oflazer ve ark. (2003) bölümünün yer aldığı kitabın adı, Ateşman (1997) makalesinin sayfa aralığı ve Kocagül (2026) yazarının tam adı kaynaklarda çelişiyor ya da bulunamadı; ayrıntı ilgili kaydın `yayin` ve `dogrulama` alanlarındadır.

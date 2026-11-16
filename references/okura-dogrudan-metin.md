@@ -56,6 +56,8 @@ Metin önce ve eksiksiz gelir; olduğu gibi okura gönderilebilmelidir. Not, met
 - Dil modeli metninde `istemde belirtilen biçim`: istem çalışmanın nesnesidir.
 - Akademik `biz` (`... olduğunu çıkarabiliriz`): yazarın okurla kurduğu akıl yürütmedir.
 - Okura yönelik yönlendirme (`--legacy-timeout ile dönebilirsiniz`).
+- Açımlayıcı `yani`: yazılı Türkçede ara söz `yani` önerme düzeyinde açımlama yapar (Ruhi 2009); sızıntı adayı olan konuşmadaki onarım işlevidir (Özbek 2000). `İşte` ve söylem belirleyicisi `şey` ise konuşmanın değerlendirme parçacıklarıdır (Yılmaz 2004) ve bilimsel-teknik metinde sızıntı adayıdır; `style-lint.py` `sizinti` ailesi cümle başındaki `işte` ve `şey`i bağlamsal olarak işaretler. `bir şey`, `her şey` adtır.
+- Akademik biz ekleri (`gözlemledik`, `çalışmamızda`): Türkçe makalelerde açık yazar göndermesinin olağan biçimidir (Güçlü 2025; Yılmaz 2022).
 
 Bekçi vakalar: `sizinti-sanilan-icerik-korunur`, `iyi-yazilmis-metin-korunur`.
 

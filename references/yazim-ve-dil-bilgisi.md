@@ -63,7 +63,7 @@ Test: yardımcı fiili çıkar; kalan sözcük kendi biçimini koruyor mu (`fark
 
 **Bağlaç `ki` ayrı yazılır:** `demek ki`, `kaldı ki`, `bilmem ki`, `öyle zor ki`. Kalıplaşmış birkaç sözcükte bitişiktir: `belki`, `çünkü`, `hâlbuki`, `mademki`, `meğerki`, `oysaki`, `sanki` (TDK › Bağlaç Olan ki'nin Yazılışı). İlgi zamiri ve sıfat yapan `-ki` bitişiktir ve ünlü uyumuna girmez (`akşamki`, `yarınki`, `benimki`); yalnızca `bugünkü`, `dünkü`, `öbürkü` uyuma girer (TDK › Küçük Ünlü Uyumu).
 
-**Bağlaç `de/da` ayrı yazılır**, önceki sözcüğün son ünlüsüne uyar, hiçbir zaman `te/ta` olmaz ve kesmeyle ayrılmaz: `Ayşe de geldi`, `sensör de`; `ya da` ayrıdır (TDK › Bağlaç Olan da, de'nin Yazılışı). Bulunma eki `-de/-da/-te/-ta` bitişiktir: `laboratuvarda`, `2025'te`. Ayırma testi: sözcüğü çıkar; cümle anlamını koruyorsa bağlaçtır (`Sensör de arızalandı` → `Sensör arızalandı`), bozuluyorsa ektir. Bağlaç `de` kapsam taşır; düzenlemede bağlandığı ögeyle birlikte taşınır (**Bağlaç ilişki kuramaz**).
+**Bağlaç `de/da` ayrı yazılır**, önceki sözcüğün son ünlüsüne uyar, hiçbir zaman `te/ta` olmaz ve kesmeyle ayrılmaz: `Ayşe de geldi`, `sensör de`; `ya da` ayrıdır (TDK › Bağlaç Olan da, de'nin Yazılışı). Bulunma eki `-de/-da/-te/-ta` bitişiktir: `laboratuvarda`, `2025'te`. Bitişik `de/da` hatası eş sesli sözcükler yüzünden biçim bilgisiyle de kaçırılabilir; sinirsel bir etiketleyici bile zor vakalarda %71 doğruluk alır (Arıkan, Güngör ve Üsküdarlı 2019). `style-lint.py` bu yüzden `de/da` için düzenli ifade kurmaz. Ayırma testi: sözcüğü çıkar; cümle anlamını koruyorsa bağlaçtır (`Sensör de arızalandı` → `Sensör arızalandı`), bozuluyorsa ektir. Bağlaç `de` kapsam taşır; düzenlemede bağlandığı ögeyle birlikte taşınır (**Bağlaç ilişki kuramaz**).
 
 **Soru eki `mi` ayrı yazılır**, kişi ve zaman ekleri ona bitişir: `geldi mi`, `hazır mısınız`, `doğru muydu`. Soru eki zarf tümleci olan yan cümledeyse cümle sonuna soru işareti konmaz (`Çalışır mı çalışmaz mı, ölçüm gösterecek.`).
 
@@ -105,11 +105,13 @@ Türkçe Türk dilleri ailesindendir, sondan eklemelidir ve ünlü uyumu ile ün
 
 **İnce söylenen son ünsüz.** Son ünlüsü kalın olduğu hâlde son sesi ince söylenen alıntılar ince ünlülü ek alır (TDK › Büyük Ünlü Uyumu): `saat` → `saate`, `saatler`; `alkol` → `alkolü`; aynı örüntüyle `kontrolü`, `protokolü`, `sembolü`, `rolü`, `petrolü`, `kabulü`, `usulü`, `hayali`, `hâli`. Teknik metinde en sık geçenler `kontrol`, `protokol`, `sembol` ve `rol` sözcükleridir.
 
+Aynı yazılan `l`'nin iki sesi vardır ve bazı alıntılarda ek ünlüsü önceki ünlüye değil bu yan ünsüze uyar (`kol-a` ama `rol-e`; Levi 2001); istisnalar bu yüzden de sözlükle denetlenir.
+
 **Küçük ünlü uyumu aranmaz.** Alıntılarda küçük ünlü uyumu çoğu zaman yoktur ve ek bu yüzden kökün son ünlüsüne göre seçilir (TDK › Küçük Ünlü Uyumu): `alkollü`, `saatlik`.
 
 **Ünsüz ikizleşmesi.** Arapçada sonu ikiz ünsüzlü olup Türkçede tek ünsüzle yazılan sözcüklerde ünlüyle başlayan ek ya da yardımcı fiil gelince ünsüz ikizleşir (TDK › Ünsüz Türemesi): `hak` → `hakkı`, `his` → `hissi`, `hissetmek`, `ret` → `reddi`, `reddetmek`, `tıp` → `tıbbı`, `zam` → `zammı`, `zan` → `zannı`, `af` → `affetmek`, `şer` → `şerri`. Teknik metinde sık geçen `hat` (iletim hattı, üretim hattı) ve `üs` (üssü) aynı örüntüdedir; Türkçe Sözlük madde başıyla denetle.
 
-**Ünsüz yumuşaması alıntıda düzensizdir.** Çok heceli sözcüklerde sondaki `p, ç, t, k` ünlüyle başlayan ek alınca çoğunlukla yumuşar (`kitap` → `kitabı`, `grup` → `grubu`, `metot` → `metodu`, `süreç` → `süreci`); ama `hukuk` → `hukuku`, `ahlak` → `ahlakı` gibi yumuşamayan alıntılar vardır. Ekli biçimi sezgiyle değil sözlükle karar ver; kaynak tutarlı yazıyorsa dokunma.
+**Ünsüz yumuşaması alıntıda düzensizdir.** Çok heceli sözcüklerde sondaki `p, ç, t, k` ünlüyle başlayan ek alınca çoğunlukla yumuşar (`kitap` → `kitabı`, `grup` → `grubu`, `metot` → `metodu`, `süreç` → `süreci`); ama `hukuk` → `hukuku`, `ahlak` → `ahlakı` gibi yumuşamayan alıntılar vardır. Ekli biçimi sezgiyle değil sözlükle karar ver; kaynak tutarlı yazıyorsa dokunma. Bu bir eksiklik değil, dilin yapısıdır: sonu durak ünsüzle biten adların yaklaşık yarısı yumuşar, tek heceli köklerde oran %12, çok heceli köklerde %59'dur (Becker, Ketrez ve Nevins 2011); istisnalar köke bağlı sözlük özelliğidir (Inkelas ve Orgun 1995; Chong 2019). `style-lint.py` bu yüzden genel bir yumuşama kuralı kurmaz, yalnızca listelenmiş sözcükleri (`hakı`, `hatı`, `kontrolu`) yakalar; listede olmayan biçim yanlış sayılmaz.
 
 **Yazılışı yerleşmiş alıntı.** Türkçe Sözlük'teki yazım esastır: `laboratuvar`, `makine`, `metot`, `orijinal`, `entelektüel`, `standart`. Resmî adda kurumun yazımı kalır (`Makina Mühendisleri Odası`, `Türk Standardları Enstitüsü`; bkz. **Dokunulmayacaklar**).
 
@@ -147,7 +149,7 @@ Türkçenin söz varlığında Türkçe kökenli sözcüklerin yanında Arapça 
 
 **İyelik üst üste gelmez.** Tamlanan zaten iyelikli birleşik adsa ikinci iyelik eklenmez: `Türk Dil Kurumu Başkanı`, `hava durumu raporu`, `kullanıcı arayüzü tasarımı`.
 
-**Ek ortaklığı meşrudur.** Türkçe aynı eki sıralanan ögelerin sonuncusuna bağlayabilir: `sistemin hız ve güvenilirliği`, `Ankara ve İstanbul'da`. Bunu eksik ek sanıp açma; kapsam belirsizleşiyorsa (`eski öğrenci ve öğretmen evi`) yorum seçme, kaynağı koru.
+**Ek ortaklığı meşrudur.** Türkçe aynı eki sıralanan ögelerin sonuncusuna bağlayabilir: `sistemin hız ve güvenilirliği`, `Ankara ve İstanbul'da`. Askıdaki ek bağlı olduğu bütün ögeler üzerinde kapsam taşır (Kabak 2007; Broadwell 2008). Bunu eksik ek sanıp açma; kapsam belirsizleşiyorsa (`eski öğrenci ve öğretmen evi`) yorum seçme, kaynağı koru.
 
 **Sıfat ile tamlayan aynı değildir.** `Bilimsel araştırma` (niteleme) ile `bilim araştırması` (tür) ya da `toplumsal sorun` ile `toplum sorunu` eş anlamlı değildir; çeşitlilik için birinden ötekine geçme.
 
@@ -175,6 +177,8 @@ Türkçenin söz varlığında Türkçe kökenli sözcüklerin yanında Arapça 
 | ek-fiil: `Sistem hızlı ve verileri şifreliyor` | `Sistem hızlı; verileri şifreliyor` | ad cümlesi ile fiil cümlesi `ve` ile tek yüklemmiş gibi bağlanmaz; zaman değişmez |
 
 **Onarım yeni bilgi eklemez.** Açılan öge kaynaktaki ögenin kendisidir (`protokole`, `ona`). Çatı uyuşmazlığında edilgen yüklemi etkene çevirip ona kaynakta olmayan aktör (`araştırmacılar`, `biz`) verme; etken yüklemi edilgene çevirip kaynaktaki aktörü de silme. İki yargıyı ayrı tutmak çoğu zaman tek güvenli onarımdır. Ek-fiil uyumsuzluğunda zamanı değiştirme (`şifreliyor` → `şifreler` zamansal ankrajı değiştirir); en güvenli onarım iki cümleye ayırmaktır.
+
+**Eksilti meşrudur.** Yüklemi eksiltili sıralı cümle (`Ali raporu, Ayşe tabloyu hazırladı`) Türkçede kurallıdır; kabul yargısını yalnızca dizim değil, ortak ve karşıtsal ögelerin bilgi yapısı da belirler (Gürer ve Göksel 2019; Hankamer 1971). Eksiltiyi bozukluk sayıp açma; açman gerekiyorsa ortak yüklemin zamanını, kipini ve kapsamını her ögede koru.
 
 **Cümle birleştirirken denetle.** Düzenleme iki cümleyi `ve`, `-ip`, `-erek` ile bağladığında sor: ortak özne, nesne ve tümleç iki yüklemle de aynı hâlde mi; çatı ve kişi aynı mı? Değilse ögeyi ikinci yüklemde yinele ya da cümleleri ayrı bırak.
 
