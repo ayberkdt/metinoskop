@@ -152,6 +152,10 @@ Ya da paragrafın konusu zaten modelse:
 
 Türkçede kişi ve bağlam özneyi geri kazandırıyorsa özne örtük kalabilir. Bu bir kural değil, kaynaktır. İngilizce açık özne istiyor diye Türkçede açık özne dayatma; ama belirsiz sıfır özne de üretme.
 
+Yazılı Türkçeden kanıt: sürdürmede sıfır özne baskındır, yeniden girişte ad öbeği seçilir, açık adıl en seyrek biçimdir (Aydoğan ve Yarar 2026; Şen Erdoğan ve Yarar 2025). Açık adılın işlevi erişilebilirlikten çok karşıtlık ve benzerliktir (Azar, Backus ve Özyürek 2019); karşıtlık bağlamında açık özne zorunludur (Gürcanlı, Nakipoğlu ve Özyürek 2007); birinci kişide odak değişimi, edimbilimsel ağırlık ve `bence` türü ara söz açık özneyi meşrulaştırır (Çeltek 2020). Anadili konuşucuları da konu sürekliliğinde açık özneyi fazla kabul eder ve okumada uygun ile uygunsuz kullanım arasında işlemleme farkı çıkmaz (Çınar 2024): açık özne fazlası anlam hatası değil doğallık kararıdır, bağlamsal kalır. Dil temasında adıl sıklığı değişmez, tuhaflığı adılı taşıyan kopyalanmış büyük kalıp üretir (Doğruöz 2014); koku sayıda değil kalıpta aranır. Genel İngilizce `you`/`one` öznesine `insan` ya da sıfır özne ile geniş zaman karşılık gelir (Yarar 2025).
+
+**Ölçülmüş fark.** Haber türünde ağaç bankası ölçümü: özgün BOUN haberinde özne zamiri 10.000 sözcükte 35,7, İngilizceden çevrilmiş Penn ve PUD'da 60,9 ve 62,9'dur; özne konumundaki `bu`/`şu` özgün haberde 10,2, çeviride 20,5–27,8'dir (p < 0,001). Özgün deneme ve biyografide zamir özne ise 115–122'dir (çoğu birinci kişi). Haberde özne `bu` ve zamir yoğunluğu çeviri izidir; türler karıştırılınca fark kaybolur ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)).
+
 Karar tablosu:
 
 | Durum | Karar |
