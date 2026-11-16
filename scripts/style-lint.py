@@ -2189,6 +2189,41 @@ Not: kapsam dışı olduğundan değiştirilmedi.
 """
 
 
+BACK_VOWELS, FRONT_VOWELS = "aıou", "eiöü"
+ROUNDED_VOWELS = "ouöü"
+VOICELESS = "fstkçşhp"
+
+
+def turet(govde: str, arketip: str) -> str:
+    """Türkçe ek arketipini gövdeye uyumla ekle (yalnızca öz sınama için).
+
+    Arketip harfleri: A → a/e (büyük ünlü uyumu), I → ı/i/u/ü (büyük ve küçük ünlü uyumu),
+    D → d/t (ötümsüz ünsüzden sonra t). Her ünlü kendinden önceki son ünlüye uyar; bu
+    yüzden "mIştIr" yuvarlak gövdeden sonra "müştür", "mAktAdIr" ise "mektedir" olur.
+    """
+    sozcuk = govde
+    for harf in arketip:
+        son_unlu = next((c for c in reversed(sozcuk) if c in BACK_VOWELS + FRONT_VOWELS), "a")
+        kalin = son_unlu in BACK_VOWELS
+        if harf == "A":
+            sozcuk += "a" if kalin else "e"
+        elif harf == "I":
+            yuvarlak = son_unlu in ROUNDED_VOWELS
+            sozcuk += ("u" if yuvarlak else "ı") if kalin else ("ü" if yuvarlak else "i")
+        elif harf == "D":
+            sozcuk += "t" if sozcuk[-1] in VOICELESS else "d"
+        else:
+            sozcuk += harf
+    return sozcuk
+
+
+# Edilgen gövdeler: l ile biten ya da ünlüyle biten kök -In/-n, öteki kökler -Il alır.
+EDILGEN_GOVDELER = ("görül", "bulun", "ölçül", "kurul", "yapıl", "incelen", "kullanıl", "veril", "alın", "tutul", "düşürül")
+ETKEN_GOVDELER = ("gör", "bul", "ölç", "kur", "yap", "incele", "kullan", "ver", "al", "tut", "düşür", "göster")
+ZAMAN_ARKETIPLERI = (("mIştIr", "miştir"), ("mIştI", "mıştı"), ("DI", "dı"), ("mAktAdIr", "mektedir"),
+                     ("mAktA", "mektedir"), ("mAktAdIrlAr", "mektedir"), ("DIlAr", "dı"), ("mIşlArdIr", "miştir"))
+
+
 def self_test() -> None:
     for text in ("Bu eşsiz platform sektörü yeniden tanımlıyor.",
                  "Ürün dönüştürücü bir deneyim sunuyor."):
@@ -2255,6 +2290,20 @@ def self_test() -> None:
     if doc.headings[0].direct != 0 or doc.headings[0].subtree != 6 or doc.headings[1].parent != 0:
         raise SystemExit("Öz sınama: başlık ağacı sayımı hatalı")
 
+    # Türetilmiş biçimler: her gövde × her zaman arketipi doğru sınıflanır, edilgenler edilgen tanınır.
+    if [turet(g, "mIştIr") for g in ("gör", "yap", "incele", "düşür")] != ["görmüştür", "yapmıştır", "incelemiştir", "düşürmüştür"]:
+        raise SystemExit("Öz sınama: ek türetici ünlü uyumunu yanlış uyguluyor")
+    if turet("ölç", "DI") != "ölçtü" or turet("göster", "mAktAdIr") != "göstermektedir":
+        raise SystemExit("Öz sınama: ek türetici ünsüz benzeşmesini ya da A uyumunu yanlış uyguluyor")
+    for govdeler, edilgen in ((EDILGEN_GOVDELER, True), (ETKEN_GOVDELER, False)):
+        for govde in govdeler:
+            for arketip, beklenen in ZAMAN_ARKETIPLERI:
+                sozcuk = turet(govde, arketip)
+                bulunan = tense_class(Sentence(0, 0, f"Sonuç {sozcuk}."))
+                if bulunan != beklenen:
+                    raise SystemExit(f"Öz sınama: türetilmiş {sozcuk!r} zaman sınıfı {bulunan!r}, beklenen {beklenen!r}")
+                if edilgen and arketip in ("mIştIr", "DI", "mAktAdIr") and not PASSIVE_FINITE_RE.search(sozcuk):
+                    raise SystemExit(f"Öz sınama: türetilmiş edilgen yüklem tanınmadı: {sozcuk!r}")
     # Dört biçimli ekler: yuvarlak ünlüden sonra -DI, -DIr, -mIştI, -mIştIr u/ü alır.
     for word, expected in (("incelenmiştir", "miştir"), ("görülmüştür", "miştir"), ("bulunmuştur", "miştir"),
                            ("görülmüştü", "mıştı"), ("kurulmuştu", "mıştı"), ("incelenmişti", "mıştı"),

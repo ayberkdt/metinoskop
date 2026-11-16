@@ -20,6 +20,8 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 - `style-lint.py`'ye `yazim` (sert) ve `yazim_adayi` (bağlamsal) aileleri; kod, tırnak içi alıntı ve `>` alıntı bloğu denetlenmez. Öz sınama 12 yanlış, 12 doğru yazım cümlesi tutar; 198 eski gold'da yeni sert bulgu 0, bağlamsal aday 1 (`uslup-eslestirme` kaynağındaki bilinçli `Bir çok`). `eval-suite.py`'ye `yazım yanlışı` beklentisi.
 - Beş vaka: `kesme-ve-bitisik-yazim-yanlisi`, `ortak-oge-ve-sayi-uyumsuzlugu`, `anlamca-tekrar-alinti-ve-kisaltma`, `ozel-ad-kod-ve-alinti-yazimi-korunur`, `tamlama-ve-uyum-korunur`.
 
+- `style-lint.py` öz sınamasına Türkçe ek türeticisi (`turet`): büyük ve küçük ünlü uyumunu ve `-DI` → `-tı` benzeşmesini uygulayarak 11 edilgen ve 12 etken gövdeden sekiz zaman arketipiyle 184 biçim üretir; zaman sınıfı ve edilgen örüntüsü bunların hepsini doğru tanımak zorundadır. Elle yazılmış ek biçimlerinden doğan ünlü uyumu hataları böylece öz sınamada yakalanır.
+
 ### Düzeltildi
 
 - `netlik-omurgasi.md` 25 sözcüğü aşan Türkçe betimleyici cümleyi "zaten uzun" sayıyordu; 52 doktora tezi özetinde ortalama cümle uzunluğu 20,93 sözcük, özet başına ortalama 14,65–30,11 sözcüktür (Arı 2025). Eşik ortalamanın üstü olarak yeniden yazıldı.
