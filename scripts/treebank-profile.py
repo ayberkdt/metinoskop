@@ -55,6 +55,103 @@ def sentences(path: Path) -> list[tuple[str, str]]:
     return found
 
 
+def tokens(path: Path):
+    """(sent_id, text, rows) for each sentence; rows are the ten CoNLL-U columns of word lines."""
+    sent_id, text, rows = "", "", []
+    with path.open(encoding="utf-8") as handle:
+        for line in handle:
+            line = line.rstrip("\n")
+            if match := SENT_ID_RE.match(line):
+                sent_id = match.group(1).strip()
+            elif match := TEXT_RE.match(line):
+                text = match.group(1).strip()
+            elif not line:
+                if rows:
+                    yield sent_id, text, rows
+                sent_id, text, rows = "", "", []
+            elif not line.startswith("#"):
+                cols = line.split("\t")
+                if len(cols) == 10 and cols[0].isdigit():
+                    rows.append(cols)
+    if rows:
+        yield sent_id, text, rows
+
+
+def feats(row: list[str]) -> dict[str, str]:
+    return dict(item.split("=", 1) for item in row[5].split("|") if "=" in item)
+
+
+def gold_tense(row: list[str]) -> str:
+    """Kaba zaman sınıfı, yalnızca UD biçim özelliklerinden."""
+    f = feats(row)
+    if f.get("Evident") == "Nfh":
+        return "dolaylı geçmiş"
+    # BOUN `-yor`'u çoğunlukla Aspect=Imp|Tense=Pres, bazen Aspect=Prog ile işaretler.
+    if f.get("Aspect") == "Prog" or (f.get("Aspect") == "Imp" and f.get("Tense") == "Pres"):
+        return "sürerlik"
+    if f.get("Tense") == "Fut":
+        return "gelecek"
+    if f.get("Tense") == "Past":
+        return "yalın geçmiş"
+    if f.get("Aspect") == "Hab" and f.get("Tense") == "Pres":
+        return "geniş zaman"
+    return "diğer"
+
+
+LINT_TO_GOLD = {"dı": "yalın geçmiş", "miştir": "dolaylı geçmiş", "mıştı": "dolaylı geçmiş", "yor": "sürerlik",
+                "yordu": "sürerlik", "mektedir": "sürerlik", "r": "geniş zaman", None: "sınıflanmadı"}
+
+
+def morphology_check(paths: list[Path]) -> None:
+    """`style-lint.py` tense_class ve `eval-runner.py` kanıtsallık örüntüsünü UD işaretlemesine karşı ölçer."""
+    lint = load_lint()
+    spec = importlib.util.spec_from_file_location("eval_runner", ROOT / "scripts/eval-runner.py")
+    runner = importlib.util.module_from_spec(spec)
+    sys.modules["eval_runner"] = runner
+    spec.loader.exec_module(runner)  # type: ignore[union-attr]
+    confusion: Counter[tuple[str, str]] = Counter()
+    ev_hit = Counter()
+    for path in paths:
+        for _sid, text, rows in tokens(path):
+            words = [r for r in rows if r[3] != "PUNCT"]
+            if words and words[-1][7] == "root" and words[-1][3] == "VERB" and "VerbForm" not in feats(words[-1]):
+                doc = lint.parse(text)
+                sentence = doc.paragraphs[-1].sentences[-1] if doc.paragraphs and doc.paragraphs[-1].sentences else None
+                predicted = lint.tense_class(sentence) if sentence else None
+                confusion[(gold_tense(words[-1]), LINT_TO_GOLD[predicted])] += 1
+            # Kanıtsallık örüntüsü: noktalama önündeki çekimli -mIş.
+            folded = runner.tr_fold(text)
+            forms = {runner.tr_fold(r[1]): r for r in rows}
+            for match in runner.EVIDENTIAL_MIS_RE.finditer(folded):
+                row = forms.get(match.group(0))
+                if row is None:
+                    ev_hit["eşlenemedi"] += 1
+                elif row[3] in ("VERB", "AUX") and feats(row).get("Evident") == "Nfh" and "VerbForm" not in feats(row):
+                    ev_hit["çekimli dolaylı fiil"] += 1
+                else:
+                    ev_hit[f"başka: {row[3]} {feats(row).get('VerbForm', '')}".strip()] += 1
+            for row in rows:
+                f = feats(row)
+                form = runner.tr_fold(row[1])
+                if (row[3] == "VERB" and f.get("Evident") == "Nfh" and "VerbForm" not in f
+                        and re.search(r"m[ıiuü]ş(?:l[ae]r)?$", form)):
+                    ev_hit["tüm çekimli yalın -mIş"] += 1
+    golds = sorted({g for g, _ in confusion})
+    preds = sorted({p for _, p in confusion})
+    print("Zaman sınıfı (satır: UD işaretlemesi, sütun: tense_class), yalnız cümle sonundaki çekimli fiil kökü:")
+    print("UD \\ lint | " + " | ".join(preds))
+    for gold in golds:
+        print(f"{gold} | " + " | ".join(str(confusion[(gold, p)]) for p in preds))
+    for label in preds:
+        if label == "sınıflanmadı":
+            continue
+        tp = confusion[(label, label)]
+        predicted = sum(confusion[(g, label)] for g in golds)
+        actual = sum(confusion[(label, p)] for p in preds)
+        print(f"{label}: kesinlik {tp}/{predicted} = {tp / max(1, predicted):.3f}, duyarlılık {tp}/{actual} = {tp / max(1, actual):.3f}")
+    print("Kanıtsallık örüntüsü (EVIDENTIAL_MIS_RE) isabetleri:", dict(ev_hit))
+
+
 def group_name(path: Path, sent_id: str, by_genre: bool) -> str:
     corpus = path.name.split("-ud-")[0]
     if by_genre and "_" in sent_id and sent_id.split("_")[0].isalpha():
@@ -97,9 +194,14 @@ def main() -> int:
     parser.add_argument("--max-words", type=int, default=0,
                         help="yalnızca en çok N sözcüklü cümleler (Penn ≤15 belirteçle kuruldu; uzunluğu eşlemek için)")
     parser.add_argument("--per-words", action="store_true", help="oranı bin cümle yerine on bin sözcükte ver")
+    parser.add_argument("--morph", action="store_true",
+                        help="tense_class ve kanıtsallık örüntüsünü UD biçim işaretlemesine karşı ölç")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
 
+    if args.morph:
+        morphology_check(args.files)
+        return 0
     lint, stats, shown = profile(args.files, args.by_genre, args.examples, args.limit, args.max_words)
     families = sorted({f for entry in stats.values() for f in entry["aile"]},  # type: ignore[union-attr]
                       key=lambda f: (lint.LEVELS.get(f) != "sert", f))

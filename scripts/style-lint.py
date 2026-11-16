@@ -743,7 +743,11 @@ TENSE_CLASSES = (
     ("dı", re.compile(r"[dt][ıiuü](?:m|k|n|lar|ler|nız|niz)?$")),
     # "-dır/-dir/-tır/-tir" is the copula, so an ambiguous high vowel after d/t is
     # excluded; "-ar/-er" cannot be a copula ("artar", "kaydeder" stay aorist).
-    ("r", re.compile(r"(?:(?<![dt])[ıiuü]r|[ae]r)$")),
+    # Kişi ekli geniş zaman (`alırız`, `dersiniz`) ve olumsuz geniş zaman (`yapamaz`, `görülmez`, `anlamazsınız`)
+    # da geniş zamandır; UD BOUN ölçümünde bunlar tanınmadığı için duyarlılık 0,61'de kalıyordu.
+    ("r", re.compile(r"(?:(?<![dt])[ıiuü]r|[ae]r)$"
+                     r"|(?:[ıiuü]|[ae])r(?:[ıiuü]z|s[ıiuü]n[ıiuü]z|s[ıiuü]n)$"
+                     r"|m[ae]z(?:s[ıiuü]n(?:[ıiuü]z)?)?$|m[ae]y[ıi]z$")),
 )
 MONTHS = ("ocak", "şubat", "mart", "nisan", "mayıs", "haziran", "temmuz", "ağustos",
           "eylül", "ekim", "kasım", "aralık")
@@ -1143,6 +1147,8 @@ def tense_class(sentence: Sentence) -> str | None:
             return "miştir"
         if re.search(r"[dt][ıiuü]l[ae]r$", last):
             return "dı"
+        if re.search(r"m[ae]zl[ae]r$", last):
+            return "r"
         return "r" if re.search(r"[ıiuüae]rl[ae]r$", last) else None
     for label, pattern in TENSE_CLASSES:
         if pattern.search(last):
@@ -2325,7 +2331,10 @@ def self_test() -> None:
     for word, expected in (("incelenmiştir", "miştir"), ("görülmüştür", "miştir"), ("bulunmuştur", "miştir"),
                            ("görülmüştü", "mıştı"), ("kurulmuştu", "mıştı"), ("incelenmişti", "mıştı"),
                            ("ölçüldü", "dı"), ("bulundu", "dı"), ("yaptılar", "dı"), ("göstermektedirler", "mektedir"),
-                           ("incelemişler", "miştir"), ("kalırlar", "r"), ("bulunur", "r"), ("sensörler", None)):
+                           ("incelemişler", "miştir"), ("kalırlar", "r"), ("bulunur", "r"), ("sensörler", None),
+                           # Kişi ekli ve olumsuz geniş zaman (UD BOUN/IMST ölçümünde kaçırılan biçimler).
+                           ("alırız", "r"), ("dersiniz", "r"), ("görürsün", "r"), ("yapamaz", "r"), ("görülmez", "r"),
+                           ("anlamazsınız", "r"), ("çalışmazlar", "r"), ("bilmeyiz", "r"), ("beyaz", None)):
         found = tense_class(Sentence(0, 0, f"Sonuç {word}."))
         if found != expected:
             raise SystemExit(f"Öz sınama: {word!r} zaman sınıfı {found!r}, beklenen {expected!r}")
