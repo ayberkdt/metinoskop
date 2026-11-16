@@ -92,6 +92,10 @@ ADDED_MARKER_FAMILIES = (
      r"\btüm\w*|\bbütün\w*|\bher\b|\bhepsi\w*|\btamamı\w*|\btamamen|\bdaima"),
     ("zorunluluk", "zorunluluk",
      r"\b\w+m[ae]l[ıi](?:d[ıi]r|y[ıi]z)?(?=\s*[.!?;:,]|\s*$)|\b\w+m[ae]l[ıi]d[ıi]r\w*|\bgerek\w*|\bzorunlu\w*"),
+    # Olumsuz bulaşmalı birimler örtük değerlendirme ekler (Çalışkan 2014; Selvi 2022): nötr kaynağı
+    # `karşı karşıya kaldı`, `-dan ibaretti`, `ne yazık ki` ile yeniden yazmak kaynakta olmayan yargıdır.
+    ("degerlendirme", "olumsuz değerlendirme ya da bulaşma",
+     r"\bkarşı karşıya\b|\b\w+[dt][ae]n ibaret\w*|\baksettir\w*|\bne yazık ki\b|\bmaalesef\b|\bne var ki\b"),
     ("gelecek", "gelecek ya da taahhüt",
      r"\b\w+[ae]c[ae]k(?:t[ıi]r|lar|ler)?(?=\s*[.!?;:,(]|\s*$)"),
 )
@@ -391,6 +395,8 @@ def self_test() -> None:
     drift += (("Sonuç saklanır.", "Saklanabilir mi? Sonuç saklanabilir.", {"cekince"}),)
     drift += (("Ölçüm durduruldu.", "Sıcaklık arttığı için ölçüm durduruldu.", {"nedensellik"}),
               ("Fark mevsimseldir.", "Fark büyük olasılıkla mevsimseldir.", {"cekince"}))
+    drift += (("Ölçüm iki kez tekrarlandı.", "Ölçüm ne yazık ki iki kez tekrarlandı.", {"degerlendirme"}),
+              ("Ekipte üç teknisyen vardı.", "Ekip üç teknisyenden ibaretti.", {"degerlendirme"}))
     for source, output, expected in drift:
         found = {item["family"] for item in added_markers(source, output)}
         if not expected <= found:
@@ -404,6 +410,8 @@ def self_test() -> None:
         ("Ölçüm `max_iter=500` ile yapılmadı mı?", "Ölçüm `max_iter=500` ile yapılmadı mı?"),
         # Yazım düzeltmesi: `herşey` zaten `her`i taşır; ayrı yazılınca tümel nicelik eklenmez.
         ("Taslakta herşey tamam değildi.", "Taslakta her şey tamam değildi."),
+        # Kaynakta zaten bulunan olumsuz değerlendirme ekleme değildir.
+        ("Proje bütçe açığıyla karşı karşıya kaldı.", "Proje bütçe açığıyla karşı karşıya kaldı; açık 2 milyon liraydı."),
         # "-dığı için" ile "nedeniyle" aynı ailededir; biri ötekine dönünce neden eklenmez.
         ("Sıcaklık arttığı için ölçüm durduruldu.", "Sıcaklık artışı nedeniyle ölçüm durduruldu."),
         ("Bu bir çalışmadır.", "Bu bir çalışmadır."),

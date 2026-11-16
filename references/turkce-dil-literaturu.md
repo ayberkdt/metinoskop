@@ -287,7 +287,7 @@ Türkçe özetlemede ön işleme ve yüzey belirteci örtüşmesi sonuçları de
 | Kibarlık kalıpları | `zeyrek-2001`, `ruhi-isik-guler-2007` | Dolgu sayılmaz | `kenar-turler.md` |
 | `-sAl`, saydam türetim, ikileme | `tufekcioglu-2022`, `erdem-2016`, `ozkan-2010` | İşaretlenmez | `yazim-ve-dil-bilgisi.md`, `turkce-oruntuler.md` |
 | Eş anlamlı ikili | `akboga-2026` | Anlam tekrarı sayılmaz | `yazim-ve-dil-bilgisi.md` |
-| Anlamsal bulaşma | `caliskan-2014`, `selvi-2022`, `demircivi-2022` | Nötr bulgu olumsuz bulaşmalı birimle yazılmaz | `sozcuk-birlesimleri.md` |
+| Anlamsal bulaşma | `caliskan-2014`, `selvi-2022`, `demircivi-2022` | Nötr bulgu olumsuz bulaşmalı birimle yazılmaz; eklenen işaret denetimi yakalar | `eval-runner.py` `degerlendirme`, `sozcuk-birlesimleri.md` |
 | Kurumsal terim karşılığı | `karabacak-2009`, `kurtulmus-2025`, `tuba-2019` | Yerleşik ödünç terim kalır; alan sözlüğüne bakılır | `sozcuk-birlesimleri.md` |
 | Öz Türkçe ↔ alıntı oranı | `yalcinkaya-2026`, `imer-1973`, `yazar-2025-turkronicles` | Kalite eşiği değildir | `yazim-ve-dil-bilgisi.md` |
 | Mevzuat ve resmî yazı | `mevzuat-hazirlama-2022`, `resmi-yazisma-2004` | Teamül, terim ve biçim ögeleri korunur | `kenar-turler.md` |
@@ -306,7 +306,6 @@ Literatürden çıkan ama henüz Metinoskop kuralı olmayan öneriler. Her biri 
 | `-DIr` eklenmesini ya da silinmesini kanıt statüsü değişikliği olarak denetle | `erguvanli-taylan-2018`, `sansa-tura-1986`, `ozdemir-2023-dir` | dönüşüm: tanım cümlesinde `-DIr` silen düzenleme; korunur: `-mAktAdIr` sadeleştirmesi | kaynaklar `-DIr`'ın anlamında ayrışıyor (kesinlik ya da varsayım); `-mAktAdIr` sadeleştirmesini yanlış alarm sayma |
 | Cansız öznenin yüklemden sonra geldiği devrik cümlede sayı uyumu | `uygun-felser-2023` | dönüşüm ve korunur vakası | konuma bağlı uyum yargısı belirsiz |
 | Ek ve ünsüz kurallarını biçim çözümleyicisiyle doğrula | `coltekin-2010`, `oflazer-1996`, `sak-2011` | dış bağımlılık kararı; listede olmayan biçimlerde yanlış pozitif ölçümü | bağımlılıksız paket ilkesini bozmak; çözümleyici belirsizliği |
-| Nötr kaynağı olumsuz bulaşmalı birimle yazan düzenlemeyi işaretle (`karşı karşıya`, `-dan ibaret`) | `caliskan-2014`, `selvi-2022` | dönüşüm: nötr ölçüm raporu; korunur: kaynakta zaten olumsuz değerlendirme | kaynakta olan olumsuz değerlendirmeyi silmek |
 | Lint yanlış pozitiflerini UD ağaç bankalarında ölç (Kenet ↔ Tourism, PUD) | `turk-2019`, `kuzgun-2021`, `cesur-2024-atis` | ölçüm betiği; lisans denetimi | CC BY-NC-SA ve CC BY-SA lisanslı veriyi depoya kopyalamak |
 
 ## Boşluklar ve doğrulanamayanlar

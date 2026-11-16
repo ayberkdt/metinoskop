@@ -366,7 +366,7 @@ npx --yes skills@1.5.20 add . --list
 | Betik | Ne denetler |
 |---|---|
 | `scripts/validate-package.py` | Paket yapısını, `SKILL.md` bütçesini (300 satır, 34 KB) ve başlıklarını, vaka biçimini, korunur vakalarında kayıtlı çıktının kaynağa eşitliğini ve lisansı. |
-| `scripts/eval-runner.py VAKA ÇIKTI` | Kaynaktaki sayı, tarih, URL, kod, dipnot, kapsam sözcüğü ve terimlerin çıktıda korunduğunu; çıktıya kaynakta olmayan olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk ya da gelecek işareti eklenmediğini. Akıcılığa ve tona hakem karar verir. |
+| `scripts/eval-runner.py VAKA ÇIKTI` | Kaynaktaki sayı, tarih, URL, kod, dipnot, kapsam sözcüğü ve terimlerin çıktıda korunduğunu; çıktıya kaynakta olmayan olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk, gelecek ya da olumsuz değerlendirme işareti eklenmediğini. Akıcılığa ve tona hakem karar verir. |
 | `scripts/eval-suite.py` | Bütün kayıtlı çıktıları değişmez, sert kalıp ve yapısal beklenti açısından. `--export-judge-prompts DIR` her vaka için model hakem istemi yazar. |
 | `scripts/style-lint.py METİN` | Retorik, yapı, netlik, çeviri kokusu ve söylem bulgularını inceleme işareti olarak listeler; tek bir işaret metni reddetmez. `--source` kaynakta olmayıp çıktıda beliren kalıpları ayırır; `--fail-on-introduced-hard` sert aile, `--fail-on-introduced-any` herhangi bir aile eklendiyse 1 ile çıkar. |
 | `scripts/behavioral-regression.py` | Kritik vakaları gerçek modelde taze üretip deterministik denetimden ve model hakeminden geçirir. `ANTHROPIC_API_KEY` ister ve her çalıştırma ücretlidir; `--dry-run` API çağırmadan planı yazar. `behavioral.yml` haftalık ve elle çalıştırır, raporlar `build/behavioral/` altına yazılır. |

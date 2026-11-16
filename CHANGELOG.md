@@ -8,6 +8,7 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Eklendi
 
+- `eval-runner.py`'ye `degerlendirme` eklenen işaret ailesi: nötr kaynağa olumsuz bulaşmalı birim (`karşı karşıya`, `-dan ibaret`, `aksettirmek`, `ne yazık ki`, `maalesef`, `ne var ki`) ekleyen çıktı yakalanır (Çalışkan 2014; Selvi 2022); kaynakta zaten bulunan değerlendirme ekleme sayılmaz. 204 gold'da yeni bulgu 0.
 - Dördüncü literatür taraması: veritabanı 257 kayda çıktı (211'inde künye ve bulgu, 46'sında yalnızca künye). Yeni bölümler söz varlığı, sözcük yapımı ve anlamsal bulaşma; dil devrimi ve tarihsel değişim; resmî dil, mevzuat, tez kılavuzları ve sade dil; metin üretimi, çeviri ve belirteçleme konularını tarar.
 - Referanslara kanıtlı kurallar: yerleşik ödünç terim ve alan sözlüğü, anlamsal bulaşma, eşdizim ölçülerinin dile özgülüğü (`sozcuk-birlesimleri.md`); öz Türkçenin temel söz varlığı oluşu, `-sAl`/`-î`, saydam türetim, eş anlamlı ikili (`yazim-ve-dil-bilgisi.md`); ikileme ve pekiştirmeli sıfat (`turkce-oruntuler.md`); mevzuat ve resmî yazı (`kenar-turler.md`); okunabilirlik formülü ve sade dil (`netlik-omurgasi.md`); tez kılavuzlarında kişi seçimi (`kanit-ve-kesinlik.md`); belirteçleme yanılgısı (`insan-ve-yapay-metin.md`); kör A/B'de ek yükünün dengelenmesi (`evals/README.md`).
 - `scripts/literatur.py` `mevzuat` türünü tanır.
