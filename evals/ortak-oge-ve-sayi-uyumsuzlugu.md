@@ -27,5 +27,6 @@ Teknik rapor paragrafı. Standart düzeyde düzenle.
 
 ## Yapısal beklenti
 
+- sayı uyumu adayı: 0
 - sert işaret: 0
 - cümle: <= 4

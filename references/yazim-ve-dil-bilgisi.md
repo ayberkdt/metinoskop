@@ -159,6 +159,8 @@ Türkçenin söz varlığında Türkçe kökenli sözcüklerin yanında Arapça 
 
 **İnsan dışı çoğul özneyle yüklem çoğunlukla teklik kalır:** `Sonuçlar bu ilişkiyi gösteriyor`, `Sensörler 12 Mart'ta değiştirildi`. `Sonuçlar ... göstermektedirler` İngilizce sayı uyumunun izidir. İnsan öznede iki biçim de doğrudur; yüklemdeki `-lar` bireyleri öne çıkarır (`Katılımcılar formu doldurdular`). `Bazıları`, `başkaları` gibi belgisiz zamir öznede yüklem çokluk eki almaz. Kurum adı özne tekildir.
 
+**Kanıt.** Cansız çoğul öznede çoğul yüklemin kabul edilebilirliği keskin biçimde düşer, insan öznede düşmez; tekil yüklem varsayılan biçimdir (Bamyacı, Häussler ve Kabak 2014). Uyum öznenin konumuna da bağlıdır (Uygun ve Felser 2023). Türkçede yalın tekil ad atomik okunur, sayıdan sonra çokluk eki gelmez (Sağ 2022). Soru ve olumsuzlukta çoğul ad sayıdan bağımsızdır (Renans ve ark. 2017): `Yan etkiler gözlendi mi?` tek bir yan etkiyi de kapsar, tekile çevrilmez. `style-lint.py` `sayi_uyumu` ailesi bu iki örüntüyü bağlamsal aday olarak işaretler.
+
 **Düzeltme sayı uyumuyla sınırlıdır.** `Üç sensörler` → `üç sensör` düzeltmesi sayıyı korur; `sensörlerin üçü` (bir bütünün parçası) ile `üç sensör` aynı önerme değildir, kaynak bütün kurmuyorsa ekleme.
 
 ## Ortak öge uyumu
@@ -274,7 +276,7 @@ Doğrulama düzeyi:
 | `-ki`'nin yalnızca `bugünkü`, `dünkü`, `öbürkü`de uyuma girmesi | TDK › Küçük Ünlü Uyumu |
 | `bir şey`, `her şey`, `pek çok`, `her biri` ayrı | TDK'nin ayrı yazım ilkesinden çıkarım; madde listesinde bu taramada görülmedi |
 | `hat` → `hattı`, `üs` → `üssü`; `kontrol`, `protokol`, `sembol`, `rol`, `kabul`, `usul`, `hayal` için ince ek | aynı kuralın örneği; Türkçe Sözlük madde başıyla denetlenmeli |
-| Sayı ve çokluk sıfatından sonra çokluk eki yok; insan dışı öznede teklik yüklem | Türk Dili makalesi (2013); Kılavuz kuralı değil, dil bilgisi önerisi |
+| Sayı ve çokluk sıfatından sonra çokluk eki yok; insan dışı öznede teklik yüklem | Türk Dili makalesi (2013); deneysel kanıt: Bamyacı, Häussler ve Kabak (2014), Sağ (2022); Kılavuz kuralı değil |
 | Ortak öge, çatı ve ek-fiil uyumu | Türkçe dil bilgisi ve anlatım bozukluğu öğretiminin yerleşik konusu (Zülfikar 2013); depo vakalarıyla sınanır |
 | Kısaltma ve alıntıda anlam tekrarı | açılım ve sözlük anlamından çıkarım (`iade`: alınmış bir şeyi geri verme; `optimum`: en uygun); bağlamsal kural. Yaygın kullanım kılavuzları `SMS mesajı`nı da tekrar sayar; baş sözcük testi saymaz ve bu dosya testi izler |
 | Söz varlığı katmanları | dil tarihine ilişkin genel bilgi; sayısal oran verilmedi, çünkü güncel ve tutarlı bir döküm bulunamadı |

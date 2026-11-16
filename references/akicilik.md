@@ -171,6 +171,8 @@ Müdahaleyi tekrarın kaynağına göre seç. İki cümleyi yalnızca aynı dü�
 
 ## Gönderge açıklığı
 
+Metne bağlı kullanımda `bu` ile `o` serbest değişken değildir (Balpınar 2019); göndergeyi açıklaştırırken birini ötekine çevirme. Gönderge kurarken kaynakta olmayan bağ da kurma: tez sonuç ve öneri bölümlerinde zayıf gönderim sürekliliği belgelenmiştir (Mete 2023), onarım kaynaktaki ilişkiyle sınırlıdır.
+
 `Bu`, `böyle`, `şu`, `o`, `ilgili` ve `söz konusu` sözcüklerinin neye gönderme yaptığı ilk okumada anlaşılmalıdır.
 
 **Belirsiz**

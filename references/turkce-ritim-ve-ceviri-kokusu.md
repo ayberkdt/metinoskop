@@ -301,6 +301,14 @@ Ya da kaynak çözümün tek olası çözümlerden biri olduğunu vurguluyorsa:
 
 Aynı cümlede üç veya daha çok `bir`, art arda `bir ... bir ... bir` dizisi ve her adın önünde `bir` inceleme tetikleyicisidir; sayı tek başına bir metni reddettirmez.
 
+**`Bir`in yerli işlevleri.** `Bir` Türkçede İngilizce tanımlığın gölgesi değildir; tanımlık mı yoksa gönderimsellik işaretleyicisi mi olduğu tartışmalıdır (Öztürk 2005; Kornfilt 2007), ama iki görüş de onu Türkçenin kendi dil bilgisine yerleştirir. Üç yerde `bir` silinmez:
+
+- **Olumsuzluk ve kapsam.** `Bir`li nesne olumsuzluğun üstünde geniş kapsam alabilir, yalın nesne alamaz (Ketrez 2023): `Bir dosyayı açmadı` (belirli bir dosya açılmadı) ile `Dosya açmadı` (hiç dosya açmadı) aynı önerme değildir.
+- **Sıfat + `bir` + ad.** `Önemli bir bulgu` doğal sıradır (Tat 2011); `bir önemli bulgu` anlam farkı taşıyabilir, düzeltilmez.
+- **Yalın nesne + eylem.** `Veri topladık`, `anket uyguladık` gibi yalın nesneli birleşimler Türkçenin olağan yapısıdır (Öztürk 2005); bunlara `bir` ya da belirtme eki eklenmez. Belirtme hâli de serbest değildir: `-(y)I` nesnenin belirliliğini kodlar (Enç 1991; von Heusinger ve Kornfilt 2005), eklemek ya da silmek önermeyi değiştirir.
+
+Çeviri, öğrenici ya da makine Türkçesinde `bir` fazlasını derlemle ölçen bir çalışma bulunamadı; yoğunluk eşiği çıkarımdır ([literatür](turkce-dil-literaturu.md#belirtme-hâli-belirlilik-ve-bir)).
+
 ## `Sahip olmak` ve iyelik
 
 İngilizce "X has Y" Türkçede "X, Y'ye sahiptir" olur. Türkçe bu ilişkiyi çoğu zaman şöyle kurar: `X'in Y'si var`, `X'te Y var`, `X'in Y'si yüksek/düşük`, `X Y içerir`, ya da ilişkiye özgü bir fiil. Sözcüğü değil ilişki türünü işaretle: gerçek iyelik, özellik iyeliği, soyut nitelik, ölçülebilir öznitelik.
@@ -313,7 +321,7 @@ Aynı cümlede üç veya daha çok `bir`, art arda `bir ... bir ... bir` dizisi 
 | Cihaz IP67 koruma sınıfına sahiptir. | Cihazın koruma sınıfı IP67'dir. | teknik nitelik |
 | Bu yaklaşım, sınırlamalara sahiptir. | Bu yaklaşımın sınırlamaları vardır. | soyut nitelik; sınırlamalar kaynakta adlandırılmalıdır |
 
-Resmî türde `var` kaba düşüyorsa iyelik + `-dır` biçimi ("maliyeti yüksektir") ya da `bulunur` kullanılır. Gerçek `sahip olmak` kullanımını silme: "Şirket üç fabrikaya sahiptir" hukuki mülkiyet bildiriyorsa yerinde durur; "Kullanıcı yönetici yetkisine sahip olmalıdır" yetkilendirme dilinde doğaldır.
+Resmî türde `var` kaba düşüyorsa iyelik + `-dır` biçimi ("maliyeti yüksektir") ya da `bulunur` kullanılır. Gerçek `sahip olmak` kullanımını silme: "Şirket üç fabrikaya sahiptir" hukuki mülkiyet bildiriyorsa yerinde durur; "Kullanıcı yönetici yetkisine sahip olmalıdır" yetkilendirme dilinde doğaldır. `Sahip` ve `ait` 1950–2016 hükümet programlarında iyelik türü varoluş tümcesinin yerleşik yüklemleridir; resmî dilde en sık varoluş yüklemi `var` + `-DIr`dır (Yarar 2020). Aday olan, ölçülebilir özniteliği ya da yapıyı `sahip` ile kuran kullanımdır (yukarıdaki tablo); mülkiyet ve yetki değildir.
 
 ## `Var`, `yok` ve varlık kalıpları
 
@@ -349,7 +357,7 @@ Kaynak "kullanıldı" demiyor da yalnızca modeli tanımlıyorsa:
 
 > Model, 2024 verisiyle eğitilmiş üç katmanlı bir ağdır.
 
-Her ilgi cümlesini mekanik olarak sıkıştırma. Şunları incele: `olan`, `olduğu`, yinelenen `ki`, yalnızca önceki adı nitelemek için açılmış ayrı açıklama cümleleri. Kural: niteleme adı tanımlıyor ya da sınırlıyorsa Türkçenin o bilgiyi adın önüne alıp almadığını sor.
+Her ilgi cümlesini mekanik olarak sıkıştırma. Şunları incele: `olan`, `olduğu`, yinelenen `ki`, yalnızca önceki adı nitelemek için açılmış ayrı açıklama cümleleri. `Ki` İngilizceden gelmedi: Farsçadan alınmıştır ve `ki`li cümle Anadolu'da 14. yüzyıldan beri yazı dilindedir (Sarı 2014; Doğan 2020). Tek `ki` işaret değildir; aday, İngilizce `that/which` sırasını izleyen ve ortaçla daha doğal kurulabilecek yan cümledir. Kural: niteleme adı tanımlıyor ya da sınırlıyorsa Türkçenin o bilgiyi adın önüne alıp almadığını sor.
 
 `Olan` meşru Türkçedir; sorun İngilizce "which is / that is" yapısının tekrar tekrar `olan` olarak hayatta kalmasıdır. Yüksek riskli kümeler: `... olan ... olan ...`, `... sahip olan ...`, `... etkisi olan ...`, `... özelliği olan ...`, `... durumda olan ...`. Onarım sıfat, ortaç, iyelik yapısı, doğrudan fiil, ad tamlaması ya da gereksiz koşaç yapısının silinmesiyle yapılır.
 

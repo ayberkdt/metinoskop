@@ -385,6 +385,8 @@ Bir rapor baştan sona geçmiş zaman değildir.
 
 Tersi de doğrudur: `Algoritma matrisi güncelledi` cümlesi `Algoritma matrisi günceller` cümlesinden kendiliğinden daha iyi değildir. Paragraf algoritmayı tanımlıyorsa geçmiş zaman daha kötüdür.
 
+**`-DIr` tek anlamlı değildir.** Tanım ve genel yargıda yargıyı sabitler (`X bir enzimdir`; Özdemir 2023), olay yükleminde varsayım okuması da verebilir; kişi eki değil, önermenin tamamına bağlanan bir kiplik belirleyicisidir (Sansa-Tura 1986; Kerimoğlu ve Aksu 2015; Erguvanlı Taylan 2018). `-DIr` eklemek ya da silmek önermenin statüsünü değiştirebilir; `-mAktAdIr` zincirini sadeleştirirken tanım cümlesindeki `-DIr`'ı silme. `-mAktA` ile `-(I)yor` da salt kayıt eşdeğeri değildir (Akaslan 2011): zincir yalnızca yineleme ve yoğunlukla sorundur, tek `-mAktAdIr` değildir. Zarf (`genellikle`, `şu anda`) varken kip seçimi zarfla birlikte okunur (Erguvanlı Taylan 2001).
+
 ## Olayın sınırlılığı
 
 Olayın sınırlı olup olmadığını sor: tek deney, tek kampanya, tek raporlama dönemi, tek test, tek veri kümesi, tek toplantı, tek denetim. Sınırlı olaylar tamamlanmış anlatımı güçlü biçimde çeker.

@@ -47,6 +47,7 @@ REQUIRED_FILES = (
     "evals/anlamca-tekrar-alinti-ve-kisaltma.md",
     "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
     "evals/tamlama-ve-uyum-korunur.md",
+    "evals/yerli-bir-edilgen-cogul-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -259,6 +260,7 @@ EVAL_FILES = (
     "evals/anlamca-tekrar-alinti-ve-kisaltma.md",
     "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
     "evals/tamlama-ve-uyum-korunur.md",
+    "evals/yerli-bir-edilgen-cogul-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -1007,6 +1009,7 @@ SHOULD_REMAIN_CASES = (
     "evals/yontem-ayrimi-korunur.md",
     "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
     "evals/tamlama-ve-uyum-korunur.md",
+    "evals/yerli-bir-edilgen-cogul-korunur.md",
 )
 misnamed = sorted({p for p in SHOULD_REMAIN_CASES if not Path(p).stem.endswith("-korunur")}
                   | {p for p in EVAL_FILES if Path(p).stem.endswith("-korunur") and p not in SHOULD_REMAIN_CASES})

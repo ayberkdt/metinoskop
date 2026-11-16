@@ -586,6 +586,33 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         ),
     },
     {
+        # Sayı uyumu (references/yazim-ve-dil-bilgisi.md › Sayı uyumu; turkce-dil-literaturu.md):
+        # cansız çoğul özneyle yüklem teklik kalır (Bamyacı, Häussler ve Kabak 2014); sayı sıfatından
+        # sonra ad çokluk eki almaz (Sağ 2022). İnsan özne ve tür göndermesi işaretlenmez; `altı`, `yüz`,
+        # `on` adla karışabildiği (`yüz ifadeleri`, `on yıllardır`) ve rakam tablo numarası olabildiği
+        # (`Tablo 3 sonuçları`) için listede yoktur.
+        "key": "sayi_uyumu",
+        "label": "Sayı uyumu adayı",
+        "level": "bağlam",
+        "patterns": (
+            r"^(?:\S+ ){0,3}(?:sonuç|bulgu|veri|değer|ölçüm|analiz|deney|test|grafik|tablo|şekil|sistem|model|yöntem|araç|cihaz|sensör|örnek)l[ae]r(?:ımız|imiz|ı|i)?\b"
+            r".*\b\w+(?:yorl[ae]r|m[ae]kt[ae]d[ıi]rl[ae]r|m[ıiuü]şl[ae]rd[ıi]r|m[ıiuü]şt[ıiuü]rl[ae]r)[.!?]*$",
+            r"\b(?:iki|üç|dört|beş|yedi|sekiz|dokuz|birkaç|birçok)\s+\w{3,}l[ae]r(?:\w*)\b",
+        ),
+    },
+    {
+        # Eyleyenli edilgen: `tarafından` Osmanlı Türkçesine 18. ve 19. yüzyılda girmiştir (Erdem 2007)
+        # ve modern Türkçede de kurallı edilgen sayılacak sıklıkta değildir (Sebzecioğlu ve Oktar 2010).
+        # Eyleyen biliniyorsa etken çatı aday olur; kurumsal ve hukuki eyleyen vurgusu meşrudur, eyleyensiz
+        # edilgen (`örnekler toplandı`) hiç işaretlenmez.
+        "key": "tarafindan",
+        "label": "Eyleyenli edilgen",
+        "level": "bağlam",
+        "patterns": (
+            r"\btarafından\b",
+        ),
+    },
+    {
         # TDK Yazım Kılavuzu'na açıkça aykırı yazım (references/yazim-ve-dil-bilgisi.md). AI izi değil,
         # biçim doğruluğudur. Kod, tırnak içi alıntı ve `>` alıntı bloğu denetlenmez (YAZIM_KEYS).
         "key": "yazim",
@@ -1620,6 +1647,7 @@ def analyse(text: str, son_okur: bool = False) -> dict[str, object]:
         "etiket": per_category.get("etiket", 0),
         "anons": per_category.get("anons", 0),
         "yazim": per_category.get("yazim", 0),
+        "sayi_uyumu": per_category.get("sayi_uyumu", 0),
         "son_okur": son_okur,
         "density_per_100": density,
         "structure_summary": structure_summary(doc, hits),
@@ -2235,6 +2263,17 @@ def self_test() -> None:
         found = tense_class(Sentence(0, 0, f"Sonuç {word}."))
         if found != expected:
             raise SystemExit(f"Öz sınama: {word!r} zaman sınıfı {found!r}, beklenen {expected!r}")
+    for text in ("Sonuçlar bu ilişkiyi göstermektedirler.", "Veriler iki kez doğrulanmışlardır.",
+                 "Üç sensörler arızalandı.", "Birkaç örnekler yeniden ölçüldü."):
+        if not any(h["category"] == "sayi_uyumu" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: sayı uyumu adayı işaretlenmedi: {text!r}")
+    for text in ("Katılımcılar formu iki kez doldurdular.", "Sonuçlar bu ilişkiyi gösteriyor.",
+                 "Bu sorun on yıllardır biliniyor.", "Yüz ifadeleri iki kez kodlandı.",
+                 "Tablo 3 sonuçları özetliyor.", "Bazı sorunlar yalnızca yük altında görüldü.",
+                 "Üç sensör iki hafta boyunca ölçüm aldı.", "İki grubun ortalamaları karşılaştırıldı."):
+        stray = [h for h in analyse(text)["hits"] if h["category"] == "sayi_uyumu"]  # type: ignore[union-attr]
+        if stray:
+            raise SystemExit(f"Öz sınama: doğru sayı uyumu aday sayıldı (yanlış pozitif): {text!r} -> {stray}")
     for word in ("ölçüldü", "bulundu", "görülmüştür", "kullanılmıştır", "sunulmaktadır"):
         if not PASSIVE_FINITE_RE.search(word):
             raise SystemExit(f"Öz sınama: edilgen çekimli yüklem tanınmadı: {word!r}")

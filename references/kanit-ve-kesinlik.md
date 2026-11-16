@@ -67,6 +67,8 @@ Statüyü koruma kuralı: bir statüyü başka statüye dönüştüren düzenlem
 
 Edilgen çatı şu durumlarda meşrudur: söylem konusunu sabit tutuyorsa; ilgisiz aktörü arka plana alıyorsa; yöntem merkezli akademik kaydı koruyorsa; aktör hakkındaki belirsizliği kodluyorsa; aktör uydurmayı önlüyorsa; araştırmacı yerine sonucu veya nesneyi öne alıyorsa; kaynağın kendisi aktörü adlandırmıyorsa.
 
+Türkçe araştırma makalelerinde birinci çoğul kişi adılı seyrektir; açık yazar göndermesini çoğunlukla biz ekleri (`-DIk`, `-(y)Iz`), örtük göndermeyi eyleyensiz edilgen ve cansız özne taşır (Güçlü 2025). Temel edilgen eyleyeni gizlemekten çok olayı öne çıkarır; `tarafından`lı edilgen ise Osmanlı Türkçesine 18. ve 19. yüzyılda girmiş geç bir araçtır ve kurallı edilgen sayılacak sıklıkta değildir (Erdem 2007; Sebzecioğlu ve Oktar 2010). Eyleyensiz edilgeni "eyleyen eksik" diye işaretleme, eyleyeni `tarafından` ile ekleme; eyleyen kaynakta adlandırılmış ve `tarafından` ile sona itilmişse etken çatı adaydır, kurumsal ve hukuki eyleyen vurgusunda `tarafından` kalır ([literatür](turkce-dil-literaturu.md#edilgen-tarafından-ve-yazar-varlığı)).
+
 Edilgen çatı şu durumlarda şüphelidir: bilinen ve ilgili aktörü gizliyorsa; belirsiz kurum düzyazısı üretiyorsa; sorumluluğun kaybolmasına izin veriyorsa; adlaştırmayla birleşip bürokratik sis kuruyorsa; yalnızca İngilizce akademik düzyazı yapısal olarak kopyalandığı için oradaysa.
 
 Edilgeni etkene çevirmeden önce altı soru:
