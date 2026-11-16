@@ -92,6 +92,8 @@ Karşılaştırma zemini (`eski pompaya göre`) yalnızca enerji tüketimine ba�
 
 Ortalama bir sınır değildir. Ders kitabı ve haber metninden oluşan karma bir Türkçe veride ortalama tümce 12 sözcüktür (Güven 2021); bu bir derlem ortalamasıdır, kesme eşiği değil. Aynı çalışmanın kısa sözcük ve az edilgen önerisi kolay okunur metin hedefi içindir, akademik metne aktarılmaz.
 
+Okuma deneyleri zorluğun uzunluktan çok yapıdan geldiğini gösterir: iç içe ilgi yan cümlesinde aynı hâlli adların yığılması ve öbeklerin dengesizliği işlemeyi zorlaştırır (Bakay 2020); tamlayan ile tamlanan arasına giren malzeme okuru her zaman yavaşlatmaz (Akpınar 2015); hâl ekleri yüklem gelmeden yorumlanır (Özge, Küntay ve Snedeker 2019); cümle başındaki ilk öbeğin yapısal karmaşıklığı bütün cümleyi zorlaştırır (Şen Erdoğan 2026). Uzun ama tek ilişkili cümlede onarım bölmek değil, gerekiyorsa öbekleri dengelemek ya da aynı hâlli adları ayırmaktır. Ana dili Türkçe yetişkinde yalnız cümle uzunluğunu değiştirip anlamayı ölçen bir deney bulunamadı; eşiğin inceleme işareti olması bu dolaylı kanıta dayanır ([literatür](turkce-dil-literaturu.md#okuma-ve-cümle-işlemleme)).
+
 **Telgraf dili yasaktır.** `Pompa takıldı. 2024. Enerji düşük.` kısadır ama net değildir; ögeler ve ilişki kaybolmuştur.
 
 ### 5. Bir terim, bir anlam
