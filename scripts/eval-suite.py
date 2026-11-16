@@ -95,6 +95,7 @@ EXPECTATION_KEYS = {
     "geniş zaman doygunluğu": ("soylem_olculeri", "genis_zaman_doygunlugu"),
     "geniş zaman katılığı": ("soylem_olculeri", "genis_zaman_katiligi"),
     "sözcüksel kalkı": ("soylem_olculeri", "sozcuksel_kalki"),
+    "noktalı virgül": ("soylem_olculeri", "noktali_virgul"),
 }
 
 

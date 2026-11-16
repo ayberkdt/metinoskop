@@ -225,6 +225,8 @@ Yerel ses tutarlılığı: birinci kişi ile kişisiz anlatım, etken ile edilge
 
 Noktalama tek başına yapaylık kanıtı değildir; ama Türkçe söz dizimsel gruplamayı yansıtmalıdır. İncele: yan cümleden sonra İngilizce tarzı virgül, özne ile yüklem arasında gereksiz virgül, aşırı uzun çizgi kullanımı, İngilizce açıklayıcı ritmi taklit eden iki nokta, noktalı virgül fazlası, ara söz yığını. Bir yazım kılavuzu denetçisi olma; hedef, Türkçe söz dizimsel ve bürünsel gruplamayla uyumlu noktalamadır.
 
+Ölçü: özgün yazılı Türkçede noktalı virgül 10.000 sözcükte haberde yaklaşık 8, denemede yaklaşık 36 kez geçer; cümlelerin %1–4'ünde bulunur. Deponun dönüşüm gold'larında yoğunluk 265'tir ve düzenleme kaynağa göre 3,3 kat artırır; yapay zekâ Türkçesi için de yüksek noktalı virgül yoğunluğu bildirilmiştir (Kocagül 2026, yalnızca özet). `style-lint.py --source` noktalı virgül sayısındaki değişimi söylem ölçüsü olarak raporlar; artış hata değil inceleme işaretidir: eklenen noktalı virgül kaynaktaki bir ilişkiyi mi taşıyor, yoksa iki cümleyi yalnızca birleştiriyor mu? ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları))
+
 **Önce**
 
 > Model — üç katmanlı ve 2024 verisiyle eğitilmiş olan — ilk koşulda, kararlı davranır; ikinci koşulda, hata üretir; üçüncü koşulda (ki bu koşul en zor olanıdır) yeniden kararlı hâle gelir: bu, beklenen bir sonuçtur.

@@ -176,6 +176,9 @@ SENTENCE_OPENERS = ("ancak", "fakat", "ama", "ayrıca", "bununla birlikte", "öt
                     "bu nedenle", "bu yüzden", "dolayısıyla", "sonuç olarak", "bu bağlamda", "üstelik")
 
 
+PUNCTUATION_MARKS = (";", ",", ":")
+
+
 def surface_profile(paths: list[Path], by_genre: bool) -> None:
     """Çeviri kokusu sayılan yüzey biçimlerini ve cümle başı bağlayıcılarını kümelere göre sayar."""
     stats: dict[str, Counter] = defaultdict(Counter)
@@ -189,6 +192,9 @@ def surface_profile(paths: list[Path], by_genre: bool) -> None:
             entry["sözcük"] += len(WORD_RE.findall(low))
             for key, pattern in word_res.items():
                 entry[key] += len(pattern.findall(low))
+            for mark in PUNCTUATION_MARKS:
+                entry[mark] += text.count(mark)
+            entry["noktalı virgüllü cümle"] += ";" in text
             opener = low.lstrip("-–—\"' ")
             for word in SENTENCE_OPENERS:
                 if re.match(rf"{word}(?!\w)", opener):
@@ -199,6 +205,9 @@ def surface_profile(paths: list[Path], by_genre: bool) -> None:
     print("sözcük | " + " | ".join(str(stats[g]["sözcük"]) for g in groups))
     for key in SURFACE_WORDS:
         print(f"{key} (10.000 sözcükte) | " + " | ".join(f"{1e4 * stats[g][key] / max(1, stats[g]['sözcük']):.1f}" for g in groups))
+    for mark in PUNCTUATION_MARKS:
+        print(f"noktalama {mark} (10.000 sözcükte) | " + " | ".join(f"{1e4 * stats[g][mark] / max(1, stats[g]['sözcük']):.1f}" for g in groups))
+    print("noktalı virgüllü cümle (%) | " + " | ".join(f"{100 * stats[g]['noktalı virgüllü cümle'] / max(1, stats[g]['cümle']):.2f}" for g in groups))
     for word in SENTENCE_OPENERS:
         key = f"cümle başı: {word}"
         print(f"{key} (1.000 cümlede) | " + " | ".join(f"{1e3 * stats[g][key] / max(1, stats[g]['cümle']):.1f}" for g in groups))

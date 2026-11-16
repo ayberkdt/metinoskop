@@ -758,6 +758,8 @@ GENERIC_NOUN_SETS = (
 GENERIC_NOUN_COMPILED = tuple((label, tuple(re.compile(p) for p in patterns)) for label, patterns in GENERIC_NOUN_SETS)
 TOPIC_RESET_RE = re.compile(r"^bu (?:çalışmada|çalışma\b|raporda|belgede|bölümde|araştırmada|makalede)")
 DASH_RE = re.compile(r"[—–]")
+# Ondalık virgüllü listedeki noktalı virgül (`0,2; 0,5`) zorunludur ve sayılmaz.
+NUMERIC_SEMICOLON_RE = re.compile(r"(?<=\d);(?=\s*[-−]?\d)")
 TENSE_CLASSES = (
     ("mektedir", re.compile(r"m[ae]kt[ae](?:d[ıi]r)?(?:l[ae]r)?$")),
     # Geçmiş içinde zaman ilişkileri, yalın geçmişten önce sınanır: "-mıştı" başka
@@ -1209,7 +1211,21 @@ def discourse_summary(doc: Document, hits: list[dict[str, object]]) -> dict[str,
     counts["kiplik"] = sum(1 for h in hits if h["category"] == "kiplik")
     counts["pekistirici"] = sum(1 for h in hits if h["category"] == "pekistirici")
     counts["hafif_fiil"] = sum(1 for h in hits if h["category"] == "hafif_fiil")
+    counts["noktali_virgul"] = semicolon_count(doc)
     return counts
+
+
+def semicolon_count(doc: Document) -> int:
+    """Düzyazıdaki noktalı virgül sayısı; kod, tırnak içi alıntı ve sayı listesi ayırıcısı hariç.
+    Bulgu değil ölçüdür: özgün Türkçede yoğunluk türe göre değişir (literatür › Depo ölçümü)."""
+    total = 0
+    for paragraph in doc.paragraphs:
+        if not paragraph.prose:
+            continue
+        for sentence in paragraph.sentences:
+            masked = YAZIM_MASK_RE.sub(" ", sentence.text)
+            total += masked.count(";") - len(NUMERIC_SEMICOLON_RE.findall(masked))
+    return total
 
 
 def discourse_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict[str, object]]:
@@ -1827,6 +1843,7 @@ DISCOURSE_LABELS = {
     "parantez_yuku": "parantez yükü", "kayit_kaymasi": "kayıt kayması",
     "zamansal_surtunme": "zamansal sürtünme", "genis_zaman_doygunlugu": "geniş zaman doygunluğu",
     "genis_zaman_katiligi": "geniş zaman katılığı", "sozcuksel_kalki": "sözcüksel kalkı",
+    "noktali_virgul": "noktalı virgül",
 }
 
 
@@ -2591,6 +2608,12 @@ def self_test() -> None:
                   "parantez_yuku", "kayit_kaymasi"):
         if check not in checks:
             raise SystemExit(f"Öz sınama: söylem metninde beklenen bulgu yok: {check}")
+    for text, expected in (("Model ilk koşulda kararlı davrandı; ikinci koşulda hata üretti.", 1),
+                           ("Eşikler sırasıyla 0,2; 0,5 ve 0,8 olarak seçildi.", 0),
+                           ("Komut `a; b` biçiminde yazılır.", 0)):
+        got = analyse(text)["soylem_olculeri"]["noktali_virgul"]  # type: ignore[index]
+        if got != expected:
+            raise SystemExit(f"Öz sınama: noktalı virgül sayımı {got}, beklenen {expected}: {text}")
     for label, text in (("yerli", NATIVE_TEXT), ("temiz", CLEAN_TEXT), ("iyi yapılı", WELL_STRUCTURED_TEXT), ("iç içe", NESTED_TEXT)):
         report = analyse(text)
         if report["soylem"]:
