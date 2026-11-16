@@ -602,7 +602,8 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "patterns": (
             r"^(?:\S+ ){0,3}(?:sonuç|bulgu|veri|değer|ölçüm|analiz|deney|test|grafik|tablo|şekil|sistem|model|yöntem|araç|cihaz|sensör|örnek)l[ae]r(?:ımız|imiz|ı|i)?\b"
             r".*\b\w+(?:yorl[ae]r|m[ae]kt[ae]d[ıi]rl[ae]r|m[ıiuü]şl[ae]rd[ıi]r|m[ıiuü]şt[ıiuü]rl[ae]r)[.!?]*$",
-            r"\b(?:iki|üç|dört|beş|yedi|sekiz|dokuz|birkaç|birçok)\s+\w{3,}l[ae]r(?:\w*)\b",
+            # Yaklaşık yaş (`sekiz yaşlarında`, `üç yaşları civarında`) sayı + çoğul olsa da doğrudur (UD BOUN/IMST).
+            r"\b(?:iki|üç|dört|beş|yedi|sekiz|dokuz|birkaç|birçok)\s+(?!yaşl[ae]r|yüzlü)\w{3,}l[ae]r(?:\w*)\b",
         ),
     },
     {
@@ -2389,6 +2390,9 @@ def self_test() -> None:
     for text in ("Her şey hazırdı; bir şey eksik değildi.", "Bu şey değil, ölçüm hatası."):
         if any(h["category"] == "sizinti" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
             raise SystemExit(f"Öz sınama: ad olan `şey` sızıntı sayıldı (yanlış pozitif): {text!r}")
+    for text in ("Kız on sekiz yaşlarındaydı.", "O sırada üç yaşları civarındaydı.", "İki yüzlüleri umursamadı."):
+        if any(h["category"] == "sayi_uyumu" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: yaklaşık yaş sayı uyumu adayı sayıldı (yanlış pozitif): {text!r}")
     for text in ("Katılımcılar formu iki kez doldurdular.", "Sonuçlar bu ilişkiyi gösteriyor.",
                  "Bu sorun on yıllardır biliniyor.", "Yüz ifadeleri iki kez kodlandı.",
                  "Tablo 3 sonuçları özetliyor.", "Bazı sorunlar yalnızca yük altında görüldü.",

@@ -33,7 +33,7 @@ kiplik,bağlam,literatur,fidan-2002;doyuran-2009;erguvanli-taylan-2018;turk-2022
 pekistirici,bağlam,depo-kurali,—,sen-iseri-2023;cangir-can-2026,kanit-ve-kesinlik.md,Türkçe özetlerde vurgulayıcı sıktır; yalnız dayanaksız olan ele alınır.
 aktarim,bağlam,literatur,guclu-2020;aksu-koc-slobin-1986,—,kanit-ve-kesinlik.md,Atıflı iddia atıflı kalır.
 hafif_fiil,bağlam,literatur,ucar-2010,aksehirli-2013;zulfikar-2023,sozcuk-birlesimleri.md,"Ad + `et-` işaretlenmez; birleşim listesi kullanılır. UD ölçümü: özgün haberde çeviriden sık (BOUN haber 9,4, Penn 2,7 / 10.000 sözcük); çeviri değil kayıt işaretidir."
-sayi_uyumu,bağlam,literatur,bamyaci-2014;sag-2022,renans-2017;kerimoglu-2008,yazim-ve-dil-bilgisi.md,"İnsan özne, soru ve olumsuzluk dışarıda."
+sayi_uyumu,bağlam,literatur,bamyaci-2014;sag-2022,renans-2017;kerimoglu-2008,yazim-ve-dil-bilgisi.md,"İnsan özne, soru ve olumsuzluk dışarıda. UD BOUN'da çoğul ad öznelerin %21'i çoğul yüklem alır, cansız örnekler de var: bağlamsal kalır. Yaklaşık yaş (`sekiz yaşlarında`) ve `iki yüzlü` dışarıda."
 tarafindan,bağlam,literatur,erdem-2007;sebzecioglu-oktar-2010;turk-2022-boun;sulubacak-2016-ud;ud-turkish-penn;ud-turkish-pud,guclu-2025,kanit-ve-kesinlik.md,"Kurumsal ve süreç eyleyeni meşrudur. UD ölçümü: özgün BOUN haberde 11,3, Penn'de 18,4, PUD'da 21,2 / 10.000 sözcük; fark haberde küçülür (1,6 kat)."
 yazim,sert,tdk,becker-ketrez-nevins-2011;levi-2001,—,yazim-ve-dil-bilgisi.md,"TDK Yazım Kılavuzu; ünsüz ve uyum istisnaları köke bağlı olduğu için liste kullanılır. UD özgün metninde okunan isabetlerin hepsi gerçek yanlıştı (`herşey`, `farket`, `Türkçe'de`)."
 yazim_adayi,bağlam,tdk,—,—,yazim-ve-dil-bilgisi.md,Resmî adın ya da tablonun meşru tutabileceği biçimler.
