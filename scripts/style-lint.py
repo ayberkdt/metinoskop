@@ -697,8 +697,12 @@ OLAN_RE = re.compile(r"\bolan\b")
 BIR_RE = re.compile(r"\bbir\b")
 VE_RE = re.compile(r"\bve\b")
 WORD_RE = re.compile(r"\w+")
-CONVERB_RE = re.compile(r"\w+(?:[ıiuü]p|[ae]r[ae]k)$")
-CONVERB_STOP = {"ekip", "prensip", "kulüp", "grup", "tip", "yaprak", "toprak", "bayrak", "mübarek", "merak", "gerek", "direk", "börek", "kürek"}
+# Zarf-fiiller: -Ip, -ArAk, -IncA, -mAdAn, -DIkçA ve zaman ekinden ya da kaynaştırmadan sonra -ken
+# (düşerken, okurken, doluyken). `gereken`, `geciken` sıfat-fiil, `değişken` ad olduğu için -ken yalnız
+# bu bağlamda sayılır; -IncA biçimli ilgeçler (`boyunca`, `uyarınca`) CONVERB_STOP'tadır.
+CONVERB_RE = re.compile(r"\w+(?:[ıiuü]p|[ae]r[ae]k|[ıiuü]nc[ae]|m[ae]d[ae]n|[dt][ıiuü]kç[ae]|(?:[ae]r|[ıiuü]r|yor|m[ıiuü]ş|y)ken)$")
+CONVERB_STOP = {"ekip", "prensip", "kulüp", "grup", "tip", "yaprak", "toprak", "bayrak", "mübarek", "merak", "gerek", "direk", "börek", "kürek",
+                "boyunca", "uyarınca", "süresince", "gereğince", "nispetince", "malzemeden", "erken", "iken"}
 GENITIVE_RE = re.compile(r"\w{3,}(?:[ıiuü]n|n[ıiuü]n)$")
 GENITIVE_STOP = {"için", "bütün", "zaten", "metin", "zemin", "yetkin", "uzun", "derin", "yakın", "bugün", "yarın", "dün", "kalın", "bin", "on", "gün", "esin"}
 # Discourse (epistemic / lexical / coherence) signals. All review-only.
@@ -2462,6 +2466,10 @@ def self_test() -> None:
         raise SystemExit("Öz sınama: yerli çıktı yeni çeviri kokusu bulgusu üretti")
     if repaired_tr["translationese_delta"].get("cerceve_yigini", {}).get("çıktı") != 0:  # type: ignore[union-attr]
         raise SystemExit("Öz sınama: çeviri kokusu ölçü değişimi çerçeve yığınını yanlış raporladı")
+    if converb_count(["çıkınca", "bitmeden", "arttıkça", "düşerken", "doluyken"]) != 5:
+        raise SystemExit("Öz sınama: -IncA, -mAdAn, -DIkçA ve -ken zarf-fiilleri sayılmadı")
+    if converb_count(["boyunca", "uyarınca", "gereken", "değişken", "geciken", "malzemeden"]) != 0:
+        raise SystemExit("Öz sınama: ilgeç, sıfat-fiil ya da ad zarf-fiil sayıldı (yanlış pozitif)")
     if converb_count(["ekip", "toplayıp", "yaprak", "okuyarak", "gerek"]) != 2:
         raise SystemExit("Öz sınama: fiilimsi sayımı durak listesini yanlış uyguladı")
     if longest_genitive_run(["yöntemin", "performansının", "değerlendirilmesinin", "yapılmasının"]) != 4:
