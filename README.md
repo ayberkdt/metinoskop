@@ -99,7 +99,7 @@ Konuşmaya gönderme, çalışma sırası ve kullanıcıya teklif silindi. Taş�
 
 ### Dokunulmayan cümleler
 
-207 vakanın 84'ünde doğru davranış hiçbir şeyi değiştirmemektir. Bu korunur vakalarının kayıtlı çıktısı kaynağın kendisidir ve doğrulayıcı bu eşitliği denetler. Aşağıdaki cümlelerin her biri bir korunur vakasının kaynağından alındı.
+208 vakanın 85'inde doğru davranış hiçbir şeyi değiştirmemektir. Bu korunur vakalarının kayıtlı çıktısı kaynağın kendisidir ve doğrulayıcı bu eşitliği denetler. Aşağıdaki cümlelerin her biri bir korunur vakasının kaynağından alındı.
 
 | Cümle | Vaka | Neden kalır |
 |---|---|---|
@@ -326,7 +326,7 @@ Hukuki, tanıtım, deneme, sosyal medya, kişisel ve edebî metin desteklenir; b
 metinoskop/
 ├── SKILL.md                    Her çağrıda yüklenen kurallar
 ├── references/                 İlgili sorun görülünce okunan 18 katalog ve Türkçe dil literatürü veritabanı (CSV)
-├── evals/                      207 davranış vakası: 84 korunur, 123 dönüşüm
+├── evals/                      208 davranış vakası: 85 korunur, 123 dönüşüm
 │   ├── outputs/                Her vakanın kayıtlı çıktısı
 │   ├── critical-cases.txt      Canlı regresyondaki 36 kritik vaka
 │   └── README.md               Vaka grupları, hakem ölçütleri, ölçüm sonuçları

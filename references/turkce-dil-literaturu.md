@@ -365,7 +365,6 @@ Literatürden çıkan ama henüz Metinoskop kuralı olmayan öneriler. Her biri 
 
 | Aday | Dayanak | Gereken vaka | Risk |
 |---|---|---|---|
-| Türkçe özette vurgulayıcıyı türün normu say, yalnızca dayanaksızsa sil | `sen-iseri-2023` | korunur: ölçümle desteklenen vurgulayıcılı özet | dayanaksız `açıkça`yı bırakmak |
 | Noktalı virgül ve virgül yoğunluğunu AI izi olarak incele | `kocagul-2026` (yalnızca özet) | tam metin okunmadan vaka yazılmaz | Metinoskop gold'larının bağlaçsız ilişki için kullandığı noktalı virgülü silmek |
 | `-DIr` eklenmesini ya da silinmesini kanıt statüsü değişikliği olarak denetle | `erguvanli-taylan-2018`, `sansa-tura-1986`, `ozdemir-2023-dir` | dönüşüm: tanım cümlesinde `-DIr` silen düzenleme; korunur: `-mAktAdIr` sadeleştirmesi | kaynaklar `-DIr`'ın anlamında ayrışıyor (kesinlik ya da varsayım); `-mAktAdIr` sadeleştirmesini yanlış alarm sayma |
 | Cansız öznenin yüklemden sonra geldiği devrik cümlede sayı uyumu | `uygun-felser-2023` | dönüşüm ve korunur vakası | konuma bağlı uyum yargısı belirsiz |
