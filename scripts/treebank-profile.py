@@ -111,6 +111,7 @@ def morphology_check(paths: list[Path]) -> None:
     spec.loader.exec_module(runner)  # type: ignore[union-attr]
     confusion: Counter[tuple[str, str]] = Counter()
     ev_hit = Counter()
+    token_checks: Counter[tuple[str, bool, bool]] = Counter()
     for path in paths:
         for _sid, text, rows in tokens(path):
             words = [r for r in rows if r[3] != "PUNCT"]
@@ -133,6 +134,11 @@ def morphology_check(paths: list[Path]) -> None:
             for row in rows:
                 f = feats(row)
                 form = runner.tr_fold(row[1])
+                # `olarak` UD'de zarf-fiildir, lint'te ilgeç işlevi yüzünden sayılmaz; ölçüm dışında tutulur.
+                if re.fullmatch(r"\w+", form) and form != "olarak":
+                    token_checks[("zarf-fiil", f.get("VerbForm") == "Conv", lint.converb_count([form]) == 1)] += 1
+                    token_checks[("edilgen biçim", "Pass" in f.get("Voice", "") and row[3] == "VERB",
+                                  lint.is_finite_passive(form))] += 1
                 if (row[3] == "VERB" and f.get("Evident") == "Nfh" and "VerbForm" not in f
                         and re.search(r"m[ıiuü]ş(?:l[ae]r)?$", form)):
                     ev_hit["tüm çekimli yalın -mIş"] += 1
@@ -150,6 +156,11 @@ def morphology_check(paths: list[Path]) -> None:
         actual = sum(confusion[(label, p)] for p in preds)
         print(f"{label}: kesinlik {tp}/{predicted} = {tp / max(1, predicted):.3f}, duyarlılık {tp}/{actual} = {tp / max(1, actual):.3f}")
     print("Kanıtsallık örüntüsü (EVIDENTIAL_MIS_RE) isabetleri:", dict(ev_hit))
+    for name in ("zarf-fiil", "edilgen biçim"):
+        tp_, fp, fn = (token_checks[(name, True, True)], token_checks[(name, False, True)],
+                       token_checks[(name, True, False)])
+        print(f"{name} (sözcük düzeyi): kesinlik {tp_}/{tp_ + fp} = {tp_ / max(1, tp_ + fp):.3f}, "
+              f"duyarlılık {tp_}/{tp_ + fn} = {tp_ / max(1, tp_ + fn):.3f}")
 
 
 # Yüzey biçimleri ham metinden sayılır: ağaç bankaları belirteçlemede ve biçim özelliği işaretlemesinde

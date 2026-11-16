@@ -705,7 +705,13 @@ WORD_RE = re.compile(r"\w+")
 # bu bağlamda sayılır; -IncA biçimli ilgeçler (`boyunca`, `uyarınca`) CONVERB_STOP'tadır.
 CONVERB_RE = re.compile(r"\w+(?:[ıiuü]p|[ae]r[ae]k|[ıiuü]nc[ae]|m[ae]d[ae]n|[dt][ıiuü]kç[ae]|(?:[ae]r|[ıiuü]r|yor|m[ıiuü]ş|y)ken)$")
 CONVERB_STOP = {"ekip", "prensip", "kulüp", "grup", "tip", "yaprak", "toprak", "bayrak", "mübarek", "merak", "gerek", "direk", "börek", "kürek",
-                "boyunca", "uyarınca", "süresince", "gereğince", "nispetince", "malzemeden", "erken", "iken"}
+                "boyunca", "uyarınca", "süresince", "gereğince", "nispetince", "malzemeden", "erken", "iken",
+                # UD BOUN ölçümünde zarf-fiil sanılan adlar ve kalıplaşmış zarflar (VerbForm=Conv değil).
+                "sahip", "takip", "garip", "mektup", "mensup", "talip", "galip", "tertip", "terkip", "tayyip", "ragıp",
+                "ayıp", "kayıp", "hatip", "nasip", "katip", "kâtip", "tabip",
+                "olarak", "oldukça", "yeterince", "bunca", "şunca", "onca", "düşünce", "sakınca", "gittikçe"}
+# Dört harfli `-Ip` zarf-fiilleri (`alıp`, `olup`, `edip`) uzunluk eşiğinin altında kalıyordu.
+SHORT_CONVERB_RE = re.compile(r"\w{2}[ıiuü]p$")
 GENITIVE_RE = re.compile(r"\w{3,}(?:[ıiuü]n|n[ıiuü]n)$")
 GENITIVE_STOP = {"için", "bütün", "zaten", "metin", "zemin", "yetkin", "uzun", "derin", "yakın", "bugün", "yarın", "dün", "kalın", "bin", "on", "gün", "esin"}
 # Discourse (epistemic / lexical / coherence) signals. All review-only.
@@ -721,6 +727,19 @@ CONCLUSION_OPENERS = ("bu nedenle", "dolayısıyla", "bu yüzden", "sonuç olara
 NOMINALIZATION_RE = re.compile(r"\w+(?:l|n)m[ae]s[ıi]\w*$")
 # Dört biçimli ekler (-DI, -DIr) yuvarlak ünlüden sonra u/ü alır: ölçüldü, görülmüştür.
 PASSIVE_FINITE_RE = re.compile(r"\w+(?:[ıiuü]l|n)(?:m[ıiuü]şt[ıiuü]r|m[ıiuü]ş|m[ae]kt[ae]d[ıi]r|d[ıiuü]|[ae]c[ae]kt[ıi]r)$")
+PASSIVE_SUFFIX_RE = re.compile(r"(?:m[ıiuü]şt[ıiuü]r|m[ıiuü]ş|m[ae]kt[ae]d[ıi]r|d[ıiuü]|[ae]c[ae]kt[ıi]r)$")
+# Kökü zaten -n ya da -l ile biten fiiller (`kullandı`, `kazandı`, `döndü`) edilgen değildir; UD BOUN ölçümünde
+# edilgen örüntüsünün yanlış pozitiflerinin çoğu bunlardı. `kullanıldı` gibi gerçek edilgen ayrıca -Il taşır.
+NON_PASSIVE_ROOTS = ("kullan", "kazan", "savun", "dön", "in", "düşün", "utan", "sevin", "ayrıl", "kurtul", "yaslan",
+                     "uzan", "yan", "inan", "dayan", "kalkın", "ol", "kal", "bil", "gel", "al", "sal", "dal", "çal",
+                     "bul", "öl", "dol", "kıl", "sil", "del")
+NON_PASSIVE_WORDS = {"kendi", "değildi", "efendi", "şimdi", "hindi", "pendi"}
+
+
+def is_finite_passive(word: str) -> bool:
+    if word in NON_PASSIVE_WORDS or not PASSIVE_FINITE_RE.match(word):
+        return False
+    return not any(word.startswith(root) and PASSIVE_SUFFIX_RE.fullmatch(word[len(root):]) for root in NON_PASSIVE_ROOTS)
 POSTPOSITION_RE = re.compile(r"\b(?:hakkında|ilişkin|yönelik|dair|üzerine)\b")
 GENERIC_NOUN_SETS = (
     ("yöntem/yaklaşım/yapı/çözüm", (r"\byöntem\w*", r"\byaklaşım\w*", r"\byapı(?:s[ıi]n?|y[ıi]|ya|da|dan|n[ıi]n|lar\w*|d[ıi]r)?\b", r"\bçözüm\w*", r"\bstrateji\w*", r"\bmekanizma\w*")),
@@ -993,8 +1012,9 @@ def sentence_words(sentence: Sentence) -> list[str]:
 def converb_count(words: list[str]) -> int:
     return sum(
         1 for w in words
-        if len(w) >= 5 and w not in CONVERB_STOP and CONVERB_RE.match(w)
-        and not (w.endswith(("rak", "rek")) and len(w) < 6)
+        if w not in CONVERB_STOP and (
+            (len(w) >= 5 and CONVERB_RE.match(w) and not (w.endswith(("rak", "rek")) and len(w) < 6))
+            or (len(w) == 4 and SHORT_CONVERB_RE.match(w)))
     )
 
 
@@ -1202,7 +1222,7 @@ def discourse_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict[
                              "text": f"P{s.paragraph}C{s.index}: pekiştirici ({', '.join(boosters)}) ile çekince ({', '.join(hedges)}) aynı önermede çekişiyor: kaynağın gerçek kanıt düzeyi hangisi?"})
         words = sentence_words(s)
         nominal = [w for w in words if NOMINALIZATION_RE.match(w)]
-        passive = [w for w in words if PASSIVE_FINITE_RE.match(w)]
+        passive = [w for w in words if is_finite_passive(w)]
         if len(nominal) >= 2 and passive:
             findings.append({"check": "edilgen_adlastirma",
                              "text": f"P{s.paragraph}C{s.index}: {len(nominal)} adlaştırma ve edilgen yüklem bir arada: aktör biliniyor mu, doğrudan yüklem mümkün mü? «{excerpt(s)}»"})
@@ -2376,9 +2396,17 @@ def self_test() -> None:
         stray = [h for h in analyse(text)["hits"] if h["category"] == "sayi_uyumu"]  # type: ignore[union-attr]
         if stray:
             raise SystemExit(f"Öz sınama: doğru sayı uyumu aday sayıldı (yanlış pozitif): {text!r} -> {stray}")
-    for word in ("ölçüldü", "bulundu", "görülmüştür", "kullanılmıştır", "sunulmaktadır"):
-        if not PASSIVE_FINITE_RE.search(word):
+    for word in ("ölçüldü", "bulundu", "görülmüştür", "kullanılmıştır", "sunulmaktadır", "alındı", "bilindi"):
+        if not PASSIVE_FINITE_RE.search(word) or not is_finite_passive(word):
             raise SystemExit(f"Öz sınama: edilgen çekimli yüklem tanınmadı: {word!r}")
+    # UD BOUN ölçümündeki yanlış pozitif türleri: kökü -n/-l ile biten etken fiil ve ad.
+    for word in ("kullandı", "kazandı", "döndü", "indi", "oldu", "aldı", "kendi", "değildi"):
+        if is_finite_passive(word):
+            raise SystemExit(f"Öz sınama: etken fiil ya da ad edilgen sayıldı (yanlış pozitif): {word!r}")
+    if converb_count(["sahip", "takip", "mektup", "ayıp", "kayıp", "olarak", "oldukça", "düşünce"]) != 0:
+        raise SystemExit("Öz sınama: `-Ip` ile biten ad, `olarak` ya da kalıplaşmış zarf zarf-fiil sayıldı (yanlış pozitif)")
+    if converb_count(["alıp", "olup", "edip", "açıp"]) != 4:
+        raise SystemExit("Öz sınama: dört harfli `-Ip` zarf-fiili sayılmadı")
     for text in ("Sonuçlar modellerin daha doğru olduklarını önermektedir.",
                  "Etkinin yaşa bağlı oldukları tartışılmaktadır."):
         if not any(h["category"] in ("anlam_kalkisi", "anlam_kaymasi_adayi") for h in analyse(text)["hits"]):  # type: ignore[union-attr]
