@@ -23,6 +23,8 @@ Güven: **A** birden çok bağımsız çalışma aynı yönü buldu; **B** tek �
 
 ## Yanılgılar
 
+- **"Model Türkçe ekleri belirteçleme yüzünden bozar, öyleyse ekli biçimi işaretle."** Biçimbirim düzeyindeki belirteçleyici alt sözcük belirteçleyicileriyle rekabet edebilir (Toraman ve ark. 2023); belirteçleme ile çıktı doğallığı arasındaki bağ ölçülmedi. Bu varsayıma dayanan AI izi kuralı kurulmaz ([literatür](turkce-dil-literaturu.md#metin-üretimi-çeviri-ve-belirteçleme)).
+
 - **"İnsan metni daha değişkendir, öyleyse uzunluğu ve sözcüğü değiştir."** Değişkenlik içerikten gelir. Cümle uzunluğunu rastgeleleştirmek, eş anlamlı döndürmek ya da hata eklemek insanlaştırmaz; Metinoskop dedektör atlatmaz. Depo ölçümünde iyi yazılmış kısa Türkçe metinlerin uzunluk değişkenliği yapay örnekten düşük çıktı; değişkenlik eşiği bu yüzden denetime konmadı.
 - **"AI çok çekince kullanır, çekinceyi sil."** Ölçülen yön çoğu zaman terstir (bulgu 5). Çekince kanıt düzeyidir.
 - **"Edilgeni etkene çevir, daha insani olur."** GPT-4o failsiz edilgeni insanın yaklaşık yarısı oranında kullanır (Reinhart 2025). Edilgen kararı aktörün bilgi değerine bakar (kural 6).

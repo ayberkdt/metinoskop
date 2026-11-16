@@ -537,6 +537,7 @@ Aşağıdakileri tek başına yapaylık belirtisi sayma:
 - bir kısa vurgu cümlesi,
 - mevzuat gereği korunan kurum dili,
 - yazarın bilinçli tekrarı,
+- sözlükleşmiş ikileme (`yavaş yavaş`, `az çok`) ve pekiştirmeli sıfat (`bembeyaz`); ikilemeler sözlükbirimdir (Özkan 2010), pekiştirme sözlüksel bir sınıftır (Kılıç ve Bozşahin 2013; Demir 2017),
 - alıntı içindeki klişe,
 - teknik belgede düzenli başlık yapısı,
 - belirli bir topluluğa veya döneme ait söyleyiş,

@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATABASE = ROOT / "references/turkce-dil-literaturu.csv"
 COLUMNS = ("id", "yazarlar", "yil", "baslik", "yayin", "tur", "konular", "bulgu", "metinoskop", "dogrulama", "url")
 TYPES = frozenset({"dil-bilgisi-kitabi", "kitap", "kitap-bolumu", "makale", "bildiri", "tez", "derlem",
-                   "agac-bankasi", "sozluk", "on-baski", "veri-kumesi", "kilavuz"})
+                   "agac-bankasi", "sozluk", "on-baski", "veri-kumesi", "kilavuz", "mevzuat"})
 VERIFICATION = frozenset({"künye+içerik", "künye"})
 ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 YEAR_RE = re.compile(r"^(?:1[89]\d\d|20\d\d)(?:[/-]\d{2,4})?$")
@@ -80,7 +80,7 @@ def problems(rows: list[dict[str, str]]) -> list[str]:
 
 BIB_TYPES = {"makale": "article", "bildiri": "inproceedings", "tez": "phdthesis", "kitap-bolumu": "incollection",
              "dil-bilgisi-kitabi": "book", "kitap": "book", "sozluk": "book", "on-baski": "misc", "veri-kumesi": "misc",
-             "derlem": "misc", "agac-bankasi": "misc", "kilavuz": "misc"}
+             "derlem": "misc", "agac-bankasi": "misc", "kilavuz": "misc", "mevzuat": "misc"}
 
 
 def bib_escape(value: str) -> str:

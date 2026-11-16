@@ -15,6 +15,8 @@ Metinoskop'un öncelikli alanı bilimsel ve teknik metindir. Bu dosya, ana alan�
 - Netlik kuralları burada da işler: aynı hükmü iki maddede yineleyen, gerekçeyi hükmün önüne yığan ya da tek yükümlülüğü üç eş anlamlıyla söyleyen metni sadeleştirebilirsin; ama yalnızca anlam ve kapsam değişmiyorsa.
 - Eval: `hukuki-metin-korunur`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`.
 
+Mevzuat taslağında sade, açık ve anlaşılır dil yönetmelik gereğidir; karşılığı olmayan teknik terim aslına uygun kalır (Mevzuat Hazırlama Usul ve Esasları Hakkında Yönetmelik, 2022, md. 25). Hukuk metninin güçlüğü terimden de söz diziminden de gelir (Aydemir 2010); netleştirme söz diziminde yapılır, hukuki terim ve formül korunur. Resmî yazışmada kurum adı, sayı, tarih ve ilgi satırı yönetmeliğin düzenlediği biçim ögeleridir; üslup gerekçesiyle değişmez.
+
 ## Tanıtım ve pazarlama
 
 Soyut ifade her zaman gereksiz değildir; yazarın değerlendirmesini ya da ikna amacını taşıyabilir.

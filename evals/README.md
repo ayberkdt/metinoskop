@@ -318,7 +318,7 @@ Bant oranının artması büyük ölçüde parçalanmış kısa cümlelerin birl
 
 ### Kör A/B ölçümü
 
-Kayıtlı çıktılar fixture'ı sınar, skill'i değil. Bir skill değişikliğinin model çıktısını değiştirip değiştirmediği kör A/B ile ölçülür. Her skill sürümü, başka hiçbir dosyaya bakmayan bağımsız model örneklerine yalnızca görev dosyasıyla verilir; örnekler hangi sürümü okuduklarını bilmez. Her örnek `=== T1 ===` blokları olan tek bir dosya yazar; dosya adının sonu kol harfi ve örnek numarasıdır (`hk_E3.md`). Puanlama:
+Kayıtlı çıktılar fixture'ı sınar, skill'i değil. Türkçe vakalarda biçim bilgisi karmaşıklığı (ek sayısı, biçimbirim sınırı) model farkını tek başına açıklayabilir (Başar ve Bisazza 2026); kollar karşılaştırılırken görevlerin ek yükü dengelenir. Bir skill değişikliğinin model çıktısını değiştirip değiştirmediği kör A/B ile ölçülür. Her skill sürümü, başka hiçbir dosyaya bakmayan bağımsız model örneklerine yalnızca görev dosyasıyla verilir; örnekler hangi sürümü okuduklarını bilmez. Her örnek `=== T1 ===` blokları olan tek bir dosya yazar; dosya adının sonu kol harfi ve örnek numarasıdır (`hk_E3.md`). Puanlama:
 
 ```bash
 python scripts/ab-score.py <çıktı-klasörü> --tasks scripts/ab-gorevler/teshis.md --glob "hk_*.md"
