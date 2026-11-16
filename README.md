@@ -9,7 +9,7 @@
 
 Metinoskop, yapay zekâ ajanının Türkçe metni yazarken ve düzenlerken uyduğu kuralları taşıyan bir skill'dir. Ajan her önermeyi bir kez, doğru yerde ve kaynağın verdiği kesinlikte yazar; olguları, sayıları, kanıt düzeyini ve yazarın tavrını korur. Zaten net ve doğal olan metni olduğu gibi bırakır.
 
-Kurallar iki kaynağa dayanır. Netlik kuralları, havacılık belgeleri için geliştirilmiş ASD-STE100 (Simplified Technical English) standardının yazım ilkelerinden uyarlandı; standardın İngilizceye özgü sözlüğü ve fiil kısıtları alınmadı. AI metnini insan metniyle karşılaştıran on dört araştırmanın bulguları ve Türkçe karşılıkları [`references/insan-ve-yapay-metin.md`](references/insan-ve-yapay-metin.md) dosyasındadır. Öncelikli alan bilimsel ve teknik metindir.
+Kurallar üç kaynağa dayanır. Netlik kuralları, havacılık belgeleri için geliştirilmiş ASD-STE100 (Simplified Technical English) standardının yazım ilkelerinden uyarlandı; standardın İngilizceye özgü sözlüğü ve fiil kısıtları alınmadı. AI metnini insan metniyle karşılaştıran on dört araştırmanın bulguları ve Türkçe karşılıkları [`references/insan-ve-yapay-metin.md`](references/insan-ve-yapay-metin.md) dosyasındadır. Türkçe dil bilgisi, yazım ve kullanım kuralları TDK Yazım Kılavuzu'na ve doğrulanmış Türkçe dil bilimi literatürüne dayanır (bkz. [Türkçe dil yapısı](#türkçe-dil-yapısı)). Öncelikli alan bilimsel ve teknik metindir.
 
 ## Örnekler
 
@@ -198,6 +198,19 @@ Bu terimler referans dosyalarında ve `style-lint.py` çıktısında geçer.
 | Ortak öge | İki yüklemin paylaştığı özne, nesne ya da tümleç; iki yüklemin hâl ve çatısına da uymalıdır: `uygulamayı seviyor ve ona güveniyor`. |
 | Anlam tekrarı | Alıntı sözcüğün ya da kısaltmanın anlamında bulunan ögenin Türkçe sözcükle yinelenmesi: `geri iade`, `ATM makinesi`. |
 | Korunur vakası | Doğru davranışın hiçbir şeyi değiştirmemek olduğu vaka; adı `-korunur` ile biter, kayıtlı çıktısı kaynağın kendisidir. |
+
+### Türkçe dil yapısı
+
+Depo, Türkçe metin düzenleyen ajan ve araçlar için kaynaklı bir dil yapısı katmanı taşır:
+
+| Ne | Nerede | İçerik |
+|---|---|---|
+| Yazım ve dil bilgisi kuralları | [`references/yazim-ve-dil-bilgisi.md`](references/yazim-ve-dil-bilgisi.md) | TDK Yazım Kılavuzu'na dayanan bitişik–ayrı yazım, `ki`/`de`/`mi`, kesme işareti, sayılar, büyük harf, düzeltme işareti; alıntı sözcüklerin ses ve ek davranışı; kökenden gelen anlam tekrarı; tamlama, sayı uyumu, ortak öge uyumu, eksilti; fiil–hâl çerçevesi listesi. Her kuralın doğrulama düzeyi yazılıdır. |
+| Literatür veritabanı | [`references/turkce-dil-literaturu.csv`](references/turkce-dil-literaturu.csv) | 201 kayıt: dil bilgisi kitapları, sözcük dizimi ve bilgi yapısı, özne düşürme, kanıtsallık, belirtme hâli ve `bir`, adlaştırma, `-DIr`, edilgen, sayı uyumu, ses bilgisi, söylem belirleyicileri, akademik Türkçe, derlem ve ağaç bankaları, çeviri, dil modelleri. Her kayıtta künye, tek cümlelik bulgu, ilgili kural dosyası, doğrulama düzeyi ve bağlantı vardır; `python scripts/literatur.py --konu <konu>` sorgular. |
+| Literatür sentezi | [`references/turkce-dil-literaturu.md`](references/turkce-dil-literaturu.md) | Bulguların konu konu özeti, her örüntü için kanıt–karar–uygulama tablosu (`Örüntü kararları`), aday kurallar, bulunamayan çalışma türleri ve geri çekilmiş kaynaklar. |
+| Biçim bilgisi doğru örüntüler | `scripts/style-lint.py` | Türkçe eklerin ünlü uyumu biçimlerini kapsayan zaman, edilgen, sayı uyumu, `tarafından` ve yazım aileleri; öz sınamadaki ek türeticisi (`turet`) A/I/D arketiplerinden 184 biçim üretip örüntüleri sınar. |
+
+Kural ile kanıt ayrıdır: bir bulgu kurala ancak referans dosyasında kaynağıyla, dönüşüm ve korunur vakasıyla birlikte girer. Kaynağı yalnızca künye düzeyinde doğrulanmış ya da derlemle ölçülmemiş örüntüler (`olarak`, çeviride `bir` fazlası, `adreslemek` türü kalkılar) sert denetime girmez.
 
 ## Kurulum
 
