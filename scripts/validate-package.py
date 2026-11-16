@@ -54,6 +54,7 @@ REQUIRED_FILES = (
     "evals/dogrudan-dolayli-kanitsallik-korunur.md",
     "evals/odak-yuklem-oncesi-alan-korunur.md",
     "evals/olcumlu-vurgulayici-ozet-korunur.md",
+    "evals/resmi-sikayet-kibarlik-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -271,6 +272,7 @@ EVAL_FILES = (
     "evals/dogrudan-dolayli-kanitsallik-korunur.md",
     "evals/odak-yuklem-oncesi-alan-korunur.md",
     "evals/olcumlu-vurgulayici-ozet-korunur.md",
+    "evals/resmi-sikayet-kibarlik-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -713,6 +715,7 @@ for relative_path in EVAL_FILES:
             fail(f"{relative_path} is missing: {heading}")
 
 eval_markers = {
+    "evals/resmi-sikayet-kibarlik-korunur.md": ("Sayın Yetkili", "Saygılarımla", "rica ederim", "sevinirim", "12 Ekim"),
     "evals/olcumlu-vurgulayici-ozet-korunur.md": ("belirgin biçimde", "açıkça", "p < 0,001", "anlamlı fark bulunmadı", "500 m altı"),
     "evals/odak-yuklem-oncesi-alan-korunur.md": ("yalnızca ikinci ekip", "tekrarladıktan sonra", "görmemişti", "henüz"),
     "evals/mis-dolaylilik-tuzagi.md": ("ulaşmış", "başlamış", "kayıt altına alınmıştır", "4 Kasım", "120", "12"),
@@ -1027,6 +1030,7 @@ SHOULD_REMAIN_CASES = (
     "evals/dogrudan-dolayli-kanitsallik-korunur.md",
     "evals/odak-yuklem-oncesi-alan-korunur.md",
     "evals/olcumlu-vurgulayici-ozet-korunur.md",
+    "evals/resmi-sikayet-kibarlik-korunur.md",
 )
 misnamed = sorted({p for p in SHOULD_REMAIN_CASES if not Path(p).stem.endswith("-korunur")}
                   | {p for p in EVAL_FILES if Path(p).stem.endswith("-korunur") and p not in SHOULD_REMAIN_CASES})

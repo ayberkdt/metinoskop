@@ -178,6 +178,7 @@ Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tü
 | `aktarim-olgu-olmaz` | İki ayrı kaynağa atıflı iddiaları atıflı tutmak, ölçümü olgu olarak bırakmak |
 | `mis-dolaylilik-tuzagi` | Dolguyu silerken duyum bildiren `-mış`'ı `-dı`'ya ya da `-mıştır`'a çevirmemek, kaynağı belirtilmemiş duyuma aktör eklememek; resmî `-mıştır` kaydını yalın geçmişe sadeleştirmek |
 | `olcumlu-vurgulayici-ozet-korunur` | Ölçüm ve testle desteklenen `belirgin biçimde`, `açıkça` vurgulayıcılarını Türkçe özette korumak; güçlü iddiayı kapsamında, olumsuz bulguyu `fark bulunmadı` düzeyinde tutmak |
+| `resmi-sikayet-kibarlik-korunur` | Resmî şikâyet ve ricada hitabı, kalıp kapanışı, çekinceli dolaylı ricayı ve kişisiz edilgeni kibarlık stratejisi olarak korumak; ricayı emre, şikâyeti suçlamaya çevirmemek |
 | `odak-yuklem-oncesi-alan-korunur` | Yüklem öncesi alanın başındaki odağı (`yalnızca ikinci ekip`) "odak yüklemin hemen önündedir" diye taşımamak; zarf-fiil öbeğini, `ise` karşıtsal konusunu ve `-mişti` ek ortaklığını korumak |
 | `dogrudan-dolayli-kanitsallik-korunur` | Resmî `-mıştır`, doğrudan `-dı` ve `aktardığına göre` ile birlikte gelen duyum `-mış`'ı aynı paragrafta korumak |
 | `olcum-ile-cikarim` | Ölçüm ile çıkarımı ayırmak; çıkarımı nedensel olguya çevirmemek |

@@ -56,7 +56,8 @@ Soyut ifade her zaman gereksiz değildir; yazarın değerlendirmesini ya da ikna
 - Kişisel yazıya kurumsal eşdizim, resmî türe konuşma eşdizimi dayatma.
 - Sohbet botu nezaketini (`Elbette!`, `Umarım faydalı olur`, `Umarım bu e-posta sizi iyi bulur`) çıkar; yazarın kendi samimi selamını ve kapanışını koru.
 - Türkçe kibarlık grup bilincini ve ilişki işini öne alır (Zeyrek 2001; Ruhi ve Işık-Güler 2007): `siz`, `talebiniz doğrultusunda`, yüz koruyan deyimler İngilizce doğrudanlık normuna göre dolgu sayılıp silinmez.
-- Eval: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`.
+- Hitap (`Sayın`, `Bey`/`Hanım`, `Hocam`), `siz`/`sen` seçimi ve kalıp söz (`Saygılarımla`, `Kolay gelsin`, `İyi çalışmalar`) kibarlık stratejisidir; hitabın yeri işlevine bağlıdır (Özer ve İbe Akcan 2022; Onursal Ayırır 2020; Hatipoğlu 2008). Türkçe rica e-postasında hazırlayıcı soru ve konuşana yönelik çerçeve (`... mümkün olur mu`), resmî şikâyette çekinceli ve kişisiz yapı yüzü korur (Ünal 2019; Karatepe 2021; Çetinavcı 2020); emir kipine, doğrudan talebe ya da etken çatıya çevrilmez. Çevrim içi şikâyette şikâyete eşlik eden öneri ve olumlu yorum edim kümesinin parçasıdır (Kılıç Gönen 2019); konudan sapma diye silinmez.
+- Eval: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`, `resmi-sikayet-kibarlik-korunur`.
 
 ## Edebî ve anlatı metni
 
