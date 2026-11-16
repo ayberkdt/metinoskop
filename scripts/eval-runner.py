@@ -72,7 +72,9 @@ MARKER_GROUPS = (
 # "Sonuç olarak" into "-dığından" or "Bu nedenle" is not an addition.
 ADDED_MARKER_FAMILIES = (
     ("olumsuzluk", "olumsuz iddia",
-     r"\bdeğil\w*|\byok(?:tur|tu|muş)?\b|\bhiç\w*|\b\w{2,}m[ae](?:d[ıi](?!r)\w*|m[ıi]ş\w*|z(?:lar|ler|dı|di)?\b"
+     # Olumsuz uyum ögeleri (`asla`, `katiyen`, `kimse`) yeni olumsuzluk katmaz ama önermeyi güçlendirir
+     # ve tümel okumayı kurar (Görgülü 2020; Kamali ve Zeijlstra 2024): `gelmedi` → `kimse gelmedi` eklemedir.
+     r"\bdeğil\w*|\byok(?:tur|tu|muş)?\b|\bhiç\w*|\basla\b|\bkatiyen\b|\bkimse\w*|\b\w{2,}m[ae](?:d[ıi](?!r)\w*|m[ıi]ş\w*|z(?:lar|ler|dı|di)?\b"
      r"|makta\w*|mekte\w*|yacak\w*|yecek\w*|yabil\w*|yebil\w*)|\b\w{2,}m[ıiuü]yor\w*"),
     ("cekince", "çekince ya da olasılık",
      r"\bolabil\w*|\bolası(?:dır|lıkla)?\b|\bmuhtemel\w*|\bbelki\b|\bgörün(?:mektedir|üyor|ür)\b|\bdüşündür\w*|\bsanıl\w*"
@@ -89,7 +91,9 @@ ADDED_MARKER_FAMILIES = (
      # "en son" sıra bildirir (`en son hata dağılımları değerlendirildi`), üstünlük değil.
      r"\bdaha\b|\ben\b(?!\s+son\b)|\bkıyasla|\boranla|\bzamankinden"),
     ("tumel", "tümel nicelik",
-     r"\btüm\w*|\bbütün\w*|\bher\b|\bhepsi\w*|\btamamı\w*|\btamamen|\bdaima"),
+     # `her öğrenci gelmedi` kısmi, `hiçbir öğrenci gelmedi` tümel olumsuzluktur (Kamali ve Zeijlstra 2024);
+     # `herkes`, `hep` de tümel niceliktir.
+     r"\btüm\w*|\bbütün\w*|\bher\b|\bherkes\w*|\bhep\b|\bhepsi\w*|\btamamı\w*|\btamamen|\bdaima"),
     ("zorunluluk", "zorunluluk",
      r"\b\w+m[ae]l[ıi](?:d[ıi]r|y[ıi]z)?(?=\s*[.!?;:,]|\s*$)|\b\w+m[ae]l[ıi]d[ıi]r\w*|\bgerek\w*|\bzorunlu\w*"),
     # Olumsuz bulaşmalı birimler örtük değerlendirme ekler (Çalışkan 2014; Selvi 2022): nötr kaynağı
@@ -436,6 +440,12 @@ def self_test() -> None:
               ("Fark mevsimseldir.", "Fark büyük olasılıkla mevsimseldir.", {"cekince"}))
     drift += (("Ölçüm iki kez tekrarlandı.", "Ölçüm ne yazık ki iki kez tekrarlandı.", {"degerlendirme"}),
               ("Ekipte üç teknisyen vardı.", "Ekip üç teknisyenden ibaretti.", {"degerlendirme"}))
+    # Olumsuz uyum ve tümel nicelik: `her ... -mA` kısmi, `hiçbir ... -mA` tümel olumsuzluktur;
+    # `kimse`, `asla`, `herkes` eklemek önermeyi güçlendirir (Kamali ve Zeijlstra 2024; Görgülü 2020).
+    drift += (("Toplantıya üç kişi gelmedi.", "Toplantıya kimse gelmedi.", {"olumsuzluk"}),
+              ("Sistem bu hatayı vermedi.", "Sistem bu hatayı asla vermedi.", {"olumsuzluk"}),
+              ("Katılımcılar formu doldurdu.", "Herkes formu doldurdu.", {"tumel"}),
+              ("Ölçüm zaman zaman sapıyor.", "Ölçüm hep sapıyor.", {"tumel"}))
     for source, output, expected in drift:
         found = {item["family"] for item in added_markers(source, output)}
         if not expected <= found:
@@ -449,6 +459,9 @@ def self_test() -> None:
         ("Ölçüm `max_iter=500` ile yapılmadı mı?", "Ölçüm `max_iter=500` ile yapılmadı mı?"),
         # Yazım düzeltmesi: `herşey` zaten `her`i taşır; ayrı yazılınca tümel nicelik eklenmez.
         ("Taslakta herşey tamam değildi.", "Taslakta her şey tamam değildi."),
+        # Olumsuz uyum ögesi kaynakta zaten varsa biçim değişimi ekleme değildir.
+        ("Kimse itiraz etmedi.", "Kimse itiraz etmedi; toplantı sürdü."),
+        ("Herkes formu doldurdu.", "Formu herkes doldurdu."),
         # Kaynakta zaten bulunan olumsuz değerlendirme ekleme değildir.
         ("Proje bütçe açığıyla karşı karşıya kaldı.", "Proje bütçe açığıyla karşı karşıya kaldı; açık 2 milyon liraydı."),
         # "-dığı için" ile "nedeniyle" aynı ailededir; biri ötekine dönünce neden eklenmez.

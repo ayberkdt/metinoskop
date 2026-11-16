@@ -1,0 +1,1 @@
+Gece çalıştırılan regresyon koşusunda her test geçmedi: 7 test başarısız oldu. Hatalı testler yalnızca ödeme modülünde görüldü.

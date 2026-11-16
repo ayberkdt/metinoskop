@@ -178,6 +178,8 @@ Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tü
 | `bilinmeyen-aktor` | Belirsiz aktörü tek özneye çözmemek |
 | `aktarim-olgu-olmaz` | İki ayrı kaynağa atıflı iddiaları atıflı tutmak, ölçümü olgu olarak bırakmak |
 | `mis-dolaylilik-tuzagi` | Dolguyu silerken duyum bildiren `-mış`'ı `-dı`'ya ya da `-mıştır`'a çevirmemek, kaynağı belirtilmemiş duyuma aktör eklememek; resmî `-mıştır` kaydını yalın geçmişe sadeleştirmek |
+| `olumsuz-niceleyici-kapsami-tuzagi` | Dolguyu silerken kısmi olumsuzluğu (`her test geçmedi`) tümele (`hiçbir test`) çevirmemek, olumsuz uyum ögesi ya da tümel niceleyici eklememek, `yalnızca`yı bağlandığı ögede tutmak |
+| `olumsuzluk-ve-kapsam-korunur` | Çift olumsuzluğu, kısmi olumsuzluğu, odak parçacığını, olumlu yüklemli `ne ... ne`yi ve retorik soruyu korumak |
 | `olcumlu-vurgulayici-ozet-korunur` | Ölçüm ve testle desteklenen `belirgin biçimde`, `açıkça` vurgulayıcılarını Türkçe özette korumak; güçlü iddiayı kapsamında, olumsuz bulguyu `fark bulunmadı` düzeyinde tutmak |
 | `ozet-amac-hamlesi-korunur` | Türkçe makale özetinde `Bu çalışmada ... incelenmektedir` amaç hamlesini, geçmiş zamanlı edilgen yöntem ve bulgu cümlelerini ve öneriyi korumak; korelasyonu nedenselliğe, öneriyi zorunluluğa çevirmemek |
 | `inceleme-olumsuz-degerlendirme-korunur` | (kenar tür) Kitap incelemesindeki olumsuz değerlendirmeyi gücüyle, övgüyü ve tanıtım → değerlendirme sırasını korumak; eleştiriyi yumuşatmamak, övgüyle sarmamak, kaynakta olmayan eleştiri eklememek |
