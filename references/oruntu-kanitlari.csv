@@ -2,7 +2,7 @@ aile,seviye,dayanak,kanit,karsi_kanit,referans,not
 onem,sert,ai-arastirmasi,iym:4;iym:9,—,retorik-yapilar.md,Biçem fiili ve sıfatı ile her konuya uyan genel cümle; somut değer ya da fark yazılır.
 acimlama,bağlam,depo-kurali,—,—,retorik-yapilar.md,Kural 2 (her önermeyi bir kez söyle).
 savunma,sert,depo-kurali,—,—,retorik-yapilar.md,Ölçülmüş yöntem gerekçesi korunur (savunmaci-akademik). Haberde aktarılan `altını çizdi` bildirme fiilidir; yalnız yazarın kendi vurgusu işaretlenir (UD ölçümü).
-duyuru,sert,depo-kurali,—,aydin-iseri-2023,retorik-yapilar.md,Kabuk ad (`çalışmanın amacı`) duyuru sayılmaz; lint işaretlemiyor.
+duyuru,sert,depo-kurali,—,aydin-iseri-2023;demir-2022;kafes-2015;kan-uzun-2015,retorik-yapilar.md,Kabuk ad (`çalışmanın amacı`) ve özetteki şimdiki zamanlı amaç hamlesi (`Bu çalışmada X incelenmektedir`) duyuru sayılmaz; `bu çalışmada` için yalnız gelecek zamanlı yol haritası işaretlenir.
 sarmalayici,sert,depo-kurali,—,—,yapisal-butunluk.md,Kural 7 (yapı okura hizmet eder).
 gerilim,sert,depo-kurali,—,—,retorik-yapilar.md,Gerçek karşıtlık nicel olarak yazılır.
 aski,sert,depo-kurali,—,—,retorik-yapilar.md,İleri gönderen askı.

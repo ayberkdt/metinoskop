@@ -151,8 +151,10 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "level": "sert",
         "patterns": (
             r"bu (?:bölümde|kısımda|yazıda|makalede|belgede|notta) .*(?:ele alın|incelen|açıklan|değinil|anlatıl|sunul|tartışıl|özetlen)(?!m[ae](?:d|m|y|z))",  # olumsuz biçim (incelenmedi) sınırlılıktır, duyuru değil
-            # "Bu çalışmada ... incelendi/incelenmiştir" yapılmış işin raporudur; duyuru yalnızca şimdiki, geniş ya da gelecek zamandır.
-            r"bu çalışmada .*(?:ele alın|incelen|açıklan|değinil|anlatıl|sunul|tartışıl|özetlen)(?:m[ae]kt[ae]|[ae]c[ae]k|[ıiuü]r\b)",
+            # "Bu çalışmada ... incelendi/incelenmiştir" yapılmış işin raporudur. Şimdiki ve geniş zamanlı "Bu çalışmada X
+            # incelenmektedir" özet ve girişteki zorunlu amaç hamlesidir (Demir 2022; Kafes 2015; Kan ve Uzun 2015); duyuru
+            # yalnızca metnin sırasını bildiren gelecek zamandır ("... ele alınacak, ardından ... tartışılacaktır").
+            r"bu çalışmada .*(?:ele alın|incelen|açıklan|değinil|anlatıl|sunul|tartışıl|özetlen)[ae]c[ae]k",
             r"aşağıda .*(?:incelen|açıklan|sunul|ele alın|anlatıl)",
             r"(?:şimdi|önce|öncelikle) .*(?:bakalım|geçelim|ele alalım|inceleyelim)",
             r"öncelikle .*anlamak gerek|bunu anlamak için önce",
@@ -2644,11 +2646,14 @@ def self_test() -> None:
         raise SystemExit("Öz sınama: iyi yapılı çıktı yeni söylem bulgusu üretti")
 
     for text in ("Bu çalışmada 120 bataryanın 18 aylık kapasite verileri incelendi.",
-                 "Bu çalışmada üç veri kümesi incelenmiştir."):
-        if any(h["category"] == "duyuru" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
-            raise SystemExit(f"Öz sınama: yapılmış işin raporu duyuru sayıldı (yanlış pozitif): {text!r}")
-    for text in ("Bu çalışmada önce veri toplama süreci ele alınacaktır.",
+                 "Bu çalışmada üç veri kümesi incelenmiştir.",
+                 # Özet ve girişteki amaç hamlesi (Türkçe özetlerin hepsinde bulunur; Demir 2022).
                  "Bu çalışmada kentsel ısı adası etkisi incelenmektedir.",
+                 "Bu çalışmanın amacı öğretmen görüşlerini belirlemektir."):
+        if any(h["category"] == "duyuru" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: yapılmış işin raporu ya da amaç hamlesi duyuru sayıldı (yanlış pozitif): {text!r}")
+    for text in ("Bu çalışmada önce veri toplama süreci ele alınacaktır.",
+                 "Bu çalışmada ilk olarak kavramsal çerçeve sunulacak, ardından bulgular tartışılacaktır.",
                  "Bu bölümde yöntem incelenmiştir."):
         if not any(h["category"] == "duyuru" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
             raise SystemExit(f"Öz sınama: duyuru işaretlenmedi: {text!r}")
