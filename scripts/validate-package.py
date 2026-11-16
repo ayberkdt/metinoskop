@@ -42,6 +42,7 @@ REQUIRED_FILES = (
     "references/turkce-dil-literaturu.csv",
     "references/oruntu-kanitlari.csv",
     "scripts/literatur.py",
+    "scripts/treebank-profile.py",
     "evals/README.md",
     "evals/kesme-ve-bitisik-yazim-yanlisi.md",
     "evals/ortak-oge-ve-sayi-uyumsuzlugu.md",
@@ -1044,7 +1045,7 @@ for relative_path in SHOULD_REMAIN_CASES:
     if case_source is None or case_source.group(1).strip() != recorded.strip():
         fail(f"{relative_path}: recorded output must equal the source for a should-remain case")
 
-for relative_path in ("scripts/eval-runner.py", "scripts/eval-suite.py", "scripts/style-lint.py", "scripts/validate-package.py", "scripts/behavioral-regression.py", "scripts/literatur.py"):
+for relative_path in ("scripts/eval-runner.py", "scripts/eval-suite.py", "scripts/style-lint.py", "scripts/validate-package.py", "scripts/behavioral-regression.py", "scripts/literatur.py", "scripts/treebank-profile.py"):
     try:
         ast.parse((ROOT / relative_path).read_text(encoding="utf-8"))
     except SyntaxError as error:
@@ -1085,9 +1086,9 @@ for _row in _registry:
         continue
     if _row["seviye"] != _families[_family]:
         fail(f"references/oruntu-kanitlari.csv level differs from style-lint.py for {_family}")
-    if _row["dayanak"] not in {"literatur", "ai-arastirmasi", "tdk", "depo-kurali", "cikarim"}:
+    if _row["dayanak"] not in {"literatur", "ai-arastirmasi", "tdk", "depo-kurali", "cikarim", "derlem-olcumu"}:
         fail(f"references/oruntu-kanitlari.csv has an unknown basis for {_family}: {_row['dayanak']}")
-    if _row["dayanak"] in {"literatur", "ai-arastirmasi"} and _row["kanit"] == "—":
+    if _row["dayanak"] in {"literatur", "ai-arastirmasi", "derlem-olcumu"} and _row["kanit"] == "—":
         fail(f"references/oruntu-kanitlari.csv: {_family} claims evidence but cites none")
     if _row["dayanak"] == "cikarim" and _row["seviye"] == "sert":
         fail(f"references/oruntu-kanitlari.csv: inference-based family {_family} must not be hard")

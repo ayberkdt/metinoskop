@@ -127,7 +127,8 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"dikkat edilmesi gereken",
             r"vurgulamak (?:gerek|isterim|lazım|istiyorum)",
             r"belirtmek (?:gerek|isterim|istiyorum)",
-            r"altını çiz",
+            # Yazarın kendi vurgusu; aktarılan "Bakan ... altını çizdi" haberde bildirme fiilidir (UD BOUN/IMST ölçümü).
+            r"altını çiz(?:mek (?:gerek|ister|isti|lazım)|mekte fayda|meli|elim|iyorum|eriz)",
             r"tesadüfi değil|tesadüf değil|keyfî değil|keyfi değil|rastgele değil",
             r"bilinçli (?:bir )?(?:seçim|tercih|karar)",
             r"eksiklik olarak (?:görül|değerlendiril)",
@@ -431,7 +432,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "patterns": (
             r"\b(?:merak|endişe) etmeyin\b|\bendişelenmeyin\b|\bkorkmayın\b",
             r"\b(?:sizin|siz(?:ler)?) için .{0,40}hazırladık",
-            r"\btanışın\b|\bsizi\b.{0,30}\bbekliyor\w*|\bkaçırmayın\b|\bkarşınızda(?:yız)?\b",
+            r"\btanışın\b|\bsizi\b.{0,30}\bbekliyor\w*|\bkaçırmayın\b|\bkarşınızdayız\b|\bişte karşınızda\b|^karşınızda\b(?:[^.?]*!|:)",
             r"\b(?:sayıda|sayımızda|bültende|bültenimizde|yazıda|yazımızda) neler (?:var|bulacaksınız|göreceksiniz)",
             r"^hazır mısınız\b|\bgelin,? (?:hep )?birlikte\b|\bfarkı (?:hissedin|görün|yaşayın|keşfedin)\b",
             r"\b(?:yepyeni|yeni) bir (?:dönem|çağ|sayfa)(?:in)? (?:başlıyor|açılıyor|aç)|bir dönemin kapılarını",
@@ -443,7 +444,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"bu (?:yazıda|yazımızda|bölümde|rehberde|makalede|belgede|yazının devamında) .*(?:öğreneceksiniz|göreceğiz|göreceksiniz|bulacaksınız|keşfedeceğiz|keşfedeceksiniz)",
             r"\bşunları (?:göreceğiz|öğreneceğiz|öğreneceksiniz|ele alacağız|inceleyeceğiz)",
             r"^aşağıda .*(?:anlatıyoruz|açıklıyoruz|sıralıyoruz|bulabilirsiniz|bulacaksınız)",
-            r"(?:büyük|güzel|harika|heyecan verici) (?:bir )?haber(?:imiz)? var|\bmüjde\b",
+            r"(?:büyük|güzel|harika|heyecan verici) (?:bir )?haber(?:imiz)? var|^müjde\b|\bmüjde!|\bmüjdemiz\b",
             # Ürünü sunan duyuru: ne yaptığını değil var olduğunu bildirir ("çözümümüzü hazırladık").
             r"\bçözüm\w* (?:hazırladık|sunuyoruz|geliştirdik)\b|\b(?:sizlere|size) sun(?:uyoruz|maktan)",
         ),
@@ -499,7 +500,8 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "label": "Sahip olmak kalkısı",
         "level": "bağlam",
         "patterns": (
-            r"\bsahip(?!lik|len|siz)",
+            # Ad olarak `sahipleri` (mal sahipleri) ve deyim `sahip çıkmak` kalkı değildir (UD BOUN haber örnekleri).
+            r"\bsahip(?!li[kğ]|len|siz|ler| çık)",
         ),
     },
     {
@@ -657,6 +659,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
 # Yazım aileleri kod, tırnak içi alıntı ve `>` alıntı bloğunda çalışmaz: alıntı ve kod kaynağın yazımıyla kalır.
 YAZIM_KEYS = frozenset({"yazim", "yazim_adayi"})
 YAZIM_MASK_RE = re.compile(r"`[^`]*`|“[^”]*”|«[^»]*»|\"[^\"]*\"")
+DIALOGUE_RE = re.compile(r"^\s*[–—]\s")
 
 COMPILED: dict[str, tuple[re.Pattern[str], ...]] = {
     str(category["key"]): tuple(re.compile(p) for p in category["patterns"])  # type: ignore[union-attr]
@@ -937,10 +940,17 @@ def find_hits(paragraphs: list[Paragraph]) -> list[dict[str, object]]:
     for paragraph in paragraphs:
         for sentence in paragraph.sentences:
             masked = YAZIM_MASK_RE.sub(" ", sentence.lowered)
+            # Alıntı içindeki klişe yazarın cümlesi değildir (turkce-oruntuler.md › Yanlış pozitifler); diyalog
+            # çizgisiyle (`–`, `—`; `-` Markdown listesidir) açılan konuşma da öyle. Sert aileler alıntıyı ve diyalog satırını denetlemez; yazım
+            # aileleri diyalogu denetler, `>` bloğunu ve alıntıyı denetlemez.
+            dialogue = bool(DIALOGUE_RE.match(sentence.text))
             for key, patterns in COMPILED.items():
                 if key in YAZIM_KEYS and paragraph.quote:
                     continue
-                target = masked if key in YAZIM_KEYS else sentence.lowered
+                hard_quoted = LEVELS[key] == "sert" and key not in YAZIM_KEYS
+                if hard_quoted and dialogue:
+                    continue
+                target = masked if key in YAZIM_KEYS or hard_quoted else sentence.lowered
                 for pattern in patterns:
                     match = pattern.search(target)
                     if match:
@@ -2323,6 +2333,27 @@ def self_test() -> None:
                  "Üç sensörler arızalandı.", "Birkaç örnekler yeniden ölçüldü."):
         if not any(h["category"] == "sayi_uyumu" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
             raise SystemExit(f"Öz sınama: sayı uyumu adayı işaretlenmedi: {text!r}")
+    # UD Türkçe ağaç bankalarındaki (BOUN, IMST) yayımlanmış cümlelerde görülen kullanım türleri; cümleler bu
+    # türlerden yeniden yazıldı, derlemden alınmadı (scripts/treebank-profile.py).
+    for text in ("Hele karşınızda bir arkadaşınız varsa durum zorlaşır.",
+                 "Karşınızda düzenli bir ordu yok, bu yüzden saldıramazsınız.",
+                 "Bakan, mükelleflere ocakta müjde verebileceklerini söyledi.",
+                 "Rapor, personelin kusurlu olmadığının altını çiziyor.",
+                 "Başkan, bölgedeki kredi notunun düşebileceğinin altını çizdi.",
+                 'Öğretmen sınıfa "Haydi arkadaşlar, başlayalım" dedi.',
+                 "– Peki bu çadırı nereye kuracağız?",
+                 "– Elbette gelirim, merak etmeyin."):
+        stray = [h for h in analyse(text)["hits"] if h["level"] == "sert"]  # type: ignore[union-attr]
+        if stray:
+            raise SystemExit(f"Öz sınama: gerçek anlam, aktarılan söz, alıntı ya da diyalog sert işaret üretti (yanlış pozitif): {text!r} -> {stray}")
+    for key, text in (("anons", "Karşınızda yeni sürümümüz!"), ("anons", "Müjde! Kampanya başladı."),
+                      ("anons", "İşte karşınızda yeni panel."), ("savunma", "Burada altını çizmek isterim ki yöntem yenidir."),
+                      ("savunma", "Şunun altını çizmeliyiz: ölçüm tektir."), ("duyuru", "Peki bu ne anlama geliyor?")):
+        if key not in analyse(text)["per_category"]:  # type: ignore[operator]
+            raise SystemExit(f"Öz sınama: daraltılan örüntü hedef kullanımı kaçırdı: {key} {text!r}")
+    for text in ("Bankalar eski sahiplerine iade edildi.", "Ekip kendi koduna sahip çıktı.", "Kent turnuvaya ev sahipliği yaptı."):
+        if "sahip" in analyse(text)["per_category"]:  # type: ignore[operator]
+            raise SystemExit(f"Öz sınama: ad ya da deyim olan `sahip` kalkı adayı sayıldı (yanlış pozitif): {text!r}")
     for text in ("İşte bu yüzden ölçüm tekrarlandı.", "Şey, ikinci sensör de arızalıydı."):
         if not any(h["category"] == "sizinti" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
             raise SystemExit(f"Öz sınama: konuşma parçacığı sızıntı adayı sayılmadı: {text!r}")

@@ -34,6 +34,7 @@ Veritabanı kural kitabı değildir. Bir bulgu Metinoskop kuralına ancak ilgili
 - [Metin üretimi, çeviri ve belirteçleme](#metin-üretimi-çeviri-ve-belirteçleme)
 - [Haber dili, bilim iletişimi ve kurumsal dil](#haber-dili-bilim-iletişimi-ve-kurumsal-dil)
 - [Anlatım bozuklukları ve noktalama hataları](#anlatım-bozuklukları-ve-noktalama-hataları)
+- [Depo ölçümü: özgün ve çevrilmiş ağaç bankaları](#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)
 - [Örüntü kararları](#örüntü-kararları)
 - [Dil modelleri ve yapay zekâ Türkçesi](#dil-modelleri-ve-yapay-zekâ-türkçesi)
 - [Aday kurallar](#aday-kurallar)
@@ -44,7 +45,7 @@ Veritabanı kural kitabı değildir. Bir bulgu Metinoskop kuralına ancak ilgili
 İlk tarama 2026-11-08'de üç kümede yapıldı: temel dil bilgisi kaynakları ve sözdizimi; derlem, sıklık ve akademik Türkçe; çeviri ve dil modeli çalışmaları. İkinci tarama 2026-11-16'da örüntülere yönelik üç kümede yapıldı: biçim-sözdizimi (belirtme hâli, `bir`, adlaştırma, `-DIr`, `-mAktA`, hafif fiil, edilgen, sayı uyumu); metin, kayıt ve gönderge; yabancı etkili yapılar ve kalkı. İkinci turda her kayıt için bulgunun yanında örüntüye etkisi de soruldu; bu etki aşağıda ilgili bölümde ve [Örüntü kararları](#örüntü-kararları) tablosunda durur. İkinci turda web arama kotası doldu; bazı izler sürdürülemedi. Üçüncü tur 2026-11-16'da ses ve biçim bilgisi (ünsüz değişimi, ünlü uyumu istisnaları, vurgu, ek sırası, biçim çözümleyicileri), sözdizimi ve edimbilim (`de/da`, `ise`, eksilti, ilgi yan cümlesi işlemleme, söylem belirleyicileri, noktalama, kiplik, kibarlık) ve değerlendirmede kullanılabilecek hesaplamalı kaynaklar üzerine yapıldı. Dördüncü tur söz varlığı ve sözcük yapımı (yapım eklerinin türetkenliği, ikileme, anlamsal bulaşma, eş anlamlılar, terim kabulü), resmî dil, mevzuat, tez kılavuzları ve sade dil ile dil devrimi, tarihsel derlemler, metin üretimi, çeviri ve belirteçleme değerlendirmesi üzerine yapıldı. Beşinci tur dört kümede yapıldı: bilim iletişimi, haber dili ve yapay zekâ Türkçesi; anlatım bozuklukları, gönderge çözümleme ve noktalama; İngilizce–Türkçe karşılaştırmalı çeviri çalışmaları; kanıtsallık. Kayıtların hepsi web aramasının döndürdüğü yayıncı, katalog, depo ve kaynakça kayıtlarıyla karşılaştırıldı. Bu oturumun ağ ayarı `dergipark.org.tr`, `aclanthology.org`, `arxiv.org`, `tdk.gov.tr` ve birkaç yayıncı sitesinin doğrudan okunmasına izin vermedi. Bu yüzden:
 
 - **Tam metin okunmadı.** Bulgular özetlerden, yayıncı tanıtımlarından ve ikincil kaynakların aktarımından gelir; hangisi olduğu her kaydın `dogrulama` alanında yazılıdır.
-- **`künye+içerik`** (240 kayıt): künye ve bulgu görülen bir kaynakla doğrulandı. **`künye`** (50 kayıt): yalnızca künye doğrulandı; bulgu alanı boş bırakıldı ("Künye doğrulandı; içerik özetlenmedi."). `scripts/literatur.py --check` bu ayrımı denetler.
+- **`künye+içerik`** (242 kayıt): künye ve bulgu görülen bir kaynakla doğrulandı. **`künye`** (50 kayıt): yalnızca künye doğrulandı; bulgu alanı boş bırakıldı ("Künye doğrulandı; içerik özetlenmedi."). `scripts/literatur.py --check` bu ayrımı denetler.
 - **Sayısal bulgular özetteki değerdir.** Tablo düzeyinde değer, model başına yüzde ve formül katsayısı alınmadı.
 - İngilizce derlemle yapılmış çalışmalar (Türk yazarların İngilizce makaleleri) bulgu alanında belirtilir; Türkçe yazıma aktarımı çıkarımdır.
 
@@ -278,9 +279,32 @@ Büyükikiz (2009) sekizinci sınıf öğrencilerinin 1360 cümlesinde 311 anlat
 
 **Metinoskop'a etkisi.** Örneklemlerin hepsi öğrencidir; sıklıklar profesyonel metne norm diye aktarılmaz. Yine de üç karar destek bulur: ortak öge ve sözcük seçimi onarımı yazım denetiminden ayrı bir aile olarak kalır (`yazim-ve-dil-bilgisi.md` › Ortak öge uyumu, `sozcuk-birlesimleri.md`); kesme ve büyük harf `yazim` ailesinin odağıdır; virgül için yetişkin metninden derlem normu olmadığından virgül ekleme ya da silme sert denetime girmez. Mete'nin bulgusu üretimden sonra ayrı bir denetim geçişini, Göçer'inki paragraf ve gönderge denetiminin cümle düzeltmesinden ayrı yapılmasını destekler.
 
+## Depo ölçümü: özgün ve çevrilmiş ağaç bankaları
+
+Kayıtlar: `turk-2022-boun`, `sulubacak-2016-ud`, `ud-turkish-penn`, `ud-turkish-pud`, `yildiz-2014-paralel-agac`.
+
+Bu bölüm literatür değil, deponun kendi ölçümüdür; hakemli değildir. Çevrilmiş Türkçeyi özgün Türkçeyle karşılaştıran çalışma beş turda bulunamadığı için `style-lint.py` aileleri Universal Dependencies Türkçe ağaç bankalarında sayıldı (2026-11-16, `scripts/treebank-profile.py`). Özgün kümeler: BOUN (9.761 cümle, 103.920 sözcük; biyografi, deneme, öğretici metin, haber, popüler kültür) ve IMST (5.635 cümle, 46.909 sözcük). Çeviri kümeleri: Penn (16.395 cümle, 163.502 sözcük; İngilizce Wall Street Journal cümlelerinin çevirisi, en çok 15 sözcük) ve PUD (1.000 cümle, 15.106 sözcük; haber ve Vikipedi, profesyonel çeviri). Her cümle ayrı metin olarak denetlendi; paragraf ve belge ölçüleri raporlanmadı. Oranlar 10.000 sözcüktedir; p değeri iki küme arasındaki sayının sözcük payına göre beklenenden sapmasını sınayan kesin binom testidir.
+
+| Aile | BOUN haber | BOUN tümü | IMST | Penn | PUD | Karar |
+|---|---|---|---|---|---|---|
+| `sahip` | 3,0 | 4,2 | 1,7 | 12,9 | 19,9 | Çeviride 3–12 kat; haber eşlenince 4,3 kat (p < 10⁻⁶); bağlamsal kalır |
+| varlık yüklemi | 0 | 0,8 | 0 | 3,2 | 6,0 | Yalnız çeviride belirgin (p < 0,001); bağlamsal kalır |
+| `tarafından` | 11,3 | 7,0 | 3,2 | 18,4 | 21,2 | Çeviride sık, haberde fark küçük (1,6 kat, p = 0,009); kurumsal eyleyen meşru |
+| çekince (`kiplik`) | 9,4 | 11,5 | 18,8 | 26,4 | 19,2 | Çeviride 1,4–2,8 kat, ama kurguda da yüksek; tek başına çeviri işareti değil |
+| pekiştirici | 2,3 | 2,8 | 1,5 | 5,0 | 6,0 | Çeviride yaklaşık 2 kat (p 0,0007–0,06) |
+| kalkı listesi | 0,4 | 0,3 | 0,2 | 1,2 | 2,6 | Sayı az; yön çeviride, haber eşlenince anlamlı değil |
+| ad + hafif fiil | 9,4 | 3,9 | 3,6 | 2,7 | 5,3 | Özgün haberde çeviriden sık (p < 10⁻⁵); kayıt işareti |
+| `bir` (100 sözcükte) | 1,8 | 2,6 | 2,7 | 2,5 | 2,9 | Haberde çeviri 1,4 kat; türler birlikte alınınca fark yok |
+
+En çok 15 sözcüklü cümlelerle uzunluk eşlendiğinde `sahip` (BOUN haber 1,0, Penn 12,6), çekince ve `bir` farkı sürer; `tarafından` ve varlık yüklemi farkı haber alt kümesinde anlamlılığını yitirir (az sayı). Sınırlılıklar: tür tam eşlenmedi (Penn ekonomi haberi, BOUN haberi karma); Penn çevirisi ağaç bankası kurmak için yapıldı ve işaretleyiciler özgün cümleyi gördü (`ud-turkish-penn`; Yıldız ve ark. 2014'te ağaçlar İngilizce yapının yeniden sıralanmasıyla kurulur), yayımlanmış çeviriden daha kaynak odaklı olabilir; çok sayıda aile sınandığı için tek tek küçük p değerleri temkinle okunmalıdır; lint örüntüsü ailenin bütün kullanımlarını yakalamaz.
+
+**Yanlış pozitif ölçümü.** Özgün kümelerde sert ailelerin isabetleri tek tek okundu. `yazim` isabetlerinin hepsi gerçek TDK yanlışıydı (`herşey`, `birşey`, `farket`, `Türkçe'de`, `kayıt etti`, `her hangi`). Örüntü hatası olan isabetler giderildi: gerçek anlamdaki `karşınızda`, haberde aktarılan `müjde ver-` ve `altını çizdi`, alıntı içindeki söz, diyalog çizgisiyle açılan konuşma, ad olan `sahipleri`, deyim `sahip çıkmak`, `ev sahipliği`. Kalan sert isabetler örüntünün hedeflediği kullanımdır ve insan yazısında da görülür: denemede `Peki ...?` ile açılan retorik soru, kurgudaki `Hadi`, `Sonuç şudur:` etiketi, `önem arz etmek`. Bunlar düzenlemenin eklemediği sürece sorun sayılmaz; `--fail-on-introduced-hard` yalnızca çıktıya yeni giren sert kalıp için hata verir.
+
+**Metinoskop'a etkisi.** `sahip` ve varlık ailesinin dayanağı çıkarımdan derlem ölçümüne geçti (`oruntu-kanitlari.csv`, `derlem-olcumu`); aileler bağlamsal kalır, çünkü özgün Türkçe de bu yapıları kullanır ve fark yoğunluk farkıdır. Ad + hafif fiil çeviri kokusu sayılmaz. `Bir` yoğunluğu türe göre okunur. Veri depoya kopyalanmaz: BOUN, Penn ve PUD CC BY-SA, IMST CC BY-NC-SA lisanslıdır; betik kullanıcının indirdiği dosyayı okur.
+
 ## Örüntü kararları
 
-`style-lint.py`'deki her örüntü ailesinin dayanağı [`oruntu-kanitlari.csv`](oruntu-kanitlari.csv) dosyasındadır: aile, seviye, dayanak türü (`literatur`, `ai-arastirmasi`, `tdk`, `depo-kurali`, `cikarim`), destekleyen kanıt, karşı kanıt (işaretlenmemesi gereken kullanımı gösteren çalışma) ve ilgili referans. 38 ailenin dağılımı: literatür 6, ölçülmüş AI araştırması 7, TDK 2, depo kuralı 20, çıkarım 3. Doğrulayıcı her ailenin bir kez ve lint ile aynı seviyede anıldığını, atıf yapılan kimliklerin bu veritabanında ya da `insan-ve-yapay-metin.md` tablosunda (`iym:N`) bulunduğunu ve çıkarıma dayanan ailenin sert olmadığını denetler. Aşağıdaki tablo bu turlarda kanıtla değişen kararları özetler.
+`style-lint.py`'deki her örüntü ailesinin dayanağı [`oruntu-kanitlari.csv`](oruntu-kanitlari.csv) dosyasındadır: aile, seviye, dayanak türü (`literatur`, `ai-arastirmasi`, `tdk`, `derlem-olcumu`, `depo-kurali`, `cikarim`), destekleyen kanıt, karşı kanıt (işaretlenmemesi gereken kullanımı gösteren çalışma) ve ilgili referans. 38 ailenin dağılımı: literatür 6, ölçülmüş AI araştırması 7, TDK 2, deponun derlem ölçümü 2, depo kuralı 20, çıkarım 1. Doğrulayıcı her ailenin bir kez ve lint ile aynı seviyede anıldığını, atıf yapılan kimliklerin bu veritabanında ya da `insan-ve-yapay-metin.md` tablosunda (`iym:N`) bulunduğunu ve çıkarıma dayanan ailenin sert olmadığını denetler. Aşağıdaki tablo bu turlarda kanıtla değişen kararları özetler.
 
 | Örüntü | Kanıt | Karar | Nerede |
 |---|---|---|---|
@@ -293,6 +317,7 @@ Büyükikiz (2009) sekizinci sınıf öğrencilerinin 1360 cümlesinde 311 anlat
 | `-DIr`, `-mAktA` | `kerimoglu-aksu-2015`, `ozdemir-2023-dir`, `akaslan-2011` | Tanım `-DIr`'ı kalır; `-mAktAdIr` yalnız zincirde incelenir | `zamansal-ankraj-ve-rapor-kipi.md` |
 | Ad + `et-` | `aksehirli-2013`, `ucar-2010` | İşaretlenmez; yalnız listelenmiş birleşim | mevcut `hafif_fiil` ve `sozcuksel_kalki` |
 | `ki`, `sahip` | `sari-2014`, `dogan-2020`, `yarar-2020` | Tek kullanım işaret değil; İngilizce sırayı izleyen ve özellik bildiren kullanım aday | `turkce-ritim-ve-ceviri-kokusu.md` |
+| `sahip`, varlık yüklemi, ad + hafif fiil | `ud-turkish-penn`, `ud-turkish-pud`, `turk-2022-boun`, `sulubacak-2016-ud` | İlk ikisi çeviride 3–12 kat sık, bağlamsal kalır; hafif fiil özgün haberde sık, çeviri kokusu sayılmaz | [Depo ölçümü](#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları) |
 | Kabuk ad (`çalışmanın amacı`) | `aydin-iseri-2023` | İşaretlenmez | lint davranışı denendi, değişiklik yok |
 | Cümle uzunluğu eşiği | `ari-2025` | 25 sözcük inceleme işaretidir, "zaten uzun" değildir | `netlik-omurgasi.md` |
 | `bu` ↔ `o` | `balpinar-2019` | Birbirine çevrilmez | `akicilik.md` |
@@ -326,13 +351,12 @@ Literatürden çıkan ama henüz Metinoskop kuralı olmayan öneriler. Her biri 
 | `-DIr` eklenmesini ya da silinmesini kanıt statüsü değişikliği olarak denetle | `erguvanli-taylan-2018`, `sansa-tura-1986`, `ozdemir-2023-dir` | dönüşüm: tanım cümlesinde `-DIr` silen düzenleme; korunur: `-mAktAdIr` sadeleştirmesi | kaynaklar `-DIr`'ın anlamında ayrışıyor (kesinlik ya da varsayım); `-mAktAdIr` sadeleştirmesini yanlış alarm sayma |
 | Cansız öznenin yüklemden sonra geldiği devrik cümlede sayı uyumu | `uygun-felser-2023` | dönüşüm ve korunur vakası | konuma bağlı uyum yargısı belirsiz |
 | Ek ve ünsüz kurallarını biçim çözümleyicisiyle doğrula | `coltekin-2010`, `oflazer-1996`, `sak-2011` | dış bağımlılık kararı; listede olmayan biçimlerde yanlış pozitif ölçümü | bağımlılıksız paket ilkesini bozmak; çözümleyici belirsizliği |
-| Lint yanlış pozitiflerini UD ağaç bankalarında ölç (Kenet ↔ Tourism, PUD) | `turk-2019`, `kuzgun-2021`, `cesur-2024-atis`, `yildiz-2014-paralel-agac` | ölçüm betiği; lisans denetimi | CC BY-NC-SA ve CC BY-SA lisanslı veriyi depoya kopyalamak; Penn kökenli Türkçe ağaç bankası çeviri Türkçesidir, özgün başvuru sayılmaz |
 
 ## Boşluklar ve doğrulanamayanlar
 
 **Bulunamayan çalışma türleri.**
 
-- Türkçe çeviri metni özgün Türkçeyle derlemde karşılaştıran (açıklaştırma, sadeleştirme, girişim) hakemli bir çalışma. Beşinci tur da bulamadı. Yalnızca künyesi görülen ilgili kayıt: Yazıcı, "Simplification as a Translation Universal" (13. Dil, Yazın ve Halkbilim Sempozyumu, 2013, 1131–1138). Önceki turda yazar ve yılı doğrulanamayan İstanbul Üniversitesi tezi `pekcoskun-guner-2018-tez` olarak girdi.
+- Türkçe çeviri metni özgün Türkçeyle derlemde karşılaştıran (açıklaştırma, sadeleştirme, girişim) hakemli bir çalışma. Deponun kendi ölçümü için bkz. [Depo ölçümü](#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları). Beşinci tur da bulamadı. Yalnızca künyesi görülen ilgili kayıt: Yazıcı, "Simplification as a Translation Universal" (13. Dil, Yazın ve Halkbilim Sempozyumu, 2013, 1131–1138). Önceki turda yazar ve yılı doğrulanamayan İstanbul Üniversitesi tezi `pekcoskun-guner-2018-tez` olarak girdi.
 - `sahip olmak` kalkısı üzerine akademik çalışma.
 - İngilizce→Türkçe makine çevirisinde MQM türü sistemli hata sayımı.
 

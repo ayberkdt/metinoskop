@@ -58,6 +58,8 @@ Kokuyu bir işlev testi olarak kullan: "Bu cümleyi İngilizceye geri çevirsem 
 
 Kokunun karşıtı "İngilizcede de olan her yapıyı silmek" değildir. Karşıtı, Türkçe yapıyı bağımsız olarak doğal, kesin ve yararlı olduğu için seçmektir.
 
+**Ölçülmüş farklar.** Özgün Türkçe ağaç bankalarıyla (BOUN, IMST) İngilizceden çevrilmiş olanlar (Penn, PUD) karşılaştırıldığında `sahip`, varlık yüklemleri (`bulunmaktadır`, `içermektedir`), `tarafından` ve çekince işaretleri çeviride belirgin biçimde sıktır (çekince kurguda da yüksektir); haber türü eşlenince de fark sürer (`sahip` 4,3 kat, varlık yüklemi yalnız çeviride). Ad + `et-` hafif fiili ise özgün haber metninde çeviriden sıktır; çeviri değil kayıt işaretidir. `Bir` yoğunluğu türe bağlıdır: haberde çeviri fazlası görülür, deneme ve kurguda görülmez. Fark sıklık farkıdır, yasak değildir: özgün metin de bu yapıları kullanır ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)).
+
 ## İlişkiyi yeniden kur, sözcükleri değil
 
 Kural: Türkçe cümle İngilizceden çevrilmiş görünüyorsa sözcüklerini bir kez daha çevirme. Cümlenin taşıdığı anlam ilişkisini bul ve o ilişkiyi Türkçenin tercih ettiği araçlarla yeniden kur.
@@ -307,7 +309,7 @@ Aynı cümlede üç veya daha çok `bir`, art arda `bir ... bir ... bir` dizisi 
 - **Sıfat + `bir` + ad.** `Önemli bir bulgu` doğal sıradır (Tat 2011); `bir önemli bulgu` anlam farkı taşıyabilir, düzeltilmez.
 - **Yalın nesne + eylem.** `Veri topladık`, `anket uyguladık` gibi yalın nesneli birleşimler Türkçenin olağan yapısıdır (Öztürk 2005); bunlara `bir` ya da belirtme eki eklenmez. Belirtme hâli de serbest değildir: `-(y)I` nesnenin belirliliğini kodlar (Enç 1991; von Heusinger ve Kornfilt 2005), eklemek ya da silmek önermeyi değiştirir.
 
-Çeviri, öğrenici ya da makine Türkçesinde `bir` fazlasını derlemle ölçen bir çalışma bulunamadı; yoğunluk eşiği çıkarımdır ([literatür](turkce-dil-literaturu.md#belirtme-hâli-belirlilik-ve-bir)).
+Çeviri, öğrenici ya da makine Türkçesinde `bir` fazlasını derlemle ölçen hakemli bir çalışma bulunamadı ([literatür](turkce-dil-literaturu.md#belirtme-hâli-belirlilik-ve-bir)). Deponun ağaç bankası ölçümünde haber metninde `bir` çeviride 1,4 kat sıktır (100 sözcükte 1,8'e karşı 2,5), bütün türler birlikte alındığında fark yoktur (BOUN 2,6, IMST 2,7, çeviri 2,5–2,9; denemede 3,4); yoğunluk eşiği bu yüzden türden bağımsız konmaz.
 
 ## `Sahip olmak` ve iyelik
 
@@ -321,7 +323,7 @@ Aynı cümlede üç veya daha çok `bir`, art arda `bir ... bir ... bir` dizisi 
 | Cihaz IP67 koruma sınıfına sahiptir. | Cihazın koruma sınıfı IP67'dir. | teknik nitelik |
 | Bu yaklaşım, sınırlamalara sahiptir. | Bu yaklaşımın sınırlamaları vardır. | soyut nitelik; sınırlamalar kaynakta adlandırılmalıdır |
 
-Resmî türde `var` kaba düşüyorsa iyelik + `-dır` biçimi ("maliyeti yüksektir") ya da `bulunur` kullanılır. Gerçek `sahip olmak` kullanımını silme: "Şirket üç fabrikaya sahiptir" hukuki mülkiyet bildiriyorsa yerinde durur; "Kullanıcı yönetici yetkisine sahip olmalıdır" yetkilendirme dilinde doğaldır. `Sahip` ve `ait` 1950–2016 hükümet programlarında iyelik türü varoluş tümcesinin yerleşik yüklemleridir; resmî dilde en sık varoluş yüklemi `var` + `-DIr`dır (Yarar 2020). Aday olan, ölçülebilir özniteliği ya da yapıyı `sahip` ile kuran kullanımdır (yukarıdaki tablo); mülkiyet ve yetki değildir.
+Resmî türde `var` kaba düşüyorsa iyelik + `-dır` biçimi ("maliyeti yüksektir") ya da `bulunur` kullanılır. Gerçek `sahip olmak` kullanımını silme: "Şirket üç fabrikaya sahiptir" hukuki mülkiyet bildiriyorsa yerinde durur; "Kullanıcı yönetici yetkisine sahip olmalıdır" yetkilendirme dilinde doğaldır. `Sahip` ve `ait` 1950–2016 hükümet programlarında iyelik türü varoluş tümcesinin yerleşik yüklemleridir; resmî dilde en sık varoluş yüklemi `var` + `-DIr`dır (Yarar 2020). Aday olan, ölçülebilir özniteliği ya da yapıyı `sahip` ile kuran kullanımdır (yukarıdaki tablo); mülkiyet ve yetki değildir. Ağaç bankası ölçümünde `-e sahip` özgün haber Türkçesinde 10.000 sözcükte 3, İngilizceden çevrilmiş haberde 13–20 kez geçer; özgün metindeki kullanımların çoğu da özellik iyeliğidir (`hünere sahip`, `yapıya sahip`), dolayısıyla tek kullanım değil yoğunluk işarettir.
 
 ## `Var`, `yok` ve varlık kalıpları
 

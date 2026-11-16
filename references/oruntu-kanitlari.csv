@@ -1,7 +1,7 @@
 aile,seviye,dayanak,kanit,karsi_kanit,referans,not
 onem,sert,ai-arastirmasi,iym:4;iym:9,—,retorik-yapilar.md,Biçem fiili ve sıfatı ile her konuya uyan genel cümle; somut değer ya da fark yazılır.
 acimlama,bağlam,depo-kurali,—,—,retorik-yapilar.md,Kural 2 (her önermeyi bir kez söyle).
-savunma,sert,depo-kurali,—,—,retorik-yapilar.md,Ölçülmüş yöntem gerekçesi korunur (savunmaci-akademik).
+savunma,sert,depo-kurali,—,—,retorik-yapilar.md,Ölçülmüş yöntem gerekçesi korunur (savunmaci-akademik). Haberde aktarılan `altını çizdi` bildirme fiilidir; yalnız yazarın kendi vurgusu işaretlenir (UD ölçümü).
 duyuru,sert,depo-kurali,—,aydin-iseri-2023,retorik-yapilar.md,Kabuk ad (`çalışmanın amacı`) duyuru sayılmaz; lint işaretlemiyor.
 sarmalayici,sert,depo-kurali,—,—,yapisal-butunluk.md,Kural 7 (yapı okura hizmet eder).
 gerilim,sert,depo-kurali,—,—,retorik-yapilar.md,Gerçek karşıtlık nicel olarak yazılır.
@@ -19,21 +19,21 @@ sohbet,sert,depo-kurali,—,—,okura-dogrudan-metin.md,Sohbet botu kalıntısı
 sizinti,bağlam,literatur,yilmaz-2004,ruhi-2009-yani;guclu-2025,okura-dogrudan-metin.md,Cümle başı `işte` ve söylem `şey`i; açımlayıcı `yani` ve biz ekleri sızıntı değildir.
 kuyruk,bağlam,ai-arastirmasi,iym:1;kocagul-2026,johanson-1995,turkce-ritim-ve-ceviri-kokusu.md,Yüklemden önceki zarf-fiil doğaldır.
 etiket,sert,depo-kurali,—,—,retorik-yapilar.md,Kör A/B ile ölçüldü (evals/README.md › Etiket ve anons); alan etiketi korunur.
-anons,sert,depo-kurali,—,—,retorik-yapilar.md,Kör A/B ile ölçüldü (evals/README.md › Etiket ve anons).
+anons,sert,depo-kurali,—,—,retorik-yapilar.md,"Kör A/B ile ölçüldü (evals/README.md › Etiket ve anons). UD ölçümüyle daraltıldı: gerçek anlamdaki `karşınızda`, aktarılan `müjde ver-`, alıntı ve diyalog satırı işaretlenmez."
 reklam,bağlam,depo-kurali,—,—,kenar-turler.md,Tanıtım türünde ikna amacı ayrıca değerlendirilir.
 mecaz,bağlam,depo-kurali,—,—,turkce-oruntuler.md,Yazara özgü imge korunur (ozgun-imge-korunur).
 sus,bağlam,depo-kurali,—,—,turkce-oruntuler.md,Süs emojisi.
 klise_gecis,bağlam,ai-arastirmasi,iym:7;kocagul-2026,—,turkce-oruntuler.md,Cümle başı söylem belirleyicisi ve şablon.
-sahip,bağlam,cikarim,—,yarar-2020,turkce-ritim-ve-ceviri-kokusu.md,Mülkiyet ve yetki `sahip`i resmî Türkçede yerleşiktir; derlemle ölçülmüş çeviri dayanağı bulunamadı.
-varlik,bağlam,cikarim,—,yarar-2020,turkce-ritim-ve-ceviri-kokusu.md,Resmî dilde en sık varoluş yüklemi `var` + `-DIr`dır.
+sahip,bağlam,derlem-olcumu,turk-2022-boun;sulubacak-2016-ud;ud-turkish-penn;ud-turkish-pud,yarar-2020,turkce-ritim-ve-ceviri-kokusu.md,"UD ölçümü (treebank-profile.py): özgün BOUN haberde 3,0, çevrilmiş Penn'de 12,9, PUD'da 19,9 / 10.000 sözcük (p < 0,001); mülkiyet ve yetki `sahip`i yerleşiktir, ad `sahipleri` ve `sahip çıkmak` sayılmaz."
+varlik,bağlam,derlem-olcumu,turk-2022-boun;sulubacak-2016-ud;ud-turkish-penn;ud-turkish-pud,yarar-2020,turkce-ritim-ve-ceviri-kokusu.md,"UD ölçümü: özgün BOUN 0,8, IMST 0, Penn 3,2, PUD 6,0 / 10.000 sözcük; resmî dilde en sık varoluş yüklemi `var` + `-DIr`dır."
 kalki,bağlam,cikarim,—,yalap-bicer-2022;zulfikar-2023,sozcuk-birlesimleri.md,Yerleşik öyküntü terim ve ad + `etmek` korunur.
 anlam_kalkisi,sert,depo-kurali,—,—,sozcuk-birlesimleri.md,Anlam hatası; doğru kullanım anlam-kalkisi-korunur'da.
 anlam_kaymasi_adayi,bağlam,depo-kurali,—,—,sozcuk-birlesimleri.md,Anlam kayması adayı; hakem karar verir.
-kiplik,bağlam,literatur,fidan-2002;doyuran-2009;erguvanli-taylan-2018,iym:5,kanit-ve-kesinlik.md,Ölçüm ailesi; çekince silinmez.
+kiplik,bağlam,literatur,fidan-2002;doyuran-2009;erguvanli-taylan-2018;turk-2022-boun;sulubacak-2016-ud;ud-turkish-penn;ud-turkish-pud,iym:5,kanit-ve-kesinlik.md,"Ölçüm ailesi; çekince silinmez. UD ölçümü: çeviride 1,4–2,8 kat sık (BOUN 11,5, Penn 26,4); kurguda (IMST) da yüksek, tek başına çeviri işareti değildir."
 pekistirici,bağlam,depo-kurali,—,sen-iseri-2023;cangir-can-2026,kanit-ve-kesinlik.md,Türkçe özetlerde vurgulayıcı sıktır; yalnız dayanaksız olan ele alınır.
 aktarim,bağlam,literatur,guclu-2020;aksu-koc-slobin-1986,—,kanit-ve-kesinlik.md,Atıflı iddia atıflı kalır.
-hafif_fiil,bağlam,literatur,ucar-2010,aksehirli-2013;zulfikar-2023,sozcuk-birlesimleri.md,Ad + `et-` işaretlenmez; birleşim listesi kullanılır.
+hafif_fiil,bağlam,literatur,ucar-2010,aksehirli-2013;zulfikar-2023,sozcuk-birlesimleri.md,"Ad + `et-` işaretlenmez; birleşim listesi kullanılır. UD ölçümü: özgün haberde çeviriden sık (BOUN haber 9,4, Penn 2,7 / 10.000 sözcük); çeviri değil kayıt işaretidir."
 sayi_uyumu,bağlam,literatur,bamyaci-2014;sag-2022,renans-2017;kerimoglu-2008,yazim-ve-dil-bilgisi.md,"İnsan özne, soru ve olumsuzluk dışarıda."
-tarafindan,bağlam,literatur,erdem-2007;sebzecioglu-oktar-2010,guclu-2025,kanit-ve-kesinlik.md,Kurumsal ve süreç eyleyeni meşrudur.
-yazim,sert,tdk,becker-ketrez-nevins-2011;levi-2001,—,yazim-ve-dil-bilgisi.md,TDK Yazım Kılavuzu; ünsüz ve uyum istisnaları köke bağlı olduğu için liste kullanılır.
+tarafindan,bağlam,literatur,erdem-2007;sebzecioglu-oktar-2010;turk-2022-boun;sulubacak-2016-ud;ud-turkish-penn;ud-turkish-pud,guclu-2025,kanit-ve-kesinlik.md,"Kurumsal ve süreç eyleyeni meşrudur. UD ölçümü: özgün BOUN haberde 11,3, Penn'de 18,4, PUD'da 21,2 / 10.000 sözcük; fark haberde küçülür (1,6 kat)."
+yazim,sert,tdk,becker-ketrez-nevins-2011;levi-2001,—,yazim-ve-dil-bilgisi.md,"TDK Yazım Kılavuzu; ünsüz ve uyum istisnaları köke bağlı olduğu için liste kullanılır. UD özgün metninde okunan isabetlerin hepsi gerçek yanlıştı (`herşey`, `farket`, `Türkçe'de`)."
 yazim_adayi,bağlam,tdk,—,—,yazim-ve-dil-bilgisi.md,Resmî adın ya da tablonun meşru tutabileceği biçimler.
