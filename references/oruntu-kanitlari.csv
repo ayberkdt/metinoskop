@@ -17,7 +17,7 @@ uzun_ifade,bağlam,ai-arastirmasi,iym:2,turkkan-2009;kaya-apaydin-2019,turkce-ri
 bos_ozne,bağlam,depo-kurali,—,aydin-iseri-2023,turkce-ritim-ve-ceviri-kokusu.md,Kabuk ad özette işlevseldir.
 sohbet,sert,depo-kurali,—,—,okura-dogrudan-metin.md,Sohbet botu kalıntısı.
 sizinti,bağlam,literatur,yilmaz-2004,ruhi-2009-yani;guclu-2025,okura-dogrudan-metin.md,Cümle başı `işte` ve söylem `şey`i; açımlayıcı `yani` ve biz ekleri sızıntı değildir.
-kuyruk,bağlam,ai-arastirmasi,iym:1;kocagul-2026,johanson-1995,turkce-ritim-ve-ceviri-kokusu.md,Yüklemden önceki zarf-fiil doğaldır.
+kuyruk,bağlam,ai-arastirmasi,iym:1;kocagul-2026,johanson-1995,turkce-ritim-ve-ceviri-kokusu.md,"Yüklemden önceki zarf-fiil doğaldır. UD ölçümüyle daraltıldı: konuşma etiketinden sonra gelen anlatı zarf-fiili, `olarak` eksiltisi ve gösterme `bu da` sayılmaz."
 etiket,sert,depo-kurali,—,—,retorik-yapilar.md,Kör A/B ile ölçüldü (evals/README.md › Etiket ve anons); alan etiketi korunur.
 anons,sert,depo-kurali,—,—,retorik-yapilar.md,"Kör A/B ile ölçüldü (evals/README.md › Etiket ve anons). UD ölçümüyle daraltıldı: gerçek anlamdaki `karşınızda`, aktarılan `müjde ver-`, alıntı ve diyalog satırı işaretlenmez."
 reklam,bağlam,depo-kurali,—,—,kenar-turler.md,Tanıtım türünde ikna amacı ayrıca değerlendirilir.

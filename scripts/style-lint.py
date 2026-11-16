@@ -405,8 +405,12 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "label": "Cümle sonu kuyruğu",
         "level": "bağlam",
         "patterns": (
-            r",\s+(?:\S+\s+){0,8}(?!(?:toprak|yaprak|bayrak|gerek|merak|mübarek|kürek|börek)\b)\S+(?:[ae]rak|[ae]rek)[.!?…]*$",
-            r",\s+bu da\b",
+            # Anlatıda konuşma etiketinden sonra gelen zarf-fiil (`..., dedi gülerek.`) yayımlanmış kurgunun
+            # kuralıdır; `olarak` kuyruğu ad eksiltisidir (`Milletvekili olarak değil, asil olarak.`). UD IMST ölçümü.
+            r"^(?!.*\b(?:dedi[mk]?|diye|diyor\w*|sordu|söyledi|mırıldan\w*|haykırd\w*)\b)"
+            r".*,\s+(?:\S+\s+){0,8}(?!(?:toprak|yaprak|bayrak|gerek|merak|mübarek|kürek|börek|olarak)\b)\S+(?:[ae]rak|[ae]rek)[.!?…]*$",
+            # Gösterme `bu da` (`Bak, bu da bir telefon.`, `bu da nereden çıktı?`, `bu da olabilir`) kuyruk değildir.
+            r"^(?!.*\?$)(?:\S+\s+){2,}\S+,\s+bu da\b(?!\s+olabilir)",
         ),
     },
     {
@@ -2459,6 +2463,14 @@ def self_test() -> None:
                  "Pompa, basınç düşerken çalışmaya devam etti."):
         if any(h["category"] == "kuyruk" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
             raise SystemExit(f"Öz sınama: doğal zarf-fiil ya da ad cümle sonu kuyruğu sayıldı (yanlış pozitif): {text!r}")
+    # UD IMST/BOUN anlatı ve diyalog türleri; cümleler derlemden alınmadı, yeniden yazıldı.
+    for text in ("Geç bakalım, dedi öğretmen eliyle kapıyı göstererek.", "Çok yoruldum, diye fısıldadı gülerek.",
+                 "Danışman olarak değil, üye olarak.", "Bak, bu da yeni panel.", "Allah Allah, bu da nereden çıktı?",
+                 "Kimse bilemez, bu da olabilir."):
+        if "kuyruk" in analyse(text)["per_category"]:  # type: ignore[operator]
+            raise SystemExit(f"Öz sınama: anlatıdaki konuşma etiketi, `olarak` eksiltisi ya da gösterme `bu da` kuyruk sayıldı (yanlış pozitif): {text!r}")
+    if "kuyruk" not in analyse("Filtre gecikmeyi azalttı, bu da kullanıcı deneyimini iyileştirdi.")["per_category"]:  # type: ignore[operator]
+        raise SystemExit("Öz sınama: `, bu da` kuyruğu işaretlenmedi")
 
     for text in YAZIM_WRONG:
         if not any(h["category"] == "yazim" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
