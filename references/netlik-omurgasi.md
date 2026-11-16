@@ -102,7 +102,7 @@ Ortalama bir sınır değildir. Ders kitabı ve haber metninden oluşan karma bi
 
 `Yöntem`, `yaklaşım`, `sistem`, `çözüm` aynı varlığı adlandırıyordu; okur dört ayrı şey olup olmadığını soracaktı. Eval: `varlik-yeniden-adlandirma`, `kanonik-terim-tekrari-korunur`.
 
-**Korunur.** Terimin yinelenmesi tekrar değildir. `Hata`, `sapma` ve `belirsizlik` ayrı kavramlarsa üçü de kalır.
+**Korunur.** Terimin yinelenmesi tekrar değildir. `Hata`, `sapma` ve `belirsizlik` ayrı kavramlarsa üçü de kalır. Terim uyumu akıcılıktan ayrı bir ölçüttür: İngilizce–Türkçe bilimsel metinde modeller uzman terminolojisine uymakta insanın gerisinde kalır (Gebeşçe ve ark. 2026). Kaynaktaki ya da kurumun terim bankasındaki karşılık (İletişim Başkanlığı 2021) doğallaştırma için eş anlamlıyla değiştirilmez.
 
 ### 6. Somut özne, somut yüklem
 

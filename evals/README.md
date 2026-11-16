@@ -245,6 +245,8 @@ Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tü
 
 ## Hakem ölçütleri
 
+Model hakeminin dil bilgisi ve yazım yargısı deterministik denetimin yerine geçmez: Türkçe yazı puanlamada dil modeli toplam puanda insana yaklaşır, dil kullanımı ve yazım alt ölçeklerinde tutarlılığı orta ile zayıf arasındadır (Aydın ve ark. 2025; Gülden, Bilge ve Kanık Uysal 2026; `references/turkce-dil-literaturu.md` › Dil modelleri ve yapay zekâ Türkçesi).
+
 İnsan veya model hakemi her çıktıda şu soruları ayrıca sorar:
 
 1. **Sıfır bilgi cümlesi:** Çıktıda, silindiğinde hiçbir önerme, ilişki, kronoloji, yorum veya yazar tavrı kaybolmayacak ve önceki bilgiyi sentezlemeyen cümle kaldı mı? Yeni önerme eklemeyen ama birden çok bulguyu tek karar cümlesinde toplayan ya da okurun çıkarım yükünü azaltan cümle yanlışlıkla silinmiş mi?

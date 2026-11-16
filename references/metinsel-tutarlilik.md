@@ -129,6 +129,8 @@ Son cümledeki "bu" dört olası öncül arasında asılıdır. Kaynak kazancın
 
 Gönderge adla çözüldü ve yönettiği olguya yaklaştırıldı. Kaynak hangi değişikliğin yakınsamayı düşürdüğünü söylemiyorsa gönderge çözülmez; kullanıcıya sorulur.
 
+**Yeniden kurulan cümlede bağlanma.** Cümle yeniden kurulduğunda üç bağlanma sessizce kayabilir: `kendi`/`kendisi`nin yerel ya da uzak öncülü, iki adlı yapıda ad önü ilgi tümcesinin hangi ada bağlandığı (`müdürün sekreteri olan kişi`), çekimli aktarımın adlaşmış tümceye çevrilmesinde kişi göstergesi (`Ali "ben gelirim" dedi` → `Ali geleceğini söyledi`; `ben` Ali'ye döner). Dil modelleri bu üç yapıda kararsızdır (Karakaş 2026, iki çalışma; Oğuz, Ciftci ve Bakman 2024); düzenlemeden sonra öncül kaynaktakiyle aynı mı diye denetlenir, belirsizse kaynaktaki yapı korunur ([literatür](turkce-dil-literaturu.md#dil-modelleri-ve-yapay-zekâ-türkçesi)).
+
 ## Paragraflar arası devir
 
 Argüman sürekliyse bir paragrafın sonu bir sonrakinin doğal başlangıcını kurmalıdır: sonuç → yorum, mekanizma → sonuç, yöntem → sonuç, genel iddia → özel durum, bulgu → sınırlılık, bir grup → karşılaştırma grubu. Her şeyi özetleyen paragraf sonlarından, sıfırdan başlayan paragraf başlarından ve keyfî sıçramalardan kaçın. Okur devamı yol haritası cümlesi olmadan hissetmelidir.
