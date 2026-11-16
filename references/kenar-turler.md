@@ -1,6 +1,6 @@
 # Kenar türler
 
-Metinoskop'un öncelikli alanı bilimsel ve teknik metindir. Bu dosya, ana alanın dışında kalan türlerin **ek** kurallarını toplar: hukuki metin, tanıtım ve pazarlama, deneme, köşe yazısı ve sosyal medya, kişisel yazışma, edebî metin ve üslup eşleme.
+Metinoskop'un öncelikli alanı bilimsel ve teknik metindir. Bu dosya, ana alanın dışında kalan türlerin **ek** kurallarını toplar: hukuki metin, tanıtım ve pazarlama, deneme, köşe yazısı ve sosyal medya, eleştiri ve tanıtım yazısı (kitap ve film), kişisel yazışma, edebî metin ve üslup eşleme.
 
 **Ne zaman okunur.** Yalnızca düzenlenen metin bu türlerden biriyse. Bilimsel ya da teknik metinde bu dosyayı okuma. Buradaki istisnalar (hukuki kalıbı koruma, ikna amacını koruma, yazara özgü imgeyi koruma, kişisel düzyazıda serbest sıra) bilimsel metne taşınmaz. Bilimsel metindeki alıntılanmış yasa maddesi, sözleşme formülü ya da reklam metni alıntı kuralıyla korunur; bunun için bu dosya gerekmez.
 
@@ -49,6 +49,15 @@ Soyut ifade her zaman gereksiz değildir; yazarın değerlendirmesini ya da ikna
 - Sosyal medyada art arda retorik sorular, `Sonuç mu?` ile açılan açıklama, `Gelin birlikte bakalım`, tek cümlelik dramatik paragraflar, bilgi vermeyen süs emojisi ve her maddeyi `**Etiket:**` ile açan liste şablondur. Tek bir emoji, hashtag ya da yerleşik `çekinmeyin` kapanışı tek başına işaret değildir.
 - Ayrıntılı katalog: [Türkçe örüntüler › Görüş ambalajı](turkce-oruntuler.md).
 - Eval: `gorus-ambalaji`, `ozgun-imge-korunur`, `sosyal-medya-sablonu`.
+
+## Eleştiri ve tanıtım yazısı
+
+Kitap incelemesi, kitap tanıtımı ve film eleştirisi değerlendirme türleridir; değerlendirme içeriktir. Türkçe kitap incelemeleri eleştiriden genellikle kaçınır, İngilizce incelemeler olumsuz değerlendirmeyi övgüyle birlikte verir (Bal Gezegin 2015); Türkçe kitap tanıtımlarında olumlu özbeğeni baskındır (Çakır Sarı 2025). Film eleştirisi arka plan ya da konuyla açılır, değerlendirme sonra gelir (Ünsal Şakiroğlu 2022).
+
+- Kaynakta olmayan eleştiri, çekince ya da "dengeleyici" olumsuz değerlendirme ekleme; kaynaktaki olumsuz değerlendirmeyi övgüyle sarıp yumuşatma.
+- Övgü sıfatları yığılmışsa (`muhteşem, eşsiz, büyüleyici`) retorik dolgu adayıdır; övülen nitelik ve değerlendirmenin gücü kalır.
+- Değerlendirmeyi metnin başına taşıyan yeniden düzenleme türün sırasını bozar; yanlış yerdeki cümle ilkesi tür sırasıyla sınırlıdır.
+- Kurumsal açıklamadaki vurgulayıcı (`kararlılıkla sürdüreceğiz`) taahhüt düzeyidir (Sargın 2025); sadeleştirme taahhüdü değiştirmez.
 
 ## Kişisel yazışma ve gündelik metin
 

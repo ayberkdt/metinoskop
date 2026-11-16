@@ -191,6 +191,8 @@ Kaynak iki düzeyle sınırlı bir gözlem kuruyor; "açıkça kanıtlamaktadır
 
 > Bu fark, yalnızca 2024 verisiyle sınırlı olarak, mevsimsel etkiden kaynaklanıyor olabilir.
 
+Çekince yoğunluğu alana ve türe bağlıdır: Türkçe hukuk makalesi özetlerinde kaçınma vurgulayıcıdan anlamlı ölçüde sıktır (Ayanoğlu ve Güçlü 2026), sosyal bilim özetleri fen özetlerinden daha çok tutum belirleyicisi kullanır (Şen Erdoğan 2022). Türkçede kaçınma ve pekiştirme büyük ölçüde kip ekleriyle kurulur (Güçlü 2024); sözcük listesinde görünmeyen `-Abil`, `-DIr`, `-mAlI` de kanıt düzeyi taşır. Aynı kaçınma biçimi köşe yazısında kesinlik de bildirebilir (Doyuran 2009, köşe yazısı); karar biçime değil önermenin kanıtına bakar ([literatür › Değerlendirme dili ve pekiştirme](turkce-dil-literaturu.md#değerlendirme-dili-ve-pekiştirme)).
+
 `Yalnızca ... sınırlı olarak` kapsamı, `olabilir` çıkarım statüsünü taşır. İkisi de gider ve cümle "Fark mevsimsel etkiden kaynaklanır" olursa iki iddia birden uydurulmuştur.
 
 ## Kiplik yığını

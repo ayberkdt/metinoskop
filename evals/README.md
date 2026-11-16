@@ -72,7 +72,7 @@ Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tü
 
 **Ton ve değişiklik bütçesi:** `degisiklik-butcesi-korunur`, `kavramsal-giris`.
 
-**Kenar türler** (`references/kenar-turler.md`): metin bu türlerdense devreye giren ek kuralları sınar; kritik canlı sette yer almaz. Hukuki: `hukuki-metin-korunur`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`. Tanıtım: `reklam-kampanyasi-korunur`, `yardim-kampanyasi-korunur`. Deneme ve sosyal medya: `gorus-ambalaji`, `ozgun-imge-korunur`, `sosyal-medya-sablonu`. Kişisel ve kurumsal yazışma: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`. Üslup eşleme: `uslup-eslestirme`.
+**Kenar türler** (`references/kenar-turler.md`): metin bu türlerdense devreye giren ek kuralları sınar; kritik canlı sette yer almaz. Hukuki: `hukuki-metin-korunur`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`. Tanıtım: `reklam-kampanyasi-korunur`, `yardim-kampanyasi-korunur`. Deneme ve sosyal medya: `gorus-ambalaji`, `ozgun-imge-korunur`, `sosyal-medya-sablonu`. Eleştiri ve tanıtım yazısı: `inceleme-ovgu-yigini`, `inceleme-olumsuz-degerlendirme-korunur`. Kişisel ve kurumsal yazışma: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`. Üslup eşleme: `uslup-eslestirme`.
 
 **Retorik mimari:** cümle, paragraf ve belge düzeyindeki yapay düzyazıyı sınar.
 
@@ -91,6 +91,7 @@ Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tü
 | `tetikleyici-iceren-sozcuk-korunur` | Tetikleyiciyi içinde barındıran sözcüğü (`güneşsiz`, `eşsizlik`, `dönüştürücü`) pazarlama dili saymamak (yanlış pozitif) |
 | `iyi-yazilmis-metin-korunur` | Zaten iyi yazılmış metni neredeyse hiç değiştirmemek |
 | `gorus-ambalaji` | (kenar tür) Denemede görüşü önerme ve güç olarak korurken hazır imgeyi, `çok daha fazlası` formülünü, soyut üçlüyü ve vecizeyi atmak; aynı imgeyi yumuşatarak bırakmamak |
+| `inceleme-ovgu-yigini` | (kenar tür) Tanıtım yazısında övgü yığınını (imge, üçlü, `başyapıt` kalıbı) atarken övülen niteliği, olumlu değerlendirmenin gücünü ve tek sınırlılığı korumak; nötr özete çevirmemek, eleştiri eklememek |
 | `ozgun-imge-korunur` | (kenar tür) Yazara ve konuya özgü benzetmeyi hazır ambalaj sanıp silmemek (yanlış pozitif) |
 | `sosyal-medya-sablonu` | (kenar tür) Sosyal medya gönderisinde retorik soru, `Gelin birlikte bakalım`, `Sonuç mu?`, emoji ve etiketli madde şablonunu atıp sayıları ve öğrenilen dersleri korumak |
 | `anlam-kalkisi-akademik` | Türkçe okura başka önerme veren kalkıları (`bulgular ... önermektedir`, `yer aldı`, `3 faktörü`, Hz ile `örnekleme oranı`, tıp dışı `tedavi grubu`, p değerli `önemli`) hafif düzeyde de düzeltmek; statüyü ve atfı korumak |
@@ -179,6 +180,7 @@ Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tü
 | `mis-dolaylilik-tuzagi` | Dolguyu silerken duyum bildiren `-mış`'ı `-dı`'ya ya da `-mıştır`'a çevirmemek, kaynağı belirtilmemiş duyuma aktör eklememek; resmî `-mıştır` kaydını yalın geçmişe sadeleştirmek |
 | `olcumlu-vurgulayici-ozet-korunur` | Ölçüm ve testle desteklenen `belirgin biçimde`, `açıkça` vurgulayıcılarını Türkçe özette korumak; güçlü iddiayı kapsamında, olumsuz bulguyu `fark bulunmadı` düzeyinde tutmak |
 | `ozet-amac-hamlesi-korunur` | Türkçe makale özetinde `Bu çalışmada ... incelenmektedir` amaç hamlesini, geçmiş zamanlı edilgen yöntem ve bulgu cümlelerini ve öneriyi korumak; korelasyonu nedenselliğe, öneriyi zorunluluğa çevirmemek |
+| `inceleme-olumsuz-degerlendirme-korunur` | (kenar tür) Kitap incelemesindeki olumsuz değerlendirmeyi gücüyle, övgüyü ve tanıtım → değerlendirme sırasını korumak; eleştiriyi yumuşatmamak, övgüyle sarmamak, kaynakta olmayan eleştiri eklememek |
 | `resmi-sikayet-kibarlik-korunur` | Resmî şikâyet ve ricada hitabı, kalıp kapanışı, çekinceli dolaylı ricayı ve kişisiz edilgeni kibarlık stratejisi olarak korumak; ricayı emre, şikâyeti suçlamaya çevirmemek |
 | `odak-yuklem-oncesi-alan-korunur` | Yüklem öncesi alanın başındaki odağı (`yalnızca ikinci ekip`) "odak yüklemin hemen önündedir" diye taşımamak; zarf-fiil öbeğini, `ise` karşıtsal konusunu ve `-mişti` ek ortaklığını korumak |
 | `dogrudan-dolayli-kanitsallik-korunur` | Resmî `-mıştır`, doğrudan `-dı` ve `aktardığına göre` ile birlikte gelen duyum `-mış`'ı aynı paragrafta korumak |

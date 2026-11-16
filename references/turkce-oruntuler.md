@@ -371,7 +371,9 @@ Yüksek riskli ambalajlar:
 
 > Kitap okumak bir pencere gibidir; o pencereden yalnızca başka dünyaları değil, kendimizi de görürüz.
 
-`Adeta` gitti ama imge ve karşıtlık formülü yerinde; metin aynı hazır kompozisyon cümlesi olarak okunuyor.
+`Adeta` gitti ama imge ve karşıtlık formülü yerinde; metin aynı hazır kompozisyon cümlesi olarak okunuyor. Ters yön de yanlıştır: `âdeta` ve `sanki` abartılı önermenin doğruluk değerini askıya alan büyütme işaretleyicisidir (Hirik 2025); işaretleyiciyi silip imgeyi bırakmak (`âdeta bir savaş alanıydı` → `bir savaş alanıydı`) abartıyı düz önermeye çevirir. İmge gidecekse işaretleyiciyle birlikte gider.
+
+**Derece belirtecinin kutbu.** `Oldukça` yalnızca olumlu, gerçeklik bildiren tümcede geçer (Görgülü 2025); pekiştiriciyi değiştiren ya da cümleyi olumsuza çeviren düzenleme `oldukça`yı olumsuz ya da soru yüklemine taşımaz. `Müthiş`, `inanılmaz`, `harika` gibi uç sıfatların derece okunuşu ardından gelen sıfata bağlıdır (Can 2022); karar tek sözcükte değil birleşimde verilir.
 
 **Sonra**
 

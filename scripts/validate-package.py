@@ -56,6 +56,8 @@ REQUIRED_FILES = (
     "evals/olcumlu-vurgulayici-ozet-korunur.md",
     "evals/resmi-sikayet-kibarlik-korunur.md",
     "evals/ozet-amac-hamlesi-korunur.md",
+    "evals/inceleme-olumsuz-degerlendirme-korunur.md",
+    "evals/inceleme-ovgu-yigini.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -275,6 +277,8 @@ EVAL_FILES = (
     "evals/olcumlu-vurgulayici-ozet-korunur.md",
     "evals/resmi-sikayet-kibarlik-korunur.md",
     "evals/ozet-amac-hamlesi-korunur.md",
+    "evals/inceleme-olumsuz-degerlendirme-korunur.md",
+    "evals/inceleme-ovgu-yigini.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -718,6 +722,8 @@ for relative_path in EVAL_FILES:
 
 eval_markers = {
     "evals/ozet-amac-hamlesi-korunur.md": ("incelenmektedir", "214 öğrenci", "r = 0,46", "önerilmiştir", "ilişki"),
+    "evals/inceleme-olumsuz-degerlendirme-korunur.md": ("zayıf yanı", "tartışmadan geçiyor", "yeterince bağlantılı değil", "vazgeçilmez", "1950–1980"),
+    "evals/inceleme-ovgu-yigini.md": ("muhteşem, eşsiz", "olağanüstü bir titizlikle", "daha sınırlı", "başyapıt", "1950–1980"),
     "evals/resmi-sikayet-kibarlik-korunur.md": ("Sayın Yetkili", "Saygılarımla", "rica ederim", "sevinirim", "12 Ekim"),
     "evals/olcumlu-vurgulayici-ozet-korunur.md": ("belirgin biçimde", "açıkça", "p < 0,001", "anlamlı fark bulunmadı", "500 m altı"),
     "evals/odak-yuklem-oncesi-alan-korunur.md": ("yalnızca ikinci ekip", "tekrarladıktan sonra", "görmemişti", "henüz"),
@@ -1035,6 +1041,7 @@ SHOULD_REMAIN_CASES = (
     "evals/olcumlu-vurgulayici-ozet-korunur.md",
     "evals/resmi-sikayet-kibarlik-korunur.md",
     "evals/ozet-amac-hamlesi-korunur.md",
+    "evals/inceleme-olumsuz-degerlendirme-korunur.md",
 )
 misnamed = sorted({p for p in SHOULD_REMAIN_CASES if not Path(p).stem.endswith("-korunur")}
                   | {p for p in EVAL_FILES if Path(p).stem.endswith("-korunur") and p not in SHOULD_REMAIN_CASES})
