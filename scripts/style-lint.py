@@ -526,7 +526,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "level": "sert",
         "patterns": (
             # suggest → önermek: veri öznesi tavsiye edemez; "-dığını önermek" çıkarım değil öneri okunur.
-            r"^(?:\S+ ){0,3}(?:sonuç|bulgu|veri|analiz|gözlem|ölçüm)(?:lar|ler)(?:ımız|imiz|ı|i)?,? .{0,120}(?:ğını|ğini|ğunu|ğünü) öner(?:mekte|miş|iyor|ir\b|di)",
+            r"^(?:\S+ ){0,3}(?:sonuç|bulgu|veri|analiz|gözlem|ölçüm)(?:lar|ler)(?:ımız|imiz|ı|i)?,? .{0,120}(?:ğ[ıiuü]n[ıiuü]|kl[ae]r[ıi]n[ıi]) öner(?:mekte|miş|iyor|ir\b|di)",
         ),
     },
     {
@@ -534,8 +534,8 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "label": "Anlam kayması adayı",
         "level": "bağlam",
         "patterns": (
-            r"^(?!.*\b(?:nasıl|neden|niçin|niye|hangi|ne kadar|kim|kaç|olup olma)).*?\S+(?:ğını|ğini|ğunu|ğünü) tartış(?:makta|mış|ıyor|ır\b|tı)",
-            r"^(?!.*\b(?:nasıl|neden|niçin|niye|hangi|ne kadar|kim|kaç|olup olma)).*?\S+(?:dığı|diği|duğu|düğü|tığı|tiği|tuğu|tüğü|acağı|eceği) tartışıl(?:makta|mış|ıyor|ır\b)",
+            r"^(?!.*\b(?:nasıl|neden|niçin|niye|hangi|ne kadar|kim|kaç|olup olma)).*?\S+(?:ğ[ıiuü]n[ıiuü]|kl[ae]r[ıi]n[ıi]) tartış(?:makta|mış|ıyor|ır\b|tı)",
+            r"^(?!.*\b(?:nasıl|neden|niçin|niye|hangi|ne kadar|kim|kaç|olup olma)).*?\S+(?:[dt][ıiuü](?:ğ[ıiuü]|kl[ae]r[ıi])|[ae]c[ae](?:ğ[ıi]|kl[ae]r[ıi])) tartışıl(?:makta|mış|ıyor|ır\b)",
             r"^(?:\S+ ){0,2}(?:deney|ölçüm|toplantı|görüşme|kesinti|olay|kaza|tören|çalıştay|konferans|sınav)(?:ler|lar)?\b(?! \S+(?:ı|i|u|ü)\b).{0,60}\byer al(?:dı|mıştır|mıştı|acak)\b",
             r"\baktüel (?:değer|veri|maliyet|ölçüm|sonuç|gider)",
             r"\b\d+(?:[.,]\d+)? faktörü (?:ile|kadar|oranında)",
@@ -641,7 +641,7 @@ SON_OKUR_SERT = frozenset({"sizinti"})
 def level_of(category: str, son_okur: bool = False) -> str:
     return "sert" if son_okur and category in SON_OKUR_SERT else LEVELS[category]
 
-MAKTADIR_RE = re.compile(r"m[ae]kt[ae]d[ıi]r[.!?]*$")
+MAKTADIR_RE = re.compile(r"m[ae]kt[ae]d[ıi]r(?:l[ae]r)?[.!?]*$")
 SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-ZÇĞİÖŞÜ0-9\"'«(`])")
 STRUCTURE_SKIP_PREFIXES = ("#", "|", "```", "- ", "* ", "+ ")
 LIST_ITEM_RE = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+")
@@ -682,7 +682,8 @@ BOOSTER_RE = re.compile(
 )
 CONCLUSION_OPENERS = ("bu nedenle", "dolayısıyla", "bu yüzden", "sonuç olarak", "demek ki", "öyleyse")
 NOMINALIZATION_RE = re.compile(r"\w+(?:l|n)m[ae]s[ıi]\w*$")
-PASSIVE_FINITE_RE = re.compile(r"\w+(?:[ıiuü]l|n)(?:m[ıiuü]şt[ıi]r|m[ıiuü]ş|m[ae]kt[ae]d[ıi]r|d[ıi]|[ae]c[ae]kt[ıi]r)$")
+# Dört biçimli ekler (-DI, -DIr) yuvarlak ünlüden sonra u/ü alır: ölçüldü, görülmüştür.
+PASSIVE_FINITE_RE = re.compile(r"\w+(?:[ıiuü]l|n)(?:m[ıiuü]şt[ıiuü]r|m[ıiuü]ş|m[ae]kt[ae]d[ıi]r|d[ıiuü]|[ae]c[ae]kt[ıi]r)$")
 POSTPOSITION_RE = re.compile(r"\b(?:hakkında|ilişkin|yönelik|dair|üzerine)\b")
 GENERIC_NOUN_SETS = (
     ("yöntem/yaklaşım/yapı/çözüm", (r"\byöntem\w*", r"\byaklaşım\w*", r"\byapı(?:s[ıi]n?|y[ıi]|ya|da|dan|n[ıi]n|lar\w*|d[ıi]r)?\b", r"\bçözüm\w*", r"\bstrateji\w*", r"\bmekanizma\w*")),
@@ -692,13 +693,14 @@ GENERIC_NOUN_COMPILED = tuple((label, tuple(re.compile(p) for p in patterns)) fo
 TOPIC_RESET_RE = re.compile(r"^bu (?:çalışmada|çalışma\b|raporda|belgede|bölümde|araştırmada|makalede)")
 DASH_RE = re.compile(r"[—–]")
 TENSE_CLASSES = (
-    ("mektedir", re.compile(r"m[ae]kt[ae](?:d[ıi]r)?$")),
+    ("mektedir", re.compile(r"m[ae]kt[ae](?:d[ıi]r)?(?:l[ae]r)?$")),
     # Geçmiş içinde zaman ilişkileri, yalın geçmişten önce sınanır: "-mıştı" başka
     # bir geçmiş olaydan önceliği, "-yordu" geçmişte süren artalanı bildirir.
     # ("-ardı" düzenli davranışı bildirir ama "sardı", "kardı" gibi yalın geçmiş
     # biçimlerinden biçim bilgisiyle ayrılamadığı için sınıflandırılmaz.)
-    ("mıştı", re.compile(r"m[ıiuü]şt[ıi](?:m|k|n[ıi]z|lar|ler)?$")),
-    ("miştir", re.compile(r"m[ıiuü]ş(?:t[ıi]r|lerdir|lardır)?$")),
+    # -mIştI ve -mIştIr dört biçimlidir: görülmüştü, bulunmuştur.
+    ("mıştı", re.compile(r"m[ıiuü]şt[ıiuü](?:m|k|n[ıiuü]z|lar|ler)?$")),
+    ("miştir", re.compile(r"m[ıiuü]ş(?:t[ıiuü]r|l[ae]rd[ıi]r)?$")),
     ("yordu", re.compile(r"yordu(?:m|k|n|nuz|lar)?$")),
     ("yor", re.compile(r"yor(?:lar|du|um|uz|sunuz)?$")),
     ("dı", re.compile(r"[dt][ıiuü](?:m|k|n|lar|ler|nız|niz)?$")),
@@ -1089,7 +1091,14 @@ def tense_class(sentence: Sentence) -> str | None:
         return None
     last = words[-1]
     if last.endswith(("lar", "ler")) and not last.endswith("yorlar"):
-        # "kalırlar", "gelirler" are aorist plurals; "sensörler", "örnekler" are nouns.
+        # Çoğul kişi eki zaman ekinden sonra gelir: göstermektedirler, incelemişler, yaptılar.
+        # "kalırlar", "gelirler" geniş zamandır; "sensörler", "örnekler" addır.
+        if re.search(r"m[ae]kt[ae](?:d[ıi]r)?l[ae]r$", last):
+            return "mektedir"
+        if re.search(r"m[ıiuü]şl[ae]r$", last):
+            return "miştir"
+        if re.search(r"[dt][ıiuü]l[ae]r$", last):
+            return "dı"
         return "r" if re.search(r"[ıiuüae]rl[ae]r$", last) else None
     for label, pattern in TENSE_CLASSES:
         if pattern.search(last):
@@ -2217,6 +2226,24 @@ def self_test() -> None:
     doc = parse(NESTED_TEXT)
     if doc.headings[0].direct != 0 or doc.headings[0].subtree != 6 or doc.headings[1].parent != 0:
         raise SystemExit("Öz sınama: başlık ağacı sayımı hatalı")
+
+    # Dört biçimli ekler: yuvarlak ünlüden sonra -DI, -DIr, -mIştI, -mIştIr u/ü alır.
+    for word, expected in (("incelenmiştir", "miştir"), ("görülmüştür", "miştir"), ("bulunmuştur", "miştir"),
+                           ("görülmüştü", "mıştı"), ("kurulmuştu", "mıştı"), ("incelenmişti", "mıştı"),
+                           ("ölçüldü", "dı"), ("bulundu", "dı"), ("yaptılar", "dı"), ("göstermektedirler", "mektedir"),
+                           ("incelemişler", "miştir"), ("kalırlar", "r"), ("bulunur", "r"), ("sensörler", None)):
+        found = tense_class(Sentence(0, 0, f"Sonuç {word}."))
+        if found != expected:
+            raise SystemExit(f"Öz sınama: {word!r} zaman sınıfı {found!r}, beklenen {expected!r}")
+    for word in ("ölçüldü", "bulundu", "görülmüştür", "kullanılmıştır", "sunulmaktadır"):
+        if not PASSIVE_FINITE_RE.search(word):
+            raise SystemExit(f"Öz sınama: edilgen çekimli yüklem tanınmadı: {word!r}")
+    for text in ("Sonuçlar modellerin daha doğru olduklarını önermektedir.",
+                 "Etkinin yaşa bağlı oldukları tartışılmaktadır."):
+        if not any(h["category"] in ("anlam_kalkisi", "anlam_kaymasi_adayi") for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: çoğul -DIklArI biçimli anlam kalkısı işaretlenmedi: {text!r}")
+    if not MAKTADIR_RE.search("göstermektedirler."):
+        raise SystemExit("Öz sınama: çoğul -mAktAdIr zincir sayımına girmedi")
 
     if tr_lower("İSTANBUL IŞIK") != "istanbul ışık":
         raise SystemExit("Öz sınama: Türkçe küçük harf dönüşümü hatalı")

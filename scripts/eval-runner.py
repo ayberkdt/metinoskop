@@ -75,11 +75,13 @@ ADDED_MARKER_FAMILIES = (
      r"\bdeğil\w*|\byok(?:tur|tu|muş)?\b|\bhiç\w*|\b\w{2,}m[ae](?:d[ıi](?!r)\w*|m[ıi]ş\w*|z(?:lar|ler|dı|di)?\b"
      r"|makta\w*|mekte\w*|yacak\w*|yecek\w*|yabil\w*|yebil\w*)|\b\w{2,}m[ıiuü]yor\w*"),
     ("cekince", "çekince ya da olasılık",
-     r"\bolabil\w*|\bolası\b|\bmuhtemel\w*|\bbelki\b|\bgörün(?:mektedir|üyor|ür)\b|\bdüşündür\w*|\bsanıl\w*"
+     r"\bolabil\w*|\bolası(?:dır|lıkla)?\b|\bmuhtemel\w*|\bbelki\b|\bgörün(?:mektedir|üyor|ür)\b|\bdüşündür\w*|\bsanıl\w*"
      r"|\btahmin edil\w*|\bişaret e\w*|\bsanırım\b|\bgaliba\b|\b\w+[ae]bil(?:ir|ece[kğ]|mekte)\w*"),
     ("nedensellik", "nedensellik ya da sonuç bağı",
      r"\bneden ol\w*|\byol aç\w*|\betkile\w*|\bsayesinde|\bbu sayede|\byüzünden|\bdolayı\w*|\bnedeniyle"
-     r"|\bbu nedenle|\bbu yüzden|\bsonuç olarak|\bsonucunda|\bkaynaklan\w*|\b\w+[dt][ıiuü]ğ[ıiuü]ndan\b"),
+     r"|\bbu nedenle|\bbu yüzden|\bsonuç olarak|\bsonucunda|\bkaynaklan\w*|\b\w+[dt][ıiuü](?:ğ[ıiuü]|kl[ae]r[ıi])nd[ae]n\b"
+     # "-dığı için" neden bildirir; "-mek için" amaçtır ve sayılmaz.
+     r"|\b\w+[dt][ıiuü](?:ğ[ıiuü]|kl[ae]r[ıi]) için\b"),
     ("pekistirici", "pekiştirici",
      # "kesin bir bilgim yok", "kesin değil" çekincedir, pekiştirici değil.
      r"\baçıkça\b|\bkesin(?:likle)?\b(?!(?:\s+\S+){0,3}?\s+(?:değil|yok))|\bkanıtla\w*|\btartışmasız|\bkuşkusuz|\bşüphesiz"),
@@ -387,6 +389,8 @@ def self_test() -> None:
     )
     # Soru muafiyeti önermeyi kapsamaz: sorudan sonra gelen çekince yine sayılır.
     drift += (("Sonuç saklanır.", "Saklanabilir mi? Sonuç saklanabilir.", {"cekince"}),)
+    drift += (("Ölçüm durduruldu.", "Sıcaklık arttığı için ölçüm durduruldu.", {"nedensellik"}),
+              ("Fark mevsimseldir.", "Fark büyük olasılıkla mevsimseldir.", {"cekince"}))
     for source, output, expected in drift:
         found = {item["family"] for item in added_markers(source, output)}
         if not expected <= found:
@@ -400,6 +404,8 @@ def self_test() -> None:
         ("Ölçüm `max_iter=500` ile yapılmadı mı?", "Ölçüm `max_iter=500` ile yapılmadı mı?"),
         # Yazım düzeltmesi: `herşey` zaten `her`i taşır; ayrı yazılınca tümel nicelik eklenmez.
         ("Taslakta herşey tamam değildi.", "Taslakta her şey tamam değildi."),
+        # "-dığı için" ile "nedeniyle" aynı ailededir; biri ötekine dönünce neden eklenmez.
+        ("Sıcaklık arttığı için ölçüm durduruldu.", "Sıcaklık artışı nedeniyle ölçüm durduruldu."),
         ("Bu bir çalışmadır.", "Bu bir çalışmadır."),
         # Yazma kipi: kaynaktaki plan duyuru kipine geçer; paranteze bitişik gelecek kipi de sayılır.
         ("Bakım 4 saat sürecek (22.00–02.00). Panel kapalı olacak.", "Bakım 22.00–02.00 arasında yapılacak. Panel kapalı olacak."),
