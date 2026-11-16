@@ -57,7 +57,7 @@ Test: yardımcı fiili çıkar; kalan sözcük kendi biçimini koruyor mu (`fark
 
 **Belgisiz sözcükler.** `biraz`, `birçok`, `birçoğu`, `birkaç`, `birkaçı`, `birtakım`, `herhangi`, `hiçbir`, `hiçbiri` gelenekleşmiş biçimde bitişik yazılır (TDK › Bitişik Yazılan Birleşik Kelimeler). Sözcüklerden hiçbiri anlam değiştirmiyorsa birleşik ayrı yazılır; `bir şey`, `her şey`, `her biri`, `pek çok`, `ya da` bu ilkeye göre ayrıdır. `Bir takım elbise` (sayı + ad) ile `birtakım sorunlar` (belgisiz) aynı yazılmaz.
 
-**Terim birleşikleri.** Birleşik terimler (`dil bilgisi`, `bilgi işlem`) Türkçe Sözlük'teki madde başına göre yazılır; sezgiyle bitiştirilmez ya da ayrılmaz. Kaynakta terim tutarlı yazılmışsa (`veri tabanı` ya da `veritabanı`) terimi değiştirme; aynı metinde ikisi varsa baskın olanı kullan.
+**Terim birleşikleri.** Birleşik terimler (`dil bilgisi`, `bilgi işlem`) Türkçe Sözlük'teki madde başına göre yazılır; sezgiyle bitiştirilmez ya da ayrılmaz. Kaynakta terim tutarlı yazılmışsa (`veri tabanı` ya da `veritabanı`) terimi değiştirme; aynı metinde ikisi varsa baskın olanı kullan. Birleşik yazım baskıdan baskıya değişmiştir (Yastı ve Direkci 2010; Akdağ 2020), kılavuzlar ve yayınevleri arasında ortak yazım yoktur (Koç 2007), konuşurların bitişik yazma eğilimi TDK ölçütleriyle örtüşmez (Hallı 2024) ve Kılavuz tamlama özelliğini koruyan birleşiklerin yazımını açıklamaz (Toktar 2019). Bu yüzden sezgi değil madde başı ölçüttür; bitişik birleşiği ayırmak anlamı da değiştirebilir (`açıkağız` / `açık ağız`; Özer ve Oda 2018).
 
 ## `ki`, `de/da`, `mi`
 
@@ -73,7 +73,7 @@ TDK › Kesme İşareti ve Noktalama İşaretleri (Açıklamalar) sayfalarına g
 
 - **Özel ada gelen çekim eki ayrılır:** `Ankara'da`, `Yunus Emre'yi`, `Python'da`. Yabancı özel ada ek okunuşa göre gelir: `Cannes'a`.
 - **Yapım eki ve çokluk eki ayrılmaz; ardından gelen ekler de ayrılmaz:** `Türkçe`, `Türkçenin`, `Türkçede`, `İngilizceye`, `Avrupalı`, `Türklük`, `Ahmetler`. Dil adı yapım ekiyle türediği için `Türkçe'de` yanlıştır.
-- **Kurum, kuruluş, kurul, birleşim, oturum ve iş yeri adlarına gelen ekler ayrılmaz:** `Türk Dil Kurumundan`, `Türkiye Büyük Millet Meclisine`, `Rektörlüğe`. TDK bu kuralın 1985'ten beri kılavuzlarda olduğunu, 1996'da "çoklukla" sözcüğünün kaldırılarak kesinleştiğini bildirir.
+- **Kurum, kuruluş, kurul, birleşim, oturum ve iş yeri adlarına gelen ekler ayrılmaz:** `Türk Dil Kurumundan`, `Türkiye Büyük Millet Meclisine`, `Rektörlüğe`. TDK bu kuralın 1985'ten beri kılavuzlarda olduğunu, 1996'da "çoklukla" sözcüğünün kaldırılarak kesinleştiğini bildirir (2016 tarihli haber aktarımlarında sözcük "çoğunlukla" diye geçer; duyuru metni doğrudan okunamadı).
 - **Unvana gelen ek ayrılır:** `Nihat Bey'e`, `Türk Dil Kurumu Başkanı'na` (başkan kişidir, kurum değildir).
 - **Kısaltmaya gelen ek ayrılır ve kısaltmanın okunuşuna uyar:** `TDK'nin` (te-de-ke), `TBMM'ye`, `ABD'de`, `NATO'ya`. Sonunda nokta olan kısaltmaya gelen ek kesmesiz yazılır.
 - **Rakama gelen ek ayrılır:** `1985'te`, `8'inci`, `7,65'lik`, `%40'ı`. Sıra sayısı ekle gösterilince rakamdan sonra nokta konmaz: `8'inci`, `8.` ya da `sekizinci`; `8.'inci` yanlıştır.
@@ -97,7 +97,7 @@ TDK › Kesme İşareti ve Noktalama İşaretleri (Açıklamalar) sayfalarına g
 2. Alıntı sözcüklerde ince `g` ve `k`'den sonra gelen `a` ve `u` için: `kâğıt`, `dükkân`, `rüzgâr`.
 3. Nispet `-î`'sini iyelik ve belirtme ekinden ayırmak için: `resmî` (resmî yazı) / `resmi` (onun resmi), `millî`, `askerî`, `dinî`; Türkçe ek gelince işaret kalır: `millîleştirmek`, `resmîlik`.
 
-Kaynak işareti tutarlı biçimde kullanmıyorsa düzenlemede bütün metne ekleme; yalnızca okurun yanlış okuyacağı çiftte (`hala` ↔ `hâlâ`, `kar` ↔ `kâr`) ekle. Kaynak işareti kullanıyorsa silme.
+Kaynak işareti tutarlı biçimde kullanmıyorsa düzenlemede bütün metne ekleme; yalnızca okurun yanlış okuyacağı çiftte (`hala` ↔ `hâlâ`, `kar` ↔ `kâr`) ekle. Kaynak işareti kullanıyorsa silme. Bu ayrımın dayanağı: üç kullanım Türkçe Sözlük'ün uygulamasıyla da doğrulanır (Yeşilöz 2021); 1950, 1980 ve 2010 kesitlerinde gazete, dergi ve kitapta işaretin kullanımı düzensizdir (Duman 2018), 2005–2012 kılavuzları da işaretin yaygın kullanımından vazgeçmiştir (Akdağ 2020). Şapkasız yazım profesyonel yayında yaygın bir tercihtir.
 
 ## Sözcüğün kökeni: alıntıların ses ve ek davranışı
 
@@ -265,7 +265,7 @@ Unvana gelen ek kesmeyle ayrılır; kurumun resmî adı (`Standardları`) kendi 
 
 ## Kaynaklar ve doğrulama düzeyi
 
-Kural metinleri TDK'nin çevrim içi yazım sayfalarından alınmıştır (2026-11 erişimi). Oturumun ağ ayarı `tdk.gov.tr`'ye doğrudan erişime izin vermediği için sayfa metinleri arama motoru özetlerinden okunmuştur; kesin madde numarası ve güncel ifade için kılavuzun kendisine bakın.
+Kural metinleri TDK'nin çevrim içi yazım sayfalarından alınmıştır (2026-11 erişimi). Bugünkü kurallar 2012 kılavuzunun kurallarıdır: 2023 baskısında kurallar değiştirilmemiş, yalnızca dizin Türkçe Sözlük'e göre güncellenmiştir (Akalın 2025); sözcük yazımında güncel ölçüt dizin ve Türkçe Sözlük'tür. Oturumun ağ ayarı `tdk.gov.tr`'ye doğrudan erişime izin vermediği için sayfa metinleri arama motoru özetlerinden okunmuştur; kesin madde numarası ve güncel ifade için kılavuzun kendisine bakın.
 
 - TDK, Yazım Kuralları: Bitişik Yazılan Birleşik Kelimeler; Ayrı Yazılan Birleşik Kelimeler; Kesme İşareti; Noktalama İşaretleri (Açıklamalar); Sayıların Yazılışı; Büyük Harflerin Kullanıldığı Yerler; Düzeltme İşareti; Büyük Ünlü Uyumu; Küçük Ünlü Uyumu; Ünsüz Türemesi; Bağlaç Olan ki'nin Yazılışı; Bağlaç Olan da, de'nin Yazılışı. https://tdk.gov.tr/kategori/icerik/yazim-kurallari/
 - TDK Yazım Kılavuzu (çevrim içi). https://yazim.tdk.gov.tr/
