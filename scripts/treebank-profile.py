@@ -10,6 +10,7 @@ CC BY-NC-SA 3.0); download the CoNLL-U files yourself and pass their paths:
     python scripts/treebank-profile.py tr_boun-ud-test.conllu tr_penn-ud-test.conllu
     python scripts/treebank-profile.py --by-genre tr_boun-ud-*.conllu      # BOUN sent_id öneki: tür
     python scripts/treebank-profile.py --examples yazim tr_boun-ud-*.conllu  # elle inceleme için
+    python scripts/treebank-profile.py --golds --by-genre tr_boun-ud-*.conllu  # gold'lar özgün Türkçeye karşı
 
 Each sentence is analysed on its own, so only sentence-level families are meaningful; paragraph
 and document measures (döngüsel tekrar, kip nöbetleşmesi, bölüm yapısı) are not reported.
@@ -213,6 +214,71 @@ def surface_profile(paths: list[Path], by_genre: bool) -> None:
         print(f"{key} (1.000 cümlede) | " + " | ".join(f"{1e3 * stats[g][key] / max(1, stats[g]['cümle']):.1f}" for g in groups))
 
 
+GOLD_OPENERS = ("ancak", "bununla birlikte", "ayrıca", "bu nedenle", "sonuç olarak", "öte yandan", "dolayısıyla",
+                "bu bağlamda", "buna ek olarak", "özellikle", "ilk olarak", "son olarak")
+ARAK_RE = re.compile(r"\w{3,}[ae]r[ae]k$")
+ARAK_STOP = {"olarak", "yaprak", "toprak", "bayrak", "merak", "gerek", "kürek", "börek", "mübarek", "ortak", "durak",
+             "kaynak", "yatak", "bıçak", "tabak", "konak", "kucak"}
+
+
+def eval_texts() -> dict[str, list[str]]:
+    """Dönüşüm vakalarının kaynakları, gold çıktıları ve korunur gold'ları."""
+    groups: dict[str, list[str]] = {"vaka-kaynak": [], "vaka-gold": [], "korunur-gold": []}
+    for case in sorted((ROOT / "evals").glob("*.md")):
+        output = ROOT / "evals/outputs" / f"{case.stem}.txt"
+        if case.name == "README.md" or not output.exists():
+            continue
+        if case.stem.endswith("-korunur"):
+            groups["korunur-gold"].append(output.read_text(encoding="utf-8"))
+            continue
+        match = re.search(r"^## Kaynak\s*\n(.*?)(?=^## )", case.read_text(encoding="utf-8"), re.S | re.M)
+        groups["vaka-kaynak"].append(match.group(1) if match else "")
+        groups["vaka-gold"].append(output.read_text(encoding="utf-8"))
+    return groups
+
+
+def gold_audit(paths: list[Path], by_genre: bool) -> None:
+    """Deponun vaka kaynaklarını ve gold çıktılarını ağaç bankalarıyla aynı ölçülerle karşılaştırır.
+    Gold'lar bilimsel ve teknik metin ağırlıklıdır; ağaç bankalarında bu tür yoktur, fark tür farkı da olabilir."""
+    import statistics
+    lint = load_lint()
+    corpora: dict[str, list[str]] = defaultdict(list)
+    for path in paths:
+        for sent_id, text in sentences(path):
+            corpora[group_name(path, sent_id, by_genre)].append(text)
+    for name, texts in eval_texts().items():
+        for text in texts:
+            doc = lint.parse(text)
+            corpora[name] += [s.text for p in doc.paragraphs if p.prose for s in p.sentences]
+    print("küme | cümle | ort. uzunluk | uzunluk sd | bir / 100 sözcük | zarf-fiil / 10.000 | -ArAk / 10.000 | "
+          "noktalı virgül / 10.000 | söylem açılışı / 1.000 cümle | edilgen yüklem % | -mAktAdIr % | yalın geçmiş %")
+    for name, texts in corpora.items():
+        c: Counter = Counter()
+        lengths: list[int] = []
+        for text in texts:
+            sentence = lint.Sentence(1, 1, text)
+            words = lint.sentence_words(sentence)
+            if not words:
+                continue
+            lengths.append(len(words))
+            c["sözcük"] += len(words)
+            c["cümle"] += 1
+            c["bir"] += words.count("bir")
+            c["zarf"] += lint.converb_count(words)
+            c["arak"] += sum(1 for w in words if ARAK_RE.match(w) and w not in ARAK_STOP)
+            masked = lint.YAZIM_MASK_RE.sub(" ", text)
+            c[";"] += masked.count(";") - len(lint.NUMERIC_SEMICOLON_RE.findall(masked))
+            if sentence.lowered.lstrip("-–—\"' ").startswith(GOLD_OPENERS):
+                c["açılış"] += 1
+            c["edilgen"] += lint.is_finite_passive(words[-1])
+            c["maktadir"] += bool(lint.MAKTADIR_RE.search(words[-1]))
+            c["dı"] += lint.tense_class(sentence) == "dı"
+        w, n = max(1, c["sözcük"]), max(1, c["cümle"])
+        print(f"{name} | {c['cümle']} | {statistics.mean(lengths or [0]):.1f} | {statistics.pstdev(lengths or [0]):.1f} | "
+              f"{100 * c['bir'] / w:.2f} | {1e4 * c['zarf'] / w:.0f} | {1e4 * c['arak'] / w:.1f} | {1e4 * c[';'] / w:.1f} | "
+              f"{1e3 * c['açılış'] / n:.1f} | {100 * c['edilgen'] / n:.1f} | {100 * c['maktadir'] / n:.1f} | {100 * c['dı'] / n:.1f}")
+
+
 def group_name(path: Path, sent_id: str, by_genre: bool) -> str:
     corpus = path.name.split("-ud-")[0]
     if by_genre and "_" in sent_id and sent_id.split("_")[0].isalpha():
@@ -259,9 +325,14 @@ def main() -> int:
                         help="tense_class ve kanıtsallık örüntüsünü UD biçim işaretlemesine karşı ölç")
     parser.add_argument("--surface", action="store_true",
                         help="çeviri kokusu sayılan yüzey biçimlerini ve cümle başı bağlayıcıları say")
+    parser.add_argument("--golds", action="store_true",
+                        help="deponun vaka kaynaklarını ve gold çıktılarını ağaç bankalarıyla aynı ölçülerle karşılaştır")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
 
+    if args.golds:
+        gold_audit(args.files, args.by_genre)
+        return 0
     if args.surface:
         surface_profile(args.files, args.by_genre)
         return 0

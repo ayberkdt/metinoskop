@@ -317,7 +317,7 @@ Aynı cümlede üç veya daha çok `bir`, art arda `bir ... bir ... bir` dizisi 
 - **Sıfat + `bir` + ad.** `Önemli bir bulgu` doğal sıradır (Tat 2011); `bir önemli bulgu` anlam farkı taşıyabilir, düzeltilmez.
 - **Yalın nesne + eylem.** `Veri topladık`, `anket uyguladık` gibi yalın nesneli birleşimler Türkçenin olağan yapısıdır (Öztürk 2005); bunlara `bir` ya da belirtme eki eklenmez. Belirtme hâli de serbest değildir: `-(y)I` nesnenin belirliliğini kodlar (Enç 1991; von Heusinger ve Kornfilt 2005), eklemek ya da silmek önermeyi değiştirir.
 
-Çeviri, öğrenici ya da makine Türkçesinde `bir` fazlasını derlemle ölçen hakemli bir çalışma bulunamadı ([literatür](turkce-dil-literaturu.md#belirtme-hâli-belirlilik-ve-bir)). Deponun ağaç bankası ölçümünde haber metninde `bir` çeviride 1,4 kat sıktır (100 sözcükte 1,8'e karşı 2,5), bütün türler birlikte alındığında fark yoktur (BOUN 2,6, IMST 2,7, çeviri 2,5–2,9; denemede 3,4); yoğunluk eşiği bu yüzden türden bağımsız konmaz.
+Ters yön de ölçüldü: deponun dönüşüm gold'larında `bir` 100 sözcükte 0,82, korunur gold'larında 0,73'tür; bu, özgün haberin (1,79) ve denemenin (3,44) altındadır. `Bir` silmek hedef değildir; yalnızca tanımlık kalkısı gider ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)). Çeviri, öğrenici ya da makine Türkçesinde `bir` fazlasını derlemle ölçen hakemli bir çalışma bulunamadı ([literatür](turkce-dil-literaturu.md#belirtme-hâli-belirlilik-ve-bir)). Deponun ağaç bankası ölçümünde haber metninde `bir` çeviride 1,4 kat sıktır (100 sözcükte 1,8'e karşı 2,5), bütün türler birlikte alındığında fark yoktur (BOUN 2,6, IMST 2,7, çeviri 2,5–2,9; denemede 3,4); yoğunluk eşiği bu yüzden türden bağımsız konmaz.
 
 ## `Sahip olmak` ve iyelik
 
