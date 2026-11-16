@@ -246,8 +246,10 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "label": "Kalıp giriş",
         "level": "bağlam",
         "patterns": (
-            r"^günümüz",
-            r"son yıllarda",
+            # Kalıp giriş cümle başındadır; cümle ortasındaki `son yıllarda` sıradan zaman zarfı, `Günümüz
+            # Sanatçıları` özel addır (UD BOUN ölçümü).
+            r"^günümüzde\b|^günümüz (?:dünyasında|toplumunda|koşullarında)",
+            r"^son yıllarda",
             r"hızla (?:değişen|gelişen|dönüşen)",
             r"teknolojinin hızla",
             r"her zamankinden daha",
@@ -461,7 +463,8 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"\b(?:benzersiz|eşsiz|rakipsiz)(?!li[kğ])",
             r"çığır aç|devrim niteliğinde",
             r"kusursuz|sektör lideri",
-            r"bir üst seviyeye|fark yarat|yeniden tanımla",
+            # Olumsuz `fark yaratmaz` bir olgu bildirir, pazarlama değildir (UD BOUN ölçümü).
+            r"bir üst seviyeye|fark yarat(?!ma[zd]|mıyor|mamı)|yeniden tanımla",
             r"\bdönüştürücü (?:bir )?(?:etki|deneyim|güç|yolculuk|dokunuş|an|dönem|çözüm|potansiyel)",
             r"sorunsuz (?:bir şekilde|biçimde)|emin ellerde|bir adım önde",
             r"\b(?:güçlü|esnek|ölçeklenebilir|yenilikçi|modern|kullanıcı dostu|sezgisel), (?:güçlü|esnek|ölçeklenebilir|yenilikçi|modern|kullanıcı dostu|sezgisel),? ve ",
@@ -2383,6 +2386,14 @@ def self_test() -> None:
     for key, text in (("anons", "Karşınızda yeni sürümümüz!"), ("anons", "Müjde! Kampanya başladı."),
                       ("anons", "İşte karşınızda yeni panel."), ("savunma", "Burada altını çizmek isterim ki yöntem yenidir."),
                       ("savunma", "Şunun altını çizmeliyiz: ölçüm tektir."), ("duyuru", "Peki bu ne anlama geliyor?")):
+        if key not in analyse(text)["per_category"]:  # type: ignore[operator]
+            raise SystemExit(f"Öz sınama: daraltılan örüntü hedef kullanımı kaçırdı: {key} {text!r}")
+    for key, text in (("giris", "Bu kurum son yıllarda iki kez taşındı."), ("giris", "Günümüz Sanatçıları Sergisi açılıyor."),
+                      ("reklam", "Dosya uzantısı herhangi bir fark yaratmaz.")):
+        if key in analyse(text)["per_category"]:  # type: ignore[operator]
+            raise SystemExit(f"Öz sınama: zaman zarfı, özel ad ya da olumsuz olgu {key} sayıldı (yanlış pozitif): {text!r}")
+    for key, text in (("giris", "Son yıllarda yapay zekâ hayatımızın her alanına girdi."),
+                      ("giris", "Günümüzde teknoloji hızla ilerliyor."), ("reklam", "Bu özellik gerçekten fark yaratıyor.")):
         if key not in analyse(text)["per_category"]:  # type: ignore[operator]
             raise SystemExit(f"Öz sınama: daraltılan örüntü hedef kullanımı kaçırdı: {key} {text!r}")
     for text in ("Bankalar eski sahiplerine iade edildi.", "Ekip kendi koduna sahip çıktı.", "Kent turnuvaya ev sahipliği yaptı."):

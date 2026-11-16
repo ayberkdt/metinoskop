@@ -8,7 +8,7 @@ gerilim,sert,depo-kurali,—,—,retorik-yapilar.md,Gerçek karşıtlık nicel o
 aski,sert,depo-kurali,—,—,retorik-yapilar.md,İleri gönderen askı.
 capraz,bağlam,depo-kurali,—,—,yapisal-butunluk.md,"Tablo, şekil ve numaralı gönderme korunur."
 baglam_tekrari,bağlam,depo-kurali,—,—,metinsel-tutarlilik.md,Bölüm başı bağlam sıfırlaması.
-giris,bağlam,ai-arastirmasi,iym:9,—,retorik-yapilar.md,Kalıp giriş hunisi.
+giris,bağlam,ai-arastirmasi,iym:9,—,retorik-yapilar.md,Kalıp giriş hunisi. Cümle başına daraltıldı: ortadaki `son yıllarda` zaman zarfıdır (UD ölçümü).
 sonuc,bağlam,ai-arastirmasi,iym:8,—,retorik-yapilar.md,Kalıp kapanış.
 karsitlik,bağlam,depo-kurali,—,—,retorik-yapilar.md,Reddedilen taraf kaynakta yoksa karşıtlık kurulmaz.
 denge,bağlam,depo-kurali,—,calisir-zenci-2020,retorik-yapilar.md,Adlandırılmış sınırlılık ve olumsuz tümce retorik edim taşır; silinmez.
@@ -20,7 +20,7 @@ sizinti,bağlam,literatur,yilmaz-2004,ruhi-2009-yani;guclu-2025,okura-dogrudan-m
 kuyruk,bağlam,ai-arastirmasi,iym:1;kocagul-2026,johanson-1995,turkce-ritim-ve-ceviri-kokusu.md,"Yüklemden önceki zarf-fiil doğaldır. UD ölçümüyle daraltıldı: konuşma etiketinden sonra gelen anlatı zarf-fiili, `olarak` eksiltisi ve gösterme `bu da` sayılmaz."
 etiket,sert,depo-kurali,—,—,retorik-yapilar.md,Kör A/B ile ölçüldü (evals/README.md › Etiket ve anons); alan etiketi korunur.
 anons,sert,depo-kurali,—,—,retorik-yapilar.md,"Kör A/B ile ölçüldü (evals/README.md › Etiket ve anons). UD ölçümüyle daraltıldı: gerçek anlamdaki `karşınızda`, aktarılan `müjde ver-`, alıntı ve diyalog satırı işaretlenmez."
-reklam,bağlam,depo-kurali,—,—,kenar-turler.md,Tanıtım türünde ikna amacı ayrıca değerlendirilir.
+reklam,bağlam,depo-kurali,—,—,kenar-turler.md,"Tanıtım türünde ikna amacı ayrıca değerlendirilir. Olumsuz `fark yaratmaz` olgu bildirir, işaretlenmez (UD ölçümü)."
 mecaz,bağlam,depo-kurali,—,—,turkce-oruntuler.md,Yazara özgü imge korunur (ozgun-imge-korunur).
 sus,bağlam,depo-kurali,—,—,turkce-oruntuler.md,Süs emojisi.
 klise_gecis,bağlam,ai-arastirmasi,iym:7;kocagul-2026,—,turkce-oruntuler.md,Cümle başı söylem belirleyicisi ve şablon.
