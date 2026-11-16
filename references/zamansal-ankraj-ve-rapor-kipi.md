@@ -454,7 +454,7 @@ Tek bir kipi belge geneline dayatma.
 - **Prosedür ve kılavuz:** genel prosedür biçimleri baskın olabilir.
 - **Olay raporu:** kronolojik yalın geçmiş baskındır; artalan `-yordu`, daha önce tamamlanan `-mıştı` ile işaretlenir.
 - **İlerleme ve durum raporu:** tamamlanan iş geçmiş, süren iş şimdiki, planlanan iş gelecek; üçü karışır.
-- **Haber:** yalın geçmiş baskındır; Türk gazetelerindeki çekimli fiillerin %65'i `-DI`'lı geçmiştir (Yolcu 2026). Haberdeki `-DI` zinciri `-mıştır` yığını gibi sorun sayılmaz, aktarım bildirme fiilleriyle kurulur; duyum `-mIş`'ı için [Kanıt ve kesinlik › Kanıtsallık eki](kanit-ve-kesinlik.md#epistemik-kaynak).
+- **Haber:** yalın geçmiş baskındır; Türk gazetelerindeki çekimli fiillerin %65'i `-DI`'lı geçmiştir (Yolcu 2026); BOUN ağaç bankasının haber bölümünde çekimli geçmiş zaman yüklemlerinin %93'ü `-DI`, %6'sı duyum `-mIş`, %1'i `-mIştIr`'dır (biyografi %89, deneme ve öğretici metin %81 `-DI`; [depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)). Haberdeki `-DI` zinciri `-mıştır` yığını gibi sorun sayılmaz, aktarım bildirme fiilleriyle kurulur; duyum `-mIş`'ı için [Kanıt ve kesinlik › Kanıtsallık eki](kanit-ve-kesinlik.md#epistemik-kaynak).
 
 ## Karşı örnekler
 
