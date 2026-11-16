@@ -132,6 +132,8 @@ Reçete ile talimat da bu ayrımın parçasıdır. `İlk olarak sensör kalibre 
 
 ## Raporda geniş zaman
 
+Geniş zaman zamandan çok görünüş ve kip bildirir: istem ile bir varlığa tipik ya da içkin olanı nitelemek temel işlevleridir (Yavaş 1979); şimdiyi değil sınırsız durumu ve genellemeyi gösterir (Enmutlu 1984). Tamamlanmış tekil işi geniş zamanla anlatmak onu tipik özellik iddiasına yükseltir.
+
 Rapor düzyazısında sık geçen şu yüklemleri incele: `inceler`, `değerlendirir`, `kullanır`, `uygular`, `gerçekleştirir`, `hesaplar`, `karşılaştırır`, `ölçer`, `belirler`, `seçer`, `kaydeder`, `analiz eder`, `test eder`, `doğrular`, `elde eder`, `sunar`.
 
 Risk özellikle şu koşullarda yükselir: özne `bu çalışma`, `analiz`, `deney` veya `rapor` olduğunda; özne tamamlanmış bir kampanya olduğunda; birkaç böyle yüklem art arda geldiğinde.
@@ -186,7 +188,7 @@ Tamamlanmış anlatım tek bir geçmiş değildir. Olay raporu, arıza çözüml
 
 Ek olayı tamamlanmış bir bütün olarak değil, geçmişteki bir referans noktasına göre sürerken gösterir. Bu, olayın sınırsız olduğu anlamına gelmez: `Pompa iki dakika boyunca çalışıyordu` cümlesinde süre açıkça sınırlıdır, yine de olay bütünlenmiş bir blok olarak değil, akış hâlinde sunulur. `Pompa çalıştı` bakış açısını bütünlenmiş olaya çevirir ve eş zamanlılığı siler; `pompa çalışıyor` ise olayı bugüne taşır.
 
-**`-mıştı`: geçmişteki bir referans noktasından önce tamamlanmış eylem.**
+**`-mıştı`: geçmişteki bir referans noktasından önce tamamlanmış eylem.** Bu bir eğilimdir: `-DIK`'lı zarf yan cümlelerinde `-mIştI` ve `-DIydI` belirli koşullarda sonralık da bildirir (Yangın 2020); düzenleme `-mıştı`yı otomatik öncelik işareti sayıp olay sırasını yeniden kurmaz.
 
 > İkinci test başlamadan önce sensör zaten kalibre edilmişti.
 
@@ -229,6 +231,8 @@ Aynı biçimde, kaynakta süreklilik yoksa `-yordu`, düzenlilik yoksa `-ardı` 
 > Analiz yapıldı ve üç hata türü belirlendi.
 
 Ancak `-mıştır` yasaklanmaz. Resmî durum dili, mevzuat, kurumsal kayıt ve dergi kuralı gerektiriyorsa korunur.
+
+Kaynaklar ayrımı destekler. `-mIştIr` konuşur geçmiş olay bilgisini topluluğuyla paylaştığında, `-DI` konuşurun kendi bilgisel önceliğini işaretlediğinde seçilir (Kuram 2022); `-mIş` tabanlı postterminal biçim olayı sınırından sonraki, hâlâ geçerli bir noktaya bağlar ve sonuçsal perfect'e karşılık gelir (Johanson 2021; Csató 2000). Bu yüzden `-mıştır` → `-dı` dönüşümü bilgiyi kurum ya da alan kaydından yazarın kendi tanıklığına kaydırabilir; sonuç durumu taşımayan sıradan tamamlanmış işte ise `-mıştır` gerekçesiz kalır. Kurumsal norm bölünmüştür: sağlık bilimleri tez kılavuzları örneği yalın geçmişle (`yapıldı`, `görüldü`, `bulundu`), bir mühendislik kılavuzu `-mıştır`la (`geliştirilmiştir`) verir, bir başkası geniş ya da geçmiş zamanı işlev ayrımı yapmadan seçenek sunar (Marmara SBE 2026; Kırıkkale SBE 2026; Marmara Endüstri Mühendisliği 2020; Dicle Matematik 2025); kılavuzlar dil ve anlatım konusunda genel olarak yetersizdir (Deniz ve Karagöl 2017). "Dergi kuralı" istisnası gerçek bir türe karşılık gelir, ama kip kararı kılavuzdan değil işlevden çıkar.
 
 ## Şimdiki zaman ve söylemsel yakınlık
 
