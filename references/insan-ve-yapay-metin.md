@@ -26,6 +26,8 @@ Güven: **A** birden çok bağımsız çalışma aynı yönü buldu; **B** tek �
 - **"Model Türkçe ekleri belirteçleme yüzünden bozar, öyleyse ekli biçimi işaretle."** Biçimbirim düzeyindeki belirteçleyici alt sözcük belirteçleyicileriyle rekabet edebilir (Toraman ve ark. 2023); belirteçleme ile çıktı doğallığı arasındaki bağ ölçülmedi. Bu varsayıma dayanan AI izi kuralı kurulmaz ([literatür](turkce-dil-literaturu.md#metin-üretimi-çeviri-ve-belirteçleme)).
 
 - **"İnsan metni daha değişkendir, öyleyse uzunluğu ve sözcüğü değiştir."** Değişkenlik içerikten gelir. Cümle uzunluğunu rastgeleleştirmek, eş anlamlı döndürmek ya da hata eklemek insanlaştırmaz; Metinoskop dedektör atlatmaz. Depo ölçümünde iyi yazılmış kısa Türkçe metinlerin uzunluk değişkenliği yapay örnekten düşük çıktı; değişkenlik eşiği bu yüzden denetime konmadı.
+- **"Kulağa yapay geliyor, öyleyse değiştir."** Türkçe okur yapay zekâ metnini güvenilir biçimde ayıramaz: edebiyat öğrencileri öyküde yazarı kör okumayla tahmin ederken beğeni yargıya karışır (Tunç 2026), öğrenciler reklam metninde küçük farkla ChatGPT metnini en etkili bulur (Yılmaz 2023). Sezgi kural gerekçesi değildir; kural ölçülmüş bir farka dayanır.
+- **"Dedektör puanı düştüyse metin iyileşmiştir."** Türkçe akademik metinde dedektör duyarlılığı yapay zekâyla cilalanmış ve insanlaştırılmış metinde değişir, insan metninde de yanlış pozitif verir (Tüker, Sinecen ve Eser 2026). Dedektör puanı düzenleme başarısının ölçüsü değildir; başarı kaynak sadakati ve okurun anlamasıdır.
 - **"AI çok çekince kullanır, çekinceyi sil."** Ölçülen yön çoğu zaman terstir (bulgu 5). Çekince kanıt düzeyidir.
 - **"Edilgeni etkene çevir, daha insani olur."** GPT-4o failsiz edilgeni insanın yaklaşık yarısı oranında kullanır (Reinhart 2025). Edilgen kararı aktörün bilgi değerine bakar (kural 6).
 - **"Belirli sözcükleri yasakla."** Fazla sözcükler bir işlev ailesidir (biçem fiili, değerlendirme sıfatı). Aynı sözcük doğru işlevde kalır.
@@ -47,4 +49,7 @@ PDF'ler bu depoya konmaz; bağlantılar açık erişimlidir.
 - Mitchell E. ve ark. (2023). DetectGPT. ICML 2023. https://arxiv.org/abs/2301.11305
 - Guo Y. ve ark. (2024). The Curious Decline of Linguistic Diversity. Findings of NAACL 2024. https://arxiv.org/abs/2311.09807
 - Üyük C. ve ark. (2024). Crafting Tomorrow's Headlines: Neural News Generation and Detection in English, Turkish, Hungarian, and Persian. NLP4PI 2024. https://arxiv.org/abs/2408.10724
+- Tunç G. (2026). Öykü Yazarı Olarak Yapay Zekâ: ChatGPT Örneğinde Yapay Zekânın Öykü Yazma Kabiliyeti. *Folklor/Edebiyat* 32(126), 459–482. https://www.folkloredebiyat.org/DergiPdfDetay.aspx?ID=5014
+- Yılmaz A. (2023). Reklam Metni Yazımında Yapay Zekâ İnsana Karşı. *İKTİSAD* 8(22), 850–862. https://dergipark.org.tr/tr/pub/iktisad/article/1345154
+- Tüker M., Sinecen M., Eser M. T. (2026). Measurement Validity of AI-Text Detection in Turkish Academic Writing. *Scientific Journal of Mehmet Akif Ersoy University* 9(1), 53–67. https://dergipark.org.tr/en/pub/sjmakeu/article/2033004
 - Guo Y. ve ark. (2025). Do Large Language Models Have an English "Accent"? ACL 2025. https://arxiv.org/abs/2410.15956
