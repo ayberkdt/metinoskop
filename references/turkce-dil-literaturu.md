@@ -51,6 +51,7 @@ python scripts/literatur.py --kural kanit-ve-kesinlik.md
 python scripts/literatur.py --ara "odak"
 python scripts/literatur.py --id enc-1986 --tam
 python scripts/literatur.py --check                  # şema; validate-package.py de çalıştırır
+python scripts/literatur.py --bib > kaynaklar.bib    # BibTeX; süzgeçlerle birlikte de çalışır
 ```
 
 Alanlar: `id`, `yazarlar`, `yil`, `baslik`, `yayin`, `tur`, `konular` (noktalı virgülle), `bulgu`, `metinoskop` (ilgili referans dosyaları ya da `—`), `dogrulama` (`künye+içerik: …` ya da `künye: …`), `url`. Yeni kayıt için: künyeyi görülen bir kaynakla doğrula, bulguyu yalnızca okuduğun yerden tek cümleyle yaz, okumadıysan bulgu yazma. Kayıt bu dosyanın ilgili bölümünde `id`siyle anılır; doğrulayıcı her `id`nin burada geçtiğini denetler.

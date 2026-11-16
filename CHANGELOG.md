@@ -8,6 +8,7 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Eklendi
 
+- `scripts/literatur.py --bib`: veritabanını (ya da `--konu`, `--kural`, `--ara` süzgecinden geçen kayıtları) BibTeX olarak dışa aktarır; doğrulama düzeyi ve bulgu `note` alanına yazılır.
 - Üçüncü literatür taraması: veritabanı 201 kayda çıktı (165'inde künye ve bulgu, 36'sında yalnızca künye). Yeni bölümler ünsüz değişimi, ünlü uyumu istisnaları, vurgu, ek sırası ve biçim çözümleyicileri; `de/da`, `ise`, eksilti, ilgi yan cümlesi işlemleme ve söylem belirleyicileri; kiplik, noktalama ve kibarlık; değerlendirmede kullanılabilecek Türkçe ağaç bankaları, anlam ağı, normalleştirme, yazım hatası, eşanlamlı ifade ve öğrenici derlemi kaynaklarını tarar. Geri çekilmiş iki arXiv çalışması "kullanılmaz" diye işaretlendi.
 - Referanslara kanıtlı kurallar: ünsüz yumuşamasının köke bağlı olduğu ve genel düzenli ifadeyle denetlenmediği, `l`'nin iki sesi ve `rol-e` (`yazim-ve-dil-bilgisi.md`); eksilti meşrudur; bitişik `de/da` için düzenli ifade kurulmaz; `de/da` ve `ise` silinmez, `ayrıca` olmaz (`turkce-baglayicilar.md`); kip gücü dönüşümleri ve Türkçe bilimsel metinde kaçınma (`kanit-ve-kesinlik.md`); açımlayıcı `yani`, biz ekleri (`okura-dogrudan-metin.md`); Türkçe kibarlık kalıpları (`kenar-turler.md`).
 - `style-lint.py` `sizinti` ailesi cümle başındaki `işte` ve söylem belirleyicisi `şey`i bağlamsal aday olarak işaretler (Yılmaz 2004); `bir şey`, `her şey` öz sınamada yanlış pozitif bekçisidir. 204 gold'da yeni bulgu yok.

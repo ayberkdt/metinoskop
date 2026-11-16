@@ -8,6 +8,7 @@ Usage:
     python scripts/literatur.py --ara "odak"         # başlıkta ya da bulguda geçen sözcük
     python scripts/literatur.py --id enc-1986 --tam  # tek kaydın bütün alanları
     python scripts/literatur.py --check              # şema denetimi (doğrulayıcı da çağırır)
+    python scripts/literatur.py --bib > kaynaklar.bib  # BibTeX (süzgeçlerle birlikte de çalışır)
 
 The database is a source register, not a rulebook: a finding becomes a Metinoskop rule only
 after it is written into a reference file with its source and tested with an eval case.
@@ -77,6 +78,34 @@ def problems(rows: list[dict[str, str]]) -> list[str]:
     return found
 
 
+BIB_TYPES = {"makale": "article", "bildiri": "inproceedings", "tez": "phdthesis", "kitap-bolumu": "incollection",
+             "dil-bilgisi-kitabi": "book", "kitap": "book", "sozluk": "book", "on-baski": "misc", "veri-kumesi": "misc",
+             "derlem": "misc", "agac-bankasi": "misc", "kilavuz": "misc"}
+
+
+def bib_escape(value: str) -> str:
+    return value.replace("\\", "\\textbackslash{}").replace("{", "\\{").replace("}", "\\}").replace("&", "\\&").replace("%", "\\%")
+
+
+def to_bibtex(row: dict[str, str]) -> str:
+    """Bir kaydı BibTeX girdisine çevir; doğrulama düzeyi ve bulgu `note` alanına yazılır."""
+    kind = BIB_TYPES.get(row["tur"], "misc")
+    venue_field = {"article": "journal", "inproceedings": "booktitle", "incollection": "booktitle",
+                   "phdthesis": "school", "book": "publisher"}.get(kind, "howpublished")
+    year = re.match(r"\d{4}", row["yil"])
+    fields = [
+        ("author", " and ".join(a.strip() for a in row["yazarlar"].split(";"))),
+        ("title", "{" + row["baslik"] + "}"),
+        (venue_field, row["yayin"]),
+        ("year", year.group(0) if year else row["yil"]),
+        ("url", row["url"]),
+        ("keywords", ", ".join(t.strip() for t in row["konular"].split(";"))),
+        ("note", f"Doğrulama: {row['dogrulama']}. {row['bulgu']}"),
+    ]
+    body = ",\n".join(f"  {name} = {{{value if name in ('title', 'url') else bib_escape(value)}}}" for name, value in fields)
+    return f"@{kind}{{{row['id']},\n{body}\n}}\n"
+
+
 def main() -> int:
     configure_stdio()
     parser = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
@@ -86,6 +115,7 @@ def main() -> int:
     parser.add_argument("--id", help="tek kayıt")
     parser.add_argument("--tam", action="store_true", help="bütün alanları yazdır")
     parser.add_argument("--check", action="store_true", help="şemayı denetle")
+    parser.add_argument("--bib", action="store_true", help="seçilen kayıtları BibTeX olarak yazdır")
     args = parser.parse_args()
 
     rows = load()
@@ -106,6 +136,11 @@ def main() -> int:
         selected = [r for r in selected if needle in (r["baslik"] + r["bulgu"] + r["yazarlar"]).casefold()]
     if args.id:
         selected = [r for r in selected if r["id"] == args.id]
+
+    if args.bib:
+        for row in selected:
+            print(to_bibtex(row))
+        return 0
 
     if not any((args.konu, args.kural, args.ara, args.id)):
         topics = Counter(t.strip() for r in rows for t in r["konular"].split(";") if t.strip())
