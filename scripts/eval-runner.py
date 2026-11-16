@@ -251,6 +251,40 @@ def added_markers(source: str, output: str, allowed: set[str] = frozenset()) -> 
     return added
 
 
+# Kanıtsallık: `-mIş` duyum ya da çıkarımla, `-DI` doğrudan bilinen geçmişi bildirir (Aksu-Koç ve Slobin 1986;
+# Kuram 2024). Yalnızca noktalama önündeki çekimli biçim sayılır; ortaç (`belirlenmiş kurallar`) dışarıda kalır.
+EVIDENTIAL_MIS_RE = re.compile(r"\b(\w{3,}?)m[ıiuü]ş(?:l[ae]r)?(?=\s*(?:[.;,!?]|$))", re.MULTILINE)
+EVIDENTIAL_DI_RE = re.compile(r"\b(\w{3,}?)[dt][ıiuü](?:l[ae]r)?(?=\s*(?:[.;,!?]|$))", re.MULTILINE)
+
+
+def evidential_shifts(source: str, output: str) -> list[dict[str, str]]:
+    """Kaynaktaki çekimli `-mIş`'ın çıktıda `-DI`'ya ya da `-mIştIr`'a, `-DI`'nın `-mIş`'a dönüştüğü yüklemler.
+    Resmî `-mIştIr` (`tamamlanmıştır`) `-mIş` sayılmaz; ondan `-DI`'ya sadeleşme kayma değildir."""
+    src, out = tr_fold(source), tr_fold(output)
+    shifts: list[dict[str, str]] = []
+    finite: list[str] = []
+    for sentence in re.split(r"(?<=[.!?])\s+|\n+", src):
+        for match in EVIDENTIAL_MIS_RE.finditer(sentence):
+            # Virgülle sıralanan ortaç zinciri (`doldurulmuş, ... yayımlanmış olan bir veri kümesi`) çekimli değildir.
+            rest = sentence[match.end():]
+            if rest.lstrip().startswith(",") and re.search(r"\bolan\b", rest):
+                continue
+            finite.append(match.group(1))
+    for stem in dict.fromkeys(finite):
+        stem_re = re.escape(stem)
+        if re.search(rf"\b{stem_re}m[ıiuü]ş(?:l[ae]r)?\b", out):
+            continue
+        hit = re.search(rf"\b{stem_re}(?:[dt][ıiuü](?:l[ae]r)?|m[ıiuü]şt[ıiuü]r(?:l[ae]r)?)\b", out)
+        if hit and not re.search(rf"\b{re.escape(hit.group(0))}\b", src):
+            shifts.append({"from": f"{stem}-mIş", "to": hit.group(0)})
+    for stem in dict.fromkeys(EVIDENTIAL_DI_RE.findall(src)):
+        stem_re = re.escape(stem)
+        hit = re.search(rf"\b{stem_re}m[ıiuü]ş(?:l[ae]r)?(?=\s*(?:[.;,!?]|$))", out, re.MULTILINE)
+        if hit and not re.search(rf"\b{stem_re}m[ıiuü]ş", src):
+            shifts.append({"from": f"{stem}-DI", "to": hit.group(0)})
+    return shifts
+
+
 def evaluate(case_text: str, output_text: str) -> dict[str, object]:
     source = section(case_text, "Kaynak")
     output = normalize(output_text)
@@ -280,13 +314,16 @@ def evaluate(case_text: str, output_text: str) -> dict[str, object]:
     except ValueError:
         request = ""
     body = re.split(r"(?m)^---\s*$", output)[0]
-    added = added_markers(source + "\n" + request, body, free_additions(case_text))
+    allowed = free_additions(case_text)
+    added = added_markers(source + "\n" + request, body, allowed)
+    shifts = [] if "kanitsallik" in allowed else evidential_shifts(source, body)
 
     return {
-        "passed": not missing and not added,
+        "passed": not missing and not added and not shifts,
         "checked": len(invariants),
         "missing": missing,
         "added": added,
+        "evidential": shifts,
     }
 
 
@@ -299,6 +336,8 @@ def print_report(case_path: Path, output_path: Path, report: dict[str, object]) 
         print(f"- Eksik {item['category']}: {alternatives}")
     for item in report["added"]:
         print(f"- Eklenen {item['label']}: {item['source']} → {item['output']} «{', '.join(item['examples'])}»")
+    for item in report.get("evidential", []):
+        print(f"- Kanıtsallık kayması: {item['from']} → {item['to']}")
     if report["added"]:
         print("Eklenen işaretin kaynakta dayanağı yoksa kaldır; gerekçeliyse vakaya `## Serbest eklemeler` yaz.")
     print("Not: Akıcılık, ton ve genel anlam uyumu insan veya model hakemi gerektirir.")
@@ -439,6 +478,20 @@ def self_test() -> None:
     if not evaluate(hedge_case, "İyileşmenin kısmen mevsimsel olabileceğini düşünüyorum, ancak emin değilim.")["passed"]:
         raise SystemExit("Öz sınama: çekimli çekince (`olabileceğini`) kayıp sayıldı")
 
+    # Kanıtsallık: duyum `-mIş` olguya, doğrudan `-DI` duyuma dönmez; resmî `-mIştIr` sadeleşebilir.
+    for source, output, expected in (
+        ("Parti limana ulaşmış.", "Parti limana ulaştı.", True),
+        ("Parti limana ulaşmış.", "Parti limana ulaşmıştır.", True),
+        ("Sensör geçen kış donmuş, kayda geçmemiş.", "Sensör geçen kış dondu, kayda geçmedi.", True),
+        ("Ekip kabloyu değiştirdi.", "Ekip kabloyu değiştirmiş.", True),
+        ("Parti limana ulaşmış.", "Parti limana ulaşmış.", False),
+        ("Kalibrasyon tamamlanmıştır.", "Kalibrasyon tamamlandı.", False),
+        ("Belirlenmiş kurallar uygulandı.", "Belirlenen kurallar uygulandı.", False),
+        ("Sorumluya göre sensör donmuş.", "Sorumluya göre sensör donmuş; arıza kayda geçmedi.", False),
+        ("Veri kümesi, değerleri doldurulmuş, kodları yayımlanmış olan bir kümedir.", "Değerler dolduruldu; kodlar yayımlandı.", False),
+    ):
+        if bool(evidential_shifts(source, output)) is not expected:
+            raise SystemExit(f"Öz sınama: kanıtsallık kayması yanlış değerlendirildi: {source!r} -> {output!r}")
     print(f"Eval runner öz sınaması geçti ({len(scenarios)} vaka, {len(drift)} eklenen işaret senaryosu).")
 
 

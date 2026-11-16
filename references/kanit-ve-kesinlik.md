@@ -61,6 +61,18 @@ Statüyü koruma kuralı: bir statüyü başka statüye dönüştüren düzenlem
 
 İkinci sürüm aktarımı olguya yükseltir. Üçüncü sürüm yalnızca kipi doğallaştırır.
 
+**Kanıtsallık eki.** Türkçede bilginin geliş yolunu ek de taşır: `-DI` doğrudan bilinen geçmişi, `-mIş` duyumla ya da çıkarımla edinilen bilgiyi bildirir (Slobin ve Aksu 1982; Aksu-Koç ve Slobin 1986). Konuşucular iki ek arasında geçerek bilginin kime ait olduğunu da işaretler (Kuram 2024). Bu seçim kanıt statüsüdür: kaynakta yalnızca `-mIş` duyumu taşıyorsa düzenleme onu `-DI`'ya ya da resmî `-mIştIr`'a çevirmez; doğrudan kayıt bildiren `-DI`'yı da `-mIş`'a indirmez. Duyumun kaynağı metinde adlandırılmamışsa `tedarikçiye göre` gibi bir aktör eklenmez; `-mIş` olduğu gibi kalır. İstisna: rapor ve resmî yazıdaki `-mIştIr` çoğunlukla duyum değil bitmişlik ve durum bildirir ([Zamansal ankraj › `-mıştır` biçimi](zamansal-ankraj-ve-rapor-kipi.md#-mıştır-biçimi)); süs resmiyetiyse `-DI`'ya sadeleşebilir. Haber metninde `-DI` zinciri türün normudur (Yolcu 2026), aktarım orada `bildirdi`, `açıkladı` gibi fiillerle kurulur. On dil modelinde bu ayrıma duyarlılık tutarlı değildir (Karakaş ve Şimşek 2026); kural bu yüzden yazma kipinde de geçerlidir ([literatür](turkce-dil-literaturu.md#kanıtsallık--di-ve--miş)).
+
+**Önce**
+
+> Önemle belirtmek gerekir ki ikinci parti 4 Kasım'da limana ulaşmış. Depo ekibi ilk partideki 120 kolinin 12'sini hasarlı olarak kaydetti.
+
+**Doğru**
+
+> İkinci parti 4 Kasım'da limana ulaşmış. Depo ekibi ilk partideki 120 kolinin 12'sini hasarlı olarak kaydetti.
+
+Dolgu gitti; iki cümle iki ayrı kanıt yolunu korudu: limana varış duyum, hasar kaydı ekibin doğrudan kaydı (`mis-dolaylilik-tuzagi`, `dogrudan-dolayli-kanitsallik-korunur`).
+
 ## Aktör ve edilgen çatı
 
 "Aktör belliyse gereksiz edilgenliği azalt" kuralı tek başına yetmez; edilgen çatı yalnızca bürokratik bir alışkanlık değil, bir epistemik seçimdir.
@@ -154,6 +166,8 @@ Son cümle atıflı yorumu yazar olgusuna çevirir; "bu nedenle" ölçümle atf�
 > İade oranı %6,2 idi. Çalışan görüşmelerinde bu oranın manuel girişten kaynaklandığı belirtildi.
 
 Atıf, yönettiği iddianın yanına geldi; ölçüm kendi başına durdu; nedensel sonuç cümlesi kaynakta bağımsız dayanağı olmadığı için gitti. "Göre", "bildirdi", "belirtti", "öne sürdü", "tahmin etti", "öngördü" işaretlerinin kapsamını izle: hangi cümlelere kadar uzanıyor? Aynı paragrafta atıf işaretinden sonra gelen "bu nedenle", "dolayısıyla", "demek ki" cümlesi neredeyse her zaman incelenmelidir.
+
+Belirsiz atıf belirsiz kalır. Türkçe bilim haberlerinde kaynağın açıkça belirtilmemesi yaygındır (üç haber sitesinde 39 haber; Küçükvardar 2020); `bir araştırmaya göre` diye başlayan cümleye düzenleme dergi, kurum ya da yazar eklemez. Kaynaksız otoriteye dayanan pazarlama dolgusu ise ayrı bir sorundur ([Türkçe örüntüler › Kaynaksız çoğunluk](turkce-oruntuler.md#kaynaksız-çoğunluk)).
 
 ## Çekince ve pekiştirici
 

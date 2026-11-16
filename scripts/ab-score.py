@@ -91,8 +91,10 @@ def score(task: str, output: str, source: str) -> dict[str, object]:
         "sizinti": report["sizinti"],
         "sert": report["hard_hits"],
         "liste": report["structure_summary"]["list_items"],
-        "eklenen": sum(int(item["count"]) for item in evaluation["added"]),
-        "eklenen_ornek": [e for item in evaluation["added"] for e in item["examples"]],
+        # Kanıtsallık kayması (`ulaşmış` → `ulaştı`) da kaynakta olmayan bir epistemik işarettir.
+        "eklenen": sum(int(item["count"]) for item in evaluation["added"]) + len(evaluation.get("evidential", [])),
+        "eklenen_ornek": [e for item in evaluation["added"] for e in item["examples"]]
+                         + [item["to"] for item in evaluation.get("evidential", [])],
         "kayip": [item["value"] for item in evaluation["missing"]],
         "olumluya_cekme": len(POSITIVE.findall(lint.tr_lower(body))),
         "yanilgi": misreadings(task, lint.tr_lower(body), lint.tr_lower(output)),

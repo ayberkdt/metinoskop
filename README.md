@@ -99,7 +99,7 @@ Konuşmaya gönderme, çalışma sırası ve kullanıcıya teklif silindi. Taş�
 
 ### Dokunulmayan cümleler
 
-204 vakanın 82'sinde doğru davranış hiçbir şeyi değiştirmemektir. Bu korunur vakalarının kayıtlı çıktısı kaynağın kendisidir ve doğrulayıcı bu eşitliği denetler. Aşağıdaki cümlelerin her biri bir korunur vakasının kaynağından alındı.
+206 vakanın 83'ünde doğru davranış hiçbir şeyi değiştirmemektir. Bu korunur vakalarının kayıtlı çıktısı kaynağın kendisidir ve doğrulayıcı bu eşitliği denetler. Aşağıdaki cümlelerin her biri bir korunur vakasının kaynağından alındı.
 
 | Cümle | Vaka | Neden kalır |
 |---|---|---|
@@ -170,7 +170,7 @@ Ana kurallar `SKILL.md` dosyasındadır. Ajan `references/` altındaki katalogla
 | Tuhaf eşdizim, sözcüksel kalkı | `karar gerçekleştirmek`, `X hakkında odaklanmak` gibi birleşimleri düzeltir; `referans çerçevesi`, `hipotezi desteklemek` gibi yerleşik terimleri korur. | `sozcuk-birlesimleri.md` |
 | Paragraflar bir düşünceyi geliştirmiyor | Desteksiz `bu nedenle`yi, kayan kapsam işaretini ve iddiasından uzak düşen sınırlılığı düzeltir; zaman sırasını nedenselliğe çevirmez. | `metinsel-tutarlilik.md` |
 | Yazım yanlışı, alıntı sözcüğün eki, anlam tekrarı, tamlama, ortak öge | TDK Yazım Kılavuzu'na açıkça aykırı yazımı (`Türkçede`, `Kurumuna`, `her şey`, `kaydetmek`, `hattı`, `kontrolü`) her düzeyde düzeltir; `geri iade`, `PIN numarası` gibi tekrarı atar, `IP adresi`ni bırakır; birleştirdiği cümlede ortak ögeyi iki yüklemin hâline uydurur. Alıntıyı, kodu, resmî adı (`Türk Standardları Enstitüsü`) ve kaynağın tutarlı yazım tercihini değiştirmez. | `yazim-ve-dil-bilgisi.md` |
-| Kuralın dil bilgisi ve derlem dayanağı | Sözcük dizimi, özne düşürme, kanıtsallık, bağlayıcılar, tamlama, akademik Türkçe ve yapay zekâ Türkçesi üzerine 257 doğrulanmış kaydı tarar (ses ve biçim bilgisi, sözdizimi, edimbilim, hesaplamalı kaynaklar dahil); hangi kuralın hangi çalışmaya dayandığını, hangi örüntünün hangi kanıtla kurulduğunu ve hangi kuralın çıkarım olduğunu yazar. | `turkce-dil-literaturu.md` |
+| Kuralın dil bilgisi ve derlem dayanağı | Sözcük dizimi, özne düşürme, kanıtsallık, bağlayıcılar, tamlama, akademik Türkçe ve yapay zekâ Türkçesi üzerine 290 doğrulanmış kaydı tarar (ses ve biçim bilgisi, sözdizimi, edimbilim, hesaplamalı kaynaklar dahil); hangi kuralın hangi çalışmaya dayandığını, hangi örüntünün hangi kanıtla kurulduğunu ve hangi kuralın çıkarım olduğunu yazar. | `turkce-dil-literaturu.md` |
 | Rapor, inceleme notu, yönetici özeti | Bulgu, yorum, öneri ve karar sınırını korur; yönetici özeti gövdede olmayan çıkarım üretmez. | `rapor-yazimi.md` |
 | AI metnine özgü izler | Cümle sonu `-arak/-erek` kuyruğunu, biçem fiilini ve yumuşatılmış olumsuz bulguyu giderir; uzunluğu rastgeleleştirmez. | `insan-ve-yapay-metin.md` |
 | Konuşma sızıntısı | Sızıntıyı siler, taşıdığı varsayımı ve yöntemi okura yazar. | `okura-dogrudan-metin.md` |
@@ -206,7 +206,7 @@ Depo, Türkçe metin düzenleyen ajan ve araçlar için kaynaklı bir dil yapıs
 | Ne | Nerede | İçerik |
 |---|---|---|
 | Yazım ve dil bilgisi kuralları | [`references/yazim-ve-dil-bilgisi.md`](references/yazim-ve-dil-bilgisi.md) | TDK Yazım Kılavuzu'na dayanan bitişik–ayrı yazım, `ki`/`de`/`mi`, kesme işareti, sayılar, büyük harf, düzeltme işareti; alıntı sözcüklerin ses ve ek davranışı; kökenden gelen anlam tekrarı; tamlama, sayı uyumu, ortak öge uyumu, eksilti; fiil–hâl çerçevesi listesi. Her kuralın doğrulama düzeyi yazılıdır. |
-| Literatür veritabanı | [`references/turkce-dil-literaturu.csv`](references/turkce-dil-literaturu.csv) | 257 kayıt: dil bilgisi kitapları, sözcük dizimi ve bilgi yapısı, özne düşürme, kanıtsallık, belirtme hâli ve `bir`, adlaştırma, `-DIr`, edilgen, sayı uyumu, ses bilgisi, söylem belirleyicileri, akademik Türkçe, derlem ve ağaç bankaları, çeviri, dil modelleri. Her kayıtta künye, tek cümlelik bulgu, ilgili kural dosyası, doğrulama düzeyi ve bağlantı vardır; `python scripts/literatur.py --konu <konu>` sorgular, `--bib` BibTeX olarak dışa aktarır. |
+| Literatür veritabanı | [`references/turkce-dil-literaturu.csv`](references/turkce-dil-literaturu.csv) | 290 kayıt: dil bilgisi kitapları, sözcük dizimi ve bilgi yapısı, özne düşürme, kanıtsallık, belirtme hâli ve `bir`, adlaştırma, `-DIr`, edilgen, sayı uyumu, ses bilgisi, söylem belirleyicileri, akademik Türkçe, derlem ve ağaç bankaları, çeviri, dil modelleri. Her kayıtta künye, tek cümlelik bulgu, ilgili kural dosyası, doğrulama düzeyi ve bağlantı vardır; `python scripts/literatur.py --konu <konu>` sorgular, `--bib` BibTeX olarak dışa aktarır. |
 | Literatür sentezi | [`references/turkce-dil-literaturu.md`](references/turkce-dil-literaturu.md) | Bulguların konu konu özeti, her örüntü için kanıt–karar–uygulama tablosu (`Örüntü kararları`), aday kurallar, bulunamayan çalışma türleri ve geri çekilmiş kaynaklar. |
 | Örüntü kanıt eşlemesi | [`references/oruntu-kanitlari.csv`](references/oruntu-kanitlari.csv) | `style-lint.py`'deki 38 ailenin her biri için dayanak türü (literatür, ölçülmüş AI araştırması, TDK, depo kuralı, çıkarım), destekleyen ve karşı kanıt; doğrulayıcı eşlemeyi kodla birlikte denetler. |
 | Biçim bilgisi doğru örüntüler | `scripts/style-lint.py` | Türkçe eklerin ünlü uyumu biçimlerini kapsayan zaman, edilgen, sayı uyumu, `tarafından` ve yazım aileleri; öz sınamadaki ek türeticisi (`turet`) A/I/D arketiplerinden 184 biçim üretip örüntüleri sınar. |
@@ -326,7 +326,7 @@ Hukuki, tanıtım, deneme, sosyal medya, kişisel ve edebî metin desteklenir; b
 metinoskop/
 ├── SKILL.md                    Her çağrıda yüklenen kurallar
 ├── references/                 İlgili sorun görülünce okunan 18 katalog ve Türkçe dil literatürü veritabanı (CSV)
-├── evals/                      204 davranış vakası: 82 korunur, 122 dönüşüm
+├── evals/                      206 davranış vakası: 83 korunur, 123 dönüşüm
 │   ├── outputs/                Her vakanın kayıtlı çıktısı
 │   ├── critical-cases.txt      Canlı regresyondaki 36 kritik vaka
 │   └── README.md               Vaka grupları, hakem ölçütleri, ölçüm sonuçları
@@ -366,7 +366,7 @@ npx --yes skills@1.5.20 add . --list
 | Betik | Ne denetler |
 |---|---|
 | `scripts/validate-package.py` | Paket yapısını, `SKILL.md` bütçesini (300 satır, 34 KB) ve başlıklarını, vaka biçimini, korunur vakalarında kayıtlı çıktının kaynağa eşitliğini ve lisansı. |
-| `scripts/eval-runner.py VAKA ÇIKTI` | Kaynaktaki sayı, tarih, URL, kod, dipnot, kapsam sözcüğü ve terimlerin çıktıda korunduğunu; çıktıya kaynakta olmayan olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk, gelecek ya da olumsuz değerlendirme işareti eklenmediğini. Akıcılığa ve tona hakem karar verir. |
+| `scripts/eval-runner.py VAKA ÇIKTI` | Kaynaktaki sayı, tarih, URL, kod, dipnot, kapsam sözcüğü ve terimlerin çıktıda korunduğunu; çıktıya kaynakta olmayan olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk, gelecek ya da olumsuz değerlendirme işareti eklenmediğini; kaynaktaki duyum `-mış`'ın `-dı`'ya ya da `-mıştır`'a, doğrudan `-dı`'nın `-mış`'a kaymadığını. Akıcılığa ve tona hakem karar verir. |
 | `scripts/eval-suite.py` | Bütün kayıtlı çıktıları değişmez, sert kalıp ve yapısal beklenti açısından. `--export-judge-prompts DIR` her vaka için model hakem istemi yazar. |
 | `scripts/style-lint.py METİN` | Retorik, yapı, netlik, çeviri kokusu ve söylem bulgularını inceleme işareti olarak listeler; tek bir işaret metni reddetmez. `--source` kaynakta olmayıp çıktıda beliren kalıpları ayırır; `--fail-on-introduced-hard` sert aile, `--fail-on-introduced-any` herhangi bir aile eklendiyse 1 ile çıkar. |
 | `scripts/behavioral-regression.py` | Kritik vakaları gerçek modelde taze üretip deterministik denetimden ve model hakeminden geçirir. `ANTHROPIC_API_KEY` ister ve her çalıştırma ücretlidir; `--dry-run` API çağırmadan planı yazar. `behavioral.yml` haftalık ve elle çalıştırır, raporlar `build/behavioral/` altına yazılır. |

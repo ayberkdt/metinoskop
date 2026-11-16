@@ -90,6 +90,8 @@ Karşılaştırma zemini (`eski pompaya göre`) yalnızca enerji tüketimine ba�
 
 **Korunur.** Tek ilişkiyi (koşul, neden, karşıtlık) taşıyan uzun cümle bölünmez; bölmek ilişkiyi koparır (`dogal-uzun-cumle-korunur`).
 
+Ortalama bir sınır değildir. Ders kitabı ve haber metninden oluşan karma bir Türkçe veride ortalama tümce 12 sözcüktür (Güven 2021); bu bir derlem ortalamasıdır, kesme eşiği değil. Aynı çalışmanın kısa sözcük ve az edilgen önerisi kolay okunur metin hedefi içindir, akademik metne aktarılmaz.
+
 **Telgraf dili yasaktır.** `Pompa takıldı. 2024. Enerji düşük.` kısadır ama net değildir; ögeler ve ilişki kaybolmuştur.
 
 ### 5. Bir terim, bir anlam

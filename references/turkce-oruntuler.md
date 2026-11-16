@@ -544,7 +544,8 @@ Aşağıdakileri tek başına yapaylık belirtisi sayma:
 - adlandırılmış bir sınırlılık veya kapsam tekrarı,
 - ölçülmüş dayanağı olan yöntem gerekçesi,
 - yeni başlayanlara yönelik metindeki öğretici açıklama veya benzetme,
-- uzun bir belgenin başındaki tek yönlendirme cümlesi.
+- uzun bir belgenin başındaki tek yönlendirme cümlesi,
+- haber başlığındaki yüklemsiz ya da eksiltili yapı; başlık haberi özetleme işlevi için eksiltiye başvurur (Sargın 2024).
 
 Bu karşı örneklerin ayrıntısı [Retorik yapılar › Karşı örnekler](retorik-yapilar.md#karşı-örnekler-kalması-gerekenler) bölümündedir.
 

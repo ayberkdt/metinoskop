@@ -49,6 +49,8 @@ REQUIRED_FILES = (
     "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
     "evals/tamlama-ve-uyum-korunur.md",
     "evals/yerli-bir-edilgen-cogul-korunur.md",
+    "evals/mis-dolaylilik-tuzagi.md",
+    "evals/dogrudan-dolayli-kanitsallik-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -262,6 +264,8 @@ EVAL_FILES = (
     "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
     "evals/tamlama-ve-uyum-korunur.md",
     "evals/yerli-bir-edilgen-cogul-korunur.md",
+    "evals/mis-dolaylilik-tuzagi.md",
+    "evals/dogrudan-dolayli-kanitsallik-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -704,6 +708,8 @@ for relative_path in EVAL_FILES:
             fail(f"{relative_path} is missing: {heading}")
 
 eval_markers = {
+    "evals/mis-dolaylilik-tuzagi.md": ("ulaşmış", "başlamış", "kayıt altına alınmıştır", "4 Kasım", "120", "12"),
+    "evals/dogrudan-dolayli-kanitsallik-korunur.md": ("tamamlanmıştır", "değiştirdi", "aktardığına göre", "donmuş", "geçmemiş"),
     "evals/belirsiz-gonderge-korunur.md": ("Bu durum", "birden fazla makul yorum"),
     "evals/kapsam-ve-kosul.md": ("Yalnızca en az üç ay", "18 yaş altındaki"),
     "evals/uslup-eslestirme.md": ("### Üslup örneği", "### Düzenlenecek metin"),
@@ -1011,6 +1017,7 @@ SHOULD_REMAIN_CASES = (
     "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
     "evals/tamlama-ve-uyum-korunur.md",
     "evals/yerli-bir-edilgen-cogul-korunur.md",
+    "evals/dogrudan-dolayli-kanitsallik-korunur.md",
 )
 misnamed = sorted({p for p in SHOULD_REMAIN_CASES if not Path(p).stem.endswith("-korunur")}
                   | {p for p in EVAL_FILES if Path(p).stem.endswith("-korunur") and p not in SHOULD_REMAIN_CASES})

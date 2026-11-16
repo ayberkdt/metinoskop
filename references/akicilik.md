@@ -185,6 +185,8 @@ Metne bağlı kullanımda `bu` ile `o` serbest değişken değildir (Balpınar 2
 
 `Bu durum` ifadesinin tek olası karşılığı açıkça adlandırılır. Kaynakta birden fazla olası gönderge varsa hangisinin kastedildiğini tahmin etme.
 
+Etiketli soyut gönderge (`bu durum`, `bu olay`) yalın `bu`ya göre öncülü yalnızca bazı durumlarda belirginleştirir (Ergin Somer 2012); her yalın `bu` etiketlenmez, değerlendirme yüklü etiket (`bu sorun`, `bu başarı`) de kaynakta olmayan yargı ekler. Yazılı Türkçede sıfır gönderim baskın biçimdir: bir zamir çözümleme çalışmasında zamirlerin %74,7'si sıfır zamirdir (Küçük ve Yöndem 2007), BOUN ağaç bankasında öznesi ve nesnesi açık SOV tümce azınlıktadır (Türk ve ark. 2022). Sıfır özne açık `o` ile doldurulmaz; denetim iki aday öncül olduğunda yapılır. Öge sırası zamirin yorumunu da etkiler (Sarısoy, Evcen ve Hartshorne 2026): dizimi değiştiren düzenleme sonraki `o`nun ya da sıfır öznenin göndergesini yeniden denetler.
+
 - Belirsizlik korunarak doğal bir düzenleme yapılabiliyorsa ifadeyi koru.
 - Düzenleme mutlaka bir yorum seçmeyi gerektiriyorsa kullanıcıdan açıklama iste.
 - Kullanıcı inceleme veya karşılaştırma istediyse belirsizliği kısa bir notla belirt.

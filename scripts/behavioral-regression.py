@@ -158,6 +158,8 @@ def deterministic_checks(case_text: str, output: str) -> tuple[bool, list[str]]:
         problems.append(f"eksik {item['category']}: {' | '.join(item['alternatives'])}")
     for item in invariants["added"]:
         problems.append(f"eklenen {item['label']}: «{', '.join(item['examples'])}»")
+    for item in invariants.get("evidential", []):
+        problems.append(f"kanıtsallık kayması: {item['from']} → {item['to']}")
     comparison = lint.compare(lint.analyse(section(case_text, "Kaynak")), lint.analyse(output))
     for item in comparison["introduced_hard"]:
         problems.append(f"yeni sert kalıp: {item['label']} «{item['example']}»")

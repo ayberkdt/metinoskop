@@ -176,6 +176,8 @@ Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tü
 | `edilgen-etkene` | Aktörü açık olan "tarafından" zincirini etkene çevirmek |
 | `bilinmeyen-aktor` | Belirsiz aktörü tek özneye çözmemek |
 | `aktarim-olgu-olmaz` | İki ayrı kaynağa atıflı iddiaları atıflı tutmak, ölçümü olgu olarak bırakmak |
+| `mis-dolaylilik-tuzagi` | Dolguyu silerken duyum bildiren `-mış`'ı `-dı`'ya ya da `-mıştır`'a çevirmemek, kaynağı belirtilmemiş duyuma aktör eklememek; resmî `-mıştır` kaydını yalın geçmişe sadeleştirmek |
+| `dogrudan-dolayli-kanitsallik-korunur` | Resmî `-mıştır`, doğrudan `-dı` ve `aktardığına göre` ile birlikte gelen duyum `-mış`'ı aynı paragrafta korumak |
 | `olcum-ile-cikarim` | Ölçüm ile çıkarımı ayırmak; çıkarımı nedensel olguya çevirmemek |
 | `cekince-korunur` | Kanıt düzeyi taşıyan çekince ve kapsam sınırını korumak |
 | `kiplik-yigini` | Aynı şeyi söyleyen üç kiplik işaretini teke indirmek; atıf ile olasılığı birlikte korumak |
@@ -272,7 +274,7 @@ Bir model çıktısını kaynakta açıkça korunan değişmezler bakımından d
 python scripts/eval-runner.py evals/teknik-gosterim-korunur.md outputs/teknik-gosterim-korunur.txt
 ```
 
-Çalıştırıcı sayı, tarih, URL, kod, dipnot, kapsam belirleyicisi, teknik ad, sembol, denklem numarası ve ölçüm kayıplarını yakalar. Birebir çıktı karşılaştırması yapmaz. Akıcılık, ton, gönderge yorumu ve genel anlam uyumu elle veya model hakemiyle değerlendirilmelidir.
+Çalıştırıcı sayı, tarih, URL, kod, dipnot, kapsam belirleyicisi, teknik ad, sembol, denklem numarası ve ölçüm kayıplarını yakalar. Kaynaktaki çekimli `-mIş` (`ulaşmış`) çıktıda `-DI`'ya (`ulaştı`) ya da `-mIştIr`'a (`ulaşmıştır`), çekimli `-DI` `-mIş`'a dönmüşse kanıtsallık kayması olarak raporlar (`references/kanit-ve-kesinlik.md` › Kanıtsallık eki); resmî `-mIştIr`'dan `-DI`'ya sadeleşme ve virgülle sıralanan ortaç zinciri (`doldurulmuş, ... yayımlanmış olan`) kayma sayılmaz. Gerekçeli istisna `## Serbest eklemeler` altında `kanitsallik` ailesiyle yazılır. Birebir çıktı karşılaştırması yapmaz. Akıcılık, ton, gönderge yorumu ve genel anlam uyumu elle veya model hakemiyle değerlendirilmelidir.
 
 ### Stil denetimi
 

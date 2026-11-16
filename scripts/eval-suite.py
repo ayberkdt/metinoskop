@@ -184,6 +184,8 @@ def evaluate_case(case_path: Path, output_path: Path) -> dict[str, object]:
         problems.append(f"eksik {item['category']}: {' | '.join(item['alternatives'])}")
     for item in invariants.get("added", []):
         problems.append(f"eklenen {item['label']}: {item['source']} → {item['output']} «{', '.join(item['examples'])}»")
+    for item in invariants.get("evidential", []):
+        problems.append(f"kanıtsallık kayması: {item['from']} → {item['to']}")
     for item in comparison["introduced_hard"]:
         problems.append(f"yeni sert kalıp: {item['label']} «{item['example']}»")
     problems.extend(failed_expectations)
