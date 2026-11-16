@@ -50,6 +50,8 @@ Anlaşılır ama deyimsel olmayan birleşimler yüksek risklidir: `karar gerçek
 
 Her birinde sor: bu ad normalde bu fiille kullanılır mı; daha alışılmış bir Türkçe eşdizim var mı; mevcut biçim İngilizce sözcük aktarımından mı geliyor; tuhaf birleşim aslında teknik terim mi? Anlam değişmiyorsa alışılmış eşleşmeyi seç.
 
+Sözlük kaydı tek başına ölçüt değildir: Türkçe Sözlük'te ad + eylem eşdizimleri tutarsız kaydedilmiştir, kimi hiç yer almaz, kimi serbest birleşim gibi işlenir (Doğan 2015). Birleşimin sözlükte bulunmaması onu kalkı yapmaz; belirteç–eylem birleşimleri için derlem tabanlı ayrı bir sözlük vardır (Özkan 2011). Genel derlem sıklığı da türden bağımsız değildir; kurmaca ve haber alt derlemlerinin sıklık profilleri ayrıdır (Aksan ve Yaldır 2012).
+
 | Olası | Doğal |
 |---|---|
 | karar gerçekleştirmek | karar vermek, karar almak |

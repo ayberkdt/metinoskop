@@ -13,6 +13,7 @@ Metinoskop'un öncelikli alanı bilimsel ve teknik metindir. Bu dosya, ana alan�
 - Koşul, istisna, süre ve yükümlülük sınırlarını (`-dıkça`, `ancak`, `şu kadar ki`, `en geç`) dolgu sayma; hukuki metinde bunlar hükmün kendisidir.
 - Edilgen ve adlaştırılmış yapı (`ödenmesi zorunludur`) hukuki kayıtta meşrudur; aktör belirtilmemişse uydurma.
 - Netlik kuralları burada da işler: aynı hükmü iki maddede yineleyen, gerekçeyi hükmün önüne yığan ya da tek yükümlülüğü üç eş anlamlıyla söyleyen metni sadeleştirebilirsin; ama yalnızca anlam ve kapsam değişmiyorsa.
+- Yasa dili karşılaştırılan türler içinde bilgi verici, planlı söylemin özelliklerini en yüksek oranda taşır (Özyıldırım 2010); yoğun adlaştırma ve uzun ad öbeği türün normudur, etkileşimli kayda çekilmez. Banka teminat mektubu ve benzeri sözleşme metinleri hukuk dilinin alt türüdür (Alagözlü 2007).
 - Eval: `hukuki-metin-korunur`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`.
 
 Mevzuat taslağında sade, açık ve anlaşılır dil yönetmelik gereğidir; karşılığı olmayan teknik terim aslına uygun kalır (Mevzuat Hazırlama Usul ve Esasları Hakkında Yönetmelik, 2022, md. 25). Hukuk metninin güçlüğü terimden de söz diziminden de gelir (Aydemir 2010); netleştirme söz diziminde yapılır, hukuki terim ve formül korunur. Resmî yazışmada kurum adı, sayı, tarih ve ilgi satırı yönetmeliğin düzenlediği biçim ögeleridir; üslup gerekçesiyle değişmez.
@@ -72,3 +73,7 @@ Kullanıcı bir yazı örneği verdiyse ortalama cümle uzunluğunu ve değişim
 Bu yapıları otomatik olarak silme; içerik taşımadan vurgu, geçiş, otorite veya heyecan ürettiklerinde düzenle: `günümüzün hızla değişen dünyasında`, `bu bağlamda`, `bu noktada`; `bir araçtan fazlası`, `dönüşümün anahtarı`; `benzersiz`, `çığır açan`, `kusursuz`; `fark yaratıyor`, `bir üst seviyeye taşıyor`; `ve sonra her şey değişti`, `asıl mesele şu`; kaynaksız `uzmanlara göre`, `araştırmalar gösteriyor`. Örüntüleri tek sözcükte değil, kümeler ve tekrarlar hâlinde ara; katalog [Türkçe örüntüler](turkce-oruntuler.md) dosyasındadır. Hukuki, akademik, teknik ya da edebî bağlamda işlev taşıyan ifade korunur.
 
 **Plaza dili.** İngilizce sözcükle karışık iş yeri söyleyişi (`toplantıyı set edelim`) kendi topluluğunda yaygındır: bir ankette akademisyenlerin %95'i bu dili kullandığını bildirir (Hakkoymaz ve Uygun 2022), söyleyiş çevresindeki dil ideolojileri de tartışmalıdır (Yağlı 2025). Kurum içi yazışmada ve alıntıda söyleyiş korunur. Dış okura giden resmî metinde yerleşik Türkçe karşılığı olan sözcük, terim değilse sadeleştirme adayıdır; sözcüğü "yabancı" diye işaretlemek tek başına gerekçe değildir.
+
+## Arayüz, yerelleştirme ve kullanım kılavuzu
+
+Ürünün biçim kılavuzu (terim listesi, hitap biçimi, düğme ve menü adları) genel üslup tercihinin önündedir; düzenleme kılavuzun terimini ve `siz`/`sen` seçimini değiştirmez (Güner 2022). Kullanım kılavuzunda adım sırası, uyarı ve doğrudan seslenme işlevdir, sohbet sızıntısı sayılmaz. Kısa arayüz dizesi ve başlık sıklık eşiğine dayanan ölçülerle değerlendirilmez (Mısır 2025).

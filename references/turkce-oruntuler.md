@@ -26,6 +26,8 @@ Bu örüntüler yasak değil, editörlük işaretidir. Tek bir `bu bağlamda`, e
 - Konuşma veya manifestoda değerlendirme ve heyecan metnin işlevidir.
 - Edebî metinde tekrar, kısa cümle ve alışılmadık benzetme bilinçli olabilir.
 
+Kalıp ifade tek başına dolgu değildir. Türkçede iki sözcüklü demetler de sözlükselleşmiştir (Doğan, Dağlı ve Güvendi 2023) ve kalıplaşma ek dizisinde de görülür (Durrant 2013); Türkçe akademik metinde `söz konusu`, `bu bağlamda` gibi kalıpların işlevini ölçen bir çalışma bulunamadı ([literatür](turkce-dil-literaturu.md#çok-sözcüklü-birimler-ve-akademik-söz-varlığı)). Bir kalıp ancak cümlede önerme taşımadığı gösterildiğinde silinir; işaret değeri olan aynı kalıbın yakın tekrarı ve yoğunluğudur (Öztürk ve Köse 2016).
+
 Örneklerdeki "sonra" metinleri, "önce" metninde bulunmayan olgu eklememelidir. Bu kural bütün düzenlemeler için geçerlidir.
 
 Bu dosya sözcük ve kalıp düzeyini ele alır. Cümleler temiz olduğu hâlde metin yapay okunuyorsa sorun cümle, paragraf veya belge mimarisindedir; önem cümleleri, savunmacı açıklama, tekrar döngüleri, yol haritası, kalıp giriş ve sonuç ile tek biçimli paragraf yapısı için [Retorik yapılar](retorik-yapilar.md) dosyasına bak.
