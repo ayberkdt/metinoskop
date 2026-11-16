@@ -263,6 +263,8 @@ Kural: ilişki yapısal olarak zaten görünüyorsa onu bir kez daha belirteçle
 
 `Ancak` gerçek bir kapsam sınırlaması getirir; silinirse ikinci cümle ilkinin devamı gibi okunur.
 
+**Hangi belirteç çeviri izidir.** Özgün ve çevrilmiş Türkçe ağaç bankalarında cümle başı `ancak` çeviride 2–5 kat, `bununla birlikte` neredeyse yalnız çeviride görülür; `bu nedenle`, `bu yüzden`, `ama` ve `fakat` özgün Türkçede en az çeviri kadar sıktır ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)). Neden bağlayıcısını çeviri kokusu diye silme; yoğunluğu ve ilişkinin yapıda zaten görünüp görünmediğini incele.
+
 ## Gösterme sıfatı ve söylem adı paketi
 
 İngilizce söylem `this result`, `this finding`, `this approach`, `this issue`, `this process`, `this situation`, `this observation` ile yürür. Türkçede bunlar `bu sonuç`, `bu bulgu`, `bu yaklaşım`, `bu durum`, `bu süreç`, `bu nokta` olur. Sorun yalnızca belirsizlik değildir ([Retorik yapılar › Boş soyut özne](retorik-yapilar.md#boş-soyut-özne) bunu ele alır); sorun, önceki önermenin her seferinde gösterme sıfatı + söylem adıyla paketlenip yeni özneye dönüştürülmesidir.

@@ -152,6 +152,47 @@ def morphology_check(paths: list[Path]) -> None:
     print("Kanıtsallık örüntüsü (EVIDENTIAL_MIS_RE) isabetleri:", dict(ev_hit))
 
 
+# Yüzey biçimleri ham metinden sayılır: ağaç bankaları belirteçlemede ve biçim özelliği işaretlemesinde
+# ayrışır (PUD'da ortaç ve zarf-fiil özelliği neredeyse yoktur), bu yüzden özellik sayımı kümeler arasında
+# karşılaştırılmaz.
+SURFACE_WORDS = {
+    "olan": r"olan", "olarak": r"olarak", "ki (ayrı sözcük)": r"ki", "ve": r"ve", "açısından": r"açısından",
+    "-mAktAdIr": r"\w+m[ae]kt[ae]d[ıi]r(?:l[ae]r)?", "-mAktA (tümü)": r"\w+m[ae]kt[ae]\w*",
+    "gerçekleştir-": r"gerçekleştir\w*", "sağla-": r"sağla\w*",
+    "ile ilgili": r"ile ilgili", "söz konusu": r"söz konusu", "yer al-": r"yer al\w*", "neden ol-": r"neden ol\w*",
+}
+SENTENCE_OPENERS = ("ancak", "fakat", "ama", "ayrıca", "bununla birlikte", "öte yandan", "buna ek olarak",
+                    "bu nedenle", "bu yüzden", "dolayısıyla", "sonuç olarak", "bu bağlamda", "üstelik")
+
+
+def surface_profile(paths: list[Path], by_genre: bool) -> None:
+    """Çeviri kokusu sayılan yüzey biçimlerini ve cümle başı bağlayıcılarını kümelere göre sayar."""
+    stats: dict[str, Counter] = defaultdict(Counter)
+    word_res = {k: re.compile(rf"(?<!\w){v}(?!\w)") for k, v in SURFACE_WORDS.items()}
+    for path in paths:
+        for sent_id, text in sentences(path):
+            group = group_name(path, sent_id, by_genre)
+            low = text.replace("I", "ı").replace("İ", "i").lower()
+            entry = stats[group]
+            entry["cümle"] += 1
+            entry["sözcük"] += len(WORD_RE.findall(low))
+            for key, pattern in word_res.items():
+                entry[key] += len(pattern.findall(low))
+            opener = low.lstrip("-–—\"' ")
+            for word in SENTENCE_OPENERS:
+                if re.match(rf"{word}(?!\w)", opener):
+                    entry[f"cümle başı: {word}"] += 1
+    groups = sorted(stats)
+    print("Yüzey biçimi | " + " | ".join(groups))
+    print("cümle | " + " | ".join(str(stats[g]["cümle"]) for g in groups))
+    print("sözcük | " + " | ".join(str(stats[g]["sözcük"]) for g in groups))
+    for key in SURFACE_WORDS:
+        print(f"{key} (10.000 sözcükte) | " + " | ".join(f"{1e4 * stats[g][key] / max(1, stats[g]['sözcük']):.1f}" for g in groups))
+    for word in SENTENCE_OPENERS:
+        key = f"cümle başı: {word}"
+        print(f"{key} (1.000 cümlede) | " + " | ".join(f"{1e3 * stats[g][key] / max(1, stats[g]['cümle']):.1f}" for g in groups))
+
+
 def group_name(path: Path, sent_id: str, by_genre: bool) -> str:
     corpus = path.name.split("-ud-")[0]
     if by_genre and "_" in sent_id and sent_id.split("_")[0].isalpha():
@@ -196,9 +237,14 @@ def main() -> int:
     parser.add_argument("--per-words", action="store_true", help="oranı bin cümle yerine on bin sözcükte ver")
     parser.add_argument("--morph", action="store_true",
                         help="tense_class ve kanıtsallık örüntüsünü UD biçim işaretlemesine karşı ölç")
+    parser.add_argument("--surface", action="store_true",
+                        help="çeviri kokusu sayılan yüzey biçimlerini ve cümle başı bağlayıcıları say")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
 
+    if args.surface:
+        surface_profile(args.files, args.by_genre)
+        return 0
     if args.morph:
         morphology_check(args.files)
         return 0

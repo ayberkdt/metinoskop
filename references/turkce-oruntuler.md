@@ -100,6 +100,8 @@ Tek bir kısa vurgu cümlesini sırf kısa olduğu için bozma.
 
 Geniş zaman daha uygunsa `saklar`, `oluşturur` biçimini kullan. Kipi tür ve zaman bağlamına göre seç.
 
+`-mAktAdIr` İngilizceden çevrilmiş Türkçe ağaç bankalarında özgün haber Türkçesinin 2,4–2,6 katı sıklıktadır (10.000 sözcükte 7,5'e karşı 18–19), özgün öğretici metinde de yüksektir (15); tek kullanım değil zincir ve türe uyumsuzluk sorundur ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)).
+
 ### İsim-fiil yığılması
 
 **Önce**
