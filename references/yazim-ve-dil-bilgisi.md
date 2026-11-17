@@ -156,7 +156,7 @@ Türkçenin söz varlığında Türkçe kökenli sözcüklerin yanında Arapça 
 
 **İyelik üst üste gelmez.** Tamlanan zaten iyelikli birleşik adsa ikinci iyelik eklenmez: `Türk Dil Kurumu Başkanı`, `hava durumu raporu`, `kullanıcı arayüzü tasarımı`.
 
-**Ek ortaklığı meşrudur.** Türkçe aynı eki sıralanan ögelerin sonuncusuna bağlayabilir: `sistemin hız ve güvenilirliği`, `Ankara ve İstanbul'da`. Askıdaki ek bağlı olduğu bütün ögeler üzerinde kapsam taşır (Kabak 2007; Broadwell 2008). Bunu eksik ek sanıp açma; kapsam belirsizleşiyorsa (`eski öğrenci ve öğretmen evi`) yorum seçme, kaynağı koru.
+**Ek ortaklığı meşrudur.** Türkçe aynı eki sıralanan ögelerin sonuncusuna bağlayabilir: `sistemin hız ve güvenilirliği`, `Ankara ve İstanbul'da`. Askıdaki ek bağlı olduğu bütün ögeler üzerinde kapsam taşır (Kabak 2007; Broadwell 2008). Bunu eksik ek sanıp açma; kapsam belirsizleşiyorsa (`eski öğrenci ve öğretmen evi`) yorum seçme, kaynağı koru. Ortaklık kurmak da açmak da anlamı değiştirebilir: `[A ve B]-lAr` her zaman `A-lAr ve B-lAr` değildir (Bayırlı 2022, ertelenmiş ekler). Ortak olabilen ekler çoğul, iyelik ve hâl ekleridir; türetme eki ortaklığı sınırlı ve derecelidir, sık bağlanan ikililerde daha kabul edilebilirdir (Hankamer 2012; Akkuş 2016; Turk ve ark. 2026). Düzenleme türetme ekinde (`-lIk`, `-sIz`) ortaklığı kendiliğinden kurmaz.
 
 **Sıfat ile tamlayan aynı değildir.** `Bilimsel araştırma` (niteleme) ile `bilim araştırması` (tür) ya da `toplumsal sorun` ile `toplum sorunu` eş anlamlı değildir; çeşitlilik için birinden ötekine geçme.
 
@@ -187,7 +187,7 @@ Türkçenin söz varlığında Türkçe kökenli sözcüklerin yanında Arapça 
 
 **Eksilti meşrudur.** Yüklemi eksiltili sıralı cümle (`Ali raporu, Ayşe tabloyu hazırladı`) Türkçede kurallıdır; kabul yargısını yalnızca dizim değil, ortak ve karşıtsal ögelerin bilgi yapısı da belirler (Gürer ve Göksel 2019; Hankamer 1971). Eksiltiyi bozukluk sayıp açma; açman gerekiyorsa ortak yüklemin zamanını, kipini ve kapsamını her ögede koru.
 
-**Cümle birleştirirken denetle.** Düzenleme iki cümleyi `ve`, `-ip`, `-erek` ile bağladığında sor: ortak özne, nesne ve tümleç iki yüklemle de aynı hâlde mi; çatı ve kişi aynı mı? Değilse ögeyi ikinci yüklemde yinele ya da cümleleri ayrı bırak.
+**Cümle birleştirirken denetle.** Düzenleme iki cümleyi `ve`, `-ip`, `-erek` ile bağladığında sor: ortak özne, nesne ve tümleç iki yüklemle de aynı hâlde mi; çatı ve kişi aynı mı? Değilse ögeyi ikinci yüklemde yinele ya da cümleleri ayrı bırak. `ve` → `-ip` dönüşümü kipliği iki yükleme yayar: `-ip` yapısında kapsam alan kiplik zorunlu olarak paylaşılır (Fokkens, Poulson ve Bender 2009); ilk fiil ayrı kip ya da olumsuzluk taşıyorsa `-ip`'e çevrilmez. Geriye doğru yüklem eksiltisi koşut dizilim ister (Bozşahin 2011). Bağlanmış iyelik ya da öznede uyum son ögeyle kısmi kurulabilir (Tat ve Kornfilt 2022); `Ali ve senin gelmen` türü yapı kendiliğinden anlatım bozukluğu sayılmaz. Bağımlı sıralı cümlenin ölçütü yüklem dışında bir ögenin ortak olmasıdır (Alemdar 2025).
 
 ## Fiil–hâl çerçevesi listesi
 

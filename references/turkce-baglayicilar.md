@@ -52,6 +52,8 @@ Aynı ilişki dört yapıyla kurulabilir. Seçimi anlam değil, iki önermenin n
 | Bağlaç (iki cümle) | `Maliyet yüzde 18 arttı. Bu yüzden proje ertelendi.` | Neden kendi başına bilgi taşıyor ya da vurgulanmalı |
 | Bağlaçsız | `Maliyet yüzde 18 arttı; proje ertelendi.` | İlişki bağlamdan açık ve kaynak da etiketlemiyor |
 
+**Eşdizimli bağlama ve koşul biçimleri eş anlamlı değildir.** `ve` ile `ile` eşdeğerliği tartışmalıdır (Gümüşatam 2019); simetrik yüklemde `-(y)lA` argüman, `ve` topluluk kurar (`Deniz İlkay'la evlendi` ↔ `Deniz ve İlkay evlendi`; Atlamaz ve Öztürk 2023), dönüşüm argüman yapısını değiştirir. `hem ... hem` ad öbeğini değil daha büyük yapıları bağlar (Köse 2026). `ya` her zaman seçme bağlacı değildir; pekiştirme ve karşıtlık da taşır (Karaşin 2008), `veya`'ya çevrilmesi bu işlevi siler. Koşul biçimleri de farklı önvarsayım taşır: bildirme koşulu `-(y)sA` öncülün olası olduğunu, dilek koşulu `-sA` ek bir olasılık varsayımını kurar (Soykan 2021); karşıolgusal `-sAydI` açık alternatiflik bildirmez (Denizer 2023), `-DIysA` → `-sAydI` dönüşümü kaynakta olmayan "gerçekleşmedi" sezdirimini ekler, ters yön siler. Koşul tümcesinin belirtisiz sırası öncül–sonuçtur (Oktar ve Can 2016); öncülünde `ne` soru sözcüğü bulunan koşulda `eğer` kullanılamaz ve sıra sabittir (Yarar 2014). `-dığı için` ↔ `-sA` değişimi gerçekleşmiş olguyu varsayıma çevirir (çıkarım; `kanit-ve-kesinlik.md` › Öneri, karar, uygulama).
+
 Ölçüt: okur ilişkiyi ilk okumada doğru kurabiliyor mu? Ek yapısı tek cümlede üçten fazla fiilimsi biriktiriyorsa bağlaçlı iki cümleye dön ([Türkçe ritim ve çeviri kokusu › Türkçenin fiilimsi kaynakları](turkce-ritim-ve-ceviri-kokusu.md#türkçenin-fiilimsi-kaynakları)).
 
 ## Yakın tekrar: terim sabit, çevresi değişken
