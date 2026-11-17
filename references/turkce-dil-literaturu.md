@@ -52,6 +52,7 @@ Veritabanı kural kitabı değildir. Bir bulgu Metinoskop kuralına ancak ilgili
 - [Sözlü ve yazılı dil, etkileşim belirleyicileri](#sözlü-ve-yazılı-dil-etkileşim-belirleyicileri)
 - [Yaklaşıklık, niceleyici ve sayı belirleme](#yaklaşıklık-niceleyici-ve-sayı-belirleme)
 - [İkileme ve tekrarlı yapılar](#ikileme-ve-tekrarlı-yapılar)
+- [Çeviri kokusu sayılan yapıların dil bilgisi dayanağı](#çeviri-kokusu-sayılan-yapıların-dil-bilgisi-dayanağı)
 - [Değerlendirme için hesaplamalı kaynaklar](#değerlendirme-için-hesaplamalı-kaynaklar)
 - [Söz varlığı, sözcük yapımı ve anlamsal bulaşma](#söz-varlığı-sözcük-yapımı-ve-anlamsal-bulaşma)
 - [Dil devrimi ve tarihsel değişim](#dil-devrimi-ve-tarihsel-değişim)
@@ -86,7 +87,7 @@ Veritabanı kural kitabı değildir. Bir bulgu Metinoskop kuralına ancak ilgili
 
 - **Tam metin okunmadı.** Bulgular özetlerden, yayıncı tanıtımlarından ve ikincil kaynakların aktarımından gelir; hangisi olduğu her kaydın `dogrulama` alanında yazılıdır.
 - **Atıftan doğrulanan künye.** Künyesi yalnızca başka bir çalışmanın kaynakçasında görülen 16 kayıtta `url` çalışmanın kendi sayfasına değil, künyenin görüldüğü atıf yapan çalışmaya gider; `dogrulama` alanı bunu söyler. Bu kayıtlar `künye` düzeyindedir ve bulgu taşımaz (2026-11-17 denetimi).
-- **`künye+içerik`** (931 kayıt): künye ve bulgu görülen bir kaynakla doğrulandı. **`künye`** (190 kayıt): yalnızca künye doğrulandı; bulgu alanı boş bırakıldı ("Künye doğrulandı; içerik özetlenmedi."). `scripts/literatur.py --check` bu ayrımı denetler.
+- **`künye+içerik`** (939 kayıt): künye ve bulgu görülen bir kaynakla doğrulandı. **`künye`** (192 kayıt): yalnızca künye doğrulandı; bulgu alanı boş bırakıldı ("Künye doğrulandı; içerik özetlenmedi."). `scripts/literatur.py --check` bu ayrımı denetler.
 - **Sayısal bulgular özetteki değerdir.** Tablo düzeyinde değer, model başına yüzde ve formül katsayısı alınmadı.
 - İngilizce derlemle yapılmış çalışmalar (Türk yazarların İngilizce makaleleri) bulgu alanında belirtilir; Türkçe yazıma aktarımı çıkarımdır.
 
@@ -475,6 +476,14 @@ Kayıtlar: `ozkan-2011-ikili-tekrarlar`, `hirik-2018-tekrarli-yapi`, `sahin-2019
 Tekrarlı yapılar ses, biçim, sözcük ve söz dizimi düzeyinde sınıflanır ve anlamı belirginleştirir (Hirik 2018); ikili tekrarlar derlemden sıklığa göre listelenebilir (Özkan 2011) ve ikileme üzerine yazın geniştir (Çimen 2021: 30 tez, 106 makale, 29 bildiri, 7 kitap). İkilemeler kurallara bağlı oluşur (Korkutan 2016); pekiştirmeli sıfatların kuruluşu özdeşlikten kaçınma ilkesiyle açıklanır (Müller 2003). `m`'li tekrar pekiştirmez, geçiştirir (Şahin 2019). Türkçe ikileme bağlaçsız, Almanca ikileme çoğunlukla bağlaçla kurulur (Yücel 2016); Almancadan çevrilmiş Türkçe metinlerde ikileme kaynaktakinden sıktır (Uslu ve Özdemir 2019); bir romandaki 134 ikileme sekiz anlam kategorisine ayrılır ve İngilizce çeviride en sık kayıp anlamın eksik yorumlanmasıdır (Kuleli ve Altuntaş 2022). Özçelik (2012), Demir ve Okur (2022), Akyıldız Ay (2021), Aydın (2023) ve Kayalar (1991) yalnızca künyeyle girdi.
 
 **Metinoskop'a etkisi.** `turkce-oruntuler.md` › Yanlış pozitifler'e yazıldı: ikileme anlam taşıdığı için dolgu diye silinmez, `m`'li ikileme konuşma kaydıdır, bağlaçlı eş anlamlı çift ikileme korumasına girmez ve düzenleme Türkçeleştirme için ikileme eklemez. Yapay zekâ metninde ikilemenin az çeşitle yinelendiği bulgusu (`bergin-atasoy-2026`) tek bir durum çalışmasıdır ve aday iz olarak bile vakasız kural olmaz. `açık ve net`, `temel ve esas`, `usul ve esas` gibi bağlaçlı eş anlamlı çiftlerin hukuk, bürokratik ve akademik metinde sıklığını ya da işlevini inceleyen, genel derlemde ikileme sıklığını ölçen ve dil modeli çıktısında ikileme kullanımını sayan çalışma bulunamadı. Türkçeye özgü olmayan Çince çeviri çalışması (Huang 2006) alınmadı.
+
+## Çeviri kokusu sayılan yapıların dil bilgisi dayanağı
+
+Kayıtlar: `yirmibesoglu-2023-eamt`, `koseer-butun-baser-2025`, `gorgulu-2019-varolussal`, `seydi-2020-varolussal-olumsuzluk`, `kulac-2024-yap`, `yucel-2006-ceviri-ana-dil`, `ertem-2018-trt`, `uysal-2013-oykuntu`, `sebzecioglu-2008-tez`, `kansu-yetkiner-2014-kip`. Bu kümedeki bütün içerik arama özetlerine dayanır. `sebzecioglu-oktar-2010` kaydının yazar adları (Turgay Sebzecioğlu; Lütfiye Oktar), `yarar-2020`nin cilt ve sayısı, `ozkan-musa-2004`ün URL'si düzeltildi.
+
+Türkçe varoluş tümcesi yalın ad öbeğini odak olarak alır (Görgülü 2019): `Tabloda üç hata türü vardır` `bir` gerektirmez. `yok` standart olumsuzluktan ayrı bir sözlük birimidir, `değil` önvarsayılan varlığı reddeder, `-sXz` yoksunluğu sezdirir (Seydi 2020). Temel edilgende eyleyeni gizlemek merkezi işlev değildir, edilgenleştirme olay odaklıdır ve `tarafından` öbekli edilgen kurallı yapı sayılacak sıklıkta değildir (Sebzecioğlu 2008). `yap-` çoğu kullanımda asıl fiildir ve sözdizimsel incelemesiz yardımcı fiil sayılmamalıdır (Kulaç 2024). Öyküntü 1932–1950 terim sözlüklerinden beri sistemli bir terim türetme yoludur (Uysal 2013). İngilizce kısaltılmış ilgi ve zarf tümcelerinin çevirisi Türkçede ayrı ilgi adılı ve kısaltma bulunmadığı için belirsizlik doğurur (Köseer Bütün ve Başer 2025). Sözlü çeviride kip kaydırmaları söylemin işlevini değiştirir (Kansu-Yetkiner vd. 2014). Tek bir çevirmenin çevirileriyle ince ayar yapılan makine çevirisi o çevirmenin biçemini büyük ölçüde yeniden üretir (Yirmibeşoğlu vd. 2023). Yücel (2006) ve Ertem (2018) yalnızca künyeyle girdi.
+
+**Metinoskop'a etkisi.** `oruntu-kanitlari.csv`'de `tarafindan` ailesinin kanıtına `sebzecioglu-2008-tez`, `varlik` ailesinin karşı kanıtına `gorgulu-2019-varolussal`, `kalki` ailesinin karşı kanıtına `uysal-2013-oykuntu` eklendi; üç ailenin seviyesi ve dayanak türü değişmedi, çünkü hiçbiri çeviri ile özgün Türkçeyi sıklıkla karşılaştırmaz. `mevcut değildir` → `yoktur` dönüşümünün de statü değişikliği olabileceği (Seydi 2020) aday düzeyinde kalır. `sahip olmak`, `bulunmaktadır`, `olan`, `ise`, `tarafından`, `bir` ve `gerçekleştirmek` için çeviri Türkçesi ile özgün Türkçeyi derlemle karşılaştıran yeni çalışma bulunamadı; bu ailelerin tek nicel dayanağı deponun ağaç bankası ölçümüdür ve hepsi bağlamsal kalır. Beşinci turda künyesi tamamlanamayan TÜBİTAK 111K344 projesinin yürütücüsü Neslihan Kansu-Yetkiner'dir ve EAMT 2023 bildirisinin yazar listesi `yirmibesoglu-2023-eamt` kaydındadır.
 
 ## Değerlendirme için hesaplamalı kaynaklar
 

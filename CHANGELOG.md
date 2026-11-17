@@ -8,6 +8,7 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Eklendi
 
+- Otuz üçüncü literatür taraması (çeviri kokusu sayılan yapıların dil bilgisi dayanağı): veritabanı 1131 kayda çıktı (939 künye ve bulgu, 192 yalnızca künye); içerik arama özetlerine dayanır. `oruntu-kanitlari.csv`: `tarafindan` kanıtına Sebzecioğlu 2008, `varlik` ve `kalki` karşı kanıtına Görgülü 2019 ve Uysal 2013 eklendi; seviyeler değişmedi.
 - Otuz ikinci literatür taraması (ikileme ve tekrarlı yapılar): veritabanı 1121 kayda çıktı (931 künye ve bulgu, 190 yalnızca künye); içerik arama özetlerine dayanır. `turkce-oruntuler.md` › Yanlış pozitifler: ikileme anlam taşır ve silinmez (Kuleli ve Altuntaş 2022; Korkutan 2016), `m`'li ikileme konuşma kaydıdır (Şahin 2019), bağlaçlı eş anlamlı çift ikileme korumasına girmez (Yücel 2016), düzenleme Türkçeleştirme için ikileme eklemez (Uslu ve Özdemir 2019).
 - `scripts/mutation-profile.py`: gold'lara bilinen hata ekleyip `eval-runner.py`'nin yakalama oranını ölçer. İlk ölçüm (219 vaka): kapsam silme %99, pekiştirici %98, çekince %96, nedensellik %93, sayı silme %86, `-mIş` → `-DI` %57. Kaçanlar okunarak sınıflandı; gerçek sınır, iki kez geçen sayı ya da kapsam sözcüğünden birinin silinmesidir (`evals/README.md` › Kaynak değişmezleri).
 - `eval-runner.py`: `ortalama`, `medyan`, `sırasıyla`, `neredeyse`, `hemen hemen`, `en çok`, `en yüksek`, `en düşük` ve `en geç` kapsam değişmezi oldu (`ortalama` 16 vakanın kaynağında geçer, hiçbir gold onu silmez); sözcük başı eşleşmesi `gelen çok`, `gözden geçirilmesi` içindeki sahte eşleşmeyi dışarıda bırakır. Bağlaç olabilen `yalnız` eklenmedi.
@@ -88,6 +89,7 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Düzeltildi
 
+- `sebzecioglu-oktar-2010` kaydının yazar adları (Tahir; Levent → Turgay Sebzecioğlu; Lütfiye Oktar), `yarar-2020`nin cilt, sayı ve DOI'si ve `ozkan-musa-2004`ün atıf yapan çalışmaya giden URL'si düzeltildi.
 - `eval-runner.py` kapsam ve kesinlik işaretlerini alt dize olarak arıyordu: `plan` tetikleyicisi `toplandı`, `hesaplanır` içinde 21 vakada, `en fazla` `birden fazla` içinde 1 vakada yanlış değişmez kuruyordu. İşaretler artık sözcük başında aranır (sağ taraf açık kalır, `gözlen` `gözlendi`yi yakalar). Etki: 22 vakada birer yanlış değişmez kalktı, hiçbir doğru değişmez kaybolmadı, 219 vakanın hepsi geçer; öz sınamaya üç bekçi girdi.
 - `ruhi-2009-yani` ve `ozbek-2000` kayıtlarının URL'si (DergiPark article-file/182658 ve 182659) arama sonuçlarında Mersin Üniversitesi Dil ve Edebiyat Dergisi'ndeki başka makalelere ait göründü; çalışmaların TUFS dizi PDF'i ve ODTÜ AVESİS kaydıyla değiştirildi.
 - `netlik-omurgasi.md` › Talimat notu "uyarıdaki gereklilik (`-mAlIdIr`) kalır" diyordu; bu, kritik vaka `talimat-tek-adim`'in gold'uyla (`eldiven kullanılmalıdır` → `Eldiven takın.`) çelişiyordu. Not, emre çevirmenin adım adım uygulanacak talimatta meşru olduğunu ve zorunluluğun tavsiyeye inmediğini söyleyecek biçimde düzeltildi.
