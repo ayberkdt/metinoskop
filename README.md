@@ -99,7 +99,7 @@ Konuşmaya gönderme, çalışma sırası ve kullanıcıya teklif silindi. Taş�
 
 ### Dokunulmayan cümleler
 
-221 vakanın 92'sinde doğru davranış hiçbir şeyi değiştirmemektir. Bu korunur vakalarının kayıtlı çıktısı kaynağın kendisidir ve doğrulayıcı bu eşitliği denetler. Aşağıdaki cümlelerin her biri bir korunur vakasının kaynağından alındı.
+223 vakanın 93'ünde doğru davranış hiçbir şeyi değiştirmemektir. Bu korunur vakalarının kayıtlı çıktısı kaynağın kendisidir ve doğrulayıcı bu eşitliği denetler. Aşağıdaki cümlelerin her biri bir korunur vakasının kaynağından alındı.
 
 | Cümle | Vaka | Neden kalır |
 |---|---|---|
@@ -326,7 +326,7 @@ Hukuki, tanıtım, deneme, sosyal medya, kişisel ve edebî metin desteklenir; b
 metinoskop/
 ├── SKILL.md                    Her çağrıda yüklenen kurallar
 ├── references/                 İlgili sorun görülünce okunan 18 katalog ve Türkçe dil literatürü veritabanı (CSV)
-├── evals/                      221 davranış vakası: 92 korunur, 129 dönüşüm
+├── evals/                      223 davranış vakası: 93 korunur, 130 dönüşüm
 │   ├── outputs/                Her vakanın kayıtlı çıktısı
 │   ├── critical-cases.txt      Canlı regresyondaki 36 kritik vaka
 │   └── README.md               Vaka grupları, hakem ölçütleri, ölçüm sonuçları

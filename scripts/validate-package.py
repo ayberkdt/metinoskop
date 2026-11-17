@@ -67,6 +67,8 @@ REQUIRED_FILES = (
     "evals/soru-eki-ve-acik-soru-korunur.md",
     "evals/yaklasiklik-ve-istatistik-silme-tuzagi.md",
     "evals/yaklasiklik-ve-istatistik-korunur.md",
+    "evals/reklam-etiketi-sablon-tuzagi.md",
+    "evals/reklam-etiketi-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -297,6 +299,8 @@ EVAL_FILES = (
     "evals/soru-eki-ve-acik-soru-korunur.md",
     "evals/yaklasiklik-ve-istatistik-silme-tuzagi.md",
     "evals/yaklasiklik-ve-istatistik-korunur.md",
+    "evals/reklam-etiketi-sablon-tuzagi.md",
+    "evals/reklam-etiketi-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -750,6 +754,8 @@ eval_markers = {
     "evals/soru-eki-ve-acik-soru-korunur.md": ("Ayşe mi yaptı, ekip mi?", "belirtilmemiş", "önce mi sonra mı", "bilinmiyor"),
     "evals/yaklasiklik-ve-istatistik-silme-tuzagi.md": ("ortalama 240", "yaklaşık 3.000", "en yüksek", "cümle: <= 3"),
     "evals/yaklasiklik-ve-istatistik-korunur.md": ("medyanı", "ortalaması", "En yüksek", "yaklaşık 3.000", "tahmin edildi"),
+    "evals/reklam-etiketi-sablon-tuzagi.md": ("#Reklam", "#işbirliği", "Kaçırmayın!", "%15"),
+    "evals/reklam-etiketi-korunur.md": ("#Reklam #işbirliği", "%15", "💖"),
     "evals/olumsuzluk-ve-kapsam-korunur.md": ("düşünmüyor değiliz", "Her test geçmedi", "yalnızca ödeme", "Ne kurulum betiği ne yapılandırma dosyası değişti", "memnun olmaz ki"),
     "evals/resmi-sikayet-kibarlik-korunur.md": ("Sayın Yetkili", "Saygılarımla", "rica ederim", "sevinirim", "12 Ekim"),
     "evals/olcumlu-vurgulayici-ozet-korunur.md": ("belirgin biçimde", "açıkça", "p < 0,001", "anlamlı fark bulunmadı", "500 m altı"),
@@ -1073,6 +1079,7 @@ SHOULD_REMAIN_CASES = (
     "evals/ettirgen-ve-donuslu-cati-korunur.md",
     "evals/soru-eki-ve-acik-soru-korunur.md",
     "evals/yaklasiklik-ve-istatistik-korunur.md",
+    "evals/reklam-etiketi-korunur.md",
 )
 misnamed = sorted({p for p in SHOULD_REMAIN_CASES if not Path(p).stem.endswith("-korunur")}
                   | {p for p in EVAL_FILES if Path(p).stem.endswith("-korunur") and p not in SHOULD_REMAIN_CASES})

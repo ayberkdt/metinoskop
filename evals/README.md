@@ -73,7 +73,7 @@ Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tü
 
 **Ton ve değişiklik bütçesi:** `degisiklik-butcesi-korunur`, `kavramsal-giris`.
 
-**Kenar türler** (`references/kenar-turler.md`): metin bu türlerdense devreye giren ek kuralları sınar; kritik canlı sette yer almaz. Hukuki: `hukuki-metin-korunur`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`. Tanıtım: `reklam-kampanyasi-korunur`, `yardim-kampanyasi-korunur`. Deneme ve sosyal medya: `gorus-ambalaji`, `ozgun-imge-korunur`, `sosyal-medya-sablonu`. Eleştiri ve tanıtım yazısı: `inceleme-ovgu-yigini`, `inceleme-olumsuz-degerlendirme-korunur`. Kişisel ve kurumsal yazışma: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`. Üslup eşleme: `uslup-eslestirme`.
+**Kenar türler** (`references/kenar-turler.md`): metin bu türlerdense devreye giren ek kuralları sınar; kritik canlı sette yer almaz. Hukuki: `hukuki-metin-korunur`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`. Tanıtım: `reklam-kampanyasi-korunur`, `yardim-kampanyasi-korunur`, `reklam-etiketi-sablon-tuzagi`, `reklam-etiketi-korunur`. Deneme ve sosyal medya: `gorus-ambalaji`, `ozgun-imge-korunur`, `sosyal-medya-sablonu`. Eleştiri ve tanıtım yazısı: `inceleme-ovgu-yigini`, `inceleme-olumsuz-degerlendirme-korunur`. Kişisel ve kurumsal yazışma: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`. Üslup eşleme: `uslup-eslestirme`.
 
 **Retorik mimari:** cümle, paragraf ve belge düzeyindeki yapay düzyazıyı sınar.
 
@@ -94,6 +94,8 @@ Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tü
 | `gorus-ambalaji` | (kenar tür) Denemede görüşü önerme ve güç olarak korurken hazır imgeyi, `çok daha fazlası` formülünü, soyut üçlüyü ve vecizeyi atmak; aynı imgeyi yumuşatarak bırakmamak |
 | `inceleme-ovgu-yigini` | (kenar tür) Tanıtım yazısında övgü yığınını (imge, üçlü, `başyapıt` kalıbı) atarken övülen niteliği, olumlu değerlendirmenin gücünü ve tek sınırlılığı korumak; nötr özete çevirmemek, eleştiri eklememek |
 | `ozgun-imge-korunur` | (kenar tür) Yazara ve konuya özgü benzetmeyi hazır ambalaj sanıp silmemek (yanlış pozitif) |
+| `reklam-etiketi-sablon-tuzagi` | (kenar tür) Sosyal medya şablonunu temizlerken `#Reklam` ve `#işbirliği` açıklamasını silmemek, başa almak; kişisel gözlemi ürün iddiasına yükseltmemek |
+| `reklam-etiketi-korunur` | (kenar tür) Baştaki reklam etiketini, tek emojiyi ve birinci kişi gözlemi korumak (yanlış pozitif) |
 | `sosyal-medya-sablonu` | (kenar tür) Sosyal medya gönderisinde retorik soru, `Gelin birlikte bakalım`, `Sonuç mu?`, emoji ve etiketli madde şablonunu atıp sayıları ve öğrenilen dersleri korumak |
 | `anlam-kalkisi-akademik` | Türkçe okura başka önerme veren kalkıları (`bulgular ... önermektedir`, `yer aldı`, `3 faktörü`, Hz ile `örnekleme oranı`, tıp dışı `tedavi grubu`, p değerli `önemli`) hafif düzeyde de düzeltmek; statüyü ve atfı korumak |
 | `anlam-kalkisi-korunur` | Aynı sözcüklerin doğru kullanımını (`yöntem önermek`, `Tablo 2'de yer almak`, klinik `tedavi grubu`, `kontrol edildiğinde`, `tartışılmıştır`) kalkı sanmamak (yanlış pozitif) |
