@@ -168,6 +168,8 @@ Tablo çıkarımdır: `hakkında`, `ilişkin`, `üzerine`, `konusunda`, `ile ilg
 
 Ad gerçek bir teknik nesne ya da süreçse sadeleştirme: "yük testi gerçekleştirmek" bir prosedürü adlandırır; "risk değerlendirmesi yapmak" resmî bir süreçtir; "denetim yürütmek" kurumsal terimdir. Hafif fiil adın etrafında bir süreç kurmuyor, yalnızca fiilin yerini tutuyorsa sadeleştir.
 
+Olay yapısını ve konusal rolü hafif fiil ile ad birlikte belirler (Özge, Ünal ve Bayırlı 2022); hafif fiili değiştirmek bu yüzden eşdizim kararıdır. `yap-` ile `et-` serbestçe değişmez: miras konuşurları ve yeni dönenler `yap-` eşdiziminden kaçınıp `et-`'te aşırı düzeltilmiş biçim kurar (Treffers-Daller vd. 2016). Görünür adlaştırıcısı olmayan yabancı kökenli olay adı (`davet`, `analiz`, `kontrol`) + `et-` gerçek eylemdir, dolgu değildir (Tat 2022); `değerlendirme gerçekleştirmek` → `değerlendirme yapmak` → `değerlendirmek` zincirinin her adımı ayrı karardır. Basın dilinde ad + eylem birleşimi olağandır (Düşünceli ve Uslu 2017) ve biçim-sözdizimi bilgisi hafif fiil yapısını tek başına ayırt etmez (Karakaş ve Şimşek 2026): denetim lemma listesiyle değil birleşim listesiyle yapılır.
+
 ## Yüklem kesinliği
 
 Gerçek ilişkiyi kodlayan yüklemi seç.

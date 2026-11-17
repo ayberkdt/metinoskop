@@ -449,6 +449,8 @@ Bu, fiil öncelikli ilişki ilkesidir: sözcük sırası değil, anlamın fiille
 - **Yerli dil bilgisel adlaştırma:** yan cümle ("gelmesini bekledik"), tümleç cümlesi ("raporun geciktiğini bildirdi"), ilgi cümlesi ("ölçtüğümüz değer"), iyelik yapısı ("filtrenin kararlılığı"), teknik sıkıştırma ("yakınsama ölçütü"). Bunlar kalır.
 - **Soyut bürokratik ad yığını:** doğrudan yüklemden kaçmak için kurulan "değerlendirilmesinin sağlanmasının planlanması". Bu çözülür.
 
+Birleşik tümce Türkçede büyük ölçüde eylemsiyle kurulur (Sebzecioğlu 2004); -mAK çocuk dilinde ilk edinilen ve anne anlatısında en sık tümleç türüdür (Ciğer 2002; Ilgaz, Altan ve Haşimoğlu-Ertaş 2021). Ad yığını çözülürken tümleç ve yan cümle çekimli `ki`/`diye` yapısına çevrilmez; çekimli yan cümle tercihi temas Türkçesinde görülür (Onar Valk ve Backus 2013). Ana eylemin istediği ek de korunur: -mA ile -DIK farklı türetim ve anlam taşır (Kunduracı 2020; Kawaguchi 2005), `raporun gecikmesini bildirdi` ile `raporun geciktiğini bildirdi` aynı önerme değildir. "İngilizce nominal üslup Türkçeye adlaştırma taşır" varsayımı Türkçe veriyle desteklenmez: çeviri özetlerde adlaştırma özgün özetlerden fazla değildir (Çakır 2011); ad yığını kuralı çeviri kokusu gerekçesiyle değil, bürokratik katman ve uzak yüklem gerekçesiyle durur ([literatür](turkce-dil-literaturu.md#eylem-adı-seçimi-tümleç-ve-hafif-fiil-birleşimi)).
+
 **Karşı örnek: adlaştırma kalır**
 
 > Filtrenin yakınsama hızının başlangıç kovaryansına duyarlılığı Tablo 3'te verilmiştir.
