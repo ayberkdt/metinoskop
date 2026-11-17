@@ -111,6 +111,8 @@ Metin, yinelenen ya da ilişkili sözcüklerle bağdaşır. Kanonik terimleri, �
 
 Dört ad dört bileşen mi, tek bileşen mi? Kaynak tek bileşeni kastediyorsa tek ad kalır; dört bileşeni kastediyorsa ilişkileri (gözlemci içindeki kestirici, filtre, modül) açıkça kurulmalıdır. Belirsizse belirsizlik kuralı: kullanıcıya sor ya da kaynağın sözcüklerini koru.
 
+Türkçe metinde bağdaşıklık en çok sözcükle ve eksiltiyle, en az değiştirimle kurulur: ders kitaplarında 729 kelime bağdaşıklığına karşı 11 değiştirim (Bozok 2019), öğrenci öykülerinde kâğıt başına 11,2 sözcüksel bağdaşıklığa karşı 0,2 değiştirim (Coşkun 2011). Yakın tekrardan kaçmak için terimi eş anlamlıyla ya da `bu`, `öyle`, `aynısı` gibi yer tutucuyla değiştirmek Türkçenin olağan dağılımından uzaklaşır; eş anlamlı terim çiftleri okurca kavramsal olarak denk de tutulmaz (Kızılcık 2013). Yineleme ile eş anlamlıyı ayrı sayan ya da okuma süresiyle karşılaştıran Türkçe çalışma bulunamadı ([literatür › Bağdaşıklık araçları ve paragraf yapısı](turkce-dil-literaturu.md#bağdaşıklık-araçları-ve-paragraf-yapısı)).
+
 ## Gönderge mesafesi ve yeniden tanıtım eşiği
 
 `Bu`, `bunlar`, `bu durum`, `bu sonuç`, `bu yöntem`, `o`, `söz konusu`, `ilgili` dil bilgisi bakımından geçerli olsa da öncülünden fazla uzak olabilir. Sor: tam olarak neye gönderiyor; kaç rakip öncül var; aralarında kaç cümle var; adı yinelemek daha açık olur mu? Uzun mesafeli göndermede eksiltiyi fazla kullanma.
