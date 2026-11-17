@@ -289,7 +289,15 @@ Bir model çıktısını kaynakta açıkça korunan değişmezler bakımından d
 python scripts/eval-runner.py evals/teknik-gosterim-korunur.md outputs/teknik-gosterim-korunur.txt
 ```
 
-Çalıştırıcı sayı, tarih, URL, kod, dipnot, kapsam belirleyicisi, teknik ad, sembol, denklem numarası ve ölçüm kayıplarını yakalar. Kaynaktaki çekimli `-mIş` (`ulaşmış`) çıktıda `-DI`'ya (`ulaştı`) ya da `-mIştIr`'a (`ulaşmıştır`), çekimli `-DI` `-mIş`'a dönmüşse kanıtsallık kayması olarak raporlar (`references/kanit-ve-kesinlik.md` › Kanıtsallık eki); resmî `-mIştIr`'dan `-DI`'ya sadeleşme ve virgülle sıralanan ortaç zinciri (`doldurulmuş, ... yayımlanmış olan`) kayma sayılmaz. Gerekçeli istisna `## Serbest eklemeler` altında `kanitsallik` ailesiyle yazılır. Birebir çıktı karşılaştırması yapmaz. Akıcılık, ton, gönderge yorumu ve genel anlam uyumu elle veya model hakemiyle değerlendirilmelidir.
+Çalıştırıcı sayı, tarih, URL, kod, dipnot, kapsam belirleyicisi, teknik ad, sembol, denklem numarası ve ölçüm kayıplarını yakalar. Kaynaktaki çekimli `-mIş` (`ulaşmış`) çıktıda `-DI`'ya (`ulaştı`) ya da `-mIştIr`'a (`ulaşmıştır`), çekimli `-DI` `-mIş`'a dönmüşse kanıtsallık kayması olarak raporlar (`references/kanit-ve-kesinlik.md` › Kanıtsallık eki); resmî `-mIştIr`'dan `-DI`'ya sadeleşme ve virgülle sıralanan ortaç zinciri (`doldurulmuş, ... yayımlanmış olan`) kayma sayılmaz. Gerekçeli istisna `## Serbest eklemeler` altında `kanitsallik` ailesiyle yazılır. Birebir çıktı karşılaştırması yapmaz. Akıcılık, ton, gönderge yorumu ve genel anlam uyumu elle veya model hakemiyle değerlendirilmelidir. Kapsam ve kesinlik işaretleri sözcük başında aranır: `toplandı` `plan`, `birden fazla` `en fazla` değişmezi kurmaz.
+
+Çalıştırıcının yakalama oranı gold'lara bilinen hata eklenerek ölçülür:
+
+```bash
+python scripts/mutation-profile.py --examples 3
+```
+
+Son ölçüm (219 vaka): kapsam sözcüğü silme 71 vakada %99, pekiştirici ekleme 193 vakada %98, çekince ekleme 113 vakada %96, nedensellik bağı ekleme 193 vakada %93, sayı silme 180 vakada %86, çekimli `-mIş` → `-DI` 14 vakada %57 yakalandı. Kaçanlar okundu: ekleme kaçaklarının çoğunda kaynak aynı aileden işaret taşır (aile içi dönüşüm bilerek ekleme sayılmaz); `-mIş` kaçaklarının hepsi kanıtsal olmayan ek ortaklığıdır (`uygulanmış, ... -tır`). Gerçek sınır sayı ve kapsam sözcüğünün varlık denetimidir: iki kez geçen sayıdan ya da `ortalama`dan biri silinirse yakalanmaz; sayım tabanlı denetim meşru tekrar silmeyi de hata sayacağı için kurulmadı.
 
 ### Stil denetimi
 
