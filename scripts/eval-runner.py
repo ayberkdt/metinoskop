@@ -53,6 +53,14 @@ MARKER_GROUPS = (
     ("kapsam", "civarında", ("yaklaşık", "civarında", "aşağı yukarı")),
     ("kapsam", "birkaç", ("birkaç",)),
     ("kapsam", "birçok", ("birçok", "pek çok", "çok sayıda")),
+    # İstatistik niteleyicisi sayının ne olduğunu söyler: `ortalama 40 ms` → `40 ms` tek ölçüm gibi okunur.
+    # `en çok`, `en yüksek`, `en geç` eklenmedi: tetikleyici alt dize olarak aranır ve `gelen çok`,
+    # `gözden geçirilmesi` gibi sözcük içi eşleşmeler yanlış alarm verir.
+    ("kapsam", "ortalama", ("ortalama",)),
+    ("kapsam", "medyan", ("medyan", "ortanca")),
+    ("kapsam", "sırasıyla", ("sırasıyla",)),
+    ("kapsam", "neredeyse", ("neredeyse", "hemen hemen")),
+    ("kapsam", "hemen hemen", ("neredeyse", "hemen hemen")),
     ("kapsam", "tümü", ("tümü", "tamamı")),
     ("kapsam", "hariç", ("hariç", "dışında")),
     ("kapsam", "henüz", ("henüz",)),
@@ -185,7 +193,7 @@ def extract_invariants(source: str) -> list[Invariant]:
 
     folded_source = source.casefold()
     for category, trigger, alternatives in MARKER_GROUPS:
-        if trigger.casefold() in folded_source:
+        if word_start_in(trigger.casefold(), folded_source):
             items.append(
                 Invariant(category, trigger, tuple(alternatives), case_sensitive=False)
             )
@@ -299,6 +307,13 @@ def evidential_shifts(source: str, output: str) -> list[dict[str, str]]:
     return shifts
 
 
+def word_start_in(value: str, text: str) -> bool:
+    """Kapsam ve kesinlik işaretini yalnız sözcük başında arar. Sağ taraf açıktır: `gözlen`
+    kökü `gözlendi`yi, `olabil` kökü `olabileceği`ni yakalar. Sol sınır olmadan `en geç`
+    `gözden geçirilmesi`nde, `en fazla` `verilen fazla`da eşleşir."""
+    return re.search(r"(?<!\w)" + re.escape(value), text) is not None
+
+
 def evaluate(case_text: str, output_text: str) -> dict[str, object]:
     source = section(case_text, "Kaynak")
     output = normalize(output_text)
@@ -317,7 +332,11 @@ def evaluate(case_text: str, output_text: str) -> dict[str, object]:
             if item.case_sensitive
             else tuple(value.casefold() for value in item.alternatives)
         )
-        if not any(value in haystack for value in alternatives):
+        if item.case_sensitive:
+            found = any(value in haystack for value in alternatives)
+        else:
+            found = any(word_start_in(value, haystack) for value in alternatives)
+        if not found:
             missing.append(asdict(item))
 
     # Talepte verilen bilgi kaynağın parçasıdır (SKILL.md › Kural önceliği): "Kasım'da başlamayacak" diyen
@@ -430,6 +449,18 @@ def self_test() -> None:
     approx_case = root / "evals/bilincli-kayit-degisimi-korunur.md"
     approx_source = section(approx_case.read_text(encoding="utf-8"), "Kaynak")
     scenarios += ((approx_case, approx_source, re.sub(r"\byaklaşık\s+", "", approx_source)),)
+    # İstatistik niteleyicisi: `ortalama` silinince grup ortalaması tek ölçüm gibi okunur.
+    mean_case = root / "evals/akademik-metin-korunur.md"
+    mean_source = section(mean_case.read_text(encoding="utf-8"), "Kaynak")
+    scenarios += ((mean_case, mean_source, re.sub(r"\bortalama\s+", "", mean_source)),)
+
+    # Sözcük başı eşleşmesi: `toplandı` ve `hesaplanır` plan, `birden fazla` üst sınır değildir.
+    for text, trigger in (("Veriler toplandı ve ortalaması hesaplandı.", "plan"),
+                          ("Birden fazla ölçüm alındı.", "en fazla")):
+        if any(item.value == trigger for item in extract_invariants(text)):
+            raise SystemExit(f"Öz sınama: sözcük içi eşleşme değişmez üretti: {trigger}")
+    if not any(item.value == "plan" for item in extract_invariants("Pilot planlandı.")):
+        raise SystemExit("Öz sınama: sözcük başı tetikleyici kayboldu: plan")
 
     for case_path, passing_output, failing_output in scenarios:
         case_text = case_path.read_text(encoding="utf-8")
