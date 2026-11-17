@@ -19,7 +19,7 @@ Güven: **A** birden çok bağımsız çalışma aynı yönü buldu; **B** tek �
 | 9 | Talimatla ayarlanmış model yazarları birbirine benzetir (içerik homojenleşmesi); etki modelin eklediği metinden gelir. | Padmakumar 2024, §4–6 | B | Her konuya uyan genel cümle | Kaynağın kendine özgü ayrıntısını öne al; genel önem cümlesi kurma. |
 | 10 | ChatGPT cevapları daha uzun (ortalama 198'e karşı 143 sözcük) ama sözcük dağarcığı daha dar. | Guo 2023 (HC3), Tablo 3 | B | Bilgi eklemeden uzayan cevap | Uzunluk bilgi miktarını izler. Türkçede yön göreve bağlıdır: öğretmen adaylarına göre yapay zekâ metni daha uzun (Bergin ve Atasoy 2026), otel yorumunda gerçek yorum daha uzun ve ayrıntılıdır (Akkol ve Gökşen 2024). |
 | 11 | Çok dilli LLM'lerin söz dizimi hedef dilden çok İngilizceye benzer (Çince ve Fransızca için ölçüldü). | Guo 2025, §4.3 | C (Türkçe ölçülmedi) | Çeviri kokusu | `turkce-ritim-ve-ceviri-kokusu.md` kuralları; Türkçe için çıkarımdır. |
-| 12 | Sözcük çeşitliliği ölçüye, modele ve insan karşılaştırma grubuna göre ters yönlü çıkar. | Herbold 2023; Muñoz-Ortiz 2024; Guo 2023 | C | — | Eş anlamlı döndürerek çeşitlilik üretme; terim sabit kalır. |
+| 12 | Sözcük çeşitliliği ölçüye, modele ve insan karşılaştırma grubuna göre ters yönlü çıkar. | Herbold 2023; Muñoz-Ortiz 2024; Guo 2023 | C | — | Eş anlamlı döndürerek çeşitlilik üretme; terim sabit kalır. Türkçede çeşitlilik ölçüsü kök ya da lemma düzeyinde kurulur (Altintas, Can ve Patton 2007; Gedik 2025) ve sayım birimleri çalışmalar arasında tutarsızdır (Keklik 2016); yüzey biçim tür/belirteç oranı eşiği denetime girmez. |
 
 ## Yanılgılar
 
