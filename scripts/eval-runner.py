@@ -47,6 +47,12 @@ MARKER_GROUPS = (
     ("kapsam", "en fazla", ("en fazla",)),
     ("kapsam", "bazı", ("bazı", "bir kısm")),
     ("kapsam", "çoğu", ("çoğu", "büyük bölümü")),
+    # Yaklaşıklık kodlanmış anlamdır; `yaklaşık %40` → `%40` sayıyı korur ama tahmini ölçüme çevirir
+    # (Tolkun 2023; Ergene 2018). Belirsiz niceleyici silinince kapsam değişir (Akşehirli 2025).
+    ("kapsam", "yaklaşık", ("yaklaşık", "civarında", "aşağı yukarı")),
+    ("kapsam", "civarında", ("yaklaşık", "civarında", "aşağı yukarı")),
+    ("kapsam", "birkaç", ("birkaç",)),
+    ("kapsam", "birçok", ("birçok", "pek çok", "çok sayıda")),
     ("kapsam", "tümü", ("tümü", "tamamı")),
     ("kapsam", "hariç", ("hariç", "dışında")),
     ("kapsam", "henüz", ("henüz",)),
@@ -80,7 +86,9 @@ ADDED_MARKER_FAMILIES = (
      r"|makta\w*|mekte\w*|yacak\w*|yecek\w*|yabil\w*|yebil\w*)|\b\w{2,}m[ıiuü]yor\w*"),
     ("cekince", "çekince ya da olasılık",
      r"\bolabil\w*|\bolası(?:dır|lıkla)?\b|\bmuhtemel\w*|\bbelki\b|\bgörün(?:mektedir|üyor|ür)\b|\bdüşündür\w*|\bsanıl\w*"
-     r"|\btahmin edil\w*|\bişaret e\w*|\bsanırım\b|\bgaliba\b|\b\w+[ae]bil(?:ir|ece[kğ]|mekte)\w*"),
+     r"|\btahmin edil\w*|\bişaret e\w*|\bsanırım\b|\bgaliba\b|\b\w+[ae]bil(?:ir|ece[kğ]|mekte)\w*"
+     # Kaynakta olmayan yaklaşıklık ölçümü tahmine indirir (Tolkun 2023; Ergene 2018).
+     r"|\byaklaşık\b|\bcivarında\b|\başağı yukarı\b"),
     ("nedensellik", "nedensellik ya da sonuç bağı",
      r"\bneden ol\w*|\byol aç\w*|\betkile\w*|\bsayesinde|\bbu sayede|\byüzünden|\bdolayı\w*|\bnedeniyle"
      r"|\bbu nedenle|\bbu yüzden|\bsonuç olarak|\bsonucunda|\bkaynaklan\w*|\b\w+[dt][ıiuü](?:ğ[ıiuü]|kl[ae]r[ıi])nd[ae]n\b"
@@ -418,6 +426,11 @@ def self_test() -> None:
         ),
     )
 
+    # Yaklaşıklık değişmezi: `yaklaşık` silinince sayı korunsa da tahmin ölçüme döner.
+    approx_case = root / "evals/bilincli-kayit-degisimi-korunur.md"
+    approx_source = section(approx_case.read_text(encoding="utf-8"), "Kaynak")
+    scenarios += ((approx_case, approx_source, re.sub(r"\byaklaşık\s+", "", approx_source)),)
+
     for case_path, passing_output, failing_output in scenarios:
         case_text = case_path.read_text(encoding="utf-8")
         if not evaluate(case_text, passing_output)["passed"]:
@@ -439,7 +452,8 @@ def self_test() -> None:
     # Soru muafiyeti önermeyi kapsamaz: sorudan sonra gelen çekince yine sayılır.
     drift += (("Sonuç saklanır.", "Saklanabilir mi? Sonuç saklanabilir.", {"cekince"}),)
     drift += (("Ölçüm durduruldu.", "Sıcaklık arttığı için ölçüm durduruldu.", {"nedensellik"}),
-              ("Fark mevsimseldir.", "Fark büyük olasılıkla mevsimseldir.", {"cekince"}))
+              ("Fark mevsimseldir.", "Fark büyük olasılıkla mevsimseldir.", {"cekince"}),
+              ("Kurulum 40 saniye sürdü.", "Kurulum yaklaşık 40 saniye sürdü.", {"cekince"}))
     drift += (("Ölçüm iki kez tekrarlandı.", "Ölçüm ne yazık ki iki kez tekrarlandı.", {"degerlendirme"}),
               ("Ekipte üç teknisyen vardı.", "Ekip üç teknisyenden ibaretti.", {"degerlendirme"}))
     # Olumsuz uyum ve tümel nicelik: `her ... -mA` kısmi, `hiçbir ... -mA` tümel olumsuzluktur;
