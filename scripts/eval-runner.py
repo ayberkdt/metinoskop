@@ -54,8 +54,11 @@ MARKER_GROUPS = (
     ("kapsam", "birkaç", ("birkaç",)),
     ("kapsam", "birçok", ("birçok", "pek çok", "çok sayıda")),
     # İstatistik niteleyicisi sayının ne olduğunu söyler: `ortalama 40 ms` → `40 ms` tek ölçüm gibi okunur.
-    # `en çok`, `en yüksek`, `en geç` eklenmedi: tetikleyici alt dize olarak aranır ve `gelen çok`,
-    # `gözden geçirilmesi` gibi sözcük içi eşleşmeler yanlış alarm verir.
+    # Sözcük başı eşleşmesi `gelen çok`, `gözden geçirilmesi` içindeki sahte `en çok`, `en geç`i dışarıda bırakır.
+    ("kapsam", "en çok", ("en çok", "en fazla")),
+    ("kapsam", "en yüksek", ("en yüksek",)),
+    ("kapsam", "en düşük", ("en düşük",)),
+    ("kapsam", "en geç", ("en geç",)),
     ("kapsam", "ortalama", ("ortalama",)),
     ("kapsam", "medyan", ("medyan", "ortanca")),
     ("kapsam", "sırasıyla", ("sırasıyla",)),
@@ -456,7 +459,9 @@ def self_test() -> None:
 
     # Sözcük başı eşleşmesi: `toplandı` ve `hesaplanır` plan, `birden fazla` üst sınır değildir.
     for text, trigger in (("Veriler toplandı ve ortalaması hesaplandı.", "plan"),
-                          ("Birden fazla ölçüm alındı.", "en fazla")):
+                          ("Birden fazla ölçüm alındı.", "en fazla"),
+                          ("Rapor gözden geçirildi; gelen çok sayıda yorum işlendi.", "en geç"),
+                          ("Gelen çok sayıda başvuru incelendi.", "en çok")):
         if any(item.value == trigger for item in extract_invariants(text)):
             raise SystemExit(f"Öz sınama: sözcük içi eşleşme değişmez üretti: {trigger}")
     if not any(item.value == "plan" for item in extract_invariants("Pilot planlandı.")):
