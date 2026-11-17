@@ -247,6 +247,14 @@ Altı `-ip` tek yükleme asılıdır; okur hangi eylemin ana eylem olduğunu yü
 
 Ya da adım sırası yöntemsel tekrarlanabilirlik için ayrı cümleler gerektiriyorsa üç cümle de meşrudur. Fiilimsi sayısı için sabit bir üst sınır yoktur; ölçüt, okurun ana yükleme gelmeden kaç çözümsüz eylemi taşıdığıdır.
 
+**Zarf-fiil silinmez, yalnızca kuyruğu düzeltilir.** Zarf-fiil resmî yazılı Türkçede de yerleşik araçtır: 1923–2016 hükümet programlarında 565 ulaç yan cümlesi vardır ve en sık biçim `-(y)ken`dir (Yarar ve Baydal 2025). Zarf-fiil metni kuran bir bağlayıcı işlevi de görür (Gürkan 2019; Acar 2014). Zarf-fiili çekimli cümle ve bağlaçla değiştirmek tek dilli normdan uzaklaşır: miras Türkçesinde çekimli birleştirme sıklaşır, `-Ip` ve `-IncA` seyrekleşir (Özsoy, Iefremenko ve Schroeder 2022; Turan ve ark. 2020). Deponun gold'larında zarf-fiil özgün Türkçenin yaklaşık üçte biridir ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)); bu yüzden hedef zarf-fiili azaltmak değil, virgülden sonra cümleyi bitiren `-ArAk` kuyruğunu (`insan-ve-yapay-metin.md` › bulgu 1) düzeltmektir. Üç seçim eş anlamlı değildir:
+
+- `-Ip` ile `ve`: `-Ip` eşgüdüm değil eklentidir ve olumsuzluğun düştüğü yüklemi değiştirebilir (Kesici 2026); sıralayan `-Ip`'i `ve` + çekimli yükleme açmak bilgi eklemez (Gülsevin 2020).
+- `-IncA` ile `-DIğIndA`/`-DIğI zaman`: `-IncA` yalnızca öncelik, `-DIğI zaman` öncelik, sonralık ve eş zamanlılık bildirebilir (Sözer 2024; Çetintaş Yıldırım 2005); eş zamanlı ilişkiyi `-IncA`ya çevirmek sıra kurar.
+- `-ArAk` tarz, neden ya da sonuç okunabilir (Çetintaş Yıldırım 2009); `nedeniyle`, `sayesinde` ile açmak ilişkiyi kaynakta olmadan seçer. `-mAdAn` olumsuzluk taşır (Zengin 2022); `-Ip` ↔ `-mAdAn` değişimi önermeyi tersine çevirir ve `eval-runner.py` olumsuzluk eklemesi olarak yakalar.
+
+Zaman ulacı yan cümlesi genellikle ana cümleden önce gelir (Baydal ve Yarar 2024, yaklaşık 9000 örnek) ve varsayılan olmayan konumda okuma zorlaşır (Baydal 2024); düzenleme zaman yan cümlesini İngilizce sırayla sona taşımaz.
+
 ## Söylem belirteçleri
 
 Cümle ve paragraf başında `Bununla birlikte`, `Buna ek olarak`, `Öte yandan`, `Bu nedenle`, `Bu bağlamda`, `Bu noktada`, `Dolayısıyla`, `Sonuç olarak`, `Bu doğrultuda` yoğunluğunu ölç. Bunlar yasak değildir; ama İngilizce açık söylem işareti gerektiren yerde Türkçe sözcük sırasına, yinelenen anahtar terime, eksiltiye, biçim bilgisel alt sıralamaya, anlamsal sürekliliğe, `de/da` edatına ve tek cümlede doğrudan karşıtlığa yaslanabilir.

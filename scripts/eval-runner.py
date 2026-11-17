@@ -74,6 +74,8 @@ ADDED_MARKER_FAMILIES = (
     ("olumsuzluk", "olumsuz iddia",
      # Olumsuz uyum ögeleri (`asla`, `katiyen`, `kimse`) yeni olumsuzluk katmaz ama önermeyi güçlendirir
      # ve tümel okumayı kurar (Görgülü 2020; Kamali ve Zeijlstra 2024): `gelmedi` → `kimse gelmedi` eklemedir.
+     # `-mAdAn` ve `-mAksIzIn` olumsuz zarf-fiildir (`kaydetmeden çıktı`); `-mAdAn önce` sıra bildirir, sayılmaz (Zengin 2022).
+     r"\b\w{2,}m[ae]d[ae]n\b(?!\s+önce)|\b\w{2,}m[ae]ks[ıi]z[ıi]n\b|"
      r"\bdeğil\w*|\byok(?:tur|tu|muş)?\b|\bhiç\w*|\basla\b|\bkatiyen\b|\bkimse\w*|\b\w{2,}m[ae](?:d[ıi](?!r)\w*|m[ıi]ş\w*|z(?:lar|ler|dı|di)?\b"
      r"|makta\w*|mekte\w*|yacak\w*|yecek\w*|yabil\w*|yebil\w*)|\b\w{2,}m[ıiuü]yor\w*"),
     ("cekince", "çekince ya da olasılık",
@@ -445,7 +447,8 @@ def self_test() -> None:
     drift += (("Toplantıya üç kişi gelmedi.", "Toplantıya kimse gelmedi.", {"olumsuzluk"}),
               ("Sistem bu hatayı vermedi.", "Sistem bu hatayı asla vermedi.", {"olumsuzluk"}),
               ("Katılımcılar formu doldurdu.", "Herkes formu doldurdu.", {"tumel"}),
-              ("Ölçüm zaman zaman sapıyor.", "Ölçüm hep sapıyor.", {"tumel"}))
+              ("Ölçüm zaman zaman sapıyor.", "Ölçüm hep sapıyor.", {"tumel"}),
+              ("Dosyayı kaydedip çıktı.", "Dosyayı kaydetmeden çıktı.", {"olumsuzluk"}))
     for source, output, expected in drift:
         found = {item["family"] for item in added_markers(source, output)}
         if not expected <= found:
@@ -462,6 +465,8 @@ def self_test() -> None:
         # Olumsuz uyum ögesi kaynakta zaten varsa biçim değişimi ekleme değildir.
         ("Kimse itiraz etmedi.", "Kimse itiraz etmedi; toplantı sürdü."),
         ("Herkes formu doldurdu.", "Formu herkes doldurdu."),
+        # `-mAdAn önce` sıra bildirir, olumsuzluk değildir.
+        ("Kurulumdan önce yedek alındı.", "Kurulum yapılmadan önce yedek alındı."),
         # Kaynakta zaten bulunan olumsuz değerlendirme ekleme değildir.
         ("Proje bütçe açığıyla karşı karşıya kaldı.", "Proje bütçe açığıyla karşı karşıya kaldı; açık 2 milyon liraydı."),
         # "-dığı için" ile "nedeniyle" aynı ailededir; biri ötekine dönünce neden eklenmez.

@@ -1,0 +1,1 @@
+Sistem gece yeni sürüme geçti ve yanıt süresini 420 ms'den 180 ms'ye indirdi. Ekip yedek almadan kurulumu başlattı. Kurulum bitince izleme panosu yeniden açıldı.

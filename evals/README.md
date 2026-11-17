@@ -40,6 +40,7 @@ Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (t
 | `yazma-kipi-notlardan-rapor` | Madde notlarından yönetime gidecek düzyazı not yazmak; her olguyu ve sayıyı kullanmak, yazarın çekincesini korumak, kararı gelecek kipte bırakmak; liste kopyalamamak, değerlendirme ve konuşma izi eklememek |
 | `cumle-sonu-kuyrugu` | Virgülden sonra `-arak/-erek` ile biten cümleyi ve `, bu da …` ekini çözmek: önerme taşıyan kuyruğu ayrı cümle yapmak, ölçülmemiş değerlendirmeyi silmek, iki ölçümü tek özneye bağlamamak |
 | `zarf-fiil-korunur` | Yüklemden önce gelen doğal zarf-fiili (`alarak denetledi`, `kapatarak boşalttı`) kuyruk sanmamak (yanlış pozitif) |
+| `kuyruk-duzeltmesi-zarf-fiil-tuzagi` | Cümle sonu `-arak` kuyruğunu düzeltirken olumsuz zarf-fiili (`yedek almadan`) olumluya, öncelik bildiren `bitince`yi `ve` zincirine çevirmemek; düşüşü nedensellik bağına çevirmemek |
 | `etiket-ve-anons` | Cümlenin türünü adlandıran etiketi (`Kısa cevap:`, `Kavramsal ayrım:`, `Sezgisel açıklama:`, `Detaylı açıklama:`) ve okura seslenen anonsu (`Merak etmeyin`, `Bu yazıda öğreneceksiniz`) silmek; etiketin altındaki bilgiyi etiketsiz bırakmak |
 | `pazarlama-anonsu` | Müşteri duyurusunda `Büyük bir haberimiz var`, `tanışın`, `Sizin için hazırladık`, `Hemen indirin` kalıplarını silip ikna yükünü somut işleve bırakmak |
 | `alan-etiketi-korunur` | Belgenin alan etiketini (`Girdi:`, `Çıktı:`, `Uyarı:`) ve sözlük maddesini etiket sanmamak (yanlış pozitif) |
