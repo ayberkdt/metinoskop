@@ -67,6 +67,8 @@ Biçim [Keep a Changelog](https://keepachangelog.com/tr/1.1.0/) yaklaşımına, 
 
 ### Düzeltildi
 
+- Literatür veritabanı denetimi: künyesi yalnızca başka bir çalışmanın kaynakçasından doğrulanan 16 kaydın `url` alanı çalışmanın kendisine değil atıf yapan çalışmaya gidiyordu (iki çift aynı URL'yi paylaşıyordu); `dogrulama` alanına bu durum yazıldı ve `turkce-dil-literaturu.md` › Yöntem ve sınırlar'a not eklendi. DOI ve başlık çifti bulunmadı.
+
 - `duyuru` ailesi Türkçe özet ve girişteki şimdiki zamanlı amaç hamlesini (`Bu çalışmada X incelenmektedir`) işaretlemiyor; `bu çalışmada` için yalnız gelecek zamanlı yol haritası (`... ele alınacak, ardından ... tartışılacaktır`) duyuru sayılıyor. Dayanak: Türkçe özetlerin hepsinde amaç hamlesi bulunur (Demir 2022; Kafes 2015; Kan ve Uzun 2015). Korunur vakası `ozet-amac-hamlesi-korunur`; mevcut duyuru dönüşüm vakaları geçiyor, gold'larda bulgu değişmedi, vaka kaynaklarında yalnız `raporda-genis-zaman-yigini`'nin geniş zamanlı cümlesi artık duyuru sayılmıyor.
 - `giris` yalnız cümle başındaki `son yıllarda` ve `Günümüzde` kalıbını, `reklam` yalnız olumlu `fark yaratmak`ı işaretliyor; cümle ortasındaki zaman zarfı, `Günümüz Sanatçıları` gibi özel ad ve olumsuz `fark yaratmaz` ağaç bankası ölçümünde yanlış pozitifti. 208 gold'da ve vaka kaynaklarında bulgu değişmedi.
 - `kuyruk` anlatıda konuşma etiketinden sonra gelen zarf-fiili (`..., dedi gülerek.`), `olarak` eksiltisini ve gösterme `bu da`yı (`Bak, bu da ...`, soru, `bu da olabilir`) işaretlemiyor; özgün ağaç bankalarındaki 16 isabetin 13'ü bunlardı. 208 gold'da ve vaka kaynaklarında bulgu değişmedi.
