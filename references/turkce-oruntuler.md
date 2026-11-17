@@ -545,7 +545,7 @@ Aşağıdakileri tek başına yapaylık belirtisi sayma:
 - bir kısa vurgu cümlesi,
 - mevzuat gereği korunan kurum dili,
 - yazarın bilinçli tekrarı,
-- sözlükleşmiş ikileme (`yavaş yavaş`, `az çok`) ve pekiştirmeli sıfat (`bembeyaz`); ikilemeler sözlükbirimdir (Özkan 2010), pekiştirme sözlüksel bir sınıftır (Kılıç ve Bozşahin 2013; Demir 2017),
+- sözlükleşmiş ikileme (`yavaş yavaş`, `az çok`) ve pekiştirmeli sıfat (`bembeyaz`); ikilemeler sözlükbirimdir (Özkan 2010), kurallara bağlı oluşur (Korkutan 2016) ve süre, belirsizlik, devinim ya da pekiştirme anlamı taşır (Kuleli ve Altuntaş 2022), bu yüzden tekrar ya da dolgu diye silinmez; `m`'li ikileme (`kitap mitap`) pekiştirmez, geçiştirir ve konuşma kaydı taşır (Şahin 2019). Türkçe ikileme bağlaçsız kurulur (Yücel 2016): `açık ve net`, `etkin ve verimli` gibi bağlaçlı eş anlamlı çift bu korumaya girmez, her sözcüğün ayrı katkısı `yazim-ve-dil-bilgisi.md` › Kökenden gelen anlam tekrarı'ndaki ölçütle sınanır. Çevirmenler Türkçeye kaynaktan çok ikileme katar (Uslu ve Özdemir 2019); düzenleme "Türkçeleştirme" için ikileme eklemez, çünkü ikileme kaynakta olmayan süre ya da yaklaşıklık katabilir. Pekiştirme sözlüksel bir sınıftır (Kılıç ve Bozşahin 2013; Demir 2017),
 - alıntı içindeki klişe,
 - teknik belgede düzenli başlık yapısı,
 - belirli bir topluluğa veya döneme ait söyleyiş,
