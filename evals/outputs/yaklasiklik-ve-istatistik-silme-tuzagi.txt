@@ -1,0 +1,1 @@
+Ölçümlere göre sistemin ortalama yanıt süresi 240 milisaniyedir; en yüksek değer 410 milisaniye olarak kaydedildi. Kullanıcı sayısının yaklaşık 3.000 olduğu değerlendirilmektedir.
