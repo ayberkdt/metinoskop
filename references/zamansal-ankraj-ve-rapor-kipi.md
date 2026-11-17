@@ -188,7 +188,7 @@ Tamamlanmış anlatım tek bir geçmiş değildir. Olay raporu, arıza çözüml
 
 Ek olayı tamamlanmış bir bütün olarak değil, geçmişteki bir referans noktasına göre sürerken gösterir. Bu, olayın sınırsız olduğu anlamına gelmez: `Pompa iki dakika boyunca çalışıyordu` cümlesinde süre açıkça sınırlıdır, yine de olay bütünlenmiş bir blok olarak değil, akış hâlinde sunulur. `Pompa çalıştı` bakış açısını bütünlenmiş olaya çevirir ve eş zamanlılığı siler; `pompa çalışıyor` ise olayı bugüne taşır.
 
-**`-mıştı`: geçmişteki bir referans noktasından önce tamamlanmış eylem.** Bu bir eğilimdir: `-DIK`'lı zarf yan cümlelerinde `-mIştI` ve `-DIydI` belirli koşullarda sonralık da bildirir (Yangın 2020); düzenleme `-mıştı`yı otomatik öncelik işareti sayıp olay sırasını yeniden kurmaz.
+**`-mıştı`: geçmişteki bir referans noktasından önce tamamlanmış eylem.** Bu bir eğilimdir: `-DIK`'lı zarf yan cümlelerinde `-mIştI` ve `-DIydI` belirli koşullarda sonralık da bildirir (Yangın 2020); düzenleme `-mıştı`yı otomatik öncelik işareti sayıp olay sırasını yeniden kurmaz. `-DIydI` resmî yazışma, gazete ve bilimsel eser gibi ölçünlü yazıda verimsizdir ve `-mIştI`dan kılınışla ayrılır (Toktar ve Deniz Yılmaz 2023): yazma kipinde rapor dili `-DIydI` üretmez, ama kaynaktaki `-DIydI` yazım düzeltmesi diye `-mıştı`ya çevrilmez. Raporda `-mIştI` duyum değil bilinen geçmişte öncelik bildirebilir (Demir 2015).
 
 > İkinci test başlamadan önce sensör zaten kalibre edilmişti.
 
