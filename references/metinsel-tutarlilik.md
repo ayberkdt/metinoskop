@@ -111,6 +111,8 @@ Metin, yinelenen ya da ilişkili sözcüklerle bağdaşır. Kanonik terimleri, �
 
 Dört ad dört bileşen mi, tek bileşen mi? Kaynak tek bileşeni kastediyorsa tek ad kalır; dört bileşeni kastediyorsa ilişkileri (gözlemci içindeki kestirici, filtre, modül) açıkça kurulmalıdır. Belirsizse belirsizlik kuralı: kullanıcıya sor ya da kaynağın sözcüklerini koru.
 
+Türkçe metinde bağdaşıklık en çok sözcükle ve eksiltiyle, en az değiştirimle kurulur: ders kitaplarında 729 kelime bağdaşıklığına karşı 11 değiştirim (Bozok 2019), öğrenci öykülerinde kâğıt başına 11,2 sözcüksel bağdaşıklığa karşı 0,2 değiştirim (Coşkun 2011). Yakın tekrardan kaçmak için terimi eş anlamlıyla ya da `bu`, `öyle`, `aynısı` gibi yer tutucuyla değiştirmek Türkçenin olağan dağılımından uzaklaşır; eş anlamlı terim çiftleri okurca kavramsal olarak denk de tutulmaz (Kızılcık 2013). Tam eş anlamlılık kuramsal olarak tartışmalıdır (Akçataş ve Arı 2018) ve ders kitaplarında eş anlamlı diye sunulan çiftlerin çoğu yerli–yabancı karşılıktır (Cin Şeker ve Mert Duran 2022); aynı dil bilgisi konusu için kitaplar arasında farklı terim kullanmak öğreneni zorlar (Gönen Kayacan ve Öncül 2021). Bağlaç yinelemesi de eş anlamlı bağlaçla nöbetleştirilerek (`ancak` → `fakat` → `ne var ki`) çözülmez; ilişki eke, ilgece ya da bağlaçsız yapıya taşınır ya da yineleme kalır. Anlatım bozukluğu çalışmaları sözcük tekrarını kategori olarak sayar ama gereksiz tekrarı bağdaşıklık için gerekli yinelemeden ayıran ölçüt vermez; yineleme silme kuralına dönüşmez. Yineleme ile eş anlamlıyı ayrı sayan ya da okuma süresiyle karşılaştıran Türkçe çalışma bulunamadı ([literatür › Bağdaşıklık araçları ve paragraf yapısı](turkce-dil-literaturu.md#bağdaşıklık-araçları-ve-paragraf-yapısı)).
+
 ## Gönderge mesafesi ve yeniden tanıtım eşiği
 
 `Bu`, `bunlar`, `bu durum`, `bu sonuç`, `bu yöntem`, `o`, `söz konusu`, `ilgili` dil bilgisi bakımından geçerli olsa da öncülünden fazla uzak olabilir. Sor: tam olarak neye gönderiyor; kaç rakip öncül var; aralarında kaç cümle var; adı yinelemek daha açık olur mu? Uzun mesafeli göndermede eksiltiyi fazla kullanma.
@@ -128,6 +130,8 @@ Son cümledeki "bu" dört olası öncül arasında asılıdır. Kaynak kazancın
 > Filtre kazancının 0,5'e çıkarılması yakınsama süresini 18 saniyeye düşürdü. Gözlemci 50 Hz'de çalıştırıldı; sensör 40 °C'de sürüklendi; denetleyici komutu 10 ms içinde üretti.
 
 Gönderge adla çözüldü ve yönettiği olguya yaklaştırıldı. Kaynak hangi değişikliğin yakınsamayı düşürdüğünü söylemiyorsa gönderge çözülmez; kullanıcıya sorulur.
+
+**Yeniden kurulan cümlede bağlanma.** Cümle yeniden kurulduğunda üç bağlanma sessizce kayabilir: `kendi`/`kendisi`nin yerel ya da uzak öncülü, iki adlı yapıda ad önü ilgi tümcesinin hangi ada bağlandığı (`müdürün sekreteri olan kişi`), çekimli aktarımın adlaşmış tümceye çevrilmesinde kişi göstergesi (`Ali "ben gelirim" dedi` → `Ali geleceğini söyledi`; `ben` Ali'ye döner). Dil modelleri bu üç yapıda kararsızdır (Karakaş 2026, iki çalışma; Oğuz, Ciftci ve Bakman 2024); düzenlemeden sonra öncül kaynaktakiyle aynı mı diye denetlenir, belirsizse kaynaktaki yapı korunur ([literatür](turkce-dil-literaturu.md#dil-modelleri-ve-yapay-zekâ-türkçesi)).
 
 ## Paragraflar arası devir
 
@@ -209,7 +213,7 @@ Belge akademik, bürokratik, konuşma, tanıtım, gazetecilik, öğretici ve ede
 
 > Modelin performansı değerlendirilmiştir. İşin ilginç yanı sonuçların beklenen eğilimden ayrılmasıdır. Bu kapsamda söz konusu parametrenin kritik önem arz ettiği görülmektedir.
 
-Üç uyumsuz mikro kayıt: akademik edilgen, sohbet gerilimi, bürokratik çerçeve. Küresel kayıt profilini belirle, izin verilen yerel değişimi (alıntı, örnek, uyarı, kenar notu) tanı, bilinçli geçişleri düzleştirme.
+Üç uyumsuz mikro kayıt: akademik edilgen, sohbet gerilimi, bürokratik çerçeve. Küresel kayıt profilini belirle, izin verilen yerel değişimi (alıntı, örnek, uyarı, kenar notu) tanı, bilinçli geçişleri düzleştirme. Konuşma dili unsuru insan yazısında da sıktır (İlanbey ve Can 2016); kayıt kayması AI izi değil gerçek bir yazım sorunudur. Bağlaçlar ise sözlü ve yazılı derlemde benzer dağılır (Demirşahin ve Zeyrek 2014): `ama`, `bu yüzden` gibi bağlaçlar konuşma izi sayılıp silinmez. Sözlü anlatımda bağdaşıklık aracı ve tutarlılık daha düşüktür (Çelebi ve Aykanat Uysal 2022), ama bu kaynakta kurulmamış ilişkiyi bağlaçla kurmaya izin vermez (Bağlaç işlevi doğrulaması).
 
 **Sonra**
 
@@ -222,6 +226,8 @@ Yerel ses tutarlılığı: birinci kişi ile kişisiz anlatım, etken ile edilge
 ## Noktalama ritmi ve ara söz yükü
 
 Noktalama tek başına yapaylık kanıtı değildir; ama Türkçe söz dizimsel gruplamayı yansıtmalıdır. İncele: yan cümleden sonra İngilizce tarzı virgül, özne ile yüklem arasında gereksiz virgül, aşırı uzun çizgi kullanımı, İngilizce açıklayıcı ritmi taklit eden iki nokta, noktalı virgül fazlası, ara söz yığını. Bir yazım kılavuzu denetçisi olma; hedef, Türkçe söz dizimsel ve bürünsel gruplamayla uyumlu noktalamadır.
+
+Ölçü: özgün yazılı Türkçede noktalı virgül 10.000 sözcükte haberde yaklaşık 8, denemede yaklaşık 36 kez geçer; cümlelerin %1–4'ünde bulunur. Deponun dönüşüm gold'larında yoğunluk 265'tir ve düzenleme kaynağa göre 3,3 kat artırır; yapay zekâ Türkçesi için de yüksek noktalı virgül yoğunluğu bildirilmiştir (Kocagül 2026, yalnızca özet). Noktalı virgül okulda en az öğrenilen işarettir (Babayiğit 2019; Arı ve Keray 2012) ve akademik başlıklarda hiç geçmez (Pilten Ufuk 2017). Virgül yoğunluğu ise yazara ve yayınevine göre değişir (Uyar ve ark. 2021; Karaca ve Bayır 2020); kaynağın virgül düzeni sıklık hedefiyle değiştirilmez. `style-lint.py --source` noktalı virgül sayısındaki değişimi söylem ölçüsü olarak raporlar; artış hata değil inceleme işaretidir: eklenen noktalı virgül kaynaktaki bir ilişkiyi mi taşıyor, yoksa iki cümleyi yalnızca birleştiriyor mu? ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları))
 
 **Önce**
 

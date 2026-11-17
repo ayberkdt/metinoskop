@@ -1,0 +1,1 @@
+Doğal dil işleme ve görüntü işleme modülleri aynı veri analiz hattını kullanıyor. Sistemin hız ve güvenilirliği iki ayrı testte ölçüldü; bazı sorunlar yalnızca yük altında görüldü. Katılımcılar formu iki kez doldurdular. Ekip protokolü inceledi ve onayladı; Türk Dil Kurumu Başkanı'nın görüşü de rapora eklendi.

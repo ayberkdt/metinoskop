@@ -1,0 +1,1 @@
+Bu çalışmada iki konum filtresi 40 uçuş kaydında karşılaştırıldı. Uyarlamalı filtre düşük irtifada (500 m altı) konum hatasını belirgin biçimde azalttı: ortalama hata 2,4 m'den 0,9 m'ye indi (eşleştirilmiş t testi, p < 0,001). Yüksek irtifada iki filtre arasında anlamlı fark bulunmadı. Bulgular, uyarlamalı filtrenin düşük irtifada açıkça daha doğru sonuç verdiğini gösteriyor.

@@ -1,0 +1,1 @@
+Kurul Başkanı'na sunulan taslak, Türk Standardları Enstitüsünün kayıt kurallarına dayanıyor. Sunucu sürüm 3.5'te IP adresini `herSeyiSil()` çağrısından önce kaydediyor. Bir kullanıcı geri bildirim formuna “sistem herşeyi siliyor” diye yazdı; ekip bu bildirimi 14 Ekim'de inceledi ve hatayı yeniden üretemedi. Makina Mühendisleri Odasının raporu da aynı sürümü ele alıyor.

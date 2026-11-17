@@ -1,0 +1,1 @@
+Kullanıcı ATM'de PIN'i üç kez yanlış girdi. Sistem SMS mesajıyla uyarı gönderdi ve kartı iade etmedi. Ekip, yanlış girişleri ayırmak için optimum eşiği 0,35 olarak belirledi; eşik IP adresi ve cihaz kimliğiyle birlikte API üzerinden kaydediliyor.

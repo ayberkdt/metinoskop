@@ -96,7 +96,7 @@ Mevcut bir rapor girişinde şu bilgilerin birbirine karışmamasını sağla:
 
 Yönetici özeti, gövdenin daha iddialı bir sürümü değildir. Yalnızca rapor gövdesinde bulunan ana bulguları, gerekli kapsam ve sınırlılıkları, açıkça sunulan öneri veya kararları yoğunlaştırır.
 
-- Ayrıntıyı azaltırken `bazı`, `en az`, `henüz`, `öngörülüyor` gibi anlam sınırlarını silme.
+- Ayrıntıyı azaltırken `bazı`, `en az`, `henüz`, `öngörülüyor` gibi anlam sınırlarını silme. Türkçe özet öğretiminin silme, genelleme ve yeniden kurma stratejileri (Benzer, Karadağ ve Evci 2021; Çetinkaya, Şentürk ve Dikici 2020) burada sınırlıdır: genelleme ancak kaynağın kurduğu kapsamda meşrudur, yeniden kurmada terim, sayı ve kapsam sözcüğü aynı kalır; özette metin dışı bilgi yer almaz (Özçakmak 2014).
 - İstatistikleri bağlamından koparma veya yalnızca olumlu sonuçları seçme.
 - Öneriyi kurumun kararı, planı tamamlanmış iş, pilot sonucu kanıtlanmış etki gibi sunma.
 - Gövdede desteklenmeyen slogan veya sonuç cümlesi ekleme.

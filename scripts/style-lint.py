@@ -41,6 +41,12 @@ followed by an unattributed "bu nedenle", unmotivated tense alternation,
 passive + nominalization clusters, light-verb density, postposition clusters,
 synonym drift among generic nouns, per-section topic resets, parenthetical
 load and register clashes. No regex decides epistemic correctness.
+
+Orthography (``yazim``, hard) flags spellings that clearly break the TDK Yazım
+Kılavuzu (``Türkçe'de``, ``herşey``, ``farketti``, ``kayıt etmek``, ``8.'inci``,
+``hatı``, ``kontrolu``); ``yazim_adayi`` (context) flags candidates that an
+official name or a table may legitimately keep (``Kurumu'na``, ``makina``,
+``25%``). Code spans, quoted speech and ``>`` quotes are never checked.
 """
 
 from __future__ import annotations
@@ -121,7 +127,8 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"dikkat edilmesi gereken",
             r"vurgulamak (?:gerek|isterim|lazım|istiyorum)",
             r"belirtmek (?:gerek|isterim|istiyorum)",
-            r"altını çiz",
+            # Yazarın kendi vurgusu; aktarılan "Bakan ... altını çizdi" haberde bildirme fiilidir (UD BOUN/IMST ölçümü).
+            r"altını çiz(?:mek (?:gerek|ister|isti|lazım)|mekte fayda|meli|elim|iyorum|eriz)",
             r"tesadüfi değil|tesadüf değil|keyfî değil|keyfi değil|rastgele değil",
             r"bilinçli (?:bir )?(?:seçim|tercih|karar)",
             r"eksiklik olarak (?:görül|değerlendiril)",
@@ -144,8 +151,10 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "level": "sert",
         "patterns": (
             r"bu (?:bölümde|kısımda|yazıda|makalede|belgede|notta) .*(?:ele alın|incelen|açıklan|değinil|anlatıl|sunul|tartışıl|özetlen)(?!m[ae](?:d|m|y|z))",  # olumsuz biçim (incelenmedi) sınırlılıktır, duyuru değil
-            # "Bu çalışmada ... incelendi/incelenmiştir" yapılmış işin raporudur; duyuru yalnızca şimdiki, geniş ya da gelecek zamandır.
-            r"bu çalışmada .*(?:ele alın|incelen|açıklan|değinil|anlatıl|sunul|tartışıl|özetlen)(?:m[ae]kt[ae]|[ae]c[ae]k|[ıiuü]r\b)",
+            # "Bu çalışmada ... incelendi/incelenmiştir" yapılmış işin raporudur. Şimdiki ve geniş zamanlı "Bu çalışmada X
+            # incelenmektedir" özet ve girişteki zorunlu amaç hamlesidir (Demir 2022; Kafes 2015; Kan ve Uzun 2015); duyuru
+            # yalnızca metnin sırasını bildiren gelecek zamandır ("... ele alınacak, ardından ... tartışılacaktır").
+            r"bu çalışmada .*(?:ele alın|incelen|açıklan|değinil|anlatıl|sunul|tartışıl|özetlen)[ae]c[ae]k",
             r"aşağıda .*(?:incelen|açıklan|sunul|ele alın|anlatıl)",
             r"(?:şimdi|önce|öncelikle) .*(?:bakalım|geçelim|ele alalım|inceleyelim)",
             r"öncelikle .*anlamak gerek|bunu anlamak için önce",
@@ -239,8 +248,10 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "label": "Kalıp giriş",
         "level": "bağlam",
         "patterns": (
-            r"^günümüz",
-            r"son yıllarda",
+            # Kalıp giriş cümle başındadır; cümle ortasındaki `son yıllarda` sıradan zaman zarfı, `Günümüz
+            # Sanatçıları` özel addır (UD BOUN ölçümü).
+            r"^günümüzde\b|^günümüz (?:dünyasında|toplumunda|koşullarında)",
+            r"^son yıllarda",
             r"hızla (?:değişen|gelişen|dönüşen)",
             r"teknolojinin hızla",
             r"her zamankinden daha",
@@ -384,6 +395,9 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"\b(?:önceki|ilk|eski) (?:taslak|sürüm|versiyon)\w*",
             r"\((?:düzeltildi|güncellendi|eklendi|kaldırıldı|değiştirildi|yeniden yazıldı)\)",
             r"^işte (?:düzenlenmiş|güncellenmiş|gözden geçirilmiş|hazırladığım|istediğin|istediğiniz)\b",
+            # Konuşmanın değerlendirme parçacıkları (Yılmaz 2004): cümle başında `işte` ve söylem `şey`i.
+            # `bir şey`, `her şey` addır ve işaretlenmez; `işte` ambalajı yukarıdaki kalıptadır.
+            r"^işte\b(?! (?:düzenlenmiş|güncellenmiş|gözden geçirilmiş|hazırladığım|istediğin|istediğiniz)\b)|^şey\b",
             r"\bprompt\w*",
         ),
     },
@@ -395,8 +409,12 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "label": "Cümle sonu kuyruğu",
         "level": "bağlam",
         "patterns": (
-            r",\s+(?:\S+\s+){0,8}(?!(?:toprak|yaprak|bayrak|gerek|merak|mübarek|kürek|börek)\b)\S+(?:[ae]rak|[ae]rek)[.!?…]*$",
-            r",\s+bu da\b",
+            # Anlatıda konuşma etiketinden sonra gelen zarf-fiil (`..., dedi gülerek.`) yayımlanmış kurgunun
+            # kuralıdır; `olarak` kuyruğu ad eksiltisidir (`Milletvekili olarak değil, asil olarak.`). UD IMST ölçümü.
+            r"^(?!.*\b(?:dedi[mk]?|diye|diyor\w*|sordu|söyledi|mırıldan\w*|haykırd\w*)\b)"
+            r".*,\s+(?:\S+\s+){0,8}(?!(?:toprak|yaprak|bayrak|gerek|merak|mübarek|kürek|börek|olarak)\b)\S+(?:[ae]rak|[ae]rek)[.!?…]*$",
+            # Gösterme `bu da` (`Bak, bu da bir telefon.`, `bu da nereden çıktı?`, `bu da olabilir`) kuyruk değildir.
+            r"^(?!.*\?$)(?:\S+\s+){2,}\S+,\s+bu da\b(?!\s+olabilir)",
         ),
     },
     {
@@ -422,7 +440,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "patterns": (
             r"\b(?:merak|endişe) etmeyin\b|\bendişelenmeyin\b|\bkorkmayın\b",
             r"\b(?:sizin|siz(?:ler)?) için .{0,40}hazırladık",
-            r"\btanışın\b|\bsizi\b.{0,30}\bbekliyor\w*|\bkaçırmayın\b|\bkarşınızda(?:yız)?\b",
+            r"\btanışın\b|\bsizi\b.{0,30}\bbekliyor\w*|\bkaçırmayın\b|\bkarşınızdayız\b|\bişte karşınızda\b|^karşınızda\b(?:[^.?]*!|:)",
             r"\b(?:sayıda|sayımızda|bültende|bültenimizde|yazıda|yazımızda) neler (?:var|bulacaksınız|göreceksiniz)",
             r"^hazır mısınız\b|\bgelin,? (?:hep )?birlikte\b|\bfarkı (?:hissedin|görün|yaşayın|keşfedin)\b",
             r"\b(?:yepyeni|yeni) bir (?:dönem|çağ|sayfa)(?:in)? (?:başlıyor|açılıyor|aç)|bir dönemin kapılarını",
@@ -434,7 +452,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"bu (?:yazıda|yazımızda|bölümde|rehberde|makalede|belgede|yazının devamında) .*(?:öğreneceksiniz|göreceğiz|göreceksiniz|bulacaksınız|keşfedeceğiz|keşfedeceksiniz)",
             r"\bşunları (?:göreceğiz|öğreneceğiz|öğreneceksiniz|ele alacağız|inceleyeceğiz)",
             r"^aşağıda .*(?:anlatıyoruz|açıklıyoruz|sıralıyoruz|bulabilirsiniz|bulacaksınız)",
-            r"(?:büyük|güzel|harika|heyecan verici) (?:bir )?haber(?:imiz)? var|\bmüjde\b",
+            r"(?:büyük|güzel|harika|heyecan verici) (?:bir )?haber(?:imiz)? var|^müjde\b|\bmüjde!|\bmüjdemiz\b",
             # Ürünü sunan duyuru: ne yaptığını değil var olduğunu bildirir ("çözümümüzü hazırladık").
             r"\bçözüm\w* (?:hazırladık|sunuyoruz|geliştirdik)\b|\b(?:sizlere|size) sun(?:uyoruz|maktan)",
         ),
@@ -447,7 +465,8 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"\b(?:benzersiz|eşsiz|rakipsiz)(?!li[kğ])",
             r"çığır aç|devrim niteliğinde",
             r"kusursuz|sektör lideri",
-            r"bir üst seviyeye|fark yarat|yeniden tanımla",
+            # Olumsuz `fark yaratmaz` bir olgu bildirir, pazarlama değildir (UD BOUN ölçümü).
+            r"bir üst seviyeye|fark yarat(?!ma[zd]|mıyor|mamı)|yeniden tanımla",
             r"\bdönüştürücü (?:bir )?(?:etki|deneyim|güç|yolculuk|dokunuş|an|dönem|çözüm|potansiyel)",
             r"sorunsuz (?:bir şekilde|biçimde)|emin ellerde|bir adım önde",
             r"\b(?:güçlü|esnek|ölçeklenebilir|yenilikçi|modern|kullanıcı dostu|sezgisel), (?:güçlü|esnek|ölçeklenebilir|yenilikçi|modern|kullanıcı dostu|sezgisel),? ve ",
@@ -490,7 +509,8 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "label": "Sahip olmak kalkısı",
         "level": "bağlam",
         "patterns": (
-            r"\bsahip(?!lik|len|siz)",
+            # Ad olarak `sahipleri` (mal sahipleri) ve deyim `sahip çıkmak` kalkı değildir (UD BOUN haber örnekleri).
+            r"\bsahip(?!li[kğ]|len|siz|ler| çık)",
         ),
     },
     {
@@ -520,7 +540,7 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "level": "sert",
         "patterns": (
             # suggest → önermek: veri öznesi tavsiye edemez; "-dığını önermek" çıkarım değil öneri okunur.
-            r"^(?:\S+ ){0,3}(?:sonuç|bulgu|veri|analiz|gözlem|ölçüm)(?:lar|ler)(?:ımız|imiz|ı|i)?,? .{0,120}(?:ğını|ğini|ğunu|ğünü) öner(?:mekte|miş|iyor|ir\b|di)",
+            r"^(?:\S+ ){0,3}(?:sonuç|bulgu|veri|analiz|gözlem|ölçüm)(?:lar|ler)(?:ımız|imiz|ı|i)?,? .{0,120}(?:ğ[ıiuü]n[ıiuü]|kl[ae]r[ıi]n[ıi]) öner(?:mekte|miş|iyor|ir\b|di)",
         ),
     },
     {
@@ -528,8 +548,8 @@ CATEGORIES: tuple[dict[str, object], ...] = (
         "label": "Anlam kayması adayı",
         "level": "bağlam",
         "patterns": (
-            r"^(?!.*\b(?:nasıl|neden|niçin|niye|hangi|ne kadar|kim|kaç|olup olma)).*?\S+(?:ğını|ğini|ğunu|ğünü) tartış(?:makta|mış|ıyor|ır\b|tı)",
-            r"^(?!.*\b(?:nasıl|neden|niçin|niye|hangi|ne kadar|kim|kaç|olup olma)).*?\S+(?:dığı|diği|duğu|düğü|tığı|tiği|tuğu|tüğü|acağı|eceği) tartışıl(?:makta|mış|ıyor|ır\b)",
+            r"^(?!.*\b(?:nasıl|neden|niçin|niye|hangi|ne kadar|kim|kaç|olup olma)).*?\S+(?:ğ[ıiuü]n[ıiuü]|kl[ae]r[ıi]n[ıi]) tartış(?:makta|mış|ıyor|ır\b|tı)",
+            r"^(?!.*\b(?:nasıl|neden|niçin|niye|hangi|ne kadar|kim|kaç|olup olma)).*?\S+(?:[dt][ıiuü](?:ğ[ıiuü]|kl[ae]r[ıi])|[ae]c[ae](?:ğ[ıi]|kl[ae]r[ıi])) tartışıl(?:makta|mış|ıyor|ır\b)",
             r"^(?:\S+ ){0,2}(?:deney|ölçüm|toplantı|görüşme|kesinti|olay|kaza|tören|çalıştay|konferans|sınav)(?:ler|lar)?\b(?! \S+(?:ı|i|u|ü)\b).{0,60}\byer al(?:dı|mıştır|mıştı|acak)\b",
             r"\baktüel (?:değer|veri|maliyet|ölçüm|sonuç|gider)",
             r"\b\d+(?:[.,]\d+)? faktörü (?:ile|kadar|oranında)",
@@ -579,7 +599,77 @@ CATEGORIES: tuple[dict[str, object], ...] = (
             r"işlemi (?:yap|gerçekleştir)|(?:değerlendirme|analiz|inceleme|ölçüm|kontrol|karşılaştırma|uygulama) (?:yap|gerçekleştir|yürüt)",
         ),
     },
+    {
+        # Sayı uyumu (references/yazim-ve-dil-bilgisi.md › Sayı uyumu; turkce-dil-literaturu.md):
+        # cansız çoğul özneyle yüklem teklik kalır (Bamyacı, Häussler ve Kabak 2014); sayı sıfatından
+        # sonra ad çokluk eki almaz (Sağ 2022). İnsan özne ve tür göndermesi işaretlenmez; `altı`, `yüz`,
+        # `on` adla karışabildiği (`yüz ifadeleri`, `on yıllardır`) ve rakam tablo numarası olabildiği
+        # (`Tablo 3 sonuçları`) için listede yoktur.
+        "key": "sayi_uyumu",
+        "label": "Sayı uyumu adayı",
+        "level": "bağlam",
+        "patterns": (
+            r"^(?:\S+ ){0,3}(?:sonuç|bulgu|veri|değer|ölçüm|analiz|deney|test|grafik|tablo|şekil|sistem|model|yöntem|araç|cihaz|sensör|örnek)l[ae]r(?:ımız|imiz|ı|i)?\b"
+            r".*\b\w+(?:yorl[ae]r|m[ae]kt[ae]d[ıi]rl[ae]r|m[ıiuü]şl[ae]rd[ıi]r|m[ıiuü]şt[ıiuü]rl[ae]r)[.!?]*$",
+            # Yaklaşık yaş (`sekiz yaşlarında`, `üç yaşları civarında`) sayı + çoğul olsa da doğrudur (UD BOUN/IMST).
+            r"\b(?:iki|üç|dört|beş|yedi|sekiz|dokuz|birkaç|birçok)\s+(?!yaşl[ae]r|yüzlü)\w{3,}l[ae]r(?:\w*)\b",
+        ),
+    },
+    {
+        # Eyleyenli edilgen: `tarafından` Osmanlı Türkçesine 18. ve 19. yüzyılda girmiştir (Erdem 2007)
+        # ve modern Türkçede de kurallı edilgen sayılacak sıklıkta değildir (Sebzecioğlu ve Oktar 2010).
+        # Eyleyen biliniyorsa etken çatı aday olur; kurumsal ve hukuki eyleyen vurgusu meşrudur, eyleyensiz
+        # edilgen (`örnekler toplandı`) hiç işaretlenmez.
+        "key": "tarafindan",
+        "label": "Eyleyenli edilgen",
+        "level": "bağlam",
+        "patterns": (
+            r"\btarafından\b",
+        ),
+    },
+    {
+        # TDK Yazım Kılavuzu'na açıkça aykırı yazım (references/yazim-ve-dil-bilgisi.md). AI izi değil,
+        # biçim doğruluğudur. Kod, tırnak içi alıntı ve `>` alıntı bloğu denetlenmez (YAZIM_KEYS).
+        "key": "yazim",
+        "label": "Yazım yanlışı",
+        "level": "sert",
+        "patterns": (
+            # Dil adı yapım ekiyle türer; ardından gelen ek kesmeyle ayrılmaz: Türkçede, İngilizceye.
+            r"\b(?:türkçe|ingilizce|almanca|fransızca|arapça|farsça|rusça|ispanyolca|italyanca|japonca|çince|korece|latince|yunanca|osmanlıca)['’]",
+            # Ayrı yazılanlar: her şey, bir şey, pek çok, fark etmek; bitişik yazılanlar: birkaç, herhangi.
+            r"\b(?:her|bir)şey|\bpekçok\b|\bfarket|\bbir kaç\b|\bher hangi\b",
+            # Bağlaç ki ayrı yazılır.
+            r"\b(?:dedi|öyle|şöyle|böyle|demek|kaldı|bilmem)ki\b",
+            # Ses olayına uğrayan ad + etmek bitişik yazılır: kaybetmek, hissetmek, reddetmek, kaydetmek.
+            r"\b(?:kayıp|his|af|ret|zan|emir|kayıt|sabır|seyir|kahır|hapis|keşif|şükür) (?:et(?:mek|me|ti|tir|miş|se)|ed(?:er|en|ip|ecek|eceğ|ebil|il|iyor|erek|ince))",
+            # Sıra sayısında rakamdan sonra nokta ile ek birlikte kullanılmaz: 8'inci ya da 8.
+            r"\d\.['’](?:inci|ıncı|uncu|üncü|nci|ncı|ncu|ncü)\b",
+            # Arapça ikiz ünsüz ünlüyle başlayan ekte geri gelir: hakkı, hissi, hattı, zannı, tıbbı.
+            r"\b(?:hakı|hakın|hisi|zanı|tıpı|hatı)\b",
+            # İnce söylenen son ünsüz ince ünlülü ek alır: kontrolü, protokolde, rolü, saate.
+            r"\b(?:alkol|kontrol|protokol|sembol|rol|petrol|kabul|usul)(?:u|un|a|da|dan|lar|ları|ların)\b|\bsaat(?:a|ı|ın|lar|tan)\b",
+            r"\b(?:orjinal|yanlız|herkez|yalnış|malesef)\w*",
+        ),
+    },
+    {
+        # Bağlam isteyen yazım adayları: resmî ad kendi yazımını korur (Makina Mühendisleri Odası),
+        # `yada` bir ad da olabilir, `hiç bir araya` ve `bir çok yönlü` doğrudur, tabloda `25%` biçimi dayatılmış olabilir.
+        "key": "yazim_adayi",
+        "label": "Yazım adayı",
+        "level": "bağlam",
+        "patterns": (
+            # Kurum adına gelen ek kesmeyle ayrılmaz (Türk Dil Kurumuna); unvan (Başkanı'na) ayrılır.
+            r"\b(?:kurumu|bakanlığı|başkanlığı|müdürlüğü|rektörlüğü|üniversitesi|fakültesi|enstitüsü|derneği|vakfı|meclisi|bankası|şirketi|kurulu|ajansı|belediyesi|odası|birliği|federasyonu)['’]",
+            r"\byada\b|\bhiç bir\b|\bbir çok\b",
+            r"\b\d+(?:[.,]\d+)?\s?%",
+            r"\blaboratuar\w*|\bmakina(?:\b|sı|lar|da|nın)|\bmetod(?:\b|lar)",
+        ),
+    },
 )
+# Yazım aileleri kod, tırnak içi alıntı ve `>` alıntı bloğunda çalışmaz: alıntı ve kod kaynağın yazımıyla kalır.
+YAZIM_KEYS = frozenset({"yazim", "yazim_adayi"})
+YAZIM_MASK_RE = re.compile(r"`[^`]*`|“[^”]*”|«[^»]*»|\"[^\"]*\"")
+DIALOGUE_RE = re.compile(r"^\s*[–—]\s")
 
 COMPILED: dict[str, tuple[re.Pattern[str], ...]] = {
     str(category["key"]): tuple(re.compile(p) for p in category["patterns"])  # type: ignore[union-attr]
@@ -594,7 +684,7 @@ SON_OKUR_SERT = frozenset({"sizinti"})
 def level_of(category: str, son_okur: bool = False) -> str:
     return "sert" if son_okur and category in SON_OKUR_SERT else LEVELS[category]
 
-MAKTADIR_RE = re.compile(r"m[ae]kt[ae]d[ıi]r[.!?]*$")
+MAKTADIR_RE = re.compile(r"m[ae]kt[ae]d[ıi]r(?:l[ae]r)?[.!?]*$")
 SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+(?=[A-ZÇĞİÖŞÜ0-9\"'«(`])")
 STRUCTURE_SKIP_PREFIXES = ("#", "|", "```", "- ", "* ", "+ ")
 LIST_ITEM_RE = re.compile(r"^\s*(?:[-*+]|\d+[.)])\s+")
@@ -620,8 +710,18 @@ OLAN_RE = re.compile(r"\bolan\b")
 BIR_RE = re.compile(r"\bbir\b")
 VE_RE = re.compile(r"\bve\b")
 WORD_RE = re.compile(r"\w+")
-CONVERB_RE = re.compile(r"\w+(?:[ıiuü]p|[ae]r[ae]k)$")
-CONVERB_STOP = {"ekip", "prensip", "kulüp", "grup", "tip", "yaprak", "toprak", "bayrak", "mübarek", "merak", "gerek", "direk", "börek", "kürek"}
+# Zarf-fiiller: -Ip, -ArAk, -IncA, -mAdAn, -DIkçA ve zaman ekinden ya da kaynaştırmadan sonra -ken
+# (düşerken, okurken, doluyken). `gereken`, `geciken` sıfat-fiil, `değişken` ad olduğu için -ken yalnız
+# bu bağlamda sayılır; -IncA biçimli ilgeçler (`boyunca`, `uyarınca`) CONVERB_STOP'tadır.
+CONVERB_RE = re.compile(r"\w+(?:[ıiuü]p|[ae]r[ae]k|[ıiuü]nc[ae]|m[ae]d[ae]n|[dt][ıiuü]kç[ae]|(?:[ae]r|[ıiuü]r|yor|m[ıiuü]ş|y)ken)$")
+CONVERB_STOP = {"ekip", "prensip", "kulüp", "grup", "tip", "yaprak", "toprak", "bayrak", "mübarek", "merak", "gerek", "direk", "börek", "kürek",
+                "boyunca", "uyarınca", "süresince", "gereğince", "nispetince", "malzemeden", "erken", "iken",
+                # UD BOUN ölçümünde zarf-fiil sanılan adlar ve kalıplaşmış zarflar (VerbForm=Conv değil).
+                "sahip", "takip", "garip", "mektup", "mensup", "talip", "galip", "tertip", "terkip", "tayyip", "ragıp",
+                "ayıp", "kayıp", "hatip", "nasip", "katip", "kâtip", "tabip",
+                "olarak", "oldukça", "yeterince", "bunca", "şunca", "onca", "düşünce", "sakınca", "gittikçe"}
+# Dört harfli `-Ip` zarf-fiilleri (`alıp`, `olup`, `edip`) uzunluk eşiğinin altında kalıyordu.
+SHORT_CONVERB_RE = re.compile(r"\w{2}[ıiuü]p$")
 GENITIVE_RE = re.compile(r"\w{3,}(?:[ıiuü]n|n[ıiuü]n)$")
 GENITIVE_STOP = {"için", "bütün", "zaten", "metin", "zemin", "yetkin", "uzun", "derin", "yakın", "bugün", "yarın", "dün", "kalın", "bin", "on", "gün", "esin"}
 # Discourse (epistemic / lexical / coherence) signals. All review-only.
@@ -635,7 +735,21 @@ BOOSTER_RE = re.compile(
 )
 CONCLUSION_OPENERS = ("bu nedenle", "dolayısıyla", "bu yüzden", "sonuç olarak", "demek ki", "öyleyse")
 NOMINALIZATION_RE = re.compile(r"\w+(?:l|n)m[ae]s[ıi]\w*$")
-PASSIVE_FINITE_RE = re.compile(r"\w+(?:[ıiuü]l|n)(?:m[ıiuü]şt[ıi]r|m[ıiuü]ş|m[ae]kt[ae]d[ıi]r|d[ıi]|[ae]c[ae]kt[ıi]r)$")
+# Dört biçimli ekler (-DI, -DIr) yuvarlak ünlüden sonra u/ü alır: ölçüldü, görülmüştür.
+PASSIVE_FINITE_RE = re.compile(r"\w+(?:[ıiuü]l|n)(?:m[ıiuü]şt[ıiuü]r|m[ıiuü]ş|m[ae]kt[ae]d[ıi]r|d[ıiuü]|[ae]c[ae]kt[ıi]r)$")
+PASSIVE_SUFFIX_RE = re.compile(r"(?:m[ıiuü]şt[ıiuü]r|m[ıiuü]ş|m[ae]kt[ae]d[ıi]r|d[ıiuü]|[ae]c[ae]kt[ıi]r)$")
+# Kökü zaten -n ya da -l ile biten fiiller (`kullandı`, `kazandı`, `döndü`) edilgen değildir; UD BOUN ölçümünde
+# edilgen örüntüsünün yanlış pozitiflerinin çoğu bunlardı. `kullanıldı` gibi gerçek edilgen ayrıca -Il taşır.
+NON_PASSIVE_ROOTS = ("kullan", "kazan", "savun", "dön", "in", "düşün", "utan", "sevin", "ayrıl", "kurtul", "yaslan",
+                     "uzan", "yan", "inan", "dayan", "kalkın", "ol", "kal", "bil", "gel", "al", "sal", "dal", "çal",
+                     "bul", "öl", "dol", "kıl", "sil", "del")
+NON_PASSIVE_WORDS = {"kendi", "değildi", "efendi", "şimdi", "hindi", "pendi"}
+
+
+def is_finite_passive(word: str) -> bool:
+    if word in NON_PASSIVE_WORDS or not PASSIVE_FINITE_RE.match(word):
+        return False
+    return not any(word.startswith(root) and PASSIVE_SUFFIX_RE.fullmatch(word[len(root):]) for root in NON_PASSIVE_ROOTS)
 POSTPOSITION_RE = re.compile(r"\b(?:hakkında|ilişkin|yönelik|dair|üzerine)\b")
 GENERIC_NOUN_SETS = (
     ("yöntem/yaklaşım/yapı/çözüm", (r"\byöntem\w*", r"\byaklaşım\w*", r"\byapı(?:s[ıi]n?|y[ıi]|ya|da|dan|n[ıi]n|lar\w*|d[ıi]r)?\b", r"\bçözüm\w*", r"\bstrateji\w*", r"\bmekanizma\w*")),
@@ -644,20 +758,27 @@ GENERIC_NOUN_SETS = (
 GENERIC_NOUN_COMPILED = tuple((label, tuple(re.compile(p) for p in patterns)) for label, patterns in GENERIC_NOUN_SETS)
 TOPIC_RESET_RE = re.compile(r"^bu (?:çalışmada|çalışma\b|raporda|belgede|bölümde|araştırmada|makalede)")
 DASH_RE = re.compile(r"[—–]")
+# Ondalık virgüllü listedeki noktalı virgül (`0,2; 0,5`) zorunludur ve sayılmaz.
+NUMERIC_SEMICOLON_RE = re.compile(r"(?<=\d);(?=\s*[-−]?\d)")
 TENSE_CLASSES = (
-    ("mektedir", re.compile(r"m[ae]kt[ae](?:d[ıi]r)?$")),
+    ("mektedir", re.compile(r"m[ae]kt[ae](?:d[ıi]r)?(?:l[ae]r)?$")),
     # Geçmiş içinde zaman ilişkileri, yalın geçmişten önce sınanır: "-mıştı" başka
     # bir geçmiş olaydan önceliği, "-yordu" geçmişte süren artalanı bildirir.
     # ("-ardı" düzenli davranışı bildirir ama "sardı", "kardı" gibi yalın geçmiş
     # biçimlerinden biçim bilgisiyle ayrılamadığı için sınıflandırılmaz.)
-    ("mıştı", re.compile(r"m[ıiuü]şt[ıi](?:m|k|n[ıi]z|lar|ler)?$")),
-    ("miştir", re.compile(r"m[ıiuü]ş(?:t[ıi]r|lerdir|lardır)?$")),
+    # -mIştI ve -mIştIr dört biçimlidir: görülmüştü, bulunmuştur.
+    ("mıştı", re.compile(r"m[ıiuü]şt[ıiuü](?:m|k|n[ıiuü]z|lar|ler)?$")),
+    ("miştir", re.compile(r"m[ıiuü]ş(?:t[ıiuü]r|l[ae]rd[ıi]r)?$")),
     ("yordu", re.compile(r"yordu(?:m|k|n|nuz|lar)?$")),
     ("yor", re.compile(r"yor(?:lar|du|um|uz|sunuz)?$")),
     ("dı", re.compile(r"[dt][ıiuü](?:m|k|n|lar|ler|nız|niz)?$")),
     # "-dır/-dir/-tır/-tir" is the copula, so an ambiguous high vowel after d/t is
     # excluded; "-ar/-er" cannot be a copula ("artar", "kaydeder" stay aorist).
-    ("r", re.compile(r"(?:(?<![dt])[ıiuü]r|[ae]r)$")),
+    # Kişi ekli geniş zaman (`alırız`, `dersiniz`) ve olumsuz geniş zaman (`yapamaz`, `görülmez`, `anlamazsınız`)
+    # da geniş zamandır; UD BOUN ölçümünde bunlar tanınmadığı için duyarlılık 0,61'de kalıyordu.
+    ("r", re.compile(r"(?:(?<![dt])[ıiuü]r|[ae]r)$"
+                     r"|(?:[ıiuü]|[ae])r(?:[ıiuü]z|s[ıiuü]n[ıiuü]z|s[ıiuü]n)$"
+                     r"|m[ae]z(?:s[ıiuü]n(?:[ıiuü]z)?)?$|m[ae]y[ıi]z$")),
 )
 MONTHS = ("ocak", "şubat", "mart", "nisan", "mayıs", "haziran", "temmuz", "ağustos",
           "eylül", "ekim", "kasım", "aralık")
@@ -853,9 +974,20 @@ def find_hits(paragraphs: list[Paragraph]) -> list[dict[str, object]]:
     hits: list[dict[str, object]] = []
     for paragraph in paragraphs:
         for sentence in paragraph.sentences:
+            masked = YAZIM_MASK_RE.sub(" ", sentence.lowered)
+            # Alıntı içindeki klişe yazarın cümlesi değildir (turkce-oruntuler.md › Yanlış pozitifler); diyalog
+            # çizgisiyle (`–`, `—`; `-` Markdown listesidir) açılan konuşma da öyle. Sert aileler alıntıyı ve diyalog satırını denetlemez; yazım
+            # aileleri diyalogu denetler, `>` bloğunu ve alıntıyı denetlemez.
+            dialogue = bool(DIALOGUE_RE.match(sentence.text))
             for key, patterns in COMPILED.items():
+                if key in YAZIM_KEYS and paragraph.quote:
+                    continue
+                hard_quoted = LEVELS[key] == "sert" and key not in YAZIM_KEYS
+                if hard_quoted and dialogue:
+                    continue
+                target = masked if key in YAZIM_KEYS or hard_quoted else sentence.lowered
                 for pattern in patterns:
-                    match = pattern.search(sentence.lowered)
+                    match = pattern.search(target)
                     if match:
                         hits.append(
                             {
@@ -892,8 +1024,9 @@ def sentence_words(sentence: Sentence) -> list[str]:
 def converb_count(words: list[str]) -> int:
     return sum(
         1 for w in words
-        if len(w) >= 5 and w not in CONVERB_STOP and CONVERB_RE.match(w)
-        and not (w.endswith(("rak", "rek")) and len(w) < 6)
+        if w not in CONVERB_STOP and (
+            (len(w) >= 5 and CONVERB_RE.match(w) and not (w.endswith(("rak", "rek")) and len(w) < 6))
+            or (len(w) == 4 and SHORT_CONVERB_RE.match(w)))
     )
 
 
@@ -1038,7 +1171,16 @@ def tense_class(sentence: Sentence) -> str | None:
         return None
     last = words[-1]
     if last.endswith(("lar", "ler")) and not last.endswith("yorlar"):
-        # "kalırlar", "gelirler" are aorist plurals; "sensörler", "örnekler" are nouns.
+        # Çoğul kişi eki zaman ekinden sonra gelir: göstermektedirler, incelemişler, yaptılar.
+        # "kalırlar", "gelirler" geniş zamandır; "sensörler", "örnekler" addır.
+        if re.search(r"m[ae]kt[ae](?:d[ıi]r)?l[ae]r$", last):
+            return "mektedir"
+        if re.search(r"m[ıiuü]şl[ae]r$", last):
+            return "miştir"
+        if re.search(r"[dt][ıiuü]l[ae]r$", last):
+            return "dı"
+        if re.search(r"m[ae]zl[ae]r$", last):
+            return "r"
         return "r" if re.search(r"[ıiuüae]rl[ae]r$", last) else None
     for label, pattern in TENSE_CLASSES:
         if pattern.search(last):
@@ -1069,7 +1211,21 @@ def discourse_summary(doc: Document, hits: list[dict[str, object]]) -> dict[str,
     counts["kiplik"] = sum(1 for h in hits if h["category"] == "kiplik")
     counts["pekistirici"] = sum(1 for h in hits if h["category"] == "pekistirici")
     counts["hafif_fiil"] = sum(1 for h in hits if h["category"] == "hafif_fiil")
+    counts["noktali_virgul"] = semicolon_count(doc)
     return counts
+
+
+def semicolon_count(doc: Document) -> int:
+    """Düzyazıdaki noktalı virgül sayısı; kod, tırnak içi alıntı ve sayı listesi ayırıcısı hariç.
+    Bulgu değil ölçüdür: özgün Türkçede yoğunluk türe göre değişir (literatür › Depo ölçümü)."""
+    total = 0
+    for paragraph in doc.paragraphs:
+        if not paragraph.prose:
+            continue
+        for sentence in paragraph.sentences:
+            masked = YAZIM_MASK_RE.sub(" ", sentence.text)
+            total += masked.count(";") - len(NUMERIC_SEMICOLON_RE.findall(masked))
+    return total
 
 
 def discourse_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict[str, object]]:
@@ -1092,7 +1248,7 @@ def discourse_checks(doc: Document, hits: list[dict[str, object]]) -> list[dict[
                              "text": f"P{s.paragraph}C{s.index}: pekiştirici ({', '.join(boosters)}) ile çekince ({', '.join(hedges)}) aynı önermede çekişiyor: kaynağın gerçek kanıt düzeyi hangisi?"})
         words = sentence_words(s)
         nominal = [w for w in words if NOMINALIZATION_RE.match(w)]
-        passive = [w for w in words if PASSIVE_FINITE_RE.match(w)]
+        passive = [w for w in words if is_finite_passive(w)]
         if len(nominal) >= 2 and passive:
             findings.append({"check": "edilgen_adlastirma",
                              "text": f"P{s.paragraph}C{s.index}: {len(nominal)} adlaştırma ve edilgen yüklem bir arada: aktör biliniyor mu, doğrudan yüklem mümkün mü? «{excerpt(s)}»"})
@@ -1559,6 +1715,8 @@ def analyse(text: str, son_okur: bool = False) -> dict[str, object]:
         "kuyruk": per_category.get("kuyruk", 0),
         "etiket": per_category.get("etiket", 0),
         "anons": per_category.get("anons", 0),
+        "yazim": per_category.get("yazim", 0),
+        "sayi_uyumu": per_category.get("sayi_uyumu", 0),
         "son_okur": son_okur,
         "density_per_100": density,
         "structure_summary": structure_summary(doc, hits),
@@ -1685,6 +1843,7 @@ DISCOURSE_LABELS = {
     "parantez_yuku": "parantez yükü", "kayit_kaymasi": "kayıt kayması",
     "zamansal_surtunme": "zamansal sürtünme", "genis_zaman_doygunlugu": "geniş zaman doygunluğu",
     "genis_zaman_katiligi": "geniş zaman katılığı", "sozcuksel_kalki": "sözcüksel kalkı",
+    "noktali_virgul": "noktalı virgül",
 }
 
 
@@ -1952,6 +2111,37 @@ INNOCENT_WORDS = (
     "Binanın temel taşı 1923'te atıldı.",
     "Kapının anahtarı masada kaldı.",
 )
+# TDK Yazım Kılavuzu'na aykırı yazım ve doğru karşılıkları (references/yazim-ve-dil-bilgisi.md).
+YAZIM_WRONG = (
+    "Raporun Türkçe'si hazırlandı.",
+    "Taslakta herşey tamamdı.",
+    "Ekip hatayı geç farketti.",
+    "Bir kaç sensör yeniden kalibre edildi.",
+    "Kayıtlar her hangi bir sırayla alınmadı.",
+    "Sistem verileri kayıt ediyor.",
+    "Şikâyet ret edildi.",
+    "Bu 8.'inci denemeydi.",
+    "Veri hatı kesildi.",
+    "Kalite kontrolu iki kez yapıldı.",
+    "Öyleki hiçbir ölçüm tekrarlanmadı.",
+    "Sabır ederek bekledik.",
+)
+YAZIM_RIGHT = (
+    "Raporun Türkçesi hazırlandı; İngilizceye sonra çevrilecek.",
+    "Taslakta her şey tamamdı; bir şey eksik değildi.",
+    "Ekip hatayı geç fark etti ve birkaç sensörü değiştirdi.",
+    "Sistem verileri kaydediyor; şikâyet reddedildi ve kayıp olarak işlendi.",
+    "Bu 8'inci denemeydi; 8. deneme Nisan'da yapıldı.",
+    "Veri hattı kesildi; hakkı saklıdır, hissi doğrudur.",
+    "Kalite kontrolü iki kez yapıldı; protokolde rolü belliydi.",
+    "Belge Türk Dil Kurumu Başkanı'na sunuldu; Cannes'a ve Linux'ta.",
+    "Demek ki ölçüm tekrarlanmadı; hiçbir sapma yoktu.",
+    "Kullanıcı “sistem herşeyi siliyor” diye yazdı.",
+    "Fonksiyon `herSeyiFarket()` adıyla çağrıldı.",
+    "Tablodaki metodu ve metotları karşılaştırdık; saate göre sıraladık.",
+)
+YAZIM_WRONG_PARAGRAPH = """Raporun Türkçe'si hazırlandı. Taslakta herşey tamam değildi. Veri hatı kesintisi geç farkedildi. Bir kaç sensör yeniden kayıt edildi. Kalite kontrolu iki kez yapıldı.
+"""
 # Olumsuz biçim sınırlılık bildirir; yol haritası duyurusu değildir.
 NEGATED_SCOPE = "Bu çalışmada yaş etkisi incelenmedi; bu belgede maliyet ele alınmamıştır."
 
@@ -2069,6 +2259,41 @@ Not: kapsam dışı olduğundan değiştirilmedi.
 """
 
 
+BACK_VOWELS, FRONT_VOWELS = "aıou", "eiöü"
+ROUNDED_VOWELS = "ouöü"
+VOICELESS = "fstkçşhp"
+
+
+def turet(govde: str, arketip: str) -> str:
+    """Türkçe ek arketipini gövdeye uyumla ekle (yalnızca öz sınama için).
+
+    Arketip harfleri: A → a/e (büyük ünlü uyumu), I → ı/i/u/ü (büyük ve küçük ünlü uyumu),
+    D → d/t (ötümsüz ünsüzden sonra t). Her ünlü kendinden önceki son ünlüye uyar; bu
+    yüzden "mIştIr" yuvarlak gövdeden sonra "müştür", "mAktAdIr" ise "mektedir" olur.
+    """
+    sozcuk = govde
+    for harf in arketip:
+        son_unlu = next((c for c in reversed(sozcuk) if c in BACK_VOWELS + FRONT_VOWELS), "a")
+        kalin = son_unlu in BACK_VOWELS
+        if harf == "A":
+            sozcuk += "a" if kalin else "e"
+        elif harf == "I":
+            yuvarlak = son_unlu in ROUNDED_VOWELS
+            sozcuk += ("u" if yuvarlak else "ı") if kalin else ("ü" if yuvarlak else "i")
+        elif harf == "D":
+            sozcuk += "t" if sozcuk[-1] in VOICELESS else "d"
+        else:
+            sozcuk += harf
+    return sozcuk
+
+
+# Edilgen gövdeler: l ile biten ya da ünlüyle biten kök -In/-n, öteki kökler -Il alır.
+EDILGEN_GOVDELER = ("görül", "bulun", "ölçül", "kurul", "yapıl", "incelen", "kullanıl", "veril", "alın", "tutul", "düşürül")
+ETKEN_GOVDELER = ("gör", "bul", "ölç", "kur", "yap", "incele", "kullan", "ver", "al", "tut", "düşür", "göster")
+ZAMAN_ARKETIPLERI = (("mIştIr", "miştir"), ("mIştI", "mıştı"), ("DI", "dı"), ("mAktAdIr", "mektedir"),
+                     ("mAktA", "mektedir"), ("mAktAdIrlAr", "mektedir"), ("DIlAr", "dı"), ("mIşlArdIr", "miştir"))
+
+
 def self_test() -> None:
     for text in ("Bu eşsiz platform sektörü yeniden tanımlıyor.",
                  "Ürün dönüştürücü bir deneyim sunuyor."):
@@ -2135,6 +2360,104 @@ def self_test() -> None:
     if doc.headings[0].direct != 0 or doc.headings[0].subtree != 6 or doc.headings[1].parent != 0:
         raise SystemExit("Öz sınama: başlık ağacı sayımı hatalı")
 
+    # Türetilmiş biçimler: her gövde × her zaman arketipi doğru sınıflanır, edilgenler edilgen tanınır.
+    if [turet(g, "mIştIr") for g in ("gör", "yap", "incele", "düşür")] != ["görmüştür", "yapmıştır", "incelemiştir", "düşürmüştür"]:
+        raise SystemExit("Öz sınama: ek türetici ünlü uyumunu yanlış uyguluyor")
+    if turet("ölç", "DI") != "ölçtü" or turet("göster", "mAktAdIr") != "göstermektedir":
+        raise SystemExit("Öz sınama: ek türetici ünsüz benzeşmesini ya da A uyumunu yanlış uyguluyor")
+    for govdeler, edilgen in ((EDILGEN_GOVDELER, True), (ETKEN_GOVDELER, False)):
+        for govde in govdeler:
+            for arketip, beklenen in ZAMAN_ARKETIPLERI:
+                sozcuk = turet(govde, arketip)
+                bulunan = tense_class(Sentence(0, 0, f"Sonuç {sozcuk}."))
+                if bulunan != beklenen:
+                    raise SystemExit(f"Öz sınama: türetilmiş {sozcuk!r} zaman sınıfı {bulunan!r}, beklenen {beklenen!r}")
+                if edilgen and arketip in ("mIştIr", "DI", "mAktAdIr") and not PASSIVE_FINITE_RE.search(sozcuk):
+                    raise SystemExit(f"Öz sınama: türetilmiş edilgen yüklem tanınmadı: {sozcuk!r}")
+    # Dört biçimli ekler: yuvarlak ünlüden sonra -DI, -DIr, -mIştI, -mIştIr u/ü alır.
+    for word, expected in (("incelenmiştir", "miştir"), ("görülmüştür", "miştir"), ("bulunmuştur", "miştir"),
+                           ("görülmüştü", "mıştı"), ("kurulmuştu", "mıştı"), ("incelenmişti", "mıştı"),
+                           ("ölçüldü", "dı"), ("bulundu", "dı"), ("yaptılar", "dı"), ("göstermektedirler", "mektedir"),
+                           ("incelemişler", "miştir"), ("kalırlar", "r"), ("bulunur", "r"), ("sensörler", None),
+                           # Kişi ekli ve olumsuz geniş zaman (UD BOUN/IMST ölçümünde kaçırılan biçimler).
+                           ("alırız", "r"), ("dersiniz", "r"), ("görürsün", "r"), ("yapamaz", "r"), ("görülmez", "r"),
+                           ("anlamazsınız", "r"), ("çalışmazlar", "r"), ("bilmeyiz", "r"), ("beyaz", None)):
+        found = tense_class(Sentence(0, 0, f"Sonuç {word}."))
+        if found != expected:
+            raise SystemExit(f"Öz sınama: {word!r} zaman sınıfı {found!r}, beklenen {expected!r}")
+    for text in ("Sonuçlar bu ilişkiyi göstermektedirler.", "Veriler iki kez doğrulanmışlardır.",
+                 "Üç sensörler arızalandı.", "Birkaç örnekler yeniden ölçüldü."):
+        if not any(h["category"] == "sayi_uyumu" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: sayı uyumu adayı işaretlenmedi: {text!r}")
+    # UD Türkçe ağaç bankalarındaki (BOUN, IMST) yayımlanmış cümlelerde görülen kullanım türleri; cümleler bu
+    # türlerden yeniden yazıldı, derlemden alınmadı (scripts/treebank-profile.py).
+    for text in ("Hele karşınızda bir arkadaşınız varsa durum zorlaşır.",
+                 "Karşınızda düzenli bir ordu yok, bu yüzden saldıramazsınız.",
+                 "Bakan, mükelleflere ocakta müjde verebileceklerini söyledi.",
+                 "Rapor, personelin kusurlu olmadığının altını çiziyor.",
+                 "Başkan, bölgedeki kredi notunun düşebileceğinin altını çizdi.",
+                 'Öğretmen sınıfa "Haydi arkadaşlar, başlayalım" dedi.',
+                 "– Peki bu çadırı nereye kuracağız?",
+                 "– Elbette gelirim, merak etmeyin."):
+        stray = [h for h in analyse(text)["hits"] if h["level"] == "sert"]  # type: ignore[union-attr]
+        if stray:
+            raise SystemExit(f"Öz sınama: gerçek anlam, aktarılan söz, alıntı ya da diyalog sert işaret üretti (yanlış pozitif): {text!r} -> {stray}")
+    for key, text in (("anons", "Karşınızda yeni sürümümüz!"), ("anons", "Müjde! Kampanya başladı."),
+                      ("anons", "İşte karşınızda yeni panel."), ("savunma", "Burada altını çizmek isterim ki yöntem yenidir."),
+                      ("savunma", "Şunun altını çizmeliyiz: ölçüm tektir."), ("duyuru", "Peki bu ne anlama geliyor?")):
+        if key not in analyse(text)["per_category"]:  # type: ignore[operator]
+            raise SystemExit(f"Öz sınama: daraltılan örüntü hedef kullanımı kaçırdı: {key} {text!r}")
+    for key, text in (("giris", "Bu kurum son yıllarda iki kez taşındı."), ("giris", "Günümüz Sanatçıları Sergisi açılıyor."),
+                      ("reklam", "Dosya uzantısı herhangi bir fark yaratmaz.")):
+        if key in analyse(text)["per_category"]:  # type: ignore[operator]
+            raise SystemExit(f"Öz sınama: zaman zarfı, özel ad ya da olumsuz olgu {key} sayıldı (yanlış pozitif): {text!r}")
+    for key, text in (("giris", "Son yıllarda yapay zekâ hayatımızın her alanına girdi."),
+                      ("giris", "Günümüzde teknoloji hızla ilerliyor."), ("reklam", "Bu özellik gerçekten fark yaratıyor.")):
+        if key not in analyse(text)["per_category"]:  # type: ignore[operator]
+            raise SystemExit(f"Öz sınama: daraltılan örüntü hedef kullanımı kaçırdı: {key} {text!r}")
+    # Yerleşik uzatım (`denildi`, `konuldu`; Doğan 2019) ve Arapça tekil–çoğul ikilemesi (`fakir fukara`; Kalaycı 2025)
+    # yazım ya da anlam tekrarı bulgusu üretmez.
+    for text in ("Toplantıda takvimin değiştiği denildi.", "Ürün rafa konuldu.", "Fakir fukara yardım bekliyor."):
+        stray = [h for h in analyse(text)["hits"] if h["category"] in YAZIM_KEYS]  # type: ignore[union-attr]
+        if stray:
+            raise SystemExit(f"Öz sınama: yerleşik uzatım ya da ikileme yazım bulgusu üretti (yanlış pozitif): {text!r}")
+    for text in ("Bankalar eski sahiplerine iade edildi.", "Ekip kendi koduna sahip çıktı.", "Kent turnuvaya ev sahipliği yaptı."):
+        if "sahip" in analyse(text)["per_category"]:  # type: ignore[operator]
+            raise SystemExit(f"Öz sınama: ad ya da deyim olan `sahip` kalkı adayı sayıldı (yanlış pozitif): {text!r}")
+    for text in ("İşte bu yüzden ölçüm tekrarlandı.", "Şey, ikinci sensör de arızalıydı."):
+        if not any(h["category"] == "sizinti" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: konuşma parçacığı sızıntı adayı sayılmadı: {text!r}")
+    for text in ("Her şey hazırdı; bir şey eksik değildi.", "Bu şey değil, ölçüm hatası."):
+        if any(h["category"] == "sizinti" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: ad olan `şey` sızıntı sayıldı (yanlış pozitif): {text!r}")
+    for text in ("Kız on sekiz yaşlarındaydı.", "O sırada üç yaşları civarındaydı.", "İki yüzlüleri umursamadı."):
+        if any(h["category"] == "sayi_uyumu" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: yaklaşık yaş sayı uyumu adayı sayıldı (yanlış pozitif): {text!r}")
+    for text in ("Katılımcılar formu iki kez doldurdular.", "Sonuçlar bu ilişkiyi gösteriyor.",
+                 "Bu sorun on yıllardır biliniyor.", "Yüz ifadeleri iki kez kodlandı.",
+                 "Tablo 3 sonuçları özetliyor.", "Bazı sorunlar yalnızca yük altında görüldü.",
+                 "Üç sensör iki hafta boyunca ölçüm aldı.", "İki grubun ortalamaları karşılaştırıldı."):
+        stray = [h for h in analyse(text)["hits"] if h["category"] == "sayi_uyumu"]  # type: ignore[union-attr]
+        if stray:
+            raise SystemExit(f"Öz sınama: doğru sayı uyumu aday sayıldı (yanlış pozitif): {text!r} -> {stray}")
+    for word in ("ölçüldü", "bulundu", "görülmüştür", "kullanılmıştır", "sunulmaktadır", "alındı", "bilindi"):
+        if not PASSIVE_FINITE_RE.search(word) or not is_finite_passive(word):
+            raise SystemExit(f"Öz sınama: edilgen çekimli yüklem tanınmadı: {word!r}")
+    # UD BOUN ölçümündeki yanlış pozitif türleri: kökü -n/-l ile biten etken fiil ve ad.
+    for word in ("kullandı", "kazandı", "döndü", "indi", "oldu", "aldı", "kendi", "değildi"):
+        if is_finite_passive(word):
+            raise SystemExit(f"Öz sınama: etken fiil ya da ad edilgen sayıldı (yanlış pozitif): {word!r}")
+    if converb_count(["sahip", "takip", "mektup", "ayıp", "kayıp", "olarak", "oldukça", "düşünce"]) != 0:
+        raise SystemExit("Öz sınama: `-Ip` ile biten ad, `olarak` ya da kalıplaşmış zarf zarf-fiil sayıldı (yanlış pozitif)")
+    if converb_count(["alıp", "olup", "edip", "açıp"]) != 4:
+        raise SystemExit("Öz sınama: dört harfli `-Ip` zarf-fiili sayılmadı")
+    for text in ("Sonuçlar modellerin daha doğru olduklarını önermektedir.",
+                 "Etkinin yaşa bağlı oldukları tartışılmaktadır."):
+        if not any(h["category"] in ("anlam_kalkisi", "anlam_kaymasi_adayi") for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: çoğul -DIklArI biçimli anlam kalkısı işaretlenmedi: {text!r}")
+    if not MAKTADIR_RE.search("göstermektedirler."):
+        raise SystemExit("Öz sınama: çoğul -mAktAdIr zincir sayımına girmedi")
+
     if tr_lower("İSTANBUL IŞIK") != "istanbul ışık":
         raise SystemExit("Öz sınama: Türkçe küçük harf dönüşümü hatalı")
 
@@ -2176,6 +2499,27 @@ def self_test() -> None:
                  "Pompa, basınç düşerken çalışmaya devam etti."):
         if any(h["category"] == "kuyruk" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
             raise SystemExit(f"Öz sınama: doğal zarf-fiil ya da ad cümle sonu kuyruğu sayıldı (yanlış pozitif): {text!r}")
+    # UD IMST/BOUN anlatı ve diyalog türleri; cümleler derlemden alınmadı, yeniden yazıldı.
+    for text in ("Geç bakalım, dedi öğretmen eliyle kapıyı göstererek.", "Çok yoruldum, diye fısıldadı gülerek.",
+                 "Danışman olarak değil, üye olarak.", "Bak, bu da yeni panel.", "Allah Allah, bu da nereden çıktı?",
+                 "Kimse bilemez, bu da olabilir."):
+        if "kuyruk" in analyse(text)["per_category"]:  # type: ignore[operator]
+            raise SystemExit(f"Öz sınama: anlatıdaki konuşma etiketi, `olarak` eksiltisi ya da gösterme `bu da` kuyruk sayıldı (yanlış pozitif): {text!r}")
+    if "kuyruk" not in analyse("Filtre gecikmeyi azalttı, bu da kullanıcı deneyimini iyileştirdi.")["per_category"]:  # type: ignore[operator]
+        raise SystemExit("Öz sınama: `, bu da` kuyruğu işaretlenmedi")
+
+    for text in YAZIM_WRONG:
+        if not any(h["category"] == "yazim" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: TDK'ye aykırı yazım işaretlenmedi: {text!r}")
+    for text in YAZIM_RIGHT:
+        stray = [h for h in analyse(text)["hits"] if h["category"] in YAZIM_KEYS]  # type: ignore[union-attr]
+        if stray:
+            raise SystemExit(f"Öz sınama: doğru yazım, alıntı ya da kod yazım bulgusu üretti (yanlış pozitif): {text!r} -> {stray}")
+    if analyse(YAZIM_WRONG_PARAGRAPH)["yazim"] < 5:  # cümle başına bir bulgu
+        raise SystemExit("Öz sınama: yazım yanlışlı paragrafta beklenen yazım bulguları eksik")
+    for text in ("Belge Türk Dil Kurumu'na gönderildi.", "Örnekler 12 Mart'ta makinada test edildi."):
+        if not any(h["category"] == "yazim_adayi" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: bağlamsal yazım adayı işaretlenmedi: {text!r}")
 
     social = analyse(SOCIAL_TEXT)
     expected_social = {"duyuru", "gerilim", "savunma", "sohbet", "karsitlik", "reklam", "mecaz", "sus"}
@@ -2242,6 +2586,10 @@ def self_test() -> None:
         raise SystemExit("Öz sınama: yerli çıktı yeni çeviri kokusu bulgusu üretti")
     if repaired_tr["translationese_delta"].get("cerceve_yigini", {}).get("çıktı") != 0:  # type: ignore[union-attr]
         raise SystemExit("Öz sınama: çeviri kokusu ölçü değişimi çerçeve yığınını yanlış raporladı")
+    if converb_count(["çıkınca", "bitmeden", "arttıkça", "düşerken", "doluyken"]) != 5:
+        raise SystemExit("Öz sınama: -IncA, -mAdAn, -DIkçA ve -ken zarf-fiilleri sayılmadı")
+    if converb_count(["boyunca", "uyarınca", "gereken", "değişken", "geciken", "malzemeden"]) != 0:
+        raise SystemExit("Öz sınama: ilgeç, sıfat-fiil ya da ad zarf-fiil sayıldı (yanlış pozitif)")
     if converb_count(["ekip", "toplayıp", "yaprak", "okuyarak", "gerek"]) != 2:
         raise SystemExit("Öz sınama: fiilimsi sayımı durak listesini yanlış uyguladı")
     if longest_genitive_run(["yöntemin", "performansının", "değerlendirilmesinin", "yapılmasının"]) != 4:
@@ -2260,6 +2608,12 @@ def self_test() -> None:
                   "parantez_yuku", "kayit_kaymasi"):
         if check not in checks:
             raise SystemExit(f"Öz sınama: söylem metninde beklenen bulgu yok: {check}")
+    for text, expected in (("Model ilk koşulda kararlı davrandı; ikinci koşulda hata üretti.", 1),
+                           ("Eşikler sırasıyla 0,2; 0,5 ve 0,8 olarak seçildi.", 0),
+                           ("Komut `a; b` biçiminde yazılır.", 0)):
+        got = analyse(text)["soylem_olculeri"]["noktali_virgul"]  # type: ignore[index]
+        if got != expected:
+            raise SystemExit(f"Öz sınama: noktalı virgül sayımı {got}, beklenen {expected}: {text}")
     for label, text in (("yerli", NATIVE_TEXT), ("temiz", CLEAN_TEXT), ("iyi yapılı", WELL_STRUCTURED_TEXT), ("iç içe", NESTED_TEXT)):
         report = analyse(text)
         if report["soylem"]:
@@ -2321,11 +2675,14 @@ def self_test() -> None:
         raise SystemExit("Öz sınama: iyi yapılı çıktı yeni söylem bulgusu üretti")
 
     for text in ("Bu çalışmada 120 bataryanın 18 aylık kapasite verileri incelendi.",
-                 "Bu çalışmada üç veri kümesi incelenmiştir."):
-        if any(h["category"] == "duyuru" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
-            raise SystemExit(f"Öz sınama: yapılmış işin raporu duyuru sayıldı (yanlış pozitif): {text!r}")
-    for text in ("Bu çalışmada önce veri toplama süreci ele alınacaktır.",
+                 "Bu çalışmada üç veri kümesi incelenmiştir.",
+                 # Özet ve girişteki amaç hamlesi (Türkçe özetlerin hepsinde bulunur; Demir 2022).
                  "Bu çalışmada kentsel ısı adası etkisi incelenmektedir.",
+                 "Bu çalışmanın amacı öğretmen görüşlerini belirlemektir."):
+        if any(h["category"] == "duyuru" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
+            raise SystemExit(f"Öz sınama: yapılmış işin raporu ya da amaç hamlesi duyuru sayıldı (yanlış pozitif): {text!r}")
+    for text in ("Bu çalışmada önce veri toplama süreci ele alınacaktır.",
+                 "Bu çalışmada ilk olarak kavramsal çerçeve sunulacak, ardından bulgular tartışılacaktır.",
                  "Bu bölümde yöntem incelenmiştir."):
         if not any(h["category"] == "duyuru" for h in analyse(text)["hits"]):  # type: ignore[union-attr]
             raise SystemExit(f"Öz sınama: duyuru işaretlenmedi: {text!r}")
@@ -2378,7 +2735,7 @@ def self_test() -> None:
     if stray:
         raise SystemExit(f"Öz sınama: alan etiketi ya da sıradan cümle etiket/anons sayıldı (yanlış pozitif): {stray}")
 
-    print("Stil denetimi öz sınaması geçti (netlik omurgası, yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj, konuşma sızıntısı, cümle sonu kuyruğu, etiket ve anons).")
+    print("Stil denetimi öz sınaması geçti (netlik omurgası, yapay metin, parçalanmış belge, temiz metin, iyi yapılı belge, iç içe başlıklar, sert/bağlam ayrımı, dolgu silme, çeviri kokusu, yerli metin, söylem sinyalleri, zamansal ankraj, konuşma sızıntısı, cümle sonu kuyruğu, etiket ve anons, yazım).")
 
 
 # --------------------------------------------------------------------------- #

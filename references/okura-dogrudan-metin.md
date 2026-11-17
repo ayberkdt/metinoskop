@@ -50,12 +50,16 @@ Metin önce ve eksiksiz gelir; olduğu gibi okura gönderilebilmelidir. Not, met
 ## Sızıntı olmayanlar
 
 - Kurumsal yanıtta `talebiniz doğrultusunda aboneliğiniz iptal edildi`: okur talebin sahibidir.
+- Kamu kurumunun başvuru yanıtında gerekçe, başvurulabilecek merciler, süreler ve `başvurunuz incelenmektedir` türü ara cevap: mevzuat bunları istediği için önerme taşır (Dilekçe Hakkının Kullanılmasına Dair Kanun, 1984; Bilgi Edinme Hakkı yönetmeliği, 2004; CİMER Yönetmeliği, 2022). Silinmez; ara cevap tamamlanmış işleme çevrilmez.
 - Belge içi gönderme: `Tablo 2'de`, `3. bölümde`, `Ek A`.
 - Sürüm notunda `Önceki sürümde zaman aşımı 30 saniyeydi`: okur önceki sürümü kullanmıştır.
 - Gereksinim metninde `kullanıcının isteği üzerine`: ürünün kullanıcısıdır.
 - Dil modeli metninde `istemde belirtilen biçim`: istem çalışmanın nesnesidir.
 - Akademik `biz` (`... olduğunu çıkarabiliriz`): yazarın okurla kurduğu akıl yürütmedir.
 - Okura yönelik yönlendirme (`--legacy-timeout ile dönebilirsiniz`).
+- Açımlayıcı `yani`: yazılı Türkçede ara söz `yani` önerme düzeyinde açımlama yapar (Ruhi 2009); sızıntı adayı olan konuşmadaki onarım işlevidir (Özbek 2000). `İşte` ve söylem belirleyicisi `şey` ise konuşmanın değerlendirme parçacıklarıdır (Yılmaz 2004) ve bilimsel-teknik metinde sızıntı adayıdır; `style-lint.py` `sizinti` ailesi cümle başındaki `işte` ve `şey`i bağlamsal olarak işaretler. `bir şey`, `her şey` adtır. `Hani`, `işte` ve `=ya` konuşucu ile muhatabın ortak bilgisine dayanır (Akar ve Öztürk 2020; Kuram 2023); konuşmayı görmemiş son okur bu ortak bilgiye sahip olmadığı için düzyazıda bu biçimler bilgi değil varsayılan ortak zemin taşır. Sözlü derlemde `şey`, `tamam`, `evet`, `hayır` ve `yok` söz sırası, onarım ve yüz koruma işi görür (Erdoğan 2013; Ruhi 2013; Özcan ve Aksan 2017; Altunay ve Aksan 2018); diyalogda, alıntıda ve kişisel yazışmada içeriktir (`sizinti-sanilan-icerik-korunur`).
+- Akademik biz ekleri (`gözlemledik`, `çalışmamızda`): Türkçe makalelerde açık yazar göndermesinin olağan biçimidir (Güçlü 2025; Yılmaz 2022). Tek yazarlı metindeki `biz` de kişi değiştirmesi olarak meşrudur (Karademir 2016); tekile çevrilmez.
+- Kapsayıcı ve kurumsal `biz`: ders kitabında okurla bağ kuran katılım belirleyicisidir (Güçlü 2024); faaliyet raporu mektubunda ve kurum yöneticisinin iletisinde kurumun olağan sesidir (Kılınç ve Arıcı 2020; Tekdemir ve Alparslan 2019). Okur kurumun muhatabıysa sızıntı değildir; kurum adına ya da kaynakta olmayan aktöre çevrilmez.
 
 Bekçi vakalar: `sizinti-sanilan-icerik-korunur`, `iyi-yazilmis-metin-korunur`.
 

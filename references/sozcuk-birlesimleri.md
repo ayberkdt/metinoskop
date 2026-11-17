@@ -50,6 +50,8 @@ Anlaşılır ama deyimsel olmayan birleşimler yüksek risklidir: `karar gerçek
 
 Her birinde sor: bu ad normalde bu fiille kullanılır mı; daha alışılmış bir Türkçe eşdizim var mı; mevcut biçim İngilizce sözcük aktarımından mı geliyor; tuhaf birleşim aslında teknik terim mi? Anlam değişmiyorsa alışılmış eşleşmeyi seç.
 
+Sözlük kaydı tek başına ölçüt değildir: Türkçe Sözlük'te ad + eylem eşdizimleri tutarsız kaydedilmiştir, kimi hiç yer almaz, kimi serbest birleşim gibi işlenir (Doğan 2015). Birleşimin sözlükte bulunmaması onu kalkı yapmaz; belirteç–eylem birleşimleri için derlem tabanlı ayrı bir sözlük vardır (Özkan 2011). Genel derlem sıklığı da türden bağımsız değildir; kurmaca ve haber alt derlemlerinin sıklık profilleri ayrıdır (Aksan ve Yaldır 2012).
+
 | Olası | Doğal |
 |---|---|
 | karar gerçekleştirmek | karar vermek, karar almak |
@@ -95,7 +97,7 @@ Aktarım kaynaklı sık sorunlar:
 | X ile ilgilenmek ("deal with" anlamında) | X'i ele almak, X'le uğraşmak |
 | X'i sağlamak ("ensure that" anlamında) | X'in ... olmasını sağlamak |
 
-Körü körüne yeniden yazma; anlam ayrımlarını koru. "X ile ilişkili olmak" doğru olabilir, "X'e bağlı olmak" başka bir ilişki (bağımlılık) anlatır; ikisi eş anlamlı değildir.
+Körü körüne yeniden yazma; anlam ayrımlarını koru. "X ile ilişkili olmak" doğru olabilir, "X'e bağlı olmak" başka bir ilişki (bağımlılık) anlatır; ikisi eş anlamlı değildir. Sık fiillerin hâl çerçevesi listesi ve iki yüklemin paylaştığı ögenin uyumu için [Yazım ve dil bilgisi › Fiil–hâl çerçevesi listesi](yazim-ve-dil-bilgisi.md#fiilhâl-çerçevesi-listesi) bölümüne bak.
 
 ## Hâl seçimi ve fiil–hâl çerçevesi
 
@@ -147,6 +149,8 @@ Her önemli yüklem için sor:
 
 Çift ilgeçler ("hakkında ilişkin", "üzerinde dair") gitti; "yönelik olarak" yönelme hâline döndü; "tahmin içermektedir" doğal eşdizimdir ve kaldı. Yığın ölçüsü için [Türkçe ritim › Çerçeve yığını](turkce-ritim-ve-ceviri-kokusu.md#çerçeve-yığını) bölümüne bak.
 
+Tablo çıkarımdır: `hakkında`, `ilişkin`, `üzerine`, `konusunda`, `ile ilgili`, `yönelik`, `dair` ilgeçlerinin anlam ve kayıt farkını karşılaştıran ya da baş adla eşdizimini ölçen hakemli çalışma bulunamadı ([literatür › İlgeçler ve kabuk adlar](turkce-dil-literaturu.md#ilgeçler-ve-kabuk-adlar)). Kesin olan dil bilgisi düzeyidir: çift ilgeç ve fiilin istediği hâlle çatışan ilgeç düzeltilir; tek başına ilgeç tercihi (`X'e ilişkin` ↔ `X'le ilgili`) kaynakta kalır. Ad + ilgeç birlikteliği eşdizimden ayrı bir dilbilgisel birliktelik düzeyidir (Gündoğdu 2019). İlgeç değişince tümlecin hâli de değişir (`X'e yönelik`, `X'le ilgili`, `X hakkında`, `X üzerine`); düzeltme ikisini birlikte denetler.
+
 ## Hafif fiiller
 
 `Gerçekleştirmek`, `yapmak`, `sağlamak`, `sunmak`, `yürütmek`, `bulunmak`, `göstermek`, `meydana gelmek`, `oluşturmak`, `ortaya koymak` gerekli olabilir; ama neredeyse hiç anlam yükü taşımadıklarında incele.
@@ -163,6 +167,8 @@ Her önemli yüklem için sor:
 | deney yürütmek | deney yapmak (ikisi de doğal) |
 
 Ad gerçek bir teknik nesne ya da süreçse sadeleştirme: "yük testi gerçekleştirmek" bir prosedürü adlandırır; "risk değerlendirmesi yapmak" resmî bir süreçtir; "denetim yürütmek" kurumsal terimdir. Hafif fiil adın etrafında bir süreç kurmuyor, yalnızca fiilin yerini tutuyorsa sadeleştir.
+
+Olay yapısını ve konusal rolü hafif fiil ile ad birlikte belirler (Özge, Ünal ve Bayırlı 2022); hafif fiili değiştirmek bu yüzden eşdizim kararıdır. `yap-` ile `et-` serbestçe değişmez: miras konuşurları ve yeni dönenler `yap-` eşdiziminden kaçınıp `et-`'te aşırı düzeltilmiş biçim kurar (Treffers-Daller vd. 2016). Görünür adlaştırıcısı olmayan yabancı kökenli olay adı (`davet`, `analiz`, `kontrol`) + `et-` gerçek eylemdir, dolgu değildir (Tat 2022); `değerlendirme gerçekleştirmek` → `değerlendirme yapmak` → `değerlendirmek` zincirinin her adımı ayrı karardır. Basın dilinde ad + eylem birleşimi olağandır (Düşünceli ve Uslu 2017) ve biçim-sözdizimi bilgisi hafif fiil yapısını tek başına ayırt etmez (Karakaş ve Şimşek 2026): denetim lemma listesiyle değil birleşim listesiyle yapılır.
 
 ## Yüklem kesinliği
 
@@ -269,7 +275,9 @@ Yineleme ile kötü yineleme farklıdır. Teknik kimlik önemliyse, karşıtlık
 
 Teknik bir öbeği düzenlemeden önce belirle: yerleşik Türkçe teknik terim mi, kabul görmüş İngilizce ödünç sözcük mü, projeye özgü terim mi, belgede tanımlanmış terim mi? Alanda doğru olan terimi "Türkçeyi iyileştirmek" için değiştirme. Emin değilsen koru.
 
-Kabul görmüş ödünç sözcükler (`pipeline`, `baseline`, `benchmark`, `framework`, `parametre`, `runtime`, `surrogate`) alanın diliyse kalır; "iş hattı", "temel çizgi", "kıyas ölçütü" kullanıcı istemedikçe dayatılmaz. Belgede tanımlanmış terim ("bundan sonra 'ayırıcı' olarak anılacaktır") belgenin sözleşmesidir.
+Kabul görmüş ödünç sözcükler (`pipeline`, `baseline`, `benchmark`, `framework`, `parametre`, `runtime`, `surrogate`) alanın diliyse kalır; "iş hattı", "temel çizgi", "kıyas ölçütü" kullanıcı istemedikçe dayatılmaz. Belgede tanımlanmış terim ("bundan sonra 'ayırıcı' olarak anılacaktır") belgenin sözleşmesidir. Kurumsal karşılık önerisi de tek başına gerekçe değildir: TDK'nin 1995–1998'de resmîleştirdiği iktisat terimleri yerine gazete yazarları ödünçleme terimleri kullanmayı sürdürmüştür (Karabacak 2009), tutunmamış karşılıklar okuru zorlar (Kurtulmuş 2025). TDK önerilerinin bir bölümü benimsenmiş, bir bölümü benimsenmemiştir (Turunç 2007); öğretmen adayları bilişim terimlerinin Türkçe karşılıklarını yeterince bilmez ve önerileri izlemez (Akçay ve Özcan 2012; Delican 2021), gençler teknolojik alıntıyı yeğler (Çakır 2016). Yerleşik alıntıyı kurumsal karşılıkla değiştirmek son okurun anlamasını da zorlayabilir. Mühendislikte terim kararı genel sözlükten değil alan sözlüğünden (TÜBA Türkçe Bilim Terimleri Sözlüğü) gelir; terimdeki eş anlamlılık standartlaştırma sorunudur, üslup tercihi değildir (Yurdakul 2017).
+
+**Anlamsal bulaşma.** Bazı birimler örtük değerlendirme taşır: `karşı karşıya`, `-dan ibaret`, `aksettirmek` olumsuz bulaşmalıdır (Çalışkan 2014), `-IntI`li adların bir bölümü olumsuz yan anlam taşır (Selvi 2022), yakın eş anlamlılar kayıt ve bulaşma bakımından ayrışır (`gıybet` ↔ `dedikodu`; Demirçivi 2022). Nötr bir bulguyu bu birimlerle yeniden yazmak kaynakta olmayan değerlendirme ekler; **Yerine yazdığın ifade yeni bir iddiadır** kuralının güç sorusu burada da sorulur. Eşdizim ilişki ölçüleri de dile özgüdür ve İngilizce eşikler Türkçeye aktarılamaz (Mersinli 2015).
 
 Eşdizim yanlış pozitif ilkesi: bir öbeği yalnızca seyrek diye reddetme. Seyrek birleşimler teknik olarak kesin, yeni ama meşru, terminoloji, alıntılanmış kaynak dili ya da alana özgü olabilir. Yalnızca ilişki genelse, alışılmış bir seçenek varsa ve mevcut birleşim yapısal olarak ithal ya da anlamca uyumsuz görünüyorsa işaretle.
 
@@ -383,6 +391,8 @@ Sözcüksel kalkının çoğu yalnızca doğal değildir: `iyileşme elde edildi
 ## Alan jargonu ve terminoloji kapısı
 
 Bir ifadeyi "doğal değil" diye değiştirmeden önce beş soruyu geç: terim alanın yerleşik Türkçe terminolojisi mi; standart, yönetmelik ya da ders kitabında böyle mi geçiyor; metin terimi daha önce tanımlamış mı; aynı belgede tutarlı kullanılmış mı; değiştirirsem teknik kategori değişiyor mu? Herhangi birine güçlü bir "evet" varsa koruma eğilimi yükselir.
+
+Kapı sorusu her zaman tek yanıt vermez: Türkçe ders kitapları ve terim sözlükleri kendi aralarında tutarsız olabilir; fizikte `öz kütle`, `yoğunluk` ve `bağıl yoğunluk` 1944–2011 kaynaklarında birbirine karışmış (Kızılcık ve Damlı 2019), kimya terim sözlükleri birbirinden farklı terim seçmiştir (Cin ve Turgut Cin 2017). Sözlükler çeliştiğinde karar belge içi tutarlılığa ve kaynağın kendi terimine düşer; aynı kökten görünen terimler ayrı kavramsa birleştirilmez (`netlik-omurgasi.md` › Bir terim, bir anlam).
 
 **Genel derlem ile alan derlemini ayır.** Genel Türkçede seyrek görülen bir birleşim teknik alanda doğru olabilir. Karar iki aşamalıdır: önce genel Türkçe doğallığı, sonra alan içi terminolojik yerleşiklik. Havacılık, uzay, fizik, makine, yazılım, hukuk, tıp ve finans metinlerinde bu ayrım zorunludur.
 

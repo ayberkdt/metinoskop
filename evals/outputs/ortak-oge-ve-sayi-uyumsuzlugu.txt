@@ -1,0 +1,1 @@
+Üç sensör iki hafta boyunca ölçüm aldı. Veriler toplandı; verileri analiz ettik. Bakım ekibi yeni kalibrasyon protokolünü inceledi ve protokole itiraz etti. Sonuçlar sapmanın sensör yaşıyla ilişkili olduğunu göstermektedir; birçok ölçüm bu yüzden tekrarlanacak.

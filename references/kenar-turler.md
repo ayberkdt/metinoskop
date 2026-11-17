@@ -1,8 +1,8 @@
 # Kenar türler
 
-Metinoskop'un öncelikli alanı bilimsel ve teknik metindir. Bu dosya, ana alanın dışında kalan türlerin **ek** kurallarını toplar: hukuki metin, tanıtım ve pazarlama, deneme, köşe yazısı ve sosyal medya, kişisel yazışma, edebî metin ve üslup eşleme.
+Metinoskop'un öncelikli alanı bilimsel ve teknik metindir. Bu dosya, ana alanın dışında kalan türlerin **ek** kurallarını toplar: hukuki metin, tanıtım ve pazarlama, deneme, köşe yazısı ve sosyal medya, eleştiri ve tanıtım yazısı (kitap ve film), kişisel yazışma, edebî metin ve üslup eşleme.
 
-**Ne zaman okunur.** Yalnızca düzenlenen metin bu türlerden biriyse. Bilimsel ya da teknik metinde bu dosyayı okuma. Buradaki istisnalar (hukuki kalıbı koruma, ikna amacını koruma, yazara özgü imgeyi koruma, kişisel düzyazıda serbest sıra) bilimsel metne taşınmaz. Bilimsel metindeki alıntılanmış yasa maddesi, sözleşme formülü ya da reklam metni alıntı kuralıyla korunur; bunun için bu dosya gerekmez.
+**Ne zaman okunur.** Yalnızca düzenlenen metin bu türlerden biriyse. Bilimsel ya da teknik metinde bu dosyayı okuma; tek istisna, düzenlenen metin kullanım kılavuzu, talimat ya da arayüz dizesiyse okunan [Arayüz, yerelleştirme ve kullanım kılavuzu](#arayüz-yerelleştirme-ve-kullanım-kılavuzu) bölümüdür. Buradaki istisnalar (hukuki kalıbı koruma, ikna amacını koruma, yazara özgü imgeyi koruma, kişisel düzyazıda serbest sıra) bilimsel metne taşınmaz. Bilimsel metindeki alıntılanmış yasa maddesi, sözleşme formülü ya da reklam metni alıntı kuralıyla korunur; bunun için bu dosya gerekmez.
 
 **Ne değişmez.** Netlik omurgası ve değişmezler (`SKILL.md`) her türde geçerlidir. Bu dosya onları gevşetmez; yalnızca türün meşru olarak hak ettiği yapıyı ve tavrı tanımlar. Tür istisnası şişirmeye, döngüsel anlatıma ya da kaynakta olmayan bilgiye gerekçe olamaz.
 
@@ -13,14 +13,23 @@ Metinoskop'un öncelikli alanı bilimsel ve teknik metindir. Bu dosya, ana alan�
 - Koşul, istisna, süre ve yükümlülük sınırlarını (`-dıkça`, `ancak`, `şu kadar ki`, `en geç`) dolgu sayma; hukuki metinde bunlar hükmün kendisidir.
 - Edilgen ve adlaştırılmış yapı (`ödenmesi zorunludur`) hukuki kayıtta meşrudur; aktör belirtilmemişse uydurma.
 - Netlik kuralları burada da işler: aynı hükmü iki maddede yineleyen, gerekçeyi hükmün önüne yığan ya da tek yükümlülüğü üç eş anlamlıyla söyleyen metni sadeleştirebilirsin; ama yalnızca anlam ve kapsam değişmiyorsa.
+- Yasa dili karşılaştırılan türler içinde bilgi verici, planlı söylemin özelliklerini en yüksek oranda taşır (Özyıldırım 2010); yoğun adlaştırma ve uzun ad öbeği türün normudur, etkileşimli kayda çekilmez. Banka teminat mektubu ve benzeri sözleşme metinleri hukuk dilinin alt türüdür (Alagözlü 2007).
+- Hukuki terim sadeleştirme gerekçesiyle öz Türkçe karşılıkla değiştirilmez: öz Türkçe karşılık içerikçe yanlış olabilir (Gözler 2021) ve hukuk dili kesinlik ve tek anlamlılık ilkesine dayanır (Ünveren 2025). Çevrilmiş hukuki metindeki tartışmalı terim karşılığı (Şirin 2021) düzenlemede değiştirilmez, metnin dışında bildirilir.
+- Hukuki metinde noktalama ve cümle kuruluşu yorumu belirler (Alkayış 2023; Kahya 2012): koşul ve istisna kalıplarının çevresindeki virgülü eklemek ya da kaldırmak hafif yazım düzeltmesi değildir, hükmün kapsamını değiştirebilir. Yürürlükteki yasa maddesindeki dil yanlışı (Ayral 2017) alıntıda sessizce düzeltilmez.
+- Mevzuatın okunabilirlik formülünde zor çıkması (Kuzucu Yapar 2022) tek hükmü ve onun koşul zincirini bölme gerekçesi değildir; bölme yalnızca birden çok bağımsız hüküm varsa meşrudur. Hukuki türler arasında kayıt farkı vardır: kira sözleşmesi kısa cümle ve etken çatıyla daha sade yazılır (Angı 2020); sözleşme yasa diline çekilmez, yasa metni sözleşme sadeliğine indirilmez.
 - Eval: `hukuki-metin-korunur`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`.
+
+Mevzuat taslağında sade, açık ve anlaşılır dil yönetmelik gereğidir; karşılığı olmayan teknik terim aslına uygun kalır (Mevzuat Hazırlama Usul ve Esasları Hakkında Yönetmelik, 2022, md. 25). Hukuk metninin güçlüğü terimden de söz diziminden de gelir (Aydemir 2010); netleştirme söz diziminde yapılır, hukuki terim ve formül korunur. Resmî yazışmada kurum adı, sayı, tarih ve ilgi satırı yönetmeliğin düzenlediği biçim ögeleridir; üslup gerekçesiyle değişmez. Kamu başvurusuna yanıt sade ama resmî üslupla ve gerekçeli verilir (CİMER Yönetmeliği, 2022): sadeleştirme kurumsal yanıtın kaydını gündelik konuşma diline indirmez. Vergi kanunları da Ateşman formülüyle oldukça zor çıkar (Değirmenci 2019); bu, hükmü bölme gerekçesi değildir. Dilekçede ad, soyad, imza ve adres yasal ögedir (1984 tarihli Kanun); öğrenci dilekçelerinde en sık eksik olan da adres ve iletişim bilgisidir (Özçakmak ve Kadan 2017). Yazma kipinde bu bilgiler uydurulmaz ve yer tutucu konmaz.
 
 ## Tanıtım ve pazarlama
 
 Soyut ifade her zaman gereksiz değildir; yazarın değerlendirmesini ya da ikna amacını taşıyabilir.
 
 - Tanıtım metninde ikna amacını koru; hazır reklam kalıplarını daha özgül ve ölçülü bir söyleyişle değiştir. İkna somut olgu ve faydayla kurulur: okura seslenen anons (`Merak etmeyin`, `tanışın`, `Sizin için hazırladık`) ve etiketle açılan cümle (`Kısa cevap:`) bu türde de yazılmaz ([Retorik yapılar](retorik-yapilar.md#etiket-ve-anons)).
-- Bilgi verme amacı taşıyan bölümde olgu gibi sunulan kanıtsız fayda ve üstünlük iddiasını daralt, kaynağı varsa ona bağla ya da çıkar.
+- Bilgi verme amacı taşıyan bölümde olgu gibi sunulan kanıtsız fayda ve üstünlük iddiasını daralt, kaynağı varsa ona bağla ya da çıkar. Reklam veren iddiasının doğruluğunu ispatla yükümlüdür ve reklam doğru ve dürüst olmalıdır (6502 sayılı Kanun md. 61; Ticari Reklam ve Haksız Ticari Uygulamalar Yönetmeliği md. 7). Mevzuat `en`, `tek`, `ilk` sözcüklerini adıyla yasaklamaz, reklamın bütün izlenimine bakar; düzenleme de sözcüğe değil kanıtsız iddiaya bakar ve iddiaya `kanıtlanmalıdır` türü çekince eklemez.
+- Reklam açıklaması içeriktir: sosyal medya paylaşımındaki `#Reklam`, `#Sponsor`, `#İşbirliği` etiketleri açık ve ilk bakışta görülecek biçimde durmak zorundadır (Reklam Kurulu, etkileyici kılavuzu, 2021); şablon temizlenirken süs sayılıp silinmez ya da metnin sonuna gömülmez (eval: `reklam-etiketi-sablon-tuzagi`, `reklam-etiketi-korunur`). Çocuklara yönelik indirim reklamında fiyatın yanında `yalnızca`, `sadece` kullanılamaz (Reklam Kurulu, fiyat kılavuzu, 2022); düzenleme kaynakta olmayan bu sözcüğü eklemez.
+- Reklamda emoji beğeniyi ve hatırlanırlığı artırabilir (Çevikyiğit 2021; Akarsu, Gülmez ve Öztürk 2020); tanıtım metninde tek emoji tür aracıdır, sert işaret sayılmaz. İngilizce slogan ve marka adı resmî ad gibi korunur, çevrilmez.
+- Reklamda soru, ünlem ve emir cümleleri en çok sloganda yoğunlaşır (Batı 2002): sloganın tek sorusu türün aracıdır ve kalır. Art arda kurulan ve her paragrafı açan retorik soru ise şablondur (`turkce-oruntuler.md` › Retorik soru).
 - Kullanıcı "pazarlama dilini kaldır" ya da "nötrleştir" dediyse soyut fayda ve üstünlük iddialarını daha sıkı temizle.
 - Reklam cümlesini yalnızca daha sakin eş anlamlılarla yeniden kurma; cümlenin işlevini ve metindeki dayanağını değerlendir.
 - Yazar değerlendirmesi ile üretilmiş önem farklıdır: değerlendirme, kaynakta bir kişiye ya da kuruma ait bir tavırdır; üretilmiş önem, bir olgu var diye eklenen genel önem cümlesidir. İlkini koru, ikincisini çıkar.
@@ -47,12 +56,23 @@ Soyut ifade her zaman gereksiz değildir; yazarın değerlendirmesini ya da ikna
 - Ayrıntılı katalog: [Türkçe örüntüler › Görüş ambalajı](turkce-oruntuler.md).
 - Eval: `gorus-ambalaji`, `ozgun-imge-korunur`, `sosyal-medya-sablonu`.
 
+## Eleştiri ve tanıtım yazısı
+
+Kitap incelemesi, kitap tanıtımı ve film eleştirisi değerlendirme türleridir; değerlendirme içeriktir. Türkçe kitap incelemeleri eleştiriden genellikle kaçınır, İngilizce incelemeler olumsuz değerlendirmeyi övgüyle birlikte verir (Bal Gezegin 2015); Türkçe kitap tanıtımlarında olumlu özbeğeni baskındır (Çakır Sarı 2025). Film eleştirisi arka plan ya da konuyla açılır, değerlendirme sonra gelir (Ünsal Şakiroğlu 2022).
+
+- Kaynakta olmayan eleştiri, çekince ya da "dengeleyici" olumsuz değerlendirme ekleme; kaynaktaki olumsuz değerlendirmeyi övgüyle sarıp yumuşatma.
+- Övgü sıfatları yığılmışsa (`muhteşem, eşsiz, büyüleyici`) retorik dolgu adayıdır; övülen nitelik ve değerlendirmenin gücü kalır.
+- Değerlendirmeyi metnin başına taşıyan yeniden düzenleme türün sırasını bozar; yanlış yerdeki cümle ilkesi tür sırasıyla sınırlıdır.
+- Kurumsal açıklamadaki vurgulayıcı (`kararlılıkla sürdüreceğiz`) taahhüt düzeyidir (Sargın 2025); sadeleştirme taahhüdü değiştirmez.
+
 ## Kişisel yazışma ve gündelik metin
 
 - Kişisel düzyazı serbest sözcük sırasına ve eksiltiye hak sahibidir; bunları çeviri kokusu ya da hata sayma.
 - Kişisel yazıya kurumsal eşdizim, resmî türe konuşma eşdizimi dayatma.
 - Sohbet botu nezaketini (`Elbette!`, `Umarım faydalı olur`, `Umarım bu e-posta sizi iyi bulur`) çıkar; yazarın kendi samimi selamını ve kapanışını koru.
-- Eval: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`.
+- Türkçe kibarlık grup bilincini ve ilişki işini öne alır (Zeyrek 2001; Ruhi ve Işık-Güler 2007): `siz`, `talebiniz doğrultusunda`, yüz koruyan deyimler İngilizce doğrudanlık normuna göre dolgu sayılıp silinmez.
+- Hitap (`Sayın`, `Bey`/`Hanım`, `Hocam`), `siz`/`sen` seçimi ve kalıp söz (`Saygılarımla`, `Kolay gelsin`, `İyi çalışmalar`) kibarlık stratejisidir; hitabın yeri işlevine bağlıdır (Özer ve İbe Akcan 2022; Onursal Ayırır 2020; Hatipoğlu 2008). Türkçe rica e-postasında hazırlayıcı soru ve konuşana yönelik çerçeve (`... mümkün olur mu`), resmî şikâyette çekinceli ve kişisiz yapı yüzü korur (Ünal 2019; Karatepe 2021; Çetinavcı 2020); emir kipine, doğrudan talebe ya da etken çatıya çevrilmez. Çevrim içi şikâyette şikâyete eşlik eden öneri ve olumlu yorum edim kümesinin parçasıdır (Kılıç Gönen 2019); konudan sapma diye silinmez.
+- Eval: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`, `resmi-sikayet-kibarlik-korunur`.
 
 ## Edebî ve anlatı metni
 
@@ -67,3 +87,9 @@ Kullanıcı bir yazı örneği verdiyse ortalama cümle uzunluğunu ve değişim
 ## Kalıp düzeyinde yüksek riskli ifadeler
 
 Bu yapıları otomatik olarak silme; içerik taşımadan vurgu, geçiş, otorite veya heyecan ürettiklerinde düzenle: `günümüzün hızla değişen dünyasında`, `bu bağlamda`, `bu noktada`; `bir araçtan fazlası`, `dönüşümün anahtarı`; `benzersiz`, `çığır açan`, `kusursuz`; `fark yaratıyor`, `bir üst seviyeye taşıyor`; `ve sonra her şey değişti`, `asıl mesele şu`; kaynaksız `uzmanlara göre`, `araştırmalar gösteriyor`. Örüntüleri tek sözcükte değil, kümeler ve tekrarlar hâlinde ara; katalog [Türkçe örüntüler](turkce-oruntuler.md) dosyasındadır. Hukuki, akademik, teknik ya da edebî bağlamda işlev taşıyan ifade korunur.
+
+**Plaza dili.** İngilizce sözcükle karışık iş yeri söyleyişi (`toplantıyı set edelim`) kendi topluluğunda yaygındır: bir ankette akademisyenlerin %95'i bu dili kullandığını bildirir (Hakkoymaz ve Uygun 2022), söyleyiş çevresindeki dil ideolojileri de tartışmalıdır (Yağlı 2025). Kurum içi yazışmada ve alıntıda söyleyiş korunur. Dış okura giden resmî metinde yerleşik Türkçe karşılığı olan sözcük, terim değilse sadeleştirme adayıdır; sözcüğü "yabancı" diye işaretlemek tek başına gerekçe değildir.
+
+## Arayüz, yerelleştirme ve kullanım kılavuzu
+
+Ürünün biçim kılavuzu (terim listesi, hitap biçimi, düğme ve menü adları) genel üslup tercihinin önündedir; düzenleme kılavuzun terimini ve `siz`/`sen` seçimini değiştirmez (Güner 2022). Kullanım kılavuzunda adım sırası, uyarı ve doğrudan seslenme işlevdir, sohbet sızıntısı sayılmaz: Türkçe kılavuzlarda emir, gereklilik ve olasılık kipleri, edilgen ve eksilti kendine özgü bir dil kesiti oluşturur (Akıncı Oktay 2011), güvenli kullanım işlevi üslubun önündedir (Korkmaz 2016). Tanıtma ve Kullanma Kılavuzu Yönetmeliği'nin (2014) saydığı zorunlu bilgiler (güvenlik, kullanım, bakım) silinmez ya da birleştirilmez. Hasta metni (kullanma talimatı) ile uzman metni (kısa ürün bilgisi) ayrı okur değişkeleridir; biri ötekinin düzeyine indirilmez. Kısa arayüz dizesi ve başlık sıklık eşiğine dayanan ölçülerle değerlendirilmez (Mısır 2025). Yerelleştirmede düşük kalite çoğu kez çevirmenin görmediği bağlamdan doğar (Canım Alkan 2017): bağlamı görülmeyen arayüz dizesinde terim ve hitap değiştirilmez, belirsizlik metnin dışında bildirilir. Kullanma talimatının resmî okunabilirlik çerçevesi ayrı bir kılavuzdur (TİTCK 2023); formül puanı talimatı sadeleştirme gerekçesi değildir (`netlik-omurgasi.md` › Eşikler nasıl okunur).

@@ -1,0 +1,1 @@
+Yeni sürümün daha hızlı olduğunu düşünmüyor değiliz ama ölçüm henüz tamamlanmadı. Her test geçmedi. Başarısız testler yalnızca ödeme modülünde görüldü. Ne kurulum betiği ne yapılandırma dosyası değişti. Kim bu sonuçtan memnun olmaz ki?

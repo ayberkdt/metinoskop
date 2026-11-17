@@ -66,6 +66,8 @@ Yüksek riskli başlık biçimleri:
 
 Bir paragrafa etiket verilebiliyor olması başlık gerekçesi değildir.
 
+**Başlığın dil yapısı.** Türkçe makale başlığında en sık yapı ad öbeğidir (Kan 2017); iki noktalı birleşik başlık da yerleşiktir ve dönemler boyunca artar (Pilten Ufuk 2017). Düzenleme başlığı yüklemli cümleye çevirmez, iki noktalı başlığı "yapay" diye birleştirmez. Tez başlıkları 3 ile 27 sözcük arasında değişir ve standart yoktur (Deniz ve Karagöl 2016); `sekiz sözcük` gibi bir uzunluk önerisi (Güneş ve Çevik 2016) kesme kuralı değildir ve başlık kısaltılırken kapsam belirleyicisi silinmez. Haber başlığında yüklem, özne ya da nesne eksiltisi türün normudur (Alkayış 2012; Akyüz 2023); eksik cümle diye onarılmaz, teknik ya da akademik başlığa da taşınmaz ([literatür › Başlık dili](turkce-dil-literaturu.md#başlık-dili)). Türkçe makale başlıklarında soru işareti kullanımı artmamıştır (Pilten Ufuk 2017): düzenleme soru başlığı eklemez, kaynaktaki araştırma sorusunu adlandıran soru başlığını da silmez.
+
 ### Derinlik testi
 
 `###` veya `####` açmadan önce ayrımın belge yapısına ait olacak kadar önemli olup olmadığını sor. Şu desen okuru her birkaç cümlede bir sıfırlar:

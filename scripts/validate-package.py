@@ -37,7 +37,38 @@ REQUIRED_FILES = (
     "references/turkce-baglayicilar.md",
     "references/okura-dogrudan-metin.md",
     "references/insan-ve-yapay-metin.md",
+    "references/yazim-ve-dil-bilgisi.md",
+    "references/turkce-dil-literaturu.md",
+    "references/turkce-dil-literaturu.csv",
+    "references/oruntu-kanitlari.csv",
+    "scripts/literatur.py",
+    "scripts/treebank-profile.py",
     "evals/README.md",
+    "evals/kesme-ve-bitisik-yazim-yanlisi.md",
+    "evals/ortak-oge-ve-sayi-uyumsuzlugu.md",
+    "evals/anlamca-tekrar-alinti-ve-kisaltma.md",
+    "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
+    "evals/tamlama-ve-uyum-korunur.md",
+    "evals/yerli-bir-edilgen-cogul-korunur.md",
+    "evals/mis-dolaylilik-tuzagi.md",
+    "evals/dogrudan-dolayli-kanitsallik-korunur.md",
+    "evals/odak-yuklem-oncesi-alan-korunur.md",
+    "evals/olcumlu-vurgulayici-ozet-korunur.md",
+    "evals/resmi-sikayet-kibarlik-korunur.md",
+    "evals/ozet-amac-hamlesi-korunur.md",
+    "evals/inceleme-olumsuz-degerlendirme-korunur.md",
+    "evals/inceleme-ovgu-yigini.md",
+    "evals/olumsuz-niceleyici-kapsami-tuzagi.md",
+    "evals/kuyruk-duzeltmesi-zarf-fiil-tuzagi.md",
+    "evals/olumsuzluk-ve-kapsam-korunur.md",
+    "evals/ettirgen-aktor-kaymasi-tuzagi.md",
+    "evals/ettirgen-ve-donuslu-cati-korunur.md",
+    "evals/soru-eki-odak-kaymasi-tuzagi.md",
+    "evals/soru-eki-ve-acik-soru-korunur.md",
+    "evals/yaklasiklik-ve-istatistik-silme-tuzagi.md",
+    "evals/yaklasiklik-ve-istatistik-korunur.md",
+    "evals/reklam-etiketi-sablon-tuzagi.md",
+    "evals/reklam-etiketi-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -245,6 +276,31 @@ REQUIRED_FILES = (
     "evals/critical-cases.txt",
 )
 EVAL_FILES = (
+    "evals/kesme-ve-bitisik-yazim-yanlisi.md",
+    "evals/ortak-oge-ve-sayi-uyumsuzlugu.md",
+    "evals/anlamca-tekrar-alinti-ve-kisaltma.md",
+    "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
+    "evals/tamlama-ve-uyum-korunur.md",
+    "evals/yerli-bir-edilgen-cogul-korunur.md",
+    "evals/mis-dolaylilik-tuzagi.md",
+    "evals/dogrudan-dolayli-kanitsallik-korunur.md",
+    "evals/odak-yuklem-oncesi-alan-korunur.md",
+    "evals/olcumlu-vurgulayici-ozet-korunur.md",
+    "evals/resmi-sikayet-kibarlik-korunur.md",
+    "evals/ozet-amac-hamlesi-korunur.md",
+    "evals/inceleme-olumsuz-degerlendirme-korunur.md",
+    "evals/inceleme-ovgu-yigini.md",
+    "evals/olumsuz-niceleyici-kapsami-tuzagi.md",
+    "evals/kuyruk-duzeltmesi-zarf-fiil-tuzagi.md",
+    "evals/olumsuzluk-ve-kapsam-korunur.md",
+    "evals/ettirgen-aktor-kaymasi-tuzagi.md",
+    "evals/ettirgen-ve-donuslu-cati-korunur.md",
+    "evals/soru-eki-odak-kaymasi-tuzagi.md",
+    "evals/soru-eki-ve-acik-soru-korunur.md",
+    "evals/yaklasiklik-ve-istatistik-silme-tuzagi.md",
+    "evals/yaklasiklik-ve-istatistik-korunur.md",
+    "evals/reklam-etiketi-sablon-tuzagi.md",
+    "evals/reklam-etiketi-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -578,6 +634,8 @@ for heading in (
     "**Cümle sonu kuyruğu.**",
     "**Yazma ve düzenleme.**",
     "references/insan-ve-yapay-metin.md",
+    "**Yazım ve ek uyumu.**",
+    "references/yazim-ve-dil-bilgisi.md",
 ):
     if heading not in skill:
         fail(f"SKILL.md is missing: {heading}")
@@ -633,6 +691,7 @@ readme_requirements = (
     "netlik-omurgasi.md",
     "kenar-turler.md",
     "turkce-baglayicilar.md",
+    "yazim-ve-dil-bilgisi.md",
     "STE100",
 )
 for requirement in readme_requirements:
@@ -684,6 +743,25 @@ for relative_path in EVAL_FILES:
             fail(f"{relative_path} is missing: {heading}")
 
 eval_markers = {
+    "evals/ozet-amac-hamlesi-korunur.md": ("incelenmektedir", "214 öğrenci", "r = 0,46", "önerilmiştir", "ilişki"),
+    "evals/inceleme-olumsuz-degerlendirme-korunur.md": ("zayıf yanı", "tartışmadan geçiyor", "yeterince bağlantılı değil", "vazgeçilmez", "1950–1980"),
+    "evals/inceleme-ovgu-yigini.md": ("muhteşem, eşsiz", "olağanüstü bir titizlikle", "daha sınırlı", "başyapıt", "1950–1980"),
+    "evals/olumsuz-niceleyici-kapsami-tuzagi.md": ("her test başarıyla geçmedi", "7", "yalnızca ödeme modülünde", "önemli bir husus"),
+    "evals/kuyruk-duzeltmesi-zarf-fiil-tuzagi.md": ("indirerek.", "yedek almadan", "bitince", "420 ms", "180 ms"),
+    "evals/ettirgen-aktor-kaymasi-tuzagi.md": ("boyatılması", "yaptırılmıştır", "bırakılmıştır", "cümle: <= 3"),
+    "evals/ettirgen-ve-donuslu-cati-korunur.md": ("yaptırdı", "kontrol ettirildi", "kendini sıfırlar", "kendiliğinden açılır", "60 °C"),
+    "evals/soru-eki-odak-kaymasi-tuzagi.md": ("Cuma günü mü", "netlik kazanmamıştır", "cümle: <= 1"),
+    "evals/soru-eki-ve-acik-soru-korunur.md": ("Ayşe mi yaptı, ekip mi?", "belirtilmemiş", "önce mi sonra mı", "bilinmiyor"),
+    "evals/yaklasiklik-ve-istatistik-silme-tuzagi.md": ("ortalama 240", "yaklaşık 3.000", "en yüksek", "cümle: <= 3"),
+    "evals/yaklasiklik-ve-istatistik-korunur.md": ("medyanı", "ortalaması", "En yüksek", "yaklaşık 3.000", "tahmin edildi"),
+    "evals/reklam-etiketi-sablon-tuzagi.md": ("#Reklam", "#işbirliği", "Kaçırmayın!", "%15"),
+    "evals/reklam-etiketi-korunur.md": ("#Reklam #işbirliği", "%15", "💖"),
+    "evals/olumsuzluk-ve-kapsam-korunur.md": ("düşünmüyor değiliz", "Her test geçmedi", "yalnızca ödeme", "Ne kurulum betiği ne yapılandırma dosyası değişti", "memnun olmaz ki"),
+    "evals/resmi-sikayet-kibarlik-korunur.md": ("Sayın Yetkili", "Saygılarımla", "rica ederim", "sevinirim", "12 Ekim"),
+    "evals/olcumlu-vurgulayici-ozet-korunur.md": ("belirgin biçimde", "açıkça", "p < 0,001", "anlamlı fark bulunmadı", "500 m altı"),
+    "evals/odak-yuklem-oncesi-alan-korunur.md": ("yalnızca ikinci ekip", "tekrarladıktan sonra", "görmemişti", "henüz"),
+    "evals/mis-dolaylilik-tuzagi.md": ("ulaşmış", "başlamış", "kayıt altına alınmıştır", "4 Kasım", "120", "12"),
+    "evals/dogrudan-dolayli-kanitsallik-korunur.md": ("tamamlanmıştır", "değiştirdi", "aktardığına göre", "donmuş", "geçmemiş"),
     "evals/belirsiz-gonderge-korunur.md": ("Bu durum", "birden fazla makul yorum"),
     "evals/kapsam-ve-kosul.md": ("Yalnızca en az üç ay", "18 yaş altındaki"),
     "evals/uslup-eslestirme.md": ("### Üslup örneği", "### Düzenlenecek metin"),
@@ -988,6 +1066,20 @@ SHOULD_REMAIN_CASES = (
     "evals/uzun-paragraf-korunur.md",
     "evals/iyi-yapi-korunur.md",
     "evals/yontem-ayrimi-korunur.md",
+    "evals/ozel-ad-kod-ve-alinti-yazimi-korunur.md",
+    "evals/tamlama-ve-uyum-korunur.md",
+    "evals/yerli-bir-edilgen-cogul-korunur.md",
+    "evals/dogrudan-dolayli-kanitsallik-korunur.md",
+    "evals/odak-yuklem-oncesi-alan-korunur.md",
+    "evals/olcumlu-vurgulayici-ozet-korunur.md",
+    "evals/resmi-sikayet-kibarlik-korunur.md",
+    "evals/ozet-amac-hamlesi-korunur.md",
+    "evals/inceleme-olumsuz-degerlendirme-korunur.md",
+    "evals/olumsuzluk-ve-kapsam-korunur.md",
+    "evals/ettirgen-ve-donuslu-cati-korunur.md",
+    "evals/soru-eki-ve-acik-soru-korunur.md",
+    "evals/yaklasiklik-ve-istatistik-korunur.md",
+    "evals/reklam-etiketi-korunur.md",
 )
 misnamed = sorted({p for p in SHOULD_REMAIN_CASES if not Path(p).stem.endswith("-korunur")}
                   | {p for p in EVAL_FILES if Path(p).stem.endswith("-korunur") and p not in SHOULD_REMAIN_CASES})
@@ -1014,11 +1106,66 @@ for relative_path in SHOULD_REMAIN_CASES:
     if case_source is None or case_source.group(1).strip() != recorded.strip():
         fail(f"{relative_path}: recorded output must equal the source for a should-remain case")
 
-for relative_path in ("scripts/eval-runner.py", "scripts/eval-suite.py", "scripts/style-lint.py", "scripts/validate-package.py", "scripts/behavioral-regression.py"):
+for relative_path in ("scripts/eval-runner.py", "scripts/eval-suite.py", "scripts/style-lint.py", "scripts/validate-package.py", "scripts/behavioral-regression.py", "scripts/literatur.py", "scripts/treebank-profile.py"):
     try:
         ast.parse((ROOT / relative_path).read_text(encoding="utf-8"))
     except SyntaxError as error:
         fail(f"Invalid Python syntax in {relative_path}: {error}")
+
+# Literatür veritabanı: şema, doğrulama düzeyi ve her kaydın taramada anılması.
+import importlib.util as _ilu
+_spec = _ilu.spec_from_file_location("literatur", ROOT / "scripts/literatur.py")
+_lit = _ilu.module_from_spec(_spec)
+_spec.loader.exec_module(_lit)  # type: ignore[union-attr]
+_rows = _lit.load()
+for _problem in _lit.problems(_rows):
+    fail(f"references/turkce-dil-literaturu.csv: {_problem}")
+_review = (ROOT / "references/turkce-dil-literaturu.md").read_text(encoding="utf-8")
+_unmentioned = [r["id"] for r in _rows if f"`{r['id']}`" not in _review]
+if _unmentioned:
+    fail("references/turkce-dil-literaturu.md must cite every database id: " + ", ".join(_unmentioned))
+# Örüntü kanıt eşlemesi: style-lint.py'deki her aile bir kez, aynı seviyeyle ve var olan kanıtla anılır.
+import csv as _csv
+_lint_spec = _ilu.spec_from_file_location("style_lint_for_validation", ROOT / "scripts/style-lint.py")
+_lint = _ilu.module_from_spec(_lint_spec)
+import sys as _sys
+_sys.modules["style_lint_for_validation"] = _lint
+_lint_spec.loader.exec_module(_lint)  # type: ignore[union-attr]
+_families = {str(c["key"]): str(c["level"]) for c in _lint.CATEGORIES}
+with (ROOT / "references/oruntu-kanitlari.csv").open(encoding="utf-8", newline="") as _handle:
+    _registry = list(_csv.DictReader(_handle))
+_lit_ids = {r["id"] for r in _rows}
+_iym_rows = set(re.findall(r"(?m)^\| (\d+) \|", (ROOT / "references/insan-ve-yapay-metin.md").read_text(encoding="utf-8")))
+_seen_families = [r["aile"] for r in _registry]
+for _family, _level in _families.items():
+    if _seen_families.count(_family) != 1:
+        fail(f"references/oruntu-kanitlari.csv must list style-lint family exactly once: {_family}")
+for _row in _registry:
+    _family = _row["aile"]
+    if _family not in _families:
+        fail(f"references/oruntu-kanitlari.csv lists an unknown family: {_family}")
+        continue
+    if _row["seviye"] != _families[_family]:
+        fail(f"references/oruntu-kanitlari.csv level differs from style-lint.py for {_family}")
+    if _row["dayanak"] not in {"literatur", "ai-arastirmasi", "tdk", "depo-kurali", "cikarim", "derlem-olcumu"}:
+        fail(f"references/oruntu-kanitlari.csv has an unknown basis for {_family}: {_row['dayanak']}")
+    if _row["dayanak"] in {"literatur", "ai-arastirmasi", "derlem-olcumu"} and _row["kanit"] == "—":
+        fail(f"references/oruntu-kanitlari.csv: {_family} claims evidence but cites none")
+    if _row["dayanak"] == "cikarim" and _row["seviye"] == "sert":
+        fail(f"references/oruntu-kanitlari.csv: inference-based family {_family} must not be hard")
+    for _ref in (x.strip() for col in ("kanit", "karsi_kanit") for x in _row[col].split(";")):
+        if _ref in ("", "—"):
+            continue
+        if _ref.startswith("iym:"):
+            if _ref[4:] not in _iym_rows:
+                fail(f"references/oruntu-kanitlari.csv: {_family} cites a missing insan-ve-yapay-metin row {_ref}")
+        elif _ref not in _lit_ids:
+            fail(f"references/oruntu-kanitlari.csv: {_family} cites an id missing from the literature database: {_ref}")
+    if not (ROOT / "references" / _row["referans"]).is_file():
+        fail(f"references/oruntu-kanitlari.csv: {_family} points to a missing reference file")
+
+if len(_rows) < 50:
+    fail("references/turkce-dil-literaturu.csv must keep at least fifty verified records")
 
 print(
     "Metinoskop package is valid "

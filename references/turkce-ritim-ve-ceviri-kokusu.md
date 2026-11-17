@@ -58,6 +58,8 @@ Kokuyu bir işlev testi olarak kullan: "Bu cümleyi İngilizceye geri çevirsem 
 
 Kokunun karşıtı "İngilizcede de olan her yapıyı silmek" değildir. Karşıtı, Türkçe yapıyı bağımsız olarak doğal, kesin ve yararlı olduğu için seçmektir.
 
+**Ölçülmüş farklar.** Özgün Türkçe ağaç bankalarıyla (BOUN, IMST) İngilizceden çevrilmiş olanlar (Penn, PUD) karşılaştırıldığında `sahip`, varlık yüklemleri (`bulunmaktadır`, `içermektedir`), `tarafından` ve çekince işaretleri çeviride belirgin biçimde sıktır (çekince kurguda da yüksektir); haber türü eşlenince de fark sürer (`sahip` 4,3 kat, varlık yüklemi yalnız çeviride). Ad + `et-` hafif fiili ise özgün haber metninde çeviriden sıktır; çeviri değil kayıt işaretidir. `Bir` yoğunluğu türe bağlıdır: haberde çeviri fazlası görülür, deneme ve kurguda görülmez. Fark sıklık farkıdır, yasak değildir: özgün metin de bu yapıları kullanır ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)).
+
 ## İlişkiyi yeniden kur, sözcükleri değil
 
 Kural: Türkçe cümle İngilizceden çevrilmiş görünüyorsa sözcüklerini bir kez daha çevirme. Cümlenin taşıdığı anlam ilişkisini bul ve o ilişkiyi Türkçenin tercih ettiği araçlarla yeniden kur.
@@ -86,12 +88,14 @@ Sözcük değişimi ile ilişki kurulumunu ayırt etmenin kısa yolu: düzenleme
 
 ## Bilgi yapısı ve sözcük sırası
 
-Türkçe sözcük sırasını mekanik bir özne–nesne–yüklem şablonuna indirgeme. Sırayı belirleyen konu, odak, verilmiş bilgi, yeni bilgi, karşıtlık ve söylem sürekliliğidir. Yüklem önündeki konum odak konumudur; cümle başı ise konu konumudur. Her cümlede sor:
+Türkçe sözcük sırasını mekanik bir özne–nesne–yüklem şablonuna indirgeme. Sırayı belirleyen konu, odak, verilmiş bilgi, yeni bilgi, karşıtlık ve söylem sürekliliğidir. Cümle başı konuyu taşır; yeni ve önemli bilgi çoğunlukla yüklemin hemen önüne yakın durur (Erguvanlı 1984). Yüklem önü cümle vurgusunun yeridir ama odağın tek yeri değildir: odak yüklem öncesi alanın başka bir yerinde de durabilir (Göksel ve Özsoy 2000; Kılıçaslan 2004). Yazıda ezgi olmadığı için okur odağı dizimden ve bağlamdan kurar. Bu yüzden doğru bir cümlenin sırası yalnızca "odak yüklemin hemen önünde olmalı" gerekçesiyle değiştirilmez (`odak-yuklem-oncesi-alan-korunur`); değişiklik ancak yeni bilgi İngilizce sıranın kalıbıyla yüklemden uzağa düşmüşse ya da gönderge belirsizleşmişse yapılır. Kaynaklar: [Türkçe dil bilgisi ve kullanım literatürü › Sözcük dizimi ve bilgi yapısı](turkce-dil-literaturu.md#sözcük-dizimi-ve-bilgi-yapısı). Her cümlede sor:
+
+Okuma deneyleri bu karara dayanak verir. Perde vurgusu olmayan yazıda yüklem önü varsayılan odak konumudur ve dizim değişikliği okura odak sinyali olarak işler; dar odağı işlemek daha maliyetlidir (Kurt ve Dinçtopal Deniz 2023; Önem 2024). Bu yüzden sırayı akıcılık için değiştirmek odağı da değiştirir. Derlemlerde Türkçe cümleler kısa ögeyi yükleme bitişik koyar (Ranjan ve von der Malsburg 2024). Nesne ilgi yan cümlesi özne ilgi yan cümlesinden maliyetlidir (Bulut, Yarar ve Wu 2020); yine de edilgene çevirmek eyleyeni ve odağı değiştirir, yalnız önerme aynı kalıyorsa yeniden kurulur. Sözcükteki çekim eki sayısı fiksasyon süresini değil sayısını etkiler (Özkan ve ark. 2021); ek zincirini analitik yapıya açmanın okuma kanıtı yoktur. Hâl ekli iki nesnenin sırası okuma süresini değiştirmez (Şen Erdoğan ve Yarar 2025); canlılığa bağlı bir sıra etkisi de bildirilmiştir (Kahraman, Sato ve Sakai 2010), bu yüzden çift nesne sırası için kural konmaz.
 
 1. Okurun zihninde şu anda ne etkin?
 2. Bu cümlede yeni olan ne?
 3. Karşıt olan ne?
-4. Yüklem önü odağı hangi öge hak ediyor?
+4. Yeni bilgi yükleme yakın mı, yoksa İngilizce sıradan kalıp yüklemden uzağa mı düşmüş?
 5. Cümlenin açık bir özneyle başlaması gerçekten gerekli mi?
 
 **Mekanik**
@@ -147,6 +151,10 @@ Ya da paragrafın konusu zaten modelse:
 ## Özne düşürme ve açık özne fazlası
 
 Türkçede kişi ve bağlam özneyi geri kazandırıyorsa özne örtük kalabilir. Bu bir kural değil, kaynaktır. İngilizce açık özne istiyor diye Türkçede açık özne dayatma; ama belirsiz sıfır özne de üretme.
+
+Yazılı Türkçeden kanıt: sürdürmede sıfır özne baskındır, yeniden girişte ad öbeği seçilir, açık adıl en seyrek biçimdir (Aydoğan ve Yarar 2026; Şen Erdoğan ve Yarar 2025). Açık adılın işlevi erişilebilirlikten çok karşıtlık ve benzerliktir (Azar, Backus ve Özyürek 2019); karşıtlık bağlamında açık özne zorunludur (Gürcanlı, Nakipoğlu ve Özyürek 2007); birinci kişide odak değişimi, edimbilimsel ağırlık ve `bence` türü ara söz açık özneyi meşrulaştırır (Çeltek 2020). Anadili konuşucuları da konu sürekliliğinde açık özneyi fazla kabul eder ve okumada uygun ile uygunsuz kullanım arasında işlemleme farkı çıkmaz (Çınar 2024): açık özne fazlası anlam hatası değil doğallık kararıdır, bağlamsal kalır. Dil temasında adıl sıklığı değişmez, tuhaflığı adılı taşıyan kopyalanmış büyük kalıp üretir (Doğruöz 2014); koku sayıda değil kalıpta aranır. Genel İngilizce `you`/`one` öznesine `insan` ya da sıfır özne ile geniş zaman karşılık gelir (Yarar 2025).
+
+**Ölçülmüş fark.** Haber türünde ağaç bankası ölçümü: özgün BOUN haberinde özne zamiri 10.000 sözcükte 35,7, İngilizceden çevrilmiş Penn ve PUD'da 60,9 ve 62,9'dur; özne konumundaki `bu`/`şu` özgün haberde 10,2, çeviride 20,5–27,8'dir (p < 0,001). Özgün deneme ve biyografide zamir özne ise 115–122'dir (çoğu birinci kişi). Haberde özne `bu` ve zamir yoğunluğu çeviri izidir; türler karıştırılınca fark kaybolur ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)).
 
 Karar tablosu:
 
@@ -239,6 +247,14 @@ Altı `-ip` tek yükleme asılıdır; okur hangi eylemin ana eylem olduğunu yü
 
 Ya da adım sırası yöntemsel tekrarlanabilirlik için ayrı cümleler gerektiriyorsa üç cümle de meşrudur. Fiilimsi sayısı için sabit bir üst sınır yoktur; ölçüt, okurun ana yükleme gelmeden kaç çözümsüz eylemi taşıdığıdır.
 
+**Zarf-fiil silinmez, yalnızca kuyruğu düzeltilir.** Zarf-fiil resmî yazılı Türkçede de yerleşik araçtır: 1923–2016 hükümet programlarında 565 ulaç yan cümlesi vardır ve en sık biçim `-(y)ken`dir (Yarar ve Baydal 2025). Zarf-fiil metni kuran bir bağlayıcı işlevi de görür (Gürkan 2019; Acar 2014). Zarf-fiili çekimli cümle ve bağlaçla değiştirmek tek dilli normdan uzaklaşır: miras Türkçesinde çekimli birleştirme sıklaşır, `-Ip` ve `-IncA` seyrekleşir (Özsoy, Iefremenko ve Schroeder 2022; Turan ve ark. 2020). Deponun gold'larında zarf-fiil özgün Türkçenin yaklaşık üçte biridir ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)); bu yüzden hedef zarf-fiili azaltmak değil, virgülden sonra cümleyi bitiren `-ArAk` kuyruğunu (`insan-ve-yapay-metin.md` › bulgu 1) düzeltmektir. Üç seçim eş anlamlı değildir:
+
+- `-Ip` ile `ve`: `-Ip` eşgüdüm değil eklentidir ve olumsuzluğun düştüğü yüklemi değiştirebilir (Kesici 2026); sıralayan `-Ip`'i `ve` + çekimli yükleme açmak bilgi eklemez (Gülsevin 2020).
+- `-IncA` ile `-DIğIndA`/`-DIğI zaman`: `-IncA` yalnızca öncelik, `-DIğI zaman` öncelik, sonralık ve eş zamanlılık bildirebilir (Sözer 2024; Çetintaş Yıldırım 2005); eş zamanlı ilişkiyi `-IncA`ya çevirmek sıra kurar.
+- `-ArAk` tarz, neden ya da sonuç okunabilir (Çetintaş Yıldırım 2009); `nedeniyle`, `sayesinde` ile açmak ilişkiyi kaynakta olmadan seçer. `-mAdAn` olumsuzluk taşır (Zengin 2022); `-Ip` ↔ `-mAdAn` değişimi önermeyi tersine çevirir ve `eval-runner.py` olumsuzluk eklemesi olarak yakalar.
+
+Zaman ulacı yan cümlesi genellikle ana cümleden önce gelir (Baydal ve Yarar 2024, yaklaşık 9000 örnek) ve varsayılan olmayan konumda okuma zorlaşır (Baydal 2024); düzenleme zaman yan cümlesini İngilizce sırayla sona taşımaz.
+
 ## Söylem belirteçleri
 
 Cümle ve paragraf başında `Bununla birlikte`, `Buna ek olarak`, `Öte yandan`, `Bu nedenle`, `Bu bağlamda`, `Bu noktada`, `Dolayısıyla`, `Sonuç olarak`, `Bu doğrultuda` yoğunluğunu ölç. Bunlar yasak değildir; ama İngilizce açık söylem işareti gerektiren yerde Türkçe sözcük sırasına, yinelenen anahtar terime, eksiltiye, biçim bilgisel alt sıralamaya, anlamsal sürekliliğe, `de/da` edatına ve tek cümlede doğrudan karşıtlığa yaslanabilir.
@@ -261,6 +277,8 @@ Kural: ilişki yapısal olarak zaten görünüyorsa onu bir kez daha belirteçle
 
 `Ancak` gerçek bir kapsam sınırlaması getirir; silinirse ikinci cümle ilkinin devamı gibi okunur.
 
+**Hangi belirteç çeviri izidir.** Özgün ve çevrilmiş Türkçe ağaç bankalarında cümle başı `ancak` çeviride 2–5 kat, `bununla birlikte` neredeyse yalnız çeviride görülür; `bu nedenle`, `bu yüzden`, `ama` ve `fakat` özgün Türkçede en az çeviri kadar sıktır ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)). Neden bağlayıcısını çeviri kokusu diye silme; yoğunluğu ve ilişkinin yapıda zaten görünüp görünmediğini incele.
+
 ## Gösterme sıfatı ve söylem adı paketi
 
 İngilizce söylem `this result`, `this finding`, `this approach`, `this issue`, `this process`, `this situation`, `this observation` ile yürür. Türkçede bunlar `bu sonuç`, `bu bulgu`, `bu yaklaşım`, `bu durum`, `bu süreç`, `bu nokta` olur. Sorun yalnızca belirsizlik değildir ([Retorik yapılar › Boş soyut özne](retorik-yapilar.md#boş-soyut-özne) bunu ele alır); sorun, önceki önermenin her seferinde gösterme sıfatı + söylem adıyla paketlenip yeni özneye dönüştürülmesidir.
@@ -279,7 +297,7 @@ Sor: önceki önerme adlaştırılmadan etkin kalabilir mi? Sonraki cümle yeni 
 
 > Modelin hatası %8 arttı ve uzun dönem kararlılığını olumsuz etkiledi.
 
-"Bozuldu" yalnızca kaynak destekliyorsa yazılır. Kaynak "olumsuz etki" düzeyinde kalıyorsa ikinci sürüm hem paketi çözer hem belirsizliği korur. Gösterme sıfatı bir paragrafta ilk kez ve tek göndergeyle kullanılıyorsa meşrudur; ritim hâline geldiğinde kokudur.
+"Bozuldu" yalnızca kaynak destekliyorsa yazılır. Kaynak "olumsuz etki" düzeyinde kalıyorsa ikinci sürüm hem paketi çözer hem belirsizliği korur. Gösterme sıfatı bir paragrafta ilk kez ve tek göndergeyle kullanılıyorsa meşrudur; ritim hâline geldiğinde kokudur. Türkçe akademik metinde `bu durum`, `söz konusu`, `bu süreç` sıklığını ölçen kabuk ad çalışması bulunamadı. Türk yazarların İngilizce tezlerinde üstsöylemsel ad kullanımı ana dili İngilizce yazarlarınkine benzer (Yuvayapan 2019), ama bu Türkçe için kanıt değildir. Karar sıklık eşiğine değil, paketin gönderge belirsizliğine ve ritmine dayanır.
 
 ## `Bir` fazlası
 
@@ -301,6 +319,14 @@ Ya da kaynak çözümün tek olası çözümlerden biri olduğunu vurguluyorsa:
 
 Aynı cümlede üç veya daha çok `bir`, art arda `bir ... bir ... bir` dizisi ve her adın önünde `bir` inceleme tetikleyicisidir; sayı tek başına bir metni reddettirmez.
 
+**`Bir`in yerli işlevleri.** `Bir` Türkçede İngilizce tanımlığın gölgesi değildir; tanımlık mı yoksa gönderimsellik işaretleyicisi mi olduğu tartışmalıdır (Öztürk 2005; Kornfilt 2007), ama iki görüş de onu Türkçenin kendi dil bilgisine yerleştirir. Üç yerde `bir` silinmez:
+
+- **Olumsuzluk ve kapsam.** `Bir`li nesne olumsuzluğun üstünde geniş kapsam alabilir, yalın nesne alamaz (Ketrez 2023): `Bir dosyayı açmadı` (belirli bir dosya açılmadı) ile `Dosya açmadı` (hiç dosya açmadı) aynı önerme değildir.
+- **Sıfat + `bir` + ad.** `Önemli bir bulgu` doğal sıradır (Tat 2011); `bir önemli bulgu` anlam farkı taşıyabilir, düzeltilmez. `Bir` sıfattan önce gelince çoğunlukla sayı okunur (`bir eski elbise`), sonra gelince belirsizlik (`eski bir elbise`) (Malkoç 2016; Rocchi 2016); sıfatı `bir`in öbür yanına taşımak okumayı değiştirir. `Bir`in ya da sayının iki yanındaki sıfatlar serbest yer değiştirmez: öndeki sıfat sıfat hiyerarşisinde yüksekte olmalıdır (`güzel iki gri kedi`; Bayırlı 2018). Ad önü sıra işaretleyici > sayı > sıfat > ad'dır (`bu iki kırmızı araba`; Bayırlı 2022); kanonik dışı sıra (`kırmızı bu araba`) konu ya da odak taşıyabilir (Ergelen 2019), sıra hatası diye düzeltilmez.
+- **Yalın nesne + eylem.** `Veri topladık`, `anket uyguladık` gibi yalın nesneli birleşimler Türkçenin olağan yapısıdır (Öztürk 2005); bunlara `bir` ya da belirtme eki eklenmez. Belirtme hâli de serbest değildir: `-(y)I` nesnenin belirliliğini kodlar (Enç 1991; von Heusinger ve Kornfilt 2005), eklemek ya da silmek önermeyi değiştirir.
+
+Ters yön de ölçüldü: deponun dönüşüm gold'larında `bir` 100 sözcükte 0,82, korunur gold'larında 0,73'tür; bu, özgün haberin (1,79) ve denemenin (3,44) altındadır. `Bir` silmek hedef değildir; yalnızca tanımlık kalkısı gider ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)). Çeviri, öğrenici ya da makine Türkçesinde `bir` fazlasını derlemle ölçen hakemli bir çalışma bulunamadı ([literatür](turkce-dil-literaturu.md#belirtme-hâli-belirlilik-ve-bir)). Deponun ağaç bankası ölçümünde haber metninde `bir` çeviride 1,4 kat sıktır (100 sözcükte 1,8'e karşı 2,5), bütün türler birlikte alındığında fark yoktur (BOUN 2,6, IMST 2,7, çeviri 2,5–2,9; denemede 3,4); yoğunluk eşiği bu yüzden türden bağımsız konmaz.
+
 ## `Sahip olmak` ve iyelik
 
 İngilizce "X has Y" Türkçede "X, Y'ye sahiptir" olur. Türkçe bu ilişkiyi çoğu zaman şöyle kurar: `X'in Y'si var`, `X'te Y var`, `X'in Y'si yüksek/düşük`, `X Y içerir`, ya da ilişkiye özgü bir fiil. Sözcüğü değil ilişki türünü işaretle: gerçek iyelik, özellik iyeliği, soyut nitelik, ölçülebilir öznitelik.
@@ -313,7 +339,7 @@ Aynı cümlede üç veya daha çok `bir`, art arda `bir ... bir ... bir` dizisi 
 | Cihaz IP67 koruma sınıfına sahiptir. | Cihazın koruma sınıfı IP67'dir. | teknik nitelik |
 | Bu yaklaşım, sınırlamalara sahiptir. | Bu yaklaşımın sınırlamaları vardır. | soyut nitelik; sınırlamalar kaynakta adlandırılmalıdır |
 
-Resmî türde `var` kaba düşüyorsa iyelik + `-dır` biçimi ("maliyeti yüksektir") ya da `bulunur` kullanılır. Gerçek `sahip olmak` kullanımını silme: "Şirket üç fabrikaya sahiptir" hukuki mülkiyet bildiriyorsa yerinde durur; "Kullanıcı yönetici yetkisine sahip olmalıdır" yetkilendirme dilinde doğaldır.
+Resmî türde `var` kaba düşüyorsa iyelik + `-dır` biçimi ("maliyeti yüksektir") ya da `bulunur` kullanılır. Gerçek `sahip olmak` kullanımını silme: "Şirket üç fabrikaya sahiptir" hukuki mülkiyet bildiriyorsa yerinde durur; "Kullanıcı yönetici yetkisine sahip olmalıdır" yetkilendirme dilinde doğaldır. `Sahip` ve `ait` 1950–2016 hükümet programlarında iyelik türü varoluş tümcesinin yerleşik yüklemleridir; resmî dilde en sık varoluş yüklemi `var` + `-DIr`dır (Yarar 2020). Aday olan, ölçülebilir özniteliği ya da yapıyı `sahip` ile kuran kullanımdır (yukarıdaki tablo); mülkiyet ve yetki değildir. Ağaç bankası ölçümünde `-e sahip` özgün haber Türkçesinde 10.000 sözcükte 3, İngilizceden çevrilmiş haberde 13–20 kez geçer; özgün metindeki kullanımların çoğu da özellik iyeliğidir (`hünere sahip`, `yapıya sahip`), dolayısıyla tek kullanım değil yoğunluk işarettir.
 
 ## `Var`, `yok` ve varlık kalıpları
 
@@ -349,7 +375,7 @@ Kaynak "kullanıldı" demiyor da yalnızca modeli tanımlıyorsa:
 
 > Model, 2024 verisiyle eğitilmiş üç katmanlı bir ağdır.
 
-Her ilgi cümlesini mekanik olarak sıkıştırma. Şunları incele: `olan`, `olduğu`, yinelenen `ki`, yalnızca önceki adı nitelemek için açılmış ayrı açıklama cümleleri. Kural: niteleme adı tanımlıyor ya da sınırlıyorsa Türkçenin o bilgiyi adın önüne alıp almadığını sor.
+Her ilgi cümlesini mekanik olarak sıkıştırma. Şunları incele: `olan`, `olduğu`, yinelenen `ki`, yalnızca önceki adı nitelemek için açılmış ayrı açıklama cümleleri. `Ki` İngilizceden gelmedi: Farsçadan alınmıştır ve `ki`li cümle Anadolu'da 14. yüzyıldan beri yazı dilindedir (Sarı 2014; Doğan 2020). Tek `ki` işaret değildir; aday, İngilizce `that/which` sırasını izleyen ve ortaçla daha doğal kurulabilecek yan cümledir. Kural: niteleme adı tanımlıyor ya da sınırlıyorsa Türkçenin o bilgiyi adın önüne alıp almadığını sor. Açıklayıcı (sınırlamayan) `ki` cümlesi ise kendi söz edimi gücünü taşır ve söyleme yeni bilgi sokar (Meral 2018; Predolac 2017; Griffiths ve Güneş 2014): onu ad önü ortaca çevirmek öne sürülen önermeyi arka plan bilgisine indirir, bu da statü değişikliğidir. Yüklemden sonra gelen pekiştirme ya da karşı çıkma `ki`si (`geldi ki!`) yan cümle değildir (Yüceol Özezen 2013; Köymen ve Küntay 2013); `that/which` kalkısı sayılmaz.
 
 `Olan` meşru Türkçedir; sorun İngilizce "which is / that is" yapısının tekrar tekrar `olan` olarak hayatta kalmasıdır. Yüksek riskli kümeler: `... olan ... olan ...`, `... sahip olan ...`, `... etkisi olan ...`, `... özelliği olan ...`, `... durumda olan ...`. Onarım sıfat, ortaç, iyelik yapısı, doğrudan fiil, ad tamlaması ya da gereksiz koşaç yapısının silinmesiyle yapılır.
 
@@ -423,6 +449,8 @@ Bu, fiil öncelikli ilişki ilkesidir: sözcük sırası değil, anlamın fiille
 - **Yerli dil bilgisel adlaştırma:** yan cümle ("gelmesini bekledik"), tümleç cümlesi ("raporun geciktiğini bildirdi"), ilgi cümlesi ("ölçtüğümüz değer"), iyelik yapısı ("filtrenin kararlılığı"), teknik sıkıştırma ("yakınsama ölçütü"). Bunlar kalır.
 - **Soyut bürokratik ad yığını:** doğrudan yüklemden kaçmak için kurulan "değerlendirilmesinin sağlanmasının planlanması". Bu çözülür.
 
+Birleşik tümce Türkçede büyük ölçüde eylemsiyle kurulur (Sebzecioğlu 2004); -mAK çocuk dilinde ilk edinilen ve anne anlatısında en sık tümleç türüdür (Ciğer 2002; Ilgaz, Altan ve Haşimoğlu-Ertaş 2021). Ad yığını çözülürken tümleç ve yan cümle çekimli `ki`/`diye` yapısına çevrilmez; çekimli yan cümle tercihi temas Türkçesinde görülür (Onar Valk ve Backus 2013). Ana eylemin istediği ek de korunur: -mA ile -DIK farklı türetim ve anlam taşır (Kunduracı 2020; Kawaguchi 2005), `raporun gecikmesini bildirdi` ile `raporun geciktiğini bildirdi` aynı önerme değildir. "İngilizce nominal üslup Türkçeye adlaştırma taşır" varsayımı Türkçe veriyle desteklenmez: çeviri özetlerde adlaştırma özgün özetlerden fazla değildir (Çakır 2011); ad yığını kuralı çeviri kokusu gerekçesiyle değil, bürokratik katman ve uzak yüklem gerekçesiyle durur ([literatür](turkce-dil-literaturu.md#eylem-adı-seçimi-tümleç-ve-hafif-fiil-birleşimi)).
+
 **Karşı örnek: adlaştırma kalır**
 
 > Filtrenin yakınsama hızının başlangıç kovaryansına duyarlılığı Tablo 3'te verilmiştir.
@@ -473,6 +501,8 @@ Uzak yüklem yorgunluğunu tanı: ana yüklem çok geç geliyor, önünde birka�
 
 ## İyelik zinciri
 
+İngilizce `'s` ve `of` ikisi de Türkçe ilgi ekine karşılık geldiği için iç içe `of` öbeğinin birebir aktarımı iyelik zincirinde bağlanma belirsizliği üretir; Penn Treebank'ın Türkçe çevirisinde bu bağlanma hataları ayrıca düzeltilmek zorunda kalınmıştır (Solak ve ark. 2015). Okur iyelikli ad öbeğini adlaştırılmış yan cümleden ayrı işler (Bahadır 2012); iki yapı tek kuralla kırpılmaz. Yasa metninde uzun ad öbeği tekrarı önleme işlevi görür (Özyıldırım 2001) ve açılmaz. Çeviride iyelik zinciri sıklığını özgün Türkçeyle karşılaştıran derlem çalışması bulunamadı.
+
 Yüksek riskli diziler:
 
 > yöntemin performansının değerlendirilmesinin yapılmasının ...
@@ -488,7 +518,7 @@ Türkçe iyelik biçim bilgisi güçlüdür; aşırı yığın işlem yükü yar
 
 > Modelin hata dağılımı değişince uzun dönem kararlılığın nasıl etkilendiği incelenmelidir.
 
-Beş iyelikten ikisi kaldı; "değişim" bir fiilimsiye, "etki" bir tümleç cümlesine döndü. Teknik mülkiyet ayrımını zedeleme: "filtrenin durum kovaryansı" ile "durum kovaryansının filtresi" farklı nesnelerdir; zinciri çözerken hangi adın hangisine ait olduğunu koru.
+Beş iyelikten ikisi kaldı; "değişim" bir fiilimsiye, "etki" bir tümleç cümlesine döndü. Teknik mülkiyet ayrımını zedeleme: "filtrenin durum kovaryansı" ile "durum kovaryansının filtresi" farklı nesnelerdir; zinciri çözerken hangi adın hangisine ait olduğunu koru. Belirtili ile belirtisiz tamlamanın gönderge farkı, terim tamlaması ve ek ortaklığı için [Yazım ve dil bilgisi › Tamlamalar](yazim-ve-dil-bilgisi.md#tamlamalar) bölümüne bak.
 
 ## Küçük kalkı aileleri
 
@@ -651,7 +681,7 @@ Tek ana önerme, denetimli tümleçler, açık neden. Bölünürse neden ilişki
 - Fiilimsi zinciri: tek yükleme dört beş `-ip/-erek` asılmış.
 - Belirsiz sıfır özne: iki aktörlü paragrafta özne düşürülmüş.
 - Telgraf dili: eksilti gerekli bağlacı, kapsamı veya koşulu götürmüş.
-- Yapay yerlilik: arkaik sözcük, zorlama deyim, rastgele `ya`, `işte`, `hani`, gereksiz devriklik, süslü eksilti.
+- Yapay yerlilik: arkaik sözcük, zorlama deyim, rastgele `ya`, `işte`, `hani`, gereksiz devriklik, süslü eksilti. Devrik ve soru cümlesi öğrencilerin sözlü anlatımında yazılı anlatımından sıktır (Yetkin ve Çolak 2026): yazarın kurmadığı devriklik yazılı metne konuşma kaydı taşır. Kaynaktaki devriklik ise korunur; eksiltili cümle yazılı anlatımda da sıktır ve tek başına konuşma izi değildir.
 - Bilimsel kesinlik zayıflamış: "ilişkili" → "neden olur", "olabilir" → "olur", "olumsuz etki" → "bozuldu".
 - Teknik terim öz Türkçe hevesiyle değiştirilmiş: `parametre`, `pipeline`, `baseline`, `benchmark`, `framework` gibi alanın kullandığı terim başka sözcükle karşılanmış.
 - Resmî kayıt dili gündelikleşmiş: mevzuat, tutanak veya sicil metnine `var` girmiş.

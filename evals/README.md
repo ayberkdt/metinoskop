@@ -40,6 +40,7 @@ Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (t
 | `yazma-kipi-notlardan-rapor` | Madde notlarından yönetime gidecek düzyazı not yazmak; her olguyu ve sayıyı kullanmak, yazarın çekincesini korumak, kararı gelecek kipte bırakmak; liste kopyalamamak, değerlendirme ve konuşma izi eklememek |
 | `cumle-sonu-kuyrugu` | Virgülden sonra `-arak/-erek` ile biten cümleyi ve `, bu da …` ekini çözmek: önerme taşıyan kuyruğu ayrı cümle yapmak, ölçülmemiş değerlendirmeyi silmek, iki ölçümü tek özneye bağlamamak |
 | `zarf-fiil-korunur` | Yüklemden önce gelen doğal zarf-fiili (`alarak denetledi`, `kapatarak boşalttı`) kuyruk sanmamak (yanlış pozitif) |
+| `kuyruk-duzeltmesi-zarf-fiil-tuzagi` | Cümle sonu `-arak` kuyruğunu düzeltirken olumsuz zarf-fiili (`yedek almadan`) olumluya, öncelik bildiren `bitince`yi `ve` zincirine çevirmemek; düşüşü nedensellik bağına çevirmemek |
 | `etiket-ve-anons` | Cümlenin türünü adlandıran etiketi (`Kısa cevap:`, `Kavramsal ayrım:`, `Sezgisel açıklama:`, `Detaylı açıklama:`) ve okura seslenen anonsu (`Merak etmeyin`, `Bu yazıda öğreneceksiniz`) silmek; etiketin altındaki bilgiyi etiketsiz bırakmak |
 | `pazarlama-anonsu` | Müşteri duyurusunda `Büyük bir haberimiz var`, `tanışın`, `Sizin için hazırladık`, `Hemen indirin` kalıplarını silip ikna yükünü somut işleve bırakmak |
 | `alan-etiketi-korunur` | Belgenin alan etiketini (`Girdi:`, `Çıktı:`, `Uyarı:`) ve sözlük maddesini etiket sanmamak (yanlış pozitif) |
@@ -55,11 +56,24 @@ Omurganın korunur tarafı mevcut vakalarda durur: `dogal-uzun-cumle-korunur` (t
 
 Korunur tarafı ayrıca `iyi-yazilmis-metin-korunur` taşır: okurun da tarafı olduğu e-postada `geçen ay konuştuğumuz gibi` içeriktir.
 
+**Yazım ve dil bilgisi** (`references/yazim-ve-dil-bilgisi.md`): TDK Yazım Kılavuzu'na açıkça aykırı yazımın her düzeyde düzeltildiğini, alıntı sözcüğün ses ve ek davranışının, kökenden gelen anlam tekrarının, tamlamanın ve ortak öge uyumunun kaynak sadakatini bozmadan onarıldığını sınar. `yazım yanlışı` beklentisi `style-lint.py` `yazim` ailesine bağlanır; aile kodu, tırnak içi alıntıyı ve `>` alıntı bloğunu denetlemez.
+
+| Vaka | Sınanan davranış |
+|---|---|
+| `kesme-ve-bitisik-yazim-yanlisi` | Hafif düzeyde yalnızca yazımı düzeltmek: dil ve kurum adına kesmesiz ek (`Türkçesi`, `Kurumuna`), `her şey`, `fark etti`, `Birkaç`, `8'inci`, ünsüz ikizleşmesi (`hattı`), ses düşmeli birleşik fiil (`kaydedilemedi`); `hâlâ`, tarih, yüzde ve cümle yapısını korumak |
+| `ortak-oge-ve-sayi-uyumsuzlugu` | Sayı sıfatından sonraki çokluk ekini, insan dışı öznedeki yüklem çokluğunu, hâl uyumsuz ortak nesneyi (`inceledi ve protokole itiraz etti`) ve çatı uyuşmazlığını gidermek; toplayanı `biz`e bağlamamak, analizi yapanı silmemek, `ilişkili`yi güçlendirmemek |
+| `anlamca-tekrar-alinti-ve-kisaltma` | Kısaltmanın açılımının başını yineleyen adı (`ATM makinesi`, `PIN numarası`, `API arayüzü`) ve alıntının anlamındaki ögeyi (`geri iade`, `en optimum`) silmek; başı yinelemeyen `IP adresi` ve `SMS mesajı`nı, `0,35`i ve olumsuzluğu korumak |
+| `ozel-ad-kod-ve-alinti-yazimi-korunur` | Yazım düzeltmesi istendiğinde unvana gelen kesmeyi (`Başkanı'na`), kurumun resmî yazımını (`Standardları`, `Makina`), sürüm numarasını (`3.5`), kodu ve doğrudan alıntıdaki yanlışı değiştirmemek (yanlış pozitif) |
+| `yerli-bir-edilgen-cogul-korunur` | Olumsuzlukta kapsam taşıyan `bir dosyayı`, sıfat + `bir` + ad, yalın nesne (`veri topladı`), eyleyensiz edilgen, kurumsal `tarafından` ve insan öznede çoğul yüklemi çeviri kokusu sanmamak (yanlış pozitif; kanıt `turkce-dil-literaturu.md` › Örüntü kararları) |
+| `tamlama-ve-uyum-korunur` | Terim tamlamasını (`görüntü işleme`), zincir içi düşmüş iyeliği (`veri analiz hattı`, `Türk Dil Kurumu`), ek ortaklığını (`hız ve güvenilirliği`), `bazı` + çoğul adı, insan öznede çoğul yüklemi ve uyumlu ortak nesneyi düzeltme sanmamak (yanlış pozitif) |
+
+Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tümel nicelik `her`" sayılıyordu; kaynakta `her` bitişik yazımın içinde zaten bulunduğu için `eval-runner.py` sayımdan önce kaynaktaki `herşey`, `birşey` biçimlerini ayırır. Kritik canlı set 36 vakalık üst sınırdadır; bu grup bu yüzden henüz kritik sete girmedi.
+
 **Kaynak sadakati ve kapsam:** `akademik-metin-korunur`, `belirsiz-gonderge-korunur`, `markdown-bicimi-korunur`, `kapsam-ve-kosul`, `kaynak-sadakati`, `teknik-gosterim-korunur`, `rapor-bulgu-yorum-oneri`, `rapor-yapisi-korunur`, `yonetici-ozeti`.
 
 **Ton ve değişiklik bütçesi:** `degisiklik-butcesi-korunur`, `kavramsal-giris`.
 
-**Kenar türler** (`references/kenar-turler.md`): metin bu türlerdense devreye giren ek kuralları sınar; kritik canlı sette yer almaz. Hukuki: `hukuki-metin-korunur`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`. Tanıtım: `reklam-kampanyasi-korunur`, `yardim-kampanyasi-korunur`. Deneme ve sosyal medya: `gorus-ambalaji`, `ozgun-imge-korunur`, `sosyal-medya-sablonu`. Kişisel ve kurumsal yazışma: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`. Üslup eşleme: `uslup-eslestirme`.
+**Kenar türler** (`references/kenar-turler.md`): metin bu türlerdense devreye giren ek kuralları sınar; kritik canlı sette yer almaz. Hukuki: `hukuki-metin-korunur`, `hukuki-kalip-korunur`, `hukuki-formul-korunur`. Tanıtım: `reklam-kampanyasi-korunur`, `yardim-kampanyasi-korunur`, `reklam-etiketi-sablon-tuzagi`, `reklam-etiketi-korunur`. Deneme ve sosyal medya: `gorus-ambalaji`, `ozgun-imge-korunur`, `sosyal-medya-sablonu`. Eleştiri ve tanıtım yazısı: `inceleme-ovgu-yigini`, `inceleme-olumsuz-degerlendirme-korunur`. Kişisel ve kurumsal yazışma: `kisisel-metin-korunur`, `kurumsal-pazarlama-dili`, `is-epostasi-korunur`. Üslup eşleme: `uslup-eslestirme`.
 
 **Retorik mimari:** cümle, paragraf ve belge düzeyindeki yapay düzyazıyı sınar.
 
@@ -78,7 +92,10 @@ Korunur tarafı ayrıca `iyi-yazilmis-metin-korunur` taşır: okurun da tarafı 
 | `tetikleyici-iceren-sozcuk-korunur` | Tetikleyiciyi içinde barındıran sözcüğü (`güneşsiz`, `eşsizlik`, `dönüştürücü`) pazarlama dili saymamak (yanlış pozitif) |
 | `iyi-yazilmis-metin-korunur` | Zaten iyi yazılmış metni neredeyse hiç değiştirmemek |
 | `gorus-ambalaji` | (kenar tür) Denemede görüşü önerme ve güç olarak korurken hazır imgeyi, `çok daha fazlası` formülünü, soyut üçlüyü ve vecizeyi atmak; aynı imgeyi yumuşatarak bırakmamak |
+| `inceleme-ovgu-yigini` | (kenar tür) Tanıtım yazısında övgü yığınını (imge, üçlü, `başyapıt` kalıbı) atarken övülen niteliği, olumlu değerlendirmenin gücünü ve tek sınırlılığı korumak; nötr özete çevirmemek, eleştiri eklememek |
 | `ozgun-imge-korunur` | (kenar tür) Yazara ve konuya özgü benzetmeyi hazır ambalaj sanıp silmemek (yanlış pozitif) |
+| `reklam-etiketi-sablon-tuzagi` | (kenar tür) Sosyal medya şablonunu temizlerken `#Reklam` ve `#işbirliği` açıklamasını silmemek, başa almak; kişisel gözlemi ürün iddiasına yükseltmemek |
+| `reklam-etiketi-korunur` | (kenar tür) Baştaki reklam etiketini, tek emojiyi ve birinci kişi gözlemi korumak (yanlış pozitif) |
 | `sosyal-medya-sablonu` | (kenar tür) Sosyal medya gönderisinde retorik soru, `Gelin birlikte bakalım`, `Sonuç mu?`, emoji ve etiketli madde şablonunu atıp sayıları ve öğrenilen dersleri korumak |
 | `anlam-kalkisi-akademik` | Türkçe okura başka önerme veren kalkıları (`bulgular ... önermektedir`, `yer aldı`, `3 faktörü`, Hz ile `örnekleme oranı`, tıp dışı `tedavi grubu`, p değerli `önemli`) hafif düzeyde de düzeltmek; statüyü ve atfı korumak |
 | `anlam-kalkisi-korunur` | Aynı sözcüklerin doğru kullanımını (`yöntem önermek`, `Tablo 2'de yer almak`, klinik `tedavi grubu`, `kontrol edildiğinde`, `tartışılmıştır`) kalkı sanmamak (yanlış pozitif) |
@@ -162,7 +179,22 @@ Korunur tarafı ayrıca `iyi-yazilmis-metin-korunur` taşır: okurun da tarafı 
 | `edilgen-korunur` | Aktörü adlandırmayan yöntem paragrafında edilgen çatıyı korumak, aktör uydurmamak |
 | `edilgen-etkene` | Aktörü açık olan "tarafından" zincirini etkene çevirmek |
 | `bilinmeyen-aktor` | Belirsiz aktörü tek özneye çözmemek |
+| `ettirgen-aktor-kaymasi-tuzagi` | Hafif fiil katmanını çözerken ettirgen eki düşürmemek (`boyatmıştır`, `boyadı` değil), adlandırılmamış ettireni uydurmamak, aracıyı tek özne yapmamak; deterministik denetim ettirgen kaybını yakalamaz, hakem okur |
+| `yaklasiklik-ve-istatistik-silme-tuzagi` | Resmî dolguyu çözerken `ortalama`, `en yüksek` ve `yaklaşık`ı korumak, değerlendirilen kullanıcı sayısını ölçüme çevirmemek; `eval-runner.py` bu üç işaretin kaybını değişmez olarak yakalar |
+| `yaklasiklik-ve-istatistik-korunur` | Medyan ile ortalamayı, üst sınırı ve `yaklaşık` ile `tahmin edildi`nin birlikte kurduğu tahmin statüsünü korumak; çekinceyi gereksiz saymamak (yanlış pozitif) |
+| `soru-eki-odak-kaymasi-tuzagi` | Resmî dolguyu çözerken soru ekini bağlandığı ögede tutmak (`Cuma günü mü`); soruyu teslimin kendisine taşımamak, `-mıştır` kaydını ve olumsuzluğu korumak |
+| `soru-eki-ve-acik-soru-korunur` | Cevabı metinde olmayan seçenekli soruyu, `belirtilmemiş` kanıtsallığını ve `bilinmiyor` belirsizliğini korumak; açık soruyu retorik soru sanmamak (yanlış pozitif) |
+| `ettirgen-ve-donuslu-cati-korunur` | Ettirgeni, ettireni adlandırılmamış edilgen ettirgeni ve dönüşlü ya da kendiliğinden olayı (`kendini sıfırlar`, `kendiliğinden açılır`) korumak; `tarafından` ya da aktör eklememek |
 | `aktarim-olgu-olmaz` | İki ayrı kaynağa atıflı iddiaları atıflı tutmak, ölçümü olgu olarak bırakmak |
+| `mis-dolaylilik-tuzagi` | Dolguyu silerken duyum bildiren `-mış`'ı `-dı`'ya ya da `-mıştır`'a çevirmemek, kaynağı belirtilmemiş duyuma aktör eklememek; resmî `-mıştır` kaydını yalın geçmişe sadeleştirmek |
+| `olumsuz-niceleyici-kapsami-tuzagi` | Dolguyu silerken kısmi olumsuzluğu (`her test geçmedi`) tümele (`hiçbir test`) çevirmemek, olumsuz uyum ögesi ya da tümel niceleyici eklememek, `yalnızca`yı bağlandığı ögede tutmak |
+| `olumsuzluk-ve-kapsam-korunur` | Çift olumsuzluğu, kısmi olumsuzluğu, odak parçacığını, olumlu yüklemli `ne ... ne`yi ve retorik soruyu korumak |
+| `olcumlu-vurgulayici-ozet-korunur` | Ölçüm ve testle desteklenen `belirgin biçimde`, `açıkça` vurgulayıcılarını Türkçe özette korumak; güçlü iddiayı kapsamında, olumsuz bulguyu `fark bulunmadı` düzeyinde tutmak |
+| `ozet-amac-hamlesi-korunur` | Türkçe makale özetinde `Bu çalışmada ... incelenmektedir` amaç hamlesini, geçmiş zamanlı edilgen yöntem ve bulgu cümlelerini ve öneriyi korumak; korelasyonu nedenselliğe, öneriyi zorunluluğa çevirmemek |
+| `inceleme-olumsuz-degerlendirme-korunur` | (kenar tür) Kitap incelemesindeki olumsuz değerlendirmeyi gücüyle, övgüyü ve tanıtım → değerlendirme sırasını korumak; eleştiriyi yumuşatmamak, övgüyle sarmamak, kaynakta olmayan eleştiri eklememek |
+| `resmi-sikayet-kibarlik-korunur` | Resmî şikâyet ve ricada hitabı, kalıp kapanışı, çekinceli dolaylı ricayı ve kişisiz edilgeni kibarlık stratejisi olarak korumak; ricayı emre, şikâyeti suçlamaya çevirmemek |
+| `odak-yuklem-oncesi-alan-korunur` | Yüklem öncesi alanın başındaki odağı (`yalnızca ikinci ekip`) "odak yüklemin hemen önündedir" diye taşımamak; zarf-fiil öbeğini, `ise` karşıtsal konusunu ve `-mişti` ek ortaklığını korumak |
+| `dogrudan-dolayli-kanitsallik-korunur` | Resmî `-mıştır`, doğrudan `-dı` ve `aktardığına göre` ile birlikte gelen duyum `-mış`'ı aynı paragrafta korumak |
 | `olcum-ile-cikarim` | Ölçüm ile çıkarımı ayırmak; çıkarımı nedensel olguya çevirmemek |
 | `cekince-korunur` | Kanıt düzeyi taşıyan çekince ve kapsam sınırını korumak |
 | `kiplik-yigini` | Aynı şeyi söyleyen üç kiplik işaretini teke indirmek; atıf ile olasılığı birlikte korumak |
@@ -228,6 +260,8 @@ Korunur tarafı ayrıca `iyi-yazilmis-metin-korunur` taşır: okurun da tarafı 
 
 ## Hakem ölçütleri
 
+Model hakeminin dil bilgisi ve yazım yargısı deterministik denetimin yerine geçmez: Türkçe yazı puanlamada dil modeli toplam puanda insana yaklaşır, dil kullanımı ve yazım alt ölçeklerinde tutarlılığı orta ile zayıf arasındadır (Aydın ve ark. 2025; Gülden, Bilge ve Kanık Uysal 2026; `references/turkce-dil-literaturu.md` › Dil modelleri ve yapay zekâ Türkçesi).
+
 İnsan veya model hakemi her çıktıda şu soruları ayrıca sorar:
 
 1. **Sıfır bilgi cümlesi:** Çıktıda, silindiğinde hiçbir önerme, ilişki, kronoloji, yorum veya yazar tavrı kaybolmayacak ve önceki bilgiyi sentezlemeyen cümle kaldı mı? Yeni önerme eklemeyen ama birden çok bulguyu tek karar cümlesinde toplayan ya da okurun çıkarım yükünü azaltan cümle yanlışlıkla silinmiş mi?
@@ -259,7 +293,15 @@ Bir model çıktısını kaynakta açıkça korunan değişmezler bakımından d
 python scripts/eval-runner.py evals/teknik-gosterim-korunur.md outputs/teknik-gosterim-korunur.txt
 ```
 
-Çalıştırıcı sayı, tarih, URL, kod, dipnot, kapsam belirleyicisi, teknik ad, sembol, denklem numarası ve ölçüm kayıplarını yakalar. Birebir çıktı karşılaştırması yapmaz. Akıcılık, ton, gönderge yorumu ve genel anlam uyumu elle veya model hakemiyle değerlendirilmelidir.
+Çalıştırıcı sayı, tarih, URL, kod, dipnot, kapsam belirleyicisi, teknik ad, sembol, denklem numarası ve ölçüm kayıplarını yakalar. Kaynaktaki çekimli `-mIş` (`ulaşmış`) çıktıda `-DI`'ya (`ulaştı`) ya da `-mIştIr`'a (`ulaşmıştır`), çekimli `-DI` `-mIş`'a dönmüşse kanıtsallık kayması olarak raporlar (`references/kanit-ve-kesinlik.md` › Kanıtsallık eki); resmî `-mIştIr`'dan `-DI`'ya sadeleşme ve virgülle sıralanan ortaç zinciri (`doldurulmuş, ... yayımlanmış olan`) kayma sayılmaz. Gerekçeli istisna `## Serbest eklemeler` altında `kanitsallik` ailesiyle yazılır. Birebir çıktı karşılaştırması yapmaz. Akıcılık, ton, gönderge yorumu ve genel anlam uyumu elle veya model hakemiyle değerlendirilmelidir. Kapsam ve kesinlik işaretleri sözcük başında aranır: `toplandı` `plan`, `birden fazla` `en fazla` değişmezi kurmaz.
+
+Çalıştırıcının yakalama oranı gold'lara bilinen hata eklenerek ölçülür:
+
+```bash
+python scripts/mutation-profile.py --examples 3
+```
+
+Son ölçüm (219 vaka): kapsam sözcüğü silme 71 vakada %99, pekiştirici ekleme 193 vakada %98, çekince ekleme 113 vakada %96, nedensellik bağı ekleme 193 vakada %93, sayı silme 180 vakada %86, çekimli `-mIş` → `-DI` 14 vakada %57 yakalandı. Kaçanlar okundu: ekleme kaçaklarının çoğunda kaynak aynı aileden işaret taşır (aile içi dönüşüm bilerek ekleme sayılmaz); `-mIş` kaçaklarının hepsi kanıtsal olmayan ek ortaklığıdır (`uygulanmış, ... -tır`). Gerçek sınır sayı ve kapsam sözcüğünün varlık denetimidir: iki kez geçen sayıdan ya da `ortalama`dan biri silinirse yakalanmaz; sayım tabanlı denetim meşru tekrar silmeyi de hata sayacağı için kurulmadı.
 
 ### Stil denetimi
 
@@ -281,10 +323,10 @@ Söylem ölçüleri de yalnızca inceleme içindir: çekince (`olabilir`, `düş
 
 `evals/outputs/<vaka>.txt` dosyaları referans düzenlemelerdir: tek doğru çıktı değil, skill'in belgelenen davranışını sessizce kaybetmemek için sabitlenmiş örneklerdir. Yapısı korunması gereken vakalarda kayıtlı çıktı kaynağın kendisidir. `python scripts/eval-suite.py` her kayıtlı çıktı için üç deterministik denetim yapar ve CI'da çalışır:
 
-1. `eval-runner.py` ile kaynak değişmezleri (sayı, tarih, kod, kapsam belirleyicisi); başlık satırlarındaki noktalı bölüm numaraları (`2.3`, `3.1.1`) olgu sayılmaz. Aynı betik çıktının kaynakta olmayan epistemik işaret **ekleyip eklemediğini** de denetler: olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk ve gelecek ailelerinde sayı artarsa vaka başarısız olur. Aile içi dönüşüm (`Sonuç olarak` → `Dolayısıyla`, `Bu nedenle` → `-dığından`) ekleme sayılmaz. Gerekçeli ekleme vakanın `## Serbest eklemeler` bölümüne `- <aile> — <gerekçe>` satırıyla yazılır (`- gelecek — kaynak planı geniş zamanla kodluyor`).
+1. `eval-runner.py` ile kaynak değişmezleri (sayı, tarih, kod, kapsam belirleyicisi); başlık satırlarındaki noktalı bölüm numaraları (`2.3`, `3.1.1`) olgu sayılmaz. Aynı betik çıktının kaynakta olmayan epistemik işaret **ekleyip eklemediğini** de denetler: olumsuzluk, çekince, nedensellik, pekiştirici, karşılaştırma, tümel nicelik, zorunluluk, gelecek ve olumsuz değerlendirme ailelerinde sayı artarsa vaka başarısız olur. Aile içi dönüşüm (`Sonuç olarak` → `Dolayısıyla`, `Bu nedenle` → `-dığından`) ekleme sayılmaz. Gerekçeli ekleme vakanın `## Serbest eklemeler` bölümüne `- <aile> — <gerekçe>` satırıyla yazılır (`- gelecek — kaynak planı geniş zamanla kodluyor`).
 2. `style-lint.py` ile kaynakta olmayan sert kalıp eklenip eklenmediği; bağlamsal aileler uyarı olarak listelenir.
 3. Vakanın isteğe bağlı `## Serbest değişmezler` bölümü: kaynakta geçen ama dolgu olduğu için silinmesi beklenen kapsam ya da kesinlik işaretini (`- bazı — "bazı sınırlılıkları bulunmaktadır" adlandırılmamış denge dolgusudur`) değişmez denetiminden muaf tutar; her muafiyet gerekçeli olmalıdır ve yalnızca `kapsam` ile `kesinlik` gruplarına uygulanır.
-4. Vakanın isteğe bağlı `## Yapısal beklenti` bölümündeki ölçüler: `- başlık: <= 1`, `- en derin düzey: <= 3`, `- düzyazı paragrafı: 4`, `- liste ögesi: 0`, `- çapraz gönderme: 0`, `- duyuru/sarmalayıcı: 0`, `- sert işaret: 0`, `- cümle: 4` gibi satırlar (`=`, `<=`, `>=`, `<`, `>`). Çeviri kokusu ölçüleri de kullanılabilir: `- sahip olmak: 0`, `- varlık kalıbı: <= 1`, `- çerçeve yığını: 0`, `- olan zinciri: 0`, `- tekrarlanan cümle başlangıcı: 0`, `- ve zinciri: 0`, `- fiilimsi yığını: 0`, `- iyelik zinciri: 0`, `- bağlaçla başlayan cümle: <= 1`, `- bir / 100 sözcük: <= 6`. Söylem ölçüleri: `- kiplik yığını: 0`, `- pekiştirici: 0`, `- pekiştirici çatışması: 0`, `- aktarım sonrası sonuç: 0`, `- kip nöbetleşmesi: 0`, `- edilgen adlaştırma: 0`, `- hafif fiil: 0`, `- ilgeç yoğunluğu: 0`, `- eş anlamlı kayması: 0`, `- konu sıfırlama: 0`, `- parantez yükü: 0`, `- kayıt kayması: 0`.
+4. Vakanın isteğe bağlı `## Yapısal beklenti` bölümündeki ölçüler: `- başlık: <= 1`, `- en derin düzey: <= 3`, `- düzyazı paragrafı: 4`, `- liste ögesi: 0`, `- çapraz gönderme: 0`, `- duyuru/sarmalayıcı: 0`, `- sert işaret: 0`, `- cümle: 4` gibi satırlar (`=`, `<=`, `>=`, `<`, `>`). Çeviri kokusu ölçüleri de kullanılabilir: `- sahip olmak: 0`, `- varlık kalıbı: <= 1`, `- çerçeve yığını: 0`, `- olan zinciri: 0`, `- tekrarlanan cümle başlangıcı: 0`, `- ve zinciri: 0`, `- fiilimsi yığını: 0`, `- iyelik zinciri: 0`, `- bağlaçla başlayan cümle: <= 1`, `- bir / 100 sözcük: <= 6`. Söylem ölçüleri: `- kiplik yığını: 0`, `- pekiştirici: 0`, `- pekiştirici çatışması: 0`, `- aktarım sonrası sonuç: 0`, `- kip nöbetleşmesi: 0`, `- edilgen adlaştırma: 0`, `- hafif fiil: 0`, `- ilgeç yoğunluğu: 0`, `- eş anlamlı kayması: 0`, `- konu sıfırlama: 0`, `- parantez yükü: 0`, `- kayıt kayması: 0`, `- noktalı virgül: <= 1` (ondalık listedeki ayırıcı sayılmaz).
 
 Her vakanın kayıtlı bir referans çıktısı vardır ve CI `--require-all` ile çalıştığından yeni vaka çıktısız eklenemez; yapı korunacaksa kaynağı olduğu gibi kaydedin. Kayıtlı çıktı ("gold") bir sözleşmedir: skill'in kendi kurallarını ihlal eden bir gold yanlış davranışı kilitler. Bu yüzden her gold, kaydedilmeden önce kaynağına karşı şu üç soruyla okunur: hangi iddia hangi epistemik statüde (gözlem, ölçüm, aktarım, çıkarım, öneri, karar) ve çıktıda aynı statüde mi; kaynağa olumsuz iddia ya da yeni çekince eklenmiş mi; daha doğrudan bir fiil nedensellik kurmuş mu? Rastgele atanmamış iki grup arasındaki farkı "etkiler" ya da "azaltır" diye yazan, "karar sürecine girdi"yi "henüz karar vermedi"ye çeviren ya da şişmiş iddiayı indirirken "mekanizma ortaya konmamıştır" ekleyen gold bu denetimde düzeltilmiştir. Üçü de sayıları koruduğu için eski deterministik denetimden geçmişti; eklenen işaret denetimi üçünü de yakalar. Anlam yönü (`operatörün görünürlüğünü artırdı`), yeni eşdizim ve derece zayıflaması sayımla yakalanmaz; hakem ve `SKILL.md` › **Yerine yazdığın ifade yeni bir iddiadır** kuralı bunlar içindir. `python scripts/eval-suite.py --export-judge-prompts build/judge` her vaka için kaynak, talep, kayıtlı çıktı ve ölçütleri içeren bir model hakem istemi üretir.
 
@@ -305,7 +347,7 @@ Bant oranının artması büyük ölçüde parçalanmış kısa cümlelerin birl
 
 ### Kör A/B ölçümü
 
-Kayıtlı çıktılar fixture'ı sınar, skill'i değil. Bir skill değişikliğinin model çıktısını değiştirip değiştirmediği kör A/B ile ölçülür. Her skill sürümü, başka hiçbir dosyaya bakmayan bağımsız model örneklerine yalnızca görev dosyasıyla verilir; örnekler hangi sürümü okuduklarını bilmez. Her örnek `=== T1 ===` blokları olan tek bir dosya yazar; dosya adının sonu kol harfi ve örnek numarasıdır (`hk_E3.md`). Puanlama:
+Kayıtlı çıktılar fixture'ı sınar, skill'i değil. Türkçe vakalarda biçim bilgisi karmaşıklığı (ek sayısı, biçimbirim sınırı) model farkını tek başına açıklayabilir (Başar ve Bisazza 2026); kollar karşılaştırılırken görevlerin ek yükü dengelenir. Bir skill değişikliğinin model çıktısını değiştirip değiştirmediği kör A/B ile ölçülür. Her skill sürümü, başka hiçbir dosyaya bakmayan bağımsız model örneklerine yalnızca görev dosyasıyla verilir; örnekler hangi sürümü okuduklarını bilmez. Her örnek `=== T1 ===` blokları olan tek bir dosya yazar; dosya adının sonu kol harfi ve örnek numarasıdır (`hk_E3.md`). Puanlama:
 
 ```bash
 python scripts/ab-score.py <çıktı-klasörü> --tasks scripts/ab-gorevler/teshis.md --glob "hk_*.md"

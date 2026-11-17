@@ -1,0 +1,1 @@
+Proje ekibi ölçümleri bağımsız bir laboratuvara yaptırdı. Sonuçlar ikinci bir uzmana da kontrol ettirildi. Sensör her açılışta kendini sıfırlar. Kapak iç sıcaklık 60 °C'yi aşınca kendiliğinden açılır.

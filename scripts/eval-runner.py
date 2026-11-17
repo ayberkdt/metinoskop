@@ -47,6 +47,23 @@ MARKER_GROUPS = (
     ("kapsam", "en fazla", ("en fazla",)),
     ("kapsam", "bazı", ("bazı", "bir kısm")),
     ("kapsam", "çoğu", ("çoğu", "büyük bölümü")),
+    # Yaklaşıklık kodlanmış anlamdır; `yaklaşık %40` → `%40` sayıyı korur ama tahmini ölçüme çevirir
+    # (Tolkun 2023; Ergene 2018). Belirsiz niceleyici silinince kapsam değişir (Akşehirli 2025).
+    ("kapsam", "yaklaşık", ("yaklaşık", "civarında", "aşağı yukarı")),
+    ("kapsam", "civarında", ("yaklaşık", "civarında", "aşağı yukarı")),
+    ("kapsam", "birkaç", ("birkaç",)),
+    ("kapsam", "birçok", ("birçok", "pek çok", "çok sayıda")),
+    # İstatistik niteleyicisi sayının ne olduğunu söyler: `ortalama 40 ms` → `40 ms` tek ölçüm gibi okunur.
+    # Sözcük başı eşleşmesi `gelen çok`, `gözden geçirilmesi` içindeki sahte `en çok`, `en geç`i dışarıda bırakır.
+    ("kapsam", "en çok", ("en çok", "en fazla")),
+    ("kapsam", "en yüksek", ("en yüksek",)),
+    ("kapsam", "en düşük", ("en düşük",)),
+    ("kapsam", "en geç", ("en geç",)),
+    ("kapsam", "ortalama", ("ortalama",)),
+    ("kapsam", "medyan", ("medyan", "ortanca")),
+    ("kapsam", "sırasıyla", ("sırasıyla",)),
+    ("kapsam", "neredeyse", ("neredeyse", "hemen hemen")),
+    ("kapsam", "hemen hemen", ("neredeyse", "hemen hemen")),
     ("kapsam", "tümü", ("tümü", "tamamı")),
     ("kapsam", "hariç", ("hariç", "dışında")),
     ("kapsam", "henüz", ("henüz",)),
@@ -72,14 +89,22 @@ MARKER_GROUPS = (
 # "Sonuç olarak" into "-dığından" or "Bu nedenle" is not an addition.
 ADDED_MARKER_FAMILIES = (
     ("olumsuzluk", "olumsuz iddia",
-     r"\bdeğil\w*|\byok(?:tur|tu|muş)?\b|\bhiç\w*|\b\w{2,}m[ae](?:d[ıi](?!r)\w*|m[ıi]ş\w*|z(?:lar|ler|dı|di)?\b"
+     # Olumsuz uyum ögeleri (`asla`, `katiyen`, `kimse`) yeni olumsuzluk katmaz ama önermeyi güçlendirir
+     # ve tümel okumayı kurar (Görgülü 2020; Kamali ve Zeijlstra 2024): `gelmedi` → `kimse gelmedi` eklemedir.
+     # `-mAdAn` ve `-mAksIzIn` olumsuz zarf-fiildir (`kaydetmeden çıktı`); `-mAdAn önce` sıra bildirir, sayılmaz (Zengin 2022).
+     r"\b\w{2,}m[ae]d[ae]n\b(?!\s+önce)|\b\w{2,}m[ae]ks[ıi]z[ıi]n\b|"
+     r"\bdeğil\w*|\byok(?:tur|tu|muş)?\b|\bhiç\w*|\basla\b|\bkatiyen\b|\bkimse\w*|\b\w{2,}m[ae](?:d[ıi](?!r)\w*|m[ıi]ş\w*|z(?:lar|ler|dı|di)?\b"
      r"|makta\w*|mekte\w*|yacak\w*|yecek\w*|yabil\w*|yebil\w*)|\b\w{2,}m[ıiuü]yor\w*"),
     ("cekince", "çekince ya da olasılık",
-     r"\bolabil\w*|\bolası\b|\bmuhtemel\w*|\bbelki\b|\bgörün(?:mektedir|üyor|ür)\b|\bdüşündür\w*|\bsanıl\w*"
-     r"|\btahmin edil\w*|\bişaret e\w*|\bsanırım\b|\bgaliba\b|\b\w+[ae]bil(?:ir|ece[kğ]|mekte)\w*"),
+     r"\bolabil\w*|\bolası(?:dır|lıkla)?\b|\bmuhtemel\w*|\bbelki\b|\bgörün(?:mektedir|üyor|ür)\b|\bdüşündür\w*|\bsanıl\w*"
+     r"|\btahmin edil\w*|\bişaret e\w*|\bsanırım\b|\bgaliba\b|\b\w+[ae]bil(?:ir|ece[kğ]|mekte)\w*"
+     # Kaynakta olmayan yaklaşıklık ölçümü tahmine indirir (Tolkun 2023; Ergene 2018).
+     r"|\byaklaşık\b|\bcivarında\b|\başağı yukarı\b"),
     ("nedensellik", "nedensellik ya da sonuç bağı",
      r"\bneden ol\w*|\byol aç\w*|\betkile\w*|\bsayesinde|\bbu sayede|\byüzünden|\bdolayı\w*|\bnedeniyle"
-     r"|\bbu nedenle|\bbu yüzden|\bsonuç olarak|\bsonucunda|\bkaynaklan\w*|\b\w+[dt][ıiuü]ğ[ıiuü]ndan\b"),
+     r"|\bbu nedenle|\bbu yüzden|\bsonuç olarak|\bsonucunda|\bkaynaklan\w*|\b\w+[dt][ıiuü](?:ğ[ıiuü]|kl[ae]r[ıi])nd[ae]n\b"
+     # "-dığı için" neden bildirir; "-mek için" amaçtır ve sayılmaz.
+     r"|\b\w+[dt][ıiuü](?:ğ[ıiuü]|kl[ae]r[ıi]) için\b"),
     ("pekistirici", "pekiştirici",
      # "kesin bir bilgim yok", "kesin değil" çekincedir, pekiştirici değil.
      r"\baçıkça\b|\bkesin(?:likle)?\b(?!(?:\s+\S+){0,3}?\s+(?:değil|yok))|\bkanıtla\w*|\btartışmasız|\bkuşkusuz|\bşüphesiz"),
@@ -87,9 +112,15 @@ ADDED_MARKER_FAMILIES = (
      # "en son" sıra bildirir (`en son hata dağılımları değerlendirildi`), üstünlük değil.
      r"\bdaha\b|\ben\b(?!\s+son\b)|\bkıyasla|\boranla|\bzamankinden"),
     ("tumel", "tümel nicelik",
-     r"\btüm\w*|\bbütün\w*|\bher\b|\bhepsi\w*|\btamamı\w*|\btamamen|\bdaima"),
+     # `her öğrenci gelmedi` kısmi, `hiçbir öğrenci gelmedi` tümel olumsuzluktur (Kamali ve Zeijlstra 2024);
+     # `herkes`, `hep` de tümel niceliktir.
+     r"\btüm\w*|\bbütün\w*|\bher\b|\bherkes\w*|\bhep\b|\bhepsi\w*|\btamamı\w*|\btamamen|\bdaima"),
     ("zorunluluk", "zorunluluk",
      r"\b\w+m[ae]l[ıi](?:d[ıi]r|y[ıi]z)?(?=\s*[.!?;:,]|\s*$)|\b\w+m[ae]l[ıi]d[ıi]r\w*|\bgerek\w*|\bzorunlu\w*"),
+    # Olumsuz bulaşmalı birimler örtük değerlendirme ekler (Çalışkan 2014; Selvi 2022): nötr kaynağı
+    # `karşı karşıya kaldı`, `-dan ibaretti`, `ne yazık ki` ile yeniden yazmak kaynakta olmayan yargıdır.
+    ("degerlendirme", "olumsuz değerlendirme ya da bulaşma",
+     r"\bkarşı karşıya\b|\b\w+[dt][ae]n ibaret\w*|\baksettir\w*|\bne yazık ki\b|\bmaalesef\b|\bne var ki\b"),
     ("gelecek", "gelecek ya da taahhüt",
      r"\b\w+[ae]c[ae]k(?:t[ıi]r|lar|ler)?(?=\s*[.!?;:,(]|\s*$)"),
 )
@@ -165,7 +196,7 @@ def extract_invariants(source: str) -> list[Invariant]:
 
     folded_source = source.casefold()
     for category, trigger, alternatives in MARKER_GROUPS:
-        if trigger.casefold() in folded_source:
+        if word_start_in(trigger.casefold(), folded_source):
             items.append(
                 Invariant(category, trigger, tuple(alternatives), case_sensitive=False)
             )
@@ -222,9 +253,14 @@ def free_additions(case_text: str) -> set[str]:
     return allowed
 
 
+BITISIK_NICELIK_RE = re.compile(r"\b([Hh]er|[Bb]ir)(şey)")
+
+
 def added_markers(source: str, output: str, allowed: set[str] = frozenset()) -> list[dict[str, object]]:
     # Soru cümlesi önerme kurmaz: kavramsal girişin `... verilebilir mi?` sorusu çekince eklemez.
     asserted = re.sub(r"[^.!?\n]*\?", "", output)
+    # Bitişik yazım yanlışının düzeltilmesi (`herşey` → `her şey`) kaynaktaki niceliği ayırır, eklemez.
+    source = BITISIK_NICELIK_RE.sub(r"\1 \2", source)
     before, after = marker_hits(source), marker_hits(asserted)
     added: list[dict[str, object]] = []
     for key, label, _ in ADDED_MARKER_RE:
@@ -238,6 +274,47 @@ def added_markers(source: str, output: str, allowed: set[str] = frozenset()) -> 
             added.append({"family": key, "label": label, "count": extra,
                           "source": len(before[key]), "output": len(after[key]), "examples": new_forms[:3]})
     return added
+
+
+# Kanıtsallık: `-mIş` duyum ya da çıkarımla, `-DI` doğrudan bilinen geçmişi bildirir (Aksu-Koç ve Slobin 1986;
+# Kuram 2024). Yalnızca noktalama önündeki çekimli biçim sayılır; ortaç (`belirlenmiş kurallar`) dışarıda kalır.
+EVIDENTIAL_MIS_RE = re.compile(r"\b(\w{3,}?)m[ıiuü]ş(?:l[ae]r)?(?=\s*(?:[.;,!?]|$))", re.MULTILINE)
+EVIDENTIAL_DI_RE = re.compile(r"\b(\w{3,}?)[dt][ıiuü](?:l[ae]r)?(?=\s*(?:[.;,!?]|$))", re.MULTILINE)
+
+
+def evidential_shifts(source: str, output: str) -> list[dict[str, str]]:
+    """Kaynaktaki çekimli `-mIş`'ın çıktıda `-DI`'ya ya da `-mIştIr`'a, `-DI`'nın `-mIş`'a dönüştüğü yüklemler.
+    Resmî `-mIştIr` (`tamamlanmıştır`) `-mIş` sayılmaz; ondan `-DI`'ya sadeleşme kayma değildir."""
+    src, out = tr_fold(source), tr_fold(output)
+    shifts: list[dict[str, str]] = []
+    finite: list[str] = []
+    for sentence in re.split(r"(?<=[.!?])\s+|\n+", src):
+        for match in EVIDENTIAL_MIS_RE.finditer(sentence):
+            # Virgülle sıralanan ortaç zinciri (`doldurulmuş, ... yayımlanmış olan bir veri kümesi`) çekimli değildir.
+            rest = sentence[match.end():]
+            if rest.lstrip().startswith(",") and re.search(r"\bolan\b", rest):
+                continue
+            finite.append(match.group(1))
+    for stem in dict.fromkeys(finite):
+        stem_re = re.escape(stem)
+        if re.search(rf"\b{stem_re}m[ıiuü]ş(?:l[ae]r)?\b", out):
+            continue
+        hit = re.search(rf"\b{stem_re}(?:[dt][ıiuü](?:l[ae]r)?|m[ıiuü]şt[ıiuü]r(?:l[ae]r)?)\b", out)
+        if hit and not re.search(rf"\b{re.escape(hit.group(0))}\b", src):
+            shifts.append({"from": f"{stem}-mIş", "to": hit.group(0)})
+    for stem in dict.fromkeys(EVIDENTIAL_DI_RE.findall(src)):
+        stem_re = re.escape(stem)
+        hit = re.search(rf"\b{stem_re}m[ıiuü]ş(?:l[ae]r)?(?=\s*(?:[.;,!?]|$))", out, re.MULTILINE)
+        if hit and not re.search(rf"\b{stem_re}m[ıiuü]ş", src):
+            shifts.append({"from": f"{stem}-DI", "to": hit.group(0)})
+    return shifts
+
+
+def word_start_in(value: str, text: str) -> bool:
+    """Kapsam ve kesinlik işaretini yalnız sözcük başında arar. Sağ taraf açıktır: `gözlen`
+    kökü `gözlendi`yi, `olabil` kökü `olabileceği`ni yakalar. Sol sınır olmadan `en geç`
+    `gözden geçirilmesi`nde, `en fazla` `verilen fazla`da eşleşir."""
+    return re.search(r"(?<!\w)" + re.escape(value), text) is not None
 
 
 def evaluate(case_text: str, output_text: str) -> dict[str, object]:
@@ -258,7 +335,11 @@ def evaluate(case_text: str, output_text: str) -> dict[str, object]:
             if item.case_sensitive
             else tuple(value.casefold() for value in item.alternatives)
         )
-        if not any(value in haystack for value in alternatives):
+        if item.case_sensitive:
+            found = any(value in haystack for value in alternatives)
+        else:
+            found = any(word_start_in(value, haystack) for value in alternatives)
+        if not found:
             missing.append(asdict(item))
 
     # Talepte verilen bilgi kaynağın parçasıdır (SKILL.md › Kural önceliği): "Kasım'da başlamayacak" diyen
@@ -269,13 +350,16 @@ def evaluate(case_text: str, output_text: str) -> dict[str, object]:
     except ValueError:
         request = ""
     body = re.split(r"(?m)^---\s*$", output)[0]
-    added = added_markers(source + "\n" + request, body, free_additions(case_text))
+    allowed = free_additions(case_text)
+    added = added_markers(source + "\n" + request, body, allowed)
+    shifts = [] if "kanitsallik" in allowed else evidential_shifts(source, body)
 
     return {
-        "passed": not missing and not added,
+        "passed": not missing and not added and not shifts,
         "checked": len(invariants),
         "missing": missing,
         "added": added,
+        "evidential": shifts,
     }
 
 
@@ -288,6 +372,8 @@ def print_report(case_path: Path, output_path: Path, report: dict[str, object]) 
         print(f"- Eksik {item['category']}: {alternatives}")
     for item in report["added"]:
         print(f"- Eklenen {item['label']}: {item['source']} → {item['output']} «{', '.join(item['examples'])}»")
+    for item in report.get("evidential", []):
+        print(f"- Kanıtsallık kayması: {item['from']} → {item['to']}")
     if report["added"]:
         print("Eklenen işaretin kaynakta dayanağı yoksa kaldır; gerekçeliyse vakaya `## Serbest eklemeler` yaz.")
     print("Not: Akıcılık, ton ve genel anlam uyumu insan veya model hakemi gerektirir.")
@@ -362,6 +448,25 @@ def self_test() -> None:
         ),
     )
 
+    # Yaklaşıklık değişmezi: `yaklaşık` silinince sayı korunsa da tahmin ölçüme döner.
+    approx_case = root / "evals/bilincli-kayit-degisimi-korunur.md"
+    approx_source = section(approx_case.read_text(encoding="utf-8"), "Kaynak")
+    scenarios += ((approx_case, approx_source, re.sub(r"\byaklaşık\s+", "", approx_source)),)
+    # İstatistik niteleyicisi: `ortalama` silinince grup ortalaması tek ölçüm gibi okunur.
+    mean_case = root / "evals/akademik-metin-korunur.md"
+    mean_source = section(mean_case.read_text(encoding="utf-8"), "Kaynak")
+    scenarios += ((mean_case, mean_source, re.sub(r"\bortalama\s+", "", mean_source)),)
+
+    # Sözcük başı eşleşmesi: `toplandı` ve `hesaplanır` plan, `birden fazla` üst sınır değildir.
+    for text, trigger in (("Veriler toplandı ve ortalaması hesaplandı.", "plan"),
+                          ("Birden fazla ölçüm alındı.", "en fazla"),
+                          ("Rapor gözden geçirildi; gelen çok sayıda yorum işlendi.", "en geç"),
+                          ("Gelen çok sayıda başvuru incelendi.", "en çok")):
+        if any(item.value == trigger for item in extract_invariants(text)):
+            raise SystemExit(f"Öz sınama: sözcük içi eşleşme değişmez üretti: {trigger}")
+    if not any(item.value == "plan" for item in extract_invariants("Pilot planlandı.")):
+        raise SystemExit("Öz sınama: sözcük başı tetikleyici kayboldu: plan")
+
     for case_path, passing_output, failing_output in scenarios:
         case_text = case_path.read_text(encoding="utf-8")
         if not evaluate(case_text, passing_output)["passed"]:
@@ -382,6 +487,18 @@ def self_test() -> None:
     )
     # Soru muafiyeti önermeyi kapsamaz: sorudan sonra gelen çekince yine sayılır.
     drift += (("Sonuç saklanır.", "Saklanabilir mi? Sonuç saklanabilir.", {"cekince"}),)
+    drift += (("Ölçüm durduruldu.", "Sıcaklık arttığı için ölçüm durduruldu.", {"nedensellik"}),
+              ("Fark mevsimseldir.", "Fark büyük olasılıkla mevsimseldir.", {"cekince"}),
+              ("Kurulum 40 saniye sürdü.", "Kurulum yaklaşık 40 saniye sürdü.", {"cekince"}))
+    drift += (("Ölçüm iki kez tekrarlandı.", "Ölçüm ne yazık ki iki kez tekrarlandı.", {"degerlendirme"}),
+              ("Ekipte üç teknisyen vardı.", "Ekip üç teknisyenden ibaretti.", {"degerlendirme"}))
+    # Olumsuz uyum ve tümel nicelik: `her ... -mA` kısmi, `hiçbir ... -mA` tümel olumsuzluktur;
+    # `kimse`, `asla`, `herkes` eklemek önermeyi güçlendirir (Kamali ve Zeijlstra 2024; Görgülü 2020).
+    drift += (("Toplantıya üç kişi gelmedi.", "Toplantıya kimse gelmedi.", {"olumsuzluk"}),
+              ("Sistem bu hatayı vermedi.", "Sistem bu hatayı asla vermedi.", {"olumsuzluk"}),
+              ("Katılımcılar formu doldurdu.", "Herkes formu doldurdu.", {"tumel"}),
+              ("Ölçüm zaman zaman sapıyor.", "Ölçüm hep sapıyor.", {"tumel"}),
+              ("Dosyayı kaydedip çıktı.", "Dosyayı kaydetmeden çıktı.", {"olumsuzluk"}))
     for source, output, expected in drift:
         found = {item["family"] for item in added_markers(source, output)}
         if not expected <= found:
@@ -393,6 +510,17 @@ def self_test() -> None:
         ("Doğrulama kümesi yüksek doğruluğa sahip olan ve düşük gecikmeye sahip olan filtreyi seçti.",
          "Doğrulama kümesi yüksek doğruluklu, düşük gecikmeli filtreyi seçti."),
         ("Ölçüm `max_iter=500` ile yapılmadı mı?", "Ölçüm `max_iter=500` ile yapılmadı mı?"),
+        # Yazım düzeltmesi: `herşey` zaten `her`i taşır; ayrı yazılınca tümel nicelik eklenmez.
+        ("Taslakta herşey tamam değildi.", "Taslakta her şey tamam değildi."),
+        # Olumsuz uyum ögesi kaynakta zaten varsa biçim değişimi ekleme değildir.
+        ("Kimse itiraz etmedi.", "Kimse itiraz etmedi; toplantı sürdü."),
+        ("Herkes formu doldurdu.", "Formu herkes doldurdu."),
+        # `-mAdAn önce` sıra bildirir, olumsuzluk değildir.
+        ("Kurulumdan önce yedek alındı.", "Kurulum yapılmadan önce yedek alındı."),
+        # Kaynakta zaten bulunan olumsuz değerlendirme ekleme değildir.
+        ("Proje bütçe açığıyla karşı karşıya kaldı.", "Proje bütçe açığıyla karşı karşıya kaldı; açık 2 milyon liraydı."),
+        # "-dığı için" ile "nedeniyle" aynı ailededir; biri ötekine dönünce neden eklenmez.
+        ("Sıcaklık arttığı için ölçüm durduruldu.", "Sıcaklık artışı nedeniyle ölçüm durduruldu."),
         ("Bu bir çalışmadır.", "Bu bir çalışmadır."),
         # Yazma kipi: kaynaktaki plan duyuru kipine geçer; paranteze bitişik gelecek kipi de sayılır.
         ("Bakım 4 saat sürecek (22.00–02.00). Panel kapalı olacak.", "Bakım 22.00–02.00 arasında yapılacak. Panel kapalı olacak."),
@@ -418,6 +546,20 @@ def self_test() -> None:
     if not evaluate(hedge_case, "İyileşmenin kısmen mevsimsel olabileceğini düşünüyorum, ancak emin değilim.")["passed"]:
         raise SystemExit("Öz sınama: çekimli çekince (`olabileceğini`) kayıp sayıldı")
 
+    # Kanıtsallık: duyum `-mIş` olguya, doğrudan `-DI` duyuma dönmez; resmî `-mIştIr` sadeleşebilir.
+    for source, output, expected in (
+        ("Parti limana ulaşmış.", "Parti limana ulaştı.", True),
+        ("Parti limana ulaşmış.", "Parti limana ulaşmıştır.", True),
+        ("Sensör geçen kış donmuş, kayda geçmemiş.", "Sensör geçen kış dondu, kayda geçmedi.", True),
+        ("Ekip kabloyu değiştirdi.", "Ekip kabloyu değiştirmiş.", True),
+        ("Parti limana ulaşmış.", "Parti limana ulaşmış.", False),
+        ("Kalibrasyon tamamlanmıştır.", "Kalibrasyon tamamlandı.", False),
+        ("Belirlenmiş kurallar uygulandı.", "Belirlenen kurallar uygulandı.", False),
+        ("Sorumluya göre sensör donmuş.", "Sorumluya göre sensör donmuş; arıza kayda geçmedi.", False),
+        ("Veri kümesi, değerleri doldurulmuş, kodları yayımlanmış olan bir kümedir.", "Değerler dolduruldu; kodlar yayımlandı.", False),
+    ):
+        if bool(evidential_shifts(source, output)) is not expected:
+            raise SystemExit(f"Öz sınama: kanıtsallık kayması yanlış değerlendirildi: {source!r} -> {output!r}")
     print(f"Eval runner öz sınaması geçti ({len(scenarios)} vaka, {len(drift)} eklenen işaret senaryosu).")
 
 

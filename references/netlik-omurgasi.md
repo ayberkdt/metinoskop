@@ -32,7 +32,8 @@ Bu depoda kullanılan kural özetleri ikincil kaynaklara dayanır (Wikipedia'nı
 
 Sayısal eşikler bir şeyin **incelenmesi** gerektiğini söyler, ne yapılacağını söylemez.
 
-- **Cümle uzunluğu.** STE'nin eşikleri İngilizce sözcük sayısıyla tanımlanmıştır. Türkçede ekler ilişkiyi sözcük içinde taşıdığı için aynı içerik çoğu zaman daha az sözcükle yazılır. Bu yüzden 25 sözcüğü aşan Türkçe betimleyici cümle zaten uzundur ve incelenir. İnceleme sorusu: bu cümle bir ilişki mi taşıyor, yoksa ilgisiz önermeler mi yığılmış? Tek ilişki taşıyan uzun cümle korunur (`dogal-uzun-cumle-korunur`).
+- **Okunabilirlik formülleri ve sade dil.** Türkçe formüller aynı metne farklı düzey verebilir: 29 sağlık broşüründe Ateşman ortalaması orta güçlük, Çetinkaya ortalaması eğitsel düzey çıkmıştır (Muslu ve Yüksel 2023). Tek formül düzenleme kararını vermez. Formül cümle ve sözcük uzunluğunu ölçer, doğruluğu ölçmez: Türkçe BT raporlarını sadeleştiren dört dil modelinin Ateşman puanları ayrışmış, doğruluk ortalamaları arasında ise anlamlı fark çıkmamıştır (Çamur, Cesur ve Güneş 2024). Sade ve kolay dil kılavuzları jargonsuz, doğrudan dil önerir (Şengel ve Okyayuz 2025), ama kolay dil ayrı bir okur değişkesidir (Göktepe ve Demirkıvıran 2024): uzman okura giden bilimsel metinde terim jargon sayılmaz, metin kolay dile çevrilmez. Prospektüs ve onam formlarında da formüller aynı metne farklı sınıf düzeyi verir (Akkuş 2023; Ebem vd. 2019); dil modeli çıktısı broşürden daha okunaklı puan alırken doğruluğu modele göre değişir (Postacı ve Dal 2024; Özdemir, Botsali Özdemir ve Aktaş 2026). Sınıf düzeyi ya da "kolay" bandı düzenleme hedefi değildir; puanı yükseltmek için kapsam, çekince ya da uyarı silinmez.
+- **Cümle uzunluğu.** STE'nin eşikleri İngilizce sözcük sayısıyla tanımlanmıştır. Türkçede ekler ilişkiyi sözcük içinde taşıdığı için aynı içerik çoğu zaman daha az sözcükle yazılır. 52 Türkçe doktora tezi özetinde ortalama cümle uzunluğu 20,93 sözcüktür, özet başına ortalama 14,65 ile 30,11 sözcük arasında değişir (Arı 2025). 25 sözcüğü aşan cümle ortalamanın üstündedir ama akademik Türkçede olağan dışı değildir; eşik yalnızca incelemeyi başlatır ([Türkçe dil bilgisi ve kullanım literatürü › Metin, kayıt ve gönderge](turkce-dil-literaturu.md#metin-kayıt-ve-gönderge)). İnceleme sorusu: bu cümle bir ilişki mi taşıyor, yoksa ilgisiz önermeler mi yığılmış? Tek ilişki taşıyan uzun cümle korunur (`dogal-uzun-cumle-korunur`).
 - **Paragraf uzunluğu.** Altı cümleyi aşan paragrafta iki ayrı konu olup olmadığına bak. Tek bir düşünce hareketiyse bölme (`uzun-paragraf-korunur`).
 - **Ad öbeği.** Türkçede STE'nin "noun cluster" sorunu iyelik zinciri (`sistemin bakım sürecinin planlama aşamasının`) ve çerçeve yığını (`... kapsamında ... açısından`) olarak görünür. Üç halkayı aşan zinciri çöz.
 - **Talimat.** Talimatta bir cümle bir adımdır. Uyarı ve koşul adımın başına gelir. Sıralı adımlar numaralı listedir.
@@ -63,6 +64,8 @@ Yöntem bilgisi yöntemde toplandı; ölçüm sonucu sonuçlarda kaldı. Bölüm
 >
 > Sonra: Kalibrasyonda ölçüm sisteminin çıktısı bilinen referans değerlerle karşılaştırılır.
 
+Bu kural dardır: terimi kendisiyle ya da kendi köküyle tanımlamayı hedefler. Sözlükbilim döngüselliği eş ya da yakın anlamlı sözcükle tanımı da kapsayacak kadar geniş tutar (Güngör 2024), ama eş anlamlıyla açıklama sözlükte meşru bir tanımlama yöntemidir (Gökter Gençer ve Yavuzarslan 2020); düzenleme onu döngüsel saymaz. Döngüsel cümleyi kaldırırken kaynakta olmayan bir tanım uydurulmaz. Tanım cümlesi `X, Y'dir` biçiminde ad cümlesidir ve `-DIr` cümle türünün kurucu parçasıdır (Demir 2007); `-DIr` yığını düzeltmesi tanım cümlesine dokunmaz. Cins + ayırıcı özellik yapısında ayırıcı koşul tanımın içeriğidir: ders kitabı tanımlarında ayırıcı koşulun düşmesi tanımı bilimsel tanımla uyumsuz kılar (Yalçın Çelik ve Kılıç 2017), sadeleştirmede korunur. Tanımda tanımlanandan daha zor sözcük kullanmak da okura bilgi vermez (Altıntop 2019) ([literatür › Tanım cümlesi ve terim tanımı](turkce-dil-literaturu.md#tanım-cümlesi-ve-terim-tanımı)).
+
 **Açımlama döngüsü.** Olgu → açımlama → önem → mini sonuç dizisi tek önermeye iner (`SKILL.md` kısa örneği; eval `iddia-tekrar-dongusu`).
 
 **Korunur.** Aynı önerme yeni bir rol kazanıyorsa yinelenir: bulgularda ölçüm olarak (`hata %9'dan %4'e indi`), tartışmada yorumun dayanağı olarak (`%4'lük hata, ... için yeterli düzeydedir`). Eval: `ayni-iddia-yeni-rol-korunur`.
@@ -89,6 +92,10 @@ Karşılaştırma zemini (`eski pompaya göre`) yalnızca enerji tüketimine ba�
 
 **Korunur.** Tek ilişkiyi (koşul, neden, karşıtlık) taşıyan uzun cümle bölünmez; bölmek ilişkiyi koparır (`dogal-uzun-cumle-korunur`).
 
+Ortalama bir sınır değildir. Ders kitabı ve haber metninden oluşan karma bir Türkçe veride ortalama tümce 12 sözcüktür (Güven 2021); bu bir derlem ortalamasıdır, kesme eşiği değil. Aynı çalışmanın kısa sözcük ve az edilgen önerisi kolay okunur metin hedefi içindir, akademik metne aktarılmaz.
+
+Okuma deneyleri zorluğun uzunluktan çok yapıdan geldiğini gösterir: iç içe ilgi yan cümlesinde aynı hâlli adların yığılması ve öbeklerin dengesizliği işlemeyi zorlaştırır (Bakay 2020); tamlayan ile tamlanan arasına giren malzeme okuru her zaman yavaşlatmaz (Akpınar 2015); hâl ekleri yüklem gelmeden yorumlanır (Özge, Küntay ve Snedeker 2019); cümle başındaki ilk öbeğin yapısal karmaşıklığı bütün cümleyi zorlaştırır (Şen Erdoğan 2026). Uzun ama tek ilişkili cümlede onarım bölmek değil, gerekiyorsa öbekleri dengelemek ya da aynı hâlli adları ayırmaktır. Ana dili Türkçe yetişkinde yalnız cümle uzunluğunu değiştirip anlamayı ölçen bir deney bulunamadı; eşiğin inceleme işareti olması bu dolaylı kanıta dayanır ([literatür](turkce-dil-literaturu.md#okuma-ve-cümle-işlemleme)).
+
 **Telgraf dili yasaktır.** `Pompa takıldı. 2024. Enerji düşük.` kısadır ama net değildir; ögeler ve ilişki kaybolmuştur.
 
 ### 5. Bir terim, bir anlam
@@ -99,7 +106,7 @@ Karşılaştırma zemini (`eski pompaya göre`) yalnızca enerji tüketimine ba�
 
 `Yöntem`, `yaklaşım`, `sistem`, `çözüm` aynı varlığı adlandırıyordu; okur dört ayrı şey olup olmadığını soracaktı. Eval: `varlik-yeniden-adlandirma`, `kanonik-terim-tekrari-korunur`.
 
-**Korunur.** Terimin yinelenmesi tekrar değildir. `Hata`, `sapma` ve `belirsizlik` ayrı kavramlarsa üçü de kalır.
+**Korunur.** Terimin yinelenmesi tekrar değildir. `Hata`, `sapma` ve `belirsizlik` ayrı kavramlarsa üçü de kalır. Terim uyumu akıcılıktan ayrı bir ölçüttür: İngilizce–Türkçe bilimsel metinde modeller uzman terminolojisine uymakta insanın gerisinde kalır (Gebeşçe ve ark. 2026). Kaynaktaki ya da kurumun terim bankasındaki karşılık (İletişim Başkanlığı 2021) doğallaştırma için eş anlamlıyla değiştirilmez.
 
 ### 6. Somut özne, somut yüklem
 
@@ -109,7 +116,7 @@ Karşılaştırma zemini (`eski pompaya göre`) yalnızca enerji tüketimine ba�
 
 İkinci cümle ölçümü soyut yüklemle (`rol oynamaktadır`) ve boş özneyle (`bu yaklaşım`) yineliyordu. `Önbellek yanıt süresini indirdi` yazmak daha somut görünür ama kaynağın kurduğu zaman ilişkisini nedenselliğe çevirir; değişmezler buna izin vermez. Kaynak ölçüm vermiyorsa ölçüm uydurulmaz: cümle ya kaynağın kendi iddiası olarak kalır ya da dolguysa silinir. Eval: `soyut-yuklem`.
 
-**Talimat.** `Vananın kapatılması gerekmektedir` → `Vanayı kapatın`. Bilimsel betimlemede `Örnekler 40 °C'de kurutuldu` korunur.
+**Talimat.** `Vananın kapatılması gerekmektedir` → `Vanayı kapatın`. Bilimsel betimlemede `Örnekler 40 °C'de kurutuldu` korunur. Emre çevirme gereklilik dolgusuna (`-mAsI gerekmektedir`) ve okurun adım adım uygulayacağı talimata uygulanır; orada zorunluluk (`eldiven kullanılmalıdır`) emir olur ama tavsiyeye inmez (`talimat-tek-adim`). Kaynak genel edilgen prosedür kipindeyse (`Bakımdan önce şalter kapatılır`) ve talep adım listesi istemiyorsa prosedür kipi kalır, çünkü kılavuzda emir, gereklilik ve edilgen birlikte tür normudur (Akıncı Oktay 2011; `prosedur-kilavuz-korunur`; `zamansal-ankraj-ve-rapor-kipi.md` › Yeniden kullanılabilir prosedür). Kullanım kılavuzu ve arayüz metninin ek kuralları `kenar-turler.md` › Arayüz, yerelleştirme ve kullanım kılavuzu'ndadır.
 
 ### 7. Yapı okura hizmet eder
 

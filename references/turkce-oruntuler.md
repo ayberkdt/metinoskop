@@ -26,6 +26,8 @@ Bu örüntüler yasak değil, editörlük işaretidir. Tek bir `bu bağlamda`, e
 - Konuşma veya manifestoda değerlendirme ve heyecan metnin işlevidir.
 - Edebî metinde tekrar, kısa cümle ve alışılmadık benzetme bilinçli olabilir.
 
+Kalıp ifade tek başına dolgu değildir. Türkçede iki sözcüklü demetler de sözlükselleşmiştir (Doğan, Dağlı ve Güvendi 2023) ve kalıplaşma ek dizisinde de görülür (Durrant 2013); Türkçe akademik metinde `söz konusu`, `bu bağlamda` gibi kalıpların işlevini ölçen bir çalışma bulunamadı ([literatür](turkce-dil-literaturu.md#çok-sözcüklü-birimler-ve-akademik-söz-varlığı)). Bir kalıp ancak cümlede önerme taşımadığı gösterildiğinde silinir; işaret değeri olan aynı kalıbın yakın tekrarı ve yoğunluğudur (Öztürk ve Köse 2016).
+
 Örneklerdeki "sonra" metinleri, "önce" metninde bulunmayan olgu eklememelidir. Bu kural bütün düzenlemeler için geçerlidir.
 
 Bu dosya sözcük ve kalıp düzeyini ele alır. Cümleler temiz olduğu hâlde metin yapay okunuyorsa sorun cümle, paragraf veya belge mimarisindedir; önem cümleleri, savunmacı açıklama, tekrar döngüleri, yol haritası, kalıp giriş ve sonuç ile tek biçimli paragraf yapısı için [Retorik yapılar](retorik-yapilar.md) dosyasına bak.
@@ -99,6 +101,8 @@ Tek bir kısa vurgu cümlesini sırf kısa olduğu için bozma.
 > Uygulama verileri saklıyor ve haftalık rapor oluşturuyor. Ekipler bu raporları toplantılarda kullanıyor.
 
 Geniş zaman daha uygunsa `saklar`, `oluşturur` biçimini kullan. Kipi tür ve zaman bağlamına göre seç.
+
+`-mAktAdIr` İngilizceden çevrilmiş Türkçe ağaç bankalarında özgün haber Türkçesinin 2,4–2,6 katı sıklıktadır (10.000 sözcükte 7,5'e karşı 18–19), özgün öğretici metinde de yüksektir (15); tek kullanım değil zincir ve türe uyumsuzluk sorundur ([literatür › Depo ölçümü](turkce-dil-literaturu.md#depo-ölçümü-özgün-ve-çevrilmiş-ağaç-bankaları)).
 
 ### İsim-fiil yığılması
 
@@ -339,13 +343,15 @@ Yüksek riskli formüller:
 
 > Küçük işletmeler de artık aylık bildirim verecek.
 
-Gerçekten cevabı açık olmayan soru, konuşma veya denemede kalabilir.
+Gerçekten cevabı açık olmayan soru, konuşma veya denemede kalabilir. Retorik soru Türkçede ikna, şaşırtma ve üstü kapalı söz işleviyle yerleşiktir (Günay 2020) ve söylem belirleyici olarak da kullanılır (Hirik 2023); bu yüzden "AI izi" sayılmaz, silme gerekçesi sorunun önerme taşıyıp taşımadığıdır. Yukarıdaki örnekte soru cevabı hemen veren bir duyurudur ve gider. Soru bildirme cümlesine çevrilirken örtük kutup korunur: `Kim bilmez ki?` olumsuz biçimde olumlu bir önerme taşır (`kanit-ve-kesinlik.md` › Belirsizliğin kapsamı). Yazıda retorik soruyu standart sorudan ayıran tonlama kaybolur (Keçeli 2009); önerme açıkça yazılmadan soru işareti noktaya çevrilmez.
 
 ## Görüş ambalajı
 
 Deneme, köşe yazısı, kişisel blog ve sosyal medya gönderisinde yazarın görüşü ve çıkardığı ders metnin içeriğidir; silinmez. Ama görüşü taşıyan hazır kalıp yazarın sesi değildir. Model bu iki şeyi karıştırdığında kalıbı "yazarın görüşü" diye olduğu gibi bırakır ya da aynı imgeyi daha sakin sözcüklerle yeniden kurar. Sonuç, düzenlenmiş ama hâlâ yapay okunan bir metindir.
 
 Karar sorusu: bu ifade yalnızca bu yazara ve bu konuya mı ait, yoksa başka herhangi bir konunun yazısına da yapıştırılabilir mi? Yapıştırılabiliyorsa ambalajdır. Ambalajın altındaki önermeyi (varsa) ve gücünü koru; imgeyi, formülü ve süsü at.
+
+**Deyim ambalaj değildir.** Klişe ile deyim arasında terim düzeyinde net bir sınır yoktur (Bayraktar Özgül 2023; Gökdayı 2019); karar sözcükte değil işlevdedir. Köşe yazısında ve siyasal söylemde deyim türün olağan aracıdır ve değiştirilmiş atasözü kasıtlı retoriktir (Darıcı 2015); edebî metindeki deyim okur düzeyine göre seçilmiş sestir (Uçgun ve Çetinkaya 2016). Deyimi düz ifadeyle değiştirmek değerlendirme yükünü düşürebilir: `ye-` ile kurulan deyimler olumsuz anlam ezgisi taşır (Turgut 2024). Sözlükte bulunmaması deyimi yanlış saymaya yetmez (Güven 2023). Bilgilendirici metinde tek gerekçe anlamadır: tanınırlığı düşük, saydam olmayan deyim okuru zorlar (Bayat ve Çetinkaya 2014); o durumda anlamı ve değerlendirme gücü korunarak açıklaştırılır, silinmez ([literatür › Deyim ve kalıp ifade](turkce-dil-literaturu.md#deyim-ve-kalıp-ifade)).
 
 Yüksek riskli ambalajlar:
 
@@ -367,7 +373,9 @@ Yüksek riskli ambalajlar:
 
 > Kitap okumak bir pencere gibidir; o pencereden yalnızca başka dünyaları değil, kendimizi de görürüz.
 
-`Adeta` gitti ama imge ve karşıtlık formülü yerinde; metin aynı hazır kompozisyon cümlesi olarak okunuyor.
+`Adeta` gitti ama imge ve karşıtlık formülü yerinde; metin aynı hazır kompozisyon cümlesi olarak okunuyor. Ters yön de yanlıştır: `âdeta` ve `sanki` abartılı önermenin doğruluk değerini askıya alan büyütme işaretleyicisidir (Hirik 2025); işaretleyiciyi silip imgeyi bırakmak (`âdeta bir savaş alanıydı` → `bir savaş alanıydı`) abartıyı düz önermeye çevirir. İmge gidecekse işaretleyiciyle birlikte gider.
+
+**Derece belirtecinin kutbu.** `Oldukça` yalnızca olumlu, gerçeklik bildiren tümcede geçer (Görgülü 2025); pekiştiriciyi değiştiren ya da cümleyi olumsuza çeviren düzenleme `oldukça`yı olumsuz ya da soru yüklemine taşımaz. `Müthiş`, `inanılmaz`, `harika` gibi uç sıfatların derece okunuşu ardından gelen sıfata bağlıdır (Can 2022); karar tek sözcükte değil birleşimde verilir.
 
 **Sonra**
 
@@ -537,13 +545,15 @@ Aşağıdakileri tek başına yapaylık belirtisi sayma:
 - bir kısa vurgu cümlesi,
 - mevzuat gereği korunan kurum dili,
 - yazarın bilinçli tekrarı,
+- sözlükleşmiş ikileme (`yavaş yavaş`, `az çok`) ve pekiştirmeli sıfat (`bembeyaz`); ikilemeler sözlükbirimdir (Özkan 2010), kurallara bağlı oluşur (Korkutan 2016) ve süre, belirsizlik, devinim ya da pekiştirme anlamı taşır (Kuleli ve Altuntaş 2022), bu yüzden tekrar ya da dolgu diye silinmez; `m`'li ikileme (`kitap mitap`) pekiştirmez, geçiştirir ve konuşma kaydı taşır (Şahin 2019). Türkçe ikileme bağlaçsız kurulur (Yücel 2016): `açık ve net`, `etkin ve verimli` gibi bağlaçlı eş anlamlı çift bu korumaya girmez, her sözcüğün ayrı katkısı `yazim-ve-dil-bilgisi.md` › Kökenden gelen anlam tekrarı'ndaki ölçütle sınanır. Çevirmenler Türkçeye kaynaktan çok ikileme katar (Uslu ve Özdemir 2019); düzenleme "Türkçeleştirme" için ikileme eklemez, çünkü ikileme kaynakta olmayan süre ya da yaklaşıklık katabilir. Pekiştirme sözlüksel bir sınıftır (Kılıç ve Bozşahin 2013; Demir 2017),
 - alıntı içindeki klişe,
 - teknik belgede düzenli başlık yapısı,
 - belirli bir topluluğa veya döneme ait söyleyiş,
 - adlandırılmış bir sınırlılık veya kapsam tekrarı,
 - ölçülmüş dayanağı olan yöntem gerekçesi,
 - yeni başlayanlara yönelik metindeki öğretici açıklama veya benzetme,
-- uzun bir belgenin başındaki tek yönlendirme cümlesi.
+- uzun bir belgenin başındaki tek yönlendirme cümlesi,
+- haber başlığındaki yüklemsiz ya da eksiltili yapı; başlık haberi özetleme işlevi için eksiltiye başvurur (Sargın 2024).
 
 Bu karşı örneklerin ayrıntısı [Retorik yapılar › Karşı örnekler](retorik-yapilar.md#karşı-örnekler-kalması-gerekenler) bölümündedir.
 

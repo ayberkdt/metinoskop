@@ -1,0 +1,1 @@
+Kalibrasyon hatasını yalnızca ikinci ekip, ölçümleri tekrarladıktan sonra fark etti. Birinci ekip aynı veriyi iki kez incelemiş ama sapmayı görmemişti. Hatanın kaynağı ise henüz belirlenmedi.
