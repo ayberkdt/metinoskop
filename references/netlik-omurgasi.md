@@ -64,6 +64,8 @@ Yöntem bilgisi yöntemde toplandı; ölçüm sonucu sonuçlarda kaldı. Bölüm
 >
 > Sonra: Kalibrasyonda ölçüm sisteminin çıktısı bilinen referans değerlerle karşılaştırılır.
 
+Bu kural dardır: terimi kendisiyle ya da kendi köküyle tanımlamayı hedefler. Sözlükbilim döngüselliği eş ya da yakın anlamlı sözcükle tanımı da kapsayacak kadar geniş tutar (Güngör 2024), ama eş anlamlıyla açıklama sözlükte meşru bir tanımlama yöntemidir (Gökter Gençer ve Yavuzarslan 2020); düzenleme onu döngüsel saymaz. Döngüsel cümleyi kaldırırken kaynakta olmayan bir tanım uydurulmaz. Tanım cümlesi `X, Y'dir` biçiminde ad cümlesidir ve `-DIr` cümle türünün kurucu parçasıdır (Demir 2007); `-DIr` yığını düzeltmesi tanım cümlesine dokunmaz. Cins + ayırıcı özellik yapısında ayırıcı koşul tanımın içeriğidir: ders kitabı tanımlarında ayırıcı koşulun düşmesi tanımı bilimsel tanımla uyumsuz kılar (Yalçın Çelik ve Kılıç 2017), sadeleştirmede korunur. Tanımda tanımlanandan daha zor sözcük kullanmak da okura bilgi vermez (Altıntop 2019) ([literatür › Tanım cümlesi ve terim tanımı](turkce-dil-literaturu.md#tanım-cümlesi-ve-terim-tanımı)).
+
 **Açımlama döngüsü.** Olgu → açımlama → önem → mini sonuç dizisi tek önermeye iner (`SKILL.md` kısa örneği; eval `iddia-tekrar-dongusu`).
 
 **Korunur.** Aynı önerme yeni bir rol kazanıyorsa yinelenir: bulgularda ölçüm olarak (`hata %9'dan %4'e indi`), tartışmada yorumun dayanağı olarak (`%4'lük hata, ... için yeterli düzeydedir`). Eval: `ayni-iddia-yeni-rol-korunur`.

@@ -351,6 +351,8 @@ Deneme, köşe yazısı, kişisel blog ve sosyal medya gönderisinde yazarın g�
 
 Karar sorusu: bu ifade yalnızca bu yazara ve bu konuya mı ait, yoksa başka herhangi bir konunun yazısına da yapıştırılabilir mi? Yapıştırılabiliyorsa ambalajdır. Ambalajın altındaki önermeyi (varsa) ve gücünü koru; imgeyi, formülü ve süsü at.
 
+**Deyim ambalaj değildir.** Klişe ile deyim arasında terim düzeyinde net bir sınır yoktur (Bayraktar Özgül 2023; Gökdayı 2019); karar sözcükte değil işlevdedir. Köşe yazısında ve siyasal söylemde deyim türün olağan aracıdır ve değiştirilmiş atasözü kasıtlı retoriktir (Darıcı 2015); edebî metindeki deyim okur düzeyine göre seçilmiş sestir (Uçgun ve Çetinkaya 2016). Deyimi düz ifadeyle değiştirmek değerlendirme yükünü düşürebilir: `ye-` ile kurulan deyimler olumsuz anlam ezgisi taşır (Turgut 2024). Sözlükte bulunmaması deyimi yanlış saymaya yetmez (Güven 2023). Bilgilendirici metinde tek gerekçe anlamadır: tanınırlığı düşük, saydam olmayan deyim okuru zorlar (Bayat ve Çetinkaya 2014); o durumda anlamı ve değerlendirme gücü korunarak açıklaştırılır, silinmez ([literatür › Deyim ve kalıp ifade](turkce-dil-literaturu.md#deyim-ve-kalıp-ifade)).
+
 Yüksek riskli ambalajlar:
 
 - `adeta ... işlevi görür`, `... gibidir` ile kurulan hazır benzetme (pencere, anahtar, pusula, köprü, temel taşı)
