@@ -50,6 +50,7 @@ Metin önce ve eksiksiz gelir; olduğu gibi okura gönderilebilmelidir. Not, met
 ## Sızıntı olmayanlar
 
 - Kurumsal yanıtta `talebiniz doğrultusunda aboneliğiniz iptal edildi`: okur talebin sahibidir.
+- Kamu kurumunun başvuru yanıtında gerekçe, başvurulabilecek merciler, süreler ve `başvurunuz incelenmektedir` türü ara cevap: mevzuat bunları istediği için önerme taşır (Dilekçe Hakkının Kullanılmasına Dair Kanun, 1984; Bilgi Edinme Hakkı yönetmeliği, 2004; CİMER Yönetmeliği, 2022). Silinmez; ara cevap tamamlanmış işleme çevrilmez.
 - Belge içi gönderme: `Tablo 2'de`, `3. bölümde`, `Ek A`.
 - Sürüm notunda `Önceki sürümde zaman aşımı 30 saniyeydi`: okur önceki sürümü kullanmıştır.
 - Gereksinim metninde `kullanıcının isteği üzerine`: ürünün kullanıcısıdır.
