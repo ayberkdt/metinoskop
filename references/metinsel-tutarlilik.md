@@ -213,7 +213,7 @@ Belge akademik, bürokratik, konuşma, tanıtım, gazetecilik, öğretici ve ede
 
 > Modelin performansı değerlendirilmiştir. İşin ilginç yanı sonuçların beklenen eğilimden ayrılmasıdır. Bu kapsamda söz konusu parametrenin kritik önem arz ettiği görülmektedir.
 
-Üç uyumsuz mikro kayıt: akademik edilgen, sohbet gerilimi, bürokratik çerçeve. Küresel kayıt profilini belirle, izin verilen yerel değişimi (alıntı, örnek, uyarı, kenar notu) tanı, bilinçli geçişleri düzleştirme.
+Üç uyumsuz mikro kayıt: akademik edilgen, sohbet gerilimi, bürokratik çerçeve. Küresel kayıt profilini belirle, izin verilen yerel değişimi (alıntı, örnek, uyarı, kenar notu) tanı, bilinçli geçişleri düzleştirme. Konuşma dili unsuru insan yazısında da sıktır (İlanbey ve Can 2016); kayıt kayması AI izi değil gerçek bir yazım sorunudur. Bağlaçlar ise sözlü ve yazılı derlemde benzer dağılır (Demirşahin ve Zeyrek 2014): `ama`, `bu yüzden` gibi bağlaçlar konuşma izi sayılıp silinmez. Sözlü anlatımda bağdaşıklık aracı ve tutarlılık daha düşüktür (Çelebi ve Aykanat Uysal 2022), ama bu kaynakta kurulmamış ilişkiyi bağlaçla kurmaya izin vermez (Bağlaç işlevi doğrulaması).
 
 **Sonra**
 

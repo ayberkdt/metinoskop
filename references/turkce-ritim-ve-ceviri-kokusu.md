@@ -681,7 +681,7 @@ Tek ana önerme, denetimli tümleçler, açık neden. Bölünürse neden ilişki
 - Fiilimsi zinciri: tek yükleme dört beş `-ip/-erek` asılmış.
 - Belirsiz sıfır özne: iki aktörlü paragrafta özne düşürülmüş.
 - Telgraf dili: eksilti gerekli bağlacı, kapsamı veya koşulu götürmüş.
-- Yapay yerlilik: arkaik sözcük, zorlama deyim, rastgele `ya`, `işte`, `hani`, gereksiz devriklik, süslü eksilti.
+- Yapay yerlilik: arkaik sözcük, zorlama deyim, rastgele `ya`, `işte`, `hani`, gereksiz devriklik, süslü eksilti. Devrik ve soru cümlesi öğrencilerin sözlü anlatımında yazılı anlatımından sıktır (Yetkin ve Çolak 2026): yazarın kurmadığı devriklik yazılı metne konuşma kaydı taşır. Kaynaktaki devriklik ise korunur; eksiltili cümle yazılı anlatımda da sıktır ve tek başına konuşma izi değildir.
 - Bilimsel kesinlik zayıflamış: "ilişkili" → "neden olur", "olabilir" → "olur", "olumsuz etki" → "bozuldu".
 - Teknik terim öz Türkçe hevesiyle değiştirilmiş: `parametre`, `pipeline`, `baseline`, `benchmark`, `framework` gibi alanın kullandığı terim başka sözcükle karşılanmış.
 - Resmî kayıt dili gündelikleşmiş: mevzuat, tutanak veya sicil metnine `var` girmiş.
