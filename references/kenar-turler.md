@@ -27,6 +27,7 @@ Soyut ifade her zaman gereksiz değildir; yazarın değerlendirmesini ya da ikna
 
 - Tanıtım metninde ikna amacını koru; hazır reklam kalıplarını daha özgül ve ölçülü bir söyleyişle değiştir. İkna somut olgu ve faydayla kurulur: okura seslenen anons (`Merak etmeyin`, `tanışın`, `Sizin için hazırladık`) ve etiketle açılan cümle (`Kısa cevap:`) bu türde de yazılmaz ([Retorik yapılar](retorik-yapilar.md#etiket-ve-anons)).
 - Bilgi verme amacı taşıyan bölümde olgu gibi sunulan kanıtsız fayda ve üstünlük iddiasını daralt, kaynağı varsa ona bağla ya da çıkar.
+- Reklamda soru, ünlem ve emir cümleleri en çok sloganda yoğunlaşır (Batı 2002): sloganın tek sorusu türün aracıdır ve kalır. Art arda kurulan ve her paragrafı açan retorik soru ise şablondur (`turkce-oruntuler.md` › Retorik soru).
 - Kullanıcı "pazarlama dilini kaldır" ya da "nötrleştir" dediyse soyut fayda ve üstünlük iddialarını daha sıkı temizle.
 - Reklam cümlesini yalnızca daha sakin eş anlamlılarla yeniden kurma; cümlenin işlevini ve metindeki dayanağını değerlendir.
 - Yazar değerlendirmesi ile üretilmiş önem farklıdır: değerlendirme, kaynakta bir kişiye ya da kuruma ait bir tavırdır; üretilmiş önem, bir olgu var diye eklenen genel önem cümlesidir. İlkini koru, ikincisini çıkar.

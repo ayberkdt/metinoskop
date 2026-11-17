@@ -343,7 +343,7 @@ Yüksek riskli formüller:
 
 > Küçük işletmeler de artık aylık bildirim verecek.
 
-Gerçekten cevabı açık olmayan soru, konuşma veya denemede kalabilir.
+Gerçekten cevabı açık olmayan soru, konuşma veya denemede kalabilir. Retorik soru Türkçede ikna, şaşırtma ve üstü kapalı söz işleviyle yerleşiktir (Günay 2020) ve söylem belirleyici olarak da kullanılır (Hirik 2023); bu yüzden "AI izi" sayılmaz, silme gerekçesi sorunun önerme taşıyıp taşımadığıdır. Yukarıdaki örnekte soru cevabı hemen veren bir duyurudur ve gider. Soru bildirme cümlesine çevrilirken örtük kutup korunur: `Kim bilmez ki?` olumsuz biçimde olumlu bir önerme taşır (`kanit-ve-kesinlik.md` › Belirsizliğin kapsamı). Yazıda retorik soruyu standart sorudan ayıran tonlama kaybolur (Keçeli 2009); önerme açıkça yazılmadan soru işareti noktaya çevrilmez.
 
 ## Görüş ambalajı
 
