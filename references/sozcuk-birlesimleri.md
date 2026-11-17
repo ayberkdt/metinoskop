@@ -392,6 +392,8 @@ Sözcüksel kalkının çoğu yalnızca doğal değildir: `iyileşme elde edildi
 
 Bir ifadeyi "doğal değil" diye değiştirmeden önce beş soruyu geç: terim alanın yerleşik Türkçe terminolojisi mi; standart, yönetmelik ya da ders kitabında böyle mi geçiyor; metin terimi daha önce tanımlamış mı; aynı belgede tutarlı kullanılmış mı; değiştirirsem teknik kategori değişiyor mu? Herhangi birine güçlü bir "evet" varsa koruma eğilimi yükselir.
 
+Kapı sorusu her zaman tek yanıt vermez: Türkçe ders kitapları ve terim sözlükleri kendi aralarında tutarsız olabilir; fizikte `öz kütle`, `yoğunluk` ve `bağıl yoğunluk` 1944–2011 kaynaklarında birbirine karışmış (Kızılcık ve Damlı 2019), kimya terim sözlükleri birbirinden farklı terim seçmiştir (Cin ve Turgut Cin 2017). Sözlükler çeliştiğinde karar belge içi tutarlılığa ve kaynağın kendi terimine düşer; aynı kökten görünen terimler ayrı kavramsa birleştirilmez (`netlik-omurgasi.md` › Bir terim, bir anlam).
+
 **Genel derlem ile alan derlemini ayır.** Genel Türkçede seyrek görülen bir birleşim teknik alanda doğru olabilir. Karar iki aşamalıdır: önce genel Türkçe doğallığı, sonra alan içi terminolojik yerleşiklik. Havacılık, uzay, fizik, makine, yazılım, hukuk, tıp ve finans metinlerinde bu ayrım zorunludur.
 
 Teknik belgede sessizce alan profilini çıkar: disiplin, alt disiplin, terim yoğunluğu, tanımlı terimler, olası standart dili. Astrodinamik metinde `reference frame` kararı fizik terminolojisiyle, pazarlama metninde `campaign` kararı pazarlama terminolojisiyle verilir. Genel Türkçe sezgisini uzmanlık terminolojisinin üstüne koyma.
