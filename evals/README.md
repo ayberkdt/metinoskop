@@ -177,6 +177,8 @@ Değerlendirici notu: `herşey` → `her şey` düzeltmesi önceden "eklenen tü
 | `edilgen-korunur` | Aktörü adlandırmayan yöntem paragrafında edilgen çatıyı korumak, aktör uydurmamak |
 | `edilgen-etkene` | Aktörü açık olan "tarafından" zincirini etkene çevirmek |
 | `bilinmeyen-aktor` | Belirsiz aktörü tek özneye çözmemek |
+| `ettirgen-aktor-kaymasi-tuzagi` | Hafif fiil katmanını çözerken ettirgen eki düşürmemek (`boyatmıştır`, `boyadı` değil), adlandırılmamış ettireni uydurmamak, aracıyı tek özne yapmamak; deterministik denetim ettirgen kaybını yakalamaz, hakem okur |
+| `ettirgen-ve-donuslu-cati-korunur` | Ettirgeni, ettireni adlandırılmamış edilgen ettirgeni ve dönüşlü ya da kendiliğinden olayı (`kendini sıfırlar`, `kendiliğinden açılır`) korumak; `tarafından` ya da aktör eklememek |
 | `aktarim-olgu-olmaz` | İki ayrı kaynağa atıflı iddiaları atıflı tutmak, ölçümü olgu olarak bırakmak |
 | `mis-dolaylilik-tuzagi` | Dolguyu silerken duyum bildiren `-mış`'ı `-dı`'ya ya da `-mıştır`'a çevirmemek, kaynağı belirtilmemiş duyuma aktör eklememek; resmî `-mıştır` kaydını yalın geçmişe sadeleştirmek |
 | `olumsuz-niceleyici-kapsami-tuzagi` | Dolguyu silerken kısmi olumsuzluğu (`her test geçmedi`) tümele (`hiçbir test`) çevirmemek, olumsuz uyum ögesi ya da tümel niceleyici eklememek, `yalnızca`yı bağlandığı ögede tutmak |

@@ -61,6 +61,8 @@ REQUIRED_FILES = (
     "evals/olumsuz-niceleyici-kapsami-tuzagi.md",
     "evals/kuyruk-duzeltmesi-zarf-fiil-tuzagi.md",
     "evals/olumsuzluk-ve-kapsam-korunur.md",
+    "evals/ettirgen-aktor-kaymasi-tuzagi.md",
+    "evals/ettirgen-ve-donuslu-cati-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -285,6 +287,8 @@ EVAL_FILES = (
     "evals/olumsuz-niceleyici-kapsami-tuzagi.md",
     "evals/kuyruk-duzeltmesi-zarf-fiil-tuzagi.md",
     "evals/olumsuzluk-ve-kapsam-korunur.md",
+    "evals/ettirgen-aktor-kaymasi-tuzagi.md",
+    "evals/ettirgen-ve-donuslu-cati-korunur.md",
     "evals/akademik-metin-korunur.md",
     "evals/belirsiz-gonderge-korunur.md",
     "evals/markdown-bicimi-korunur.md",
@@ -732,6 +736,8 @@ eval_markers = {
     "evals/inceleme-ovgu-yigini.md": ("muhteşem, eşsiz", "olağanüstü bir titizlikle", "daha sınırlı", "başyapıt", "1950–1980"),
     "evals/olumsuz-niceleyici-kapsami-tuzagi.md": ("her test başarıyla geçmedi", "7", "yalnızca ödeme modülünde", "önemli bir husus"),
     "evals/kuyruk-duzeltmesi-zarf-fiil-tuzagi.md": ("indirerek.", "yedek almadan", "bitince", "420 ms", "180 ms"),
+    "evals/ettirgen-aktor-kaymasi-tuzagi.md": ("boyatılması", "yaptırılmıştır", "bırakılmıştır", "cümle: <= 3"),
+    "evals/ettirgen-ve-donuslu-cati-korunur.md": ("yaptırdı", "kontrol ettirildi", "kendini sıfırlar", "kendiliğinden açılır", "60 °C"),
     "evals/olumsuzluk-ve-kapsam-korunur.md": ("düşünmüyor değiliz", "Her test geçmedi", "yalnızca ödeme", "Ne kurulum betiği ne yapılandırma dosyası değişti", "memnun olmaz ki"),
     "evals/resmi-sikayet-kibarlik-korunur.md": ("Sayın Yetkili", "Saygılarımla", "rica ederim", "sevinirim", "12 Ekim"),
     "evals/olcumlu-vurgulayici-ozet-korunur.md": ("belirgin biçimde", "açıkça", "p < 0,001", "anlamlı fark bulunmadı", "500 m altı"),
@@ -1052,6 +1058,7 @@ SHOULD_REMAIN_CASES = (
     "evals/ozet-amac-hamlesi-korunur.md",
     "evals/inceleme-olumsuz-degerlendirme-korunur.md",
     "evals/olumsuzluk-ve-kapsam-korunur.md",
+    "evals/ettirgen-ve-donuslu-cati-korunur.md",
 )
 misnamed = sorted({p for p in SHOULD_REMAIN_CASES if not Path(p).stem.endswith("-korunur")}
                   | {p for p in EVAL_FILES if Path(p).stem.endswith("-korunur") and p not in SHOULD_REMAIN_CASES})
